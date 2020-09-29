@@ -1,0 +1,57 @@
+<div class="side-menu-fixed">
+    <div class="scrollbar side-menu-bg">
+        <ul *ngIf="!router.url.includes('account-settings')" class="nav navbar-nav side-menu" id="sidebarnav">
+            <!-- menu item Dashboard-->
+            <li>
+                <a href="javascript:void(0)"><i class="ti-layout-grid2-alt"></i><span class="right-nav-text">Dashboard</span> </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)"><i class="ti-id-badge"></i><span class="right-nav-text">Accounts</span> </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)"><i class="ti-dropbox-alt"></i><span class="right-nav-text">Money Collected</span> </a>
+            </li>
+            <li [routerLink]="['/commission']" routerLinkActive="active">
+                <a href="javascript:void(0)"><i class="ti-layout-sidebar-2"></i><span class="right-nav-text">Commission</span> </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)"><i class="ti-wallet"></i><span class="right-nav-text">Payment</span> </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)"><i class="ti-alarm-clock"></i><span class="right-nav-text">Reminders</span> </a>
+            </li>
+            <!-- <li [routerLink]="['/user']" routerLinkActive="active">
+                <a href="javascript:void(0)"><i class="ti-user"></i><span class="right-nav-text">User</span> </a>
+            </li> -->
+            <li>
+                <a href="javascript:void(0)" [class.active]="router.url.includes('user')" (click)="toggleCollapse(toggleUser)" routerLinkActive="active" attr.data-toggle="collapse" attr.data-target="#authentication">
+                    <div class="pull-left"><i class="ti-user"></i><span class="right-nav-text">User and Permission</span></div>
+                    <div class="pull-right"><i [class]="toggleIcon"></i></div><div class="clearfix"></div>
+                </a>
+                <ul id="authentication" #toggleUser class="collapse list-unstyled pl-0" attr.data-parent="#sidebarnav">
+                    <li [routerLink]="['/user']" routerLinkActive="active"> <a href="javascript:void(0)">User</a> </li>
+                    <li> <a href="javascript:void(0)">Groups</a> </li>
+                    <li> <a href="javascript:void(0)">Roles and permission</a> </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0)"><i class="ti-user"></i><span class="right-nav-text">Collection Agents</span> </a>
+            </li>
+            <li [routerLink]="['/settings']" routerLinkActive="active">
+                <a href="javascript:void(0)"><i class="ti-settings"></i><span class="right-nav-text">Setting</span> </a>
+            </li>
+        </ul>
+        <ul *ngIf="router.url.includes('account-settings')" class="nav navbar-nav side-menu" id="sidebarnav">
+            <!-- menu item Dashboard-->
+            <li [routerLink]="['/account-settings/security']" routerLinkActive="active">
+                <a href="javascript:void(0)"><i class="ti-id-badge"></i><span class="right-nav-text">Security</span> </a>
+            </li>
+            <li [routerLink]="['/account-settings/email']" routerLinkActive="active">
+                <a href="javascript:void(0)"><i class="ti-dropbox-alt"></i><span class="right-nav-text">Email</span> </a>
+            </li>
+            <li [routerLink]="['/account-settings/preference']" routerLinkActive="active">
+                <a href="javascript:void(0)"><i class="ti-settings"></i><span class="right-nav-text">Account Preferences</span> </a>
+            </li>
+        </ul>
+    </div>
+</div>

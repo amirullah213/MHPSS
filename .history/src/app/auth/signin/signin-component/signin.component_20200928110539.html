@@ -1,0 +1,77 @@
+<div class="wrapper">
+    <section class="height-100vh d-flex align-items-center page-section-ptb login">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="d-flex align-items-stretch auth auth-img-bg w-100">
+                <div class="row mx-0 flex-grow w-100">
+                    <div class="col-lg-8 login-half-bg d-flex flex-row p-0">
+                        <div class="flex-grow align-self-end pl-5 pb-5 mb-md-5">
+                        <h2 class="text-white font-weight-bold mb-4 pt-4">WELCOME TO PMS </h2>
+                        <p class="text-white font-weight-medium">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 d-flex align-items-center auth-form justify-content-center">
+                        <div class="auth-form-transparent text-left w-md-75">
+                            <div class="alert alert-danger my-5" role="alert" *ngIf="showError && !showQRForm">
+                                Login attempts max 3 after that your account gets auto lock and You will need to contact to <span class="gray-04-color">admin</span> for unlocking the account.
+                            </div>
+                            <div class="brand-logo mt-4">
+                                <img src="../../../../assets/images/email-success.png" class="mx-auto d-block" alt="logo">
+                            </div>
+                            <h6 *ngIf="!showQRForm" class="text-center mt-5 mb-2 font-segoebold auth-hdng themeauth-color">LOGIN</h6>
+                            <div *ngIf="!showQRForm">
+                                <p class="auth-info text-center pb-2">Please login to your account.</p>
+                                <form [formGroup]="signIn">
+                                    <div class="pt-3">
+                                        <div class="form-group">
+                                            <div class="input-group" [class]="(signIn.controls.userName.hasError('required') && signIn.controls.userName.touched) ? 'is-invalid' : (!signIn.controls.userName.hasError('required') && signIn.controls.userName.touched) ? 'is-valid' : ''">
+                                                <div class="input-group-prepend bg-transparent">
+                                                <span class="input-group-text bg-transparent border-right-0">
+                                                    <i class="ti-email"></i>
+                                                </span>
+                                                </div>
+                                                <input type="text" formControlName="userName" class="form-control form-control-lg border-left-0" id="exampleInputEmail" placeholder="E-Mail/User Id">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group" [class]="(signIn.controls.pw.hasError('required') && signIn.controls.pw.touched) ? 'is-invalid' : (!signIn.controls.pw.hasError('required') && signIn.controls.pw.touched) ? 'is-valid' : ''">
+                                                <div class="input-group-prepend bg-transparent">
+                                                <span class="input-group-text bg-transiparent border-right-0">
+                                                    <i class="ti-lock"></i>
+                                                </span>
+                                                </div>
+                                                <input type="password" formControlName="pw" #password class="form-control form-control-lg border-left-0" id="exampleInputPassword" placeholder="Password">                        
+                                                <div class="input-group-append bg-transparent">
+                                                    <button (click)="changeType()" type="button" class="btn bg-transparent"><i class="fa  gray-04-color" [class]="changeIcon === false ? 'fa-eye-slash' : 'fa-eye'"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="invalid-feedback" style="display: block;" *ngIf="showError">{{responseText}}</div>
+                                        </div>
+                                        <div class="my-2 d-flex justify-content-between align-items-center">
+                                            <div class="form-check checkbox">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <label class="form-check-label gray-04-color" for="exampleCheck1">Keep me signed in</label>
+                                            </div>
+                                            <a href="javascript:void(0)" [routerLink]="['/recovery/forgot']" class="auth-link themeauth-color">Forgot password?</a>
+                                        </div>
+                                        <div class="my-2 d-flex pb-2 d-flex flex-row-reverse">
+                                            <a href="javascript:void(0)" [routerLink]="['/recovery/forgot-user']" class="auth-link themeauth-color">Forgot User Id?</a>
+                                        </div>
+                                        <div class="my-4">
+                                            <button [disabled]="!signIn.valid" (click)="loginFunc(signIn.value)" type="button"
+                                            [style.pointer-events]="signInLoader ? 'none' : 'auto'"
+                                             class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
+                                                LOGIN
+                                                <span *ngIf="signInLoader" class="spinner-border float-right" role="status" aria-hidden="true"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

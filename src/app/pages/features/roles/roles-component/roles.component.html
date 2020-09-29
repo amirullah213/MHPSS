@@ -1,0 +1,118 @@
+<div class="container-fluid container-wrapper">
+    <div class="row">
+        <div class="content-wrapper">
+            <div class="page-title">
+                <div class="row px-3 px-md-0">
+                    <div class="col-sm-12 pl-0">
+                    <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)" class="gray-color">User and Permission</a></li>
+                        <li class="breadcrumb-item active gray-04-color">Roles and permission</li>
+                    </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">   
+                <div class="col-md-12 mb-30">     
+                    <div class="card card-statistics h-100"> 
+                        <div class="card-body">  
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5 class="card-title mb-0">Roles</h5>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-inline pull-md-right">
+                                        <a href="javascript:void(0)" class="button">New Role <i class="fa fa-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item" (click)="setTab('global')">
+                                    <a class="nav-link" [ngClass]="{'active show': tab === 'global'}" id="tab1" data-toggle="tab" href="javascript:void(0)"  role="tab" aria-controls="home" aria-selected="true">Global Roles</a>
+                                </li>
+                                <li class="nav-item" (click)="setTab('customized')">
+                                    <a class="nav-link" [ngClass]="{'active show': tab === 'customized'}" id="tab2" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="profile" aria-selected="false">Customized Roles</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div *ngIf="tab === 'global'" class="tab-pane fade" [ngClass]="{'active show': tab === 'global'}" id="tab1" role="tabpanel" aria-labelledby="tab1">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="table-responsive">
+                                                <table class="table center-aligned-table">
+                                                    <thead>
+                                                        <tr class="text-dark">
+                                                            <th>Role</th>
+                                                            <th>User Count</th>
+                                                            <th class="text-center">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Admin</td>
+                                                            <td>02</td>
+                                                            <td class="text-center">
+                                                                <a class="pr-3" href="javascript:void(0)"> <i class="fa fa-files-o text-info"></i></a>
+                                                                <a class="pr-3" href="javascript:void(0)"> <i class="fa fa-pencil text-info"></i></a>
+                                                                <a href="javascript:void(0)"> <i class="fa fa-trash-o"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Admin</td>
+                                                            <td>02</td>
+                                                            <td class="text-center">
+                                                                <a class="pr-3" href="javascript:void(0)"> <i class="fa fa-files-o text-info"></i></a>
+                                                                <a class="pr-3" href="javascript:void(0)"> <i class="fa fa-pencil text-info"></i></a>
+                                                                <a href="javascript:void(0)"> <i class="fa fa-trash-o"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="tab === 'customized'" class="tab-pane fade" [ngClass]="{'active show': tab === 'customized'}" id="tab2" role="tabpanel" aria-labelledby="tab2">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="table-responsive">
+                                                <table class="table center-aligned-table">
+                                                    <thead>
+                                                        <tr class="text-dark">
+                                                            <th>Role</th>
+                                                            <th class="text-center">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Client User</td>
+                                                            <td class="text-center">
+                                                                <a class="pr-3" href="javascript:void(0)"> <i class="fa fa-files-o text-info"></i></a>
+                                                                <a class="pr-3" href="javascript:void(0)"> <i class="fa fa-pencil text-info"></i></a>
+                                                                <a href="javascript:void(0)"> <i class="fa fa-trash-o"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Client User</td>
+                                                            <td class="text-center">
+                                                                <a class="pr-3" href="javascript:void(0)"> <i class="fa fa-files-o text-info"></i></a>
+                                                                <a class="pr-3" href="javascript:void(0)"> <i class="fa fa-pencil text-info"></i></a>
+                                                                <a href="javascript:void(0)"> <i class="fa fa-trash-o"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>   
+                </div> 
+            </div>
+
+        </div>
+    </div>
+</div>

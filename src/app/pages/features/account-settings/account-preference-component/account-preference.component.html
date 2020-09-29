@@ -1,0 +1,84 @@
+<div class="container-fluid container-wrapper">
+    <div class="row">
+        <div class="content-wrapper">
+            <div class="page-title">
+                <div class="row px-3 px-md-0">
+                    <div class="col-sm-12 pl-0">
+                    <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)" class="gray-color">Account Settings</a></li>
+                        <li class="breadcrumb-item active gray-04-color">Preferences</li>
+                    </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- main body --> 
+            <div class="row">   
+                <div class="col-md-12">     
+                    <div class="card card-statistics h-100"> 
+                        <div class="card-body">  
+                            <h5 class="card-title mb-4 mb-md-5">Account Preference</h5>
+                            <div class="px-md-5">
+                                <div class="row upload-file d-flex align-items-center justify-content-center">
+                                    <div class="col-md-6 pr-md-5 mb-4 mb-md-0">
+                                        <img src="../../../../../assets/images/acc-pref.png" class="img-fluid" alt="update Password">
+                                    </div>
+                                    <div class="col-md-6 py-md-5 mt-2">
+                                        <h5 class="card-title mb-0">Account Preference</h5>
+                                        <p class="mb-4">Control settings related to your account.</p>
+                                        <h6 class="sub-heading mb-3">Language & Region</h6>
+                                        <p class="mb-4">Change to your language and time zone will be reflected across Confluence, Jira and Directory. Update your language and time zone for other products from your <a href="javascript:void(0)">Product Settings</a></p>
+                                        <h6 class="sub-heading mb-3">Language</h6>
+                                        <p class="mb-4">English (US)</p>
+                                        <h6 class="sub-heading mb-3">Delete your account</h6>
+                                        <p class="mb-4">When you delete your account, you lose access to Atlassian account services, and we permanently delete your personal data. You can cancel the deletion for 14 days.</p>
+                                        <p class="mb-4">This page is protected by reCAPTCHA and the Google <a href="javascript:void(0)">Privacy Policy</a> and <a href="javascript:void(0)">Terms of Service</a> apply.</p>
+                                        <div class="mt-5">
+                                            <!-- <button type="button">Update</button> -->
+                                            <button (click)="openModal(deactivateUser)" class="button mr-3" type="button">
+                                                Delete Account
+                                                <!-- <span *ngIf="loader" class="spinner-border float-right" role="status" aria-hidden="true"></span> -->
+                                            </button>
+                                            <div [style.color]="error === true ? '#FF0000' : '#7bb31a'" style="font-size: 100%;" class="invalid-feedback" style="display: block;" >{{responseText}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>   
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+    
+
+<!-- modal start -->
+<ng-template #deactivateUser class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bb-none">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true"><i class="ti-close"></i></span>
+                </button>
+            </div>
+            <div class="modal-body p-4 text-center">
+                <div class="icon-box danger-bg rounded-circle mx-auto mb-4">
+                    <span class="text-white">
+                        <i class="fa fa-window-close-o highlight-icon" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <p class="mb-4">Are you sure you want to deactivate this account! </p>
+                <div class="center-text">
+                    <!-- <button type="button" (click)="deleteUser()" class="button">Delete</button> -->
+                    <button type="button" (click)="deactivateAccount()" class="button">
+                        Deactivate
+                        <span *ngIf="loader" class="spinner-border float-right" role="status" aria-hidden="true"></span>
+                    </button>
+                    
+                </div>
+                <!-- <div class="invalid-feedback" style="display: block;" >{{responseText}}</div> -->
+            </div>
+        </div>
+    </div>
+</ng-template>
+<!-- modal end -->

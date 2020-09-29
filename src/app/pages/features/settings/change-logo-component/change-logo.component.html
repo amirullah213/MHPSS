@@ -1,0 +1,46 @@
+<div class="container-fluid container-wrapper">
+    <div class="row">
+        <div class="content-wrapper">
+            <div class="page-title">
+                <div class="row px-3 px-md-0">
+                    <div class="col-sm-12 pl-0">
+                    <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)" class="gray-color">Home</a></li>
+                        <li class="breadcrumb-item active gray-04-color">Change Logo</li>
+                    </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- main body --> 
+            <form [formGroup]="uploadForm"> 
+            <div class="row">   
+                <div class="col-md-12">     
+                    <div class="card card-statistics h-100"> 
+                        <div class="card-body">  
+                            <h5 class="card-title mb-4 mb-md-5">Change Logo</h5>
+                            <div class="row mx-0">
+                                <div class="file-view text-center w-100 mb-4">
+                                    <!-- <img class="img-fluid" src="../../../../../assets/images/ncri-dashlogo.png" alt=""> -->
+                                    <img *ngIf="logo !== ''" class="img-fluid" [src]="logo" alt="Company Logo">
+                                    <span class="spinner-border" *ngIf="logo === ''" role="status" aria-hidden="true"></span>
+                                </div>
+                                
+                                 <div class="upload-wrapper">
+                                    
+                                    <div class="upload-file d-flex flex-column align-items-center justify-content-center">
+                                       <span class="upload-icon"><i class="ti-cloud-up"></i></span>
+                                       <span class="">Drop files here or <span class="theme-color font-bold">browse</span> here</span>
+                                       <input class="input-upload" title="Choose a file to upload logo" type="file" name="profile" (change)="onSelectFile($event)">
+                                    </div>
+                                    <span class="spinner-border mt-4" *ngIf="logoLoader" role="status" aria-hidden="true"></span>
+                                  </div>
+                               
+                            </div>
+                        </div>
+                    </div>   
+                </div> 
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

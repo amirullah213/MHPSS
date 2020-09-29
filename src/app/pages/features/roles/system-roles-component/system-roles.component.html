@@ -1,0 +1,114 @@
+<div class="container-fluid container-wrapper">
+    <div class="row">
+        <div class="content-wrapper">
+            <div class="page-title">
+                <div class="row px-3 px-md-0">
+                    <div class="col-sm-12 pl-0">
+                    <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)" class="gray-color">Home</a></li>
+                        <li class="breadcrumb-item active gray-04-color">Accounts</li>
+                    </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">   
+                <div class="col-md-12 mb-30">     
+                    <div class="card card-statistics h-100"> 
+                        <div class="card-body">  
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="card-title mb-0">System Roles</h5>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 p-0">
+                                    <div class="table-responsive">
+                                        <table class="table center-aligned-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Employee Type</th>
+                                                    <th>Department</th>
+                                                    <th>User Roles</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-group mb-0">
+                                                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Admin" >
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="input-group form-group d-flex align-items-center mb-0">
+                                                                <span class="wrapper-select w-75">
+                                                                    <select class="form-control" aria-label="Text input with segmented dropdown button" placeholder="Management">
+                                                                        <option>Management 1</option>
+                                                                        <option>Management 2</option>
+                                                                    </select>
+                                                                </span>
+                                                                <label class="gray-color ml-5 mt-2"><i class="ti-angle-double-right gray-04-color"></i></label>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="input-group form-group mb-0" >
+                                                                <ngx-bootstrap-multiselect [options]="myOptions" [texts]="myTexts" [settings]="mySettings" ></ngx-bootstrap-multiselect>
+                                                                <!-- <span class="wrapper-select">
+                                                                    <select type="text" class="form-control" aria-label="Text input with segmented dropdown button" placeholder="Auditor, Operations Director, Network Engineer">
+                                                                        <option>Auditor</option>
+                                                                        <option>Operations Director</option>
+                                                                        
+                                                                    </select>
+                                                                    
+                                                                </span> -->
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="form-group mb-0">
+                                                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Admin" >
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="input-group form-group d-flex align-items-center mb-0">
+                                                            <span class="wrapper-select w-75">
+                                                                <select class="form-control" aria-label="Text input with segmented dropdown button" placeholder="Management">
+                                                                    <option>Management 1</option>
+                                                                    <option>Management 2</option>
+                                                                </select>
+                                                            </span>
+                                                            <label class="gray-color ml-5 mt-2"><i class="ti-angle-double-right gray-04-color"></i></label>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="input-group form-group mb-0">
+                                                            <span class="wrapper-select">
+                                                                <select type="text" class="form-control" aria-label="Text input with segmented dropdown button" placeholder="Auditor, Operations Director, Network Engineer">
+                                                                    <option>Auditor</option>
+                                                                    <option>Operations Director</option>
+                                                                </select>
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <div class="pull-right">
+                                        <a href="javascript:void(0)" class="button w-130">Next</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>   
+                </div> 
+            </div>
+
+        </div>
+    </div>
+</div>
