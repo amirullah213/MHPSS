@@ -1,97 +1,76 @@
 // NOTE: This file contains all auth page scss.
-
-.page-body-wrapper{
-	min-height: 100vh;
-	display: -webkit-flex;
-	display: flex;
-	-webkit-flex-direction: row;
-	flex-direction: row;
-	padding: 0;
-	margin: 0;
-  
-	.login-half-bg {
-	  background: url(../assets/images/login-bg.png);
-	  background-size: cover;
-	}
-  
-	.auth-form{
-  
-	  .input-group{
-		  border: 1.5px solid #E2E2E2;
-			
-			.form-control{
-				border: none;
-				background: transparent;  
-				border-top-right-radius: 3px;
-				border-bottom-right-radius: 3px;
-				color: #464A53;
-				font-size: $font-base;
-		
-				&:focus{
-				box-shadow: unset;
-				border: none;
-				}
-			}
-  
-			.input-group-text{
-				border: none;
-				background: transparent;
-				border-top-left-radius: 3px;
-				border-bottom-left-radius: 3px;
-		
-				i{
-					color: $gray-color;
-					font-size: 18px;
-				}
-			}
-		}
-		
-		.input-group.is-valid{
-			border: 1.5px solid $theme-color;
-		}
-		.input-group.is-invalid{
-			border: 1.5px solid $danger;
-		}
-  
-	    .input-group:focus-within{
-			border: 1.5px solid $themeauth-color;
-			border-radius: 3px;
-	    }
-  
-		.auth-hdng{
-				font-size: 22px;
-		}
-		.auth-hdng-sm{
-			font-size: 18px;
-		}
-	   .auth-info{
-			color: #8A8A8A;
-			font-size: 14px;
-  
-		}
-		
-		// auth checkbox button style
-		.form-check.checkbox {
-
-			input[type="checkbox"]:checked + label{
-
-				&::after{
-					background: $themeauth-color;
-				}
-			}
-		}
-
-		.alert-danger{
-			border: 1px solid $danger;
-			background-color: #FFEEEE;
-			color: $danger;
-			border-radius: 3px;
-			padding: 0.5rem 0.75rem;
-		}
-
-  
-	}
-  
+.page-body-wrapper {
+    min-height: 100vh;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+    .login-half-bg {
+        background: url(../assets/images/login-bg.png);
+        background-size: cover;
+    }
+    .auth-form {
+        .input-group {
+            border: 1.5px solid #E2E2E2;
+            .form-control {
+                border: none;
+                background: transparent;
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
+                color: #464A53;
+                font-size: $font-base;
+                &:focus {
+                    box-shadow: unset;
+                    border: none;
+                }
+            }
+            .input-group-text {
+                border: none;
+                background: transparent;
+                border-top-left-radius: 3px;
+                border-bottom-left-radius: 3px;
+                i {
+                    color: $gray-color;
+                    font-size: 18px;
+                }
+            }
+        }
+        .input-group.is-valid {
+            border: 1.5px solid $theme-color;
+        }
+        .input-group.is-invalid {
+            border: 1.5px solid $danger;
+        }
+        .input-group:focus-within {
+            border: 1.5px solid $themeauth-color;
+            border-radius: 3px;
+        }
+        .auth-hdng {
+            font-size: 22px;
+        }
+        .auth-hdng-sm {
+            font-size: 18px;
+        }
+        .auth-info {
+            color: #8A8A8A;
+            font-size: 14px;
+        }
+        // auth checkbox button style
+        .form-check.checkbox {
+            input[type="checkbox"]:checked+label {
+                &::after {
+                    background: $themeauth-color;
+                }
+            }
+        }
+        .alert-danger {
+            border: 1px solid $danger;
+            background-color: #FFEEEE;
+            color: $danger;
+            border-radius: 3px;
+            padding: 0.5rem 0.75rem;
+        }
+    }
 }
-
-

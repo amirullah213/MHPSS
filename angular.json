@@ -94,9 +94,7 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-
-            ],
+            "styles": [],
             "scripts": []
           }
         },
@@ -126,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ncri-portal"
+    }
+  },
+  "defaultProject": "ncri-portal",
+  "cli": {
+    "analytics": "65c6cd82-6e12-4181-84ab-877f16d73787"
+  }
 }

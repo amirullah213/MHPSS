@@ -14,7 +14,6 @@ export class SigninComponent {
   @ViewChild('password') passField: ElementRef;
   changeIcon: boolean = false;
   loginLoading: boolean = false;
-
   showQRForm: boolean = false;
   showQRImage: boolean = false;
   QRCode: string = "";
@@ -63,18 +62,14 @@ export class SigninComponent {
         console.log('user resp==',this.ticket.userType);
         this.signInLoader=false;
         this.auth.setUser(this.ticket);
-        
       }
-      
     },(errorType)=>{
       console.log(errorType);
        this.showError = true;
       this.signInLoader=false;
       this.responseText = "Sorry something went wrong, Try again later";
     })
-  }
-
-  
+  }  
   changeType(){
     if(this.passField.nativeElement.type === "password"){
       this.passField.nativeElement.type = "text";
@@ -84,5 +79,4 @@ export class SigninComponent {
       this.changeIcon = false;
     }
   }
-
 }
