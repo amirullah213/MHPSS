@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { UserRoutingModule } from './user-routing.module';
 import { UsersComponent } from './users-component/users.component';
-import { PatDetailComponent } from './pat-detail-component/pat-detail.component';
+import { CreateUserComponent } from './create-user-component/create-user.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
@@ -15,7 +15,7 @@ import { ChangePasswordComponent } from './change-password-component/change-pass
 
 
 @NgModule({
-  declarations: [UsersComponent, PatDetailComponent, ChangePasswordComponent],
+  declarations: [UsersComponent, CreateUserComponent, ChangePasswordComponent],
   imports: [
     CommonModule,
     UserRoutingModule,

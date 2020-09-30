@@ -53,8 +53,8 @@
                                                                 <th>CRP NO#</th>
                                                                 <th>Name</th>
                                                                 <th>Date</th>
-                                                                <th>Details</th>
                                                                 
+                                                                <th class="text-center"></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody *ngIf="!userLoader">
@@ -69,7 +69,7 @@
                                                                 <td>{{user.token}}</td>
                                                                 <td>{{user.firstname}}</td>
                                                                 <td>{{user.enteringDate | date}}</td>
-                                                                <td><a (click)="gotoPatDetails(user)">Detail</a> </td>
+                                                               
                                                                
                                                             </tr>
                                                             <tr *ngIf="userList.length === 0" style="text-align: center;">
@@ -103,8 +103,8 @@
                                                                 <th>CRP NO#</th>
                                                                 <th>Name</th>
                                                                 <th>Date</th>
-                                                                <th>Details</th>
                                                                 
+                                                                <th class="text-center"></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody *ngIf="!userLoader">
@@ -119,7 +119,6 @@
                                                                 <td>{{user.token}}</td>
                                                                 <td>{{user.firstname}}</td>
                                                                 <td>{{user.enteringDate | date}}</td>
-                                                                <td><a (click)="gotoPatDetails(user)">Detail</a> </td>
                                                                
                                                                
                                                             </tr>
@@ -156,7 +155,7 @@
                                                                 <th>Date</th>
                                                                 <th>Details</th>
                                                                 
-                                                                
+                                                                <th class="text-center"></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody *ngIf="!userLoader">
@@ -171,7 +170,7 @@
                                                                 <td>{{user.token}}</td>
                                                                 <td>{{user.firstname}}</td>
                                                                 <td>{{user.enteringDate | date}}</td>
-                                                                <td><a (click)="gotoPatDetails(user)">Detail</a> </td>
+                                                                <td><a (click)="gotoPatDetails(user.ptID)"></a> </td>
                                                                
                                                                
                                                             </tr>
@@ -193,6 +192,11 @@
                                 </div>
                             </div>
                         
+
+                            
+
+                            
+
                         </div>
                     </div>
                 </div>
@@ -221,7 +225,9 @@
                                     </select>
                                 </span>
                             </div>
-                            
+                            <div class="pull-right">
+                                <button type="button" (click)="downloadFile()" class="button w-130">Download</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -252,7 +258,7 @@
                                     class="font-weight-bold d-block">{{userData.first_name}}
                                     {{userData.last_name}}</span></p>
                             <div class="center-text">
-                                <button type="button" *ngIf="!deactivateLoader" 
+                                <button type="button" *ngIf="!deactivateLoader" (click)="deactivateUser(userData.id)"
                                     class="button">Yes, I'm Sure</button>
                                 <button type="button" *ngIf="deactivateLoader" class="button">Deactivating
                                     <span class="spinner-border float-right" role="status" aria-hidden="true"></span>
@@ -285,7 +291,7 @@
                                     {{userData.last_name}}</span></p>
                             <div class="center-text">
                                 <!-- <button type="button" (click)="deleteUser()" class="button">Delete</button> -->
-                                <button type="button"  class="button">
+                                <button type="button" (click)="deleteUserMethod()" class="button">
                                     Delete
                                     <span *ngIf="loader" class="spinner-border float-right" role="status"
                                         aria-hidden="true"></span>

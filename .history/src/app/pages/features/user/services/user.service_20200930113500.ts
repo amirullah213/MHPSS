@@ -1,9 +1,14 @@
+// import { Injectable } from '@angular/core';
+// import { HttpClient, HttpHeaders } from '@angular/common/http';
+// import { Observable } from 'rxjs';
+// import { APP_CONFIG } from 'src/app/core';
+
+
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { APP_CONFIG } from 'src/app/core';
-
-
+import { APP_CONFIG } from '../../../../core/configs';
+import { Router } from '@angular/router';
 
 
 @Injectable({providedIn: 'root'})
@@ -69,7 +74,7 @@ export class UserService {
 
     // Get UsersList
     usersList(obj:any): Observable<any>{
-        let url = APP_CONFIG.apiBaseUrl + 'getpatients ';
+        let url = APP_CONFIG.apiBaseUrl + '/getpatients ';
         return this.httpClient.post(url,obj);
     }
     loginPms(obj: any) {
