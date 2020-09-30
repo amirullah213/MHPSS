@@ -1,0 +1,243 @@
+<div class="container-fluid container-wrapper">
+    <div class="row">
+        <div class="content-wrapper">
+            <div class="page-title">
+                <div class="row px-3 px-md-0">
+                    <div class="col-sm-12 pl-0">
+                        <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)" class="gray-color">User</a></li>
+                            <li class="breadcrumb-item active gray-04-color">Dashboard</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- main body -->
+            <div class="row">
+                <div class="col-md-12 mb-30">
+                    <div class="card card-statistics h-100">
+                        <div class="card-body">
+                           
+                            <div class="card-body">  
+                                <h5 class="card-title mb-0">Add User</h5>
+                                <ul class="nav nav-tabs" role="tablist">
+    
+                                   
+    
+                                    <li class="nav-item" (click)="setTab('employee')" >
+                                        <a class="nav-link" [ngClass]="{'active show': tab === 'employee'}" id="tab1" data-toggle="tab" href="javascript:void(0)"  role="tab" aria-controls="home" aria-selected="true">Employee Information</a>
+                                    </li>
+                                    <li class="nav-item" (click)="setTab('contact')" >
+                                        <a class="nav-link" [ngClass]="{'active show': tab === 'contact'}" id="tab2" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="profile" aria-selected="false">Contact Information</a>
+                                    </li>
+                                    <li class="nav-item" (click)="setTab('access')" >
+                                        <a class="nav-link" [ngClass]="{'active show': tab === 'access'}" id="portfolio-tab" href="javascript:void(0)" data-toggle="tab" role="tab" aria-controls="portfolio" aria-selected="false">Access Control</a>
+                                    </li>
+    
+                                    <!-- <li class="nav-item" (click)="setTab('commComp')">
+                                        <a class="nav-link" [ngClass]="{'active show': tab === 'commComp'}" id="contact-tab" href="javascript:void(0)" data-toggle="tab" role="tab" aria-controls="contact" aria-selected="false">Commission & Compensation</a>
+                                    </li> -->
+                                </ul>
+                                <div class="tab-content">
+                                    <div *ngIf="tab === 'employee'" class="tab-pane fade" [ngClass]="{'active show': tab === 'employee'}" id="tab1" role="tabpanel" aria-labelledby="tab1">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="table-responsive">
+                                                    <table class="table center-aligned-table">
+                                                        <thead>
+                                                            <tr class="text-dark">
+                                                                <th class=" d-flex align-items-center">
+                                                                    <!-- <div class="form-check checkbox justify-content-center">
+                                                                        <input type="checkbox" class="form-check-input"
+                                                                            id="exampleCheck1">
+                                                                        <label class="form-check-label" for="exampleCheck1"></label>
+                                                                    </div> -->
+                                                                </th>
+                                                                <th>CRP NO#</th>
+                                                                <th>Name</th>
+                                                                <th>Date</th>
+                                                                
+                                                                <th class="text-center"></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody *ngIf="!userLoader">
+                                                            <tr *ngFor="let user of userList">
+                                                                <!-- <td class="d-flex align-items-center">
+                                                                    <div class="form-check checkbox justify-content-center">
+                                                                        <input type="checkbox" class="form-check-input"
+                                                                            id="exampleCheck1">
+                                                                        <label class="form-check-label" for="exampleCheck1"></label>
+                                                                    </div>
+                                                                </td> -->
+                                                                <td>{{user.first_name + ' ' + user.last_name}}</td>
+                                                                <td>{{user.email}}</td>
+                                                                <td>{{user.user_role__name}}</td>
+                                                               
+                                                               
+                                                            </tr>
+                                                            <tr *ngIf="userList.length === 0" style="text-align: center;">
+                                                                <td colspan="6">No Record Found</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div *ngIf="userLoader" class="d-flex justify-content-center">
+                                                    <div class="spinner-border theme-color" role="status">
+                                                        <span class="sr-only"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                     </div>
+                                    <div *ngIf="tab === 'contact'" class="tab-pane fade" [ngClass]="{'active show': tab === 'contact'}" id="tab2" role="tabpanel" aria-labelledby="tab2">
+                                        <p> 2ndd  tab</p>
+                                    </div>
+                                    <div *ngIf="tab === 'access'" class="tab-pane fade" [ngClass]="{'active show': tab === 'access'}" id="tab3" role="tabpanel" aria-labelledby="tab3">
+                                        <p> 3rd  tab</p>
+                                    </div>
+                                  
+                                </div>
+                            </div>
+                        
+
+                            
+
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- model for users download start-->
+            <div bsModal #usersDownload="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+                aria-labelledby="dialog-sizes-name2">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header bb-none">
+                            <button type="button" class="close pull-right" aria-label="Close"
+                                (click)="usersDownload.hide()">
+                                <span aria-hidden="true"><i class="ti-close"></i></span>
+                            </button>
+                        </div>
+                        <div class="modal-body p-5">
+                            <div class="input-group form-group">
+                                <label for="inputState">File Format</label>
+                                <span class="wrapper-select">
+                                    <select [(ngModel)]="downloadType" class="form-control"
+                                        aria-label="Text input with segmented dropdown button"
+                                        placeholder="Select file format">
+                                        <option value="xlsx">.xls</option>
+                                        <option value="csv">.csv</option>
+                                    </select>
+                                </span>
+                            </div>
+                            <div class="pull-right">
+                                <button type="button" (click)="downloadFile()" class="button w-130">Download</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- model for users download end-->
+
+            <!-- model for user Activate start-->
+            <ng-template #userActivate class="modal fade" tabindex="-1" role="dialog"
+                aria-labelledby="dialog-sizes-name2">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header bb-none">
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                <span aria-hidden="true"><i class="ti-close"></i></span>
+                            </button>
+                        </div>
+                        <div class="modal-body p-4 text-center">
+                            <div class="icon-box theme-bg rounded-circle mx-auto mb-4">
+                                <span class="text-white">
+                                    <i class="ti-unlock highlight-icon" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <p class="mb-4">Are you sure you want to activate <span
+                                    class="font-weight-bold d-block">{{userData.first_name}}
+                                    {{userData.last_name}}</span></p>
+                            <div class="center-text">
+                                <button type="button" *ngIf="!activateLoader" (click)="activateUser(userData.id)"
+                                    class="button">Yes, I'm Sure</button>
+                                <button type="button" *ngIf="activateLoader" class="button">Activating
+                                    <span class="spinner-border float-right" role="status" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+            <!-- model for user Activate end-->
+
+            <!-- model for user Deactivate start-->
+            <ng-template #userDeactivate class="modal fade" tabindex="-1" role="dialog"
+                aria-labelledby="dialog-sizes-name2">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header bb-none">
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                <span aria-hidden="true"><i class="ti-close"></i></span>
+                            </button>
+                        </div>
+                        <div class="modal-body p-4 text-center">
+                            <div class="icon-box danger-bg rounded-circle mx-auto mb-4">
+                                <span class="text-white">
+                                    <i class="ti-lock highlight-icon" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <p class="mb-4">Are you sure you want to deactivate <span
+                                    class="font-weight-bold d-block">{{userData.first_name}}
+                                    {{userData.last_name}}</span></p>
+                            <div class="center-text">
+                                <button type="button" *ngIf="!deactivateLoader" (click)="deactivateUser(userData.id)"
+                                    class="button">Yes, I'm Sure</button>
+                                <button type="button" *ngIf="deactivateLoader" class="button">Deactivating
+                                    <span class="spinner-border float-right" role="status" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+            <!-- model for user Deactivate end-->
+
+            <!-- user delete confirmation -->
+            <ng-template #deleteUser class="modal fade" tabindex="-1" role="dialog"
+                aria-labelledby="dialog-sizes-name2">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header bb-none">
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                <span aria-hidden="true"><i class="ti-close"></i></span>
+                            </button>
+                        </div>
+                        <div class="modal-body p-4 text-center">
+                            <div class="icon-box danger-bg rounded-circle mx-auto mb-4">
+                                <span class="text-white">
+                                    <i class="fa fa-trash-o highlight-icon" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <p class="mb-4">Are you sure you want to delete <span
+                                    class="font-weight-bold d-block">{{userData.first_name}}
+                                    {{userData.last_name}}</span></p>
+                            <div class="center-text">
+                                <!-- <button type="button" (click)="deleteUser()" class="button">Delete</button> -->
+                                <button type="button" (click)="deleteUserMethod()" class="button">
+                                    Delete
+                                    <span *ngIf="loader" class="spinner-border float-right" role="status"
+                                        aria-hidden="true"></span>
+                                </button>
+
+                            </div>
+                            <div class="invalid-feedback" style="display: block;">{{responseText}}</div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+            <!-- end of user delete confirmation -->
+        </div>
+    </div>
+</div>

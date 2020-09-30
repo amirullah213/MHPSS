@@ -15,10 +15,6 @@ export class AuthService {
     let url = APP_CONFIG.apiBaseUrl + 'loginpms';
     return this.http.post(url, obj);
   }
-  userList(obj: any) {
-    let url = APP_CONFIG.apiBaseUrl + 'getpatients';
-    return this.http.post(url, obj);
-  }
 
   getJWTToken(obj: any) {
     let url = APP_CONFIG.apiBaseUrl + '/api/v1/sso/ObtainJWT/';
@@ -55,6 +51,7 @@ export class AuthService {
     localStorage.setItem('details', resp);
     localStorage.setItem('userType', resp.userType);
     localStorage.setItem('hospitalID', resp.hospitalID);
+    localStorage.setItem('docId', resp.id);
     localStorage.setItem('docId', resp.id);
     
     //-----------testing routs

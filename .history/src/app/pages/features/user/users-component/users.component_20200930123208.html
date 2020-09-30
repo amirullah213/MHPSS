@@ -43,18 +43,18 @@
                                                     <table class="table center-aligned-table">
                                                         <thead>
                                                             <tr class="text-dark">
-                                                                <!-- <th class=" d-flex align-items-center">
-                                                                    <div class="form-check checkbox justify-content-center">
+                                                                <th class=" d-flex align-items-center">
+                                                                    <!-- <div class="form-check checkbox justify-content-center">
                                                                         <input type="checkbox" class="form-check-input"
                                                                             id="exampleCheck1">
                                                                         <label class="form-check-label" for="exampleCheck1"></label>
-                                                                    </div>
-                                                                </th> -->
+                                                                    </div> -->
+                                                                </th>
                                                                 <th>CRP NO#</th>
                                                                 <th>Name</th>
                                                                 <th>Date</th>
-                                                                <th>Details</th>
                                                                 
+                                                                <th class="text-center"></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody *ngIf="!userLoader">
@@ -68,12 +68,12 @@
                                                                 </td> -->
                                                                 <td>{{user.token}}</td>
                                                                 <td>{{user.firstname}}</td>
-                                                                <td>{{user.enteringDate | date}}</td>
-                                                                <td><a (click)="gotoPatDetails(user)">Detail</a> </td>
+                                                                <td>{{user.enteringDate}}</td>
+                                                               
                                                                
                                                             </tr>
                                                             <tr *ngIf="userList.length === 0" style="text-align: center;">
-                                                                <td colspan="3">No Record Found</td>
+                                                                <td colspan="6">No Record Found</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -87,112 +87,20 @@
                                         </div>
                                      </div>
                                     <div *ngIf="tab === 'penPats'" class="tab-pane fade" [ngClass]="{'active show': tab === 'penPats'}" id="tab2" role="tabpanel" aria-labelledby="tab2">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="table-responsive">
-                                                    <table class="table center-aligned-table">
-                                                        <thead>
-                                                            <tr class="text-dark">
-                                                                <!-- <th class=" d-flex align-items-center">
-                                                                    <div class="form-check checkbox justify-content-center">
-                                                                        <input type="checkbox" class="form-check-input"
-                                                                            id="exampleCheck1">
-                                                                        <label class="form-check-label" for="exampleCheck1"></label>
-                                                                    </div>
-                                                                </th> -->
-                                                                <th>CRP NO#</th>
-                                                                <th>Name</th>
-                                                                <th>Date</th>
-                                                                <th>Details</th>
-                                                                
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody *ngIf="!userLoader">
-                                                            <tr *ngFor="let user of userList">
-                                                                <!-- <td class="d-flex align-items-center">
-                                                                    <div class="form-check checkbox justify-content-center">
-                                                                        <input type="checkbox" class="form-check-input"
-                                                                            id="exampleCheck1">
-                                                                        <label class="form-check-label" for="exampleCheck1"></label>
-                                                                    </div>
-                                                                </td> -->
-                                                                <td>{{user.token}}</td>
-                                                                <td>{{user.firstname}}</td>
-                                                                <td>{{user.enteringDate | date}}</td>
-                                                                <td><a (click)="gotoPatDetails(user)">Detail</a> </td>
-                                                               
-                                                               
-                                                            </tr>
-                                                            <tr *ngIf="userList.length === 0" style="text-align: center;">
-                                                                <td colspan="3">No Record Found</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <div *ngIf="userLoader" class="d-flex justify-content-center">
-                                                    <div class="spinner-border theme-color" role="status">
-                                                        <span class="sr-only"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <p> 2ndd  tab</p>
                                     </div>
                                     <div *ngIf="tab === 'seenPats'" class="tab-pane fade" [ngClass]="{'active show': tab === 'seenPats'}" id="tab3" role="tabpanel" aria-labelledby="tab3">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="table-responsive">
-                                                    <table class="table center-aligned-table">
-                                                        <thead>
-                                                            <tr class="text-dark">
-                                                                <!-- <th class=" d-flex align-items-center">
-                                                                    <div class="form-check checkbox justify-content-center">
-                                                                        <input type="checkbox" class="form-check-input"
-                                                                            id="exampleCheck1">
-                                                                        <label class="form-check-label" for="exampleCheck1"></label>
-                                                                    </div>
-                                                                </th> -->
-                                                                <th>CRP NO#</th>
-                                                                <th>Name</th>
-                                                                <th>Date</th>
-                                                                <th>Details</th>
-                                                                
-                                                                
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody *ngIf="!userLoader">
-                                                            <tr *ngFor="let user of userList">
-                                                                <!-- <td class="d-flex align-items-center">
-                                                                    <div class="form-check checkbox justify-content-center">
-                                                                        <input type="checkbox" class="form-check-input"
-                                                                            id="exampleCheck1">
-                                                                        <label class="form-check-label" for="exampleCheck1"></label>
-                                                                    </div>
-                                                                </td> -->
-                                                                <td>{{user.token}}</td>
-                                                                <td>{{user.firstname}}</td>
-                                                                <td>{{user.enteringDate | date}}</td>
-                                                                <td><a (click)="gotoPatDetails(user)">Detail</a> </td>
-                                                               
-                                                               
-                                                            </tr>
-                                                            <tr *ngIf="userList.length === 0" style="text-align: center;">
-                                                                <td colspan="3">No Record Found</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <div *ngIf="userLoader" class="d-flex justify-content-center">
-                                                    <div class="spinner-border theme-color" role="status">
-                                                        <span class="sr-only"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <p> 3rd  tab</p>
                                     </div>
                                   
                                 </div>
                             </div>
                         
+
+                            
+
+                            
+
                         </div>
                     </div>
                 </div>
@@ -221,7 +129,9 @@
                                     </select>
                                 </span>
                             </div>
-                            
+                            <div class="pull-right">
+                                <button type="button" (click)="downloadFile()" class="button w-130">Download</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -252,7 +162,7 @@
                                     class="font-weight-bold d-block">{{userData.first_name}}
                                     {{userData.last_name}}</span></p>
                             <div class="center-text">
-                                <button type="button" *ngIf="!deactivateLoader" 
+                                <button type="button" *ngIf="!deactivateLoader" (click)="deactivateUser(userData.id)"
                                     class="button">Yes, I'm Sure</button>
                                 <button type="button" *ngIf="deactivateLoader" class="button">Deactivating
                                     <span class="spinner-border float-right" role="status" aria-hidden="true"></span>
@@ -285,7 +195,7 @@
                                     {{userData.last_name}}</span></p>
                             <div class="center-text">
                                 <!-- <button type="button" (click)="deleteUser()" class="button">Delete</button> -->
-                                <button type="button"  class="button">
+                                <button type="button" (click)="deleteUserMethod()" class="button">
                                     Delete
                                     <span *ngIf="loader" class="spinner-border float-right" role="status"
                                         aria-hidden="true"></span>

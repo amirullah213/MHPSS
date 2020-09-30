@@ -106,7 +106,7 @@ export class UsersComponent implements OnInit {
 
   gotoPatDetails(paObj) {
     localStorage.setItem('patid',paObj);
-    this.router.navigate(['add'])
+    this.router.navigate(['patDetails'])
   }
 
  

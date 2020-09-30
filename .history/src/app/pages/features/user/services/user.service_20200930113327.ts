@@ -1,9 +1,14 @@
+// import { Injectable } from '@angular/core';
+// import { HttpClient, HttpHeaders } from '@angular/common/http';
+// import { Observable } from 'rxjs';
+// import { APP_CONFIG } from 'src/app/core';
+
+
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { APP_CONFIG } from 'src/app/core';
-
-
+import { APP_CONFIG } from '../../../../core/configs';
+import { Router } from '@angular/router';
 
 
 @Injectable({providedIn: 'root'})
@@ -69,7 +74,7 @@ export class UserService {
 
     // Get UsersList
     usersList(obj:any): Observable<any>{
-        let url = APP_CONFIG.apiBaseUrl + 'getpatients ';
+        let url = APP_CONFIG.apiBaseUrl + '/getpatients ';
         return this.httpClient.post(url,obj);
     }
     loginPms(obj: any) {
@@ -84,8 +89,10 @@ export class UserService {
 
     downloadList(obj:any){
         let url = APP_CONFIG.apiBaseUrl + '/api/v1/uam/DownloadUsersList/';
-      
-        return this.httpClient.post(url,obj,{});
+        const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'text');
+        return this.httpClient.post(url,obj,{headers: headers});
     }
 
     validateEmail(obj:any){
@@ -96,12 +103,12 @@ export class UserService {
     // update password
     updatePassword(obj:any): Observable<any>{
         let url = APP_CONFIG.apiBaseUrl + '/api/v1/uam/ChangeDefaultPassword/';
-       
+        const headers = new HttpHeaders();
         const details = JSON.parse(localStorage.getItem('details'));
         console.log(details)
         console.log(details.token)
-       
-        return this.httpClient.post(url,obj,{});
+        headers.append('Authorization', `JWT ${details.token}`);
+        return this.httpClient.post(url,obj,{headers: headers});
     }
 
      // activate User

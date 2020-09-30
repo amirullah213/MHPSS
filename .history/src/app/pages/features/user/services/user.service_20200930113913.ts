@@ -69,7 +69,7 @@ export class UserService {
 
     // Get UsersList
     usersList(obj:any): Observable<any>{
-        let url = APP_CONFIG.apiBaseUrl + 'getpatients ';
+        let url = APP_CONFIG.apiBaseUrl + '/getpatients ';
         return this.httpClient.post(url,obj);
     }
     loginPms(obj: any) {
