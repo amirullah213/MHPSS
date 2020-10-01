@@ -21,7 +21,7 @@ const routes: Routes = [
         { path: 'pathology-list', component: PathologyListComponent },
         { path: 'radiology-list', component: RadiologyListComponent },
         { path: 'pharmacy', component: PharmcyComponent },
-        { path: 'ambulace', component: AmbulanceComponent },
+        { path: 'ambulance', component: AmbulanceComponent },
 
         { path : '', redirectTo : 'home', pathMatch : 'full' }
         
