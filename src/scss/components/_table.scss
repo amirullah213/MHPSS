@@ -1,31 +1,27 @@
 // NOTE: This file contains table SCSS.
-.content-wrapper{
-
-	table{
-		border-collapse: separate;  
-
-		thead{
-
-			th{
-				border-bottom: none;
-				border-top: none;
-				color: $gray-04-color;
-				font-size: 18px;
-				font-weight: 500;
-			}
-		}
-		tbody{
-			
-			tr{
-
-				box-shadow: 0px 0px 6px #f5f5f5;
-
-				td{
-					color: #6A707E;
-					border-top: none;
-				}
-			}
-		}
-	}
-
+.content-wrapper {
+    table {
+        border-collapse: separate;
+        thead {
+            th {
+                border-bottom: none !important;
+                border-top: none;
+                color: $gray-04-color;
+                font-size: 18px;
+                font-weight: 500;
+            }
+        }
+        tbody {
+            tr {
+                box-shadow: 0px 0px 6px #f5f5f5;
+                td {
+                    color: #6A707E;
+                    border-top: none;
+                }
+            }
+        }
+    }
+    table.dataTable.no-footer {
+        border-bottom: none;
+    }
 }
