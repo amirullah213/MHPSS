@@ -105,9 +105,8 @@ export class UsersComponent implements OnInit {
   }
 
   gotoPatDetails(paObj) {
-    
-    console.log("patData===",paObj)
-    localStorage.setItem('patData',JSON.stringify(paObj));
+    let patArr=JSON.parse(paObj)
+    localStorage.setItem('patData',patArr);
     this.router.navigate(['doctor/user/details'])
   }
 

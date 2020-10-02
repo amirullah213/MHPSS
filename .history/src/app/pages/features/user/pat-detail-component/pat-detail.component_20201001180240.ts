@@ -25,7 +25,6 @@ export class PatDetailComponent implements OnInit {
   createUserLoader:boolean=false;
   error: boolean = false;
   errorMessage: any = '';
-  patInfo:any ={};
 
   param: any = {
     id:"",
@@ -95,8 +94,8 @@ export class PatDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.patInfo= JSON.parse(localStorage.getItem("patData"));
-    console.log('patInfo====',this.patInfo)
+    let patInfo= JSON.parse(localStorage.getItem("patData"));
+    console.log('patInfo====',patInfo)
     this.userGroupDropdownList();
     this.employeeTypeDropdownList();
     this.branchLocationDropdownList();
