@@ -11,24 +11,24 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-md-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h5 class="card-title mb-0">Home</h5>
+                                    <h5 class="card-title mb-0">User Management</h5>
                                 </div>
                                 <div class="col-md-6">
                                     <span class="pull-right btn btn-sm">
-                                        <button type="button" class="button" (click)="usersDownload.show()">New
-                                            User</button>
+                                        <button type="button" class="button" (click)="usersDownload.show()">
+                                            <i class="fa fa-plus"></i> 
+                                            New User
+                                        </button>
                                     </span>
                                 </div>
                                 <div class="table-responsive">
-
-                                    <table datatable class="row-border hover">
+                                    <table datatable class="table center-aligned-table">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -39,6 +39,7 @@
                                                 <th>User name</th>
                                                 <th>Password</th>
                                                 <th>Status</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -51,6 +52,78 @@
                                                 <td>khnn_23</td>
                                                 <td>khnn_23</td>
                                                 <td>pending</td>
+                                                <td>
+                                                    <a href="" class="mr-3 text-info" (click)="usersEdit.show()"><i class="fa fa-edit"></i></a>
+                                                    <!-- model for users download start-->
+                                                    <div bsModal #usersEdit="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
+                                                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header bb-none">
+                                                                    <h2>Udate User</h2>
+                                                                    <button type="button" class="close pull-right" aria-label="Close" (click)="usersEdit.hide()">
+                                                                        <span aria-hidden="true"><i class="ti-close"></i></span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body p-5">
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-2 mt-3"><label for="inputState">Name</label></div>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control input-sm" id="name" value="name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-2 mt-3"><label for="inputState">Designation</label></div>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" id="des" value="Designation">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-2 mt-3"><label for="inputState">Joining</label></div>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" id="joining" value="joining">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-2 mt-3"><label for="inputState">Contact</label></div>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" id="contact" value="contact">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-2 mt-3"><label for="inputState">User Name</label></div>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" id="uname" value="uname">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-2 mt-3"><label for="inputState">Password</label></div>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" id="password" value="password">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-2 mt-3"><label for="inputState">Status</label></div>
+                                                                        <div class="col-sm-10">
+                                                                            <select class="form-control" aria-label="Text input with segmented dropdown button" placeholder="Select file format">
+                                                                                <option value="working">Working</option>
+                                                                                <option value="resigned">Resigned</option>
+                                                                                <option value="terminated">Terminated</option>
+                                                                                <option value="onleave">Onleave</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="button-danger" (click)="usersEdit.hide()"><i class="fa fa-remove"></i> Close</button>
+                                                                        <button type="button" class="button"><i class="fa fa-check-square"></i> Update User</button>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- model for users download end-->
+                                                    <a href="" class="mr-2 text-danger"><i class="fa fa-trash"></i></a>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>1</td>
@@ -61,6 +134,10 @@
                                                 <td>khnn_23</td>
                                                 <td>khnn_23</td>
                                                 <td>pending</td>
+                                                <td>
+                                                    <a href="" class="mr-3 text-info"><i class="fa fa-edit"></i></a>
+                                                    <a href="" class="mr-3 text-danger"><i class="fa fa-trash"></i></a>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>1</td>
@@ -71,6 +148,10 @@
                                                 <td>khnn_23</td>
                                                 <td>khnn_23</td>
                                                 <td>pending</td>
+                                                <td>
+                                                    <a href="" class="mr-3 text-info"><i class="fa fa-edit"></i></a>
+                                                    <a href="" class="mr-3 text-danger"><i class="fa fa-trash"></i></a>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>1</td>
@@ -81,6 +162,10 @@
                                                 <td>khnn_23</td>
                                                 <td>khnn_23</td>
                                                 <td>pending</td>
+                                                <td>
+                                                    <a href="" class="mr-3 text-info"><i class="fa fa-edit"></i></a>
+                                                    <a href="" class="mr-3 text-danger"><i class="fa fa-trash"></i></a>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>1</td>
@@ -91,31 +176,28 @@
                                                 <td>khnn_23</td>
                                                 <td>khnn_23</td>
                                                 <td>pending</td>
+                                                <td>
+                                                    <a href="" class="mr-3 text-info"><i class="fa fa-edit"></i></a>
+                                                    <a href="" class="mr-3 text-danger"><i class="fa fa-trash"></i></a>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
-
                                     <hr class="hr-gray mx-3 my-3">
-
                                 </div>
                             </div>
-
-
-
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- model for users download start-->
-            <div bsModal #usersDownload="bs-modal" class="modal fade" tabindex="-1" role="dialog"
-                aria-labelledby="dialog-sizes-name2">
-
+            <!-- model for Add users download start-->
+            <div bsModal #usersDownload="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
                 <div class="modal-dialog modal-lg modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header bb-none">
-                            <button type="button" class="close pull-right" aria-label="Close"
-                                (click)="usersDownload.hide()">
+                            <h2>Add User</h2>
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="usersDownload.hide()">
                                 <span aria-hidden="true"><i class="ti-close"></i></span>
                             </button>
                         </div>
@@ -159,8 +241,7 @@
                             <div class="form-group row">
                                 <div class="col-sm-2 mt-3"><label for="inputState">Status</label></div>
                                 <div class="col-sm-10">
-                                    <select class="form-control" aria-label="Text input with segmented dropdown button"
-                                        placeholder="Select file format">
+                                    <select class="form-control" aria-label="Text input with segmented dropdown button" placeholder="Select file format">
                                         <option value="working">Working</option>
                                         <option value="resigned">Resigned</option>
                                         <option value="terminated">Terminated</option>
@@ -169,15 +250,15 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="button btn btn-secondary" (click)="usersDownload.hide()">Close</button>
-                                <button type="button" class="button  btn btn-primary">Add User</button>
+                                <button type="button" class="button-danger" (click)="usersDownload.hide()"><i class="fa fa-remove"></i> Close</button>
+                                <button type="button" class="button"><i class="fa fa-check-square"></i> Add User</button>
                             </div>
                         </div>
 
                     </div>
                 </div>
             </div>
-            <!-- model for users download end-->
+            <!-- model for Add users download end-->
 
         </div>
     </div>
