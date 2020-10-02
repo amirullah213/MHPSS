@@ -59,6 +59,13 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Father Name</label>
+                                                    <!-- <input type="text" class="form-control" formControlName="last_name" id="formGroupExampleInput" placeholder="Last name of Employee" required>
+                                                    <div class="w-100" *ngIf="f.controls.last_name.status=='INVALID'">
+                                                        <div *ngIf="f.controls.last_name.errors.required && f.controls.last_name.touched" class="invalid-feedback" [style.display]="f.controls.last_name.status=='INVALID' ? 'block' : 'none'">Please provide last name.</div>
+                                                        <div *ngIf="f.controls.last_name.errors.minlength && f.controls.last_name.touched" class="invalid-feedback" [style.display]="f.controls.last_name.status=='INVALID' ? 'block' : 'none'">Last name must be at least 1 character.</div>
+                                                        <div *ngIf="f.controls.last_name.errors.maxlength && f.controls.last_name.touched" class="invalid-feedback" [style.display]="f.controls.last_name.status=='INVALID' ? 'block' : 'none'">Last name must be less than 27 characters.</div>
+                                                        <div *ngIf="f.controls.last_name.errors.pattern && f.controls.last_name.touched" class="invalid-feedback" [style.display]="f.controls.last_name.status=='INVALID' ? 'block' : 'none'">Last name must have a-z & A-Z characters.</div>
+                                                    </div> -->
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
@@ -69,6 +76,12 @@
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Date Of Birth</label>
+                                                    <!-- <input type="password" class="form-control" formControlName="password" id="formGroupExampleInput" placeholder="Enter Password">
+                                                    <div class="w-100" *ngIf="f.controls.password.status=='INVALID'">
+                                                        <div *ngIf="f.controls.password.errors.required && f.controls.password.touched" class="invalid-feedback" [style.display]="f.controls.password.status=='INVALID' ? 'block' : 'none'">Please provide password.</div>
+                                                        <div *ngIf="f.controls.password.errors.minlength && f.controls.password.touched" class="invalid-feedback" [style.display]="f.controls.password.status=='INVALID' ? 'block' : 'none'">Password must be at least 1 character.</div>
+                                                        <div *ngIf="!f.controls.password.errors.minlength && f.controls.password.errors.pattern && f.controls.password.touched" class="invalid-feedback" [style.display]="f.controls.password.status=='INVALID' ? 'block' : 'none'">Invalid password must contain one capital, one small letter, one digit, one special character.</div>
+                                                    </div> -->
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
@@ -83,7 +96,7 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label for="formGroupExampleInput">{{patInfo.cellNo}}</label>
+                                                    <label for="formGroupExampleInput">0231548</label>
                                                 </div>
                                             </div>
                                             <hr class="hr-gray">
@@ -100,22 +113,16 @@
                                                                 <th class="float-right">View Prescription Slip</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody *ngIf="!userLoader">
-                                                            <tr *ngFor="let user of userList">
-                                                                <td>{{user.DateCreated | date:"y/dd/MM"}}</td>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>2020-09-30</td>
                                                                 <td>
                                                                     <div class="form-group">
                                                                         <button type="button" class="button float-right">View Prescription Slip</button>
                                                                     </div>
                                                                 </td>
                                                             </tr>
-                                                            
                                                         </tbody>
-                                                        <div *ngIf="userLoader" class="d-flex justify-content-center">
-                                                            <div class="spinner-border theme-color" role="status">
-                                                                <span class="sr-only"></span>
-                                                            </div>
-                                                        </div>
                                                     </table>
                                                 </div>
                                             </div>
@@ -224,7 +231,7 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group text-center">
-                                                    <button type="button" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"> Add More </button>
+                                                    <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"> Add More </button>
                                                 </div>
                                             </div>
                                             <hr class="hr-gray mx-3 my-4">
@@ -343,7 +350,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <button type="button" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus"></i> Add More </button>
+                                                <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus"></i> Add More </button>
                                                 <!-- <button type="button" class="button">Add More</button> -->
                                             </div>
                                         </div>
@@ -419,7 +426,7 @@
                                                     </table>
                                                 </div>
                                                 <div class="form-group text-center">
-                                                    <button type="button" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-send-o"></i> Send To Lab / Radiology </button>
+                                                    <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-send-o"></i> Send To Lab / Radiology </button>
                                                 </div>
                                             </div>
                                             <hr class="hr-gray">
@@ -445,7 +452,7 @@
                                             <hr class="hr-gray">
                                             <div class="col-md-12">
                                                 <div class="form-group text-center">
-                                                    <button type="button" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus"></i> Add More </button>
+                                                    <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus"></i> Add More </button>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
@@ -584,7 +591,7 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group text-center">
-                                                    <button type="button" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus"></i> Add More </button>
+                                                    <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus"></i> Add More </button>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">

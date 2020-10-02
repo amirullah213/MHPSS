@@ -105,10 +105,8 @@ export class UsersComponent implements OnInit {
   }
 
   gotoPatDetails(paObj) {
-    
-    console.log("patData===",paObj)
-    localStorage.setItem('patData',JSON.stringify(paObj));
-    this.router.navigate(['doctor/user/details'])
+    localStorage.setItem('patid',paObj);
+    this.router.navigate(['user/details'])
   }
 
  

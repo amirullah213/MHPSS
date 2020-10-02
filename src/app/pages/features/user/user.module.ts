@@ -12,10 +12,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { ChangePasswordComponent } from './change-password-component/change-password.component';
+import { PrintPrescComponent } from './print-presc/print-presc.component';
 
 
 @NgModule({
-  declarations: [UsersComponent, PatDetailComponent, ChangePasswordComponent],
+  declarations: [UsersComponent, PatDetailComponent, ChangePasswordComponent, PrintPrescComponent],
   imports: [
     CommonModule,
     UserRoutingModule,

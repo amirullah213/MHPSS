@@ -55,7 +55,7 @@ export class PatDetailComponent implements OnInit {
       if(response.status === 0 ){
           console.log(response );
           this.userList = response.data;
-          console.log('userPresc list===',this.userList)
+          console.log('userList',this.userList)
          this.userLoader = false;
         } else {
           this.userLoader = false;
