@@ -48,10 +48,9 @@ export class PatDetailComponent implements OnInit {
         isMalnutration : [false, Validators.requiredTrue],
   
         complaints : this.fb.group({
-          
+          name : ['', Validators.required],
           durationType : ['', Validators.required],
           duration : ['', Validators.required],
-          name : ['', Validators.required],
           
          }),
         pastHistory : this.fb.group({
@@ -85,7 +84,7 @@ export class PatDetailComponent implements OnInit {
         diagnosis  : ['', Validators.requiredTrue],
         
           
-    //}, {
+    }, {
         // validator: MustMatch('password', 'confirmPassword')
     });
 
@@ -98,9 +97,9 @@ export class PatDetailComponent implements OnInit {
     this.getPatPrescrib(this.patInfo);
      
   }
-  get f() { 
-    console.log('this.clicnicalInformation.controls===',this.clicnicalInformation.controls)
-    return this.clicnicalInformation.controls; }
+  // get f() { 
+  //   console.log('this.clicnicalInformation.controls===',this.clicnicalInformation.controls)
+  //   return this.clicnicalInformation.controls; }
   //set tab
   setTab(tab: string) {
     this.tab = tab;

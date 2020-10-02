@@ -48,10 +48,9 @@ export class PatDetailComponent implements OnInit {
         isMalnutration : [false, Validators.requiredTrue],
   
         complaints : this.fb.group({
-          
+          name : ['', Validators.required],
           durationType : ['', Validators.required],
           duration : ['', Validators.required],
-          name : ['', Validators.required],
           
          }),
         pastHistory : this.fb.group({

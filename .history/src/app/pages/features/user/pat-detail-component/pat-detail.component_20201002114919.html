@@ -33,7 +33,7 @@
                             </ul>
                             <div class="tab-content">
                                 <div *ngIf="tab === 'employee'" class="tab-pane fade" [ngClass]="{'active show': tab === 'employee'}" id="tab1" role="tabpanel" aria-labelledby="tab1">
-                                    <!-- <form [formGroup]="employeeInformation" novalidate> -->
+                                    <form [formGroup]="employeeInformation" novalidate>
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <div class="form-group">
@@ -122,7 +122,7 @@
                                                                     </div>
                                                                 </td>
                                                             </tr>
-
+                                                            
                                                         </tbody>
                                                         <div *ngIf="userLoader" class="d-flex justify-content-center">
                                                             <div class="spinner-border theme-color" role="status">
@@ -133,7 +133,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    <!-- </form> -->
+                                    </form>
                                 </div>
                                 <div *ngIf="tab === 'contact'" class="tab-pane fade" [ngClass]="{'active show': tab === 'contact'}" id="tab2" role="tabpanel" aria-labelledby="tab2">
                                     <form [formGroup]="clicnicalInformation" novalidate>
@@ -145,37 +145,37 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Blood Presure</label>
-                                                    <input type="text" formControlName="bps" class="form-control"  placeholder="Blood Pressure">
+                                                    <input type="text" formControlName="email" class="form-control" id="formGroupExampleInput" placeholder="Blood Pressure">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Pulse (Rate Per Minute)</label>
-                                                    <input type="text" formControlName="pulse" class="form-control"  placeholder="Pulse">
+                                                    <input type="text" formControlName="email" class="form-control" id="formGroupExampleInput" placeholder="Pulse">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Wight (Kg)</label>
-                                                    <input type="text" formControlName="weight" class="form-control"  placeholder="Wight">
+                                                    <input type="text" formControlName="email" class="form-control" id="formGroupExampleInput" placeholder="Wight">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Height (cm)</label>
-                                                    <input type="text" formControlName="height" class="form-control"  placeholder="Height">
+                                                    <input type="text" formControlName="email" class="form-control" id="formGroupExampleInput" placeholder="Height">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Temprature (F)</label>
-                                                    <input type="text" formControlName="temperature" class="form-control"  placeholder="Temprature">
+                                                    <input type="text" formControlName="email" class="form-control" id="formGroupExampleInput" placeholder="Temprature">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Oxygen Saturation</label>
-                                                    <input type="text" formControlName="oxygen_saturation" class="form-control"  placeholder="Oxygen Saturation">
+                                                    <input type="text" formControlName="email" class="form-control" id="formGroupExampleInput" placeholder="Oxygen Saturation">
                                                 </div>
                                             </div>
                                             <hr class="hr-gray mx-3 my-4">
@@ -183,7 +183,7 @@
                                                 <div class="form-group input-group">
                                                     <label for="formGroupExampleInput">Is Follow Up</label>
                                                     <span class="wrapper-select">
-                                                        <select class="form-control" formControlName="isFollowUp" aria-label="Text input with segmented dropdown button" placeholder="Is Follow Up">
+                                                        <select class="form-control" formControlName="FollowUp" aria-label="Text input with segmented dropdown button" placeholder="Is Follow Up">
                                                             <option>No</option>
                                                             <option>Yes</option>
                                                         </select>
@@ -194,7 +194,7 @@
                                                 <div class="form-group input-group">
                                                     <label for="formGroupExampleInput">Malnutrition</label>
                                                     <span class="wrapper-select">
-                                                        <select class="form-control" formControlName="isMalnutration" aria-label="Text input with segmented dropdown button" placeholder="Is Follow Up">
+                                                        <select class="form-control" formControlName="Malnutrition" aria-label="Text input with segmented dropdown button" placeholder="Is Follow Up">
                                                             <option>No</option>
                                                             <option>Yes</option>
                                                         </select>
@@ -202,126 +202,120 @@
                                                 </div>
                                             </div>
                                             <hr class="hr-gray mx-3 my-4">
-
-                                            <div [formGroupName]="complaints" class="row mx-0">
-
-                                                <div class="col-md-12">
-                                                    <h5 class="card-title mb-0 text-center">Presenting Complaints</h5>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label for="formGroupExampleInput">Name</label>
-                                                        <input type="text" formControlName="name" class="form-control" id="name" placeholder="Name">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label for="formGroupExampleInput">Duration</label>
-                                                        <input type="text" formControlName="duration" class="form-control" id="duration" placeholder="Duration">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label for="formGroupExampleInput">Duration Type</label>
-                                                        <select class="form-control" formControlName="durationType" aria-label="Text input with segmented dropdown button" placeholder="Complaint Duration">
-                                                            <option>Hour(s)</option>
-                                                            <option>Day(s)</option>
-                                                            <option>Week(s)</option>
-                                                            <option>Month(s)</option>
-                                                            <option>Year(s)</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label class="" for="formGroupExampleInput">Remove</label>
-                                                        <button type="button" class="button">Remove</button>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="form-group text-center">
-                                                        <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"> Add More </button>
-                                                    </div>
-                                                </div>
-
+                                            <div class="col-md-12">
+                                                <h5 class="card-title mb-0 text-center">Presenting Complaints</h5>
                                             </div>
-
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="formGroupExampleInput">Name</label>
+                                                    <input type="text" formControlName="Name" class="form-control" id="formGroupExampleInput" placeholder="Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="formGroupExampleInput">Duration</label>
+                                                    <input type="text" formControlName="Duration" class="form-control" id="formGroupExampleInput" placeholder="Duration">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="formGroupExampleInput">Duration</label>
+                                                    <select class="form-control" formControlName="Duration" aria-label="Text input with segmented dropdown button" placeholder="Complaint Duration">
+                                                        <option>Hour(s)</option>
+                                                        <option>Day(s)</option>
+                                                        <option>Week(s)</option>
+                                                        <option>Month(s)</option>
+                                                        <option>Year(s)</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="" for="formGroupExampleInput">Reomve</label>
+                                                    <button type="button" class="button">Remove</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group text-center">
+                                                    <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"> Add More </button>
+                                                </div>
+                                            </div>
                                             <hr class="hr-gray mx-3 my-4">
-                                            <div [formGroupName]="pastHistory" class="col-md-6">
+                                            <div class="col-md-6">
                                                 <h5>Past History</h5>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="Abortion" name="Abortion" class="form-check-input" id="Abortion">
+                                                    <input type="checkbox" formControlName="weekends_access_blocked" class="form-check-input" id="Abortion">
                                                     <label class="form-check-label" for="Abortion">Abortion</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="Allegory" class="form-check-input" name="Allegory" id="Allegory">
+                                                    <input type="checkbox" formControlName="weekends_access_blocked" class="form-check-input" id="Allegory">
                                                     <label class="form-check-label" for="Allegory">Allegory</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="Astama" class="form-check-input" id="Astama">
+                                                    <input type="checkbox" formControlName="weekends_access_blocked" class="form-check-input" id="Astama">
                                                     <label class="form-check-label" for="Astama">Astama</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="Cancer" class="form-check-input" id="Cancer">
+                                                    <input type="checkbox" formControlName="weekends_access_blocked" class="form-check-input" id="Cancer">
                                                     <label class="form-check-label" for="Cancer">Cancer</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="Diabetes" class="form-check-input" id="Diabetes">
+                                                    <input type="checkbox" formControlName="weekends_access_blocked" class="form-check-input" id="Diabetes">
                                                     <label class="form-check-label" for="Diabetes">Diabetes Mellitus</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="DrugAllergy" class="form-check-input" id="DrugAllergy">
+                                                    <input type="checkbox" formControlName="weekends_access_blocked" class="form-check-input" id="DrugAllergy">
                                                     <label class="form-check-label" for="DrugAllergy">Drug Allergy</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="HyperTension" class="form-check-input" id="HyperTension">
+                                                    <input type="checkbox" formControlName="weekends_access_blocked" class="form-check-input" id="HyperTension">
                                                     <label class="form-check-label" for="HyperTension">Hypertension</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="IschemicHeartDiseases" class="form-check-input" id="IschemicHeartDiseases">
+                                                    <input type="checkbox" formControlName="weekends_access_blocked" class="form-check-input" id="IschemicHeartDiseases">
                                                     <label class="form-check-label" for="IschemicHeartDiseases">Ischemic Heart Diseases</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="IUD" class="form-check-input" id="IUD">
+                                                    <input type="checkbox" formControlName="weekends_access_blocked" class="form-check-input" id="IUD">
                                                     <label class="form-check-label" for="IUD">IUD</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="misCarriage" class="form-check-input" id="misCarriage">
+                                                    <input type="checkbox" formControlName="weekends_access_blocked" class="form-check-input" id="misCarriage">
                                                     <label class="form-check-label" for="misCarriage">Mis Carriage</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="stillBirth" class="form-check-input" id="stillBirth">
+                                                    <input type="checkbox" formControlName="weekends_access_blocked" class="form-check-input" id="stillBirth">
                                                     <label class="form-check-label" for="stillBirth">Still Birth</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="twins" class="form-check-input" id="twins">
+                                                    <input type="checkbox" formControlName="weekends_access_blocked" class="form-check-input" id="twins">
                                                     <label class="form-check-label" for="twins">Twins</label>
                                                 </div>
                                             </div>
-                                            <div  [formGroupName]="familyHistory" class="col-md-6">
+                                            <div class="col-md-6">
                                                 <h5>Family History</h5>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="Astama1" class="form-check-input" name="Astama1" id="Astama1">
+                                                    <input type="checkbox" formControlName="weekends_access_blocked" class="form-check-input" id="Astama1">
                                                     <label class="form-check-label" for="Astama1">Astama</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="Cancer1" class="form-check-input" id="Cancer1">
+                                                    <input type="checkbox" formControlName="weekends_access_blocked" class="form-check-input" id="Cancer1">
                                                     <label class="form-check-label" for="Cancer1">Cancer</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="Diabetes1" class="form-check-input" id="Diabetes1">
+                                                    <input type="checkbox" formControlName="weekends_access_blocked" class="form-check-input" id="Diabetes1">
                                                     <label class="form-check-label" for="Diabetes1">Diabetes Mellitus</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="DrugAllergy1" class="form-check-input" id="DrugAllergy1">
+                                                    <input type="checkbox" formControlName="weekends_access_blocked" class="form-check-input" id="DrugAllergy1">
                                                     <label class="form-check-label" for="DrugAllergy1">Drug Allergy</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="HyperTension1" class="form-check-input" id="HyperTension1">
+                                                    <input type="checkbox" formControlName="weekends_access_blocked" class="form-check-input" id="HyperTension1">
                                                     <label class="form-check-label" for="HyperTension1">Hypertension</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="IschemicHeartDiseases1" class="form-check-input" id="IschemicHeartDiseases1">
+                                                    <input type="checkbox" formControlName="weekends_access_blocked" class="form-check-input" id="IschemicHeartDiseases1">
                                                     <label class="form-check-label" for="IschemicHeartDiseases1">Ischemic Heart Diseases</label>
                                                 </div>
                                             </div>
@@ -330,7 +324,7 @@
                                                 <div class="form-group input-group">
                                                     <label for="formGroupExampleInput">Signs</label>
                                                     <span class="wrapper-select">
-                                                        <select class="form-control" formControlName="signs" aria-label="Text input with segmented dropdown button" placeholder="Signs">
+                                                        <select class="form-control" formControlName="FollowUp" aria-label="Text input with segmented dropdown button" placeholder="Is Follow Up">
                                                             <option>Couph</option>
                                                             <option>Fever</option>
                                                             <option>Cold</option>
@@ -342,7 +336,7 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group input-group">
-                                                    <textarea class="form-control" name="signsArr" type=text></textarea>
+                                                    <textarea class="form-control" name="signname" type=text></textarea>
                                                 </div>
                                             </div>
                                             <hr class="hr-gray mx-3 my-4">
@@ -351,7 +345,7 @@
                                             </div>
                                             <div class="col-md-10">
                                                 <div class="form-group input-group">
-                                                    <input type="text" formControlName="diagnosis" class="form-control" id="diagnosis" placeholder="Diagosis">
+                                                    <input type="text" formControlName="email" class="form-control" id="formGroupExampleInput" placeholder="Diagosis">
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
@@ -516,7 +510,7 @@
                                     </form>
                                 </div>
                                 <div *ngIf="tab === 'treatment'" class="tab-pane fade" [ngClass]="{'active show': tab === 'treatment'}" id="tab4" role="tabpanel" aria-labelledby="tab4">
-                                    <form [formGroup]="treatmentInformation" novalidate>
+                                    <form [formGroup]="accessControl" novalidate>
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <h5>Treatment</h5>
@@ -646,13 +640,13 @@
                                                 <h5>Referral</h5>
                                                 <div class="custom-radio custom-control-inline mr-md-5">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" formControlName="access_type"  id="gridRadios21" value="no">
+                                                        <input class="form-check-input" type="radio" formControlName="access_type" (change)="onAccessType($event)" id="gridRadios21" value="no">
                                                         <label class="form-check-label" for="gridRadios21">No</label>
                                                     </div>
                                                 </div>
                                                 <div class="custom-radio custom-control-inline mr-md-5">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" formControlName="access_type"  id="gridRadios31" value="yes">
+                                                        <input class="form-check-input" type="radio" formControlName="access_type" (change)="onAccessType($event)" id="gridRadios31" value="yes">
                                                         <label class="form-check-label" for="gridRadios31">Yes</label>
                                                     </div>
                                                 </div>

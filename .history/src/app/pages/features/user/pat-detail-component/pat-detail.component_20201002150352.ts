@@ -18,8 +18,7 @@ export class PatDetailComponent implements OnInit {
   investigationInformation: FormGroup;
   treatmentInformation: FormGroup;
   complaints: FormGroup;
-  pastHistory: FormGroup;
-  familyHistory: FormGroup;
+
   userLoader: boolean = false;
   userList: any[] = [];
   createUserLoader:boolean=false;
@@ -36,62 +35,71 @@ export class PatDetailComponent implements OnInit {
      private router: Router,
      private route: ActivatedRoute
      ) {
-      this.clicnicalInformation = this.fb.group({
-        bps: ['', Validators.required],
-        pulse : ['', Validators.required],
-        weight : ['', Validators.required],
-        // validates date format yyyy-mm-dd
-        height : ['', Validators.required],
-        temperature: ['', Validators.required],
-        oxygen_saturation: ['', [Validators.required, Validators.minLength(6)]],
-        isFollowUp : [false, Validators.required],
-        isMalnutration : [false, Validators.requiredTrue],
-  
-        complaints : this.fb.group({
-          
-          durationType : ['', Validators.required],
-          duration : ['', Validators.required],
-          name : ['', Validators.required],
-          
-         }),
-        pastHistory : this.fb.group({
-          Abortion : [false, Validators.required],
-          Allegory : [false],
-          Astama : [false],
-          Cancer : [false],
-          Diabetes : [false],
-          DrugAllergy : [false],
-          HyperTension : [false],
-          IschemicHeartDiseases : [false],
-          IUD : [false],
-          misCarriage : [false],
-          stillBirth : [false],
-          twins : [true],
-         
-         }),
-         familyHistory : this.fb.group({
-          Astama1 : [false],
-          Cancer1 : [false],
-          Diabetes1 : [false],
-          DrugAllergy1 : [false],
-          HyperTension1 : [false],
-          IschemicHeartDiseases1 : [true],
-         
-         }),
-        // complaints : ['', Validators.requiredTrue],
-       
-        signs : ['', Validators.requiredTrue],
-        signsArr : ['', Validators.requiredTrue],
-        diagnosis  : ['', Validators.requiredTrue],
-        
-          
-    //}, {
-        // validator: MustMatch('password', 'confirmPassword')
-    });
+
 
   }
 
   ngOnInit(): void {
+
+    this.clicnicalInformation = this.fb.group({
+      bps: ['', Validators.required],
+      pulse : ['', Validators.required],
+      weight : ['', Validators.required],
+      // validates date format yyyy-mm-dd
+      height : ['', Validators.required],
+      temperature: ['', Validators.required],
+      oxygen_saturation: ['', [Validators.required, Validators.minLength(6)]],
+      isFollowUp : [false, Validators.required],
+      isMalnutration : [false, Validators.requiredTrue],
+
+      complaints : this.fb.group({
+        name : ['', Validators.required],
+        durationType : ['', Validators.required],
+        duration : ['', Validators.required],
+        
+       }),
+      pastHistory : this.fb.group({
+        Abortion : [false, Validators.required],
+        Allegory : [false],
+        Astama : [false],
+        Cancer : [false],
+        Diabetes : [false],
+        DrugAllergy : [false],
+        HyperTension : [false],
+        IschemicHeartDiseases : [false],
+        IUD : [false],
+        misCarriage : [false],
+        stillBirth : [false],
+        twins : [true],
+       
+       }),
+       familyHistory : this.fb.group({
+        Abortion : [false],
+        Allegory : [false],
+        Astama : [false],
+        Cancer : [false],
+        Diabetes : [false],
+        DrugAllergy : [false],
+        HyperTension : [false],
+        IschemicHeartDiseases : [false],
+        IUD : [false],
+        misCarriage : [false],
+        stillBirth : [false],
+        twins : [true],
+       
+       }),
+      // complaints : ['', Validators.requiredTrue],
+     
+     
+      signs : ['', Validators.requiredTrue],
+      diagnosis  : ['', Validators.requiredTrue],
+      
+        
+  }, {
+      // validator: MustMatch('password', 'confirmPassword')
+  });
+  
+  
 
     this.patInfo= JSON.parse(localStorage.getItem("patData"));
     console.log('patInfo====',this.patInfo)
