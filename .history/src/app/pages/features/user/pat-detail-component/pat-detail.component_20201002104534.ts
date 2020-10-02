@@ -21,7 +21,10 @@ export class PatDetailComponent implements OnInit {
   errorMessage: any = '';
   patInfo:any ={};
 
-  param: any = {};
+  param: any = {
+    id:"",
+    type:""
+  };
   selectedUser: any;
   constructor(
     private fb: FormBuilder,
@@ -47,15 +50,13 @@ export class PatDetailComponent implements OnInit {
  
    //patient prescription list
    getPatPrescrib(obj:any) {
-     this.param={'patientID':obj.patientID,'hospitalID':obj.hospitalID};
-     
       this.userLoader = true;
-      this.auth.getPatPrescription(this.param).subscribe
+      this.auth.getPatPrescription(obj).subscribe
       ((response:any)=> {
       if(response.status === 0 ){
           console.log(response );
           this.userList = response.data;
-          console.log('userPresc list===',this.userList)
+          console.log('userList',this.userList)
          this.userLoader = false;
         } else {
           this.userLoader = false;
