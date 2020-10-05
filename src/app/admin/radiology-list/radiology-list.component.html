@@ -1,1 +1,218 @@
-<p>radiology-list works!</p>
+<div class="container-fluid container-wrapper">
+    <div class="row">
+        <div class="content-wrapper">
+            <div class="page-title">
+                <div class="row px-3 px-md-0">
+                    <div class="col-sm-12 pl-0">
+                        <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)" class="gray-color">Radiology
+                                    List</a></li>
+                            <!-- <li class="breadcrumb-item active gray-04-color">Commission</li> -->
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mb-30">
+                    <div class="card card-statistics h-100">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5 class="card-title mb-0">Radiology Management</h5>
+                                </div>
+                                <div class="col-md-6">
+                                    <span class="pull-right btn btn-sm">
+                                        <button type="button" class="button" (click)="radiologyAdd.show()">
+                                            <i class="fa fa-plus"></i>
+                                            Add RadiologyTest
+                                        </button>
+                                    </span>
+                                </div>
+
+                                <!-- model for Add Diagnostic download start-->
+                                <div bsModal #radiologyAdd="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
+                                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header bb-none">
+                                                <h2>Add Test</h2>
+                                                <button type="button" class="close pull-right" aria-label="Close" (click)="radiologyAdd.hide()">
+                                                    <span aria-hidden="true"><i class="ti-close"></i></span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body p-5">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-3 mt-3"><label for="inputState">Main Test Name</label></div>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control input-sm" id="maintest" placeholder="Main Test Name">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-3 mt-3"><label for="inputState">Category</label></div>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control" id="subtest" placeholder="Sub Test Name">
+                                                    </div>
+                                                    <div class="col-sm-1 mt-3">
+                                                        <a href="" class="mr-3 text-success">
+                                                            <i class="fa fa-plus"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-3"></div>
+                                                    <div class="col-sm-8"><label for="inputState">Sub Test Name</label></div>
+                                                    <div class="col-sm-1">
+                                                        <a href="" class="mr-3 text-danger">
+                                                            <i class="fa fa-remove"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-3 mt-3"><label for="inputState">Normal Ranges</label></div>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="ranges" placeholder="Normal Ranges">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-3 mt-3"><label for="inputState">Fee</label></div>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="fee" placeholder="Fee">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="button-danger" (click)="radiologyAdd.hide()">
+                                                    <i class="fa fa-remove"></i> Close
+                                                </button>
+                                                <button type="button" class="button">
+                                                    <i class="fa fa-check-square"></i> Add Test
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- model for Add Diagnostic download end-->
+                                <div class="table-responsive">
+                                    <table datatable class="table center-aligned-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Radiology Test Name</th>
+                                                <th>Category</th>
+                                                <th>Normal Ranges</th>
+                                                <th>Fee</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Test ABC</td>
+                                                <td>
+                                                    <ul>
+                                                        <li>X-Ray</li>
+                                                        <li>Ultrasound</li>
+                                                    </ul>
+                                                </td>
+                                                <td>10-15 mg/kg</td>
+                                                <td>5000</td>
+                                                <td>
+                                                    <button href="" class="mr-3 btn btn-info" (click)="radiologyEdit.show()"><i class="fa fa-edit"></i></button>
+                                                    <!-- model for Diagnostic Update start-->
+                                                    <div bsModal #radiologyEdit="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
+                                                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header bb-none">
+                                                                    <h2>Udate Test</h2>
+                                                                    <button type="button" class="close pull-right" aria-label="Close" (click)="radiologyEdit.hide()">
+                                                                        <span aria-hidden="true"><i
+                                                                                class="ti-close"></i></span>
+                                                                    </button>
+                                                                </div>
+
+                                                                <div class="modal-body p-5">
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-3 mt-3"><label for="inputState">Main Test Name</label></div>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="text" class="form-control input-sm" id="Umaintest" placeholder="Main Test Name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-3 mt-3"><label for="inputState">Category</label></div>
+                                                                        <div class="col-sm-8">
+                                                                            <input type="text" class="form-control" id="Usubtest" placeholder="Category">
+                                                                        </div>
+                                                                        <div class="col-sm-1 mt-3">
+                                                                            <a href="" class="mr-3 text-success">
+                                                                                <i class="fa fa-plus"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-3"></div>
+                                                                        <div class="col-sm-8"><label for="inputState">Category A</label></div>
+                                                                        <div class="col-sm-1">
+                                                                            <a href="" class="mr-3 text-danger">
+                                                                                <i class="fa fa-remove"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-3 mt-3"><label for="inputState">Normal Ranges</label></div>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="text" class="form-control" id="Uranges" placeholder="Normal Ranges">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-3 mt-3"><label for="inputState">Fee</label></div>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="text" class="form-control" id="Ufee" placeholder="Fee">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="button-danger" (click)="radiologyEdit.hide()">
+                                                                        <i  class="fa fa-remove"></i> Close
+                                                                    </button>
+                                                                    <button type="button" class="button">
+                                                                        <i class="fa fa-check-square"></i> Update Diagnostic
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- model for Diagnostic Update end-->
+                                                    <button href="" class="mr-2 btn btn-danger" (click)="radiologydelete.show()"><i class="fa fa-trash"></i></button>
+                                                    <!-- model for Diagnostic delete start-->
+                                                    <div bsModal #radiologydelete="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
+                                                        <div class="modal-dialog modal-sm modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header bb-none"> </div>
+                                                                <div class="modal-body p-5 text-center">
+                                                                    <i class="fa fa-exclamation-circle fa-5x text-danger"></i>
+                                                                    <p>Are You Sure To delete this Item!</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="button" (click)="radiologydelete.hide()"><i class="fa fa-remove"></i> Cancel</button>
+                                                                    <button type="button" class="button-danger"><i class="fa fa-check-square"></i> Delete</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- model for Diagnostic delete end-->
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <hr class="hr-gray mx-3 my-3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ------------------------------------------------------- -->
+
+<!-- <div *ngIf="loader_eqp" class="text-center">
+    <i class="fa fa-pulse fa-spinner fa-3x fa-fw"></i>
+</div> -->
