@@ -34,105 +34,105 @@
                             <div class="tab-content">
                                 <div *ngIf="tab === 'employee'" class="tab-pane fade" [ngClass]="{'active show': tab === 'employee'}" id="tab1" role="tabpanel" aria-labelledby="tab1">
                                     <!-- <form [formGroup]="employeeInformation" novalidate> -->
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="formGroupExampleInput">Token</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="formGroupExampleInput">{{patInfo.token}}</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6"></div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="formGroupExampleInput">Patient Name</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="formGroupExampleInput">{{patInfo.firstname}}</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="formGroupExampleInput">Father Name</label>
-                                                    <!-- <input type="text" class="form-control" formControlName="last_name" id="formGroupExampleInput" placeholder="Last name of Employee" required>
-                                                    <div class="w-100" *ngIf="f.controls.last_name.status=='INVALID'">
-                                                        <div *ngIf="f.controls.last_name.errors.required && f.controls.last_name.touched" class="invalid-feedback" [style.display]="f.controls.last_name.status=='INVALID' ? 'block' : 'none'">Please provide last name.</div>
-                                                        <div *ngIf="f.controls.last_name.errors.minlength && f.controls.last_name.touched" class="invalid-feedback" [style.display]="f.controls.last_name.status=='INVALID' ? 'block' : 'none'">Last name must be at least 1 character.</div>
-                                                        <div *ngIf="f.controls.last_name.errors.maxlength && f.controls.last_name.touched" class="invalid-feedback" [style.display]="f.controls.last_name.status=='INVALID' ? 'block' : 'none'">Last name must be less than 27 characters.</div>
-                                                        <div *ngIf="f.controls.last_name.errors.pattern && f.controls.last_name.touched" class="invalid-feedback" [style.display]="f.controls.last_name.status=='INVALID' ? 'block' : 'none'">Last name must have a-z & A-Z characters.</div>
-                                                    </div> -->
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="formGroupExampleInput">{{patInfo.f_hName}}</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="formGroupExampleInput">Date Of Birth</label>
-                                                    <!-- <input type="password" class="form-control" formControlName="password" id="formGroupExampleInput" placeholder="Enter Password">
-                                                    <div class="w-100" *ngIf="f.controls.password.status=='INVALID'">
-                                                        <div *ngIf="f.controls.password.errors.required && f.controls.password.touched" class="invalid-feedback" [style.display]="f.controls.password.status=='INVALID' ? 'block' : 'none'">Please provide password.</div>
-                                                        <div *ngIf="f.controls.password.errors.minlength && f.controls.password.touched" class="invalid-feedback" [style.display]="f.controls.password.status=='INVALID' ? 'block' : 'none'">Password must be at least 1 character.</div>
-                                                        <div *ngIf="!f.controls.password.errors.minlength && f.controls.password.errors.pattern && f.controls.password.touched" class="invalid-feedback" [style.display]="f.controls.password.status=='INVALID' ? 'block' : 'none'">Invalid password must contain one capital, one small letter, one digit, one special character.</div>
-                                                    </div> -->
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="formGroupExampleInput">{{patInfo.dob | date}}</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="input-group form-group">
-                                                    <label for="inputState">Mobile Number</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="formGroupExampleInput">{{patInfo.cellNo}}</label>
-                                                </div>
-                                            </div>
-                                            <hr class="hr-gray">
-                                            <div class="col-md-12">
-                                                <h5>Past History</h5>
-                                            </div>
-                                            <hr class="hr-gray">
-                                            <div class="col-md-12">
-                                                <div class="table-responsive">
-                                                    <table class="table center-aligned-table">
-                                                        <thead>
-                                                            <tr class="text-dark">
-                                                                <th>Date Created</th>
-                                                                <th class="float-right">View Prescription Slip</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody *ngIf="!userLoader">
-                                                            <tr *ngFor="let user of userList">
-                                                                <td>{{user.DateCreated | date:"y/dd/MM"}}</td>
-                                                                <td>
-                                                                    <div class="form-group">
-                                                                        <button type="button" class="button float-right" (click)="gotoPresDetails(user)"  >View Prescription Slip</button>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-
-                                                        </tbody>
-                                                        <div *ngIf="userLoader" class="d-flex justify-content-center">
-                                                            <div class="spinner-border theme-color" role="status">
-                                                                <span class="sr-only"></span>
-                                                            </div>
-                                                        </div>
-                                                    </table>
-                                                </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="formGroupExampleInput">Token</label>
                                             </div>
                                         </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="formGroupExampleInput">{{patInfo.token}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6"></div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="formGroupExampleInput">Patient Name</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="formGroupExampleInput">{{patInfo.firstname}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="formGroupExampleInput">Father Name</label>
+                                                <!-- <input type="text" class="form-control" formControlName="last_name" id="formGroupExampleInput" placeholder="Last name of Employee" required>
+                                                <div class="w-100" *ngIf="f.controls.last_name.status=='INVALID'">
+                                                    <div *ngIf="f.controls.last_name.errors.required && f.controls.last_name.touched" class="invalid-feedback" [style.display]="f.controls.last_name.status=='INVALID' ? 'block' : 'none'">Please provide last name.</div>
+                                                    <div *ngIf="f.controls.last_name.errors.minlength && f.controls.last_name.touched" class="invalid-feedback" [style.display]="f.controls.last_name.status=='INVALID' ? 'block' : 'none'">Last name must be at least 1 character.</div>
+                                                    <div *ngIf="f.controls.last_name.errors.maxlength && f.controls.last_name.touched" class="invalid-feedback" [style.display]="f.controls.last_name.status=='INVALID' ? 'block' : 'none'">Last name must be less than 27 characters.</div>
+                                                    <div *ngIf="f.controls.last_name.errors.pattern && f.controls.last_name.touched" class="invalid-feedback" [style.display]="f.controls.last_name.status=='INVALID' ? 'block' : 'none'">Last name must have a-z & A-Z characters.</div>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="formGroupExampleInput">{{patInfo.f_hName}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="formGroupExampleInput">Date Of Birth</label>
+                                                <!-- <input type="password" class="form-control" formControlName="password" id="formGroupExampleInput" placeholder="Enter Password">
+                                                <div class="w-100" *ngIf="f.controls.password.status=='INVALID'">
+                                                    <div *ngIf="f.controls.password.errors.required && f.controls.password.touched" class="invalid-feedback" [style.display]="f.controls.password.status=='INVALID' ? 'block' : 'none'">Please provide password.</div>
+                                                    <div *ngIf="f.controls.password.errors.minlength && f.controls.password.touched" class="invalid-feedback" [style.display]="f.controls.password.status=='INVALID' ? 'block' : 'none'">Password must be at least 1 character.</div>
+                                                    <div *ngIf="!f.controls.password.errors.minlength && f.controls.password.errors.pattern && f.controls.password.touched" class="invalid-feedback" [style.display]="f.controls.password.status=='INVALID' ? 'block' : 'none'">Invalid password must contain one capital, one small letter, one digit, one special character.</div>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="formGroupExampleInput">{{patInfo.dob | date}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="input-group form-group">
+                                                <label for="inputState">Mobile Number</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="formGroupExampleInput">{{patInfo.cellNo}}</label>
+                                            </div>
+                                        </div>
+                                        <hr class="hr-gray">
+                                        <div class="col-md-12">
+                                            <h5>Past History</h5>
+                                        </div>
+                                        <hr class="hr-gray">
+                                        <div class="col-md-12">
+                                            <div class="table-responsive">
+                                                <table class="table center-aligned-table">
+                                                    <thead>
+                                                        <tr class="text-dark">
+                                                            <th>Date Created</th>
+                                                            <th class="float-right">View Prescription Slip</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody *ngIf="!userLoader">
+                                                        <tr *ngFor="let user of userList">
+                                                            <td>{{user.DateCreated | date:"y/dd/MM"}}</td>
+                                                            <td>
+                                                                <div class="form-group">
+                                                                    <button type="button" class="button float-right">View Prescription Slip</button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                    <div *ngIf="userLoader" class="d-flex justify-content-center">
+                                                        <div class="spinner-border theme-color" role="status">
+                                                            <span class="sr-only"></span>
+                                                        </div>
+                                                    </div>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <!-- </form> -->
                                 </div>
                                 <div *ngIf="tab === 'contact'" class="tab-pane fade" [ngClass]="{'active show': tab === 'contact'}" id="tab2" role="tabpanel" aria-labelledby="tab2">
@@ -145,37 +145,37 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Blood Presure</label>
-                                                    <input type="text" formControlName="bps" class="form-control"  placeholder="Blood Pressure">
+                                                    <input type="text" formControlName="bps" class="form-control" placeholder="Blood Pressure">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Pulse (Rate Per Minute)</label>
-                                                    <input type="text" formControlName="pulse" class="form-control"  placeholder="Pulse">
+                                                    <input type="text" formControlName="pulse" class="form-control" placeholder="Pulse">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Wight (Kg)</label>
-                                                    <input type="text" formControlName="weight" class="form-control"  placeholder="Wight">
+                                                    <input type="text" formControlName="weight" class="form-control" placeholder="Wight">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Height (cm)</label>
-                                                    <input type="text" formControlName="height" class="form-control"  placeholder="Height">
+                                                    <input type="text" formControlName="height" class="form-control" placeholder="Height">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Temprature (F)</label>
-                                                    <input type="text" formControlName="temperature" class="form-control"  placeholder="Temprature">
+                                                    <input type="text" formControlName="temperature" class="form-control" placeholder="Temprature">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Oxygen Saturation</label>
-                                                    <input type="text" formControlName="oxygen_saturation" class="form-control"  placeholder="Oxygen Saturation">
+                                                    <input type="text" formControlName="oxygen_saturation" class="form-control" placeholder="Oxygen Saturation">
                                                 </div>
                                             </div>
                                             <hr class="hr-gray mx-3 my-4">
@@ -298,7 +298,7 @@
                                                     <label class="form-check-label" for="twins">Twins</label>
                                                 </div>
                                             </div>
-                                            <div  [formGroupName]="familyHistory" class="col-md-6">
+                                            <div [formGroupName]="familyHistory" class="col-md-6">
                                                 <h5>Family History</h5>
                                                 <div class="form-check checkbox mb-2">
                                                     <input type="checkbox" formControlName="Astama1" class="form-check-input" name="Astama1" id="Astama1">
@@ -646,13 +646,13 @@
                                                 <h5>Referral</h5>
                                                 <div class="custom-radio custom-control-inline mr-md-5">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" formControlName="access_type"  id="gridRadios21" value="no">
+                                                        <input class="form-check-input" type="radio" formControlName="access_type" id="gridRadios21" value="no">
                                                         <label class="form-check-label" for="gridRadios21">No</label>
                                                     </div>
                                                 </div>
                                                 <div class="custom-radio custom-control-inline mr-md-5">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" formControlName="access_type"  id="gridRadios31" value="yes">
+                                                        <input class="form-check-input" type="radio" formControlName="access_type" id="gridRadios31" value="yes">
                                                         <label class="form-check-label" for="gridRadios31">Yes</label>
                                                     </div>
                                                 </div>
