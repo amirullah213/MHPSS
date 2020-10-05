@@ -11,16 +11,13 @@ export class PrintPrescComponent implements OnInit {
   param:any ={};
   userLoader:boolean = false;
   userList:any=[];
-  patInfo:any ={};
-  diagnosisArr:any=[];
-  daig:any=[];
-
+  uPresData:any ={};
   constructor(private auth:AuthService) { }
 
   ngOnInit(): void {
-    this.patInfo= JSON.parse(localStorage.getItem("patData"));
-    console.log('patInfo2====',this.patInfo)
-    this.getPatPrescrib(this.patInfo);
+    this.uPresData= JSON.parse(localStorage.getItem("uPresData"));
+    console.log('uPresData====',this.uPresData)
+    this.getPatPrescrib(this.uPresData);
   }
 
     //patient prescription list
@@ -33,14 +30,7 @@ export class PrintPrescComponent implements OnInit {
        if(response.status === 0 ){
            console.log(response );
            this.userList = response.data;
-           console.log('userPresc list===',this.userList);
-           console.log('userPresc list===',JSON.parse(this.userList[0].test[2].xrayFilms6) );
-           this.diagnosisArr=JSON.parse(this.userList[0].test[2].xrayFilms6)
-           this.diagnosisArr.forEach(function (value) {
-            console.log("diagnosisArr",value);
-           // this.daig.push(value);
-           // console.log("this.daig",this.daig);
-           })
+           console.log('userPresc list===',this.userList)
           this.userLoader = false;
          } else {
            this.userLoader = false;

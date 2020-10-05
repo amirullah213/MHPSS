@@ -35,8 +35,8 @@
                                 <div class="col-lg-1"></div>
                                 <div class="col-lg-4">
                                     <h6><b>Age :</b> <span class="ml-3"> <span
-                                                *ngIf='patInfo.ageYear!=0'>{{patInfo.ageYear}} Years</span><span
-                                                *ngIf='patInfo.ageYear==0'>{{patInfo.ageMonth}} Months</span> </span></h6>
+                                                *ngIf='patInfo.ageYear!=0'>{{patInfo.ageYear}}</span><span
+                                                *ngIf='patInfo.ageYear==0'>{{patInfo.ageMonth}}</span> </span></h6>
                                     <h6><b>Consulting Doctor :</b> <span class="ml-3">{{userList[0].docFName}}</span>
                                     </h6>
                                 </div>
@@ -64,20 +64,16 @@
                                         <span *ngIf="tst.testType==1">
                                             <p class="mb-1"><b>Pathology</b> <span class="ml-4">{{tst.testName}}</span>
                                             </p>
-                                            <p class="mb-1">Diagnosis: <span class="ml-4" *ngIf="tst.result==''">Not Found</span><span class="ml-4" *ngIf="tst.result!=''">{{tst.result}}</span></p>
-                                            <p class="mb-1" >Findings: 
-                                                <span class="ml-4" *ngIf="tst.xrayFilms6=='0'" >Not Found</span>
-                                                <span class="ml-4" *ngIf="tst.xrayFilms6!='0'" >{{tst.xrayFilms6}}</span>
-                                            </p>
+                                            <p class="mb-1">Findings: <span class="ml-4">{{tst.result}}</span></p>
+                                            <p class="mb-1" >Diagnosis: <span class="ml-4" >{{tst.daig}}</span></p>
                                         </span>
                                         <!-- </span>
                                 <span> -->
                                         <span *ngIf="tst.testType==2">
                                             <p class="mb-1 mt-3"><b>Radiology</b><span
                                                     class="ml-4">{{tst.testName}}</span></p>
-                                            <p class="mb-1">Diagnosis: <span class="ml-4" *ngIf="tst.result==''">Not Found</span> <span class="ml-4" *ngIf="tst.result!=''">{{tst.result}}</span></p>
-                                            <p class="mb-1" *ngIf="tst.xrayFilms6=='0'">Findings: <span class="ml-4" >Not Found</span></p>
-                                            <p class="mb-1"  *ngIf="tst.xrayFilms6!='0'">Findings: <span class="ml-4" *ngFor="let dai of diagnosisArr" >{{dai.name }},</span></p>
+                                            <p class="mb-1">Findings: <span class="ml-4">{{tst.result}}</span></p>
+                                            <p class="mb-1">Diagnosis: <span class="ml-4"  >{{tst.xrayFilms6 }}</span></p>
                                         </span>
                                     </span>
                                 </div>

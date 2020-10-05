@@ -38,8 +38,7 @@ export class PrintPrescComponent implements OnInit {
            this.diagnosisArr=JSON.parse(this.userList[0].test[2].xrayFilms6)
            this.diagnosisArr.forEach(function (value) {
             console.log("diagnosisArr",value);
-           // this.daig.push(value);
-           // console.log("this.daig",this.daig);
+            this.daig.push(value)
            })
           this.userLoader = false;
          } else {

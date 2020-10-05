@@ -64,20 +64,17 @@
                                         <span *ngIf="tst.testType==1">
                                             <p class="mb-1"><b>Pathology</b> <span class="ml-4">{{tst.testName}}</span>
                                             </p>
-                                            <p class="mb-1">Diagnosis: <span class="ml-4" *ngIf="tst.result==''">Not Found</span><span class="ml-4" *ngIf="tst.result!=''">{{tst.result}}</span></p>
-                                            <p class="mb-1" >Findings: 
-                                                <span class="ml-4" *ngIf="tst.xrayFilms6=='0'" >Not Found</span>
-                                                <span class="ml-4" *ngIf="tst.xrayFilms6!='0'" >{{tst.xrayFilms6}}</span>
-                                            </p>
+                                            <p class="mb-1">Findings: <span class="ml-4">{{tst.result}}</span></p>
+                                            <p class="mb-1" >Diagnosis: <span class="ml-4" >{{tst.xrayFilms6}}</span></p>
                                         </span>
                                         <!-- </span>
                                 <span> -->
                                         <span *ngIf="tst.testType==2">
                                             <p class="mb-1 mt-3"><b>Radiology</b><span
                                                     class="ml-4">{{tst.testName}}</span></p>
-                                            <p class="mb-1">Diagnosis: <span class="ml-4" *ngIf="tst.result==''">Not Found</span> <span class="ml-4" *ngIf="tst.result!=''">{{tst.result}}</span></p>
-                                            <p class="mb-1" *ngIf="tst.xrayFilms6=='0'">Findings: <span class="ml-4" >Not Found</span></p>
-                                            <p class="mb-1"  *ngIf="tst.xrayFilms6!='0'">Findings: <span class="ml-4" *ngFor="let dai of diagnosisArr" >{{dai.name }},</span></p>
+                                            <p class="mb-1">Findings: <span class="ml-4">{{tst.result}}</span></p>
+                                            <p class="mb-1" *ngIf="tst.xrayFilms6=='0'">Diagnosis: <span class="ml-4" >no data</span></p>
+                                            <p class="mb-1"  *ngIf="tst.xrayFilms6!='0'">Diagnosis: <span class="ml-4" *ngFor="let dai of diagnosisArr" >{{dai.name }},</span></p>
                                         </span>
                                     </span>
                                 </div>

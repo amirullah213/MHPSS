@@ -128,7 +128,7 @@ export class PatDetailComponent implements OnInit {
   }
 // patient prescription list
 gotoPresDetails(udata){
-  localStorage.setItem('uPresData',JSON.stringify(udata) );
+  localStorage.setItem('uPresData',udata);
   this.router.navigate(['doctor/user/print-presc'])
 }
   
