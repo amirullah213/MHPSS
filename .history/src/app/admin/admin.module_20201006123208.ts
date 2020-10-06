@@ -23,7 +23,7 @@ import { AmbulanceComponent } from './ambulance/ambulance.component';
   declarations: [AdminHomeComponent, AdminComponentComponent, SideBarAdminComponent, DiagnosticListComponent, PathologyListComponent, RadiologyListComponent, PharmcyComponent, AmbulanceComponent],
   imports: [
     CommonModule,
-    AdminRoutingModule,SharedModule,DataTablesModule,ModalModule.forRoot(),FormsModule
+    AdminRoutingModule,SharedModule,DataTablesModule.forRoot(),ModalModule.forRoot(),FormsModule
   ]
 })
 export class AdminModule { }

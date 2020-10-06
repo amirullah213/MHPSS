@@ -165,7 +165,7 @@ export class AdminHomeComponent implements OnInit {
   }
   //add new user
 
-   //delete new user
+   //add new user
    updateUser() {
     this.loader_eqp = true;
 
@@ -198,39 +198,7 @@ export class AdminHomeComponent implements OnInit {
       (error) => {}
     );
   }
-  //delete new user
-
-  //get all user List
-  deleteUser() {
-    this.loader_eqp = true;
-
-    //  console.log('local storage==',localStorage.getItem('auth_token'));
-      this.model.id = this.userID;
-      console.log('test==',this.model)
-
-    this.adminService.deleteUser(this.model).subscribe(
-      (response: any) => {
-        if (response.status === 0) {
-          this.allUsers = response.data;
-         
-          // this.dataFromServer = response['data']['Coords'];
-          // Calling the DT trigger to manually render the table
-          this.modalRef.hide();
-          this.loader_eqp = false;
-        }
-
-        if (response.status === 1) {
-          this.errormsg = response.errors;
-          this.loader_eqp = false;
-          console.log('error=', this.errormsg);
-          //this._loginserviceService.logout();
-        }
-      },
-      (error) => {}
-    );
-  }
-  //get all user list
-
+  //add new user
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();

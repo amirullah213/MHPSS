@@ -160,9 +160,9 @@
                                                     <!-- model for users download end-->
 
                                                     <button href="" class="mr-2 btn btn-danger"
-                                                        (click)="openDeleteModal(userdelete,usr)"><i class="fa fa-trash"></i></button>
+                                                        (click)="userdelete.show()"><i class="fa fa-trash"></i></button>
                                                     <!-- model for user delete start-->
-                                                    <ng-template  #userdelete class="modal fade" tabindex="-1"
+                                                    <div bsModal #userdelete="bs-modal" class="modal fade" tabindex="-1"
                                                         role="dialog" aria-labelledby="dialog-sizes-name2">
                                                         <div class="modal-dialog modal-sm modal-dialog-centered">
                                                             <div class="modal-content">
@@ -174,15 +174,15 @@
                                                                 </div>>
                                                                 <div class="modal-UserNameter">
                                                                     <button type="button" class="button"
-                                                                        (click)="modalRef.hide()"><i
+                                                                        (click)="userdelete.hide()"><i
                                                                             class="fa fa-remove"></i> Cancel</button>
-                                                                    <button type="button" class="button-danger" (click)="deleteUser()"><i
+                                                                    <button type="button" class="button-danger"><i
                                                                             class="fa fa-check-square"></i>
                                                                         Delete</button>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </ng-template>
+                                                    </div>
                                                     <!-- model for User Delete end-->
                                                 </td>
                                             </tr>

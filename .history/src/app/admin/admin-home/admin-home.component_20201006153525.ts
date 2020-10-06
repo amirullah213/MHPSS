@@ -31,8 +31,6 @@ export class AdminHomeComponent implements OnInit {
   allUsers: any = [];
   loader_eqp: boolean = false;
   errormsg: string;
-  userData:any={};
-  userID:number;
 
   // We use this trigger because fetching the list of persons can be quite long,
   // thus we ensure the data is fetched before rendering
@@ -54,53 +52,21 @@ export class AdminHomeComponent implements OnInit {
   }
 
   openModAdd(addUser: TemplateRef<any>) {
-    //  this.userData = userdata;
-     console.log('this.userData====',this.userData);
-    this.modalRef = this.modalService.show(addUser,this.userData); //, this.userData  //, data
-    
+    // this.userData = data;
+    this.modalRef = this.modalService.show(addUser); //, this.userData  //, data
+     this.modalRef.content.userActivate = 'Close';
+  }
+  openModedit(usersEdit: TemplateRef<any>) {
+    //this.modalService.open(usersEdit);
+    // this.userData = data;
+    this.modalRef = this.modalService.show(usersEdit); //, this.userData  //, data
     // this.modalRef.content.userActivate = 'Close';
   }
-
-  // edit component
-// modAtt:string[];
-// openedit(objedt) {
-//  const modalRef = this.modalService.open(MymodalComponent);
-//  modalRef.componentInstance.my_modal_title = objedt.name;
-//  modalRef.componentInstance.my_modal_id = objedt.id;
-//  modalRef.componentInstance.componentType = 'improvement';
-// this.modAtt=JSON.parse(objedt.attributes);
-//  modalRef.componentInstance.my_modal_content = this.modAtt;
-
-// }
-  openModedit(usersEdit: TemplateRef<any>,dataOb) {
-    //this.modalService.open(usersEdit);
-   
-     this.userData = dataOb;
-    this.modalRef = this.modalService.show(usersEdit, this.userData); //, this.userData  //, data
-    console.log('user data====',this.userData);
-   this.showEditData(this.userData)
-     //this.modalRef.content.userActivate = 'Close';
+  openModdelete(userdelete: TemplateRef<any>) {
+    // this.userData = data;
+    this.modalRef = this.modalService.show(userdelete); //, this.userData  //, data
+    // this.modalRef.content.userActivate = 'Close';
   }
-  openDeleteModal(userdelete: TemplateRef<any>,dataOb) {
-    //this.modalService.open(usersEdit);
-   
-     this.userID = dataOb.id;
-    this.modalRef = this.modalService.show(userdelete, this.userData); //, this.userData  //, data
-    console.log('user data====',this.userID);
-  
-     //this.modalRef.content.userActivate = 'Close';
-  }
-  showEditData(edtObj){
-    this.EuserOb.id=edtObj.id;
-    this.EuserOb.Ename=edtObj.name;
-    this.EuserOb.Edes=edtObj.designation;
-    this.EuserOb.Ejoining=edtObj.joiningDate;
-    this.EuserOb.Econtact=edtObj.contact;
-    this.EuserOb.Euname=edtObj.username;
-    this.EuserOb.Epassword=edtObj.password;
-    this.EuserOb.Estatus=edtObj.status;
-  }
-  
 
   //get all user List
   getUserList() {
@@ -165,57 +131,23 @@ export class AdminHomeComponent implements OnInit {
   }
   //add new user
 
-   //delete new user
-   updateUser() {
+   //add new user
+   updateUser(objU) {
     this.loader_eqp = true;
 
-    this.model2.id =  this.EuserOb.id;
-    this.model2.name =  this.EuserOb.Ename;
-    this.model2.designation =  this.EuserOb.Edes;
-    this.model2.joiningDate =  this.EuserOb.Ejoining;
-    this.model2.contact =  this.EuserOb.Econtact;
-    this.model2.username =  this.EuserOb.Euname;
-    this.model2.password =  this.EuserOb.Epassword;
-     this.model2.status =  this.EuserOb.Estatus;
+    console.log('object of srvice==', objU);
+      this.model2 =  objU
+      
     console.log('test==', this.model2);
 
-    this.adminService.updateUser(this.model2).subscribe(
-      (response: any) => {
-        if (response.status === 0) {
-          this.allUsers = response.data;
-         //this.dtTrigger.next();
-          this.loader_eqp = false;
-          this.modalRef.hide();
-          // this.modalRef.content.userActivate = 'Close';
-        }
-        if (response.status === 1) {
-          this.errormsg = response.errors;
-          this.loader_eqp = false;
-          console.log('error=', this.errormsg);
-          //this._loginserviceService.logout();
-        }
-      },
-      (error) => {}
-    );
-  }
-  //delete new user
-
-  //get all user List
-  deleteUser() {
-    this.loader_eqp = true;
-
-    //  console.log('local storage==',localStorage.getItem('auth_token'));
-      this.model.id = this.userID;
-      console.log('test==',this.model)
-
-    this.adminService.deleteUser(this.model).subscribe(
+    this.adminService.addUser(this.model2).subscribe(
       (response: any) => {
         if (response.status === 0) {
           this.allUsers = response.data;
          
           // this.dataFromServer = response['data']['Coords'];
           // Calling the DT trigger to manually render the table
-          this.modalRef.hide();
+          this.dtTrigger.next();
           this.loader_eqp = false;
         }
 
@@ -229,8 +161,7 @@ export class AdminHomeComponent implements OnInit {
       (error) => {}
     );
   }
-  //get all user list
-
+  //add new user
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();
