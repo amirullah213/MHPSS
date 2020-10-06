@@ -1,59 +1,51 @@
 // NOTE: This file contains all the variables.
-
-$body 	  		: #fafafa;
-$theme-color	: #7BB31A;
-$theme-light	: #F1F7E7;
+$body: #fafafa;
+$theme-color: #3c61b6;
+// $theme-color: #7BB31A;
+$theme-light: #F1F7E7;
 $themeauth-color: #28507B;
-$white			: #ffffff;
-$black			: #000000;
-$lightest-gray  : #f6f7f8;
-$light-gray		: #626262;
-$dark-gray		: #323232;
-$sidebar-dark	: #282a39;
-$border-color   : #eeeeee;
-
-$gray-color     : #aaaaaa;
-$gray-04-color     : #464A53;
-
-$primary  		:#5A8DEE; 
-$secondary 		:#394C62; 
-$success  		:#28a745; 
-$danger  		:#FF0000; 
-$warning  		:#FDAC41; 
-$info 	 		:#00CFDD; 
-$light  		:#f8f9fa; 
-$dark 	 		:#343a40; 
-$muted 	 		:#6c757d; 
-
-$font-xs		: 0.760rem; 
-$font-s 		: 0.800rem; 
-$font-base		: 1rem;	 
-$font-md 		: 1.143rem; 	
-$font-lg 		: 1.286rem; 
-$font-xl		: 1.571rem;  
-$font-xxl		: 1.714rem; 	
-$font-xxxl		: 1.858rem; 
-
-$line-xs		: 1rem;  			
-$line-s			: 1.143rem;
-$line-base		: 1.286rem;
-$line-md        : 1.571rem;
-$line-lg   		: 1.714rem;
-$line-xl		: 1.857rem;
-$line-xxl		: 2rem;
-$line-xxxl		: 2.14rem;
-
-$font-bold		: 700;
-$font-semibold	: 600;
-$font-medium 	: 500;
-$font-regular	: 400;
-$font-light		: 300;
-
-$font-segoebold	: segoe-bold;
-$font-segoesemibold	: segoe-semibold;
-$font-segoeregular : segoe-regular;
-
-$text-left		: left;
-$text-center	: center;
-$text-right		: right;
-
+$white: #ffffff;
+$black: #000000;
+$lightest-gray: #f6f7f8;
+$light-gray: #626262;
+$dark-gray: #323232;
+$sidebar-dark: #282a39;
+$border-color: #eeeeee;
+$gray-color: #aaaaaa;
+$gray-04-color: #464A53;
+$primary:#5A8DEE;
+$secondary:#394C62;
+$success:#33a14d;
+$danger:#cf2929;
+$warning:#FDAC41;
+$info:#00CFDD;
+$light:#f8f9fa;
+$dark:#343a40;
+$muted:#6c757d;
+$font-xs: 0.760rem;
+$font-s: 0.800rem;
+$font-base: 1rem;
+$font-md: 1.143rem;
+$font-lg: 1.286rem;
+$font-xl: 1.571rem;
+$font-xxl: 1.714rem;
+$font-xxxl: 1.858rem;
+$line-xs: 1rem;
+$line-s: 1.143rem;
+$line-base: 1.286rem;
+$line-md: 1.571rem;
+$line-lg: 1.714rem;
+$line-xl: 1.857rem;
+$line-xxl: 2rem;
+$line-xxxl: 2.14rem;
+$font-bold: 700;
+$font-semibold: 600;
+$font-medium: 500;
+$font-regular: 400;
+$font-light: 300;
+$font-segoebold: segoe-bold;
+$font-segoesemibold: segoe-semibold;
+$font-segoeregular: segoe-regular;
+$text-left: left;
+$text-center: center;
+$text-right: right;

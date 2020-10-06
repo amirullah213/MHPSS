@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-
+import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from "@angular/router";
+import { Subject } from 'rxjs';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 @Component({
   selector: 'ncri-home',
@@ -9,59 +12,34 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  isCollapsed = true;
 
-  switchBreakEvenView: string = '';
-  breakEvenModel:string = "";
-  userDetails: any = {
-    name: "",
-    type: "",
-    grade: "",
-    branchLocation: "",
-    userID: ""
-  };
+  currentDate = new Date();
+  form = new FormGroup({
+    dateYMD: new FormControl(new Date()),
+    dateFull: new FormControl(new Date()),
+    dateMDY: new FormControl(new Date()),
+    dateRange: new FormControl([
+      new Date(),
+      new Date(this.currentDate.setDate(this.currentDate.getDate() + 7))
+    ])
+  });
 
-  loader: boolean = false;
+  model: any = {};
+  modalRef: BsModalRef;
 
-  currencyCodesList: any = [];
-  currencyForm: FormGroup;
-  breakEvenPoint: FormGroup;
-  compensationID: string = "";
-  breakEvenList: any[] = [];
-  edit: boolean = false;
-  selectedOBJ: any;
-  breakEvenCheck:string = "";
-  constructor(
+  constructor( private modalService: BsModalService, private fb: FormBuilder ) 
+  {
     
-    private fb: FormBuilder
-  ) {
-    this.currencyForm = this.fb.group({
-      currency_code: ['USD', Validators.required],
-      base_salary: [null, Validators.required],
-      commission_rate: [null, Validators.required],
-    });
-
-    this.breakEvenPoint = this.fb.group({
-      break_even_times: ['', Validators.required],
-      mtd_base_target: [null, Validators.required],
-    });
   }
 
-  ngOnInit(): void {
-    this.getUserDetails();
-    // this.getCurrencyCodes();
+  ngOnInit(): void {}
+  
+  openModAdd(captureuser: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(captureuser);
   }
 
-  getUserDetails() {
-    let userData: any = localStorage.getItem('details');
-    if (userData !== null) {
-      userData = JSON.parse(localStorage.getItem('details'));
-      this.userDetails.name = userData.user.first_name + " " + userData.user.last_name;
-      this.userDetails.type = userData.user.employee_type_id;
-      this.userDetails.grade = userData.user.user_role_id;
-      this.userDetails.branchLocation = userData.user.branch_location_id;
-      this.userDetails.userID = userData.user.id;
-    }
-}
+
 //--------------------------------
 }
 

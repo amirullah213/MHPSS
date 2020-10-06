@@ -11,7 +11,6 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 export class PathologyListComponent implements OnInit {
   model: any = {};
   modalRef: BsModalRef;
-  errormsg: string;
 
   constructor(
     private modalService: BsModalService,

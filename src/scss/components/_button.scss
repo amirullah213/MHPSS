@@ -8,7 +8,7 @@ button {
 
 .button {
     background: $theme-color;
-    padding: 10px 15px;
+    padding: 9px 9px;
     font-size: $font-base;
     letter-spacing: 1px;
     border: 0;
@@ -35,7 +35,7 @@ button {
 
 .button-danger {
     background: #dc3545;
-    padding: 10px 15px;
+    padding: 9px 9px;
     font-size: $font-base;
     letter-spacing: 1px;
     border: 0;
@@ -57,6 +57,33 @@ button {
         background: transparent;
         color: #dc3545;
         border-color: #dc3545;
+    }
+}
+
+.button-success {
+    background: #1e993d;
+    padding: 9px 9px;
+    font-size: $font-base;
+    letter-spacing: 1px;
+    border: 0;
+    color: $white;
+    text-transform: capitalize;
+    font-weight: $font-medium;
+    display: inline-block;
+    border-radius: 3px;
+    text-align: center;
+    border: 2px solid #1e993d;
+    cursor: pointer;
+    @include transition (all, 0.5s, ease);
+    &:hover {
+        background: transparent;
+        color: #1e993d;
+        border-color: #1e993d;
+    }
+    &:focus {
+        background: transparent;
+        color: #1e993d;
+        border-color: #1e993d;
     }
 }
 
