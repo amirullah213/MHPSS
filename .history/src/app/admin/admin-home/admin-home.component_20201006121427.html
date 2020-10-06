@@ -28,7 +28,7 @@
                                     </span>
                                 </div>
                                 <div class="table-responsive">
-                                    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table center-aligned-table">
+                                    <table datatable class="table center-aligned-table">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -52,23 +52,23 @@
                                                 <td>{{usr.username}}</td>
                                                 <td>{{usr.password}}</td>
                                                 <td>
-                                                    <span *ngIf="usr.status=='1'">Working</span>
-                                                    <span *ngIf="usr.status=='2'">Resigned</span>
-                                                    <span *ngIf="usr.status=='3'">Terminated</span>
-                                                    <span *ngIf="usr.status=='4'">On leave</span>
+                                                    <span *ngIf="usr.status==1">Working</span>
+                                                    <span *ngIf="usr.status==2">Resigned</span>
+                                                    <span *ngIf="usr.status==3">Terminated</span>
+                                                    <span *ngIf="usr.status==4">On leave</span>
                                                 </td>
                                                 <td>
                                                     <button href="" class="mr-3 btn btn-info"
-                                                        (click)="openModedit(usersEdit,usr)"><i class="fa fa-edit"></i></button>
+                                                        (click)="usersEdit.show()"><i class="fa fa-edit"></i></button>
                                                     <!-- model for users download start-->
-                                                    <ng-template #usersEdit let-c="close" let-d="dismiss" class="modal fade" tabindex="-1"
+                                                    <div bsModal #usersEdit="bs-modal" class="modal fade" tabindex="-1"
                                                         role="dialog" aria-labelledby="dialog-sizes-name2">
-                                                        <div class="modal-dialog modal-xl modal-dialog-centered">
+                                                        <div class="modal-dialog modal-lg modal-dialog-centered">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <h2>Edit User</h2>
                                                                     <button type="button" class="close pull-right"
-                                                                        aria-label="Close" (click)="modalRef.hide()">
+                                                                        aria-label="Close" (click)="usersEdit.hide()">
                                                                         <span aria-hidden="true"><i
                                                                                 class="ti-close"></i></span>
                                                                     </button>
@@ -76,79 +76,78 @@
                                                                 <div class="modal-body p-5">
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-2 mt-3"><label
-                                                                                for="Ename">Name</label></div>
+                                                                                for="inputState">Name</label></div>
                                                                         <div class="col-sm-10">
                                                                             <input type="text"
-                                                                                class="form-control input-sm" id="Ename" [(ngModel)]="EuserOb.Ename" 
+                                                                                class="form-control input-sm" id="Ename"
                                                                                 placeholder="Full Name">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-2 mt-3"><label
-                                                                                for="Edes">Designation</label>
+                                                                                for="inputState">Designation</label>
                                                                         </div>
                                                                         <div class="col-sm-10">
-                                                                            <input type="text" class="form-control" [(ngModel)]="EuserOb.Edes"
+                                                                            <input type="text" class="form-control"
                                                                                 id="Edes" placeholder="Designation">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-2 mt-3"><label
-                                                                                for="Ejoining">Joining Date</label>
+                                                                                for="inputState">Joining Date</label>
                                                                         </div>
                                                                         <div class="col-sm-10">
-                                                                            <input type="text" class="form-control" [(ngModel)]="EuserOb.Ejoining"
+                                                                            <input type="text" class="form-control"
                                                                                 id="Ejoining" placeholder="Joining Date"
                                                                                 bsdatepicker>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-2 mt-3"><label
-                                                                                for="Econtact">Contact</label></div>
+                                                                                for="inputState">Contact</label></div>
                                                                         <div class="col-sm-10">
-                                                                            <input type="text" class="form-control" [(ngModel)]="EuserOb.Econtact"
+                                                                            <input type="text" class="form-control"
                                                                                 id="Econtact" placeholder="Contact No">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-2 mt-3"><label
-                                                                                for="Euname">User Name</label></div>
+                                                                                for="inputState">User Name</label></div>
                                                                         <div class="col-sm-10">
-                                                                            <input type="text" class="form-control" [(ngModel)]="EuserOb.Euname"
+                                                                            <input type="text" class="form-control"
                                                                                 id="Euname" placeholder="User Name">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-2 mt-3"><label
-                                                                                for="Epassword">Password</label></div>
+                                                                                for="inputState">Password</label></div>
                                                                         <div class="col-sm-10">
-                                                                            <input type="text" class="form-control" [(ngModel)]="EuserOb.Epassword"
+                                                                            <input type="text" class="form-control"
                                                                                 id="Epassword" placeholder="Password">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-2 mt-3"><label
-                                                                                for="">Status</label></div>
+                                                                                for="inputState">Status</label></div>
                                                                         <div class="col-sm-10">
-                                                                            <select class="form-control" [(ngModel)]="EuserOb.Estatus"
+                                                                            <select class="form-control"
                                                                                 aria-label="Text input with segmented dropdown button">
-                                                                                <option value='1'>Working</option>
-                                                                                
-                                                                                <option value='2'>Resigned</option>
-                                                                                
-                                                                                <option value='3'> Terminated</option>
-                                                                                   
-                                                                                <option value='4'>Onleave</option>
-                                                                                
+                                                                                <option placeholder="working">Working
+                                                                                </option>
+                                                                                <option placeholder="resigned">Resigned
+                                                                                </option>
+                                                                                <option placeholder="terminated">
+                                                                                    Terminated</option>
+                                                                                <option placeholder="onleave">Onleave
+                                                                                </option>
                                                                             </select>
                                                                         </div>
                                                                     </div>
-                                                                    <hr>
                                                                     <div class="modal-UserNameter">
                                                                         <button type="button" class="button-danger"
-                                                                        (click)="modalRef.hide()"><i
+                                                                            (click)="usersEdit.hide()"><i
                                                                                 class="fa fa-remove"></i> Close</button>
-                                                                        <button type="button" class="button" (click)="updateUser(EuserOb)"><i
+                                                                        <button type="button" class="button"><i
                                                                                 class="fa fa-check-square"></i> Update
                                                                             User</button>
                                                                     </div>
@@ -156,13 +155,13 @@
 
                                                             </div>
                                                         </div>
-                                                    </ng-template>
+                                                    </div>
                                                     <!-- model for users download end-->
 
                                                     <button href="" class="mr-2 btn btn-danger"
-                                                        (click)="openDeleteModal(userdelete,usr)"><i class="fa fa-trash"></i></button>
+                                                        (click)="userdelete.show()"><i class="fa fa-trash"></i></button>
                                                     <!-- model for user delete start-->
-                                                    <ng-template  #userdelete class="modal fade" tabindex="-1"
+                                                    <div bsModal #userdelete="bs-modal" class="modal fade" tabindex="-1"
                                                         role="dialog" aria-labelledby="dialog-sizes-name2">
                                                         <div class="modal-dialog modal-sm modal-dialog-centered">
                                                             <div class="modal-content">
@@ -174,26 +173,23 @@
                                                                 </div>>
                                                                 <div class="modal-UserNameter">
                                                                     <button type="button" class="button"
-                                                                        (click)="modalRef.hide()"><i
+                                                                        (click)="userdelete.hide()"><i
                                                                             class="fa fa-remove"></i> Cancel</button>
-                                                                    <button type="button" class="button-danger" (click)="deleteUser()"><i
+                                                                    <button type="button" class="button-danger"><i
                                                                             class="fa fa-check-square"></i>
                                                                         Delete</button>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </ng-template>
+                                                    </div>
                                                     <!-- model for User Delete end-->
                                                 </td>
                                             </tr>
 
                                         </tbody>
                                     </table>
-                                   
-                                    <div *ngIf="loader_eqp" class="d-flex justify-content-center">
-                                        <div class="spinner-border theme-color" role="status">
-                                            <span class="sr-only"></span>
-                                        </div>
+                                    <div *ngIf="loader_eqp" class="text-center">
+                                        <i class="fa fa-pulse fa-spinner fa-3x fa-fw"></i>
                                     </div>
                                     <hr class="hr-gray mx-3 my-3">
                                 </div>
@@ -219,7 +215,7 @@
                                 <div class="col-sm-2 mt-3"><label for="name">Full Name</label></div>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control input-sm" id="name"
-                                        [(ngModel)]="userOb.name" placeholder="Full Name">
+                                        [(ngModel)]="userOb.fullname" placeholder="Full Name">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -232,7 +228,7 @@
                             <div class="form-group row">
                                 <div class="col-sm-2 mt-3"><label for="joining">Joining Date</label></div>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="joining" [(ngModel)]="userOb.joiningDate"
+                                    <input type="text" class="form-control" id="joining" [(ngModel)]="userOb.jdate"
                                         placeholder="Joining" bsDatepicker>
                                 </div>
                             </div>
@@ -246,7 +242,7 @@
                             <div class="form-group row">
                                 <div class="col-sm-2 mt-3"><label for="uname">User Name</label></div>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="uname" [(ngModel)]="userOb.username"
+                                    <input type="text" class="form-control" id="uname" [(ngModel)]="userOb.uname"
                                         placeholder="User Name">
                                 </div>
                             </div>
@@ -257,7 +253,7 @@
                                         placeholder="Password">
                                 </div>
                             </div>
-                            <!-- <div class="form-group row">
+                            <div class="form-group row">
                                 <div class="col-sm-2 mt-3"><label>Status</label></div>
                                 <div class="col-sm-10">
                                     <select class="form-control" aria-label="Text input with segmented dropdown button"
@@ -268,7 +264,7 @@
                                         <option value="4">Onleave</option>
                                     </select>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                         <div class="modal-UserNameter">
                             <button type="button" class="button-danger" (click)="addUser.hide()"><i

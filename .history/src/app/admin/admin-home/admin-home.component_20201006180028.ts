@@ -201,7 +201,7 @@ export class AdminHomeComponent implements OnInit {
   //delete new user
 
   //get all user List
-  deleteUser() {
+  deteUser() {
     this.loader_eqp = true;
 
     //  console.log('local storage==',localStorage.getItem('auth_token'));

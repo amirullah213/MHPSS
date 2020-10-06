@@ -201,7 +201,7 @@ export class AdminHomeComponent implements OnInit {
   //delete new user
 
   //get all user List
-  deleteUser() {
+  deteUser() {
     this.loader_eqp = true;
 
     //  console.log('local storage==',localStorage.getItem('auth_token'));
@@ -212,7 +212,7 @@ export class AdminHomeComponent implements OnInit {
       (response: any) => {
         if (response.status === 0) {
           this.allUsers = response.data;
-         
+          console.log('allHospitals==', this.allUsers);
           // this.dataFromServer = response['data']['Coords'];
           // Calling the DT trigger to manually render the table
           this.modalRef.hide();

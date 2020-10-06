@@ -32,7 +32,6 @@ export class AdminHomeComponent implements OnInit {
   loader_eqp: boolean = false;
   errormsg: string;
   userData:any={};
-  userID:number;
 
   // We use this trigger because fetching the list of persons can be quite long,
   // thus we ensure the data is fetched before rendering
@@ -79,16 +78,7 @@ export class AdminHomeComponent implements OnInit {
     this.modalRef = this.modalService.show(usersEdit, this.userData); //, this.userData  //, data
     console.log('user data====',this.userData);
    this.showEditData(this.userData)
-     //this.modalRef.content.userActivate = 'Close';
-  }
-  openDeleteModal(userdelete: TemplateRef<any>,dataOb) {
-    //this.modalService.open(usersEdit);
-   
-     this.userID = dataOb.id;
-    this.modalRef = this.modalService.show(userdelete, this.userData); //, this.userData  //, data
-    console.log('user data====',this.userID);
-  
-     //this.modalRef.content.userActivate = 'Close';
+     this.modalRef.content.userActivate = 'Close';
   }
   showEditData(edtObj){
     this.EuserOb.id=edtObj.id;
@@ -165,7 +155,7 @@ export class AdminHomeComponent implements OnInit {
   }
   //add new user
 
-   //delete new user
+   //add new user
    updateUser() {
     this.loader_eqp = true;
 
@@ -185,7 +175,6 @@ export class AdminHomeComponent implements OnInit {
           this.allUsers = response.data;
          //this.dtTrigger.next();
           this.loader_eqp = false;
-          this.modalRef.hide();
           // this.modalRef.content.userActivate = 'Close';
         }
         if (response.status === 1) {
@@ -198,39 +187,7 @@ export class AdminHomeComponent implements OnInit {
       (error) => {}
     );
   }
-  //delete new user
-
-  //get all user List
-  deleteUser() {
-    this.loader_eqp = true;
-
-    //  console.log('local storage==',localStorage.getItem('auth_token'));
-      this.model.id = this.userID;
-      console.log('test==',this.model)
-
-    this.adminService.deleteUser(this.model).subscribe(
-      (response: any) => {
-        if (response.status === 0) {
-          this.allUsers = response.data;
-         
-          // this.dataFromServer = response['data']['Coords'];
-          // Calling the DT trigger to manually render the table
-          this.modalRef.hide();
-          this.loader_eqp = false;
-        }
-
-        if (response.status === 1) {
-          this.errormsg = response.errors;
-          this.loader_eqp = false;
-          console.log('error=', this.errormsg);
-          //this._loginserviceService.logout();
-        }
-      },
-      (error) => {}
-    );
-  }
-  //get all user list
-
+  //add new user
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();
