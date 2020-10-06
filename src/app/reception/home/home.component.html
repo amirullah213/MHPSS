@@ -181,7 +181,9 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group mt-2">
-                                                <button class="button-danger mr-2 mt-4"><i class="fa fa-remove"></i> Cancel </button>
+                                                <button class="button-danger mr-2 mt-4" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
+                                                    <i class="fa fa-remove"></i> Cancel 
+                                                </button>
                                                 <button class="button-success mt-4"><i class="fa fa-check-square"></i> Add Patient</button>
                                             </div>
                                         </div>
