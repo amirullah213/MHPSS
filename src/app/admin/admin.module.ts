@@ -17,6 +17,8 @@ import { PharmcyComponent } from './pharmcy/pharmcy.component';
 import { AmbulanceComponent } from './ambulance/ambulance.component';
 import { ComplaintsComponent } from './complaints/complaints.component';
 import { SignsComponent } from './signs/signs.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 
 
@@ -25,7 +27,7 @@ import { SignsComponent } from './signs/signs.component';
   declarations: [AdminHomeComponent, AdminComponentComponent, SideBarAdminComponent, DiagnosticListComponent, PathologyListComponent, RadiologyListComponent, PharmcyComponent, AmbulanceComponent, ComplaintsComponent, SignsComponent],
   imports: [
     CommonModule,
-    AdminRoutingModule,SharedModule,DataTablesModule,ModalModule.forRoot(),FormsModule
+    AdminRoutingModule, SharedModule, DataTablesModule, ModalModule.forRoot(), FormsModule, BsDatepickerModule.forRoot(), CollapseModule.forRoot()
   ]
 })
 export class AdminModule { }

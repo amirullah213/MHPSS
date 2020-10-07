@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <span class="pull-right btn btn-sm">
-                                        <button type="button" class="button" (click)="openModAdd(pathologyAdd)">
+                                        <button type="button" class="button" (click)="openModalWithClass(template)">
                                             <i class="fa fa-plus"></i>
                                             Add Pathology Test
                                         </button>
@@ -30,50 +30,41 @@
                                 </div>
 
                                 <!-- model for Add Diagnostic download start-->
-                                <ng-template  #pathologyAdd class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
-                                    <div class="modal-dialog modal-lg modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h2>Add Test</h2>
-                                                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                                                    <span aria-hidden="true"><i class="ti-close"></i></span>
-                                                </button>
+                                <ng-template #template>
+                                    <div class="modal-header">
+                                        <h4 class="modal-title pull-left">Modal</h4>
+                                        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-inline">
+                                            <input type="text" class="form-control col-12" id="maintest" placeholder="Main Test Name">
+                                            <input type="text" class="form-control mr-1 mt-2 col-md-4" id="subtest" placeholder="Sub Test Name">
+                                            <input type="text" class="form-control mr-1 mt-2 col-md-4" id="normalrang" placeholder="Normal Range">
+                                            <input type="text" class="form-control mt-2 col-md-3" id="fee" placeholder="Fee">
+                                            <a class="mt-2 ml-2"><i class="ti-plus text-success"></i></a>
+                                            <div class="col-md-4 mt-2">
+                                                <p>Sub test</p>
                                             </div>
-                                            <div class="modal-body p-5">
-                                                <div class="form-group row">
-                                                    <div class="col-sm-3 mt-3"><label for="inputState">Main Test Name</label></div>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control input-sm" id="maintest" placeholder="Main Test Name">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col-sm-3 mt-3"><label for="inputState">Sub Test Name</label></div>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="subtest" placeholder="Sub Test Name">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col-sm-3 mt-3"><label for="inputState">Normal Ranges</label></div>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="ranges" placeholder="Normal Ranges">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col-sm-3 mt-3"><label for="inputState">Fee</label></div>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="fee" placeholder="Fee">
-                                                    </div>
-                                                </div>
+                                            <div class="col-md-4 mt-2">
+                                                <p>Range</p>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="button-danger" (click)="modalRef.hide()">
-                                                    <i class="fa fa-remove"></i> Close
-                                                </button>
-                                                <button type="button" class="button">
-                                                    <i class="fa fa-check-square"></i> Add Test
-                                                </button>
+                                            <div class="col-md-3 mt-2">
+                                                <p>Fee</p>
                                             </div>
-                                        </div>
+                                            <div class="mt-2 ml-3">
+                                                <a class="mt-2"><b><i class="ti-close text-danger"></i></b></a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="button-danger" (click)="modalRef.hide()">
+                                            <i class="fa fa-remove"></i> Close
+                                        </button>
+                                        <button type="button" class="button">
+                                            <i class="fa fa-check-square"></i> Add Test
+                                        </button>
                                     </div>
                                 </ng-template>
                                 <!-- model for Add Diagnostic download end-->
@@ -91,101 +82,83 @@
                                         <tbody>
                                             <tr>
                                                 <td>Test ABC</td>
-                                                <td>Test A</td>
+                                                <td>
+                                                    <ul>
+                                                        <li>Sub Test Name</li>
+                                                        <li>Sub Test Name</li>
+                                                        <li>Sub Test Name</li>
+                                                    </ul>
+                                                </td>
                                                 <td>10-15 mg/kg</td>
                                                 <td>500</td>
                                                 <td>
-                                                    <button href="" class="mr-3 btn btn-info" (click)="pathologyEdit.show()"><i class="fa fa-edit"></i></button>
-                                                    <!-- model for Diagnostic Update start-->
-                                                    <div bsModal #pathologyEdit="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
-                                                        <div class="modal-dialog modal-lg modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h2>Update Test</h2>
-                                                                    <button type="button" class="close pull-right" aria-label="Close" (click)="pathologyEdit.hide()">
-                                                                        <span aria-hidden="true"><i class="ti-close"></i></span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body p-5">
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-3 mt-3"><label for="inputState">Main Test Name</label></div>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="text" class="form-control input-sm" id="Umaintest" placeholder="Main Test Name">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-3 mt-3"><label for="inputState">Sub Test Name</label></div>
-                                                                        <div class="col-sm-8">
-                                                                            <input type="text" class="form-control" id="Usubtest" placeholder="Sub Test Name">
-                                                                        </div>
-                                                                        <div class="col-sm-1 mt-3">
-                                                                            <a href="" class="mr-3 text-success">
-                                                                                <i class="fa fa-plus"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-3"></div>
-                                                                        <div class="col-sm-8"><label for="inputState">Sub Test Name</label></div>
-                                                                        <div class="col-sm-1">
-                                                                            <a href="" class="mr-3 text-danger">
-                                                                                <i class="fa fa-remove"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-3 mt-3"><label for="inputState">Normal Ranges</label></div>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="text" class="form-control" id="Uranges" placeholder="Normal Ranges">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-3 mt-3"><label for="inputState">Fee</label></div>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="text" class="form-control" id="Ufee" placeholder="Fee">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="button-danger" (click)="pathologyEdit.hide()">
-                                                                        <i  class="fa fa-remove"></i> Close
-                                                                    </button>
-                                                                    <button type="button" class="button">
-                                                                        <i class="fa fa-check-square"></i> Update
-                                                                    </button>
-                                                                </div>
-                                                            </div>
+                                                    <button href="" class="mr-3 btn btn-info" (click)="openModalWithClass1(template1)"><i class="ti-pencil-alt"></i></button>
+                                                    <!-- model for Add Diagnostic download start-->
+                                                    <ng-template #template1>
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title pull-left">Modal</h4>
+                                                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
                                                         </div>
-                                                    </div>
-                                                    <!-- model for Diagnostic Update end-->
-                                                    <button href="" class="mr-2 btn btn-danger" (click)="pathologydelete.show()"><i class="fa fa-trash"></i></button>
+                                                        <div class="modal-body">
+                                                            <form class="form-inline">
+                                                                <input type="text" class="form-control col-12" id="maintest" placeholder="Main Test Name">
+                                                                <input type="text" class="form-control mr-1 mt-2 col-md-4" id="subtest" placeholder="Sub Test Name">
+                                                                <input type="text" class="form-control mr-1 mt-2 col-md-4" id="normalrang" placeholder="Normal Range">
+                                                                <input type="text" class="form-control mt-2 col-md-3" id="fee" placeholder="Fee">
+                                                                <a class="mt-2 ml-2"><i class="ti-plus text-success"></i></a>
+                                                                <div class="col-md-4 mt-2">
+                                                                    <p>Sub test</p>
+                                                                </div>
+                                                                <div class="col-md-4 mt-2">
+                                                                    <p>Range</p>
+                                                                </div>
+                                                                <div class="col-md-3 mt-2">
+                                                                    <p>Fee</p>
+                                                                </div>
+                                                                <div class="mt-2 ml-3">
+                                                                    <a class="mt-2"><b><i class="ti-close text-danger"></i></b></a>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="button-danger" (click)="modalRef.hide()">
+                                                                <i class="fa fa-remove"></i> Close
+                                                            </button>
+                                                            <button type="button" class="button">
+                                                                <i class="fa fa-check-square"></i> Add Test
+                                                            </button>
+                                                        </div>
+                                                    </ng-template>
+                                                    <!-- model for Add Diagnostic download end-->
+                                                    <button href="" class="mr-2 btn btn-danger" (click)="openModal(deletepathology)"><i class="ti-trash"></i></button>
                                                     <!-- model for Diagnostic delete start-->
-                                                    <div bsModal #pathologydelete="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
-                                                        <div class="modal-dialog modal-sm modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header bb-none"></div>
-                                                                <div class="modal-body p-5 text-center">
-                                                                    <i class="fa fa-exclamation-circle fa-5x text-danger"></i>
-                                                                    <p>Are You Sure To delete this Item!</p>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="button" (click)="pathologydelete.hide()"><i class="fa fa-remove"></i> Cancel</button>
-                                                                    <button type="button" class="button-danger"><i class="fa fa-check-square"></i> Delete</button>
-                                                                </div>
-                                                            </div>
+                                                    <ng-template #deletepathology>
+                                                        <div class="modal-body text-center">
+                                                            <i class="fa fa-exclamation-circle fa-5x text-danger"></i>
+                                                            <p>Do you really want to Delete this Item?</p>
+                                                            <button type="button" class="button mr-3" (click)="confirm()"> <i class="ti-check-box"></i> Yes</button>
+                                                            <button type="button" class="button-danger" (click)="decline()"> <span aria-hidden="true">&times;</span> No</button>
                                                         </div>
-                                                    </div>
+                                                    </ng-template>
                                                     <!-- model for Diagnostic delete end-->
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>Test ABC</td>
-                                                <td>Test B</td>
+                                                <td>
+                                                    <ul>
+                                                        <li>Sub Test Name</li>
+                                                        <li>Sub Test Name</li>
+                                                        <li>Sub Test Name</li>
+                                                    </ul>
+                                                </td>
                                                 <td>10-15 mg/kg</td>
                                                 <td>600</td>
                                                 <td>
-                                                    <button href="" class="mr-3 btn btn-info"><i class="fa fa-edit"></i></button>
-                                                    <button href="" class="mr-2 btn btn-danger" (click)="pathologydelete.show()"><i class="fa fa-trash"></i></button>
+                                                    <button href="" class="mr-3 btn btn-info"><i class="ti-pencil-alt"></i></button>
+                                                    <button href="" class="mr-2 btn btn-danger"><i class="ti-trash"></i></button>
                                                 </td>
                                             </tr>
                                         </tbody>

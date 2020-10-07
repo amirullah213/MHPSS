@@ -18,6 +18,7 @@ export class PathologyListComponent implements OnInit {
   model: any = {};
   model2: any = {};
   modalRef: BsModalRef;
+  message: string;
  
   allUsers: any = [];
   loader_eqp: boolean = false;
@@ -58,20 +59,33 @@ export class PathologyListComponent implements OnInit {
       console.log(err);
     }
   }
-  openModAdd(pathologyAdd: TemplateRef<any>) {
-    // this.userData = data;
-    this.modalRef = this.modalService.show(pathologyAdd);
-    // this.modalRef.content.userActivate = 'Close';
+  
+  openModalWithClass(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(
+      template,
+      Object.assign({}, { class: 'gray modal-lg' })
+    );
   }
-  openModedit(pathologyEdit: TemplateRef<any>) {
-    // this.userData = data;
-    this.modalRef = this.modalService.show(pathologyEdit);
-    // this.modalRef.content.userActivate = 'Close';
+
+  
+  openModalWithClass1(template1: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(
+      template1,
+      Object.assign({}, { class: 'gray modal-lg' })
+    );
   }
-  openModdelete(pathologydelete: TemplateRef<any>) {
-    // this.userData = data;
-    this.modalRef = this.modalService.show(pathologydelete);
-    // this.modalRef.content.userActivate = 'Close';
+  openModal(deletepathology: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(deletepathology, { class: 'modal-sm' });
+  }
+
+  confirm(): void {
+    this.message = 'Confirmed!';
+    this.modalRef.hide();
+  }
+
+  decline(): void {
+    this.message = 'Declined!';
+    this.modalRef.hide();
   }
 
    //get all pathology List
