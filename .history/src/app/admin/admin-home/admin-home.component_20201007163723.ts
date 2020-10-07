@@ -137,7 +137,12 @@ openAddModal(addUser: TemplateRef<any>) {
           this.allUsers = response.data;
          
           console.log('allHospitals==', this.allUsers);
+          // this.dataFromServer = response['data']['Coords'];
+          // Calling the DT trigger to manually render the table
+          // this.dtTrigger.next();
+          // this.rerender();
          
+          
           this.rerender();
           //this.dtTrigger.next();
           this.loader_eqp = false;

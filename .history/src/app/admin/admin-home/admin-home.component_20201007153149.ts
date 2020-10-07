@@ -24,8 +24,6 @@ import { DataTableDirective } from 'angular-datatables';
 })
 export class AdminHomeComponent implements OnInit {
   @ViewChild(DataTableDirective, {static: false})
-  dtElement: DataTableDirective;
-  //fullArray:any=[];
   userOb: any = {};
   EuserOb:any={};
  // dtOptions: any = {};
@@ -39,7 +37,7 @@ export class AdminHomeComponent implements OnInit {
   errormsg: string;
   userData:any={};
   userID:number;
-  
+  dtElement: DataTableDirective;
   dtInstance: DataTables.Api;
   // We use this trigger because fetching the list of persons can be quite long,
   // thus we ensure the data is fetched before rendering
@@ -52,14 +50,8 @@ export class AdminHomeComponent implements OnInit {
 
   ngOnInit() {
     // setTimeout(function(){ alert("Hi"); }, 2000);
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 25,
-      dom: 'lBfrtip',
-     // buttons: ['print', 'excel'],
-    };
+
     this.getUserList();
-    
   }
   ngAfterViewInit(): void {
     this.dtTrigger.next();
@@ -69,7 +61,7 @@ export class AdminHomeComponent implements OnInit {
     this.dtTrigger.unsubscribe();
   }
   rerender(): void {
-    
+    debugger
     this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
       // Destroy the table first
       dtInstance.destroy();
@@ -135,9 +127,18 @@ openAddModal(addUser: TemplateRef<any>) {
       (response: any) => {
         if (response.status === 0) {
           this.allUsers = response.data;
-         
           console.log('allHospitals==', this.allUsers);
+          // this.dataFromServer = response['data']['Coords'];
+          // Calling the DT trigger to manually render the table
+          // this.dtTrigger.next();
+          // this.rerender();
          
+          this.dtOptions = {
+            pagingType: 'full_numbers',
+            pageLength: 25,
+            dom: 'lBfrtip',
+           // buttons: ['print', 'excel'],
+          };
           this.rerender();
           //this.dtTrigger.next();
           this.loader_eqp = false;
@@ -167,7 +168,7 @@ openAddModal(addUser: TemplateRef<any>) {
     this.adminService.addUser(this.model2).subscribe(
       (response: any) => {
         if (response.status === 0) {
-          
+          this.allUsers = response.data;
          
           // this.dataFromServer = response['data']['Coords'];
           // Calling the DT trigger to manually render the table
@@ -207,7 +208,7 @@ openAddModal(addUser: TemplateRef<any>) {
     this.adminService.updateUser(this.model2).subscribe(
       (response: any) => {
         if (response.status === 0) {
-         // this.allUsers = response.data;
+          this.allUsers = response.data;
          //this.dtTrigger.next();
           this.loader_eqp = false;
           this.getUserList();
@@ -237,7 +238,7 @@ openAddModal(addUser: TemplateRef<any>) {
     this.adminService.deleteUser(this.model).subscribe(
       (response: any) => {
         if (response.status === 0) {
-         // this.allUsers = response.data;
+          this.allUsers = response.data;
          
           // this.dataFromServer = response['data']['Coords'];
           // Calling the DT trigger to manually render the table

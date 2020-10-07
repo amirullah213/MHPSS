@@ -27,7 +27,7 @@
                                     </span>
                                 </div>
                                 <div class="table-responsive">
-                                    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table center-aligned-table">
+                                    <table datatable class="table center-aligned-table">
                                         <thead>
                                             <tr>
                                                 <th>Sno#</th>
@@ -44,14 +44,14 @@
                                                 <td>{{usr.unit}}</td>
                                                 <td>{{usr.type}}</td>
                                                 <td>
-                                                    <button class="mr-3 btn btn-info" (click)="openModedit(pharmaEdit,usr)"><i class="fa fa-edit"></i></button>
+                                                    <button class="mr-3 btn btn-info" (click)="pharmaEdit.show()"><i class="fa fa-edit"></i></button>
                                                     <!-- model for Medicine Update start-->
-                                                    <ng-template  #pharmaEdit class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
+                                                    <div bsModal #pharmaEdit="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
                                                         <div class="modal-dialog modal-lg modal-dialog-centered">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <h2>Edit Medicine</h2>
-                                                                    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                                                    <button type="button" class="close pull-right" aria-label="Close" (click)="pharmaEdit.hide()">
                                                                         <span aria-hidden="true"><i class="ti-close"></i></span>
                                                                     </button>
                                                                 </div>
@@ -59,33 +59,33 @@
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-3 mt-3"><label for="inputState">Medicine Name</label></div>
                                                                         <div class="col-sm-9">
-                                                                            <input type="text" class="form-control input-sm" id="Uname" [(ngModel)]="EmedOb.Ename" placeholder="Medicine Name">
+                                                                            <input type="text" class="form-control input-sm" id="Uname" placeholder="Medicine Name">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-3 mt-3"><label for="inputState">Unit / Strength</label></div>
                                                                         <div class="col-sm-9">
-                                                                            <input type="text" class="form-control" id="Uunit" [(ngModel)]="EmedOb.Eunit" placeholder="Unit / Strength">
+                                                                            <input type="text" class="form-control" id="Uunit" placeholder="Unit / Strength">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-3 mt-3"><label for="inputState">Type</label></div>
                                                                         <div class="col-sm-9">
-                                                                            <input type="text" class="form-control" id="Utype" [(ngModel)]="EmedOb.Etype" placeholder="Type">
+                                                                            <input type="text" class="form-control" id="Utype" placeholder="Type">
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="button-danger" (click)="modalRef.hide()"><i class="fa fa-remove"></i> Close</button>
-                                                                    <button type="button" class="button" (click)="updateMedic(EmedOb)"><i class="fa fa-check-square"></i> Update</button>
+                                                                    <button type="button" class="button-danger" (click)="pharmaEdit.hide()"><i class="fa fa-remove"></i> Close</button>
+                                                                    <button type="button" class="button"><i class="fa fa-check-square"></i> Update</button>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </ng-template>
+                                                    </div>
                                                     <!-- model for Medicine Update end-->
-                                                    <button class="mr-3 btn btn-danger" (click)="openModdelete(pharmadelete,usr)"><i class="fa fa-trash"></i></button>
+                                                    <button class="mr-3 btn btn-danger" (click)="pharmadelete.show()"><i class="fa fa-trash"></i></button>
                                                     <!-- model for Medicine delete start-->
-                                                    <ng-template  #pharmadelete class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
+                                                    <div bsModal #pharmadelete="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
                                                         <div class="modal-dialog modal-sm modal-dialog-centered">
                                                             <div class="modal-content">
                                                                 <div class="modal-header bb-none"></div>
@@ -94,12 +94,12 @@
                                                                     <p>Are You Sure To delete this Item!</p>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="button-danger" (click)="modalRef.hide()"><i class="fa fa-remove"></i> Cancel</button>
-                                                                    <button type="button" class="button" (click)="deleteMedic()"><i class="fa fa-check-square"></i> Delete</button>
+                                                                    <button type="button" class="button-danger" (click)="pharmadelete.hide()"><i class="fa fa-remove"></i> Cancel</button>
+                                                                    <button type="button" class="button"><i class="fa fa-check-square"></i> Delete</button>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </ng-template>
+                                                    </div>
                                                     <!-- model for Medicine delete end-->
                                                 </td>
                                             </tr>

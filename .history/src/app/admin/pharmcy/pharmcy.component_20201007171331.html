@@ -44,7 +44,7 @@
                                                 <td>{{usr.unit}}</td>
                                                 <td>{{usr.type}}</td>
                                                 <td>
-                                                    <button class="mr-3 btn btn-info" (click)="openModedit(pharmaEdit,usr)"><i class="fa fa-edit"></i></button>
+                                                    <button class="mr-3 btn btn-info" (click)="openModedit(pharmaEdit)"><i class="fa fa-edit"></i></button>
                                                     <!-- model for Medicine Update start-->
                                                     <ng-template  #pharmaEdit class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
                                                         <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -59,25 +59,25 @@
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-3 mt-3"><label for="inputState">Medicine Name</label></div>
                                                                         <div class="col-sm-9">
-                                                                            <input type="text" class="form-control input-sm" id="Uname" [(ngModel)]="EmedOb.Ename" placeholder="Medicine Name">
+                                                                            <input type="text" class="form-control input-sm" id="Uname" placeholder="Medicine Name">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-3 mt-3"><label for="inputState">Unit / Strength</label></div>
                                                                         <div class="col-sm-9">
-                                                                            <input type="text" class="form-control" id="Uunit" [(ngModel)]="EmedOb.Eunit" placeholder="Unit / Strength">
+                                                                            <input type="text" class="form-control" id="Uunit" placeholder="Unit / Strength">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-3 mt-3"><label for="inputState">Type</label></div>
                                                                         <div class="col-sm-9">
-                                                                            <input type="text" class="form-control" id="Utype" [(ngModel)]="EmedOb.Etype" placeholder="Type">
+                                                                            <input type="text" class="form-control" id="Utype" placeholder="Type">
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="button-danger" (click)="modalRef.hide()"><i class="fa fa-remove"></i> Close</button>
-                                                                    <button type="button" class="button" (click)="updateMedic(EmedOb)"><i class="fa fa-check-square"></i> Update</button>
+                                                                    <button type="button" class="button"><i class="fa fa-check-square"></i> Update</button>
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -51,6 +51,7 @@ export class AdminHomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.getUserList();
     // setTimeout(function(){ alert("Hi"); }, 2000);
     this.dtOptions = {
       pagingType: 'full_numbers',
@@ -58,7 +59,7 @@ export class AdminHomeComponent implements OnInit {
       dom: 'lBfrtip',
      // buttons: ['print', 'excel'],
     };
-    this.getUserList();
+   
     
   }
   ngAfterViewInit(): void {
@@ -137,7 +138,12 @@ openAddModal(addUser: TemplateRef<any>) {
           this.allUsers = response.data;
          
           console.log('allHospitals==', this.allUsers);
+          // this.dataFromServer = response['data']['Coords'];
+          // Calling the DT trigger to manually render the table
+          // this.dtTrigger.next();
+          // this.rerender();
          
+          
           this.rerender();
           //this.dtTrigger.next();
           this.loader_eqp = false;

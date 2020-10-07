@@ -71,7 +71,7 @@ export class DiagnosticListComponent implements OnInit {
   //get all diagnostic list
   getAllDiagnostics() {
     this.loader_eqp = true;
-    
+    console.log('all medicines==opiiiiiiiiiiiiiiii');
    this.adminService.getDiagList(this.model).subscribe(
       (response: any) => {
         if (response.status === 0) {

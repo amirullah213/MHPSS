@@ -183,36 +183,4 @@ export class PharmcyComponent implements OnInit {
     );
   }
   //get all user list
-   //update medic
-   updateMedic(objmed) {
-    this.loader_eqp = true;
-
-    this.model2.itemID =  this.EmedOb.itemID;
-    this.model2.itemName =  objmed.Ename;
-    this.model2.unit =  objmed.Eunit;
-    this.model2.type =  objmed.Etype;
-    
-    console.log('test==', this.model2);
-
-    this.adminService.updateMed(this.model2).subscribe(
-      (response: any) => {
-        if (response.status === 0) {
-         // this.allUsers = response.data;
-         //this.dtTrigger.next();
-          this.loader_eqp = false;
-          this.getAllMedics();
-           this.modalRef.hide();
-          // this.modalRef.content.userActivate = 'Close';
-        }
-        if (response.status === 1) {
-          this.errormsg = response.errors;
-          this.loader_eqp = false;
-          console.log('error=', this.errormsg);
-          //this._loginserviceService.logout();
-        }
-      },
-      (error) => {}
-    );
-  }
-  //update medic
 }
