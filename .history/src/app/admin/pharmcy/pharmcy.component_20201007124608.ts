@@ -85,8 +85,7 @@ export class PharmcyComponent implements OnInit {
         if (response.status === 0) {
           this.allMedcis = response.data;
           console.log('all medicines==', this.allMedcis);
-          //this.rerender();
-          this.dtTrigger.next();
+          this.rerender();
           this.loader_eqp = false;
         }
 
@@ -115,9 +114,10 @@ export class PharmcyComponent implements OnInit {
     this.adminService.getAllMedicsList(this.model).subscribe(
       (response: any) => {
         if (response.status === 0) {
-            this.loader_eqp = false;
-            this.getAllMedics();
-            this.modalRef.hide();
+          this.allMedcis = response.data;
+          console.log('all medicines==', this.allMedcis);
+          this.rerender();
+          this.loader_eqp = false;
         }
 
         if (response.status === 1) {

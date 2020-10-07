@@ -27,19 +27,20 @@
                                     </span>
                                 </div>
                                 <div class="table-responsive">
-                                    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table center-aligned-table">
+                                    <table datatable class="table center-aligned-table">
                                         <thead>
                                             <tr>
-                                                <th>Sno#</th>
-                                                <th>Disease Name</th>
+                                                <th>Disease Nem</th>
+                                                <th>DHIS OPD Link</th>
+                                                <th>DHIS IPD Link</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor="let usr of allDiag;index as i">
-                                                <td>{{i+1}}</td>
-                                                <td>{{usr.name}}</td>
-                                                
+                                            <tr>
+                                                <td>Foo</td>
+                                                <td>Director</td>
+                                                <td>khnn_23</td>
                                                 <td>
                                                     <button class="mr-3 btn btn-info" (click)="diagnosticEdit.show()"><i class="fa fa-edit"></i></button>
                                                     <!-- model for Diagnostic Update start-->
@@ -93,11 +94,6 @@
                                             
                                         </tbody>
                                     </table>
-                                    <div *ngIf="loader_eqp" class="d-flex justify-content-center">
-                                        <div class="spinner-border theme-color" role="status">
-                                            <span class="sr-only"></span>
-                                        </div>
-                                    </div>
                                     <hr class="hr-gray mx-3 my-3">
                                 </div>
                             </div>

@@ -30,14 +30,14 @@
                                     <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table center-aligned-table">
                                         <thead>
                                             <tr>
-                                                <th>Sno#</th>
+                                                <!-- <th>Sno#</th> -->
                                                 <th>Disease Name</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor="let usr of allDiag;index as i">
-                                                <td>{{i+1}}</td>
+                                            <tr *ngFor="let usr of allDiag">
+                                                <!-- <td>{{i+1}}</td> -->
                                                 <td>{{usr.name}}</td>
                                                 
                                                 <td>

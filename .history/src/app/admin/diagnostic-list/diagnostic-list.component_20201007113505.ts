@@ -2,16 +2,16 @@ import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { Router } from "@angular/router";
 import { Subject } from 'rxjs';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { AdminServiceService } from '../services/admin-service.service';
 import { DataTableDirective } from 'angular-datatables';
-
+import { AdminServiceService } from '../services/admin-service.service';
 
 @Component({
-  selector: 'ncri-pathology-list',
-  templateUrl: './pathology-list.component.html',
-  styleUrls: ['./pathology-list.component.scss']
+  selector: 'ncri-diagnostic-list',
+  templateUrl: './diagnostic-list.component.html',
+  styleUrls: ['./diagnostic-list.component.scss']
 })
-export class PathologyListComponent implements OnInit {
+export class DiagnosticListComponent implements OnInit {
+  
   userOb: any = {};
   EuserOb:any={};
   dtOptions: any = {};
@@ -19,7 +19,7 @@ export class PathologyListComponent implements OnInit {
   model2: any = {};
   modalRef: BsModalRef;
  
-  allUsers: any = [];
+  allDiag: any = [];
   loader_eqp: boolean = false;
   errormsg: string;
   userData:any={};
@@ -31,21 +31,29 @@ export class PathologyListComponent implements OnInit {
   //dtTrigger: Subject = new Subject();
   dtTrigger: Subject<any> = new Subject();
 
+
   constructor(
     private modalService: BsModalService,
     private adminService: AdminServiceService
   ) { }
 
-  ngOnInit() {
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 25,
-      dom: 'lBfrtip',
-      buttons: ['print', 'excel'],
-    };
-    this.getAllPathology();
+  ngOnInit(): void {
   }
- 
+  openModAdd(diagnosticAdd: TemplateRef<any>) {
+    // this.userData = data;
+    this.modalRef = this.modalService.show(diagnosticAdd); //, this.userData  //, data
+    // this.modalRef.content.userActivate = 'Close';
+  }
+  openModedit(diagnosticEdit: TemplateRef<any>) {
+    // this.userData = data;
+    this.modalRef = this.modalService.show(diagnosticEdit); //, this.userData  //, data
+    // this.modalRef.content.userActivate = 'Close';
+  }
+  openModdelete(diagnosticdelete: TemplateRef<any>) {
+    // this.userData = data;
+    this.modalRef = this.modalService.show(diagnosticdelete); //, this.userData  //, data
+    // this.modalRef.content.userActivate = 'Close';
+  }
   rerender(): void {
     try {
       this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
@@ -58,43 +66,28 @@ export class PathologyListComponent implements OnInit {
       console.log(err);
     }
   }
-  openModAdd(pathologyAdd: TemplateRef<any>) {
-    // this.userData = data;
-    this.modalRef = this.modalService.show(pathologyAdd);
-    // this.modalRef.content.userActivate = 'Close';
-  }
-  openModedit(pathologyEdit: TemplateRef<any>) {
-    // this.userData = data;
-    this.modalRef = this.modalService.show(pathologyEdit);
-    // this.modalRef.content.userActivate = 'Close';
-  }
-  openModdelete(pathologydelete: TemplateRef<any>) {
-    // this.userData = data;
-    this.modalRef = this.modalService.show(pathologydelete);
-    // this.modalRef.content.userActivate = 'Close';
-  }
-
-   //get all pathology List
-   getAllPathology() {
+  //get all diagnostic list
+  getUserList() {
     this.loader_eqp = true;
-
-    this.adminService.getPatList(this.model).subscribe(
+   this.adminService.getDiagList(this.model).subscribe(
       (response: any) => {
         if (response.status === 0) {
-          this.allUsers = response.data;
-          console.log('allHospitals==', this.allUsers);
+          this.allDiag = response.data;
+          console.log('all diagnostic list==', this.allDiag);
           this.rerender();
           this.loader_eqp = false;
         }
-       if (response.status === 1) {
+
+        if (response.status === 1) {
           this.errormsg = response.errors;
           this.loader_eqp = false;
           console.log('error=', this.errormsg);
-         
+          //this._loginserviceService.logout();
         }
       },
       (error) => {}
     );
   }
-//get all pathology List
+  //get all diagnostic list
+
 }

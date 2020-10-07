@@ -130,7 +130,6 @@ openAddModal(addUser: TemplateRef<any>) {
           // Calling the DT trigger to manually render the table
           // this.dtTrigger.next();
           this.rerender();
-          this.dtTrigger.next();
           this.loader_eqp = false;
         }
 

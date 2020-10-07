@@ -11,7 +11,7 @@ import { DataTableDirective } from 'angular-datatables';
   styleUrls: ['./pharmcy.component.scss']
 })
 export class PharmcyComponent implements OnInit {
-  medOb: any = {};
+  userOb: any = {};
   EuserOb:any={};
   dtOptions: any = {};
   model: any = {};
@@ -80,13 +80,15 @@ export class PharmcyComponent implements OnInit {
     //  this.model.auth_token =  localStorage.getItem('auth_token');
     //  console.log('test==',this.model)
 
-    this.adminService.getAllMedicsList(this.model).subscribe(
+    this.adminService.getPatList(this.model).subscribe(
       (response: any) => {
         if (response.status === 0) {
           this.allMedcis = response.data;
           console.log('all medicines==', this.allMedcis);
-          //this.rerender();
-          this.dtTrigger.next();
+          // this.dataFromServer = response['data']['Coords'];
+          // Calling the DT trigger to manually render the table
+          // this.dtTrigger.next();
+          this.rerender();
           this.loader_eqp = false;
         }
 
@@ -102,33 +104,4 @@ export class PharmcyComponent implements OnInit {
   }
    //get all medicine  List
 
- //add new medicine  List
- addNewMedic(objmed) {
-    this.loader_eqp = true;
-
-    //  console.log('local storage==',localStorage.getItem('auth_token'));
-      this.model.itemName = objmed.name;
-      this.model.unit = objmed.unit;
-      this.model.type = objmed.type;
-    //  console.log('test==',this.model)
-
-    this.adminService.getAllMedicsList(this.model).subscribe(
-      (response: any) => {
-        if (response.status === 0) {
-            this.loader_eqp = false;
-            this.getAllMedics();
-            this.modalRef.hide();
-        }
-
-        if (response.status === 1) {
-          this.errormsg = response.errors;
-          this.loader_eqp = false;
-          console.log('error=', this.errormsg);
-          //this._loginserviceService.logout();
-        }
-      },
-      (error) => {}
-    );
-  }
-   //add new medicine  List
 }

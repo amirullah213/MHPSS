@@ -85,7 +85,7 @@ export class PharmcyComponent implements OnInit {
         if (response.status === 0) {
           this.allMedcis = response.data;
           console.log('all medicines==', this.allMedcis);
-          //this.rerender();
+          this.rerender();
           this.dtTrigger.next();
           this.loader_eqp = false;
         }

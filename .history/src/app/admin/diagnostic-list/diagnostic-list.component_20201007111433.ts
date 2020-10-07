@@ -19,7 +19,7 @@ export class DiagnosticListComponent implements OnInit {
   model2: any = {};
   modalRef: BsModalRef;
  
-  allDiag: any = [];
+  allUsers: any = [];
   loader_eqp: boolean = false;
   errormsg: string;
   userData:any={};
@@ -37,14 +37,7 @@ export class DiagnosticListComponent implements OnInit {
     private adminService: AdminServiceService
   ) { }
 
-  ngOnInit() {
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 25,
-      dom: 'lBfrtip',
-      buttons: ['print', 'excel'],
-    };
-    this.getAllDiagnostics();
+  ngOnInit(): void {
   }
   openModAdd(diagnosticAdd: TemplateRef<any>) {
     // this.userData = data;
@@ -61,40 +54,5 @@ export class DiagnosticListComponent implements OnInit {
     this.modalRef = this.modalService.show(diagnosticdelete); //, this.userData  //, data
     // this.modalRef.content.userActivate = 'Close';
   }
-  rerender(): void {
-    try {
-      this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-        // Destroy the table first
-        dtInstance.destroy();
-        // Call the dtTrigger to rerender again
-        this.dtTrigger.next();
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  }
-  //get all diagnostic list
-  getAllDiagnostics() {
-    this.loader_eqp = true;
-   this.adminService.getDiagList(this.model).subscribe(
-      (response: any) => {
-        if (response.status === 0) {
-          this.allDiag = response.data;
-        // console.log('all diagnostic list==', this.allDiag);
-          this.rerender();
-          this.loader_eqp = false;
-        }
-
-        if (response.status === 1) {
-          this.errormsg = response.errors;
-          this.loader_eqp = false;
-          console.log('error=', this.errormsg);
-          //this._loginserviceService.logout();
-        }
-      },
-      (error) => {}
-    );
-  }
-  //get all diagnostic list
 
 }

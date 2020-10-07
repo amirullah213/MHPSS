@@ -128,8 +128,6 @@ openAddModal(addUser: TemplateRef<any>) {
           console.log('allHospitals==', this.allUsers);
           // this.dataFromServer = response['data']['Coords'];
           // Calling the DT trigger to manually render the table
-          // this.dtTrigger.next();
-          this.rerender();
           this.dtTrigger.next();
           this.loader_eqp = false;
         }
@@ -164,7 +162,7 @@ openAddModal(addUser: TemplateRef<any>) {
           // Calling the DT trigger to manually render the table
           // this.dtTrigger.next();
           this.loader_eqp = false;
-        
+         this.rerender();
           this.getUserList();
            this.modalRef.hide();
         }
@@ -201,8 +199,7 @@ openAddModal(addUser: TemplateRef<any>) {
           this.allUsers = response.data;
          //this.dtTrigger.next();
           this.loader_eqp = false;
-          this.getUserList();
-           this.modalRef.hide();
+          this.modalRef.hide();
           // this.modalRef.content.userActivate = 'Close';
         }
         if (response.status === 1) {
@@ -232,7 +229,6 @@ openAddModal(addUser: TemplateRef<any>) {
          
           // this.dataFromServer = response['data']['Coords'];
           // Calling the DT trigger to manually render the table
-          this.getUserList();
           this.modalRef.hide();
           this.loader_eqp = false;
         }

@@ -10,7 +10,6 @@ import {
 } from '@angular/forms';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { AdminServiceService } from '../services/admin-service.service';
-import { DataTableDirective } from 'angular-datatables';
 
 //import { Subject } from 'rxjs/Observable';
 // import { AllequipService } from '../../services/login/allequip.service';
@@ -34,8 +33,7 @@ export class AdminHomeComponent implements OnInit {
   errormsg: string;
   userData:any={};
   userID:number;
-  dtElement: DataTableDirective;
-  dtInstance: DataTables.Api;
+
   // We use this trigger because fetching the list of persons can be quite long,
   // thus we ensure the data is fetched before rendering
   //dtTrigger: Subject = new Subject();
@@ -54,19 +52,6 @@ export class AdminHomeComponent implements OnInit {
     };
     this.getUserList();
   }
- 
-  rerender(): void {
-    try {
-      this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-        // Destroy the table first
-        dtInstance.destroy();
-        // Call the dtTrigger to rerender again
-        this.dtTrigger.next();
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  }
 
   openModAdd(addUser: TemplateRef<any>) {
     //  this.userData = userdata;
@@ -76,7 +61,17 @@ export class AdminHomeComponent implements OnInit {
     // this.modalRef.content.userActivate = 'Close';
   }
 
- 
+  // edit component
+// modAtt:string[];
+// openedit(objedt) {
+//  const modalRef = this.modalService.open(MymodalComponent);
+//  modalRef.componentInstance.my_modal_title = objedt.name;
+//  modalRef.componentInstance.my_modal_id = objedt.id;
+//  modalRef.componentInstance.componentType = 'improvement';
+// this.modAtt=JSON.parse(objedt.attributes);
+//  modalRef.componentInstance.my_modal_content = this.modAtt;
+
+// }
 
 openAddModal(addUser: TemplateRef<any>) {
   
@@ -128,8 +123,6 @@ openAddModal(addUser: TemplateRef<any>) {
           console.log('allHospitals==', this.allUsers);
           // this.dataFromServer = response['data']['Coords'];
           // Calling the DT trigger to manually render the table
-          // this.dtTrigger.next();
-          this.rerender();
           this.dtTrigger.next();
           this.loader_eqp = false;
         }
@@ -164,8 +157,6 @@ openAddModal(addUser: TemplateRef<any>) {
           // Calling the DT trigger to manually render the table
           // this.dtTrigger.next();
           this.loader_eqp = false;
-        
-          this.getUserList();
            this.modalRef.hide();
         }
 
@@ -201,8 +192,7 @@ openAddModal(addUser: TemplateRef<any>) {
           this.allUsers = response.data;
          //this.dtTrigger.next();
           this.loader_eqp = false;
-          this.getUserList();
-           this.modalRef.hide();
+          this.modalRef.hide();
           // this.modalRef.content.userActivate = 'Close';
         }
         if (response.status === 1) {
@@ -232,7 +222,6 @@ openAddModal(addUser: TemplateRef<any>) {
          
           // this.dataFromServer = response['data']['Coords'];
           // Calling the DT trigger to manually render the table
-          this.getUserList();
           this.modalRef.hide();
           this.loader_eqp = false;
         }

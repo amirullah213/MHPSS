@@ -43,7 +43,7 @@ export class PathologyListComponent implements OnInit {
       dom: 'lBfrtip',
       buttons: ['print', 'excel'],
     };
-    this.getAllPathology();
+    this.getUserList();
   }
  
   rerender(): void {
@@ -75,7 +75,7 @@ export class PathologyListComponent implements OnInit {
   }
 
    //get all pathology List
-   getAllPathology() {
+   getUserList() {
     this.loader_eqp = true;
 
     this.adminService.getPatList(this.model).subscribe(

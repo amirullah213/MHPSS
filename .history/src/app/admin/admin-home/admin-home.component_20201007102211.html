@@ -21,7 +21,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <span class="pull-right btn btn-sm">
-                                        <button type="button" class="button" (click)="openAddModal(addUser)">
+                                        <button type="button" class="button" (click)="addUser.show()">
                                             <i class="fa fa-plus"></i>
                                             Add User
                                         </button>
@@ -31,7 +31,7 @@
                                     <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table center-aligned-table">
                                         <thead>
                                             <tr>
-                                                <th>Sno#</th>
+                                                <th>ID</th>
                                                 <th>Name</th>
                                                 <th>Designation</th>
                                                 <th>Joining</th>

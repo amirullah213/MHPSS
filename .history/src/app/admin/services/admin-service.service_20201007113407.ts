@@ -31,13 +31,4 @@ export class AdminServiceService {
     let url = APP_CONFIG.apiBaseUrl + 'getalldiagnosis';
     return this.http.post(url, obj);
   }
-  getAllPathlogyList(obj: any) {
-    let url = APP_CONFIG.apiBaseUrl + 'getalldiagnosis';
-    return this.http.post(url, obj);
-  }
-  getAllMedicsList(obj: any) {
-    let url = APP_CONFIG.apiBaseUrl + 'getmedicines';
-    return this.http.post(url, obj);
-  }
-
 }

@@ -21,7 +21,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <span class="pull-right btn btn-sm">
-                                        <button type="button" class="button" (click)="openAddModal(addUser)">
+                                        <button type="button" class="button" (click)="addUser.show()">
                                             <i class="fa fa-plus"></i>
                                             Add User
                                         </button>
@@ -31,7 +31,7 @@
                                     <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table center-aligned-table">
                                         <thead>
                                             <tr>
-                                                <th>Sno#</th>
+                                                <th>ID</th>
                                                 <th>Name</th>
                                                 <th>Designation</th>
                                                 <th>Joining</th>
@@ -210,7 +210,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h2>Add User</h2>
-                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="addUser.hide()">
                                 <span aria-hidden="true"><i class="ti-close"></i></span>
                             </button>
                         </div>
@@ -271,7 +271,7 @@
                             </div> -->
                         </div>
                         <div class="modal-UserNameter">
-                            <button type="button" class="button-danger" (click)="modalRef.hide()"><i
+                            <button type="button" class="button-danger" (click)="addUser.hide()"><i
                                     class="fa fa-remove"></i> Close</button>
                             <button type="button" class="button" (click)="addNewUser(userOb)"><i
                                     class="fa fa-check-square"></i> Add User</button>
