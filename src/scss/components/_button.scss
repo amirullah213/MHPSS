@@ -87,6 +87,33 @@ button {
     }
 }
 
+.button-info {
+    background: #1e8f99;
+    padding: 9px 9px;
+    font-size: $font-base;
+    letter-spacing: 1px;
+    border: 0;
+    color: $white;
+    text-transform: capitalize;
+    font-weight: $font-medium;
+    display: inline-block;
+    border-radius: 3px;
+    text-align: center;
+    border: 2px solid #1e8f99;
+    cursor: pointer;
+    @include transition (all, 0.5s, ease);
+    &:hover {
+        background: transparent;
+        color: #1e8f99;
+        border-color: #1e8f99;
+    }
+    &:focus {
+        background: transparent;
+        color: #1e8f99;
+        border-color: #1e8f99;
+    }
+}
+
 .button+.button {
     margin-left: 5px;
     margin-bottom: 5px;

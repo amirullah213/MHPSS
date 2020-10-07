@@ -15,12 +15,14 @@ import { PathologyListComponent } from './pathology-list/pathology-list.componen
 import { RadiologyListComponent } from './radiology-list/radiology-list.component';
 import { PharmcyComponent } from './pharmcy/pharmcy.component';
 import { AmbulanceComponent } from './ambulance/ambulance.component';
+import { ComplaintsComponent } from './complaints/complaints.component';
+import { SignsComponent } from './signs/signs.component';
 
 
 
 
 @NgModule({
-  declarations: [AdminHomeComponent, AdminComponentComponent, SideBarAdminComponent, DiagnosticListComponent, PathologyListComponent, RadiologyListComponent, PharmcyComponent, AmbulanceComponent],
+  declarations: [AdminHomeComponent, AdminComponentComponent, SideBarAdminComponent, DiagnosticListComponent, PathologyListComponent, RadiologyListComponent, PharmcyComponent, AmbulanceComponent, ComplaintsComponent, SignsComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,SharedModule,DataTablesModule,ModalModule.forRoot(),FormsModule

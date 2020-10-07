@@ -12,12 +12,14 @@ import { NewRegisterComponent } from './new-register/new-register.component';
 import { OldRegistrationComponent } from './old-registration/old-registration.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { PatientsComponent } from './patients/patients.component';
+import { SideBarReceptionComponent } from './side-bar-reception/side-bar-reception.component';
 
 
 
 
 @NgModule({
-  declarations: [HomeComponent, ReceptionComponent, NewRegisterComponent, OldRegistrationComponent],
+  declarations: [HomeComponent, ReceptionComponent, NewRegisterComponent, OldRegistrationComponent, PatientsComponent, SideBarReceptionComponent],
   imports: [
     CommonModule, ReceptionRoutingModule, FormsModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), BsDatepickerModule.forRoot(), CollapseModule.forRoot()
   ]
