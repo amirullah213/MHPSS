@@ -43,13 +43,5 @@ export class AdminServiceService {
     let url = APP_CONFIG.apiBaseUrl + 'addmedicine ';
     return this.http.post(url, obj);
   }
-  deleteMedic(obj: any) {
-    let url = APP_CONFIG.apiBaseUrl + 'deletemedicine  ';
-    return this.http.post(url, obj);
-  }
-  updateMed(obj: any) {
-    let url = APP_CONFIG.apiBaseUrl + 'updatemedicine  ';
-    return this.http.post(url, obj);
-  }
 
 }

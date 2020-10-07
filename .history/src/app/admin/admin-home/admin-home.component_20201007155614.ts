@@ -25,7 +25,7 @@ import { DataTableDirective } from 'angular-datatables';
 export class AdminHomeComponent implements OnInit {
   @ViewChild(DataTableDirective, {static: false})
   dtElement: DataTableDirective;
-  //fullArray:any=[];
+  fullArray:any=[];
   userOb: any = {};
   EuserOb:any={};
  // dtOptions: any = {};
@@ -52,12 +52,7 @@ export class AdminHomeComponent implements OnInit {
 
   ngOnInit() {
     // setTimeout(function(){ alert("Hi"); }, 2000);
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 25,
-      dom: 'lBfrtip',
-     // buttons: ['print', 'excel'],
-    };
+
     this.getUserList();
     
   }
@@ -135,9 +130,20 @@ openAddModal(addUser: TemplateRef<any>) {
       (response: any) => {
         if (response.status === 0) {
           this.allUsers = response.data;
+          console.log('allUsers==', this.fullArray);
+          this.fullArray.push(this.allUsers);
+          console.log('fullArray==', this.fullArray);
+          // this.dataFromServer = response['data']['Coords'];
+          // Calling the DT trigger to manually render the table
+          // this.dtTrigger.next();
+          // this.rerender();
          
-          console.log('allHospitals==', this.allUsers);
-         
+          this.dtOptions = {
+            pagingType: 'full_numbers',
+            pageLength: 25,
+            dom: 'lBfrtip',
+           // buttons: ['print', 'excel'],
+          };
           this.rerender();
           //this.dtTrigger.next();
           this.loader_eqp = false;
@@ -207,7 +213,7 @@ openAddModal(addUser: TemplateRef<any>) {
     this.adminService.updateUser(this.model2).subscribe(
       (response: any) => {
         if (response.status === 0) {
-         // this.allUsers = response.data;
+          this.allUsers = response.data;
          //this.dtTrigger.next();
           this.loader_eqp = false;
           this.getUserList();
@@ -237,7 +243,7 @@ openAddModal(addUser: TemplateRef<any>) {
     this.adminService.deleteUser(this.model).subscribe(
       (response: any) => {
         if (response.status === 0) {
-         // this.allUsers = response.data;
+          this.allUsers = response.data;
          
           // this.dataFromServer = response['data']['Coords'];
           // Calling the DT trigger to manually render the table

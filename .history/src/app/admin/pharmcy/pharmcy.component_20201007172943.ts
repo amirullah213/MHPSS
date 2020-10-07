@@ -194,7 +194,7 @@ export class PharmcyComponent implements OnInit {
     
     console.log('test==', this.model2);
 
-    this.adminService.updateMed(this.model2).subscribe(
+    this.adminService.updateUser(this.model2).subscribe(
       (response: any) => {
         if (response.status === 0) {
          // this.allUsers = response.data;

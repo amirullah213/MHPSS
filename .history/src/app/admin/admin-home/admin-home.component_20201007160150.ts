@@ -137,7 +137,12 @@ openAddModal(addUser: TemplateRef<any>) {
           this.allUsers = response.data;
          
           console.log('allHospitals==', this.allUsers);
+          // this.dataFromServer = response['data']['Coords'];
+          // Calling the DT trigger to manually render the table
+          // this.dtTrigger.next();
+          // this.rerender();
          
+          
           this.rerender();
           //this.dtTrigger.next();
           this.loader_eqp = false;
@@ -207,7 +212,7 @@ openAddModal(addUser: TemplateRef<any>) {
     this.adminService.updateUser(this.model2).subscribe(
       (response: any) => {
         if (response.status === 0) {
-         // this.allUsers = response.data;
+          this.allUsers = response.data;
          //this.dtTrigger.next();
           this.loader_eqp = false;
           this.getUserList();

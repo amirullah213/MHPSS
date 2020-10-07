@@ -131,13 +131,18 @@ openAddModal(addUser: TemplateRef<any>) {
     //  this.model.auth_token =  localStorage.getItem('auth_token');
     //  console.log('test==',this.model)
 
-    this.adminService.getPatList(this.model).subscribe(
+    this.adminService.getAllMedicsList(this.model).subscribe(
       (response: any) => {
         if (response.status === 0) {
           this.allUsers = response.data;
          
           console.log('allHospitals==', this.allUsers);
+          // this.dataFromServer = response['data']['Coords'];
+          // Calling the DT trigger to manually render the table
+          // this.dtTrigger.next();
+          // this.rerender();
          
+          
           this.rerender();
           //this.dtTrigger.next();
           this.loader_eqp = false;
