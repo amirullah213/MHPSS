@@ -3,7 +3,7 @@
         <ul *ngIf="!router.url.includes('account-settings')" class="nav navbar-nav side-menu" id="sidebarnav">
             <!-- menu item Dashboard-->
             <li>
-                <a href="javascript:void(0)" [routerLink]="['home']" routerLinkActive="active"><i class="ti-layout-grid2-alt"></i><span class="right-nav-text">Home</span> </a>
+                <a href="javascript:void(0)" [routerLink]="['home']" routerLinkActive="active"><i class="ti-home"></i><span class="right-nav-text">Home</span> </a>
             </li>
             <li>
                 <a href="javascript:void(0)" [routerLink]="['diagnostic-list']" routerLinkActive="active"><i class="ti-id-badge"></i><span class="right-nav-text">Diagnosdtic List</span> </a>
@@ -19,6 +19,12 @@
             </li>
             <li [routerLink]="['ambulance']" routerLinkActive="active">
                 <a href="javascript:void(0)"><i class="ti-alarm-clock"></i><span class="right-nav-text">Ambulance</span> </a>
+            </li>
+            <li [routerLink]="['signs']" routerLinkActive="active">
+                <a href="javascript:void(0)"><i class="ti-pencil-alt"></i><span class="right-nav-text">Signs </span> </a>
+            </li>
+            <li [routerLink]="['complaints']" routerLinkActive="active">
+                <a href="javascript:void(0)"><i class="ti-blackboard"></i><span class="right-nav-text">Complaints </span> </a>
             </li>
             <!-- <li [routerLink]="['/user']" routerLinkActive="active">
                 <a href="javascript:void(0)"><i class="ti-user"></i><span class="right-nav-text">User</span> </a>
