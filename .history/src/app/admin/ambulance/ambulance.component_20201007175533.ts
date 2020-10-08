@@ -100,7 +100,7 @@ export class AmbulanceComponent implements OnInit {
       (response: any) => {
         if (response.status === 0) {
           this.allAmnbulance = response.data;
-          console.log('all allAmnbulance==', this.allAmnbulance);
+          console.log('all medicines==', this.allAmnbulance);
          
           //setTimeout(this.rerender, 2500);
          // if(this.allMedcis.length>1){this.rerender();}
@@ -124,15 +124,13 @@ export class AmbulanceComponent implements OnInit {
    //get all medicine  List
 
  //add new medicine  List
- addNewAmbulance(objmed) {
+ addNewMedic(objmed) {
     this.loader_eqp = true;
 
     //  console.log('local storage==',localStorage.getItem('auth_token'));
-      this.model.registrationNo = objmed.name;
-      this.model.driverName = objmed.unit;
-      this.model.driverContact = objmed.type;
-      this.model.status = objmed.type;
-      
+      this.model.itemName = objmed.name;
+      this.model.unit = objmed.unit;
+      this.model.type = objmed.type;
     //  console.log('test==',this.model)
 
     this.adminService.addNewMedic(this.model).subscribe(

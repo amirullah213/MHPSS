@@ -23,7 +23,7 @@ export class AmbulanceComponent implements OnInit {
   model2: any = {};
   modalRef: BsModalRef;
   
-  allAmnbulance: any = [];
+  allMedcis: any = [];
   loader_eqp: boolean = false;
   errormsg: string;
   userData:any={};
@@ -47,7 +47,7 @@ export class AmbulanceComponent implements OnInit {
       dom: 'lBfrtip',
      // buttons: ['print', 'excel'],
     };
-    this.getAllAmbulance();
+    this.getAllMedics();
   }
  
   ngAfterViewInit(): void {
@@ -66,21 +66,21 @@ export class AmbulanceComponent implements OnInit {
       this.dtTrigger.next();
     });
   }
-  openModAdd(AmbAdd: TemplateRef<any>) {
+  openModAdd(pharmaAdd: TemplateRef<any>) {
     // this.userData = data;
-    this.modalRef = this.modalService.show(AmbAdd);
+    this.modalRef = this.modalService.show(pharmaAdd);
     // this.modalRef.content.userActivate = 'Close';
   }
-  openModedit(AmbEdit: TemplateRef<any>,edtObj) {
+  openModedit(pharmaEdit: TemplateRef<any>,edtObj) {
      this.userData = edtObj;
-    this.modalRef = this.modalService.show(AmbEdit);
+    this.modalRef = this.modalService.show(pharmaEdit);
     console.log('med data====',this.userData);
     this.showEditData(this.userData)
     // this.modalRef.content.userActivate = 'Close';
   }
-  openModdelete(Ambdelete: TemplateRef<any>,dataOb) {
+  openModdelete(pharmadelete: TemplateRef<any>,dataOb) {
     this.medicID = dataOb.itemID;
-    this.modalRef = this.modalService.show(Ambdelete);
+    this.modalRef = this.modalService.show(pharmadelete);
     console.log('med id====',this.medicID);
   }
   showEditData(edtObj){
@@ -92,15 +92,15 @@ export class AmbulanceComponent implements OnInit {
    
   }
    //get all medicine  List
-   getAllAmbulance() {
+   getAllMedics() {
     this.loader_eqp = true;
 
-    this.adminService.getAmbulances(this.model).subscribe(
+    this.adminService.getAllMedicsList(this.model).subscribe(
      
       (response: any) => {
         if (response.status === 0) {
-          this.allAmnbulance = response.data;
-          console.log('all allAmnbulance==', this.allAmnbulance);
+          this.allMedcis = response.data;
+          console.log('all medicines==', this.allMedcis);
          
           //setTimeout(this.rerender, 2500);
          // if(this.allMedcis.length>1){this.rerender();}
@@ -124,22 +124,20 @@ export class AmbulanceComponent implements OnInit {
    //get all medicine  List
 
  //add new medicine  List
- addNewAmbulance(objmed) {
+ addNewMedic(objmed) {
     this.loader_eqp = true;
 
     //  console.log('local storage==',localStorage.getItem('auth_token'));
-      this.model.registrationNo = objmed.name;
-      this.model.driverName = objmed.unit;
-      this.model.driverContact = objmed.type;
-      this.model.status = objmed.type;
-      
+      this.model.itemName = objmed.name;
+      this.model.unit = objmed.unit;
+      this.model.type = objmed.type;
     //  console.log('test==',this.model)
 
     this.adminService.addNewMedic(this.model).subscribe(
       (response: any) => {
         if (response.status === 0) {
             this.loader_eqp = false;
-            this.getAllAmbulance();
+            this.getAllMedics();
             this.modalRef.hide();
         }
 
@@ -170,7 +168,7 @@ export class AmbulanceComponent implements OnInit {
          
           // this.dataFromServer = response['data']['Coords'];
           // Calling the DT trigger to manually render the table
-          this.getAllAmbulance();
+          this.getAllMedics();
           this.modalRef.hide();
           this.loader_eqp = false;
         }
@@ -203,7 +201,7 @@ export class AmbulanceComponent implements OnInit {
          // this.allUsers = response.data;
          //this.dtTrigger.next();
           this.loader_eqp = false;
-          this.getAllAmbulance();
+          this.getAllMedics();
            this.modalRef.hide();
           // this.modalRef.content.userActivate = 'Close';
         }

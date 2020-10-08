@@ -56,10 +56,4 @@ export class AdminServiceService {
     return this.http.post(url, obj);
   }
 
-  addambulance(obj: any) {
-    let url = APP_CONFIG.apiBaseUrl + 'addambulance  ';
-    return this.http.post(url, obj);
-  }
-  
-
 }
