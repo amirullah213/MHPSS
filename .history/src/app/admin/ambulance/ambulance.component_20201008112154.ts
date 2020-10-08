@@ -27,7 +27,7 @@ export class AmbulanceComponent implements OnInit {
   loader_eqp: boolean = false;
   errormsg: string;
   userData:any={};
-  ambID:number;
+  medicID:number;
   
   dtInstance: DataTables.Api;
   // We use this trigger because fetching the list of persons can be quite long,
@@ -79,16 +79,15 @@ export class AmbulanceComponent implements OnInit {
     // this.modalRef.content.userActivate = 'Close';
   }
   openModdelete(Ambdelete: TemplateRef<any>,dataOb) {
-    this.ambID = dataOb.id;
+    this.medicID = dataOb.itemID;
     this.modalRef = this.modalService.show(Ambdelete);
-    console.log('med id====',this.ambID);
+    console.log('med id====',this.medicID);
   }
   showEditData(edtObj){
-    this.EmedOb.id=edtObj.id;
-    this.EmedOb.Eregistration=edtObj.registrationNo;
-    this.EmedOb.Edriver=edtObj.driverName;
-    this.EmedOb.Econtact=edtObj.driverContact;
-    this.EmedOb.Estatus=edtObj.status;
+    this.EmedOb.itemID=edtObj.itemID;
+    this.EmedOb.Ename=edtObj.itemName;
+    this.EmedOb.Eunit=edtObj.unit;
+    this.EmedOb.Etype=edtObj.type;
     
    
   }
@@ -138,7 +137,7 @@ export class AmbulanceComponent implements OnInit {
       
     //  console.log('test==',this.model)
 
-    this.adminService.addambulance(this.model).subscribe(
+    this.adminService.addNewMedic(this.model).subscribe(
       (response: any) => {
         if (response.status === 0) {
             this.loader_eqp = false;
@@ -159,14 +158,14 @@ export class AmbulanceComponent implements OnInit {
    //add new medicine  List
 
    //get all user List
-  deleteAmb() {
+  deleteMedic() {
     this.loader_eqp = true;
 
     //  console.log('local storage==',localStorage.getItem('auth_token'));
-      this.model.id = this.ambID;
+      this.model.itemID = this.medicID;
       console.log('test==',this.model)
 
-    this.adminService.deleteambulance(this.model).subscribe(
+    this.adminService.deleteMedic(this.model).subscribe(
       (response: any) => {
         if (response.status === 0) {
          // this.allUsers = response.data;
@@ -193,16 +192,14 @@ export class AmbulanceComponent implements OnInit {
    updateMedic(objmed) {
     this.loader_eqp = true;
 
-    this.model2.id = this.EmedOb.id
-    this.model2.registrationNo =  objmed.Eregistration;
-    this.model2.driverName =  objmed.Edriver;
-    this.model2.driverContact =  objmed.Econtact;
-    this.model2.status =  objmed.Estatus;
-    
+    this.model2.itemID =  this.EmedOb.itemID;
+    this.model2.itemName =  objmed.Ename;
+    this.model2.unit =  objmed.Eunit;
+    this.model2.type =  objmed.Etype;
     
     console.log('test==', this.model2);
 
-    this.adminService.updateAmbulance(this.model2).subscribe(
+    this.adminService.updateMed(this.model2).subscribe(
       (response: any) => {
         if (response.status === 0) {
          // this.allUsers = response.data;
