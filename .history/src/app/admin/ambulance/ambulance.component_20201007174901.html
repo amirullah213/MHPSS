@@ -30,26 +30,23 @@
                                     <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table center-aligned-table">
                                         <thead>
                                             <tr>
-                                                <th>No# </th>
-                                                <th>Ambulance Reg </th>
+                                                <th>Ambulance Reg No</th>
                                                 <th>Driver Name</th>
-                                                <th>Driver Contact </th>
+                                                <th>Driver Contact No</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor="let amb of allAmnbulance;index as i">
-                                                <td>{{i+1}}</td>
-                                                <td>{{amb.registrationNo}}</td>
-                                                <td>{{amb.driverName}}</td>
-                                                <td>{{amb.driverContact}}</td>
-                                                <td><span *ngIf="amb.status==1">Available</span> <span *ngIf="amb.status==0">Not Available</span> </td>
-                                                
+                                            <tr>
+                                                <td>Ambulance Reg No</td>
+                                                <td>Driver Name</td>
+                                                <td>Driver Contact No</td>
+                                                <td>Available</td>
                                                 <td>
                                                     <button class="mr-3 btn btn-info" (click)="openModedit(AmbEdit)"><i class="fa fa-edit"></i></button>
                                                     <!-- model for Ambulance Update start-->
-                                                    <ng-template  #AmbEdit class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
+                                                    <div  #AmbEdit class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
                                                         <div class="modal-dialog modal-lg modal-dialog-centered">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -63,7 +60,7 @@
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-3 mt-3"><label for="inputState">Ambulance Reg No</label></div>
                                                                         <div class="col-sm-9">
-                                                                            <input type="text" class="form-control input-sm" id="UARN" [(ngModel)]="EmedOb.Ename" placeholder="Ambulance Reg No">
+                                                                            <input type="text" class="form-control input-sm" id="UARN" placeholder="Ambulance Reg No">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -89,16 +86,16 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="button-danger" (click)="modalRef.hide()"><i class="fa fa-remove"></i> Close</button>
+                                                                    <button type="button" class="button-danger" (click)="AmbEdit.hide()"><i class="fa fa-remove"></i> Close</button>
                                                                     <button type="button" class="button"><i class="fa fa-check-square"></i> Update</button>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </ng-template>
+                                                    </div>
                                                     <!-- model for Ambulance Update end-->
-                                                    <button class="mr-3 btn btn-danger" (click)="openModdelete(Ambdelete)"><i class="fa fa-trash"></i></button>
+                                                    <button class="mr-3 btn btn-danger" (click)="Ambdelete.show()"><i class="fa fa-trash"></i></button>
                                                     <!-- model for Ambulance delete start-->
-                                                    <ng-template  #Ambdelete class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
+                                                    <div bsModal #Ambdelete="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
                                                         <div class="modal-dialog modal-sm modal-dialog-centered">
                                                             <div class="modal-content">
                                                                 <div class="modal-header bb-none"></div>
@@ -107,12 +104,12 @@
                                                                     <p>Are You Sure To delete this Item!</p>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="button-danger" (click)="modalRef.hide()"><i class="fa fa-remove"></i> Cancel</button>
+                                                                    <button type="button" class="button-danger" (click)="Ambdelete.hide()"><i class="fa fa-remove"></i> Cancel</button>
                                                                     <button type="button" class="button"><i class="fa fa-check-square"></i> Delete</button>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </ng-template>
+                                                    </div>
                                                     <!-- model for Ambulance delete end-->
                                                 </td>
                                             </tr>
@@ -133,12 +130,12 @@
             </div>
 
             <!-- model for Add Ambulance download start-->
-            <ng-template  #AmbAdd class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
+            <div  #AmbAdd class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
                 <div class="modal-dialog modal-lg modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h2>Add Ambulance</h2>
-                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="AmbAdd.hide()">
                                 <span aria-hidden="true"><i class="ti-close"></i></span>
                             </button>
                         </div>
@@ -146,25 +143,25 @@
                             <div class="form-group row">
                                 <div class="col-sm-3 mt-3"><label for="inputState">Ambulance Reg No</label></div>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control input-sm" id="ARN" [(ngModel)]="medOb.reg" placeholder="Ambulance Reg No">
+                                    <input type="text" class="form-control input-sm" id="ARN" placeholder="Ambulance Reg No">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-3 mt-3"><label for="inputState">Driver Name</label></div>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="DN" [(ngModel)]="medOb.driver" placeholder="Driver Name">
+                                    <input type="text" class="form-control" id="DN" placeholder="Driver Name">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-3 mt-3"><label for="inputState">Dreiver Contact No</label></div>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="DCN" [(ngModel)]="medOb.contact" placeholder="Dreiver Contact No">
+                                    <input type="text" class="form-control" id="DCN" placeholder="Dreiver Contact No">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-3 mt-3"><label for="inputState">Status</label></div>
                                 <div class="col-sm-9">
-                                    <select class="form-control" aria-label="Text input with segmented dropdown button" [(ngModel)]="medOb.status" placeholder="Select file format">
+                                    <select class="form-control" aria-label="Text input with segmented dropdown button" placeholder="Select file format">
                                         <option value="Available">Available</option>
                                         <option value="Not-Available"> Not Available</option>
                                     </select>
@@ -172,12 +169,12 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="button-danger" (click)="modalRef.hide()"><i class="fa fa-remove"></i> Close</button>
-                            <button type="button" class="button" (click)="addNewAmbulance(medOb)"><i class="fa fa-check-square"></i> Add Ambulance</button>
+                            <button type="button" class="button-danger" (click)="AmbAdd.hide()"><i class="fa fa-remove"></i> Close</button>
+                            <button type="button" class="button"><i class="fa fa-check-square"></i> Add Ambulance</button>
                         </div>
                     </div>
                 </div>
-            </ng-template>
+            </div>
             <!-- model for Add Ambulance download end-->
         </div>
     </div>

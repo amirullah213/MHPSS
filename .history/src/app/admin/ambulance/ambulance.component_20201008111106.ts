@@ -131,8 +131,6 @@ export class AmbulanceComponent implements OnInit {
       this.model.registrationNo = objmed.name;
       this.model.driverName = objmed.unit;
       this.model.driverContact = objmed.type;
-      this.model.status = objmed.type;
-      
     //  console.log('test==',this.model)
 
     this.adminService.addNewMedic(this.model).subscribe(

@@ -23,7 +23,7 @@ export class AmbulanceComponent implements OnInit {
   model2: any = {};
   modalRef: BsModalRef;
   
-  allAmnbulance: any = [];
+  allMedcis: any = [];
   loader_eqp: boolean = false;
   errormsg: string;
   userData:any={};
@@ -47,7 +47,7 @@ export class AmbulanceComponent implements OnInit {
       dom: 'lBfrtip',
      // buttons: ['print', 'excel'],
     };
-    this.getAllAmbulance();
+    this.getAllMedics();
   }
  
   ngAfterViewInit(): void {
@@ -95,12 +95,12 @@ export class AmbulanceComponent implements OnInit {
    getAllAmbulance() {
     this.loader_eqp = true;
 
-    this.adminService.getAmbulances(this.model).subscribe(
+    this.adminService.getAllMedicsList(this.model).subscribe(
      
       (response: any) => {
         if (response.status === 0) {
-          this.allAmnbulance = response.data;
-          console.log('all allAmnbulance==', this.allAmnbulance);
+          this.allMedcis = response.data;
+          console.log('all medicines==', this.allMedcis);
          
           //setTimeout(this.rerender, 2500);
          // if(this.allMedcis.length>1){this.rerender();}
@@ -124,15 +124,13 @@ export class AmbulanceComponent implements OnInit {
    //get all medicine  List
 
  //add new medicine  List
- addNewAmbulance(objmed) {
+ addNewMedic(objmed) {
     this.loader_eqp = true;
 
     //  console.log('local storage==',localStorage.getItem('auth_token'));
-      this.model.registrationNo = objmed.name;
-      this.model.driverName = objmed.unit;
-      this.model.driverContact = objmed.type;
-      this.model.status = objmed.type;
-      
+      this.model.itemName = objmed.name;
+      this.model.unit = objmed.unit;
+      this.model.type = objmed.type;
     //  console.log('test==',this.model)
 
     this.adminService.addNewMedic(this.model).subscribe(
@@ -203,7 +201,7 @@ export class AmbulanceComponent implements OnInit {
          // this.allUsers = response.data;
          //this.dtTrigger.next();
           this.loader_eqp = false;
-          this.getAllAmbulance();
+          this.getAllMedics();
            this.modalRef.hide();
           // this.modalRef.content.userActivate = 'Close';
         }
