@@ -193,16 +193,14 @@ export class AmbulanceComponent implements OnInit {
    updateMedic(objmed) {
     this.loader_eqp = true;
 
-    this.model2.id = this.EmedOb.id
-    this.model2.registrationNo =  objmed.Eregistration;
-    this.model2.driverName =  objmed.Edriver;
-    this.model2.driverContact =  objmed.Econtact;
-    this.model2.status =  objmed.Estatus;
-    
+    this.model2.itemID =  this.EmedOb.itemID;
+    this.model2.itemName =  objmed.Ename;
+    this.model2.unit =  objmed.Eunit;
+    this.model2.type =  objmed.Etype;
     
     console.log('test==', this.model2);
 
-    this.adminService.updateAmbulance(this.model2).subscribe(
+    this.adminService.updateMed(this.model2).subscribe(
       (response: any) => {
         if (response.status === 0) {
          // this.allUsers = response.data;

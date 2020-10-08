@@ -202,7 +202,7 @@ export class AmbulanceComponent implements OnInit {
     
     console.log('test==', this.model2);
 
-    this.adminService.updateAmbulance(this.model2).subscribe(
+    this.adminService.updateMed(this.model2).subscribe(
       (response: any) => {
         if (response.status === 0) {
          // this.allUsers = response.data;

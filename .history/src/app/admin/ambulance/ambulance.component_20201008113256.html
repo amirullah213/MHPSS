@@ -82,15 +82,15 @@
                                                                         <div class="col-sm-3 mt-3"><label for="inputState">Status</label></div>
                                                                         <div class="col-sm-9">
                                                                             <select class="form-control" aria-label="Text input with segmented dropdown button" [(ngModel)]="EmedOb.Estatus" placeholder="Select file format">
-                                                                                <option value="1">Available</option>
-                                                                                <option value="0"> Not Available</option>
+                                                                                <option value="Available">Available</option>
+                                                                                <option value="Not-Available"> Not Available</option>
                                                                             </select>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="button-danger" (click)="modalRef.hide()"><i class="fa fa-remove"></i> Close</button>
-                                                                    <button type="button" class="button" (click)="updateMedic(EmedOb)"><i class="fa fa-check-square"></i> Update</button>
+                                                                    <button type="button" class="button"><i class="fa fa-check-square"></i> Update</button>
                                                                 </div>
                                                             </div>
                                                         </div>
