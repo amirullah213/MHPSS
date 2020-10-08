@@ -25,8 +25,7 @@
                                 <div class="col-lg-4">
                                     <h6><b>EMR NO :</b> <span class="ml-3"> {{patInfo.token}}</span></h6>
                                     <h6><b>Patient Name :</b> <span class="ml-3"> {{patInfo.firstname}}</span></h6>
-                                    <h6><b>Father's Name/Husband's Name : </b> <span
-                                            class="ml-3">{{patInfo.f_hName}}</span></h6>
+                                    <h6><b>Father's Name/Husband's Name : </b> <span class="ml-3">{{patInfo.f_hName}}</span></h6>
                                 </div>
                                 <div class="col-lg-3"></div>
                                 <div class="col-lg-4">
@@ -35,8 +34,8 @@
                                 <div class="col-lg-1"></div>
                                 <div class="col-lg-4">
                                     <h6><b>Age :</b> <span class="ml-3"> <span
-                                                *ngIf='patInfo.ageYear!=0'>{{patInfo.ageYear}} Years</span><span
-                                                *ngIf='patInfo.ageYear==0'>{{patInfo.ageMonth}} Months</span> </span></h6>
+                                                *ngIf='patInfo.ageYear!=0'>{{patInfo.ageYear}} Years</span><span *ngIf='patInfo.ageYear==0'>{{patInfo.ageMonth}} Months</span> </span>
+                                    </h6>
                                     <h6><b>Consulting Doctor :</b> <span class="ml-3">{{userList[0].docFName}}</span>
                                     </h6>
                                 </div>
@@ -46,77 +45,78 @@
                                 <hr class="hr-gray mx-3 my-3">
                                 <div class="col-lg-1"></div>
                                 <div class="col-lg-3" style="border-right: #000 1px solid;">
-                                    <h4 class="mr-2" style="margin-left: -25px;">Vitals</h4>
-                                    <p class="mb-1"><b>BP:</b> <span class="ml-4"> {{userList[0].vitals.bps}}</span></p>
-                                    <p class="mb-1"><b>Pulse (Per Min):</b> <span class="ml-4">
-                                            {{userList[0].vitals.pulse}}</span></p>
-                                    <p class="mb-1"><b>Weight(Kg):</b> <span
-                                            class="ml-4">{{userList[0].vitals.weight}}</span></p>
-                                    <p class="mb-1"><b>Height (cm):</b> <span
-                                            class="ml-4">{{userList[0].vitals.height}}</span></p>
-                                    <p class="mb-1"><b>Temprature(F):</b> <span
-                                            class="ml-4">{{userList[0].vitals.temperature}}</span></p>
-                                    <p class="mb-4"><b>Oxygen Saturation</b> <span
-                                            class="ml-3">{{userList[0].vitals.oxygen_saturation}}</span></p>
-                                    <h6 class="mb-1" style="margin-left: -25px;"><b>Investigation (With Results)</b>
-                                    </h6>
+                                    <h6 class="mb-1"><b>Vitals</b></h6>
+                                    <p class="mb-1 ml-4"><b>BP:</b> <span class="ml-4"> {{userList[0].vitals.bps}}</span></p>
+                                    <p class="mb-1 ml-4"><b>Pulse (Per Min):</b>
+                                        <span class="ml-4">{{userList[0].vitals.pulse}}</span>
+                                    </p>
+                                    <p class="mb-1 ml-4"><b>Weight(Kg):</b> <span class="ml-4">{{userList[0].vitals.weight}}</span></p>
+                                    <p class="mb-1 ml-4"><b>Height (cm):</b> <span class="ml-4">{{userList[0].vitals.height}}</span></p>
+                                    <p class="mb-1 ml-4"><b>Temprature(F):</b> <span class="ml-4">{{userList[0].vitals.temperature}}</span></p>
+                                    <p class="mb-2 ml-4"><b>Oxygen Saturation</b> <span class="ml-4">{{userList[0].vitals.oxygen_saturation}}</span></p>
+                                    <h6 class="mb-2"><b>Investigation (With Results)</b></h6>
                                     <span *ngFor="let tst of userList[0].test">
                                         <span *ngIf="tst.testType==1">
-                                            <p class="mb-1"><b>Pathology</b> <span class="ml-4">{{tst.testName}}</span>
-                                            </p>
-                                            <p class="mb-1">Diagnosis: <span class="ml-4" *ngIf="tst.result==''">Not Found</span><span class="ml-4" *ngIf="tst.result!=''">{{tst.result}}</span></p>
-                                            <p class="mb-1" >Findings: 
-                                                <span class="ml-4" *ngIf="tst.xrayFilms6=='0'" >Not Found</span>
-                                                <span class="ml-4" *ngIf="tst.xrayFilms6!='0'" >{{tst.xrayFilms6}}</span>
-                                            </p>
-                                        </span>
-                                        <!-- </span>
-                                <span> -->
-                                        <span *ngIf="tst.testType==2">
-                                            <p class="mb-1 mt-3"><b>Radiology</b><span
-                                                    class="ml-4">{{tst.testName}}</span></p>
-                                            <p class="mb-1">Diagnosis: <span class="ml-4" *ngIf="tst.result==''">Not Found</span> <span class="ml-4" *ngIf="tst.result!=''">{{tst.result}}</span></p>
-                                            <p class="mb-1" *ngIf="tst.xrayFilms6=='0'">Findings: <span class="ml-4" >Not Found</span></p>
-                                            <p class="mb-1"  *ngIf="tst.xrayFilms6!='0'">Findings: <span class="ml-4" *ngFor="let dai of diagnosisArr" >{{dai.name }},</span></p>
-                                        </span>
+                                            <p class="mb-1 ml-2" ><b>Pathology</b></p> 
+                                            <p class="mb-1 ml-3"><b><u>{{tst.testName}}</u></b></p>
+                                            <p class="mb-1 ml-4">Diagnosis: 
+                                                <span class="ml-4" *ngIf="tst.result==''">Not Found</span>
+                                    <span class="ml-4" *ngIf="tst.result!=''">{{tst.result}}</span>
+                                    </p>
+                                    <p class="mb-1 ml-4 mb-2">Findings:
+                                        <span class="ml-4" *ngIf="tst.xrayFilms6=='0'">Not Found</span>
+                                        <span class="ml-4" *ngIf="tst.xrayFilms6!='0'">{{tst.xrayFilms6}}</span>
+                                    </p>
+                                    </span>
+                                    <span *ngIf="tst.testType==2">
+                                            <p class="mb-1 ml-2"><b>Radiology</b></p> 
+                                            <p class="mb-1 ml-3"><b><u>{{tst.testName}}</u></b></p>
+                                            <p class="mb-1 ml-4">Diagnosis: <span class="ml-4" *ngIf="tst.result==''">Not Found</span>
+                                    <span class="ml-4" *ngIf="tst.result!=''">{{tst.result}}</span>
+                                    </p>
+                                    <p class="mb-1 ml-4" *ngIf="tst.xrayFilms6=='0'">Findings:
+                                        <span class="ml-4">Not Found</span>
+                                    </p>
+                                    <p class="mb-1 ml-4" *ngIf="tst.xrayFilms6!='0'">Findings:
+                                        <span class="ml-4" *ngFor="let dai of diagnosisArr">{{dai.name }},</span>
+                                    </p>
+                                    </span>
                                     </span>
                                 </div>
-                                <div class="col-lg-1"></div>
-                                <div class="col-lg-7">
-                                    <h6 class="mb-1" style="margin-left: -25px;"><b>Signs And Symptoms</b></h6>
-                                    <p class="mb-1">Signs: <span class="ml-3"> {{userList[0].signs}}</span></p>
-                                    <p class="mb-1">Complaints:<span class="ml-3">{{userList[0].complaints}}</span></p>
-                                    <p class="mb-1">Faimly History:<span class="ml-3">{{userList[0].familyHistory}}</span></p>
-                                    <p class="mb-1">Past History:<span class="ml-3">{{userList[0].pastHistory}}</span></p>
+                                <!-- <div class="col-lg-1"></div> -->
+                                <div class="col-lg-8">
+                                    <h6 class="mb-1"><b>Signs And Symptoms</b></h6>
+                                    <p class="mb-1 ml-4">Signs: <span class="ml-3"> {{userList[0].signs}}</span></p>
+                                    <p class="mb-1 ml-4">Complaints:<span class="ml-3">{{userList[0].complaints}}</span></p>
+                                    <p class="mb-1 ml-4">Faimly History:<span class="ml-3">{{userList[0].familyHistory}}</span></p>
+                                    <p class="mb-1 ml-4">Past History:<span class="ml-3">{{userList[0].pastHistory}}</span></p>
 
-                                    <h6 class="mb-1 mt-4" style="margin-left: -25px;"><b>Diagonosis</b></h6>
-                                    <p>{{userList[0].diagnosis}}</p>
+                                    <h6 class="mb-1 mt-4"><b>Diagonosis</b></h6>
+                                    <p class="mb-1 ml-4">{{userList[0].diagnosis}}</p>
 
-                                    <h6 class="mb-1 mt-4" style="margin-left: -25px;"><b>Treatment</b></h6>
-                                    <p *ngFor="let med of userList[0].medicines"><span>{{med.medicine}}</span>
-                                        <span class="small ml-2">{{med.unit}}</span> 
-                                         <span class="ml-3 small" *ngIf="med.dose=='SOS'">When Required</span>
-                                         <span class="ml-3 small" *ngIf="med.dose=='OD'">Daily</span>
-                                         <span class="ml-3 small" *ngIf="med.dose=='STAT'">Take Immediately</span>
-                                         <span class="ml-3 small" *ngIf="med.dose=='BiD'">1 + 0 + 1</span>
-                                         <span class="ml-3 small" *ngIf="med.dose=='TDS'">1 + 1 + 1</span>
-                                         <span class="ml-3 small" *ngIf="med.dose=='Qid'">1 + 1 + 1 + 1</span>
-                                         <span class="ml-3 small">{{med.duration}}</span>
-                                         <span class="ml-3 small">{{med.remarks}}</span>
-                                        </p>
+                                    <h6 class="mb-1 mt-4"><b>Treatment</b></h6>
+                                    <p class="mb-1 ml-4" *ngFor="let med of userList[0].medicines"><span>{{med.medicine}}</span>
+                                        <span class="small ml-2">{{med.unit}}</span><br>
+                                        <span class="ml-3 small" *ngIf="med.dose=='SOS'">When Required</span>
+                                        <span class="ml-3 small" *ngIf="med.dose=='OD'">Daily</span>
+                                        <span class="ml-3 small" *ngIf="med.dose=='STAT'">Take Immediately</span>
+                                        <span class="ml-3 small" *ngIf="med.dose=='BiD'">1 + 0 + 1</span>
+                                        <span class="ml-3 small" *ngIf="med.dose=='TDS'">1 + 1 + 1</span>
+                                        <span class="ml-3 small" *ngIf="med.dose=='Qid'">1 + 1 + 1 + 1</span>
+                                        <span class="ml-3 small">{{med.duration}}</span>
+                                        <span class="ml-3 small">{{med.remarks}}</span>
+                                    </p>
 
-                                    <h6 class="mb-1 mt-4" style="margin-left: -25px;"><b>Follow Up</b></h6>
-                                    <p>{{userList[0].followUpInerval}}</p>
-                                    <p>{{userList[0].followUpComments}}</p>
+                                    <h6 class="mb-1 mt-4"><b>Follow Up</b></h6>
+                                    <p class="mb-1 ml-4">{{userList[0].followUpInerval}}</p>
+                                    <p class="mb-1 ml-4">{{userList[0].followUpComments}}</p>
 
-                                    <h6 class="mb-1 mt-6" style="margin-left: -25px;"><b>Referral (if applicable)</b>
-                                    </h6>
-                                    <p>{{userList[0].refferel}}</p>
+                                    <h6 class="mb-1 mt-6"><b>Referral (if applicable)</b></h6>
+                                    <p class="mb-1 ml-4">{{userList[0].refferel}}</p>
                                 </div>
                                 <div class="col-lg-12 mt mt-5">
                                     <div class="form-group text-center">
-                                        <button type="button"
-                                            class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i
+                                        <button type="button" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i
                                                 class="fa fa-print"></i> Print</button>
                                     </div>
                                 </div>
