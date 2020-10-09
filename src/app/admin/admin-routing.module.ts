@@ -9,6 +9,7 @@ import { PharmcyComponent } from './pharmcy/pharmcy.component'
 import { AmbulanceComponent } from './ambulance/ambulance.component'
 import { ComplaintsComponent } from './complaints/complaints.component';
 import { SignsComponent } from './signs/signs.component';
+import { EmrSummaryReportComponent } from './emr-summary-report/emr-summary-report.component';
 
 const routes: Routes = [
 
@@ -26,6 +27,7 @@ const routes: Routes = [
       { path: 'ambulance', component: AmbulanceComponent },
       { path: 'signs', component: SignsComponent },
       { path: 'complaints', component: ComplaintsComponent },
+      { path: 'emrsummaryreport', component: EmrSummaryReportComponent },
 
       { path: '', redirectTo: 'home', pathMatch: 'full' }
 
