@@ -17,8 +17,6 @@ export class EmrSummaryReportComponent implements OnInit {
   reporData:any =[];
   isCollapsed = true;
   errormsg:string;
-  medOb:any ={};
-
   currentDate = new Date();
   form = new FormGroup({
     dateYMD: new FormControl(new Date()),
@@ -38,29 +36,18 @@ export class EmrSummaryReportComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    var today = new Date();
-
-var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-console.log('date==',date);
-this.medOb.startDate=date;
-this.medOb.endtDate=date;
-
-    this.searchReport(this.medOb);
+    this.getAllReports();
    }
 
    //get all medicine  List
-   searchReport(sobj) {
+   getAllReports() {
     this.loader_eqp = true;
-    
-      this.model.startDate=sobj.startDate;
-      this.model.endDate=sobj.endtDate;
-      this.model.hospitalID=localStorage.getItem('hospitalID');
-
+this.model.testType=2;
     this.adminService.emrSummaryReort(this.model).subscribe(
      
       (response: any) => {
         if (response.status === 0) {
-          this.reporData = response;
+          this.reporData = response.data;
           console.log('all reportdata==', this.reporData);
          
           //setTimeout(this.rerender, 2500);
@@ -83,7 +70,7 @@ this.medOb.endtDate=date;
     );
   }
    //get all medicine  List
-  
+
   //--------------------------------
 }
 

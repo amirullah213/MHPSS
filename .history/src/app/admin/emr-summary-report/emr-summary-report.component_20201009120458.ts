@@ -14,11 +14,9 @@ import { AdminServiceService } from '../services/admin-service.service';
 })
 export class EmrSummaryReportComponent implements OnInit {
   loader_eqp:boolean= false;
-  reporData:any =[];
+  allpathology:any =[];
   isCollapsed = true;
   errormsg:string;
-  medOb:any ={};
-
   currentDate = new Date();
   form = new FormGroup({
     dateYMD: new FormControl(new Date()),
@@ -37,31 +35,18 @@ export class EmrSummaryReportComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-    var today = new Date();
-
-var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-console.log('date==',date);
-this.medOb.startDate=date;
-this.medOb.endtDate=date;
-
-    this.searchReport(this.medOb);
-   }
+  ngOnInit(): void { }
 
    //get all medicine  List
-   searchReport(sobj) {
+   getAllPathList() {
     this.loader_eqp = true;
-    
-      this.model.startDate=sobj.startDate;
-      this.model.endDate=sobj.endtDate;
-      this.model.hospitalID=localStorage.getItem('hospitalID');
-
-    this.adminService.emrSummaryReort(this.model).subscribe(
+this.model.testType=2;
+    this.adminService.getPatology(this.model).subscribe(
      
       (response: any) => {
         if (response.status === 0) {
-          this.reporData = response;
-          console.log('all reportdata==', this.reporData);
+          this.allpathology = response.data;
+          console.log('all allpathology==', this.allpathology);
          
           //setTimeout(this.rerender, 2500);
          // if(this.allMedcis.length>1){this.rerender();}
@@ -83,7 +68,7 @@ this.medOb.endtDate=date;
     );
   }
    //get all medicine  List
-  
+
   //--------------------------------
 }
 

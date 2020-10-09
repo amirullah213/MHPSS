@@ -45,7 +45,7 @@ console.log('date==',date);
 this.medOb.startDate=date;
 this.medOb.endtDate=date;
 
-    this.searchReport(this.medOb);
+    this.searchReport(date);
    }
 
    //get all medicine  List

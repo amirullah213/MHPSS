@@ -41,17 +41,13 @@ export class EmrSummaryReportComponent implements OnInit {
     var today = new Date();
 
 var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-console.log('date==',date);
-this.medOb.startDate=date;
-this.medOb.endtDate=date;
-
-    this.searchReport(this.medOb);
+console.log('date==',date)
+    //this.getAllReports();
    }
 
    //get all medicine  List
    searchReport(sobj) {
     this.loader_eqp = true;
-    
       this.model.startDate=sobj.startDate;
       this.model.endDate=sobj.endtDate;
       this.model.hospitalID=localStorage.getItem('hospitalID');
