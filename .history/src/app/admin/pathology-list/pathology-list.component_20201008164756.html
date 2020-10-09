@@ -1,0 +1,220 @@
+<div class="container-fluid container-wrapper">
+    <div class="row">
+        <div class="content-wrapper">
+            <div class="page-title">
+                <div class="row px-3 px-md-0">
+                    <div class="col-sm-12 pl-0">
+                        <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)" class="gray-color">Pathology
+                                    List</a></li>
+                            <!-- <li class="breadcrumb-item active gray-04-color">Commission</li> -->
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mb-30">
+                    <div class="card card-statistics h-100">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5 class="card-title mb-0">Pathology Management</h5>
+                                </div>
+                                <div class="col-md-6">
+                                    <span class="pull-right btn btn-sm">
+                                        <button type="button" class="button" (click)="openModAdd(template)">
+                                            <i class="fa fa-plus"></i>
+                                            Add Pathology Test
+                                        </button>
+                                    </span>
+                                </div>
+
+                                <!-- model for Add Diagnostic download start-->
+                                <ng-template #template>
+                                    <div class="modal-header">
+                                        <h4 class="modal-title pull-left">Add Test</h4>
+                                        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-inline">
+                                            
+                                            <input type="text" class="form-control col-12 mt-2 " id="nme" [(ngModel)]="medOb.name" placeholder="Main Test Name" name="name">
+                                            <br>
+                                            <input type="text" class="form-control col-12 mt-2 " id="range" [(ngModel)]="medOb.range" placeholder="Refrence Range" name="range">
+                                            <br>
+                                            <input type="text" class="form-control col-12 mt-2 "  id="fee" [(ngModel)]="medOb.fee" placeholder="Fee" name="fee">
+                                            <br>
+                                            <select class="form-control  col-12 mt-2" aria-label="Text input with segmented dropdown button" [(ngModel)]="medOb.isSupper" name="subtest">
+                                                <option value="1" >Has Sub Tests</option>
+                                                <option value="0" selected>No Sub Tests </option>
+                                            </select>
+                                            <br>
+
+                                            <input type="text" *ngIf="medOb.isSupper==1" class="form-control mr-1 mt-2 col-md-4" id="subtest" [(ngModel)]="subObj.testName"  placeholder="Sub Test Name" name="subname">
+                                            <input type="text"  *ngIf="medOb.isSupper==1" class="form-control mr-1 mt-2 col-md-4" id="normalrang"  [(ngModel)]="subObj.refRange" placeholder="Normal Range" name="normalrange">
+                                            <input type="text"  *ngIf="medOb.isSupper==1" class="form-control mt-2 col-md-3" id="feesub"  [(ngModel)]="subObj.fee" placeholder="Fee" name="subfee">
+                                            <a class="mt-2 ml-2"  *ngIf="medOb.isSupper==1" (click)="subtestArr(subObj)"><i class="ti-plus text-success"></i></a>
+                                            <br>
+                                            <div class="w-100">
+                                                <div class="row" *ngFor="let sub of attsArr;index as f">
+                                                    <div class="col-md-4 mt-2">
+                                                        <p>{{sub.testName}}</p>
+                                                    </div>
+                                                    <div class="col-md-4 mt-2">
+                                                        <p>{{sub.refRange}}</p>
+                                                    </div>
+                                                    <div class="col-md-3 mt-2">
+                                                        <p>{{sub.fee}}</p>
+                                                    </div>
+                                                    <div class="mt-2 ml-3">
+                                                        <a class="mt-2" (click)="removeArr(f)"><b><i class="ti-close text-danger"></i></b></a>
+                                                    </div>
+                                                </div>
+                                            </div>    
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="button-danger" (click)="modalRef.hide()">
+                                            <i class="fa fa-remove"></i> Close
+                                        </button>
+                                        <button type="button" class="button" (click)="addnewTest(medOb)">
+                                            <i class="fa fa-check-square"></i> Add Test
+                                        </button>
+                                    </div>
+                                </ng-template>
+                                <!-- model for Add Diagnostic download end-->
+                                <div class="table-responsive">
+                                    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table center-aligned-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Sno</th>
+                                                <th>Main Test Name</th>
+                                                <th>Sub Test Name</th>
+                                                <th>Normal Ranges</th>
+                                                <th>Fee</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let path of allpathology;index as i">
+                                                <td>{{i+1}}</td>
+                                                <td>{{path.testName}}</td>
+                                                <td>
+                                                    <span *ngIf="path.isSupper==0">No Sub Tests</span>
+                                                    <span *ngIf="path.isSupper==1"><a  (click)="viewTestsModal(subtest,path)">View Sub Tests</a> </span>
+                                                     <!-- model for Add Diagnostic download start-->
+                                <ng-template #subtest>
+                                    <div class="modal-header">
+                                        <h4 class="modal-title pull-left">Sub Tests</h4>
+                                        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        
+                                            <div class="row">
+                                                
+                                                     <div class="col-sm-4">Name</div>
+                                                     <div class="col-sm-8">Range</div>
+                                                 
+                                            </div>
+                                            <div class="row" *ngFor="let urd of userData">
+                                                
+                                                <div class="col-sm-4">{{urd.testName}}</div>
+                                                <div class="col-sm-8">{{urd.refRange}}</div>
+                                            
+                                            </div>
+                                            
+                                       
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="button-danger" (click)="modalRef.hide()">
+                                            <i class="fa fa-remove"></i> Close
+                                        </button>
+                                        
+                                    </div>
+                                </ng-template>
+                                <!-- model for Add Diagnostic download end-->
+                                                </td>
+                                                <td>{{path.refRange}}</td>
+                                                <td>{{path.fee}}</td>
+                                                <td>
+                                                    <button href="" class="mr-3 btn btn-info" (click)="openModedit(template1)"><i class="ti-pencil-alt"></i></button>
+                                                    <!-- model for Add Diagnostic download start-->
+                                                    <ng-template #template1>
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title pull-left">Modal</h4>
+                                                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                      
+                                                        <div class="modal-body">
+                                                            <form class="form-inline">
+                                                                <input type="text" class="form-control col-12" id="maintest" placeholder="Main Test Name">
+                                                                <input type="text" class="form-control mr-1 mt-2 col-md-4" id="subtest" placeholder="Sub Test Name">
+                                                                <input type="text" class="form-control mr-1 mt-2 col-md-4" id="normalrang" placeholder="Normal Range">
+                                                                <input type="text" class="form-control mt-2 col-md-3" id="fee" placeholder="Fee">
+                                                                <a class="mt-2 ml-2"><i class="ti-plus text-success"></i></a>
+                                                                <div class="col-md-4 mt-2">
+                                                                    <p>Sub test</p>
+                                                                </div>
+                                                                <div class="col-md-4 mt-2">
+                                                                    <p>Range</p>
+                                                                </div>
+                                                                <div class="col-md-3 mt-2">
+                                                                    <p>Fee</p>
+                                                                </div>
+                                                                <div class="mt-2 ml-3">
+                                                                    <a class="mt-2"><b><i class="ti-close text-danger"></i></b></a>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="button-danger" (click)="modalRef.hide()">
+                                                                <i class="fa fa-remove"></i> Close
+                                                            </button>
+                                                            <button type="button" class="button">
+                                                                <i class="fa fa-check-square"></i> Add Test
+                                                            </button>
+                                                        </div>
+                                                    </ng-template>
+                                                    <!-- model for Add Diagnostic download end-->
+                                                    <button href="" class="mr-2 btn btn-danger" (click)="openModdelete(deletepathology)"><i class="ti-trash"></i></button>
+                                                    <!-- model for Diagnostic delete start-->
+                                                    <ng-template #deletepathology>
+                                                        <div class="modal-body text-center">
+                                                            <i class="fa fa-exclamation-circle fa-5x text-danger"></i>
+                                                            <p>Do you really want to Delete this Item?</p>
+                                                            <button type="button" class="button mr-3" > <i class="ti-check-box"></i> Yes</button>
+                                                            <button type="button" class="button-danger" (click)="modalRef.hide()"> <span aria-hidden="true">&times;</span> No</button>
+                                                        </div>
+                                                    </ng-template>
+                                                    <!-- model for Diagnostic delete end-->
+                                                </td>
+                                            </tr>
+                                        
+                                        </tbody>
+                                    </table>
+                                    <div *ngIf="loader_eqp" class="d-flex justify-content-center">
+                                        <div class="spinner-border theme-color" role="status">
+                                            <span class="sr-only"></span>
+                                        </div>
+                                    </div>
+                                    <hr class="hr-gray mx-3 my-3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ------------------------------------------------------- -->
+
+<!-- <div *ngIf="loader_eqp" class="text-center">
+    <i class="fa fa-pulse fa-spinner fa-3x fa-fw"></i>
+</div> -->

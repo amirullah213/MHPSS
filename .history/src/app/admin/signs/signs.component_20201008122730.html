@@ -1,0 +1,141 @@
+<div class="container-fluid container-wrapper">
+    <div class="row">
+        <div class="content-wrapper">
+            <div class="page-title">
+                <div class="row px-3 px-md-0">
+                    <div class="col-sm-12 pl-0">
+                        <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)" class="gray-color">Signs And Symptoms </a></li>
+                            <!-- <li class="breadcrumb-item active gray-04-color">Commission</li> -->
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mb-30">
+                    <div class="card card-statistics h-100">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5 class="card-title mb-0">Signs And Symptoms </h5>
+                                </div>
+                                <div class="col-md-6">
+                                    <span class="pull-right btn btn-sm">
+                                        <button type="button" class="button" (click)="openModAdd(SignsAdd)">
+                                            <i class="fa fa-plus"></i> Add Signs
+                                        </button>
+                                    </span>
+                                </div>
+                                <div class="table-responsive">
+                                    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table center-aligned-table">
+                                        <thead>
+                                            <tr>
+                                                <th>S.No</th>
+                                                <th>Signs</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let sgn of allSigns;index as i">
+                                                <td>{{i+1}}</td>
+                                                <td>{{sgn.name}}</td>
+                                                <td>
+                                                    <button class="mr-3 btn btn-info" (click)="SignsEdit.show()"><i class="ti-pencil-alt"></i></button>
+                                                    <!-- model for Signs Update start-->
+                                                    <div bsModal #SignsEdit="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
+                                                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h2>Edit Signs</h2>
+                                                                    <button type="button" class="close pull-right" aria-label="Close" (click)="SignsEdit.hide()">
+                                                                        <span aria-hidden="true"><i class="ti-close"></i></span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body p-5">
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-2 mt-3"><label for="inputState">SignsName</label></div>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control input-sm" name="USignsname" id="USignsname" value="Signs Name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="button-danger" (click)="SignsEdit.hide()"><i class="fa fa-remove"></i> Close</button>
+                                                                        <button type="button" class="button"><i class="fa fa-check-square"></i> Update Signs</button>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- model for Signs Update end-->
+                                                    <button class="mr-3 btn btn-danger" (click)="Signsdelete.show()"><i class="ti-trash"></i></button>
+                                                    <!-- model for Signs delete start-->
+                                                    <div bsModal #Signsdelete="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
+                                                        <div class="modal-dialog modal-sm modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header bb-none"></div>
+                                                                <div class="modal-body p-5 text-center">
+                                                                    <i class="fa fa-exclamation-circle fa-5x text-danger"></i>
+                                                                    <p>Are You Sure To delete this Item!</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="button-danger" (click)="Signsdelete.hide()"><i class="fa fa-remove"></i> Cancel</button>
+                                                                    <button type="button" class="button"><i class="fa fa-check-square"></i> Delete</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- model for Signs delete end-->
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div *ngIf="loader_eqp" class="d-flex justify-content-center">
+                                        <div class="spinner-border theme-color" role="status">
+                                            <span class="sr-only"></span>
+                                        </div>
+                                    </div>
+                                    <hr class="hr-gray mx-3 my-3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- model for Add Signs download start-->
+            <div  #SignsAdd class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>Add Signs</h2>
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                <span aria-hidden="true"><i class="ti-close"></i></span>
+                            </button>
+                        </div>
+                        <div class="modal-body p-5">
+                            <div class="form-group row">
+                                <div class="col-sm-2 mt-3"><label for="inputState">Signs Name</label></div>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control input-sm" name="Signsname" id="Signsname" value="Signs Name" placeholder="Signs Name">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="button-danger" (click)="modalRef.hide()"><i class="fa fa-remove"></i> Close</button>
+                                <button type="button" class="button"><i class="fa fa-check-square"></i> Add Signs</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- model for Add Signs download end-->
+
+        </div>
+    </div>
+</div>
+<!-- ------------------------------------------------------- -->
+
+<!-- <div *ngIf="loader_eqp" class="text-center">
+    <i class="fa fa-pulse fa-spinner fa-3x fa-fw"></i>
+</div> -->
