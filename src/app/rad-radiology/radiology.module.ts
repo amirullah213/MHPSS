@@ -14,10 +14,12 @@ import { RadiologyRoutingModule } from './radiology-routing.module';
 import { HomeComponent } from './home/home.component';
 import { LabRadiologyComponent } from './lab-radiology/lab-radiology.component';
 import { RadiologySideBarComponent } from './radiology-side-bar/radiology-side-bar.component';
+import { DiagnosisPendingRadComponent } from './diagnosis-pending-rad/diagnosis-pending-rad.component';
+import { DiagnosisSeenRadComponent } from './diagnosis-seen-rad/diagnosis-seen-rad.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, LabRadiologyComponent, RadiologySideBarComponent],
+  declarations: [HomeComponent, LabRadiologyComponent, RadiologySideBarComponent, DiagnosisPendingRadComponent, DiagnosisSeenRadComponent],
   imports: [
     CommonModule,
     RadiologyRoutingModule, FormsModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), BsDatepickerModule.forRoot(), CollapseModule.forRoot()

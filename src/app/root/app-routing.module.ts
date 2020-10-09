@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'doctor', loadChildren: () => import('../pages/pages.module').then(m => m.PagesModule),canActivate : [AuthGuard]},
   { path: 'lab-path', loadChildren: () => import('../lab-pathology/lab-pathol.module').then(m => m.LabPatholModule),canActivate : [PathologyGuard]},
   { path: 'reception', loadChildren: () => import('../reception/reception.module').then(m => m.ReceptionModule)},
-  { path: 'radiology', loadChildren: () => import('../rad-radiology/radiology.module').then(m => m.RadiologyModule)},
+  { path: 'lab-rad', loadChildren: () => import('../rad-radiology/radiology.module').then(m => m.RadiologyModule)},
   { path: 'admin', loadChildren: () => import('../admin/admin.module').then(m => m.AdminModule)},
 
   { path: 'signin', loadChildren: () => import('../auth/signin/signin.module').then(m => m.SigninModule)},
