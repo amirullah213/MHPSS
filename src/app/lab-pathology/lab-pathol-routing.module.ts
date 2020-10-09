@@ -12,8 +12,8 @@ const routes: Routes = [
     children: [       
         // { path: 'updatepassword', loadChildren: () => import('./features/update_pass/update_password.module').then(m => m.UpdatePasswordModule) },
       { path: 'home', component: HomeComponent },
-      { path: 'diagnos', component: DiagnosticsPathologyComponent },
-      { path: 'diagnos-seen', component: DiagnosticsPathologySeenComponent },
+      { path: 'pending', component: DiagnosticsPathologyComponent },
+      { path: 'seen', component: DiagnosticsPathologySeenComponent },
         { path : '', redirectTo : 'home', pathMatch : 'full' }
         
     ]

@@ -49,16 +49,22 @@ export class HomeComponent implements OnInit {
   }
   //set tab
   setTab(tab: string) {
-    if (tab == 'penPats') {
+    if (tab == 'newPats') {
       console.log('tab==', tab);
       this.tab = tab;
       this.userData.status = 0;
       this.getUsers(this.userData)
     };
-    if (tab == 'seenPats') {
+    if (tab == 'penPats') {
       console.log('tab==', tab);
       this.tab = tab;
       this.userData.status = 1;
+      this.getUsers(this.userData)
+    };
+    if (tab == 'seenPats') {
+      console.log('tab==', tab);
+      this.tab = tab;
+      this.userData.status = 2;
       this.getUsers(this.userData)
     };
   }

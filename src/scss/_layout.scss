@@ -195,7 +195,7 @@
             width: 100%;
             bottom: 0;
             content: "";
-            ackground: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.9) 100%);
+            background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.9) 100%);
             background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.9)));
             background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.9) 100%);
             background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.9) 100%);
@@ -761,7 +761,7 @@ textarea.form-control {
 }
 
 .content-wrapper {
-    min-height: auto;
+    min-height: 580px;
     .nav-tabs {
         border-bottom: none;
         margin: 0 -8px;
