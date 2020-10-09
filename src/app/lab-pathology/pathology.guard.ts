@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class PathologyGuard implements CanActivate {
   constructor(private router: Router) { }
   canActivate() {
-    let token = localStorage.getItem("details");
+    let token = localStorage.getItem("userType");
     console.log('tokennn==',token);
     
     if (token =='2' ) {

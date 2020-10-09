@@ -4,15 +4,14 @@ import { Router } from "@angular/router";
 import { Subject } from 'rxjs';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { CollapseModule } from 'ngx-bootstrap/collapse';;
 
 @Component({
-  selector: 'ncri-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'ncri-diagnostics-pathology-seen',
+  templateUrl: './diagnostics-pathology-seen.component.html',
+  styleUrls: ['./diagnostics-pathology-seen.component.scss']
 })
-export class HomeComponent implements OnInit {
-  
+export class DiagnosticsPathologySeenComponent implements OnInit {
   isCollapsed = true;
 
   currentDate = new Date();
@@ -29,18 +28,17 @@ export class HomeComponent implements OnInit {
   model: any = {};
   modalRef: BsModalRef;
 
-  constructor( private modalService: BsModalService, private fb: FormBuilder ) 
-  {
-    
+  constructor(private modalService: BsModalService, private fb: FormBuilder) {
+
   }
 
-  ngOnInit(): void {}
-  
-  openModAdd(captureuser: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(captureuser);
+  ngOnInit(): void {
+  }
+  openModalWithClass(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(
+      template,
+      Object.assign({}, { class: 'gray modal-lg' })
+    );
   }
 
-
-//--------------------------------
 }
-

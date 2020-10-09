@@ -1,18 +1,19 @@
 import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { Router } from "@angular/router";
 import { Subject } from 'rxjs';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { CollapseModule } from 'ngx-bootstrap/collapse'; 
+
 
 @Component({
-  selector: 'ncri-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'ncri-emr-summary-report',
+  templateUrl: './emr-summary-report.component.html',
+  styleUrls: ['./emr-summary-report.component.scss']
 })
-export class HomeComponent implements OnInit {
-  
+export class EmrSummaryReportComponent implements OnInit {
+
   isCollapsed = true;
 
   currentDate = new Date();
@@ -29,18 +30,16 @@ export class HomeComponent implements OnInit {
   model: any = {};
   modalRef: BsModalRef;
 
-  constructor( private modalService: BsModalService, private fb: FormBuilder ) 
-  {
-    
+  constructor(private modalService: BsModalService, private fb: FormBuilder) {
+
   }
 
-  ngOnInit(): void {}
-  
+  ngOnInit(): void { }
+
   openModAdd(captureuser: TemplateRef<any>) {
     this.modalRef = this.modalService.show(captureuser);
   }
 
-
-//--------------------------------
+  //--------------------------------
 }
 
