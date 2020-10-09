@@ -8,8 +8,10 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { DataTablesModule } from 'angular-datatables';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 import { LabRadiologyComponent } from './lab-radiology/lab-radiology.component';
+import { HomeComponent } from './home/home.component';
+import { DiagnosisPendingRadComponent } from './diagnosis-pending-rad/diagnosis-pending-rad.component';
+import { DiagnosisSeenRadComponent } from './diagnosis-seen-rad/diagnosis-seen-rad.component';
 
 const routes: Routes = [
   {
@@ -17,12 +19,14 @@ const routes: Routes = [
     component: LabRadiologyComponent,
     children: [
        
-        // { path: 'updatepassword', loadChildren: () => import('./features/update_pass/update_password.module').then(m => m.UpdatePasswordModule) },
-        { path: 'home', component: HomeComponent },
-        { path : '', redirectTo : 'home', pathMatch : 'full' }
+      // { path: 'updatepassword', loadChildren: () => import('./features/update_pass/update_password.module').then(m => m.UpdatePasswordModule) },
+      { path: 'home', component: HomeComponent },
+      { path: 'pending', component: DiagnosisPendingRadComponent},
+      { path: 'seen', component: DiagnosisSeenRadComponent },
+      { path : '', redirectTo : 'home', pathMatch : 'full' }
         
     ]
-}
+  }
 ];
 
 @NgModule({
