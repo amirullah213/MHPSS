@@ -10,9 +10,13 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   constructor(private http: HttpClient, private router: Router,) {}
-
+  
   loginPms(obj: any) {
     let url = APP_CONFIG.apiBaseUrl + 'loginpms';
+    return this.http.post(url, obj);
+  }
+  getindoorlist(obj: any) {
+    let url = APP_CONFIG.apiBaseUrl + 'getindoorlist';
     return this.http.post(url, obj);
   }
   userList(obj: any) {
@@ -20,7 +24,7 @@ export class AuthService {
     return this.http.post(url, obj);
   }
 
-  getPatPrescription(obj: any) {
+  getPatPrescription(obj: any): Observable<any>{
     let url = APP_CONFIG.apiBaseUrl + 'getpatientprescriptions';
     return this.http.post(url, obj);
   }

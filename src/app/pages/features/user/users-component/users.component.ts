@@ -1,7 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { UserService } from '../services/user.service';
+import { UserService } from '../user.service';
 import { GlobalService, AuthService, APP_CONFIG } from '../../../../core';
 
 @Component({

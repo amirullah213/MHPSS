@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { UserService } from '../services/user.service';
+import { UserService } from '../user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GlobalService, AuthService, APP_CONFIG } from '../../../../core';
+import { TypeaheadMatch } from 'ngx-bootstrap/typeahead/typeahead-match.class';  
+import { ITS_JUST_ANGULAR } from '@angular/core/src/r3_symbols';
 
 
 @Component({
@@ -12,7 +14,18 @@ import { GlobalService, AuthService, APP_CONFIG } from '../../../../core';
   styleUrls: ['./pat-detail.component.scss']
 })
 export class PatDetailComponent implements OnInit {
-  tab: string = 'employee'
+  tab: string = 'biofh'
+  selectedValueDiag: string;  
+  diagnosis: any[];
+  localSymptoms: any[]=[];
+  anotherArray: any[]=[];
+  selectedValueSign: string;  
+    signsD: any[];
+    selectedValueSymptom:string;
+    symptomsD:any[];
+  diagnosisData: any;
+  symptomsData: any;
+  signsData: any;
   employeeInformation: FormGroup;
   clicnicalInformation: FormGroup;
   investigationInformation: FormGroup;
@@ -26,13 +39,14 @@ export class PatDetailComponent implements OnInit {
   error: boolean = false;
   errorMessage: any = '';
   patInfo:any ={};
-
+  objp:any ={}
   param: any = {};
   selectedUser: any;
+  st: void;
   constructor(
     private fb: FormBuilder,
      private auth: AuthService,
-     private service: UserService,
+     private uService: UserService,
      private router: Router,
      private route: ActivatedRoute
      ) {
@@ -46,47 +60,14 @@ export class PatDetailComponent implements OnInit {
         oxygen_saturation: ['', [Validators.required, Validators.minLength(6)]],
         isFollowUp : [false, Validators.required],
         isMalnutration : [false, Validators.requiredTrue],
-  
-        // complaints : this.fb.group({
-          
-        //   durationType : ['', Validators.required],
-        //   duration : ['', Validators.required],
-        //   name : ['', Validators.required],
-          
-        //  }),
-        // pastHistory : this.fb.group({
-        //   Abortion : [false, Validators.required],
-        //   Allegory : [false],
-        //   Astama : [false],
-        //   Cancer : [false],
-        //   Diabetes : [false],
-        //   DrugAllergy : [false],
-        //   HyperTension : [false],
-        //   IschemicHeartDiseases : [false],
-        //   IUD : [false],
-        //   misCarriage : [false],
-        //   stillBirth : [false],
-        //   twins : [true],
-         
-        //  }),
-        //  familyHistory : this.fb.group({
-        //   Astama1 : [false],
-        //   Cancer1 : [false],
-        //   Diabetes1 : [false],
-        //   DrugAllergy1 : [false],
-        //   HyperTension1 : [false],
-        //   IschemicHeartDiseases1 : [true],
-         
-        //  }),
-        // complaints : ['', Validators.requiredTrue],
-       
-        signs : ['', Validators.requiredTrue],
+        signsF : ['', Validators.requiredTrue],
         signsArr : ['', Validators.requiredTrue],
         diagnosis  : ['', Validators.requiredTrue],
+        duration:['',Validators.required],
+        durationType:['',Validators.required],
+        selectedValueSymptom:['']
         
-          
-    //}, {
-        // validator: MustMatch('password', 'confirmPassword')
+        
     });
 
   }
@@ -94,12 +75,58 @@ export class PatDetailComponent implements OnInit {
   ngOnInit(): void {
 
     this.patInfo= JSON.parse(localStorage.getItem("patData"));
-    console.log('patInfo====',this.patInfo)
+    this.getclinicalinfo(localStorage.getItem('hospitalID'),this.patInfo.prescriptionID);
     this.getPatPrescrib(this.patInfo);
      
   }
+  onSelectDiag(event: TypeaheadMatch): void {  
+      
+    //this.selectedOption = event.item;  
+  } 
+  onSelectSign(event: TypeaheadMatch): void {  
+      
+    // this.selectedOption = event.item;  
+   } 
+
+   onSelectSymptom(event: TypeaheadMatch): void {  
+      
+    // this.selectedOption = event.item;  
+   } 
+  
+   getclinicalinfo(obj:any, obj1:any) {
+  
+    this.param={'hospitalID':obj,'prescriptionID':obj1};
+    
+     this.userLoader = true;
+     this.uService.getclinicalinfo(this.param).subscribe
+     ((response:any)=> {
+     if(response.status === 0 ){
+         console.log(response );
+         this.diagnosisData = response.diagnosis;
+         this.diagnosis = this.diagnosisData;  
+  
+         this.signsData = response.signs;
+         this.signsD=this.signsData;
+         this.symptomsData = response.symptoms;
+         this.symptomsD=this.symptomsData;
+        this.userLoader = false;
+       } else {
+         this.userLoader = false;
+         alert('Something went wrong try again');
+       }
+     },
+     (error) => {}
+   );
+  }
+  addSymptoms(){
+this.localSymptoms.push(this.clicnicalInformation.value)  
+//   localStorage.setItem("data",JSON.stringify(this.localSymptoms));
+// this.st =JSON.parse(localStorage.getItem('data'));
+// this.anotherArray.push(this.st); 
+
+
+}
   get f() { 
-    console.log('this.clicnicalInformation.controls===',this.clicnicalInformation.controls)
     return this.clicnicalInformation.controls; }
   //set tab
   setTab(tab: string) {
@@ -108,15 +135,15 @@ export class PatDetailComponent implements OnInit {
  
    //patient prescription list
    getPatPrescrib(obj:any) {
+
      this.param={'patientID':obj.patientID,'hospitalID':obj.hospitalID};
      
       this.userLoader = true;
-      this.auth.getPatPrescription(this.param).subscribe
+      this.uService.getPatPrescription(this.param).subscribe
       ((response:any)=> {
       if(response.status === 0 ){
           console.log(response );
           this.userList = response.data;
-          console.log('userPresc list===',this.userList)
          this.userLoader = false;
         } else {
           this.userLoader = false;
@@ -132,7 +159,8 @@ gotoPresDetails(udata){
   this.router.navigate(['doctor/user/print-presc'])
 }
   
-  
+
+
   
   
    getTwentyFourHourTime(amPmString) { 
@@ -141,7 +169,7 @@ gotoPresDetails(udata){
 }
   addUser(obj:any){
     this.error = false;
-    this.service.createUser(obj).subscribe((res) => {
+    this.uService.createUser(obj).subscribe((res) => {
       if(res.status === "success"){
         this.createUserLoader=false;
         this.error = false;
@@ -167,7 +195,7 @@ gotoPresDetails(udata){
     this.error = false;
     obj.user_id = this.param.id;
     obj.username = obj.email;
-    this.service.editUser(obj).subscribe((res) => {
+    this.uService.editUser(obj).subscribe((res) => {
       if(res.status === "success"){
         this.createUserLoader=false;
         this.error = false;

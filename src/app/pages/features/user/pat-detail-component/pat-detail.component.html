@@ -18,21 +18,21 @@
                         <div class="card-body">
                             <h5 class="page-title">OPD G.OPD Male</h5>
                             <ul class="nav nav-tabs" role="tablist">
-                                <li class="nav-item" (click)="setTab('employee')">
-                                    <a class="nav-link" [ngClass]="{'active show': tab === 'employee'}" id="tab1" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="home" aria-selected="true">Bio And Past History</a>
+                                <li class="nav-item" (click)="setTab('biofh')">
+                                    <a class="nav-link" [ngClass]="{'active show': tab === 'biofh'}" id="tab1" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="home" aria-selected="true">Bio And Past History</a>
                                 </li>
-                                <li class="nav-item" (click)="setTab('contact')">
-                                    <a class="nav-link" [ngClass]="{'active show': tab === 'contact'}" id="tab2" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="profile" aria-selected="false">Clinical Information</a>
+                                <li class="nav-item" (click)="setTab('clinicalInfo')">
+                                    <a class="nav-link" [ngClass]="{'active show': tab === 'clinicalInfo'}" id="tab2" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="profile" aria-selected="false">Clinical Information</a>
                                 </li>
-                                <li class="nav-item" (click)="setTab('access')">
-                                    <a class="nav-link" [ngClass]="{'active show': tab === 'access'}" id="tab3" href="javascript:void(0)" data-toggle="tab" role="tab" aria-controls="portfolio" aria-selected="false">Investigation</a>
+                                <li class="nav-item" (click)="setTab('investigation')">
+                                    <a class="nav-link" [ngClass]="{'active show': tab === 'investigation'}" id="tab3" href="javascript:void(0)" data-toggle="tab" role="tab" aria-controls="portfolio" aria-selected="false">Investigation</a>
                                 </li>
                                 <li class="nav-item" (click)="setTab('treatment')">
                                     <a class="nav-link" [ngClass]="{'active show': tab === 'treatment'}" id="tab4" href="javascript:void(0)" data-toggle="tab" role="tab" aria-controls="portfolio" aria-selected="false">Treatment</a>
                                 </li>
                             </ul>
                             <div class="tab-content">
-                                <div *ngIf="tab === 'employee'" class="tab-pane fade" [ngClass]="{'active show': tab === 'employee'}" id="tab1" role="tabpanel" aria-labelledby="tab1">
+                                <div *ngIf="tab === 'biofh'" class="tab-pane fade" [ngClass]="{'active show': tab === 'biofh'}" id="tab1" role="tabpanel" aria-labelledby="tab1">
                                     <!-- <form [formGroup]="employeeInformation" novalidate> -->
                                     <div class="row">
                                         <div class="col-md-3">
@@ -135,8 +135,8 @@
                                     </div>
                                     <!-- </form> -->
                                 </div>
-                                <div *ngIf="tab === 'contact'" class="tab-pane fade" [ngClass]="{'active show': tab === 'contact'}" id="tab2" role="tabpanel" aria-labelledby="tab2">
-                                    <form [formGroup]="clicnicalInformation" novalidate>
+                                <div *ngIf="tab === 'clinicalInfo'" class="tab-pane fade" [ngClass]="{'active show': tab === 'clinicalInfo'}" id="tab2" role="tabpanel" aria-labelledby="tab2">
+                                    <form [formGroup]="clicnicalInformation"  novalidate>
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <h5 class="card-title mb-0">Vitals</h5>
@@ -156,8 +156,8 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="formGroupExampleInput">Wight (Kg)</label>
-                                                    <input type="text" formControlName="weight" class="form-control" placeholder="Wight">
+                                                    <label for="formGroupExampleInput">Weight (Kg)</label>
+                                                    <input type="text" formControlName="weight" class="form-control" placeholder="Weight">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -194,7 +194,7 @@
                                                 <div class="form-group input-group">
                                                     <label for="formGroupExampleInput">Malnutrition</label>
                                                     <span class="wrapper-select">
-                                                        <select class="form-control" formControlName="isMalnutration" aria-label="Text input with segmented dropdown button" placeholder="Is Follow Up">
+                                                        <select class="form-control"  formControlName="isMalnutration" aria-label="Text input with segmented dropdown button" placeholder="Is Follow Up">
                                                             <option>No</option>
                                                             <option>Yes</option>
                                                         </select>
@@ -203,7 +203,7 @@
                                             </div>
                                             <hr class="hr-gray mx-3 my-4">
 
-                                            <div [formGroupName]="complaints" class="row mx-0">
+                                            <div  class="row mx-0">
 
                                                 <div class="col-md-12">
                                                     <h5 class="card-title mb-0 text-center">Presenting Complaints</h5>
@@ -211,19 +211,22 @@
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="formGroupExampleInput">Name</label>
-                                                        <input type="text" formControlName="name" class="form-control" id="name" placeholder="Name">
+                                                        <!-- <input type="text" formControlName="name" class="form-control" id="name" placeholder="Name"> -->
+                                                        <input  [value]="selectedValueSymptom" formControlName="selectedValueSymptom" [typeahead]="symptomsData" typeaheadOptionField="name" [typeaheadScrollable]="true"  
+                                                        (typeaheadOnSelect)="onSelectSymptom($event)" class="form-control" >  
+                                                        
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="formGroupExampleInput">Duration</label>
-                                                        <input type="text" formControlName="duration" class="form-control" id="duration" placeholder="Duration">
+                                                        <input type="text"  formControlName="duration" class="form-control" id="duration" placeholder="Duration">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="formGroupExampleInput">Duration Type</label>
-                                                        <select class="form-control" formControlName="durationType" aria-label="Text input with segmented dropdown button" placeholder="Complaint Duration">
+                                                        <select class="form-control"  formControlName="durationType"  aria-label="Text input with segmented dropdown button" placeholder="Complaint Duration">
                                                             <option>Hour(s)</option>
                                                             <option>Day(s)</option>
                                                             <option>Week(s)</option>
@@ -234,13 +237,21 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group">
-                                                        <label class="" for="formGroupExampleInput">Remove</label>
-                                                        <button type="button" class="button">Remove</button>
+                                                        <label class="" for="formGroupExampleInput">Add</label>
+                                                        <button type="btn" (click)="addSymptoms()"  class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">Add</button>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="form-group text-center">
-                                                        <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"> Add More </button>
+                                                        <table>
+                                                            <tr  *ngFor="let smp of localSymptoms">
+                                                                <td width="30%">{{smp.selectedValueSymptom}}</td>
+                                                                <td width="30%">{{smp.duration}}</td>
+                                                                <td width="30%">{{smp.durationType}}</td>
+                                                                <td width="25%"><i class="ti-close text-danger"></i></td>
+                                                            </tr>
+                                                        </table>
+                                                        <!-- <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"> Add More </button> -->
                                                     </div>
                                                 </div>
 
@@ -258,35 +269,35 @@
                                                     <label class="form-check-label" for="Allegory">Allegory</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="Astama" class="form-check-input" id="Astama">
+                                                    <input type="checkbox" formControlName="Astama" name="Astama" class="form-check-input" id="Astama">
                                                     <label class="form-check-label" for="Astama">Astama</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="Cancer" class="form-check-input" id="Cancer">
+                                                    <input type="checkbox" formControlName="Cancer" name="Cancer" class="form-check-input" id="Cancer">
                                                     <label class="form-check-label" for="Cancer">Cancer</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="Diabetes" class="form-check-input" id="Diabetes">
+                                                    <input type="checkbox" formControlName="Diabetes" name ="Diabetes" class="form-check-input" id="Diabetes">
                                                     <label class="form-check-label" for="Diabetes">Diabetes Mellitus</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="DrugAllergy" class="form-check-input" id="DrugAllergy">
+                                                    <input type="checkbox" formControlName="DrugAllergy" name="DrugAllergy" class="form-check-input" id="DrugAllergy">
                                                     <label class="form-check-label" for="DrugAllergy">Drug Allergy</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="HyperTension" class="form-check-input" id="HyperTension">
+                                                    <input type="checkbox" formControlName="HyperTension" name="HyperTension" class="form-check-input" id="HyperTension">
                                                     <label class="form-check-label" for="HyperTension">Hypertension</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="IschemicHeartDiseases" class="form-check-input" id="IschemicHeartDiseases">
+                                                    <input type="checkbox" formControlName="IschemicHeartDiseases" name="IschemicHeartDiseases" class="form-check-input" id="IschemicHeartDiseases">
                                                     <label class="form-check-label" for="IschemicHeartDiseases">Ischemic Heart Diseases</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="IUD" class="form-check-input" id="IUD">
+                                                    <input type="checkbox" formControlName="IUD" class="form-check-input" name="IUD" id="IUD">
                                                     <label class="form-check-label" for="IUD">IUD</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="misCarriage" class="form-check-input" id="misCarriage">
+                                                    <input type="checkbox" formControlName="misCarriage" name="misCarriage" class="form-check-input" id="misCarriage">
                                                     <label class="form-check-label" for="misCarriage">Mis Carriage</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
@@ -330,13 +341,9 @@
                                                 <div class="form-group input-group">
                                                     <label for="formGroupExampleInput">Signs</label>
                                                     <span class="wrapper-select">
-                                                        <select class="form-control" formControlName="signs" aria-label="Text input with segmented dropdown button" placeholder="Signs">
-                                                            <option>Couph</option>
-                                                            <option>Fever</option>
-                                                            <option>Cold</option>
-                                                            <option>Astama</option>
-                                                            <option>Allergy</option>
-                                                        </select>
+                                                        <input [(ngModel)]="selectedValueSign" [value]="selectedValueSign" [typeahead]="signsD" typeaheadOptionField="name" [typeaheadScrollable]="true"  
+                                                        (typeaheadOnSelect)="onSelectSign($event)" class="form-control" >  
+                                                        
                                                     </span>
                                                 </div>
                                             </div>
@@ -349,11 +356,16 @@
                                             <div class="col-md-12">
                                                 <h5>Provisional Diagosis</h5>
                                             </div>
+                                              
+                                        </div>
                                             <div class="col-md-10">
                                                 <div class="form-group input-group">
-                                                    <input type="text" formControlName="diagnosis" class="form-control" id="diagnosis" placeholder="Diagosis">
+                                                    <input [(ngModel)]="selectedValueDiag" [value]="selectedValueDiag" [typeahead]="diagnosis" typeaheadOptionField="name" [typeaheadScrollable]="true"  
+                                                  (typeaheadOnSelect)="onSelectDiag($event)" class="form-control"                                                         [typeaheadMinLength]="0"
+                                                  >  
+                                                  <!-- <input type="text" formControlName="diagnosis" class="form-control" id="diagnosis" placeholder="Diagosis"> -->
                                                 </div>
-                                            </div>
+                                                
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <button type="button" class="button">Remove</button>
@@ -368,7 +380,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div *ngIf="tab === 'access'" class="tab-pane fade" [ngClass]="{'active show': tab === 'access'}" id="tab3" role="tabpanel" aria-labelledby="tab3">
+                                <div *ngIf="tab === 'investigation'" class="tab-pane fade" [ngClass]="{'active show': tab === 'investigation'}" id="tab3" role="tabpanel" aria-labelledby="tab3">
                                     <form [formGroup]="investigationInformation" novalidate>
                                         <div class="row">
                                             <div class="col-md-12">
@@ -486,32 +498,8 @@
                                                     <button type="button" class="button"><i class="fa fa-wheelchair"></i> Operate</button>
                                                 </div>
                                             </div>
-                                            <!-- <div class="col-md-3">
-                                                <div class="input-group form-group">
-                                                    <label for="formGroupExampleInput">Start Time Limit*</label>
-                                                    <input [ngxTimepicker]="startTime" readonly type="text" formControlName="access_hours_start_time" class="form-control" id="formGroupExampleInput" placeholder="08:00:00 AM">
-                                                    <ngx-material-timepicker #startTime></ngx-material-timepicker>
-                                                    <div class="input-group-append">
-                                                        <span class="input-group-text"><i class="fa  fa-clock-o"></i></span>
-                                                    </div>
-                                                    <div class="w-100" *ngIf="h.controls.access_hours_start_time.status=='INVALID'">
-                                                        <div *ngIf="h.controls.access_hours_start_time.errors.required && h.controls.access_hours_start_time.touched" class="invalid-feedback" [style.display]="h.controls.access_hours_start_time.status=='INVALID' ? 'block' : 'none'">Please select start time.</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="input-group form-group">
-                                                    <label for="formGroupExampleInput">End Time Limit*</label>
-                                                    <input type="text" [ngxTimepicker]="endTime" readonly formControlName="access_hours_end_time" class="form-control" id="formGroupExampleInput" placeholder="05:00:00 PM">
-                                                    <ngx-material-timepicker #endTime></ngx-material-timepicker>
-                                                    <div class="input-group-append">
-                                                        <span class="input-group-text"><i class="fa  fa-clock-o"></i></span>
-                                                    </div>
-                                                    <div class="w-100" *ngIf="h.controls.access_hours_end_time.status=='INVALID'">
-                                                        <div *ngIf="h.controls.access_hours_end_time.errors.required && h.controls.access_hours_end_time.touched" class="invalid-feedback" [style.display]="h.controls.access_hours_end_time.status=='INVALID' ? 'block' : 'none'">Please select end time.</div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
+                                           
+                                       
                                         </div>
                                     </form>
                                 </div>

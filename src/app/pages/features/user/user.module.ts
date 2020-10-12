@@ -9,11 +9,11 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { UserService } from './services/user.service';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { ChangePasswordComponent } from './change-password-component/change-password.component';
 import { PrintPrescComponent } from './print-presc/print-presc.component';
-
+    
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';      
 
 @NgModule({
   declarations: [UsersComponent, PatDetailComponent, ChangePasswordComponent, PrintPrescComponent],
@@ -26,8 +26,9 @@ import { PrintPrescComponent } from './print-presc/print-presc.component';
     TimepickerModule.forRoot(),
     FormsModule,
     PaginationModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    TypeaheadModule.forRoot(), 
   ],
-  providers: [UserService]
+  providers: []
 })
 export class UserModule { }
