@@ -1,0 +1,72 @@
+<div class="container-fluid container-wrapper">
+    <div class="row">
+        <div class="content-wrapper">
+            <div class="page-title">
+                <div class="row px-3 px-md-0">
+                    <div class="col-sm-12 pl-0">
+                        <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)" [routerLink]="['/pharma/home']" class="gray-color"><i class="ti-home mr-2"></i>Home</a></li>
+                            <li class="breadcrumb-item active gray-04-color">Pending Patients</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- main body -->
+            <div class="row">
+                <div class="col-md-12 mb-30">
+                    <div class="card card-statistics h-100">
+                        <div class="card-body">
+                            <h5 class="page-title">Main Pharmacy Pending Patients</h5>
+                            <div class="row mx-0">
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="table center-aligned-table">
+                                            <thead>
+                                                <tr class="text-dark">
+                                                    <th>S.No</th>
+                                                    <th>Medicine Name</th>
+                                                    <th>Unit</th>
+                                                    <th>Type</th>
+                                                    <th>In Stock</th>
+                                                    <th>Prescribed Quantity</th>
+                                                    <th>Issued Quantity</th>
+                                                    <th>Dose</th>
+                                                    <th>Prandial</th>
+                                                    <th>Remarks</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Paracetmole</td>
+                                                    <td>500mg</td>
+                                                    <td>Tablet</td>
+                                                    <td>50</td>
+                                                    <td>15</td>
+                                                    <td>20</td>
+                                                    <td>As Required</td>
+                                                    <td>After Meal</td>
+                                                    <td>Remarks</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="row mx-0">
+                                        <div class="col-md-12 mt-3 text-center">
+                                            <button type="button" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-save"></i> Save </button>
+                                        </div>
+                                    </div>
+                                    <div class="row mx-0">
+                                        <div class="col-md-12 mt-3 text-center">
+                                            <button type="button" href="javascript:void(0)" [routerLink]="['/pharma/prescription']" class="button"><i class="fa fa-eye"></i> View Priscription </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
