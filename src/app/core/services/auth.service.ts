@@ -81,7 +81,7 @@ export class AuthService {
     if(resp.userType==5){ this.router.navigate(['/indoor'])}
     if(resp.userType==6){ this.router.navigate(['/obs-reg'])}
     if(resp.userType==7){ this.router.navigate(['/ot'])}
-    if(resp.userType==8){ this.router.navigate(['/pharmacy'])}
+    if(resp.userType==8){ this.router.navigate(['/pharma'])}
     if(resp.userType==9){ this.router.navigate(['/community'])}
     if(resp.userType==10){ this.router.navigate(['/fac-staff'])}
     if(resp.userType==11){ this.router.navigate(['/admin'])}
