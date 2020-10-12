@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'reception', loadChildren: () => import('../reception/reception.module').then(m => m.ReceptionModule)},
   { path: 'lab-rad', loadChildren: () => import('../rad-radiology/radiology.module').then(m => m.RadiologyModule)},
   { path: 'admin', loadChildren: () => import('../admin/admin.module').then(m => m.AdminModule)},
-
+  { path: 'pharmacy', loadChildren: () => import('../pharmacy/pharmacy.module').then(m => m.PharmacyModule)},
   { path: 'signin', loadChildren: () => import('../auth/signin/signin.module').then(m => m.SigninModule)},
   { path: 'signup', loadChildren: () => import('../auth/signup/signup.module').then(m => m.SignupModule)},
   { path: 'recovery', loadChildren: () => import('../auth/recovery/recovery.module').then(m => m.RecoveryModule)},
