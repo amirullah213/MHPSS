@@ -43,6 +43,8 @@ export class PatDetailComponent implements OnInit {
   param: any = {};
   selectedUser: any;
   st: void;
+  selectedOption: any;
+  selectedOptionSymptom: any;
   constructor(
     private fb: FormBuilder,
      private auth: AuthService,
@@ -90,7 +92,8 @@ export class PatDetailComponent implements OnInit {
 
    onSelectSymptom(event: TypeaheadMatch): void {  
       
-    // this.selectedOption = event.item;  
+    debugger
+     this.selectedOptionSymptom = event.item;  
    } 
   
    getclinicalinfo(obj:any, obj1:any) {
@@ -101,10 +104,8 @@ export class PatDetailComponent implements OnInit {
      this.uService.getclinicalinfo(this.param).subscribe
      ((response:any)=> {
      if(response.status === 0 ){
-         console.log(response );
          this.diagnosisData = response.diagnosis;
-         this.diagnosis = this.diagnosisData;  
-  
+         this.diagnosis = this.diagnosisData;    
          this.signsData = response.signs;
          this.signsD=this.signsData;
          this.symptomsData = response.symptoms;
@@ -118,14 +119,36 @@ export class PatDetailComponent implements OnInit {
      (error) => {}
    );
   }
-  addSymptoms(){
-this.localSymptoms.push(this.clicnicalInformation.value)  
-//   localStorage.setItem("data",JSON.stringify(this.localSymptoms));
-// this.st =JSON.parse(localStorage.getItem('data'));
-// this.anotherArray.push(this.st); 
+  getSymptoms(){
+    
+   this.localSymptoms;
+    
+    }
 
+    addSymptoms(obj:any){
+    
+      this.localSymptoms.push(this.clicnicalInformation.value)  
+      //   localStorage.setItem("data",JSON.stringify(this.localSymptoms));
+      // this.st =JSON.parse(localStorage.getItem('data'));
+      // this.anotherArray.push(this.st); 
+      this.getSymptoms();
+      
+      }
 
+    removeItem(obj:any){
+      debugger
+const index = this.localSymptoms.indexOf(5);
+if (index > -1) {
+  this.localSymptoms.splice(index, 1);
 }
+      console.log(this.localSymptoms);
+
+      //   localStorage.setItem("data",JSON.stringify(this.localSymptoms));
+      // this.st =JSON.parse(localStorage.getItem('data'));
+      // this.anotherArray.push(this.st); 
+      
+      
+      }
   get f() { 
     return this.clicnicalInformation.controls; }
   //set tab
