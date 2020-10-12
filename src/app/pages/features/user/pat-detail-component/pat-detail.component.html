@@ -212,7 +212,7 @@
                                                     <div class="form-group">
                                                         <label for="formGroupExampleInput">Name</label>
                                                         <!-- <input type="text" formControlName="name" class="form-control" id="name" placeholder="Name"> -->
-                                                        <input  [value]="selectedValueSymptom" formControlName="selectedValueSymptom" [typeahead]="symptomsData" typeaheadOptionField="name" [typeaheadScrollable]="true"  
+                                                        <input  [value]="selectedValue"  formControlName="selectedValueSymptom" [typeahead]="symptomsData" typeaheadOptionField="name" [typeaheadScrollable]="true"  
                                                         (typeaheadOnSelect)="onSelectSymptom($event)" class="form-control" >  
                                                         
                                                     </div>
@@ -238,17 +238,18 @@
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label class="" for="formGroupExampleInput">Add</label>
-                                                        <button type="btn" (click)="addSymptoms()"  class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">Add</button>
+                                                        <button type="btn" (click)="addSymptoms(selectedOptionSymptom)"  class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">Add</button>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="form-group text-center">
                                                         <table>
                                                             <tr  *ngFor="let smp of localSymptoms">
+                                                                <td>{{smp.selectedOptionSymptom}}</td>
                                                                 <td width="30%">{{smp.selectedValueSymptom}}</td>
                                                                 <td width="30%">{{smp.duration}}</td>
                                                                 <td width="30%">{{smp.durationType}}</td>
-                                                                <td width="25%"><i class="ti-close text-danger"></i></td>
+                                                                <td width="25%"><i class="ti-close text-danger" (click)="removeItem(selectedOptionSymptom)"></i></td>
                                                             </tr>
                                                         </table>
                                                         <!-- <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"> Add More </button> -->
