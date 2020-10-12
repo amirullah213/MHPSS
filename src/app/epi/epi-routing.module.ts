@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { EPIComponent } from './epi.component';
+import { EpiComponent } from './epi/epi.component';
 
-const routes: Routes = [{ path: '', component: EPIComponent }];
+const routes: Routes = [{ path: '', component: EpiComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
