@@ -40,7 +40,7 @@ export class DiagnosticListComponent implements OnInit {
 
   ngOnInit() {
     
-     this.getAllDiagnostics();
+    // this.getAllDiagnostics();
   }
   openModAdd(diagnosticAdd: TemplateRef<any>) {
     // this.userData = data;
@@ -74,8 +74,6 @@ export class DiagnosticListComponent implements OnInit {
     this.loader_eqp = true;
     
     this.model5.search=this.selected;
-    console.log('this.selected.length==',this.selected.length)
-    if(this.selected.length>=3){
    this.adminService.searchDiagnosis(this.model5).subscribe(
       (response: any) => {
         if (response.status === 0) {
@@ -96,9 +94,6 @@ export class DiagnosticListComponent implements OnInit {
       (error) => {}
     );
   }
-}
   //get all diagnostic list
-  showData(td){
-    console.log('show data==',td)
-  }
+
 }

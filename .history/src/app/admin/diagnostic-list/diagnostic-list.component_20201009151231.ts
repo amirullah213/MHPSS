@@ -11,7 +11,6 @@ import { AdminServiceService } from '../services/admin-service.service';
   styleUrls: ['./diagnostic-list.component.scss']
 })
 export class DiagnosticListComponent implements OnInit {
-  diagnosis:any =[];
   selected: string;
   userOb: any = {};
   EuserOb:any={};
@@ -40,7 +39,7 @@ export class DiagnosticListComponent implements OnInit {
 
   ngOnInit() {
     
-     this.getAllDiagnostics();
+    // this.getAllDiagnostics();
   }
   openModAdd(diagnosticAdd: TemplateRef<any>) {
     // this.userData = data;
@@ -73,16 +72,20 @@ export class DiagnosticListComponent implements OnInit {
   getAllDiagnostics() {
     this.loader_eqp = true;
     
-    this.model5.search=this.selected;
-    console.log('this.selected.length==',this.selected.length)
-    if(this.selected.length>=3){
+    this.model5=this.selected;
    this.adminService.searchDiagnosis(this.model5).subscribe(
       (response: any) => {
         if (response.status === 0) {
-          this.diagnosis = response.data;
-        console.log('this.diagnosis==',this.diagnosis)
-          
-         
+          this.allDiag = response.data;
+        // console.log('all diagnostic list==', this.allDiag);
+          // this.rerender();
+          this.dtOptions = {
+            pagingType: 'full_numbers',
+            pageLength: 25,
+            dom: 'lBfrtip',
+            buttons: ['print', 'excel'],
+          };
+          this.dtTrigger.next();
           this.loader_eqp = false;
         }
 
@@ -96,9 +99,6 @@ export class DiagnosticListComponent implements OnInit {
       (error) => {}
     );
   }
-}
   //get all diagnostic list
-  showData(td){
-    console.log('show data==',td)
-  }
+
 }
