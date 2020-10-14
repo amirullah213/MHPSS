@@ -32,13 +32,13 @@
                                     <form>
                                         <div class="form-group row mx-0">
                                             <div class="col-sm-2 mt-4"><label for="inputState">Search Diagnosis</label></div>
-                                            <div class="col-sm-8 mt-3">
-                                                <input  class="form-control" name="diagnosis" id="diagnosis" placeholder="Search Diagnosis" [(ngModel)]="selected" (ngModelChange)="getAllDiagnostics()" [typeahead]="diagnosis"  typeaheadOptionField="name"  [typeaheadScrollable]="true" >
+                                            <div class="col-sm-8 ">
+                                                <input  class="form-control" name="diagnosis" id="diagnosis" placeholder="Search Diagnosis" [(ngModel)]="selected" (ngModelChange)="getAllDiagnostics()" [typeahead]="diagnosis"  typeaheadOptionField="name"  [typeaheadScrollable]="true">
                                                 <!-- <input [(ngModel)]="selected"  [typeahead]="diagnosis" typeaheadOptionField="name" [typeaheadScrollable]="true" (ngModelChange)="getAllDiagnostics()" class="form-control" >   -->
-                                                          <span>{{selected}}</span>
+                                                          
                                             </div>
                                             <div class="col-sm-2 mt-3">
-                                                <button type="button" class="button" (click)="showData(selected)" >
+                                                <button type="button" class="button" >
                                                     <i class="ti-search"></i> Search
                                                 </button>
                                             </div>

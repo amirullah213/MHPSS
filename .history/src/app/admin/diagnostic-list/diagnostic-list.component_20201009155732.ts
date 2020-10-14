@@ -40,7 +40,7 @@ export class DiagnosticListComponent implements OnInit {
 
   ngOnInit() {
     
-     this.getAllDiagnostics();
+    // this.getAllDiagnostics();
   }
   openModAdd(diagnosticAdd: TemplateRef<any>) {
     // this.userData = data;
@@ -98,7 +98,5 @@ export class DiagnosticListComponent implements OnInit {
   }
 }
   //get all diagnostic list
-  showData(td){
-    console.log('show data==',td)
-  }
+
 }
