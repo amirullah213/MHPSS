@@ -31,6 +31,8 @@
                                     <a class="nav-link" [ngClass]="{'active show': tab === 'treatment'}" id="tab4" href="javascript:void(0)" data-toggle="tab" role="tab" aria-controls="portfolio" aria-selected="false">Treatment</a>
                                 </li>
                             </ul>
+                            <form [formGroup]="clicnicalInformation"  novalidate>
+
                             <div class="tab-content">
                                 <div *ngIf="tab === 'biofh'" class="tab-pane fade" [ngClass]="{'active show': tab === 'biofh'}" id="tab1" role="tabpanel" aria-labelledby="tab1">
                                     <!-- <form [formGroup]="employeeInformation" novalidate> -->
@@ -135,8 +137,8 @@
                                     </div>
                                     <!-- </form> -->
                                 </div>
+
                                 <div *ngIf="tab === 'clinicalInfo'" class="tab-pane fade" [ngClass]="{'active show': tab === 'clinicalInfo'}" id="tab2" role="tabpanel" aria-labelledby="tab2">
-                                    <form [formGroup]="clicnicalInformation"  novalidate>
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <h5 class="card-title mb-0">Vitals</h5>
@@ -397,10 +399,10 @@
                                            
                                         
                                         
-                                    </form>
+                                  
                                 </div>
                                 <div *ngIf="tab === 'investigation'" class="tab-pane fade" [ngClass]="{'active show': tab === 'investigation'}" id="tab3" role="tabpanel" aria-labelledby="tab3">
-                                    <form [formGroup]="investigationInformation" novalidate>
+                                  
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="custom-control-inline mr-md-5 mb-2">
@@ -520,10 +522,10 @@
                                            
                                        
                                         </div>
-                                    </form>
+                                   
                                 </div>
                                 <div *ngIf="tab === 'treatment'" class="tab-pane fade" [ngClass]="{'active show': tab === 'treatment'}" id="tab4" role="tabpanel" aria-labelledby="tab4">
-                                    <form [formGroup]="treatmentInformation" novalidate>
+                                   
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <h5>Treatment</h5>
@@ -728,9 +730,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
                                 </div>
                             </div>
+                        </form>
                         </div>
                     </div>
                 </div>
