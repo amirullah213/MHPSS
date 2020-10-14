@@ -85,19 +85,9 @@ export class AuthService {
     if(resp.userType==9){ this.router.navigate(['/community'])}
     if(resp.userType==10){ this.router.navigate(['/fac-staff'])}
     if(resp.userType==11){ this.router.navigate(['/admin'])}
-<<<<<<< HEAD
     if (resp.userType == 12) { this.router.navigate(['/hiv']) }
     
-=======
-    if(resp.userType==12){ this.router.navigate(['/hiv'])}
-
-    if(resp.userType==13){ this.router.navigate(['/epi'])}
-
-    if(resp.userType==14){ this.router.navigate(['/ward'])}
-    if(resp.userType==15){ this.router.navigate(['/operation'])}
-
->>>>>>> ac2d0d8fedd2eb0fb23158820a36f308293bb07e
-   
+  
     // this.router.navigate(['/dashboard']);
   }
 
