@@ -78,21 +78,16 @@ export class AuthService {
     if(resp.userType==2){ this.router.navigate(['/lab-path'])}
     if(resp.userType==3){ this.router.navigate(['/reception'])}
     if(resp.userType==4 || resp.userType==44 || resp.userType==444 ){ this.router.navigate(['/lab-rad'])}
-    if(resp.userType==5){ this.router.navigate(['/indoor'])}
+    if(resp.userType==5){ this.router.navigate(['/ward-list'])}
     if(resp.userType==6){ this.router.navigate(['/obs-reg'])}
     if(resp.userType==7){ this.router.navigate(['/ot'])}
     if(resp.userType==8){ this.router.navigate(['/pharma'])}
     if(resp.userType==9){ this.router.navigate(['/community'])}
     if(resp.userType==10){ this.router.navigate(['/fac-staff'])}
     if(resp.userType==11){ this.router.navigate(['/admin'])}
-    if(resp.userType==12){ this.router.navigate(['/hiv'])}
-
-    if(resp.userType==13){ this.router.navigate(['/epi'])}
-
-    if(resp.userType==14){ this.router.navigate(['/ward'])}
-    if(resp.userType==15){ this.router.navigate(['/operation'])}
-
-   
+    if (resp.userType == 12) { this.router.navigate(['/hiv']) }
+    
+  
     // this.router.navigate(['/dashboard']);
   }
 
