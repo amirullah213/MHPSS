@@ -26,6 +26,10 @@ export class PatDetailComponent implements OnInit {
   diagnosisData: any;
   symptomsData: any;
   signsData: any;
+  selectedOptionDiag: any;
+  selectedOptionSymptom: any;
+  selectedOptionSign: any;
+  localDiag: any[]=[];
   employeeInformation: FormGroup;
   clicnicalInformation: FormGroup;
   investigationInformation: FormGroup;
@@ -43,8 +47,7 @@ export class PatDetailComponent implements OnInit {
   param: any = {};
   selectedUser: any;
   st: void;
-  selectedOption: any;
-  selectedOptionSymptom: any;
+  
   constructor(
     private fb: FormBuilder,
      private auth: AuthService,
@@ -67,7 +70,27 @@ export class PatDetailComponent implements OnInit {
         diagnosis  : ['', Validators.requiredTrue],
         duration:['',Validators.required],
         durationType:['',Validators.required],
-        selectedValueSymptom:['']
+        selectedValueSymptom:[''],
+        Abortion:[''],
+        Allegory:[''],
+        Astama:[''],
+        Cancer:[''],
+        Diabetes:[''],
+        DrugAllergy:[''],
+        HyperTension:[''],
+        IschemicHeartDiseases:[''],
+        misCarriage:[''],
+        IUD:[''],
+        stillBirth:[''],
+        Cancer1:[''],
+        twins:[''],
+        Astama1:[''],
+        Diabetes1:[''],
+        DrugAllergy1:[''],
+        HyperTension1:[''],
+        IschemicHeartDiseases1:[''],
+        selectedValueSign:[''],
+        selectedValueDiag:[''],
         
         
     });
@@ -83,16 +106,16 @@ export class PatDetailComponent implements OnInit {
   }
   onSelectDiag(event: TypeaheadMatch): void {  
       
-    //this.selectedOption = event.item;  
+    this.selectedOptionDiag = event.item;  
   } 
   onSelectSign(event: TypeaheadMatch): void {  
       
-    // this.selectedOption = event.item;  
+     this.selectedOptionSign = event.item;  
    } 
 
    onSelectSymptom(event: TypeaheadMatch): void {  
       
-    debugger
+    
      this.selectedOptionSymptom = event.item;  
    } 
   
@@ -105,11 +128,9 @@ export class PatDetailComponent implements OnInit {
      ((response:any)=> {
      if(response.status === 0 ){
          this.diagnosisData = response.diagnosis;
-         this.diagnosis = this.diagnosisData;    
          this.signsData = response.signs;
-         this.signsD=this.signsData;
          this.symptomsData = response.symptoms;
-         this.symptomsD=this.symptomsData;
+         
         this.userLoader = false;
        } else {
          this.userLoader = false;
@@ -119,36 +140,37 @@ export class PatDetailComponent implements OnInit {
      (error) => {}
    );
   }
-  getSymptoms(){
+  
+
+  addSymptoms(obj:any){    
     
-   this.localSymptoms;
+    this.localSymptoms.push({'id':obj.id,'name':obj.name,'duration':this.clicnicalInformation.value.duration,'durationType':this.clicnicalInformation.value.durationType})  
+   
     
     }
 
-    addSymptoms(obj:any){
+    removeSymptom(index){
+
+      this.localSymptoms.splice(index,1);
+   
+    }
+
+
+    addDiag(obj:any){    
     
-      this.localSymptoms.push(this.clicnicalInformation.value)  
-      //   localStorage.setItem("data",JSON.stringify(this.localSymptoms));
-      // this.st =JSON.parse(localStorage.getItem('data'));
-      // this.anotherArray.push(this.st); 
-      this.getSymptoms();
+      this.localDiag.push({'id':obj.id,'name':obj.name})  
+     
       
       }
 
-    removeItem(obj:any){
-      debugger
-const index = this.localSymptoms.indexOf(5);
-if (index > -1) {
-  this.localSymptoms.splice(index, 1);
-}
-      console.log(this.localSymptoms);
-
-      //   localStorage.setItem("data",JSON.stringify(this.localSymptoms));
-      // this.st =JSON.parse(localStorage.getItem('data'));
-      // this.anotherArray.push(this.st); 
-      
-      
+      removeDiag(index){
+        debugger
+        this.localDiag.splice(index,1);
+     
       }
+
+
+      
   get f() { 
     return this.clicnicalInformation.controls; }
   //set tab
