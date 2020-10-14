@@ -18,9 +18,8 @@ const routes: Routes = [
   { path: 'signin', loadChildren: () => import('../auth/signin/signin.module').then(m => m.SigninModule)},
   { path: 'signup', loadChildren: () => import('../auth/signup/signup.module').then(m => m.SignupModule)},
   { path: 'recovery', loadChildren: () => import('../auth/recovery/recovery.module').then(m => m.RecoveryModule)},
-  { path: 'EPI', loadChildren: () => import('../epi/epi.module').then(m => m.EPIModule) },
-  { path: 'Ward', loadChildren: () => import('../ward/ward.module').then(m => m.WardModule) },
-  { path: 'Operation', loadChildren: () => import('../operation/operation.module').then(m => m.OperationModule) },
+  { path: 'ward-list', loadChildren: () => import('../ward/ward.module').then(m => m.WardModule) },
+  { path: 'operation', loadChildren: () => import('../operation/operation.module').then(m => m.OperationModule) },
   { path: '**', redirectTo: '' }
   
  

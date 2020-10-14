@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { OperationComponent } from './operation/operation.component';
 
-import { OperationComponent } from './operation.component';
 
 const routes: Routes = [{ path: '', component: OperationComponent }];
 
