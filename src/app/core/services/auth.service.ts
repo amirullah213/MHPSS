@@ -71,8 +71,7 @@ export class AuthService {
     // if(resp==2){ this.router.navigate(['/lab-path'])}
     // if(resp==3){ this.router.navigate(['/reception'])}
     // if(resp==4 || resp==44 || resp==444 ){ this.router.navigate(['/radiology'])}
-    //-----------testing routs
-   
+    //-----------testing routs  
     
     if(resp.userType==1){ this.router.navigate(['/doctor'])};
     if(resp.userType==2){ this.router.navigate(['/lab-path'])}
@@ -85,8 +84,8 @@ export class AuthService {
     if(resp.userType==9){ this.router.navigate(['/community'])}
     if(resp.userType==10){ this.router.navigate(['/fac-staff'])}
     if(resp.userType==11){ this.router.navigate(['/admin'])}
-    if (resp.userType == 12) { this.router.navigate(['/hiv']) }
-    
+    if(resp.userType==12) { this.router.navigate(['/epi'])}
+    if(resp.userType==555) { this.router.navigate(['/vitals'])}
   
     // this.router.navigate(['/dashboard']);
   }
