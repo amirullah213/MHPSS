@@ -98,7 +98,5 @@ export class DiagnosticListComponent implements OnInit {
   }
 }
   //get all diagnostic list
-  showData(td){
-    console.log('show data==',td)
-  }
+
 }

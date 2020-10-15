@@ -13,10 +13,8 @@
             </div>
             <div class="row">
                 <div class="col-md-12 mb-30">
-                    <div class="card card-statistics h-100" style="
-                    min-height: 600px;">
-                        <div class="card-body" style="
-                        min-height: 600px;">
+                    <div class="card card-statistics h-100">
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <h5 class="card-title mb-0">Diagnostic Management</h5>
@@ -33,12 +31,10 @@
                                         <div class="form-group row mx-0">
                                             <div class="col-sm-2 mt-4"><label for="inputState">Search Diagnosis</label></div>
                                             <div class="col-sm-8 mt-3">
-                                                <input  class="form-control" name="diagnosis" id="diagnosis" placeholder="Search Diagnosis" [(ngModel)]="selected" (ngModelChange)="getAllDiagnostics()" [typeahead]="diagnosis"  typeaheadOptionField="name"  [typeaheadScrollable]="true" >
-                                                <!-- <input [(ngModel)]="selected"  [typeahead]="diagnosis" typeaheadOptionField="name" [typeaheadScrollable]="true" (ngModelChange)="getAllDiagnostics()" class="form-control" >   -->
-                                                          <span>{{selected}}</span>
+                                                <input type="text" class="form-control input-sm" name="diagnosis" id="diagnosis" placeholder="Search Diagnosis" [(ngModel)]="selected" (ngModelChange)="getAllDiagnostics()" [typeahead]="states" [isAnimated]="true"  >
                                             </div>
                                             <div class="col-sm-2 mt-3">
-                                                <button type="button" class="button" (click)="showData(selected)" >
+                                                <button type="button" class="button" >
                                                     <i class="ti-search"></i> Search
                                                 </button>
                                             </div>
@@ -93,7 +89,7 @@
                                             <span class="sr-only"></span>
                                         </div>
                                     </div> -->
-                                <!-- <hr class="hr-gray mx-3 my-3"> -->
+                                <hr class="hr-gray mx-3 my-3">
                             </div>
                         </div>
                     </div>
