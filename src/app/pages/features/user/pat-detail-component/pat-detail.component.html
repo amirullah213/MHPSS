@@ -30,12 +30,11 @@
                                 <li class="nav-item" (click)="setTab('treatment')">
                                     <a class="nav-link" [ngClass]="{'active show': tab === 'treatment'}" id="tab4" href="javascript:void(0)" data-toggle="tab" role="tab" aria-controls="portfolio" aria-selected="false">Treatment</a>
                                 </li>
-                            </ul>
-                            <form [formGroup]="clicnicalInformation"  novalidate>
-
+                            </ul>   
+                             <form [formGroup]="clicnicalInformation"  novalidate>
                             <div class="tab-content">
                                 <div *ngIf="tab === 'biofh'" class="tab-pane fade" [ngClass]="{'active show': tab === 'biofh'}" id="tab1" role="tabpanel" aria-labelledby="tab1">
-                                    <!-- <form [formGroup]="employeeInformation" novalidate> -->
+                                    
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="form-group">
@@ -135,10 +134,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- </form> -->
+                                   
                                 </div>
-
                                 <div *ngIf="tab === 'clinicalInfo'" class="tab-pane fade" [ngClass]="{'active show': tab === 'clinicalInfo'}" id="tab2" role="tabpanel" aria-labelledby="tab2">
+                                
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <h5 class="card-title mb-0">Vitals</h5>
@@ -147,37 +146,36 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Blood Presure</label>
-                                                    <input type="text" formControlName="bps" class="form-control" placeholder="Blood Pressure">
+                                                    <input type="text" formControlName="bps"    class="form-control" placeholder="Blood Pressure">
                                                 </div>
-                                            </div>
-                                            <div class="col-md-4">
+                                            </div>                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Pulse (Rate Per Minute)</label>
-                                                    <input type="text" formControlName="pulse" class="form-control" placeholder="Pulse">
+                                                    <input type="text" formControlName="pulse"   class="form-control" placeholder="Pulse">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Weight (Kg)</label>
-                                                    <input type="text" formControlName="weight" class="form-control" placeholder="Weight">
+                                                    <input type="text" formControlName="weight"  class="form-control" placeholder="Weight">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Height (cm)</label>
-                                                    <input type="text" formControlName="height" class="form-control" placeholder="Height">
+                                                    <input type="text" formControlName="height"  class="form-control" placeholder="Height">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Temprature (F)</label>
-                                                    <input type="text" formControlName="temperature" class="form-control" placeholder="Temprature">
+                                                    <input type="text" formControlName="temperature"  class="form-control" placeholder="Temprature">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Oxygen Saturation</label>
-                                                    <input type="text" formControlName="oxygen_saturation" class="form-control" placeholder="Oxygen Saturation">
+                                                    <input type="text" formControlName="oxygen_saturation"  class="form-control" placeholder="Oxygen Saturation">
                                                 </div>
                                             </div>
                                             <hr class="hr-gray mx-3 my-4">
@@ -214,7 +212,7 @@
                                                     <div class="form-group">
                                                         <label for="formGroupExampleInput">Name</label>
                                                         <!-- <input type="text" formControlName="name" class="form-control" id="name" placeholder="Name"> -->
-                                                        <input  [value]="selectedValue"  formControlName="selectedValueSymptom" [typeahead]="symptomsData" typeaheadOptionField="name" [typeaheadScrollable]="true"  
+                                                        <input  [value]="selectedValueSymptom"  formControlName="selectedValueSymptom" [typeahead]="symptomsData" typeaheadOptionField="name" [typeaheadScrollable]="true"  
                                                         (typeaheadOnSelect)="onSelectSymptom($event)" class="form-control" >  
                                                         
                                                     </div>
@@ -228,7 +226,7 @@
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="formGroupExampleInput">Duration Type</label>
-                                                        <select class="form-control"  formControlName="durationType"  aria-label="Text input with segmented dropdown button" placeholder="Complaint Duration">
+                                                        <select class="form-control"  formControlName="durationType"   aria-label="Text input with segmented dropdown button" placeholder="Complaint Duration">
                                                             <option>Hour(s)</option>
                                                             <option>Day(s)</option>
                                                             <option>Week(s)</option>
@@ -240,18 +238,18 @@
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label class="" for="formGroupExampleInput">Add</label>
-                                                        <button type="btn" (click)="addSymptoms(selectedOptionSymptom)"  class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">Add</button>
+                                                        <button type="btn" (click)="addSymptoms(selectedOptionSymptom)"  class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">Save / Add More</button>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="form-group text-center">
                                                         <table>
-                                                            <tr  *ngFor="let smp of localSymptoms">
-                                                                <td>{{smp.selectedOptionSymptom}}</td>
-                                                                <td width="30%">{{smp.selectedValueSymptom}}</td>
+                                                            <tr  *ngFor="let smp of localSymptoms let i=index">
+                                                                
+                                                                <td width="30%">{{smp.name}}</td>
                                                                 <td width="30%">{{smp.duration}}</td>
                                                                 <td width="30%">{{smp.durationType}}</td>
-                                                                <td width="25%"><i class="ti-close text-danger" (click)="removeItem(selectedOptionSymptom)"></i></td>
+                                                                <td width="25%"><i class="ti-close text-danger" (click)="removeSymptoms(i)"></i></td>
                                                             </tr>
                                                         </table>
                                                         <!-- <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"> Add More </button> -->
@@ -261,46 +259,46 @@
                                             </div>
 
                                             <hr class="hr-gray mx-3 my-4">
-                                            <div [formGroupName]="pastHistory" class="col-md-6">
+                                            <div  class="col-md-6">
                                                 <h5>Past History</h5>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="Abortion" name="Abortion" class="form-check-input" id="Abortion">
+                                                    <input type="checkbox" formControlName="Abortion"  class="form-check-input" id="Abortion">
                                                     <label class="form-check-label" for="Abortion">Abortion</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="Allegory" class="form-check-input" name="Allegory" id="Allegory">
+                                                    <input type="checkbox" formControlName="Allegory" class="form-check-input"  id="Allegory">
                                                     <label class="form-check-label" for="Allegory">Allegory</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="Astama" name="Astama" class="form-check-input" id="Astama">
+                                                    <input type="checkbox" formControlName="Astama" class="form-check-input" id="Astama">
                                                     <label class="form-check-label" for="Astama">Astama</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="Cancer" name="Cancer" class="form-check-input" id="Cancer">
+                                                    <input type="checkbox" formControlName="Cancer" class="form-check-input" id="Cancer">
                                                     <label class="form-check-label" for="Cancer">Cancer</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="Diabetes" name ="Diabetes" class="form-check-input" id="Diabetes">
+                                                    <input type="checkbox" formControlName="Diabetes"  class="form-check-input" id="Diabetes">
                                                     <label class="form-check-label" for="Diabetes">Diabetes Mellitus</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="DrugAllergy" name="DrugAllergy" class="form-check-input" id="DrugAllergy">
+                                                    <input type="checkbox" formControlName="DrugAllergy"  class="form-check-input" id="DrugAllergy">
                                                     <label class="form-check-label" for="DrugAllergy">Drug Allergy</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="HyperTension" name="HyperTension" class="form-check-input" id="HyperTension">
+                                                    <input type="checkbox" formControlName="HyperTension"  class="form-check-input" id="HyperTension">
                                                     <label class="form-check-label" for="HyperTension">Hypertension</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="IschemicHeartDiseases" name="IschemicHeartDiseases" class="form-check-input" id="IschemicHeartDiseases">
+                                                    <input type="checkbox" formControlName="IschemicHeartDiseases"  class="form-check-input" id="IschemicHeartDiseases">
                                                     <label class="form-check-label" for="IschemicHeartDiseases">Ischemic Heart Diseases</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="IUD" class="form-check-input" name="IUD" id="IUD">
+                                                    <input type="checkbox" formControlName="IUD" class="form-check-input"  id="IUD">
                                                     <label class="form-check-label" for="IUD">IUD</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="misCarriage" name="misCarriage" class="form-check-input" id="misCarriage">
+                                                    <input type="checkbox" formControlName="misCarriage" class="form-check-input" id="misCarriage">
                                                     <label class="form-check-label" for="misCarriage">Mis Carriage</label>
                                                 </div>
                                                 <div class="form-check checkbox mb-2">
@@ -312,7 +310,7 @@
                                                     <label class="form-check-label" for="twins">Twins</label>
                                                 </div>
                                             </div>
-                                            <div [formGroupName]="familyHistory" class="col-md-6">
+                                            <div class="col-md-6">
                                                 <h5>Family History</h5>
                                                 <div class="form-check checkbox mb-2">
                                                     <input type="checkbox" formControlName="Astama1" class="form-check-input" name="Astama1" id="Astama1">
@@ -341,36 +339,88 @@
                                             </div>
                                             <hr class="hr-gray mx-3 my-4">
                                             <div class="col-md-12">
-                                                <div class="form-group input-group">
-                                                    <label for="formGroupExampleInput">Signs</label>
+                                                <label for="formGroupExampleInput">Signs</label>
+
+                                            </div>
+                                                <div class="col-md-9">
+                                                    <div class="form-group">
                                                     <span class="wrapper-select">
-                                                        <input [(ngModel)]="selectedValueSign" [value]="selectedValueSign" [typeahead]="signsD" typeaheadOptionField="name" [typeaheadScrollable]="true"  
-                                                        (typeaheadOnSelect)="onSelectSign($event)" class="form-control" >  
+                                                       
+                                                        <input formControlName="selectedValueSign" [value]="selectedValueSign" [typeahead]="signsData" typeaheadOptionField="name" [typeaheadScrollable]="true"  
+                                                        (typeaheadOnSelect)="onSelectSign($event)" class="form-control" >
                                                         
                                                     </span>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <!-- <button type="btn" (click)="addSign(selectedOptionSign)"  class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">Add</button> -->
+                                                    </div>
+                                                </div>
+                                            
                                             <div class="col-md-12">
                                                 <div class="form-group input-group">
-                                                    <textarea class="form-control" name="signsArr" type=text></textarea>
+                                                    <div class="form-group text-center">
+                                                        <table>
+                                                            <tr  *ngFor="let sig of localSign let i=index">
+                                                                
+                                                                <td width="30%">{{sig.name}}</td>
+                                                                
+                                                                <td width="25%"><i class="ti-close text-danger" (click)="removeSign(i)"></i></td>
+                                                            </tr>
+                                                        </table>
+                                                        <!-- <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"> Add More </button> -->
+                                                    </div>
                                                 </div>
                                             </div>
                                             <hr class="hr-gray mx-3 my-4">
-                                            <div class="col-md-12">
-                                                <h5>Provisional Diagosis</h5>
-                                            </div>
+                                            
                                               
                                         </div>
-                                            <div class="col-md-10">
-                                                <div class="form-group input-group">
-                                                    <input [(ngModel)]="selectedValueDiag" [value]="selectedValueDiag" [typeahead]="diagnosis" typeaheadOptionField="name" [typeaheadScrollable]="true"  
-                                                  (typeaheadOnSelect)="onSelectDiag($event)" class="form-control"                                                         [typeaheadMinLength]="0"
-                                                  >  
-                                                  <!-- <input type="text" formControlName="diagnosis" class="form-control" id="diagnosis" placeholder="Diagosis"> -->
+                                                <div  class="row mx-0">
+                                                <div class="col-md-12">
+                                                <h5>Provisional Diagnosis</h5>
+                                                 </div>
+                                                   
+                                                    <div class="col-md-9 ">
+                                                        <div class="form-group">
+                                                            <input formControlName="selectedValueDiag" [value]="selectedValueDiag" [typeahead]="diagnosisData" typeaheadOptionField="name" [typeaheadScrollable]="true"  
+                                                             (typeaheadOnSelect)="onSelectDiag($event)" class="form-control"[typeaheadMinLength]="0">  
+                                               
+                                                        </div>
+                                                    </div>
+                                                   
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <!-- <button type="btn" (click)="addDiag(selectedOptionDiag)"  class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">Add</button> -->
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group text-center">
+                                                            <table>
+                                                                <tr  *ngFor="let diag of localDiag let i=index">
+                                                                    
+                                                                    <td width="30%">{{diag.name}}</td>
+                                                                    
+                                                                    <td width="25%"><div class="form-group">
+                                                                        <button type="button" class="button float-right" (click)="removeDiag(i)"> <i class="fa fa-close"></i> Remove</button>
+                                                                    </div></td>
+                                                                </tr>
+                                                            </table>
+                                                            <!-- <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"> Add More </button> -->
+                                                        </div>
+                                                    </div>
+    
                                                 </div>
+
+
+                                               
+                                           
+                                        
+                                        
+                                   
                                 </div>
                                 <div *ngIf="tab === 'investigation'" class="tab-pane fade" [ngClass]="{'active show': tab === 'investigation'}" id="tab3" role="tabpanel" aria-labelledby="tab3">
-                                  
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="custom-control-inline mr-md-5 mb-2">
@@ -382,7 +432,11 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <input type="text" formControlName="email" class="form-control" id="formGroupExampleInput" placeholder="Enter Name">
+                                                    
+                                                        <input formControlName="selectedValuePath" [value]="selectedValuePath" [typeahead]="pathData" typeaheadOptionField="testName" [typeaheadScrollable]="true"  
+                                                         (typeaheadOnSelect)="onSelectPath($event)" class="form-control"[typeaheadMinLength]="0">  
+                                           
+                                                    
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -401,17 +455,18 @@
                                             <div class="col-md-4">
                                                 <div class="form-group input-group">
                                                     <span class="wrapper-select">
-                                                        <select class="form-control" formControlName="FollowUp" aria-label="Text input with segmented dropdown button" placeholder="Is Follow Up">
-                                                            <option>ECG</option>
-                                                            <option>UltraSound</option>
-                                                        </select>
+                                                        
+                                                        <input formControlName="selectedValueRad" [value]="selectedValueRad" [typeahead]="radData" typeaheadOptionField="name" [typeaheadScrollable]="true"  
+                                                        (typeaheadOnSelect)="onSelectRad($event)" class="form-control"[typeaheadMinLength]="0">  
+                                          
                                                     </span>
                                                 </div>
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="form-group">
-                                                    <input type="text" formControlName="email" class="form-control" id="formGroupExampleInput" placeholder="Enter Name">
-                                                </div>
+                                                    <input formControlName="selectedValueRadName" [value]="selectedValueRadName" [typeahead]="radNameData" typeaheadOptionField="testName" [typeaheadScrollable]="true"  
+                                                    (typeaheadOnSelect)="onSelectRadName($event)" class="form-control"[typeaheadMinLength]="0">  
+                                                                                      </div>
                                             </div>
                                             <hr class="hr-gray">
                                             <div class="col-md-12">
@@ -426,17 +481,19 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr class="text-center">
-                                                                <td>TBC</td>
-                                                                <td>All</td>
+                                                            <tr class="text-center"  *ngFor="let pth of localPath let i=index">
+                                                                <td><span *ngIf="pth.testType==1">Pathalogy</span>
+                                                                    <span *ngIf="pth.testType!=1">Radiology</span></td>
+                                                                <td>{{pth.name}}</td>
                                                                 <td>
                                                                     <div class="form-group">
-                                                                        <button type="button" class="button float-right"><i class="fa fa-close"></i> Remove</button>
+                                                                        <button type="button" class="button float-right" (click)="removeTest(i)"> <i class="fa fa-close"></i> Remove</button>
                                                                     </div>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
+                                                    
                                                 </div>
                                                 <div class="form-group text-center">
                                                     <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-send-o"></i> Send To Lab / Radiology </button>
@@ -454,20 +511,46 @@
                                             </div>
                                             <div class="col-md-10">
                                                 <div class="form-group">
-                                                    <input type="text" formControlName="Diagnosis" class="form-control" id="formGroupExampleInput" placeholder="Enter Diagnosis Name">
-                                                </div>
+                                                    <input formControlName="selectedValueIndoorDiag" [value]="selectedValueIndoorDiag" [typeahead]="IndoorDiagData" typeaheadOptionField="name" [typeaheadScrollable]="true"  
+                                                    (typeaheadOnSelect)="onSelectIndoorDiag($event)" class="form-control"[typeaheadMinLength]="0">  
+                                                                                                  </div>
                                             </div>
-                                            <div class="col-md-2">
-                                                <div class="form-group">
-                                                    <button type="button" class="button"><i class="fa fa-close"></i> Remove</button>
-                                                </div>
+                                            <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <div class="form-group text-center">
+                                                            <table width="100%">
+                                                                <tr  *ngFor="let indD of localIndoorData let i=index">
+                                                                    
+                                                                    <td width="70%">{{indD.name}}</td>
+                                                                    
+                                                                    <td width="30%"><div class="form-group">
+                                                                        <button type="button" class="button float-right" (click)="removeIndoorDiag(i)"> <i class="fa fa-close"></i> Remove</button>
+                                                                    </div>
+                                                                </td>
+                                                                </tr>
+                                                            </table>
+                                                    </div>
+                                                    <!-- <table class="table center-aligned-table">
+                                                        
+                                                    
+                                                            <tr class="text-center"  *ngFor="let indD of localIndoorData let i=index">
+                                                                <td>{{indD.name}}</td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <button type="button" class="button float-right" (click)="removeIndoorDiag(i)"> <i class="fa fa-close"></i> Remove</button>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        
+                                                    </table>                                                -->
+                                                 </div>
                                             </div>
                                             <hr class="hr-gray">
-                                            <div class="col-md-12">
+                                            <!-- <div class="col-md-12">
                                                 <div class="form-group text-center">
                                                     <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus"></i> Add More </button>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div class="col-md-12">
                                                 <div class="form-group text-center">
                                                     <button type="button" class="button"><i class="fa fa-plus"></i> Admit </button>
@@ -490,10 +573,9 @@
                                            
                                        
                                         </div>
-                                   
                                 </div>
                                 <div *ngIf="tab === 'treatment'" class="tab-pane fade" [ngClass]="{'active show': tab === 'treatment'}" id="tab4" role="tabpanel" aria-labelledby="tab4">
-                                   
+                                  
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <h5>Treatment</h5>
@@ -698,9 +780,11 @@
                                                 </div>
                                             </div>
                                         </div>
+                                   
                                 </div>
-                            </div>
-                        </form>
+                          
+                            </div> 
+                         </form>
                         </div>
                     </div>
                 </div>

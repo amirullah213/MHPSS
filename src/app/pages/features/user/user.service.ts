@@ -16,6 +16,13 @@ export class UserService {
     let url = APP_CONFIG.apiBaseUrl + 'getclinicalinfo';
     return this.http.post(url, obj);
   }
+  getInvistigation(obj: any):Observable<any> {
+    let url = APP_CONFIG.apiBaseUrl + 'getinvestigations';
+    return this.http.post(url, obj);
+  }
+
+
+  
   userList(obj: any) {
     let url = APP_CONFIG.apiBaseUrl + 'getpatients';
     return this.http.post(url, obj);
