@@ -22,13 +22,14 @@ import { MedicineDiscardComponent } from './medicine-discard/medicine-discard.co
 import { NonMedicineDiscardComponent } from './non-medicine-discard/non-medicine-discard.component';
 import { NonMedicineGrnComponent } from './non-medicine-grn/non-medicine-grn.component';
 import { ItemsStatusComponent } from './items-status/items-status.component';
-
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { IssueGrnComponent } from './issue-grn/issue-grn.component';
 
 @NgModule({
-  declarations: [ PharmaComponent, HomeComponent, PharmaSideBarComponent, PharmaSeenPatientsComponent, PharmaPendingPatientsComponent, PharmaPrescriptionComponent, MedicineGrnComponent, MedicineDiscardComponent, NonMedicineDiscardComponent, NonMedicineGrnComponent, ItemsStatusComponent],
+  declarations: [ PharmaComponent, HomeComponent, PharmaSideBarComponent, PharmaSeenPatientsComponent, PharmaPendingPatientsComponent, PharmaPrescriptionComponent, MedicineGrnComponent, MedicineDiscardComponent, NonMedicineDiscardComponent, NonMedicineGrnComponent, ItemsStatusComponent, IssueGrnComponent],
   imports: [
     CommonModule,
-    PharmacyRoutingModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), FormsModule, BsDatepickerModule.forRoot(), CollapseModule.forRoot(),
+    PharmacyRoutingModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), FormsModule, BsDatepickerModule.forRoot(), CollapseModule.forRoot(),TypeaheadModule.forRoot(),
   ]
 })
 export class PharmacyModule { }
