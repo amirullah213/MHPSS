@@ -52,7 +52,7 @@
                                                         <span>
                                                             <select [(ngModel)]="med.inStock" class="form-control" (ngModelChange)="getdata(med.inStock)" aria-label="Text input with segmented dropdown button"
                                                                placeholder="Select file format" >
-                                                              <option *ngFor="let stc of newArray.stock;let j=index" [value]="j" >{{stc.batchNo}}</option>
+                                                              <option *ngFor="let stc of med.stock;let j=index" [value]="med[i].stock" >{{stc.batchNo}}</option>
                                                             </select>
                                                        </span>
                                                        <!-- <span>{{batchNo}}</span> -->

@@ -9,10 +9,8 @@ import { Router } from '@angular/router';
 export class PharmaSideBarComponent implements OnInit {
   toggleIcon: string = 'ti-plus'
   constructor(public router: Router) { }
-  userData:any={};
-  pharmacyID:any;
+
   ngOnInit(): void {
-    this.pharmacyID=localStorage.getItem('docId');
   }
   toggleCollapse(el: any) {
     if (el?.classList?.contains('collapse')) {

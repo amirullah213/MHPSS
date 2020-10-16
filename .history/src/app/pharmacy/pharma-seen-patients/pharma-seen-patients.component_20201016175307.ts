@@ -77,7 +77,9 @@ getPharmaPats(patObj) {
        // this.med.inStock=this.newArray;
         console.log("for each array data",this.newArray);
       });
-     
+      this.pharmacyData.medicines.forEach(function (value) {
+        console.log(value);
+      }); 
         this.loader_eqp = false;
       }
 

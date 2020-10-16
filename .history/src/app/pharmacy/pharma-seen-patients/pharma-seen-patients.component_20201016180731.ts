@@ -68,10 +68,10 @@ getPharmaPats(patObj) {
  this.pharmacySer.getPatData(patObj).subscribe(
     (response: any) => {
       if (response.status === 0) {
-        this.pharmacyData = response;
+        this.pharmacyData = response.medicines;
       console.log('this.pharmacy pats==',this.pharmacyData)
         
-      this.pharmacyData.medicines.forEach(element => {
+      this.pharmacyData.stock.forEach(element => {
         
         this.newArray=element;
        // this.med.inStock=this.newArray;

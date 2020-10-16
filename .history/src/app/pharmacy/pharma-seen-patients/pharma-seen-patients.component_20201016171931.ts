@@ -71,13 +71,9 @@ getPharmaPats(patObj) {
         this.pharmacyData = response;
       console.log('this.pharmacy pats==',this.pharmacyData)
         
-      this.pharmacyData.medicines.forEach(element => {
-        
-        this.newArray=element;
-       // this.med.inStock=this.newArray;
-        console.log("for each array data",this.newArray);
+     this.newArray= this.pharmacyData.medicines.forEach(element => {
+        console.log("for each array data",element);
       });
-     
         this.loader_eqp = false;
       }
 
@@ -140,11 +136,7 @@ this.med=[];
 console.log('new medic array==',this.medicArr)
 }
 getdata(dataobj){
-  console.log('batch data ==',this.newArray.stock[Number(dataobj)]  );
-  console.log(Number(dataobj))
-  console.log(dataobj)
-  console.log(this.newArray)
-
+  console.log('batch data ==',dataobj );
 
 }
 

@@ -71,13 +71,10 @@ getPharmaPats(patObj) {
         this.pharmacyData = response;
       console.log('this.pharmacy pats==',this.pharmacyData)
         
-      this.pharmacyData.medicines.forEach(element => {
-        
-        this.newArray=element;
-       // this.med.inStock=this.newArray;
-        console.log("for each array data",this.newArray);
-      });
-     
+      
+      this.pharmacyData.medicines.forEach(function (value) {
+        console.log('this.pharmacy pats==',value);
+      }); 
         this.loader_eqp = false;
       }
 
