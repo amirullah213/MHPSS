@@ -351,7 +351,7 @@
                     }
                 }
                 &:hover {
-                    background: $theme-light;
+                    background: #123b4e;
                     color: $theme-color;
                     border-left: 4px solid $theme-color;
                     i {
@@ -359,7 +359,7 @@
                     }
                 }
                 &:focus {
-                    background: $theme-light;
+                    background: 123b4e;
                     color: $theme-color;
                     border-left: 4px solid $theme-color;
                     i {
@@ -367,7 +367,7 @@
                     }
                 }
                 &:active {
-                    background: $theme-light;
+                    background: #123b4e;
                     color: $theme-color;
                     border-left: 4px solid $theme-color;
                     i {
@@ -378,7 +378,7 @@
         }
         li.active {
             >a {
-                background: $theme-light;
+                background: #123b4e;
                 color: $theme-color;
             }
         }

@@ -11,10 +11,10 @@ import { AdminServiceService } from '../services/admin-service.service';
   styleUrls: ['./diagnostic-list.component.scss']
 })
 export class DiagnosticListComponent implements OnInit {
-  diagnosis:any =[];
+  diagnosis: any = [];
   selected: string;
   userOb: any = {};
-  EuserOb:any={};
+  EuserOb: any = {};
   dtOptions: any = {};
   model: any = {};
   model2: any = {};
@@ -23,8 +23,8 @@ export class DiagnosticListComponent implements OnInit {
   allDiag: any = [];
   loader_eqp: boolean = false;
   errormsg: string;
-  userData:any={};
-  userID:number;
+  userData: any = {};
+  userID: number;
   dtElement: DataTableDirective;
   dtInstance: DataTables.Api;
   // We use this trigger because fetching the list of persons can be quite long,
@@ -39,24 +39,17 @@ export class DiagnosticListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    
-     this.getAllDiagnostics();
+
+    this.getAllDiagnostics();
   }
+ 
   openModAdd(diagnosticAdd: TemplateRef<any>) {
-    // this.userData = data;
-    this.modalRef = this.modalService.show(diagnosticAdd); //, this.userData  //, data
-    // this.modalRef.content.userActivate = 'Close';
+    this.modalRef = this.modalService.show(
+      diagnosticAdd,
+      Object.assign({}, { class: 'modal-lg' })
+    );
   }
-  openModedit(diagnosticEdit: TemplateRef<any>) {
-    // this.userData = data;
-    this.modalRef = this.modalService.show(diagnosticEdit); //, this.userData  //, data
-    // this.modalRef.content.userActivate = 'Close';
-  }
-  openModdelete(diagnosticdelete: TemplateRef<any>) {
-    // this.userData = data;
-    this.modalRef = this.modalService.show(diagnosticdelete); //, this.userData  //, data
-    // this.modalRef.content.userActivate = 'Close';
-  }
+  
   rerender(): void {
     try {
       this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
@@ -72,33 +65,33 @@ export class DiagnosticListComponent implements OnInit {
   //get all diagnostic list
   getAllDiagnostics() {
     this.loader_eqp = true;
-    
-    this.model5.search=this.selected;
-    console.log('this.selected.length==',this.selected.length)
-    if(this.selected.length>=3){
-   this.adminService.searchDiagnosis(this.model5).subscribe(
-      (response: any) => {
-        if (response.status === 0) {
-          this.diagnosis = response.data;
-        console.log('this.diagnosis==',this.diagnosis)
-          
-         
-          this.loader_eqp = false;
-        }
 
-        if (response.status === 1) {
-          this.errormsg = response.errors;
-          this.loader_eqp = false;
-          console.log('error=', this.errormsg);
-          //this._loginserviceService.logout();
-        }
-      },
-      (error) => {}
-    );
+    this.model5.search = this.selected;
+    console.log('this.selected.length==', this.selected.length)
+    if (this.selected.length >= 3) {
+      this.adminService.searchDiagnosis(this.model5).subscribe(
+        (response: any) => {
+          if (response.status === 0) {
+            this.diagnosis = response.data;
+            console.log('this.diagnosis==', this.diagnosis)
+
+
+            this.loader_eqp = false;
+          }
+
+          if (response.status === 1) {
+            this.errormsg = response.errors;
+            this.loader_eqp = false;
+            console.log('error=', this.errormsg);
+            //this._loginserviceService.logout();
+          }
+        },
+        (error) => { }
+      );
+    }
   }
-}
   //get all diagnostic list
-  showData(td){
-    console.log('show data==',td)
+  showData(td) {
+    console.log('show data==', td)
   }
 }

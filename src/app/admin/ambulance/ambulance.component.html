@@ -30,7 +30,7 @@
                                     <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table center-aligned-table">
                                         <thead>
                                             <tr>
-                                                <th>No# </th>
+                                                <th>S.No</th>
                                                 <th>Ambulance Reg </th>
                                                 <th>Driver Name</th>
                                                 <th>Driver Contact </th>
@@ -45,86 +45,75 @@
                                                 <td>{{amb.driverName}}</td>
                                                 <td>{{amb.driverContact}}</td>
                                                 <td><span *ngIf="amb.status==1">Available</span> <span *ngIf="amb.status==0">Not Available</span> </td>
-                                                
                                                 <td>
-                                                    <button class="mr-3 btn btn-info" (click)="openModedit(AmbEdit,amb)"><i class="fa fa-edit"></i></button>
+                                                    <button class="mr-1 btn btn-info" (click)="openModedit(AmbEdit,amb)"><i class="ti-pencil-alt"></i></button>
                                                     <!-- model for Ambulance Update start-->
-                                                    <ng-template  #AmbEdit class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
-                                                        <div class="modal-dialog modal-lg modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h2>Edit Ambulance</h2>
-                                                                    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                                                                        <span aria-hidden="true"><i class="ti-close"></i></span>
-                                                                    </button>
+                                                    <ng-template #AmbEdit>
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title pull-left">Edit Ambulance</h4>
+                                                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body p-5">
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-3 mt-3"><label for="inputState">Ambulance Reg No</label></div>
+                                                                <div class="col-sm-9">
+                                                                    <input type="text" class="form-control input-sm" id="UARN" [(ngModel)]="EmedOb.Eregistration" placeholder="Ambulance Reg No">
                                                                 </div>
-
-                                                                <div class="modal-body p-5">
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-3 mt-3"><label for="inputState">Ambulance Reg No</label></div>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="text" class="form-control input-sm" id="UARN" [(ngModel)]="EmedOb.Eregistration" placeholder="Ambulance Reg No">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-3 mt-3"><label for="inputState">Driver Name</label></div>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="text" class="form-control" id="UDN" [(ngModel)]="EmedOb.Edriver" placeholder="Driver Name">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-3 mt-3"><label for="inputState">Driver Contact </label></div>
-                                                                        <div class="col-sm-9">
-                                                                            <input type="text" class="form-control" id="UDC" [(ngModel)]="EmedOb.Econtact" placeholder="Dreiver Contact No">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-3 mt-3"><label for="inputState">Status</label></div>
-                                                                        <div class="col-sm-9">
-                                                                            <select class="form-control" aria-label="Text input with segmented dropdown button" [(ngModel)]="EmedOb.Estatus" placeholder="Select file format">
-                                                                                <option value="1">Available</option>
-                                                                                <option value="0"> Not Available</option>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-3 mt-3"><label for="inputState">Driver Name</label></div>
+                                                                <div class="col-sm-9">
+                                                                    <input type="text" class="form-control" id="UDN" [(ngModel)]="EmedOb.Edriver" placeholder="Driver Name">
                                                                 </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="button-danger" (click)="modalRef.hide()"><i class="fa fa-remove"></i> Close</button>
-                                                                    <button type="button" class="button" (click)="updateMedic(EmedOb)"><i class="fa fa-check-square"></i> Update</button>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-3 mt-3"><label for="inputState">Driver Contact </label></div>
+                                                                <div class="col-sm-9">
+                                                                    <input type="text" class="form-control" id="UDC" [(ngModel)]="EmedOb.Econtact" placeholder="Dreiver Contact No">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-3 mt-3"><label for="inputState">Status</label></div>
+                                                                <div class="col-sm-9">
+                                                                    <select class="form-control" aria-label="Text input with segmented dropdown button" [(ngModel)]="EmedOb.Estatus" placeholder="Select file format">
+                                                                        <option value="1">Available</option>
+                                                                        <option value="0"> Not Available</option>
+                                                                    </select>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-lg btn-default" (click)="modalRef.hide()"><i class="fa fa-remove"></i> Cancel</button>
+                                                            <button type="button" class="btn btn-lg btn-info" (click)="updateMedic(EmedOb)"><i class="fa fa-check-square"></i> Update</button>
+                                                        </div>
                                                     </ng-template>
                                                     <!-- model for Ambulance Update end-->
-                                                    <button class="mr-3 btn btn-danger" (click)="openModdelete(Ambdelete,amb)"><i class="fa fa-trash"></i></button>
+                                                    <button class="btn btn-danger" (click)="openModdelete(Ambdelete,amb)"><i class="ti-trash"></i></button>
                                                     <!-- model for Ambulance delete start-->
-                                                    <ng-template  #Ambdelete class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
-                                                        <div class="modal-dialog modal-sm modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header bb-none"></div>
-                                                                <div class="modal-body p-5 text-center">
-                                                                    <i class="fa fa-exclamation-circle fa-5x text-danger"></i>
-                                                                    <p>Are You Sure To delete this Item!</p>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="button-danger" (click)="modalRef.hide()"><i class="fa fa-remove"></i> Cancel</button>
-                                                                    <button type="button" class="button" (click)="deleteAmb()"><i class="fa fa-check-square"></i> Delete</button>
-                                                                </div>
-                                                            </div>
+                                                    <ng-template #Ambdelete>
+                                                        <div class="modal-body p-5 text-center">
+                                                            <i class="fa fa-exclamation-circle mb-3 fa-5x text-warning"></i>
+                                                            <p>Are You Sure To delete this Item!</p>
+                                                        </div>
+                                                        <div class="modal-footer ">
+                                                            <button type="button" class="btn btn-default " (click)="modalRef.hide() "><i class="fa fa-remove "></i> Cancel</button>
+                                                            <button type="button" class="btn btn-danger " (click)="deleteAmb() "><i class="fa fa-check-square "></i> Delete</button>
                                                         </div>
                                                     </ng-template>
                                                     <!-- model for Ambulance delete end-->
                                                 </td>
                                             </tr>
-                                           
+
                                         </tbody>
                                     </table>
-                                    <div *ngIf="loader_eqp" class="d-flex justify-content-center">
-                                        <div class="spinner-border theme-color" role="status">
-                                            <span class="sr-only"></span>
+                                    <div *ngIf="loader_eqp " class="d-flex justify-content-center ">
+                                        <div class="spinner-border theme-color " role="status ">
+                                            <span class="sr-only "></span>
                                         </div>
                                     </div>
-                                    <hr class="hr-gray mx-3 my-3">
+                                    <hr class="hr-gray mx-3 my-3 ">
                                 </div>
                             </div>
                         </div>
@@ -133,49 +122,45 @@
             </div>
 
             <!-- model for Add Ambulance download start-->
-            <ng-template  #AmbAdd class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
-                <div class="modal-dialog modal-lg modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h2>Add Ambulance</h2>
-                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                                <span aria-hidden="true"><i class="ti-close"></i></span>
-                            </button>
-                        </div>
-                        <div class="modal-body p-5">
-                            <div class="form-group row">
-                                <div class="col-sm-3 mt-3"><label for="inputState">Ambulance Reg No</label></div>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control input-sm" id="ARN" [(ngModel)]="medOb.reg" placeholder="Ambulance Reg No">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-3 mt-3"><label for="inputState">Driver Name</label></div>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="DN" [(ngModel)]="medOb.driver" placeholder="Driver Name">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-3 mt-3"><label for="inputState">Dreiver Contact No</label></div>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="DCN" [(ngModel)]="medOb.contact" placeholder="Dreiver Contact No">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-3 mt-3"><label for="inputState">Status</label></div>
-                                <div class="col-sm-9">
-                                    <select class="form-control" aria-label="Text input with segmented dropdown button" [(ngModel)]="medOb.status" placeholder="Select file format">
-                                        <option value="1">Available</option>
-                                        <option value="0"> Not Available</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="button-danger" (click)="modalRef.hide()"><i class="fa fa-remove"></i> Close</button>
-                            <button type="button" class="button" (click)="addNewAmbulance(medOb)"><i class="fa fa-check-square"></i> Add Ambulance</button>
+            <ng-template #AmbAdd>
+                <div class="modal-header ">
+                    <h4 class="modal-title pull-left ">Add Ambulance</h4>
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body p-5 ">
+                    <div class="form-group row ">
+                        <div class="col-sm-3 mt-3 "><label for="inputState ">Ambulance Reg No</label></div>
+                        <div class="col-sm-9 ">
+                            <input type="text " class="form-control input-sm " id="ARN " [(ngModel)]="medOb.reg " placeholder="Ambulance Reg No ">
                         </div>
                     </div>
+                    <div class="form-group row ">
+                        <div class="col-sm-3 mt-3 "><label for="inputState ">Driver Name</label></div>
+                        <div class="col-sm-9 ">
+                            <input type="text " class="form-control " id="DN " [(ngModel)]="medOb.driver " placeholder="Driver Name ">
+                        </div>
+                    </div>
+                    <div class="form-group row ">
+                        <div class="col-sm-3 mt-3 "><label for="inputState ">Dreiver Contact No</label></div>
+                        <div class="col-sm-9 ">
+                            <input type="text " class="form-control " id="DCN " [(ngModel)]="medOb.contact " placeholder="Dreiver Contact No ">
+                        </div>
+                    </div>
+                    <div class="form-group row ">
+                        <div class="col-sm-3 mt-3 "><label for="inputState ">Status</label></div>
+                        <div class="col-sm-9 ">
+                            <select class="form-control " aria-label="Text input with segmented dropdown button " [(ngModel)]="medOb.status " placeholder="Select file format ">
+                                <option value="1 ">Available</option>
+                                <option value="0 "> Not Available</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer ">
+                    <button type="button " class="btn btn-lg btn-default" (click)="modalRef.hide() "><i class="fa fa-remove "></i> Cancel</button>
+                    <button type="button " class="btn btn-lg btn-success" (click)="addNewAmbulance(medOb) "><i class="fa fa-check-square "></i> Add Ambulance</button>
                 </div>
             </ng-template>
             <!-- model for Add Ambulance download end-->
@@ -184,6 +169,6 @@
 </div>
 <!-- ------------------------------------------------------- -->
 
-<!-- <div *ngIf="loader_eqp" class="text-center">
-    <i class="fa fa-pulse fa-spinner fa-3x fa-fw"></i>
+<!-- <div *ngIf="loader_eqp " class="text-center ">
+    <i class="fa fa-pulse fa-spinner fa-3x fa-fw "></i>
 </div> -->
