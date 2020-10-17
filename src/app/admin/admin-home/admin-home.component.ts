@@ -86,18 +86,23 @@ export class AdminHomeComponent implements OnInit {
     // this.modalRef.content.userActivate = 'Close';
   }
 
- 
+  openAddModal(addUser: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(
+      addUser,
+      Object.assign({}, { class: 'modal-lg' })
+    );
+  }
 
-openAddModal(addUser: TemplateRef<any>) {
+// openAddModal(addUser: TemplateRef<any>) {
   
-  this.modalRef = this.modalService.show(addUser); 
+//   this.modalRef = this.modalService.show(addUser); 
   
-}
+// }
   openModedit(usersEdit: TemplateRef<any>,dataOb) {
     //this.modalService.open(usersEdit);
    
-     this.userData = dataOb;
-    this.modalRef = this.modalService.show(usersEdit, this.userData); //, this.userData  //, data
+    this.userData = dataOb;
+    this.modalRef = this.modalService.show(usersEdit, Object.assign({}, { class: 'modal-lg' }, this.userData)); //, this.userData  //, data
     console.log('user data====',this.userData);
    this.showEditData(this.userData)
      //this.modalRef.content.userActivate = 'Close';
@@ -105,8 +110,8 @@ openAddModal(addUser: TemplateRef<any>) {
   openDeleteModal(userdelete: TemplateRef<any>,dataOb) {
     //this.modalService.open(usersEdit);
    
-     this.userID = dataOb.id;
-    this.modalRef = this.modalService.show(userdelete, this.userData); //, this.userData  //, data
+    this.userID = dataOb.id;
+    this.modalRef = this.modalService.show(userdelete, Object.assign({}, { class: 'modal-sm' }, this.userData)); //, this.userData  //, data
     console.log('user data====',this.userID);
   
      //this.modalRef.content.userActivate = 'Close';

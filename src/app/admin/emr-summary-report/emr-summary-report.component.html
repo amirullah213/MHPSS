@@ -27,18 +27,18 @@
                                         <button class="button" (click)="searchReport(medOb)"><i class="ti-search"></i>Search</button>
                                     </form>
                                     <div class="row mx-0">
-                                        <div class="col-md-12 mt-3">
+                                        <div class="col-md-6 mt-3" *ngIf="!loader_eqp">
                                             <p class="mb-2 mt-3"><b>OPD Services </b></p>
-                                            <p class="ml-3 mt-3" *ngFor="let op of reporData.opd;index as i">{{i+1}})- {{op.name}} =  {{op.count}}</p>
-                                            
+                                            <p class="ml-3 mt-3" *ngFor="let op of reporData.opd;index as i">{{i+1}}- {{op.name}} = {{op.count}}</p>
+
                                             <p class="ml-3 mt-3"> Total Caseload = (sum of above) </p>
 
                                             <p class="mb-2 mt-3"><b>IPD Services </b></p>
                                             <p class="ml-3 mt-3">1- Total Admission = <span *ngIf="reporData.ipd.total!=null"> {{reporData.ipd.total}}</span> <span *ngIf="reporData.ipd.total==null">0</span> </p>
-                                            <p class="ml-3 mt-3">2- Discharged =  <span *ngIf="reporData.ipd.discharge!=null"> {{reporData.ipd.discharge}}</span> <span *ngIf="reporData.ipd.discharge==null">0</span></p>
+                                            <p class="ml-3 mt-3">2- Discharged = <span *ngIf="reporData.ipd.discharge!=null"> {{reporData.ipd.discharge}}</span> <span *ngIf="reporData.ipd.discharge==null">0</span></p>
                                             <p class="ml-3 mt-3">3- LAMA = <span *ngIf="reporData.ipd.lama!=null"> {{reporData.ipd.lama}}</span> <span *ngIf="reporData.ipd.lama==null">0</span> </p>
                                             <p class="ml-3 mt-3">4- Deaths = <span *ngIf="reporData.ipd.deaths!=null"> {{reporData.ipd.deaths}}</span> <span *ngIf="reporData.ipd.deaths==null">0</span> </p>
-                                            <p class="ml-3 mt-3">5- Referred =  <span *ngIf="reporData.ipd.referred!=null"> {{reporData.ipd.referred}}</span> <span *ngIf="reporData.ipd.referred==null">0</span></p>
+                                            <p class="ml-3 mt-3">5- Referred = <span *ngIf="reporData.ipd.referred!=null"> {{reporData.ipd.referred}}</span> <span *ngIf="reporData.ipd.referred==null">0</span></p>
 
 
                                             <p class="mb-2 mt-3"><b>Surgical Services </b></p>
@@ -50,7 +50,7 @@
                                             <p class="ml-3 mt-3">3- Assisted Deliveries Conducted = <span *ngIf="reporData.delivery.assisted!=null"> {{reporData.delivery.assisted}}</span> <span *ngIf="reporData.delivery.assisted==null">0</span></p>
 
                                             <p class="mb-2 mt-3"><b>Diagnostics Services</b></p>
-                                            <p class="ml-3 mt-3">1- No of X-rays =  {{reporData.diagnostics.xRays}}</p>
+                                            <p class="ml-3 mt-3">1- No of X-rays = {{reporData.diagnostics.xRays}}</p>
                                             <p class="ml-3 mt-3">2- No of Lab Test = {{reporData.diagnostics.labs}} </p>
                                             <p class="ml-3 mt-3">3- No of Ultrasound = {{reporData.diagnostics.ultrasounds}} </p>
 
@@ -62,6 +62,13 @@
                                             <p class="ml-3 mt-3">5- No of Children vaccinated against Measles = <span *ngIf="reporData.epi.measles!=null"> {{reporData.epi.measles}}</span> <span *ngIf="reporData.epi.measles==null">0</span></p>
 
                                         </div>
+                                        <div class="col-md-12 mt-5">
+                                            <div *ngIf="loader_eqp" class="d-flex justify-content-center">
+                                                <div class="spinner-border theme-color" role="status">
+                                                    <span class="sr-only"></span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -71,4 +78,3 @@
             </div>
         </div>
     </div>
-</div>

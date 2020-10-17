@@ -71,25 +71,26 @@ export class RadiologyListComponent implements OnInit {
     });
   }
   openModAdd(addmod: TemplateRef<any>) {
-    // this.userData = data;
-    this.modalRef = this.modalService.show(addmod);
-    // this.modalRef.content.userActivate = 'Close';
+    this.modalRef = this.modalService.show(
+      addmod,
+      Object.assign({}, { class: 'modal-lg' })
+    );
   }
-  openModedit(SignsEdit: TemplateRef<any>,edtObj) {
+  openModedit(editradiology: TemplateRef<any>,edtObj) {
      this.userData = edtObj;
-    this.modalRef = this.modalService.show(SignsEdit);
+    this.modalRef = this.modalService.show(editradiology,Object.assign({}, { class: 'modal-lg' },this.userData));
     console.log('med data====',this.userData);
     this.showEditData(this.userData)
     // this.modalRef.content.userActivate = 'Close';
   }
-  openModdelete(Complaintsdelete: TemplateRef<any>,dataOb) {
+  openModdelete(deleteradiology: TemplateRef<any>,dataOb) {
     this.testID = dataOb.testID;
-    this.modalRef = this.modalService.show(Complaintsdelete);
+    this.modalRef = this.modalService.show(deleteradiology, Object.assign({}, { class: 'modal-sm' }, this.userData));
     console.log('med id====',this.testID);
   }
-  viewTestsModal(SignsEdit: TemplateRef<any>,edtObj) {
+  viewTestsModal(editradiology: TemplateRef<any>,edtObj) {
     this.userData = edtObj.subTests;
-   this.modalRef = this.modalService.show(SignsEdit);
+    this.modalRef = this.modalService.show(editradiology, Object.assign({}, { class: 'modal-lg' }));
    console.log('med data====',this.userData);
   // this.showEditData(this.userData)
    // this.modalRef.content.userActivate = 'Close';

@@ -68,19 +68,19 @@ export class SignsComponent implements OnInit {
   }
   openModAdd(addmod: TemplateRef<any>) {
     // this.userData = data;
-    this.modalRef = this.modalService.show(addmod);
+    this.modalRef = this.modalService.show(addmod, Object.assign({}, { class: 'modal-lg' }));
     // this.modalRef.content.userActivate = 'Close';
   }
   openModedit(SignsEdit: TemplateRef<any>,edtObj) {
      this.userData = edtObj;
-    this.modalRef = this.modalService.show(SignsEdit);
+    this.modalRef = this.modalService.show(SignsEdit, Object.assign({}, { class: 'modal-lg' }));
     console.log('med data====',this.userData);
     this.showEditData(this.userData)
     // this.modalRef.content.userActivate = 'Close';
   }
   openModdelete(pharmadelete: TemplateRef<any>,dataOb) {
     this.signID = dataOb.id;
-    this.modalRef = this.modalService.show(pharmadelete);
+    this.modalRef = this.modalService.show(pharmadelete, Object.assign({}, { class: 'modal-sm' }));
     console.log('med id====',this.signID);
   }
   showEditData(edtObj){

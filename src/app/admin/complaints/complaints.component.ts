@@ -67,19 +67,19 @@ export class ComplaintsComponent implements OnInit {
   }
   openModAdd(addmod: TemplateRef<any>) {
     // this.userData = data;
-    this.modalRef = this.modalService.show(addmod);
+    this.modalRef = this.modalService.show(addmod, Object.assign({}, { class: 'modal-lg' }));
     // this.modalRef.content.userActivate = 'Close';
   }
   openModedit(SignsEdit: TemplateRef<any>,edtObj) {
      this.userData = edtObj;
-    this.modalRef = this.modalService.show(SignsEdit);
+    this.modalRef = this.modalService.show(SignsEdit, Object.assign({}, { class: 'modal-lg' }));
     console.log('med data====',this.userData);
     this.showEditData(this.userData)
     // this.modalRef.content.userActivate = 'Close';
   }
   openModdelete(Complaintsdelete: TemplateRef<any>,dataOb) {
     this.compID = dataOb.id;
-    this.modalRef = this.modalService.show(Complaintsdelete);
+    this.modalRef = this.modalService.show(Complaintsdelete, Object.assign({}, { class: 'modal-sm' }));
     console.log('med id====',this.compID);
   }
   showEditData(edtObj){

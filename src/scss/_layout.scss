@@ -9,8 +9,9 @@
 
 .card {
     border-radius: 0;
+    padding: 15px;
     border: 0;
-    @include box-shadow(1px, 1px, 15px, rgba(0, 0, 0, .1));
+    @include box-shadow(1px, 1px, 15px, rgb(123 111 111));
     .info-btn {
         position: absolute;
         right: 20px;

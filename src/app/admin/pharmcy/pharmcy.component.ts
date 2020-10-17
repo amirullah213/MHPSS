@@ -65,21 +65,23 @@ export class PharmcyComponent implements OnInit {
       this.dtTrigger.next();
     });
   }
+
   openModAdd(pharmaAdd: TemplateRef<any>) {
-    // this.userData = data;
-    this.modalRef = this.modalService.show(pharmaAdd);
-    // this.modalRef.content.userActivate = 'Close';
+    this.modalRef = this.modalService.show(
+      pharmaAdd,
+      Object.assign({}, { class: 'modal-lg' })
+    );
   }
   openModedit(pharmaEdit: TemplateRef<any>,edtObj) {
      this.userData = edtObj;
-    this.modalRef = this.modalService.show(pharmaEdit);
+    this.modalRef = this.modalService.show(pharmaEdit, Object.assign({}, { class: 'modal-lg' }));
     console.log('med data====',this.userData);
     this.showEditData(this.userData)
     // this.modalRef.content.userActivate = 'Close';
   }
   openModdelete(pharmadelete: TemplateRef<any>,dataOb) {
     this.medicID = dataOb.itemID;
-    this.modalRef = this.modalService.show(pharmadelete);
+    this.modalRef = this.modalService.show(pharmadelete, Object.assign({}, { class: 'modal-sm' }));
     console.log('med id====',this.medicID);
   }
   showEditData(edtObj){
