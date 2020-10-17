@@ -34,7 +34,6 @@
                                         <div class="form-group row mx-0">
                                             <div class="col-sm-2 mt-4"><label for="inputState">Search Diagnosis</label></div>
                                             <div class="col-sm-8 mt-3">
-                                                <button type="button" class="button" (click)="showData(selected)">
                                                 <input [(ngModel)]="selected" [typeahead]="diagnosis" (ngModelChange)="getAllDiagnostics() " typeaheadOptionField="name" (typeaheadOnSelect)="onSelectDiagnos($event)" class="form-control" name="medicName" placeholder="Select Diagnosis">
                                                 <!-- <input [(ngModel)]="selected "  [typeahead]="diagnosis " typeaheadOptionField="name " [typeaheadScrollable]="true " (ngModelChange)="getAllDiagnostics() " class="form-control " >   -->
 
