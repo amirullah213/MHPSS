@@ -1,15 +1,15 @@
 <div class="side-menu-fixed">
     <div class="scrollbar side-menu-bg">
-        <ul *ngIf="!router.url.includes('account-settings')" class="nav navbar-nav side-menu" id="sidebarnav">
+        <ul class="nav navbar-nav side-menu" id="sidebarnav">
             <!-- menu item Dashboard-->
-            <li>
-                <a href="javascript:void(0)" [routerLink]="['home']" routerLinkActive="active"><i class="fa fa-hospital-o"></i><span class="right-nav-text">Home</span> </a>
+            <li [routerLink]="['home']" routerLinkActive="active">
+                <a href="javascript:void(0)" routerLinkActive="active"><i class="fa fa-hospital-o"></i><span class="right-nav-text">Home</span> </a>
             </li>
-            <li>
-                <a href="javascript:void(0)" [routerLink]="['diagnostic-list']" routerLinkActive="active"><i class="fa fa-stethoscope"></i><span class="right-nav-text">Diagnosdtic List</span> </a>
+            <li [routerLink]="['diagnostic-list']" routerLinkActive="active">
+                <a href="javascript:void(0)" routerLinkActive="active"><i class="fa fa-stethoscope"></i><span class="right-nav-text">Diagnosdtic List</span> </a>
             </li>
-            <li>
-                <a href="javascript:void(0)" [routerLink]="['pathology-list']" routerLinkActive="active"><i class="fa fa-user-md"></i><span class="right-nav-text">Pathology List</span> </a>
+            <li [routerLink]="['pathology-list']" routerLinkActive="active">
+                <a href="javascript:void(0)" routerLinkActive="active"><i class="fa fa-user-md"></i><span class="right-nav-text">Pathology List</span> </a>
             </li>
             <li [routerLink]="['radiology-list']" routerLinkActive="active">
                 <a href="javascript:void(0)"><i class="fa fa-heartbeat"></i><span class="right-nav-text">Radiology List</span> </a>
