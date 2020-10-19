@@ -23,6 +23,7 @@ import { DataTableDirective } from 'angular-datatables';
   styleUrls: ['./admin-home.component.scss'],
 })
 export class AdminHomeComponent implements OnInit {
+
   @ViewChild(DataTableDirective, {static: false})
   dtElement: DataTableDirective;
   //fullArray:any=[];

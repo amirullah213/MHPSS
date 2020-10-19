@@ -36,41 +36,71 @@
                                     <div class="modal-body">
                                         <div class="row mx-0">
                                             <div class="col-md-12 mt-3">
-                                                <form>
+                                                <form #UserForm="ngForm">
                                                     <div class="form-group row">
                                                         <div class="col-sm-2 mt-3"><label for="name">Full Name</label></div>
                                                         <div class="col-sm-10">
-                                                            <input type="text" class="form-control input-sm" id="name" [(ngModel)]="userOb.name" placeholder="Full Name">
+                                                            <input type="text" name="name" class="form-control input-sm" id="name" [(ngModel)]="userOb.name" placeholder="Full Name" required #name="ngModel">
+                                                            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
+                                                                <div *ngIf="name.errors.required">
+                                                                    Name is required *
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col-sm-2 mt-3"><label for="des">Designation</label></div>
                                                         <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="des" [(ngModel)]="userOb.designation" placeholder="Designation">
+                                                            <input type="text" class="form-control" name="designation" id="des" [(ngModel)]="userOb.designation" placeholder="Designation" required #designation="ngModel">
+                                                            <div *ngIf="designation.invalid && (designation.dirty || designation.touched)" class="text-danger">
+                                                                <div *ngIf="designation.errors.required">
+                                                                    Designation is required *
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col-sm-2 mt-3"><label for="joining">Joining Date</label></div>
                                                         <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="joining" [(ngModel)]="userOb.joiningDate" placeholder="Joining" bsDatepicker>
+                                                            <input type="text" class="form-control" name="joiningDate" id="joining" [(ngModel)]="userOb.joiningDate" placeholder="Joining" bsDatepicker required #joiningDate="ngModel">
+                                                            <div *ngIf="joiningDate.invalid && (joiningDate.dirty || joiningDate.touched)" class="text-danger">
+                                                                <div *ngIf="joiningDate.errors.required">
+                                                                    Joining Date is required *
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col-sm-2 mt-3"><label for="contact">Contact No</label></div>
                                                         <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="contact" [(ngModel)]="userOb.contact" placeholder="Contact No">
+                                                            <input type="text" class="form-control" id="contact" name="contact" [(ngModel)]="userOb.contact" placeholder="Contact No" required #contact="ngModel">
+                                                            <div *ngIf="contact.invalid && (contact.dirty || contact.touched)" class="text-danger">
+                                                                <div *ngIf="contact.errors.required">
+                                                                    Contact is required *
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col-sm-2 mt-3"><label for="uname">User Name</label></div>
                                                         <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="uname" [(ngModel)]="userOb.username" placeholder="User Name">
+                                                            <input type="text" class="form-control" name="username" id="uname" [(ngModel)]="userOb.username" placeholder="User Name" required #username="ngModel">
+                                                            <div *ngIf="username.invalid && (username.dirty || username.touched)" class="text-danger">
+                                                                <div *ngIf="username.errors.required">
+                                                                    User Name is required *
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col-sm-2 mt-3"><label for="password">Password</label></div>
                                                         <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="password" [(ngModel)]="userOb.password" placeholder="Password">
+                                                            <input type="text" class="form-control" name="password" id="password" [(ngModel)]="userOb.password" placeholder="Password" required #password="ngModel">
+                                                            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+                                                                <div *ngIf="password.errors.required">
+                                                                    Password is required *
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -79,7 +109,9 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-lg btn-default" (click)="modalRef.hide()"><i class="fa fa-remove"></i> Cancel</button>
-                                        <button type="button" class="btn btn-lg btn-success" (click)="addNewUser(userOb)"><i class="fa fa-check-square"></i> Add User</button>
+                                        <button type="button" class="btn btn-lg btn-success" [disabled]="UserForm.form.invalid" (click)="addNewUser(userOb)">
+                                            <i class="fa fa-check-square"></i> Add User
+                                        </button>
                                     </div>
                                 </ng-template>
                                 <div class="table-responsive">
