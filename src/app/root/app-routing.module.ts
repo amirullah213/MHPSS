@@ -22,6 +22,7 @@ const routes: Routes = [
   { path: 'ot', loadChildren: () => import('../operation/operation.module').then(m => m.OperationModule) },
   { path: 'epi', loadChildren: () => import('../epi/epi.module').then(m => m.EpiModule) },
   { path: 'vitals', loadChildren: () => import('../vitals/vitals.module').then(m => m.VitalsModule) },
+  { path: 'fleet', loadChildren: () => import('../fleet/Fleet.module').then(m => m.FleetModule) },
   { path: '**', redirectTo: '' }
   
  

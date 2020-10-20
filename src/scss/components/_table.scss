@@ -25,3 +25,17 @@
         border-bottom: none;
     }
 }
+
+.cutomtable {
+    table {
+        border-collapse: separate;
+        thead {
+            th {
+                border-bottom: none !important;
+                border-top: none;
+                color: $gray-04-color;
+                font-size: 15px !important;
+            }
+        }
+    }
+}

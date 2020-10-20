@@ -1,1 +1,16 @@
-<p>fleet-side-bar works!</p>
+<div class="side-menu-fixed">
+    <div class="scrollbar side-menu-bg">
+        <ul class="nav navbar-nav side-menu" id="sidebarnav">
+            <!-- menu item Dashboard-->
+            <li [routerLink]="['home']" routerLinkActive="active">
+                <a href="javascript:void(0)">
+                    <i class="ti-home"></i>
+                    <span class="right-nav-text">Home</span>
+                </a>
+            </li>
+            <li routerLinkActive="active">
+                <a href=""><i class="ti-power-off"></i><span class="right-nav-text">Exit</span> </a>
+            </li>
+        </ul>
+    </div>
+</div>

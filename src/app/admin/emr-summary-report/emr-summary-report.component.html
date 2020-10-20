@@ -24,7 +24,8 @@
                                         <input type="text" class="form-control col-3 mr-2" placeholder="Start Date" #datepickerYMD="bsDatepicker" bsDatepicker formControlName="dateYMD" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" [(ngModel)]="medOb.startDate">
                                         <label class="mr-2">To</label>
                                         <input type="text" class="form-control col-3 mr-2" placeholder="End Date" #datepickerYMD="bsDatepicker" bsDatepicker formControlName="dateYMD" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" [(ngModel)]="medOb.endtDate">
-                                        <button class="button" (click)="searchReport(medOb)"><i class="ti-search"></i>Search</button>
+                                        <button class="button mr-2" (click)="searchReport(medOb)"><i class="ti-search mr-2"></i>Search</button>
+                                        <button class="button-danger" (click)="searchReport(medOb)"><i class="ti-brush-alt mr-2"></i>Clear</button>
                                     </form>
                                     <div class="row mx-0">
                                         <div class="col-md-6 mt-3" *ngIf="!loader_eqp">
