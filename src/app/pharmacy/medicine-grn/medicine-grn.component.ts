@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { Subject } from 'rxjs';
 import { PharmacyServicesService } from '../services/pharmacy-services.service';
 
@@ -11,6 +12,17 @@ import { PharmacyServicesService } from '../services/pharmacy-services.service';
   styleUrls: ['./medicine-grn.component.scss']
 })
 export class MedicineGrnComponent implements OnInit {
+
+  currentDate = new Date();
+  form = new FormGroup({
+    dateYMD: new FormControl(new Date()),
+    dateFull: new FormControl(new Date()),
+    dateMDY: new FormControl(new Date()),
+    dateRange: new FormControl([
+      new Date(),
+      new Date(this.currentDate.setDate(this.currentDate.getDate() + 7))
+    ])
+  });
 
 
   constructor(
