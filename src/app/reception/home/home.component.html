@@ -39,15 +39,13 @@
                                         </div>
                                     </div>
                                     <hr class="hr-gray mx-3 my-4">
-                                    <div class="col-md-6">
-                                        <h4>Add Patient</h4>
-                                    </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group float-right">
-                                            <button class="button" style="margin-left: 100px;" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
+                                            <button class="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
                                                 <i class="fa fa-plus"></i> New Registration
                                             </button>
                                         </div>
+                                        <h4>Add Patient</h4>
                                     </div>
                                 </div>
                                 <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
@@ -65,23 +63,20 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <div class="form-groupp">
+                                            <div class="form-group">
                                                 <label for="formGroupExampleInput">Mobile Number</label>
                                                 <input type="text" class="form-control" placeholder="Enter Mobile Number">
                                             </div>
                                         </div>
-                                        <!-- <div class="col-md-3">
-                                            <div class="form-group input-group">
-                                                <label>Gender</label>
-                                                <span class="wrapper-select">
-                                                <select class="form-control">
-                                                    <option>Male</option>
-                                                    <option>Female</option>
-                                                </select>
-                                            </span>
-                                            </div>
-                                        </div> -->
                                         <div class="col-md-3">
+                                            <label>Gender</label>
+                                            <select class="form-control">
+                                                <option>Select Gender</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                        <!-- <div class="col-md-3">
                                             <p>Gender</p>
                                             <div class="custom-radio custom-control-inline mr-md-5 mt-3">
                                                 <div class="form-check">
@@ -95,7 +90,7 @@
                                                     <label class="form-check-label">Female</label>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="formGroupExampleInput">CNIC Number</label>

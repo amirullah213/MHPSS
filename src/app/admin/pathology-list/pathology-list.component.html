@@ -53,7 +53,7 @@
                                             <input type="text" *ngIf="medOb.isSupper==1" class="form-control mr-1 mt-2 col-md-4" id="subtest" [(ngModel)]="subObj.testName" placeholder="Sub Test Name" name="subname">
                                             <input type="text" *ngIf="medOb.isSupper==1" class="form-control mr-1 mt-2 col-md-4" id="normalrang" [(ngModel)]="subObj.refRange" placeholder="Normal Range" name="normalrange">
                                             <input type="text" *ngIf="medOb.isSupper==1" class="form-control mt-2 col-md-3" id="feesub" [(ngModel)]="subObj.fee" placeholder="Fee" name="subfee">
-                                            <a class="mt-2 ml-2" *ngIf="medOb.isSupper==1" (click)="subtestArr(subObj)"><i class="ti-plus text-success"></i></a>
+                                            <a class="mt-2 ml-3" *ngIf="medOb.isSupper==1" (click)="subtestArr(subObj)"><i class="fa fa-plus text-success"></i></a>
                                             <br>
                                             <div class="w-100">
                                                 <div class="row" *ngFor="let sub of attsArr;index as f">
@@ -67,7 +67,7 @@
                                                         <p>{{sub.fee}}</p>
                                                     </div>
                                                     <div class="mt-2 ml-3">
-                                                        <a class="mt-2" (click)="removeArr(f)"><b><i class="ti-close text-danger"></i></b></a>
+                                                        <a class="mt-2" (click)="removeArr(f)"><b><i class="fa fa-remove text-danger"></i></b></a>
                                                     </div>
                                                 </div>
                                             </div>

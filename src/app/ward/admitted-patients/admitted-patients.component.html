@@ -20,10 +20,8 @@
                                 <!-- <h5 class="card-title mb-0">Ward Managment</h5> -->
                                 <form novalidate [formGroup]="form">
                                     <div class="form-group row mx-0">
-                                        <div class="col-sm-2">
-                                            <label class="mt-3" for="inputState">Critically ill</label>
-                                        </div>
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-12">
+                                            <label>Critically ill</label>
                                             <select class="form-control">
                                                 <option>No</option>
                                                 <option>Yes</option>
@@ -60,18 +58,12 @@
                                             <h5>Treatment</h5>
                                         </div>
                                         <hr class="hr-gray">
-                                        <div class="col-md-10">
-                                            <label>Medicine Name</label>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label>Remove</label>
-                                        </div>
-                                        <div class="col-md-10">
+                                        <div class="col-md-3">
                                             <div class="form-group">
+                                                <label>Medicine Name</label>
                                                 <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Medicine Name">
                                             </div>
                                         </div>
-                                        <div class="col-md-2"></div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Unit</label>
@@ -84,22 +76,16 @@
                                                 <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Medicine Type">
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>In Stock</label>
                                                 <input type="text" class="form-control" id="formGroupExampleInput" placeholder="In Stock">
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Prescribed Quantity</label>
                                                 <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Prescribed Quantity">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <a href="javascript:void(0)" class="float-right"><i class="fa fa-close text-danger"></i></a>
-                                                <!-- <button type="button" class="button-danger"><i class="fa fa-close"></i> Remove</button> -->
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -132,17 +118,15 @@
                                                 </span>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Remarks/Dosing</label>
                                                 <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Remarks/Dosing">
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
-                                        </div>
                                         <div class="col-md-12">
                                             <div class="form-group text-center">
-                                                <button type="button" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus"></i> Add More </button>
+                                                <button type="button" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus mr-2"></i>Save/Add More </button>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -151,56 +135,95 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <hr class=" hr-gray ">
+                                    <div class="form-group row mx-0">
+                                        <div class="col-md-12">
+                                            <h6>Selected Investigation</h6>
+                                            <div class="table-responsive cutomtable">
+                                                <table class="table center-aligned-table">
+                                                    <thead>
+                                                        <tr class="text-dark">
+                                                            <th>Medicine</th>
+                                                            <th>Unit</th>
+                                                            <th>Type</th>
+                                                            <th>In Stock</th>
+                                                            <th>Prescribed Quantity</th>
+                                                            <th>Dose</th>
+                                                            <th>Prandial</th>
+                                                            <th>Remarks</th>
+                                                            <th class="text-center">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="">
+                                                            <td>Para</td>
+                                                            <td>500ml</td>
+                                                            <td>Tablet</td>
+                                                            <td>500</td>
+                                                            <td>12</td>
+                                                            <td>SAS</td>
+                                                            <td>Comments</td>
+                                                            <td>ACTH,Plasma</td>
+                                                            <td>
+                                                                <div class="form-group">
+                                                                    <a href="javascript:void(0)" class="float-right"><i class="fa fa-close text-danger"></i></a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <hr class="gray">
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="custom-control-inline mr-md-5 mb-2">
                                                 <div class="form-check checkbox">
                                                     <input type="checkbox" class="form-check-input" id="Pathalogy">
                                                     <label class="form-check-label" for="Pathalogy">Pathalogy</label>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Name">
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <div class="custom-control-inline mr-md-5 mb-2">
                                                 <div class="form-check checkbox">
                                                     <input type="checkbox" class="form-check-input" id="Radiology">
                                                     <label class="form-check-label" for="Radiology">Radiology</label>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="custom-control-inline mr-md-5 mb-2">
-                                                <label class="form-check-label">Radiology Test Name</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
                                             <div class="form-group input-group">
                                                 <span class="wrapper-select">
-                                                        <select class="form-control" aria-label="Text input with segmented dropdown button" placeholder="Is Follow Up">
-                                                            <option>ECG</option>
-                                                            <option>UltraSound</option>
-                                                        </select>
-                                                    </span>
+                                                    <select class="form-control" aria-label="Text input with segmented dropdown button" placeholder="Is Follow Up">
+                                                        <option>ECG</option>
+                                                        <option>UltraSound</option>
+                                                    </select>
+                                                </span>
                                             </div>
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-6">
                                             <div class="form-group">
+                                                <label class="form-check-label">Radiology Test Name</label>
                                                 <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Name">
                                             </div>
                                         </div>
-
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="form-check-label">Others</label>
                                                 <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Others">
                                             </div>
                                         </div>
+                                        <div class="col-sm-12 text-center">
+                                            <div class="form-group">
+                                                <button type="button" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-send-o"></i> Send To Lab / Radiology </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class=" hr-gray ">
+                                    <div class="form-group row mx-0">
                                         <div class="col-md-12">
                                             <h5>Selected Investigation</h5>
                                             <div class="table-responsive">
@@ -289,17 +312,12 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            <div class="form-group text-center">
-                                                <button type="button" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-send-o"></i> Send To Lab / Radiology </button>
-                                            </div>
                                         </div>
                                     </div>
                                     <hr class=" hr-gray ">
                                     <div class="form-group row mx-0">
-                                        <div class="col-sm-2">
+                                        <div class="col-sm-6">
                                             <label class="mt-3" for="inputState">Discharge Type</label>
-                                        </div>
-                                        <div class="col-sm-10">
                                             <select class="form-control">
                                                 <option>Discharge / DOR</option>
                                                 <option>LAMA</option>
@@ -307,17 +325,11 @@
                                                 <option>Death</option>
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="form-group row mx-0">
-                                        <div class="col-sm-2">
+                                        <div class="col-sm-6">
                                             <label class="mt-3" for="inputState">Select Date</label>
-                                        </div>
-                                        <div class="col-sm-10">
                                             <input type="text" class="form-control" placeholder="Start Date" #datepickerYMD="bsDatepicker" bsDatepicker formControlName="dateYMD" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }">
                                         </div>
-                                    </div>
-                                    <div class="form-group row mx-0">
-                                        <div class="col-sm-12 text-center">
+                                        <div class="col-sm-12 mt-3 text-center">
                                             <button class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" type="button"><i class="fa fa-wheelchair"></i> Discharge</button>
                                         </div>
                                     </div>
