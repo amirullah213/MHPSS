@@ -8,101 +8,102 @@
                             <li class="breadcrumb-item active gray-04-color"><a href="javascript:void(0)" [routerLink]="['/pharma/home']" class="gray-color"><i class="ti-home mr-2"></i>Home</a></li>
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Issue GRN</a></li>
                         </ol>
-                        </divma c </div>
                     </div>
-                    <!-- main body -->
-                    <div class="row">
-                        <div class="col-md-12 mb-30">
-                            <div class="card card-statistics h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title mb-0">Issue GRN</h5>
-                                    <form novalidate>
-                                        <div class="form-group row mx-0">
-                                            <div class="col-sm-6">
-                                                <label>Select Pharmacy</label>
-                                                <select type="text" [(ngModel)]="grnobj1.toPharmacyID" class="form-control" name="customSelected">
+                </div>
+            </div>
+            <!-- main body -->
+            <div class="row">
+                <div class="col-md-12 mb-30">
+                    <div class="card card-statistics h-100">
+                        <div class="card-body">
+                            <h5 class="card-title mb-0">Issue GRN</h5>
+                            <form novalidate>
+                                <div class="form-group row mx-0">
+                                    <div class="col-sm-6">
+                                        <label>Select Pharmacy</label>
+                                        <select type="text" [(ngModel)]="grnobj1.toPharmacyID" class="form-control" name="customSelected">
                                                 <option *ngFor="let ph of pharmacyList" [value]="ph.id">{{ph.name}}</option>
                                             </select>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <label class="" for="inputState">Refrence No</label>
-                                                <input type="text" [(ngModel)]="grnobj1.refrence" class="form-control" name="customSelected" placeholder="Refrence no">
-                                            </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="" for="inputState">Refrence No</label>
+                                        <input type="text" [(ngModel)]="grnobj1.refrence" class="form-control" name="customSelected" placeholder="Refrence no">
+                                    </div>
+                                </div>
+                                <hr class="gray">
+                                <div class="form-group row mx-0">
+                                    <div class="col-md-12">
+                                        <h5>Issued GRN</h5>
+                                    </div>
+                                </div>
+                                <hr class="gray">
+                                <div class="form-group row mx-0"></div>
+                                <div class="form-group row mx-0">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Medicine Name</label>
+                                            <input [(ngModel)]="grnobj3.itemName" [typeahead]="pharmacyStock" typeaheadOptionField="itemName" (typeaheadOnSelect)="onSelectMedics($event)" class="form-control" name="medicName" placeholder="Select name">
                                         </div>
-                                        <hr class="gray">
-                                        <div class="form-group row mx-0">
-                                            <div class="col-md-12">
-                                                <h5>Issued GRN</h5>
-                                            </div>
-                                        </div>
-                                        <hr class="gray">
-                                        <div class="form-group row mx-0"></div>
-                                        <div class="form-group row mx-0">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>Medicine Name</label>
-                                                    <input [(ngModel)]="grnobj3.itemName" [typeahead]="pharmacyStock" typeaheadOptionField="itemName" (typeaheadOnSelect)="onSelectMedics($event)" class="form-control" name="medicName" placeholder="Select name">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>Batch NO</label>
-                                                    <select type="text" [(ngModel)]="grnobj.id" name="medicUnit" class="form-control" id="formGroupExampleInput">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Batch NO</label>
+                                            <select type="text" [(ngModel)]="grnobj.id" name="medicUnit" class="form-control" id="formGroupExampleInput">
                                                     <option *ngFor="let stk of stockArr" [value]="stk.id">{{stk.batchNo}}</option>
                                                 </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>Quantity</label>
-                                                    <input type="text" [(ngModel)]="grnobj.issueQty" name="medicType" class="form-control" id="formGroupExampleInput" placeholder="Quantity">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12 text-center mt-3">
-                                                <div class="form-group">
-                                                    <a href="javascript:void(0)" (click)="addToMedicArr(grnobj,grnobj3)" class="button"><i class="fa fa-plus"></i> Add More</a>
-                                                </div>
-                                            </div>
                                         </div>
-                                        <hr class="gray" *ngIf="medArray.length!=0">
-                                        <div class="form-group row mx-0" *ngIf="medArray.length!=0">
-                                            <div class="col-md-5">
-                                                <label>Batch id</label>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <label>Quantity</label>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <label>Remove</label>
-                                            </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Quantity</label>
+                                            <input type="text" [(ngModel)]="grnobj.issueQty" name="medicType" class="form-control" id="formGroupExampleInput" placeholder="Quantity">
                                         </div>
-                                        <div class="form-group row mx-0" *ngFor="let md of medArray; let i=index">
-                                            <div class="col-md-5">
-                                                <label>{{md.id}}</label>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <label>{{md.issueQty}}</label>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <a href="javascript:void(0)" (click)="removeArr(i)"><i class="fa fa-remove text-danger"></i></a>
-                                            </div>
+                                    </div>
+                                    <div class="col-md-12 text-center mt-3">
+                                        <div class="form-group">
+                                            <a href="javascript:void(0)" (click)="addToMedicArr(grnobj,grnobj3)" class="button"><i class="fa fa-plus"></i> Add More</a>
                                         </div>
-                                        <hr class="gray">
-                                        <div class="form-group row mx-0">
-                                            <div class="col-md-12">
-                                                <div class="form-group text-center">
-                                                    <button type="button" *ngIf="!loader_eqp1" (click)="issueGRNPharmacy(grnobj1)" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save</button>
-                                                    <button type="button" *ngIf="loader_eqp1" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><span class="spinner-border theme-color" role="status">
+                                    </div>
+                                </div>
+                                <hr class="gray" *ngIf="medArray.length!=0">
+                                <div class="form-group row mx-0" *ngIf="medArray.length!=0">
+                                    <div class="col-md-5">
+                                        <label>Batch id</label>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label>Quantity</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label>Remove</label>
+                                    </div>
+                                </div>
+                                <div class="form-group row mx-0" *ngFor="let md of medArray; let i=index">
+                                    <div class="col-md-5">
+                                        <label>{{md.id}}</label>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label>{{md.issueQty}}</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <a href="javascript:void(0)" (click)="removeArr(i)"><i class="fa fa-remove text-danger"></i></a>
+                                    </div>
+                                </div>
+                                <hr class="gray">
+                                <div class="form-group row mx-0">
+                                    <div class="col-md-12">
+                                        <div class="form-group text-center">
+                                            <button type="button" *ngIf="!loader_eqp1" (click)="issueGRNPharmacy(grnobj1)" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save</button>
+                                            <button type="button" *ngIf="loader_eqp1" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><span class="spinner-border theme-color" role="status">
                                                     <span class="sr-only"></span>
                                                 </span></button>
-                                                </div>
-                                            </div>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
