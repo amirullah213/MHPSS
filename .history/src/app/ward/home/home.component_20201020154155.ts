@@ -172,7 +172,7 @@ gotoAdmitDetails(obpat){
     localStorage.setItem('tab',this.tab);
     this.router.navigate(['ward-list/admitted'])
 }
-gotoDischargeDetails(obpat){
+gotoDieschargeDetails(obpat){
   console.log("patData===",obpat,"tab data==",this.tab)
   localStorage.setItem('wardData',JSON.stringify(obpat));
   localStorage.setItem('tab',this.tab);

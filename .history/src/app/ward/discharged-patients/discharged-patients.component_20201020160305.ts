@@ -28,7 +28,6 @@ export class DischargedPatientsComponent implements OnInit {
   loader_eqp2:boolean=false;
   detailsData:any={};
   hospitalID:any;
-  diagnosis:any =[];
 
   constructor(
     private modalService: BsModalService,
@@ -41,35 +40,32 @@ export class DischargedPatientsComponent implements OnInit {
     this.hospitalID=localStorage.getItem('hospitalID');
     this.detailsData=JSON.parse(localStorage.getItem('wardData')) ;
     console.log('wardData==', this.detailsData);
-
     
     //this.userData.doctorID=localStorage.getItem('docId');
-    this.getWardDischargeCard();
+   // this.getWardPats(this.userData);
    }
    //get all diagnostic list
  getWardDischargeCard() {
   this.loader_eqp2 = true;
   this.model5.hospitalID=this.hospitalID;
-  this.model5.tokenID=this.detailsData.ptID;
+  this.model5.tokenID=this.detailsData.patientID;
   console.log('modal 5==', this.model5);
- this.wardService.dischargeCard(this.model5).subscribe(
-    (response: any) => {
-      if (response.status === 0) {
-        this.pharmacyData = response.data;
-        this.diagnosis=JSON.parse(this.pharmacyData.diagnosis);
-        console.log('diagnosus====',this.diagnosis); 
-      console.log('this.pharmacy pats==',this.pharmacyData)
-        this.loader_eqp2 = false;
-      }
-  if (response.status === 1) {
-        this.errormsg = response.errors;
-        this.loader_eqp2 = false;
-        console.log('error=', this.errormsg);
+//  this.wardService.getWardPats(this.model5).subscribe(
+//     (response: any) => {
+//       if (response.status === 0) {
+//         this.pharmacyData = response.data;
+//       console.log('this.pharmacy pats==',this.pharmacyData)
+//         this.loader_eqp2 = false;
+//       }
+//   if (response.status === 1) {
+//         this.errormsg = response.errors;
+//         this.loader_eqp2 = false;
+//         console.log('error=', this.errormsg);
         
-      }
-    },
-    (error) => {}
-  );
+//       }
+//     },
+//     (error) => {}
+//   );
 
 }
 

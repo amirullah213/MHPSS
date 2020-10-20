@@ -17,18 +17,18 @@ export class DischargedPatientsComponent implements OnInit {
   model6: any = {};
   loader_eqp: boolean = false;
   responseText: any = '';
+  tab: string = 'newPats';
   pharmacyData: any = [];
   modalRef: BsModalRef;
+  
   activateLoader: boolean = false;
   deactivateLoader: boolean = false;
+ 
   errormsg:string;
   beds:any ={};
   userDataRow:any={};
   admit:any={};
   loader_eqp2:boolean=false;
-  detailsData:any={};
-  hospitalID:any;
-  diagnosis:any =[];
 
   constructor(
     private modalService: BsModalService,
@@ -38,26 +38,19 @@ export class DischargedPatientsComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.hospitalID=localStorage.getItem('hospitalID');
-    this.detailsData=JSON.parse(localStorage.getItem('wardData')) ;
-    console.log('wardData==', this.detailsData);
-
-    
-    //this.userData.doctorID=localStorage.getItem('docId');
-    this.getWardDischargeCard();
+    this.userData.hospitalID=localStorage.getItem('hospitalID');
+    this.userData.status=5; // 13 is for pending patients 14 for seen patients//status gives error thing due to status used in error.status
+    this.userData.doctorID=localStorage.getItem('docId');
+    this.getWardPats(this.userData);
    }
    //get all diagnostic list
- getWardDischargeCard() {
+ getWardPats(patObj) {
   this.loader_eqp2 = true;
-  this.model5.hospitalID=this.hospitalID;
-  this.model5.tokenID=this.detailsData.ptID;
-  console.log('modal 5==', this.model5);
- this.wardService.dischargeCard(this.model5).subscribe(
+  //this.model5.search=this.selected;
+ this.wardService.getWardPats(patObj).subscribe(
     (response: any) => {
       if (response.status === 0) {
         this.pharmacyData = response.data;
-        this.diagnosis=JSON.parse(this.pharmacyData.diagnosis);
-        console.log('diagnosus====',this.diagnosis); 
       console.log('this.pharmacy pats==',this.pharmacyData)
         this.loader_eqp2 = false;
       }

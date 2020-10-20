@@ -172,10 +172,10 @@ gotoAdmitDetails(obpat){
     localStorage.setItem('tab',this.tab);
     this.router.navigate(['ward-list/admitted'])
 }
-gotoDischargeDetails(obpat){
+gotoPatDetailsPending(obpat){
   console.log("patData===",obpat,"tab data==",this.tab)
-  localStorage.setItem('wardData',JSON.stringify(obpat));
+  localStorage.setItem('pharmacyData',JSON.stringify(obpat));
   localStorage.setItem('tab',this.tab);
-  this.router.navigate(['ward-list/discharged'])
+  this.router.navigate(['pharma/pending'])
 }
 }

@@ -42,7 +42,7 @@
                                 </div>
                                 <hr class="hr-gray mx-3 my-3">
                                 <div class="col-lg-1"></div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <h6 class="mb-1"><b>Diagnosis</b></h6>
                                     <p class="mb-1 ml-3"><b>Provisional</b> </p>
                                     <p class="mb-1 ml-4" *ngFor="let dig of diagnosis;let i=index"><span>{{i+1}})</span> {{dig.name}}</p>
@@ -91,15 +91,12 @@
                                     </p>
 
                                     <h6 class="mb-1 mt-4"><b>Follow-up</b></h6>
-                                    <p class="mb-1 ml-4">
-                                        <span *ngIf="pharmacyData.refferel!=null">{{pharmacyData.refferel}}</span>
-                                        <span *ngIf="pharmacyData.refferel==null">Not Added</span>
-                                    </p>
+                                    <p class="mb-1 ml-4">Not Added</p>
                                 </div>
                                 <!-- <div class="col-lg-1"></div> -->
-                                <div class="col-lg-5">
+                                <div class="col-lg-7">
                                     <h6 class="mb-1 mt-4"><b>Final</b></h6>
-                                    <p class="mb-1 ml-3">Final not added because response is zero</p>
+                                    <p class="mb-1 ml-3">Not Added</p>
                                 </div>
                                 <div class="col-lg-12 mt mt-5">
                                     <div class="form-group text-center">

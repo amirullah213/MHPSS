@@ -57,7 +57,7 @@ export class DischargedPatientsComponent implements OnInit {
       if (response.status === 0) {
         this.pharmacyData = response.data;
         this.diagnosis=JSON.parse(this.pharmacyData.diagnosis);
-        console.log('diagnosus====',this.diagnosis); 
+        console.log('diagnosus====',this.diagnosis) 
       console.log('this.pharmacy pats==',this.pharmacyData)
         this.loader_eqp2 = false;
       }

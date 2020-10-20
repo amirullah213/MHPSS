@@ -201,7 +201,7 @@
                                                                     <span>{{wrd.firstname}}</span>
                                                                 </td>
                                                                 <td>{{wrd.DateCreated| date }}</td>
-                                                                <td><a href="javascript:void(0)" class="text-info" (click)="gotoDischargeDetails(wrd)">Detail</a></td>
+                                                                <td><a href="javascript:void(0)" class="text-info" [routerLink]="['/ward-list/discharged']">Detail</a></td>
                                                             </tr>
                                                             <tr *ngIf="pharmacyData.length === 0" style="text-align: center;">
                                                                 <td colspan="4">No Record Found</td>

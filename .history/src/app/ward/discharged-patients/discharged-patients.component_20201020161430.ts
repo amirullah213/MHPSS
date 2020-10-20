@@ -28,7 +28,6 @@ export class DischargedPatientsComponent implements OnInit {
   loader_eqp2:boolean=false;
   detailsData:any={};
   hospitalID:any;
-  diagnosis:any =[];
 
   constructor(
     private modalService: BsModalService,
@@ -56,8 +55,6 @@ export class DischargedPatientsComponent implements OnInit {
     (response: any) => {
       if (response.status === 0) {
         this.pharmacyData = response.data;
-        this.diagnosis=JSON.parse(this.pharmacyData.diagnosis);
-        console.log('diagnosus====',this.diagnosis); 
       console.log('this.pharmacy pats==',this.pharmacyData)
         this.loader_eqp2 = false;
       }
