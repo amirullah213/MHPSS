@@ -13,7 +13,6 @@ export class HomeComponent implements OnInit {
 
   userData: any = {};
   model5: any = {};
-  model6: any = {};
   loader_eqp: boolean = false;
   responseText: any = '';
   tab: string = 'newPats';
@@ -25,9 +24,6 @@ export class HomeComponent implements OnInit {
  
   errormsg:string;
   beds:any ={};
-  userDataRow:any={};
-  admit:any={};
-  loader_eqp2:boolean=false;
 
   constructor(
     private modalService: BsModalService,
@@ -38,27 +34,25 @@ export class HomeComponent implements OnInit {
   }
   ngOnInit(): void {
     this.userData.hospitalID=localStorage.getItem('hospitalID');
-    this.userData.status=5; // 13 is for pending patients 14 for seen patients//status gives error thing due to status used in error.status
+    this.userData.status=5; // 13 is for pending patients 14 for seen patients
     this.userData.doctorID=localStorage.getItem('docId');
     this.getWardPats(this.userData);
    }
 
    openModalbedmanag(template: TemplateRef<any>, data) {
-    this.userDataRow = data;
-    this.modalRef = this.modalService.show(template, this.userDataRow);
-
+    this.userData = data;
+    this.modalRef = this.modalService.show(template, this.userData);
     // this.modalRef.content.userActivate = 'Close';
   }
   openModalpending(template1: TemplateRef<any>, data) {
-    this.userDataRow = data;
-    this.modalRef = this.modalService.show(template1, this.userDataRow);
-    console.log('modal beds data==',this.userDataRow)
+    this.userData = data;
+    this.modalRef = this.modalService.show(template1, this.userData);
     // this.modalRef.content.userActivate = 'Close';
   }
 
   openDeleteUser(deleteUser: TemplateRef<any>, data) {
-    this.userDataRow = data;
-    this.modalRef = this.modalService.show(deleteUser, this.userDataRow);
+    this.userData = data;
+    this.modalRef = this.modalService.show(deleteUser, this.userData);
     // this.modalRef.content.userActivate = 'Close';
   }
   //set tab
@@ -84,20 +78,23 @@ export class HomeComponent implements OnInit {
   }
  //get all diagnostic list
  getWardPats(patObj) {
-  this.loader_eqp2 = true;
+  this.loader_eqp = true;
+  
   //this.model5.search=this.selected;
+  
+ 
  this.wardService.getWardPats(patObj).subscribe(
     (response: any) => {
       if (response.status === 0) {
         this.pharmacyData = response.data;
       console.log('this.pharmacy pats==',this.pharmacyData)
-        this.loader_eqp2 = false;
+        this.loader_eqp = false;
       }
   if (response.status === 1) {
         this.errormsg = response.errors;
-        this.loader_eqp2 = false;
+        this.loader_eqp = false;
         console.log('error=', this.errormsg);
-        
+        //this._loginserviceService.logout();
       }
     },
     (error) => {}
@@ -109,61 +106,27 @@ export class HomeComponent implements OnInit {
  //get all diagnostic list
  setBedsPms(patObj) {
   this.loader_eqp = true;
-  this.model5.femaleBeds=patObj.female;
-  this.model5.maleBeds=patObj.male;
-  this.model5.totalBeds=patObj.total;
-  this.model5.id=localStorage.getItem('docId');
-  this.model5.hospitalID=localStorage.getItem('hospitalID');
- 
- this.wardService.setbeds(this.model5).subscribe(
+  //this.model5.search=this.selected;
+ this.wardService.getWardPats(patObj).subscribe(
     (response: any) => {
       if (response.status === 0) {
+        this.pharmacyData = response.data;
+      console.log('this.pharmacy pats==',this.pharmacyData)
+        
        
-      console.log('this.ward added pats==',response.data)
         this.loader_eqp = false;
-       this.modalRef.hide()
-        alert('Done Successfuly')
       }
-     if (response.status === 1) {
-        this.errormsg = response.error;
+
+      if (response.status === 1) {
+        this.errormsg = response.errors;
         this.loader_eqp = false;
         console.log('error=', this.errormsg);
-        alert('Pronlem in service, please try again')
         //this._loginserviceService.logout();
       }
     },
     (error) => {}
   );
 
-}
-
-//get all diagnostic list
-admitPatient(patObj) {
- this.loader_eqp = true;
-  this.model6.bedNo=patObj.bedno;
-  this.model6.isMLC=patObj.mlc;
-  this.model6.token=this.userDataRow.ptID;
-  this.model6.patientID=this.userDataRow.patientID;
-  this.model6.hospitalID=localStorage.getItem('hospitalID');
-  console.log('modal6======',this.model6)
- this.wardService.admitPat(this.model6).subscribe(
-    (response: any) => {
-      if (response.status === 0) {
-      console.log('this.ward added pats==',response.data)
-        this.loader_eqp = false;
-       this.modalRef.hide()
-        alert('Done Successfuly');
-        this.getWardPats(this.userData)
-      }
-     if (response.status === 1) {
-        this.errormsg = response.error;
-        this.loader_eqp = false;
-        console.log('error=', this.errormsg);
-        alert('Problem in service, please try again')
-      }
-    },
-    (error) => {}
-  );
 }
 //get all diagnostic list
 gotoPatDetailsSeen(obpat){

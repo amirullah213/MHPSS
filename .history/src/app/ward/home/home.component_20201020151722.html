@@ -83,7 +83,7 @@
                                                                 <th>Details</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody *ngIf="!loader_eqp2">
+                                                        <tbody>
                                                             <tr *ngFor="let wrd of pharmacyData; let i=index">
                                                                 <td>{{wrd.token}}</td>
                                                                 <td>
@@ -94,14 +94,9 @@
                                                                 <td><a href="javascript:void(0)" class="text-info" (click)="openModalpending(template1,wrd)">Detail</a></td>
                                                             </tr>
                                                             <tr *ngIf="pharmacyData.length === 0" style="text-align: center;">
-                                                                <td colspan="4">No Record Found</td>
+                                                                <td colspan="3">No Record Found</td>
                                                             </tr>
                                                         </tbody>
-                                                        <div *ngIf="loader_eqp2" class="d-flex justify-content-center">
-                                                            <div class="spinner-border theme-color" role="status">
-                                                                <span class="sr-only"></span>
-                                                            </div>
-                                                        </div>
                                                     </table>
                                                 </div>
                                             </div>

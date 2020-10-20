@@ -23,10 +23,7 @@ export class PharmaPendingPatientsComponent implements OnInit {
   batchNo: any;
   tabb:string;
   model5:any={};
-  medicArr:any ={};
-  medicArrFinal:any =[];
-
-
+  medicArr:any =[];
 med:any=[];
 newArray:any =[];
 newArray2:any =[];
@@ -136,22 +133,20 @@ issueMedicines(patObj) {
   this.model5.hospitalID=localStorage.getItem('hospitalID');
   this.model5.parmacyID=localStorage.getItem('docId');
    this.model5.ptID=this.pharmacyData.data.patientID;
-  this.model5.medicine=this.medicArrFinal;
-console.log('this.model5',this.model5)
+  this.model5.medicine=this.medicArr;
+
  this.pharmacySer.issueMedic(this.model5).subscribe(
     (response: any) => {
       if (response.status === 0) {
         this.pharmacyData = response;
       console.log('this.pharmacy pats==',this.pharmacyData)
         this.loader_eqp = false;
-        alert('medicine isssued Successfuly')
       }
 
       if (response.status === 1) {
-        this.errormsg = response.error;
+        this.errormsg = response.errors;
         this.loader_eqp = false;
         console.log('error=', this.errormsg);
-        alert('Some thing went Wrong, Please try again')
         //this._loginserviceService.logout();
       }
     },
@@ -160,28 +155,21 @@ console.log('this.model5',this.model5)
 
 }
 //get all diagnostic list
-addMedicArr(issueQuan){
-console.log('medarry==',issueQuan);
-this.medicArr['issuedQuantity']=issueQuan;
-
-console.log('new medic array==',this.medicArr);
-this.medicArrFinal.push(this.medicArr);
-console.log('medicArrFinal==',this.medicArrFinal);
+addMedicArr(medArr){
+console.log('medarry==',medArr);
+this.medicArr.push(medArr);
+this.med=[];
+console.log('new medic array==',this.medicArr)
 }
 getdata(dataobj,indx){
   console.log( dataobj);
 
   console.log( 'index',indx);
    //this.med.inStock=dataobj.totalQuantity;
-  //this.objtest.inStoc=dataobj.totalQuantity;
-
-  //var element= document.getElementById('inStoc0') as HTMLElement;
-  (<HTMLInputElement>document.getElementById("inStoc"+indx)).value=dataobj.totalQuantity;
-  //element.nodeValue=dataobj.totalQuantity;
-this.medicArr=dataobj;
+  this.med[indx].inStoc=dataobj.totalQuantity;
 
 
-console.log(' this.medicArr===', this.medicArr);
+  console.log(' this.medicArr===', this.medicArr);
   
   // console.log('batch data ==',this.newArray3.stock[Number(dataobj)]);
   // let medArr:any ={};

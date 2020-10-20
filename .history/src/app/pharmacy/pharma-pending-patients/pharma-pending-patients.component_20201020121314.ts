@@ -24,7 +24,6 @@ export class PharmaPendingPatientsComponent implements OnInit {
   tabb:string;
   model5:any={};
   medicArr:any ={};
-  medicArrFinal:any =[];
 
 
 med:any=[];
@@ -136,27 +135,25 @@ issueMedicines(patObj) {
   this.model5.hospitalID=localStorage.getItem('hospitalID');
   this.model5.parmacyID=localStorage.getItem('docId');
    this.model5.ptID=this.pharmacyData.data.patientID;
-  this.model5.medicine=this.medicArrFinal;
+  this.model5.medicine=this.medicArr;
 console.log('this.model5',this.model5)
- this.pharmacySer.issueMedic(this.model5).subscribe(
-    (response: any) => {
-      if (response.status === 0) {
-        this.pharmacyData = response;
-      console.log('this.pharmacy pats==',this.pharmacyData)
-        this.loader_eqp = false;
-        alert('medicine isssued Successfuly')
-      }
+//  this.pharmacySer.issueMedic(this.model5).subscribe(
+//     (response: any) => {
+//       if (response.status === 0) {
+//         this.pharmacyData = response;
+//       console.log('this.pharmacy pats==',this.pharmacyData)
+//         this.loader_eqp = false;
+//       }
 
-      if (response.status === 1) {
-        this.errormsg = response.error;
-        this.loader_eqp = false;
-        console.log('error=', this.errormsg);
-        alert('Some thing went Wrong, Please try again')
-        //this._loginserviceService.logout();
-      }
-    },
-    (error) => {}
-  );
+//       if (response.status === 1) {
+//         this.errormsg = response.errors;
+//         this.loader_eqp = false;
+//         console.log('error=', this.errormsg);
+//         //this._loginserviceService.logout();
+//       }
+//     },
+//     (error) => {}
+//   );
 
 }
 //get all diagnostic list
@@ -164,9 +161,7 @@ addMedicArr(issueQuan){
 console.log('medarry==',issueQuan);
 this.medicArr['issuedQuantity']=issueQuan;
 
-console.log('new medic array==',this.medicArr);
-this.medicArrFinal.push(this.medicArr);
-console.log('medicArrFinal==',this.medicArrFinal);
+console.log('new medic array==',this.medicArr)
 }
 getdata(dataobj,indx){
   console.log( dataobj);

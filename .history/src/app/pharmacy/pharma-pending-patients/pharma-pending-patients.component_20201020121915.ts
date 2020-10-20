@@ -151,7 +151,6 @@ console.log('this.model5',this.model5)
         this.errormsg = response.error;
         this.loader_eqp = false;
         console.log('error=', this.errormsg);
-        alert('Some thing went Wrong, Please try again')
         //this._loginserviceService.logout();
       }
     },
