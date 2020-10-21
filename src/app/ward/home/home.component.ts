@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
 
    openModalbedmanag(template: TemplateRef<any>, data) {
     this.userDataRow = data;
-    this.modalRef = this.modalService.show(template, this.userDataRow);
+     this.modalRef = this.modalService.show(template, Object.assign({}, { class: 'modal-lg' }, this.userDataRow));
 
     // this.modalRef.content.userActivate = 'Close';
   }
@@ -86,7 +86,7 @@ export class HomeComponent implements OnInit {
  getWardPats(patObj) {
   this.loader_eqp2 = true;
   //this.model5.search=this.selected;
- this.wardService.getWardPats(patObj).subscribe(
+  this.wardService.getWardPats(patObj).subscribe(
     (response: any) => {
       if (response.status === 0) {
         this.pharmacyData = response.data;
