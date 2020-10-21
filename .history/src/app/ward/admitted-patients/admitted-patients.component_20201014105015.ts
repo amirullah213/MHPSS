@@ -44,7 +44,6 @@ export class AdmittedPatientsComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    
   }
 
   openModalActivate(userActivate: TemplateRef<any>, data) {
