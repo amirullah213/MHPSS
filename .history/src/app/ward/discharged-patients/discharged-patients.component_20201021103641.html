@@ -50,7 +50,7 @@
                                     <h6 class="mb-1"><b>Chief Complaints</b></h6>
                                     <p class="mb-1 ml-4"> 
                                         <span *ngIf="pharmacyData.complaints!=null">{{pharmacyData.complaints}}</span>
-                                        <span *ngIf="pharmacyData.complaints==null">Not Added</span> 
+                                        <span *ngIf="pharmacyData.complaints==null">Not Added</span>
                                     
                                     </p>
 
@@ -73,15 +73,8 @@
                                     </p>
 
                                     <h6 class="mb-1"><b>Investibations</b></h6>
-                                    <p class="mb-1 ml-4" *ngFor="let inv of pharmacyData.investigations; let l=index">
-                                        
-                                        <span class="">{{l+1}})</span> {{inv.testName}} 
-                                        <span class="mb-1 ml-4">{{inv.result}} </span>
-                                       
-                                   
-                                    
-                                    </p>
-                                    
+                                    <p class="mb-1 ml-4">not added due to empty array</p>
+
                                     <h6 class="mb-1 mt-4"><b>Procedure Notes (if any)</b></h6>
                                     <p class="mb-1 ml-4">{{pharmacyData.operativeProcedure}}</p>
 

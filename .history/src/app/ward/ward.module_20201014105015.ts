@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../core';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { DataTablesModule } from 'angular-datatables';
 import { ModalModule } from 'ngx-bootstrap/modal';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { WardRoutingModule } from './ward-routing.module';
 import { WardComponent } from './ward/ward.component';

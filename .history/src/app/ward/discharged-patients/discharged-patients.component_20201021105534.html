@@ -73,16 +73,14 @@
                                     </p>
 
                                     <h6 class="mb-1"><b>Investibations</b></h6>
-                                    <p class="mb-1 ml-4" *ngFor="let inv of pharmacyData.investigations; let l=index">
-                                        
+                                    <p class="mb-1 ml-4"  *ngFor="let inv of pharmacyData.investigations; let l=index">
+                                       
                                         <span class="">{{l+1}})</span> {{inv.testName}} 
                                         <span class="mb-1 ml-4">{{inv.result}} </span>
-                                       
+                                        
                                    
-                                    
                                     </p>
                                     
-                                    <h6 class="mb-1 mt-4"><b>Procedure Notes (if any)</b></h6>
                                     <p class="mb-1 ml-4">{{pharmacyData.operativeProcedure}}</p>
 
                                     <h6 class="mb-1 mt-4"><b>Treatment at Home</b></h6>
