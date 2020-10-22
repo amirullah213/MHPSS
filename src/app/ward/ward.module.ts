@@ -17,10 +17,11 @@ import { PendingPatientsComponent } from './pending-patients/pending-patients.co
 import { DischargedPatientsComponent } from './discharged-patients/discharged-patients.component';
 import { AdmittedPatientsComponent } from './admitted-patients/admitted-patients.component';
 import { WardListComponent } from './ward-list/ward-list.component';
+import { DischargePatientMedicineComponent } from './discharge-patient-medicine/discharge-patient-medicine.component';
 
 
 @NgModule({
-  declarations: [WardComponent, HomeComponent, WardSideBarComponent, PendingPatientsComponent, DischargedPatientsComponent, AdmittedPatientsComponent, WardListComponent],
+  declarations: [WardComponent, HomeComponent, WardSideBarComponent, PendingPatientsComponent, DischargedPatientsComponent, AdmittedPatientsComponent, WardListComponent, DischargePatientMedicineComponent],
   imports: [
     CommonModule,
     WardRoutingModule, CommonModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), FormsModule, BsDatepickerModule.forRoot(), CollapseModule.forRoot(),
