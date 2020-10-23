@@ -74,7 +74,6 @@ export class AdmittedPatientsComponent implements OnInit {
   radTypeObj:any={};
   model11:any={};
   pathArrNew_added:boolean=false;
-  loaderLab:boolean=false;
 
   //form related variables here
   outdoorForm: FormGroup;
@@ -417,7 +416,7 @@ addPresMedicines() {
 //operate indoor details
 sendTolab() {
   
-  this.loaderLab= true;
+  this.loaderMedic= true;
   this.model11.hospitalID=this.hospitalID;
   this.model11.prescriptionID=-1;
   this.model11.patientID=this.detailsData.patientID;
@@ -438,11 +437,11 @@ sendTolab() {
       this.pathArrNew_added=false;
         this.getoutDoorData();
         alert('Done Successfully');
-        this.loaderLab = false;
+        this.loaderMedic = false;
       }
   if (response.status === 1) {
         this.errormsg = response.error;
-        this.loaderLab = false;
+        this.loaderMedic = false;
 
         console.log('error=', this.errormsg);
         alert('Problem in service! try again');

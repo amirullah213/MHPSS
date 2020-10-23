@@ -74,7 +74,6 @@ export class AdmittedPatientsComponent implements OnInit {
   radTypeObj:any={};
   model11:any={};
   pathArrNew_added:boolean=false;
-  loaderLab:boolean=false;
 
   //form related variables here
   outdoorForm: FormGroup;
@@ -204,18 +203,13 @@ this.testTpesdata = response.radiologyTypes;
 
        //for pathology list in text box autocomplete
 
-       if(!this.pathArrNew_added){
-        this.pathArrNew=[];
-        response.testData.forEach(mm => {
-          this.pathArrNew.push({"id":-1,"result":"","patientID":this.detailsData.patientID,"testName":mm.testName,"testID":mm.testID,"testType":mm.testType,"refRange":mm.refRange,"isSupper":mm.isSupper})
-          });
-        
-         
-       }else{
-        response.testData.forEach(k => {
-          this.pathArrNew.push({"id":-1,"result":"","patientID":this.detailsData.patientID,"testName":k.testName,"testID":k.testID,"testType":k.testType,"refRange":k.refRange,"isSupper":k.isSupper})
-        });
-        }
+      //  if(!this.pathArrNew_added){
+      //    this.pathArrNew=response.testData;
+      //  }else{
+      //   response.testData.forEach(k => {
+      //   this.pathArrNew.push(k);
+      //   });
+      //   }
        
       // this.pathologyList = response.test;
        response.test.forEach(v => {
@@ -417,7 +411,7 @@ addPresMedicines() {
 //operate indoor details
 sendTolab() {
   
-  this.loaderLab= true;
+  this.loaderMedic= true;
   this.model11.hospitalID=this.hospitalID;
   this.model11.prescriptionID=-1;
   this.model11.patientID=this.detailsData.patientID;
@@ -438,11 +432,11 @@ sendTolab() {
       this.pathArrNew_added=false;
         this.getoutDoorData();
         alert('Done Successfully');
-        this.loaderLab = false;
+        this.loaderMedic = false;
       }
   if (response.status === 1) {
         this.errormsg = response.error;
-        this.loaderLab = false;
+        this.loaderMedic = false;
 
         console.log('error=', this.errormsg);
         alert('Problem in service! try again');
@@ -521,12 +515,12 @@ removeDiag(indx){
 // pathology addind data 
 onSelectPathology(path){
   this.pathArrNew_added=true;
- 
+  this.pathArrNew_added=true;
   console.log("pathology data===",path.item);
   this.pathArrNew.push({"id":-1,"result":"","patientID":this.detailsData.patientID,"testName":path.item.testName,"testID":path.item.testID,"testType":path.item.testType,"refRange":path.item.refRange,"isSupper":path.item.isSupper})
   //this.pathArrNew.push(path.item);
   this.objPath={};
-  console.log("this.pathArrNew===",this.pathArrNew);
+  console.log("pathology data===",this.pathArrNew);
   // this.medicID=medic.item.v.itemID;
   // this.treatmentForm.patchValue({
   //   med_unit: medic.item.v.unit,
