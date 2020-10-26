@@ -199,19 +199,17 @@ onSubmit() {
         });
        // this.outdoorData.
 //fortest type
-// this.testTpesdata = response.radiologyTypes;
-
-for (let element of response.radiologyTypes){
- // debugger
-  if(this.radTypeObj.id!=undefined)
+this.testTpesdata = response.radiologyTypes;
+for (let element of this.testTpesdata){
+  debugger
+  if(this.radTypeObj!=undefined)
   {
   this.radTypeObj.id==element.id
-  this.radTypeObj
+  this.radTypeObj=element
   break
   }
   else
   {
-    this.testTpesdata = response.radiologyTypes;
    // this.radTypeObj=response.radiologyType
   }
 };
@@ -458,6 +456,7 @@ sendTolab() {
   if (response.status === 1) {
         this.errormsg = response.error;
         this.loaderLab = false;
+
         console.log('error=', this.errormsg);
         alert('Problem in service! try again');
       }

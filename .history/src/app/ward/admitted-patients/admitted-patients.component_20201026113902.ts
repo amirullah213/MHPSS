@@ -458,6 +458,7 @@ sendTolab() {
   if (response.status === 1) {
         this.errormsg = response.error;
         this.loaderLab = false;
+
         console.log('error=', this.errormsg);
         alert('Problem in service! try again');
       }

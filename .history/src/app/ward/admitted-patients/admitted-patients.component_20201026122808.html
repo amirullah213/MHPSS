@@ -309,12 +309,12 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr class="" *ngFor="let ptd of pathArrNew ; let z=index">
+                                                        <tr class="" *ngFor="let ptd of pathArrNew | uppercase; let z=index">
                                                             <td>
                                                                  {{z+1}}) <span *ngIf="ptd.testType==1">Pathology</span> 
                                                                  <span *ngIf="ptd.testType==2">Radiology</span> 
                                                             </td>
-                                                            <td> {{ptd.testName }} </td>
+                                                            <td>{{ptd.testName}}</td>
                                                             <td>
                                                                 <div class="form-group">
                                                                     <a href="javascript:void(0)" class="float-right" (click)="removeTests(z)"><i class="fa fa-close text-danger"></i></a>

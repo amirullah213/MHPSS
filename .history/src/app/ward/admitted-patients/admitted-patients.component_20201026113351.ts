@@ -202,8 +202,8 @@ onSubmit() {
 // this.testTpesdata = response.radiologyTypes;
 
 for (let element of response.radiologyTypes){
- // debugger
-  if(this.radTypeObj.id!=undefined)
+  debugger
+  if(this.radTypeObj)
   {
   this.radTypeObj.id==element.id
   this.radTypeObj
@@ -458,6 +458,7 @@ sendTolab() {
   if (response.status === 1) {
         this.errormsg = response.error;
         this.loaderLab = false;
+
         console.log('error=', this.errormsg);
         alert('Problem in service! try again');
       }

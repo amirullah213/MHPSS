@@ -170,7 +170,7 @@ onSubmit() {
   openModalWithClass(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(
       template,
-      Object.assign({}, { class: 'gray modal-lg' })
+      Object.assign({}, { class: 'gray modal-xl' })
     );
   }
  //get all diagnostic list
@@ -202,7 +202,7 @@ onSubmit() {
 // this.testTpesdata = response.radiologyTypes;
 
 for (let element of response.radiologyTypes){
- // debugger
+  debugger
   if(this.radTypeObj.id!=undefined)
   {
   this.radTypeObj.id==element.id
@@ -458,6 +458,7 @@ sendTolab() {
   if (response.status === 1) {
         this.errormsg = response.error;
         this.loaderLab = false;
+
         console.log('error=', this.errormsg);
         alert('Problem in service! try again');
       }
