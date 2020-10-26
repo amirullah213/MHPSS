@@ -336,25 +336,25 @@
                                                                             </div>
                                                                             <div class="col-md-6 mt-3">
                                                                                 <p class="mb-1"><b>Patient Name</b>
-                                                                                    <span class="ml-4">{{detailsData.firstname}}</span>
+                                                                                    <span class="ml-4">Zeeshan Shahid</span>
                                                                                 </p>
                                                                                 <p class="mb-1 mt-3"><b>Date Of Birth</b>
-                                                                                    <span class="ml-4">{{detailsData.dob | date}}</span>
+                                                                                    <span class="ml-4">1987-10-20</span>
                                                                                 </p>
                                                                             </div>
                                                                             <div class="col-md-6 mt-3">
                                                                                 <p class="mb-1"><b>Father/Husband Name</b>
-                                                                                    <span class="ml-4"> {{detailsData.f_hName}}</span>
+                                                                                    <span class="ml-4"> Shahid</span>
                                                                                 </p>
                                                                                 <p class="mb-1 mt-3"><b>Mobile Number</b>
-                                                                                    <span class="ml-4"> {{detailsData.cellNo}}</span>
+                                                                                    <span class="ml-4"> 0300123456798</span>
                                                                                 </p>
                                                                             </div>
                                                                             <div class="col-md-12 mt-3">
                                                                                 <p class="mb-2 mt-4"><b>Tests</b></p>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="table-responsive" *ngIf="userData.testType==1">
+                                                                        <div class="table-responsive">
                                                                             <table class="table center-aligned-table">
                                                                                 <thead>
                                                                                     <tr class="text-dark">
@@ -364,65 +364,19 @@
                                                                                         <th>Range</th>
                                                                                     </tr>
                                                                                 </thead>
-                                                                                <tbody *ngIf="userData.isSupper==1">
-                                                                                    <tr  *ngFor="let dt of userData.subTests; let b=index">
-                                                                                        <td> 
-                                                                                            <span *ngIf="dt.testType==1">Pathology</span>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td>Pathology</td>
+                                                                                        <td>Complete Blood Count</td>
+                                                                                        <td> Findings/ Results
+                                                                                            <!-- <form>
+                                                                                                <input type="text" class="form-control" id="findins" placeholder="Findings/ Results">
+                                                                                            </form> -->
                                                                                         </td>
-                                                                                        <td>{{dt.testName}}</td>
-                                                                                        <td>{{dt.result}}</td>
-                                                                                        <td>{{dt.refRange}}</td>
+                                                                                        <td> 2-9mg/24 hr</td>
                                                                                     </tr>
-                                                                                    
-                                                                                </tbody>
-                                                                                <tbody *ngIf="userData.isSupper!=1">
-                                                                                    <tr  >
-                                                                                        <td> 
-                                                                                            <span *ngIf="userData.testType==1">Pathology</span>
-                                                                                        </td>
-                                                                                        <td>{{userData.testName}}</td>
-                                                                                        <td>{{userData.result}}</td>
-                                                                                        <td>{{userData.refRange}}</td>
-                                                                                    </tr>
-                                                                                    
                                                                                 </tbody>
                                                                             </table>
-                                                                        </div>
-                                                                        <!-- for radiology -->
-                                                                        <div *ngIf="userData.testType==2 && userData.isSupper==1">
-                                                                            <div *ngFor="let dt of userData.subTests;">
-                                                                                <div class="row mx-0">
-                                                                                    <div class="col-md-3">
-                                                                                        <p class="mb-3"><b>Radiology : </b> </p>
-                                                                                        <p class="mb-3">Findings :</p>
-                                                                                        <p class="mb-3">Diagnosis : </p>
-                                                                                    </div>
-                                                                                    <div class="col-md-7">
-                                                                                        <p class="mb-3">{{userData.testName}}</p>
-                                                                                        <p class="mb-3">{{userData.result}}</p>
-                                                                                        <p class="mb-3">{{userData.testName}}</p>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <hr class="gray">
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div *ngIf="userData.testType==2 && userData.isSupper!=1">
-                                                                            <div >
-                                                                                <div class="row mx-0">
-                                                                                    <div class="col-md-3">
-                                                                                        <p class="mb-3"><b>Radiology : </b> </p>
-                                                                                        <p class="mb-3">Findings :</p>
-                                                                                        <p class="mb-3">Diagnosis : </p>
-                                                                                    </div>
-                                                                                    <div class="col-md-7">
-                                                                                        <p class="mb-3">{{userData.testName}}</p>
-                                                                                        <p class="mb-3">Finding Name</p>
-                                                                                        <p class="mb-3">Dianosis Name</p>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <hr class="gray">
-                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="modal-footer">

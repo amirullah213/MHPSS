@@ -167,9 +167,7 @@ onSubmit() {
   }
  
  
-  openModalWithClass(template: TemplateRef<any>,data) {
-    this.userData = data;
-    console.log('user data===',this.userData)
+  openModalWithClass(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(
       template,
       Object.assign({}, { class: 'gray modal-lg' })
@@ -224,13 +222,13 @@ for (let element of response.radiologyTypes){
        if(!this.pathArrNew_added){
         this.pathArrNew=[];
         response.testData.forEach(mm => {
-          this.pathArrNew.push({"id":-1,"result":"","patientID":this.detailsData.patientID,"testName":mm.testName,"testID":mm.testID,"testType":mm.testType,"refRange":mm.refRange,"isSupper":mm.isSupper,"isDirect":mm.isDirect,"subTests":mm.subTests?mm.subTests:null})
+          this.pathArrNew.push({"id":-1,"result":"","patientID":this.detailsData.patientID,"testName":mm.testName,"testID":mm.testID,"testType":mm.testType,"refRange":mm.refRange,"isSupper":mm.isSupper,"isDirect":mm.isDirect})
           });
         
          
        }else{
         response.testData.forEach(k => {
-          this.pathArrNew.push({"id":-1,"result":"","patientID":this.detailsData.patientID,"testName":k.testName,"testID":k.testID,"testType":k.testType,"refRange":k.refRange,"isSupper":k.isSupper,"isDirect":k.isDirect,"subTests":k.subTests?k.subTests:null})
+          this.pathArrNew.push({"id":-1,"result":"","patientID":this.detailsData.patientID,"testName":k.testName,"testID":k.testID,"testType":k.testType,"refRange":k.refRange,"isSupper":k.isSupper,"isDirect":k.isDirect})
         });
         }
        
@@ -539,7 +537,7 @@ onSelectPathology(path){
   this.pathArrNew_added=true;
  
   console.log("pathology data===",path.item);
-  this.pathArrNew.push({"id":-1,"result":"","patientID":this.detailsData.patientID,"testName":path.item.testName,"testID":path.item.testID,"testType":path.item.testType,"refRange":path.item.refRange,"isSupper":path.item.isSupper,"isDirect":path.item.isDirect})
+  this.pathArrNew.push({"id":-1,"result":"","patientID":this.detailsData.patientID,"testName":path.item.testName,"testID":path.item.testID,"testType":path.item.testType,"refRange":path.item.refRange,"isSupper":path.item.isSupper})
   //this.pathArrNew.push(path.item);
   this.objPath={};
   console.log("this.pathArrNew===",this.pathArrNew);

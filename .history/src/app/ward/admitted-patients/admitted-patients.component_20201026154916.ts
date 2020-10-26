@@ -224,13 +224,13 @@ for (let element of response.radiologyTypes){
        if(!this.pathArrNew_added){
         this.pathArrNew=[];
         response.testData.forEach(mm => {
-          this.pathArrNew.push({"id":-1,"result":"","patientID":this.detailsData.patientID,"testName":mm.testName,"testID":mm.testID,"testType":mm.testType,"refRange":mm.refRange,"isSupper":mm.isSupper,"isDirect":mm.isDirect,"subTests":mm.subTests?mm.subTests:null})
+          this.pathArrNew.push({"id":-1,"result":"","patientID":this.detailsData.patientID,"testName":mm.testName,"testID":mm.testID,"testType":mm.testType,"refRange":mm.refRange,"isSupper":mm.isSupper,"isDirect":mm.isDirect})
           });
         
          
        }else{
         response.testData.forEach(k => {
-          this.pathArrNew.push({"id":-1,"result":"","patientID":this.detailsData.patientID,"testName":k.testName,"testID":k.testID,"testType":k.testType,"refRange":k.refRange,"isSupper":k.isSupper,"isDirect":k.isDirect,"subTests":k.subTests?k.subTests:null})
+          this.pathArrNew.push({"id":-1,"result":"","patientID":this.detailsData.patientID,"testName":k.testName,"testID":k.testID,"testType":k.testType,"refRange":k.refRange,"isSupper":k.isSupper,"isDirect":k.isDirect,})
         });
         }
        
