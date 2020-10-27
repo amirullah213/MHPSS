@@ -49,7 +49,7 @@
 .admin-header.navbar {
     .navbar-brand-wrapper {
         transition: width .5s ease-in-out;
-        width: 230px;
+        width: 250px;
         .navbar-brand {
             color: #5a5f61;
             font-size: 2rem;
@@ -268,7 +268,7 @@
     .side-menu-bg {
         height: 100%;
         width: 100%;
-        background: $white;
+        background: white;
     }
     .side-menu {
         border: none;
@@ -277,7 +277,7 @@
         position: relative;
         border-radius: 0;
         margin: 0;
-        background-color: $white;
+        background-color: white;
         backface-visibility: hidden;
         padding-top: 30px;
         li {
@@ -324,7 +324,7 @@
                 color: $gray-color;
                 padding: 12px 15px 12px 20px;
                 font-size: 16px;
-                border-left: 4px solid $white;
+                border-left: 3px solid $white;
                 .pull-left {
                     i {
                         font-size: 14px;
