@@ -2,69 +2,56 @@
     <div class="scrollbar side-menu-bg">
         <ul class="nav navbar-nav side-menu" id="sidebarnav">
             <li>
-                <a href="javascript:void(0)"><i class="fa fa-dashboard"></i><span class="right-nav-text">Dashboard</span> </a>
+                <a class="underline-center" href="javascript:void(0)">
+                    <i class="fa fa-dashboard"></i><span class="right-nav-text">Dashboard</span>
+                </a>
             </li>
             <!-- menu item Dashboard-->
-            <li [routerLink]="['home']" routerLinkActive="active">
-                <a href="javascript:void(0)" routerLinkActive="active"><i class="fa fa-hospital-o"></i><span class="right-nav-text">Home</span> </a>
-            </li>
-            <li [routerLink]="['diagnostic-list']" routerLinkActive="active">
-                <a href="javascript:void(0)" routerLinkActive="active"><i class="fa fa-stethoscope"></i><span class="right-nav-text">Diagnosdtic List</span> </a>
-            </li>
-            <li [routerLink]="['pathology-list']" routerLinkActive="active">
-                <a href="javascript:void(0)" routerLinkActive="active"><i class="fa fa-user-md"></i><span class="right-nav-text">Pathology List</span> </a>
-            </li>
-            <li [routerLink]="['radiology-list']" routerLinkActive="active">
-                <a href="javascript:void(0)"><i class="fa fa-heartbeat"></i><span class="right-nav-text">Radiology List</span> </a>
-            </li>
-            <li [routerLink]="['pharmacy']" routerLinkActive="active">
-                <a href="javascript:void(0)"><i class="fa fa-medkit"></i><span class="right-nav-text">Pharmacy</span> </a>
-            </li>
-            <li [routerLink]="['ambulance']" routerLinkActive="active">
-                <a href="javascript:void(0)"><i class="fa fa-ambulance"></i><span class="right-nav-text">Ambulance</span> </a>
-            </li>
-            <li [routerLink]="['signs']" routerLinkActive="active">
-                <a href="javascript:void(0)"><i class="fa fa-plus-square"></i><span class="right-nav-text">Signs </span> </a>
-            </li>
-            <li [routerLink]="['complaints']" routerLinkActive="active">
-                <a href="javascript:void(0)"><i class="fa fa-television"></i><span class="right-nav-text">Complaints </span> </a>
-            </li>
-            <li [routerLink]="['emrsummaryreport']" routerLinkActive="active">
-                <a href="javascript:void(0)"><i class="ti-layers-alt"></i><span class="right-nav-text">EMR Summary Report </span> </a>
-            </li>
-            <!-- <li [routerLink]="['/user']" routerLinkActive="active">
-                <a href="javascript:void(0)"><i class="ti-user"></i><span class="right-nav-text">User</span> </a>
-            </li> -->
-            <!-- <li>
-                <a href="javascript:void(0)" [class.active]="router.url.includes('user')" (click)="toggleCollapse(toggleUser)" routerLinkActive="active" attr.data-toggle="collapse" attr.data-target="#authentication">
-                    <div class="pull-left"><i class="ti-user"></i><span class="right-nav-text">User and Permission</span></div>
-                    <div class="pull-right"><i [class]="toggleIcon"></i></div>
-                    <div class="clearfix"></div>
+            <li>
+                <a class="underline-center" href="javascript:void(0)" [routerLink]="['home']" routerLinkActive="active">
+                    <i class="fa fa-hospital-o"></i><span class="right-nav-text">Home</span>
                 </a>
-                <ul id="authentication" #toggleUser class="collapse list-unstyled pl-0" attr.data-parent="#sidebarnav">
-                    <li [routerLink]="['user']" routerLinkActive="active"> <a href="javascript:void(0)">User</a> </li>
-                    <li> <a href="javascript:void(0)">Groups</a> </li>
-                    <li> <a href="javascript:void(0)">Roles and permission</a> </li>
-                </ul>
-            </li> -->
-            <!-- <li>
-                <a href="javascript:void(0)"><i class="ti-user"></i><span class="right-nav-text">Collection Agents</span> </a>
             </li>
-            <li [routerLink]="['/settings']" routerLinkActive="active">
-                <a href="javascript:void(0)"><i class="ti-settings"></i><span class="right-nav-text">Setting</span> </a>
-            </li> -->
+            <li>
+                <a class="underline-center" href="javascript:void(0)" [routerLink]="['diagnostic-list']" routerLinkActive="active">
+                    <i class="fa fa-stethoscope"></i><span class="right-nav-text">Diagnosdtic List</span>
+                </a>
+            </li>
+            <li>
+                <a class="underline-center" href="javascript:void(0)" [routerLink]="['pathology-list']" routerLinkActive="active">
+                    <i class="fa fa-user-md"></i><span class="right-nav-text">Pathology List</span>
+                </a>
+            </li>
+            <li>
+                <a class="underline-center" href="javascript:void(0)" [routerLink]="['radiology-list']" routerLinkActive="active">
+                    <i class="fa fa-heartbeat"></i><span class="right-nav-text">Radiology List</span>
+                </a>
+            </li>
+            <li>
+                <a class="underline-center" href="javascript:void(0)" [routerLink]="['pharmacy']" routerLinkActive="active">
+                    <i class="fa fa-medkit"></i><span class="right-nav-text">Pharmacy</span>
+                </a>
+            </li>
+            <li>
+                <a class="underline-center" href="javascript:void(0)" [routerLink]="['ambulance']" routerLinkActive="active">
+                    <i class="fa fa-ambulance"></i><span class="right-nav-text">Ambulance</span>
+                </a>
+            </li>
+            <li>
+                <a class="underline-center" href="javascript:void(0)" [routerLink]="['signs']" routerLinkActive="active">
+                    <i class="fa fa-plus-square"></i><span class="right-nav-text">Signs </span>
+                </a>
+            </li>
+            <li>
+                <a class="underline-center" href="javascript:void(0)" [routerLink]="['complaints']" routerLinkActive="active">
+                    <i class="fa fa-television"></i><span class="right-nav-text">Complaints </span>
+                </a>
+            </li>
+            <li>
+                <a class="underline-center" href="javascript:void(0)" [routerLink]="['emrsummaryreport']" routerLinkActive="active">
+                    <i class="ti-layers-alt"></i><span class="right-nav-text">EMR Summary Report </span>
+                </a>
+            </li>
         </ul>
-        <!-- <ul *ngIf="router.url.includes('account-settings')" class="nav navbar-nav side-menu" id="sidebarnav">
-            
-            <li [routerLink]="['/account-settings/security']" routerLinkActive="active">
-                <a href="javascript:void(0)"><i class="ti-id-badge"></i><span class="right-nav-text">Security</span> </a>
-            </li>
-            <li [routerLink]="['/account-settings/email']" routerLinkActive="active">
-                <a href="javascript:void(0)"><i class="ti-dropbox-alt"></i><span class="right-nav-text">Email</span> </a>
-            </li>
-            <li [routerLink]="['/account-settings/preference']" routerLinkActive="active">
-                <a href="javascript:void(0)"><i class="ti-settings"></i><span class="right-nav-text">Account Preferences</span> </a>
-            </li>
-        </ul>-->
     </div>
 </div>

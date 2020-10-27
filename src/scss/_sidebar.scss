@@ -50,7 +50,6 @@
     .navbar-brand-wrapper {
         transition: width .5s ease-in-out;
         width: 250px;
-        background: #4c6c8b;
         .navbar-brand {
             color: #5a5f61;
             font-size: 2rem;
@@ -269,7 +268,7 @@
     .side-menu-bg {
         height: 100%;
         width: 100%;
-        background: #304357;
+        background: white;
     }
     .side-menu {
         border: none;
@@ -278,7 +277,7 @@
         position: relative;
         border-radius: 0;
         margin: 0;
-        background-color: #304357;
+        background-color: white;
         backface-visibility: hidden;
         padding-top: 30px;
         li {
@@ -325,7 +324,7 @@
                 color: $gray-color;
                 padding: 12px 15px 12px 20px;
                 font-size: 16px;
-                border-left: 4px solid $white;
+                border-left: 3px solid $white;
                 .pull-left {
                     i {
                         font-size: 14px;
@@ -494,42 +493,5 @@ a.button-toggle-nav {
 }
 
 .theme-customizer.open {
-    right: 0;
-}
-
-
-/* Underline From Center */
-
-.underline-center {
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    position: relative;
-    overflow: hidden;
-}
-
-.underline-center:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    left: 51%;
-    right: 51%;
-    bottom: 0;
-    background: #1abc9c;
-    height: 4px;
-    -webkit-transition-property: left, right;
-    transition-property: left, right;
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-timing-function: ease-out;
-    transition-timing-function: ease-out;
-}
-
-.underline-center:hover:before,
-.underline-center:focus:before,
-.underline-center:active:before {
-    left: 0;
     right: 0;
 }
