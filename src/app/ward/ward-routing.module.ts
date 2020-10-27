@@ -7,6 +7,7 @@ import { PendingPatientsComponent } from './pending-patients/pending-patients.co
 import { DischargedPatientsComponent } from './discharged-patients/discharged-patients.component';
 import { AdmittedPatientsComponent } from './admitted-patients/admitted-patients.component';
 import { WardListComponent } from './ward-list/ward-list.component';
+import { DischargePatientMedicineComponent } from './discharge-patient-medicine/discharge-patient-medicine.component';
 
 const routes: Routes = [{
   path: '', component: WardListComponent,
@@ -16,6 +17,7 @@ const routes: Routes = [{
     { path: 'pending', component: PendingPatientsComponent },
     { path: 'admitted', component: AdmittedPatientsComponent },
     { path: 'discharged', component: DischargedPatientsComponent },
+    { path: 'discharged-med', component: DischargePatientMedicineComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 
   ]
