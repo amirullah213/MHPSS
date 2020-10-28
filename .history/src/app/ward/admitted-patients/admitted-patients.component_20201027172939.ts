@@ -78,8 +78,6 @@ export class AdmittedPatientsComponent implements OnInit {
   xrayArr:any =[];
   xraySingle:any=[];
   model12:any={};
-  loaderOutdoor:boolean=false;
-  
 
   //form related variables here
   outdoorForm: FormGroup;
@@ -87,7 +85,7 @@ export class AdmittedPatientsComponent implements OnInit {
     medicArr:any =[];
 
     treatmentForm:FormGroup;
-    dischargeForm:FormGroup;
+
 
   constructor(
     private modalService: BsModalService, 
@@ -120,30 +118,21 @@ export class AdmittedPatientsComponent implements OnInit {
     // }
     );
 
-    this.dischargeForm = this.fb.group(
+    this.treatmentForm = this.fb.group(
       {
-      dis_type: ['', Validators.required],
-      dis_date: ['', Validators.required],
+      med_name: ['', Validators.required],
+      med_unit: ['', Validators.required],
+      med_type: ['', Validators.required],
+      // med_instock: ['', Validators.required]
+      med_quantity: ['', Validators.required],
+      med_dose: ['', Validators.required],
+      med_parandials: ['', Validators.required],
       
+      med_remark: ['', Validators.required]
+      // acceptTerms: [false, Validators.requiredTrue]
   },
  
   );
-
-  this.treatmentForm = this.fb.group(
-    {
-    med_name: ['', Validators.required],
-    med_unit: ['', Validators.required],
-    med_type: ['', Validators.required],
-    // med_instock: ['', Validators.required]
-    med_quantity: ['', Validators.required],
-    med_dose: ['', Validators.required],
-    med_parandials: ['', Validators.required],
-    
-    med_remark: ['', Validators.required]
-    // acceptTerms: [false, Validators.requiredTrue]
-},
-
-);
 
 }
 
@@ -163,7 +152,16 @@ onSubmit() {
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.outdoorForm.value, null, 4));
 }
 
-  
+  openModalActivate(userActivate: TemplateRef<any>, data) {
+    this.userData = data;
+    this.modalRef = this.modalService.show(userActivate, this.userData);
+    // this.modalRef.content.userActivate = 'Close';
+  }
+  openModalDeactivate(userDeactivate: TemplateRef<any>, data) {
+    this.userData = data;
+    this.modalRef = this.modalService.show(userDeactivate, this.userData);
+    // this.modalRef.content.userActivate = 'Close';
+  }
 
   openDeleteUser(deleteUser: TemplateRef<any>, data) {
     this.userData = data;
@@ -173,8 +171,6 @@ onSubmit() {
  
  
   openModalWithClass(template: TemplateRef<any>,data) {
-    this.xrayArr=[];
-    this.xraySingle=[];
     this.userData = data;
     console.log('user data===',this.userData);
     debugger
@@ -204,7 +200,7 @@ onSubmit() {
   }
  //get all diagnostic list
  getoutDoorData() {
-  this.loaderOutdoor= true;
+  this.loader= true;
   this.model5.hospitalID=this.hospitalID;
   this.model5.tokenID=this.detailsData.ptID;
   console.log('modal 5==', this.model5);
@@ -258,15 +254,14 @@ for (let element of response.radiologyTypes){
         });
         
          
-       }
-      //  else{
-      //   response.testData.forEach(k => {
-      //     if(k.isDirect==1){
-      //       this.pathArrNew.push(k)
-      //    // this.pathArrNew.push({"id":-1,"result":"","patientID":this.detailsData.patientID,"testName":k.testName,"testID":k.testID,"testType":k.testType,"refRange":k.refRange,"isSupper":k.isSupper,"isDirect":k.isDirect,"subTests":k.subTests?k.subTests:[],"xrayFilms6":k.xrayFilms6})
-      //     }
-      //   });
-      //   }
+       }else{
+        response.testData.forEach(k => {
+          if(k.isDirect==1){
+            this.pathArrNew.push(k)
+         // this.pathArrNew.push({"id":-1,"result":"","patientID":this.detailsData.patientID,"testName":k.testName,"testID":k.testID,"testType":k.testType,"refRange":k.refRange,"isSupper":k.isSupper,"isDirect":k.isDirect,"subTests":k.subTests?k.subTests:[],"xrayFilms6":k.xrayFilms6})
+          }
+        });
+        }
        
       // this.pathologyList = response.test;
        response.test.forEach(v => {
@@ -286,11 +281,11 @@ for (let element of response.radiologyTypes){
       });
         //for pathology list in text box autocomplete
       console.log('this.outdoorData==',this.diagnosArr)
-        this.loaderOutdoor = false;
+        this.loader = false;
       }
   if (response.status === 1) {
         this.errormsg = response.error;
-        this.loaderOutdoor = false;
+        this.loader = false;
         console.log('error=', this.errormsg);
         alert('Please Try agian! problem in service')
       }
@@ -548,8 +543,8 @@ deleteTest(tId){
       if (response.status === 0) {
        // this.outdoorForm.reset();
       // this.medicinesFinal=[];
-     // this.pathArrNew=[];
-      //this.pathArrNew_added=false;
+      this.pathArrNew=[];
+      this.pathArrNew_added=false;
        // this.getoutDoorData();
         alert('Done Successfully');
         this.loaderLab = false;
@@ -603,7 +598,7 @@ onSelectPathology(path){
   this.pathArrNew_added=true;
  
   console.log("pathology data===",path.item);
-  this.pathArrNew.push({"result":"","patientID":this.detailsData.patientID,"testName":path.item.testName,"testID":path.item.testID,"testType":path.item.testType,"refRange":path.item.refRange,"isSupper":path.item.isSupper,"subTests":path.item.subTests?path.item.subTests:[]})
+  this.pathArrNew.push({"result":"","patientID":this.detailsData.patientID,"testName":path.item.testName,"testID":path.item.testID,"testType":path.item.testType,"refRange":path.item.refRange,})
   //this.pathArrNew.push(path.item);
   this.objPath={};
   console.log("this.pathArrNew===",this.pathArrNew);
@@ -633,15 +628,4 @@ getType(typ){
   console.log("type data===",this.radTypeObj);
   this.getoutDoorData();
 }
-//=============================
-gotoDischarge(obpat){
-  console.log("patData===",obpat,"tab data==",this.tab)
-  localStorage.setItem('disData',JSON.stringify(obpat));
-  
-  localStorage.setItem('prescriptionID',this.outdoorData.prescriptionID);
-  
- // this.router.navigate(['/ward-list/discharged-med'])
-}
-//==================
-
 }

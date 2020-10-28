@@ -95,10 +95,10 @@ getMedicinesData() {
          response.medicines.forEach(v => {
           this.medStr = v.itemName + ", "+ v.unit+ " "+ v.type;                                      
            this.gettreatmetData.push({"itemName":this.medStr,v});
-         //console.log('gettreatmetData==',this.gettreatmetData)
+         console.log('gettreatmetData==',this.gettreatmetData)
          });
         
-      console.log('this.gettreatmetData==',this.gettreatmetData);
+      //console.log('this.gettreatmetData==',this.gettreatmetData);
         this.loader = false;
       }
   if (response.status === 1) {
@@ -118,7 +118,7 @@ addPresMedicines() {
   this.loaderMedic= true;
   this.model99.prescriptionID=this.outdoorData.prescriptionID;
   this.model99.medicines=this.medicinesFinal;
-  this.model99.type=3;
+  this.model99.type=2;
   this.model99.hospitalID=this.hospitalID;
   
 
@@ -189,5 +189,10 @@ removeArr(indx){
   console.log('$x==',this.medicinesFinal)
 }
 //===============================
- 
+  gotoPatDetailsPending(obpat){
+    console.log("patData===",obpat,"tab data==",this.tab)
+    localStorage.setItem('pharmacyData',JSON.stringify(obpat));
+    localStorage.setItem('tab',this.tab);
+    this.router.navigate(['pharma/pending'])
+  }
 }

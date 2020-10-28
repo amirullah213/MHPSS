@@ -61,8 +61,4 @@ export class WardServiceService {
     let url = APP_CONFIG.apiBaseUrl + 'deleteprescriptiontest';
     return this.http.post(url, obj);
   }
-  getTreatData (obj: any) {
-    let url = APP_CONFIG.apiBaseUrl + 'gettreatmentdata ';
-    return this.http.post(url, obj);
-  }
 }

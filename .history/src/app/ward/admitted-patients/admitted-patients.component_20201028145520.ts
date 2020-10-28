@@ -634,13 +634,13 @@ getType(typ){
   this.getoutDoorData();
 }
 //=============================
-gotoDischarge(obpat){
+gotoPatDetailsPending(obpat){
   console.log("patData===",obpat,"tab data==",this.tab)
-  localStorage.setItem('disData',JSON.stringify(obpat));
-  
+  localStorage.setItem('pharmacyData',JSON.stringify(obpat));
+  localStorage.setItem('tab',this.tab);
   localStorage.setItem('prescriptionID',this.outdoorData.prescriptionID);
   
- // this.router.navigate(['/ward-list/discharged-med'])
+  this.router.navigate(['/ward-list/discharged-med'])
 }
 //==================
 

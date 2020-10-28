@@ -467,7 +467,7 @@
                                             <input type="text" class="form-control" formControlName="dis_date" placeholder="Start Date" #datepickerYMD="bsDatepicker" bsDatepicker  [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placement="top">
                                         </div>
                                         <div class="col-sm-12 mt-3 text-center">
-                                            <button class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" (click)="gotoDischarge(dischargeForm.value)" type="button"><i class="fa fa-wheelchair"></i> Discharge</button>
+                                            <button class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" routerLink="/ward-list/discharged-med" type="button"><i class="fa fa-wheelchair"></i> Discharge</button>
                                         </div>
                                     </div>
                                 </form>

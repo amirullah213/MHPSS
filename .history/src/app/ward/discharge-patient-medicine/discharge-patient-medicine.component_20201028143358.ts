@@ -39,8 +39,6 @@ export class DischargePatientMedicineComponent implements OnInit {
   medicArr:any =[];
   medicinesNewdata:any={};
   medicinesFinal:any=[]
-  loaderMedic:boolean=false;
-  model99:any={};
 
 
   treatmentForm:FormGroup;
@@ -95,10 +93,10 @@ getMedicinesData() {
          response.medicines.forEach(v => {
           this.medStr = v.itemName + ", "+ v.unit+ " "+ v.type;                                      
            this.gettreatmetData.push({"itemName":this.medStr,v});
-         //console.log('gettreatmetData==',this.gettreatmetData)
+         console.log('gettreatmetData==',this.gettreatmetData)
          });
         
-      console.log('this.gettreatmetData==',this.gettreatmetData);
+      //console.log('this.gettreatmetData==',this.gettreatmetData);
         this.loader = false;
       }
   if (response.status === 1) {
@@ -112,39 +110,6 @@ getMedicinesData() {
   );
 
 }
-//---------------------------------------
-addPresMedicines() {
-  
-  this.loaderMedic= true;
-  this.model99.prescriptionID=this.outdoorData.prescriptionID;
-  this.model99.medicines=this.medicinesFinal;
-  this.model99.type=3;
-  this.model99.hospitalID=this.hospitalID;
-  
-
- console.log('modal 9==', this.model99);
-  this.wardService.addPresMedics(this.model99).subscribe(
-    (response: any) => {
-      if (response.status === 0) {
-       // this.outdoorForm.reset();
-       this.medicinesFinal=[];
-       // this.getDischargeData();
-        alert('Done Successfully');
-        this.loaderMedic = false;
-      }
-  if (response.status === 1) {
-        this.errormsg = response.error;
-        this.loaderMedic = false;
-
-        console.log('error=', this.errormsg);
-        alert('Problem in service! try again');
-      }
-    },
-    (error) => {}
-  );
-}
-
-//----------------------------------------
 //---------------------
 onSelectMedics(medic){
   console.log("medic data===",medic.item);
@@ -189,5 +154,10 @@ removeArr(indx){
   console.log('$x==',this.medicinesFinal)
 }
 //===============================
- 
+  gotoPatDetailsPending(obpat){
+    console.log("patData===",obpat,"tab data==",this.tab)
+    localStorage.setItem('pharmacyData',JSON.stringify(obpat));
+    localStorage.setItem('tab',this.tab);
+    this.router.navigate(['pharma/pending'])
+  }
 }

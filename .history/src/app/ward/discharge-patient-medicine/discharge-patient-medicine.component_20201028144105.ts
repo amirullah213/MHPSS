@@ -189,5 +189,10 @@ removeArr(indx){
   console.log('$x==',this.medicinesFinal)
 }
 //===============================
- 
+  gotoPatDetailsPending(obpat){
+    console.log("patData===",obpat,"tab data==",this.tab)
+    localStorage.setItem('pharmacyData',JSON.stringify(obpat));
+    localStorage.setItem('tab',this.tab);
+    this.router.navigate(['pharma/pending'])
+  }
 }

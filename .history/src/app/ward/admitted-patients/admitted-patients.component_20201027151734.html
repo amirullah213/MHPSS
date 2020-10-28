@@ -284,8 +284,7 @@
                                         <div class="col-md-8">
                                             <div class="form-group">
                                                 <label class="form-check-label">Radiology Test Name</label>
-                                                <span class="mt-5" *ngIf="loaderOutdoor" class="spinner-border " role="status" aria-hidden="true"></span>
-                                                <input *ngIf="!loaderOutdoor" type="text" [(ngModel)]='objPath.rad_name' class="form-control" [typeahead]="radNameData" typeaheadOptionField="testName" (typeaheadOnSelect)="onSelectPathology($event)" class="form-control" id="formGroupExampleInput" placeholder="Enter Name" name="radiology">
+                                                <input type="text" [(ngModel)]='objPath.rad_name' class="form-control" [typeahead]="radNameData" typeaheadOptionField="testName" (typeaheadOnSelect)="onSelectPathology($event)" class="form-control" id="formGroupExampleInput" placeholder="Enter Name">
                                             </div>
                                         </div>                                                                              
                                         <div class="col-sm-12 text-center mt-3">
@@ -318,7 +317,7 @@
                                                             <td> {{ptd.testName }} </td>
                                                             <td>
                                                                 <div class="form-group">
-                                                                    <a href="javascript:void(0)" class="float-right" (click)="removeTests(z,ptd.id)"><i class="fa fa-close text-danger"></i></a>
+                                                                    <a href="javascript:void(0)" class="float-right" (click)="removeTests(z)"><i class="fa fa-close text-danger"></i></a>
                                                                     <a href="javascript:void(0)" class="text-info" (click)="openModalWithClass(template,ptd)">View Report</a>
                                                                 </div>
                                                                 <ng-template #template>
@@ -383,7 +382,6 @@
                                                                                         </td>
                                                                                         <td>{{userData.testName}}</td>
                                                                                         <td>{{userData.result}}</td>
-                                                                                        
                                                                                         <td>{{userData.refRange}}</td>
                                                                                     </tr>
                                                                                     
@@ -416,7 +414,7 @@
                                                                             </div>
                                                                         </div>
 
-                                                                        <div *ngIf="userData.testType==2 && userData.isSupper==0">
+                                                                        <div *ngIf="userData.testType==2 && userData.isSupper!=1">
                                                                             <div >
                                                                                 <div class="row mx-0">
                                                                                     <div class="col-md-3">
@@ -426,13 +424,8 @@
                                                                                     </div>
                                                                                     <div class="col-md-7">
                                                                                         <p class="mb-3">{{userData.testName}}</p>
-                                                                                        <p class="mb-3">
-                                                                                            <span *ngFor="let itm of xraySingle[0];let s=index">
-                                                                                                ({{s+1}})
-                                                                                                {{itm.name}}
-                                                                                            </span>
-                                                                                            
-                                                                                        <p class="mb-3">{{userData.result}}</p>
+                                                                                        <p class="mb-3">Finding Name</p>
+                                                                                        <p class="mb-3">Dianosis Name</p>
                                                                                     </div>
                                                                                 </div>
                                                                                 <hr class="gray">
@@ -451,11 +444,10 @@
                                         </div>
                                     </div>
                                     <hr class=" hr-gray ">
-                                    <form [formGroup]="dischargeForm">
                                     <div class="form-group row mx-0">
                                         <div class="col-sm-6">
                                             <label class="mt-3" for="inputState">Discharge Type</label>
-                                            <select class="form-control" formControlName="dis_type">
+                                            <select class="form-control">
                                                 <option>Discharge / DOR</option>
                                                 <option>LAMA</option>
                                                 <option>Referred</option>
@@ -464,13 +456,13 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="mt-3" for="inputState">Select Date</label>
-                                            <input type="text" class="form-control" formControlName="dis_date" placeholder="Start Date" #datepickerYMD="bsDatepicker" bsDatepicker  [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placement="top">
+                                            <input type="text" class="form-control" placeholder="Start Date" #datepickerYMD="bsDatepicker" bsDatepicker  [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placement="top">
                                         </div>
                                         <div class="col-sm-12 mt-3 text-center">
-                                            <button class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" (click)="gotoDischarge(dischargeForm.value)" type="button"><i class="fa fa-wheelchair"></i> Discharge</button>
+                                            <button class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" type="button"><i class="fa fa-wheelchair"></i> Discharge</button>
                                         </div>
                                     </div>
-                                </form>
+                               <!-- </form>  -->
                             </div>
                         </div>
                     </div>

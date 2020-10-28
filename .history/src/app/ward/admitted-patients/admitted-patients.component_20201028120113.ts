@@ -87,7 +87,7 @@ export class AdmittedPatientsComponent implements OnInit {
     medicArr:any =[];
 
     treatmentForm:FormGroup;
-    dischargeForm:FormGroup;
+
 
   constructor(
     private modalService: BsModalService, 
@@ -120,30 +120,21 @@ export class AdmittedPatientsComponent implements OnInit {
     // }
     );
 
-    this.dischargeForm = this.fb.group(
+    this.treatmentForm = this.fb.group(
       {
-      dis_type: ['', Validators.required],
-      dis_date: ['', Validators.required],
+      med_name: ['', Validators.required],
+      med_unit: ['', Validators.required],
+      med_type: ['', Validators.required],
+      // med_instock: ['', Validators.required]
+      med_quantity: ['', Validators.required],
+      med_dose: ['', Validators.required],
+      med_parandials: ['', Validators.required],
       
+      med_remark: ['', Validators.required]
+      // acceptTerms: [false, Validators.requiredTrue]
   },
  
   );
-
-  this.treatmentForm = this.fb.group(
-    {
-    med_name: ['', Validators.required],
-    med_unit: ['', Validators.required],
-    med_type: ['', Validators.required],
-    // med_instock: ['', Validators.required]
-    med_quantity: ['', Validators.required],
-    med_dose: ['', Validators.required],
-    med_parandials: ['', Validators.required],
-    
-    med_remark: ['', Validators.required]
-    // acceptTerms: [false, Validators.requiredTrue]
-},
-
-);
 
 }
 
@@ -633,15 +624,4 @@ getType(typ){
   console.log("type data===",this.radTypeObj);
   this.getoutDoorData();
 }
-//=============================
-gotoDischarge(obpat){
-  console.log("patData===",obpat,"tab data==",this.tab)
-  localStorage.setItem('disData',JSON.stringify(obpat));
-  
-  localStorage.setItem('prescriptionID',this.outdoorData.prescriptionID);
-  
- // this.router.navigate(['/ward-list/discharged-med'])
-}
-//==================
-
 }
