@@ -41,8 +41,6 @@ export class HomeComponent implements OnInit {
   tokenResponseObj:any={};
   model1: any = {};
   loaderToken:boolean=false;
-  model2:any={};
-  loaderNew:boolean=false;
 
   constructor(
      private modalService: BsModalService,
@@ -63,23 +61,6 @@ export class HomeComponent implements OnInit {
    },
   
    );
-
-   this.regisForm = this.fb.group({
-    firstname: ['', Validators.required],
-    f_hName: ['', Validators.required],
-    cellNo: ['', Validators.required],
-    gender: ['', Validators.required],
-    cnic: ['', Validators.required],
-    dob: ['', Validators.required],
-    address: ['', Validators.required],
-    village: ['', Validators.required],
-    district: ['', Validators.required],
-    tehsil_city: ['', Validators.required],
-    UC: ['', Validators.required],
-   
- },
-
- );
    }
   
   openModAdd(captureuser: TemplateRef<any>) {
@@ -138,12 +119,12 @@ serchByToken(cc) {
         this.tokenResponseObj=response.data;
       console.log('this.tokenResponseArray==',this.tokenResponseObj);
       this.openModAdd(cc);
-        this.loaderToken = false;
+        this.loaderCNIC = false;
         
       }
   if (response.status === 1) {
         this.errormsg = response.error;
-        this.loaderToken = false;
+        this.loaderCNIC = false;
         alert('Problem in service! please Try again')
         console.log('error=', this.errormsg);
         
@@ -153,53 +134,7 @@ serchByToken(cc) {
   );
 
 }
-
 //--------------------------------
-
-//---------------------search by token---------------------
-registerNewPat() {
-  this.loaderNew= true;
-  this.model2.hospitalID=this.hospitalID;
-  this.model2.firstname =this.regisForm.value.firstname;
-  this.model2.lastname  ='';
-  this.model2.dob  =this.regisForm.value.dob;
-  this.model2.f_hName  =this.regisForm.value.f_hName;
-  this.model2.cellNo  =this.regisForm.value.cellNo;
-  this.model2.gender  =this.regisForm.value.gender;
-  this.model2.cnic  =this.regisForm.value.cnic;
-  this.model2.village  =this.regisForm.value.village;
-  this.model2.uc =this.regisForm.value.uc;
-  this.model2.tehsil_city  =this.regisForm.value.tehsil_city;
-  this.model2.district  =this.regisForm.value.district; 
-  this.model2.address  =this.regisForm.value.address;
-  // this.model2.age  =this.searchForm.value.token;
- 
- 
-  console.log('model2 ==', this.model2);
-  this.receptService.insertpatientpms(this.model2).subscribe(
-    (response: any) => {
-      if (response.status === 0) {
-        console.log(' response2====',response);
-        
-      // this.tokenResponseObj=response.data;
-      // console.log('this.tokenResponseArray==',this.tokenResponseObj);
-      //this.openModAdd(cc);
-        this.loaderNew = false;
-        this.regisForm.reset();
-        
-      }
-  if (response.status === 1) {
-        this.errormsg = response.error;
-        this.loaderNew = false;
-        alert('Problem in service! please Try again')
-        console.log('error=', this.errormsg);
-        
-      }
-    },
-    (error) => {}
-  );
-
-}
 //-------------------goto next page
 gotoAdmitDetails(obpat){
   console.log("patData===",obpat,)
@@ -208,10 +143,5 @@ gotoAdmitDetails(obpat){
  // this.router.navigate(['ward-list/admitted'])
 }
 //-------------------goto next page
-//----reset form
-resetForm(){
-  this.regisForm.reset();
-}
-//reset form
 }
 
