@@ -16,7 +16,7 @@
                     <div class="card card-statistics h-100">
                         <div class="card-body">
                             <div class="card-body">
-                                <a class="button float-right" href="javascript:void(0)" (click)="openModalbedmanag(template,1)">Bed Managment</a>
+                                <a class="button float-right" href="javascript:void(0)" (click)="openModalbedmanag(template,1)"><i class="fa fa-bed"></i> Bed Managment</a>
                                 <h5 class="card-title mb-0">Ward Managment</h5>
                                 <ng-template #template>
                                     <div class="modal-header">
@@ -52,7 +52,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="button"  (click)="setBedsPms(beds)"><i class="ti-save-alt"></i> Save</button>
+                                        <button type="button" class="button-success" (click)="setBedsPms(beds)"><i class="fa fa-plus mr-1"></i> Save</button>
                                     </div>
                                 </ng-template>
                                 <ul class="nav nav-tabs" role="tablist">
@@ -97,12 +97,12 @@
                                                                 <td colspan="4">No Record Found</td>
                                                             </tr>
                                                         </tbody>
-                                                        <div *ngIf="loader_eqp2" class="d-flex justify-content-center">
-                                                            <div class="spinner-border theme-color" role="status">
-                                                                <span class="sr-only"></span>
-                                                            </div>
-                                                        </div>
                                                     </table>
+                                                </div>
+                                                <div *ngIf="loader_eqp2" class="d-flex justify-content-center">
+                                                    <div class="spinner-border theme-color" role="status">
+                                                        <span class="sr-only"></span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -160,22 +160,22 @@
                                                             <tr *ngFor="let wrd of pharmacyData; let i=index">
                                                                 <td>{{wrd.token}}</td>
                                                                 <td>
-                                                                   
+
                                                                     <span>{{wrd.firstname}}</span>
                                                                 </td>
                                                                 <td>{{wrd.DateCreated| date }}</td>
-                                                                <td><a href="javascript:void(0)" (click)="gotoAdmitDetails(wrd)"  class="text-info">Detail</a></td>
+                                                                <td><a href="javascript:void(0)" (click)="gotoAdmitDetails(wrd)" class="text-info">Detail</a></td>
                                                             </tr>
                                                             <tr *ngIf="pharmacyData.length === 0" style="text-align: center;">
                                                                 <td colspan="4">No Record Found</td>
                                                             </tr>
                                                         </tbody>
-                                                        <div *ngIf="loader_eqp2" class="d-flex justify-content-center">
-                                                            <div class="spinner-border theme-color" role="status">
-                                                                <span class="sr-only"></span>
-                                                            </div>
-                                                        </div>
                                                     </table>
+                                                </div>
+                                                <div *ngIf="loader_eqp2" class="d-flex justify-content-center">
+                                                    <div class="spinner-border theme-color" role="status">
+                                                        <span class="sr-only"></span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -197,7 +197,7 @@
                                                             <tr *ngFor="let wrd of pharmacyData; let i=index">
                                                                 <td>{{wrd.token}}</td>
                                                                 <td>
-                                                                   
+
                                                                     <span>{{wrd.firstname}}</span>
                                                                 </td>
                                                                 <td>{{wrd.DateCreated| date }}</td>
@@ -207,12 +207,12 @@
                                                                 <td colspan="4">No Record Found</td>
                                                             </tr>
                                                         </tbody>
-                                                        <div *ngIf="loader_eqp2" class="d-flex justify-content-center">
-                                                            <div class="spinner-border theme-color" role="status">
-                                                                <span class="sr-only"></span>
-                                                            </div>
-                                                        </div>
                                                     </table>
+                                                </div>
+                                                <div *ngIf="loader_eqp2" class="d-flex justify-content-center">
+                                                    <div class="spinner-border theme-color" role="status">
+                                                        <span class="sr-only"></span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

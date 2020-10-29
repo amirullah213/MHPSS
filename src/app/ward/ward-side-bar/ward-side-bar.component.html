@@ -1,15 +1,21 @@
 <div class="side-menu-fixed">
     <div class="scrollbar side-menu-bg">
-        <ul *ngIf="!router.url.includes('account-settings')" class="nav navbar-nav side-menu" id="sidebarnav">
+        <ul class="nav navbar-nav side-menu" id="sidebarnav">
             <!-- menu item Dashboard-->
-            <li>
-                <a><i class="fa fa-dashboard"></i><span class="right-nav-text">Dashboard</span></a>
+            <li routerLinkActive="active">
+                <a class="underline-center" href="javascript:void(0)">
+                    <i class="fa fa-dashboard"></i><span class="right-nav-text">Dashboard</span>
+                </a>
             </li>
             <li routerLinkActive="active">
-                <a href="javascript:void(0)" [routerLink]="['home']"><i class="ti-home"></i><span class="right-nav-text">Home</span></a>
+                <a class="underline-center" href="javascript:void(0)" [routerLink]="['home']">
+                    <i class="ti-home"></i><span class="right-nav-text">Home</span>
+                </a>
             </li>
-            <li>
-                <a href=""><i class="ti-power-off text-danger"></i><span class="right-nav-text">Exit</span> </a>
+            <li routerLinkActive="active">
+                <a class="underline-center" href="">
+                    <i class="ti-power-off text-danger"></i><span class="right-nav-text">Exit</span>
+                </a>
             </li>
         </ul>
     </div>
