@@ -169,8 +169,8 @@ addPresMedicines() {
 //----------------------------------------
 
 //==============update indoor detail to discharge patient
-updateIndoor() {
- 
+updateIndoor(indoorData) {
+  console.log('indoorData',indoorData)
   this.loaderUpdate= true;
   this.model8.hospitalID=this.hospitalID;
   this.model8.tokenID=this.detailsData.ptID;

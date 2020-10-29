@@ -41,13 +41,10 @@ export class DischargePatientMedicineComponent implements OnInit {
   medicinesFinal:any=[]
   loaderMedic:boolean=false;
   model99:any={};
-  dischargFormData:any={};
+  dischargedata:any={};
   prescID:any;
   model8:any={};
   loaderUpdate:boolean=false;
-  diagnosArr:any=[];
-  outFormData:any={};
-  showDischargeButton:boolean=false;
 
 
   treatmentForm:FormGroup;
@@ -60,24 +57,15 @@ export class DischargePatientMedicineComponent implements OnInit {
 
   ngOnInit(): void {
     this.indoor= localStorage.getItem('indoorID');
-    
     this.detailsData=JSON.parse(localStorage.getItem('wardData')) ;
 
     this.hospitalID=localStorage.getItem('hospitalID');
     this.doctorID=localStorage.getItem('docId');
 
     //previos page data
-   
-
-   this.dischargFormData =JSON.parse(localStorage.getItem('disData')) ;
-   console.log('this.dischargedata==========',this.dischargFormData);
-
-   this.outFormData =JSON.parse(localStorage.getItem('outData')) ;
-   console.log('this.outFormData==========',this.outFormData);
-  this.prescID=JSON.parse(localStorage.getItem('prescriptionID'));
-  console.log('this.prescID==========',this.prescID);
-  this.diagnosArr=JSON.parse( localStorage.getItem('diagnosArr'));
-  console.log('this.diagnosArr==========',this.diagnosArr);
+   this.dischargedata =localStorage.getItem('disData');
+  
+  this.prescID=localStorage.getItem('prescriptionID');
     this.getMedicinesData();
 
     //-----------------
@@ -135,7 +123,7 @@ getMedicinesData() {
 }
 //---------------------------------------
 addPresMedicines() {
-  this.showDischargeButton=true;
+  
   this.loaderMedic= true;
   this.model99.prescriptionID=this.prescID;
   this.model99.medicines=this.medicinesFinal;
@@ -148,7 +136,7 @@ addPresMedicines() {
     (response: any) => {
       if (response.status === 0) {
        // this.outdoorForm.reset();
-      // this.medicinesFinal=[];
+       this.medicinesFinal=[];
        // this.getDischargeData();
         alert('Medicines added successfuly.Press Discharge button to discharge patient');
 
@@ -169,17 +157,17 @@ addPresMedicines() {
 //----------------------------------------
 
 //==============update indoor detail to discharge patient
-updateIndoor() {
- 
+updateIndoor(indoorData) {
+  console.log('indoorData',indoorData)
   this.loaderUpdate= true;
   this.model8.hospitalID=this.hospitalID;
   this.model8.tokenID=this.detailsData.ptID;
-  this.model8.indoorStatus=2;
-  this.model8.isCriticalIll=this.outFormData.criti_ill;
+  this.model8.indoorStatus=1;
+  this.model8.isCriticalIll=indoorData.criti_ill;
 
-  this.model8.operativeProcedure=this.outFormData.operate_procedure;
-  this.model8.dialysis=this.outFormData.dylasis;
-  this.model8.dischargeType=this.dischargFormData.dis_type;
+  this.model8.operativeProcedure=indoorData.operate_procedure;
+  this.model8.dialysis=indoorData.dylasis;
+  this.model8.dischargeType='';
   this.model8.dischargeDate='';
   this.model8.diagnosis=this.diagnosArr;
   console.log('modal 8==', this.model8);
@@ -187,8 +175,8 @@ updateIndoor() {
   this.wardService.updateIndoorDetail(this.model8).subscribe(
     (response: any) => {
       if (response.status === 0) {
-       // this.outdoorForm.reset();
-        //this.getoutDoorData();
+        this.outdoorForm.reset();
+        this.getoutDoorData();
 
         alert('Done Successfully');
         this.loaderUpdate = false;

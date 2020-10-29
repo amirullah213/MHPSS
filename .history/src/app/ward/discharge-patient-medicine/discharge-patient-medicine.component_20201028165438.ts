@@ -47,7 +47,6 @@ export class DischargePatientMedicineComponent implements OnInit {
   loaderUpdate:boolean=false;
   diagnosArr:any=[];
   outFormData:any={};
-  showDischargeButton:boolean=false;
 
 
   treatmentForm:FormGroup;
@@ -135,7 +134,7 @@ getMedicinesData() {
 }
 //---------------------------------------
 addPresMedicines() {
-  this.showDischargeButton=true;
+  
   this.loaderMedic= true;
   this.model99.prescriptionID=this.prescID;
   this.model99.medicines=this.medicinesFinal;
@@ -169,8 +168,8 @@ addPresMedicines() {
 //----------------------------------------
 
 //==============update indoor detail to discharge patient
-updateIndoor() {
- 
+updateIndoor(indoorData) {
+  console.log('indoorData',indoorData)
   this.loaderUpdate= true;
   this.model8.hospitalID=this.hospitalID;
   this.model8.tokenID=this.detailsData.ptID;

@@ -14,7 +14,7 @@ import { ReceptServiceService } from '../services/recept-service.service';
 })
 export class HomeComponent implements OnInit {
   
-  isCollapsed = true;
+  isCollapsed = false;
 
   currentDate = new Date();
   form = new FormGroup({
@@ -185,7 +185,6 @@ registerNewPat() {
       // console.log('this.tokenResponseArray==',this.tokenResponseObj);
       //this.openModAdd(cc);
         this.loaderNew = false;
-        this.regisForm.reset();
         
       }
   if (response.status === 1) {

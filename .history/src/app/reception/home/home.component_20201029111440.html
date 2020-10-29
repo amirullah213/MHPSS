@@ -30,13 +30,10 @@
                                     <div class="col-md-2">
                                         <div class="form-group mt-2">
                                             <label for="formGroupExampleInput"></label>
-                                            
-                                            <button class="button-success mt-4" *ngIf="loaderCNIC" > <span class="spinner-border " role="status" aria-hidden="true"></span> Capturring</button>
-                                            <button class="button-success mt-4" *ngIf="!loaderCNIC" (click)="serchBycnic(captureuser)"><i class="fa fa-eye"></i> Capture</button>
+                                            <button class="button-success mt-4"  (click)="serchBycnic(captureuser)"><i class="fa fa-eye"></i> Capture</button>
                                             <!-- captureuser.show() -->
                                         </div>
                                     </div>
-
                                     <div class="col-md-12">
                                         <h5 class="card-title mb-0 text-center">OR</h5>
                                     </div>
@@ -49,15 +46,14 @@
                                     <div class="col-md-10">
                                         <div class="form-group">
                                             <label for="formGroupExampleInput">Token ID</label>
-                                            <input type="text" formControlName="token" class="form-control" placeholder="Enter Token">
+                                            <input type="text" formControlName="cnic" class="form-control" placeholder="Enter Token">
                                         </div>
                                     </div>
                                    
                                     <div class="col-md-2">
                                         <div class="form-group mt-2">
                                             <label for="formGroupExampleInput"></label>
-                                            <button class="button-success mt-4" *ngIf="loaderToken" ><span class="spinner-border " role="status" aria-hidden="true"></span> Capturing</button>
-                                            <button class="button-success mt-4" *ngIf="!loaderToken" (click)="serchByToken(captureuser2)"><i class="fa fa-eye"></i> Capture</button>
+                                            <button class="button-success mt-4"  (click)="serchBycnic(captureuser)"><i class="fa fa-eye"></i> Capture</button>
                                             <!-- captureuser.show() -->
                                         </div>
                                     </div>
@@ -154,26 +150,26 @@
                                                 <input type="text" class="form-control" placeholder="Enter Patient Address">
                                             </div>
                                         </div>
-                                        <!-- <div class="col-md-4">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="formGroupExampleInput">Caste</label>
                                                 <input type="text" class="form-control" placeholder="Enter Patient Caste">
                                             </div>
-                                        </div> -->
+                                        </div>
                                         <div class="col-md-4">
                                             <div class="form-groupp">
                                                 <label for="formGroupExampleInput">Villege</label>
                                                 <input type="text" class="form-control" placeholder="Enter Patient Villege">
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <label>District</label>
                                             <select class="form-control">
                                                 <option>Mohmand</option>
                                                 <option>Bajaor</option>
                                             </select>
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-3">
                                             <label class="" for="inputState">Tehsil/Taluka</label>
                                             <select class="form-control">
                                                 <option>EkkaGhund</option>
@@ -181,7 +177,7 @@
                                                 <option>HaleemZai</option>
                                             </select>
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-3">
                                             <label class="" for="inputState">UC</label>
                                             <select class="form-control">
                                                 <option>ABC</option>
@@ -190,23 +186,24 @@
                                                 <option>XYZ</option>
                                             </select>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group mt-2">
                                                 <button class="button-danger mr-2 mt-4" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
                                                     <i class="fa fa-remove"></i> Cancel 
                                                 </button>
-                                                <button class="button-success mt-4" (click)="registerNewPat()"><i class="fa fa-check-square"></i> Add Patient</button>
+                                                <button class="button-success mt-4"><i class="fa fa-check-square"></i> Add Patient</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </form>
                             <!-- model for View patient start-->
-                            <ng-template  #captureuser >
-                                
+                            <div bsModal #captureuser="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
+                                <div class="modal-dialog modal-lg modal-dialog-centered">
+                                    <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 id="dialog-sizes-name1" class="modal-title pull-left">Patients Data</h4>
-                                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                            <h4 id="dialog-sizes-name1" class="modal-title pull-left">User</h4>
+                                            <button type="button" class="close pull-right" aria-label="Close" (click)="captureuser.hide()">
                                                 <span aria-hidden="true"><i class="ti-close"></i></span>
                                             </button>
                                         </div>
@@ -216,67 +213,27 @@
                                                     <thead>
                                                         <tr class="text-dark text-center">
                                                             <th>S.No</th>
-                                                            <th>Name/Father Name</th>
+                                                            <th>Name</th>
                                                             <th>Date</th>
-                                                            <th>Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr colspan='4' *ngIf="nicResponseArray.length==0" class="text-center">No data available</tr>
-                                                        <tr  class="text-center" *ngFor="let ncRes of nicResponseArray; let i=index">
-                                                            <td>{{i+1}}</td>
+                                                        <tr class="text-center">
+                                                            <td>1</td>
                                                             <td>
-                                                                <!-- <img class="mr-3" src="../../../assets/images/profile-avatar.png"> -->
-                                                                <span>{{ncRes.firstname}} / {{ncRes.f_hName}}</span>
+                                                                <img class="mr-3" src="../../../assets/images/profile-avatar.png">
+                                                                <span>Zeeshan Shahid</span>
                                                             </td>
-                                                            <td>{{ncRes.DateCreated|date}}</td>
-                                                            <td><a href="javascript:void(0)" (click)="gotoAdmitDetails(ncRes)"  class="text-info">Detail</a></td>
+                                                            <td>2020-10-02</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
                                         </div>
-                                   
-                            </ng-template>
-                            <!-- model for View patient end-->
-                             <!-- model for View patient start-->
-                             <ng-template  #captureuser2 >
-                                
-                                <div class="modal-header">
-                                    <h4 id="dialog-sizes-name1" class="modal-title pull-left">patient Data</h4>
-                                    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                                        <span aria-hidden="true"><i class="ti-close"></i></span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="table-responsive">
-                                        <table class="table center-aligned-table">
-                                            <thead>
-                                                <tr class="text-dark text-center">
-                                                    <th>S.No</th>
-                                                    <th>Name/Father Name</th>
-                                                    <th>Date</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr colspan='4' *ngIf="tokenResponseObj==undefined" class="text-center"> No data available</tr>
-                                                <tr class="text-center"  *ngIf="tokenResponseObj!=undefined">
-                                                    <td>{{1}}</td>
-                                                    <td>
-                                                        <!-- <img class="mr-3" src="../../../assets/images/profile-avatar.png"> -->
-                                                        <span>{{tokenResponseObj.firstname}} / {{tokenResponseObj.f_hName}}</span>
-                                                    </td>
-                                                    <td>{{tokenResponseObj.DateCreated|date}}</td>
-                                                    <td><a href="javascript:void(0)" (click)="gotoAdmitDetails(tokenResponseObj)"  class="text-info">Detail</a></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
                                     </div>
                                 </div>
-                           
-                    </ng-template>
-                    <!-- model for View patient end-->
+                            </div>
+                            <!-- model for View patient end-->
                         </div>
                     </div>
                 </div>

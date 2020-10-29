@@ -185,7 +185,6 @@ registerNewPat() {
       // console.log('this.tokenResponseArray==',this.tokenResponseObj);
       //this.openModAdd(cc);
         this.loaderNew = false;
-        this.regisForm.reset();
         
       }
   if (response.status === 1) {

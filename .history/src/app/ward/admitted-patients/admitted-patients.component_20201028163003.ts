@@ -99,7 +99,7 @@ export class AdmittedPatientsComponent implements OnInit {
   }
   ngOnInit() {
    this.indoor= localStorage.getItem('indoorID');
-   this.detailsData=JSON.parse(localStorage.getItem('wardData')) ;
+    this.detailsData=JSON.parse(localStorage.getItem('wardData')) ;
 
     this.hospitalID=localStorage.getItem('hospitalID');
     this.doctorID=localStorage.getItem('docId');
@@ -645,7 +645,7 @@ gotoDischarge(disform,outForm){
   
   localStorage.setItem('prescriptionID',this.outdoorData.prescriptionID);
   
-  this.router.navigate(['/ward-list/discharged-med'])
+ // this.router.navigate(['/ward-list/discharged-med'])
 }
 //==================
 

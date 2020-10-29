@@ -157,7 +157,7 @@ serchByToken(cc) {
 //--------------------------------
 
 //---------------------search by token---------------------
-registerNewPat() {
+registerNewPat(cc) {
   this.loaderNew= true;
   this.model2.hospitalID=this.hospitalID;
   this.model2.firstname =this.regisForm.value.firstname;
@@ -185,7 +185,6 @@ registerNewPat() {
       // console.log('this.tokenResponseArray==',this.tokenResponseObj);
       //this.openModAdd(cc);
         this.loaderNew = false;
-        this.regisForm.reset();
         
       }
   if (response.status === 1) {
@@ -208,10 +207,5 @@ gotoAdmitDetails(obpat){
  // this.router.navigate(['ward-list/admitted'])
 }
 //-------------------goto next page
-//----reset form
-resetForm(){
-  this.regisForm.reset();
-}
-//reset form
 }
 

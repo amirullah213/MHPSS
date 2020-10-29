@@ -157,35 +157,21 @@ serchByToken(cc) {
 //--------------------------------
 
 //---------------------search by token---------------------
-registerNewPat() {
+registerNewPat(cc) {
   this.loaderNew= true;
   this.model2.hospitalID=this.hospitalID;
-  this.model2.firstname =this.regisForm.value.firstname;
-  this.model2.lastname  ='';
-  this.model2.dob  =this.regisForm.value.dob;
-  this.model2.f_hName  =this.regisForm.value.f_hName;
-  this.model2.cellNo  =this.regisForm.value.cellNo;
-  this.model2.gender  =this.regisForm.value.gender;
-  this.model2.cnic  =this.regisForm.value.cnic;
-  this.model2.village  =this.regisForm.value.village;
-  this.model2.uc =this.regisForm.value.uc;
-  this.model2.tehsil_city  =this.regisForm.value.tehsil_city;
-  this.model2.district  =this.regisForm.value.district; 
-  this.model2.address  =this.regisForm.value.address;
-  // this.model2.age  =this.searchForm.value.token;
- 
- 
+  this.model2.tokenID=this.searchForm.value.token;
+  // this.model.token=this.searchForm.value.token;
   console.log('model2 ==', this.model2);
   this.receptService.insertpatientpms(this.model2).subscribe(
     (response: any) => {
       if (response.status === 0) {
         console.log(' response2====',response);
         
-      // this.tokenResponseObj=response.data;
+      //   this.tokenResponseObj=response.data;
       // console.log('this.tokenResponseArray==',this.tokenResponseObj);
       //this.openModAdd(cc);
         this.loaderNew = false;
-        this.regisForm.reset();
         
       }
   if (response.status === 1) {
@@ -208,10 +194,5 @@ gotoAdmitDetails(obpat){
  // this.router.navigate(['ward-list/admitted'])
 }
 //-------------------goto next page
-//----reset form
-resetForm(){
-  this.regisForm.reset();
-}
-//reset form
 }
 
