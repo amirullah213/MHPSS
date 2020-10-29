@@ -139,13 +139,10 @@
                                 
                                 <div class="col-md-12 mt-4">
                                     <div class="form-group text-center">
-                                        
-                                        <button type="button" *ngIf="loaderMedic"   class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><span class="spinner-border " role="status" aria-hidden="true"></span>Add Medicines </button>
-                                        <button type="button" *ngIf="!loaderMedic" (click)="addPresMedicines()"  class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus mr-2"></i>Add Medicines </button>
+                                        <button type="button" (click)="addPresMedicines()"  class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus mr-2"></i>Save Medicines </button>
                                     </div>
                                     <div class="form-group text-center">
-                                        <button type="button" *ngIf="loaderUpdate && showDischargeButton"  class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><span class="spinner-border " role="status" aria-hidden="true"></span>Discharge </button>
-                                        <button type="button"  *ngIf="!loaderUpdate && showDischargeButton" (click)="updateIndoor()"  class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus mr-2"></i>Discharge </button>
+                                        <button type="button" (click)="addmoreMedics()"  class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus mr-2"></i>Discharge </button>
                                     </div>
                                 </div>
                                 

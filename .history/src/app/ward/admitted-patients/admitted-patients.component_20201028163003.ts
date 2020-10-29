@@ -645,7 +645,7 @@ gotoDischarge(disform,outForm){
   
   localStorage.setItem('prescriptionID',this.outdoorData.prescriptionID);
   
-  this.router.navigate(['/ward-list/discharged-med'])
+ // this.router.navigate(['/ward-list/discharged-med'])
 }
 //==================
 

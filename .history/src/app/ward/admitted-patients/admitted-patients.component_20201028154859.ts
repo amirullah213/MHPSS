@@ -636,16 +636,13 @@ getType(typ){
 //=============================
 gotoDischarge(disform,outForm){
   console.log("disform===",disform);
-  console.log("outform===",outForm);
+  console.log("disform===",outForm);
   localStorage.setItem('disData',JSON.stringify(disform));
   localStorage.setItem('outData',JSON.stringify(outForm));
-  localStorage.setItem('diagnosArr',JSON.stringify(this.diagnosArr));
-
-  
   
   localStorage.setItem('prescriptionID',this.outdoorData.prescriptionID);
   
-  this.router.navigate(['/ward-list/discharged-med'])
+ // this.router.navigate(['/ward-list/discharged-med'])
 }
 //==================
 
