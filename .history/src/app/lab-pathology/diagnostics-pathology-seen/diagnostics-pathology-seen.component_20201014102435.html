@@ -30,17 +30,14 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr *ngFor="let pat of PathResponseArray; let i=index">
-                                                    <!-- <span *ngIf="pat.isDirect==1"> -->
-                                                    <td *ngIf="pat.isDirect==1">{{i+1}}</td>
-                                                    <td  *ngIf="pat.isDirect==1">Pathology</td>
-                                                    <td  *ngIf="pat.isDirect==1">{{pat.testName}}</td>
-                                                    <td  *ngIf="pat.isDirect==1">
-                                                        <a href="javascript:void(0)" class="text-info" (click)="openModalWithClass(template,pat)">View Report</a>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Pathology</td>
+                                                    <td>Complete Blood Count</td>
+                                                    <td>
+                                                        <a href="javascript:void(0)" class="text-info" (click)="openModalWithClass(template)">View Report</a>
                                                     </td>
-                                                <!-- </span> -->
                                                 </tr>
-
                                             </tbody>
                                         </table>
                                     </div>
@@ -55,77 +52,56 @@
                                             <div class="row mx-0">
                                                 <div class="col-md-12 mt-3">
                                                     <p class="mb-1 mt-3"><b>Token Number</b>
-                                                        <span class="ml-4">{{pathData1.token}}</span>
+                                                        <span class="ml-4">33226-60</span>
                                                     </p>
                                                 </div>
                                                 <div class="col-md-6 mt-3">
                                                     <p class="mb-1 mt-2"><b>Patient Name</b>
-                                                        <span class="ml-4">{{pathData1.firstname}}</span>
+                                                        <span class="ml-4">Zeeshan Shahid</span>
                                                     </p>
                                                     <p class="mb-1 mt-3"><b>Date Of Birth</b>
-                                                        <span class="ml-4">{{pathData1.dob | date}}</span>
+                                                        <span class="ml-4">1987-10-20</span>
                                                     </p>
                                                 </div>
                                                 <div class="col-md-6 mt-3">
                                                     <p class="mb-1 mt-3"><b>Father/Husband Name</b>
-                                                        <span class="ml-4"> {{pathData1.f_hName}}</span>
+                                                        <span class="ml-4"> Shahid</span>
                                                     </p>
                                                     <p class="mb-1 mt-3"><b>Mobile Number</b>
-                                                        <span class="ml-4"> {{pathData1.cellNo}}</span>
+                                                        <span class="ml-4"> 0300123456798</span>
                                                     </p>
                                                 </div>
-                                            </div>
-                                            <hr class="gray">
-                                            <div class="row mx-0">
-                                                <div class="col-md-12">
-                                                    <p class="mb-2"><b>Test</b></p>
+                                                <div class="col-md-12 mt-3">
+                                                    <p class="mb-2 mt-4"><b>Tests</b></p>
                                                 </div>
                                             </div>
-                                            <hr class="gray">
                                             <div class="table-responsive">
                                                 <table class="table center-aligned-table">
                                                     <thead>
                                                         <tr class="text-dark">
                                                             <th>Test Type</th>
-                                                            <th>Test Nme</th>
+                                                            <th>Test Name</th>
                                                             <th>Findings/ Results</th>
                                                             <th>Range</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody *ngIf="!userData.subTests">
+                                                    <tbody>
                                                         <tr>
                                                             <td>Pathology</td>
-                                                            <td>{{userData.testName}}</td>
-                                                            <td>
-                                                                {{userData.result}}
+                                                            <td>Complete Blood Count</td>
+                                                            <td> Findings/ Results
                                                                 <!-- <form>
-                                                                    <input type="text" [(ngModel)]="objPath.result" class="form-control"  id="findins" placeholder="Findings/ Results" name='result'>
+                                                                    <input type="text" class="form-control" id="findins" placeholder="Findings/ Results">
                                                                 </form> -->
                                                             </td>
-                                                            <td> {{userData.refRange}}</td>
+                                                            <td> 2-9mg/24 hr</td>
                                                         </tr>
                                                     </tbody>
-                                                    <!-- for array daata -->
-                                                    <tbody *ngIf="userData.subTests && userData.subTests.length>0">
-                                                        <tr *ngFor="let tes of userData.subTests; let j=index">
-                                                            <td>Pathology</td>
-                                                            <td>{{tes.testName}}</td>
-                                                            <td>
-                                                                {{tes.result}}
-                                                                <!-- <form>
-                                                                    <input type="text" [(ngModel)]="tes[j]" (blur)="saveTests(tes[j],tes)" class="form-control" id="findins" placeholder="Findings/ Results" name='result'>
-                                                                </form> -->
-                                                            </td>
-                                                            <td> {{tes.refRange}}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                    <!-- for array data -->
                                                 </table>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button *ngIf="userData.subTests && userData.subTests.length>0" type="button" class="button"  (click)="modalRef.hide()"><i class="fa fa-check-square"></i> Close</button>
-                                            <!-- <button *ngIf="!userData.subTests" type="button" class="button" (click)="modalRef.hide()" (click)="updateSingleTest(objPath.result,userData)"><i class="fa fa-check-square"></i> Save</button> -->
+                                            <button type="button" class="button" (click)="modalRef.hide()"><i class="fa fa-check-square"></i> Save</button>
                                         </div>
                                     </ng-template>
                                 </div>

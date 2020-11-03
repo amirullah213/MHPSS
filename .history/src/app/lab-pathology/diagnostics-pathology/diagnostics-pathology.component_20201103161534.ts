@@ -210,7 +210,6 @@ saveTests(testdata,full){
         this.loaderUpdate = false;
         this.modalRef.hide();
         this.singleArr=[];
-        this.objPath.result='';
       }
   if (response.status === 1) {
         this.errormsg = response.error;

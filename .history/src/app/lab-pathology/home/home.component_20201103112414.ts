@@ -74,16 +74,16 @@ export class HomeComponent implements OnInit {
       this.userData.status = 0;
       this.getUsersPending(this.userData);
     };
-    // if (tab == 'penPats') {
-    //   console.log('tab==', tab);
-    //   this.tab = tab;
-    //   this.userData.status = 1;
-    //   this.getUsersPending(this.userData)
-    // };
-    if (tab == 'seenPats') {
+    if (tab == 'penPats') {
       console.log('tab==', tab);
       this.tab = tab;
       this.userData.status = 1;
+      this.getUsersPending(this.userData)
+    };
+    if (tab == 'seenPats') {
+      console.log('tab==', tab);
+      this.tab = tab;
+      this.userData.status = 2;
       this.getUsersPending(this.userData)
     };
   }
@@ -133,14 +133,5 @@ gotopathdetail(obpat){
  // this.modalRef.hide();
   //localStorage.setItem('tab',this.tab);
   this.router.navigate(['lab-path/pending'])
-}
-
-//-------------------goto next page
-gotopathdetailSeen(obpat){
-  console.log("patData===",obpat)
-  localStorage.setItem('pathDetails',JSON.stringify(obpat));
- // this.modalRef.hide();
-  //localStorage.setItem('tab',this.tab);
-  this.router.navigate(['lab-path/seen'])
 }
 }

@@ -52,7 +52,7 @@
                                                                     <span>{{pth.firstname}}</span>
                                                                 </td>
                                                                 <td>{{pth.DateCreated| date}}</td>
-                                                                <td><a href="javascript:void(0)" class="text-info" (click)="gotopathdetail(pth)">Detail</a></td>
+                                                                <td><a href="javascript:void(0)" class="text-info" [routerLink]="['/lab-path/pending']">Detail</a></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -81,7 +81,7 @@
                                                                     <span>{{pth.firstname}}</span>
                                                                 </td>
                                                                 <td>{{pth.DateCreated| date}}</td>
-                                                                <td><a href="javascript:void(0)" class="text-info" (click)="gotopathdetailSeen(pth)">Detail</a></td>
+                                                                <td><a href="javascript:void(0)" class="text-info" [routerLink]="['/lab-path/pending']">Detail</a></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>

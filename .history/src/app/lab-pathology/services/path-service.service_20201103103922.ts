@@ -13,12 +13,4 @@ export class PathServiceService {
     let url = APP_CONFIG.apiBaseUrl + 'getpendinglaboratorypatients  ';
     return this.http.post(url, obj);
   } 
-  getpendingTests(obj: any) {
-    let url = APP_CONFIG.apiBaseUrl + 'getpatientpendingtest';
-    return this.http.post(url, obj);
-  } 
-  updateTests(obj: any) {
-    let url = APP_CONFIG.apiBaseUrl + 'updattest ';
-    return this.http.post(url, obj);
-  } 
 }

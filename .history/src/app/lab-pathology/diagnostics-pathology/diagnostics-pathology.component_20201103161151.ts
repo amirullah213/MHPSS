@@ -209,8 +209,7 @@ saveTests(testdata,full){
      // this.openModAdd(cc);
         this.loaderUpdate = false;
         this.modalRef.hide();
-        this.singleArr=[];
-        this.objPath.result='';
+       // this.finalArray=[];
       }
   if (response.status === 1) {
         this.errormsg = response.error;

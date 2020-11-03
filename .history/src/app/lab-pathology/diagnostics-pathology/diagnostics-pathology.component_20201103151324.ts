@@ -30,9 +30,6 @@ export class DiagnosticsPathologyComponent implements OnInit {
   finalArray:any=[];
   loaderUpdate:boolean=false;
   model2:any={};
-  model3:any={};
-  singleobj:any={};
-  singleArr:any=[];
 
 
   currentDate = new Date();
@@ -121,27 +118,34 @@ saveTests(testdata,full){
   this.newArray=full;
   this.newArray.result=testdata;
   if(testdata!=undefined && testdata!='' ){
-
-  var temp = 1;
-  for(let e of this.finalArray) { 
+if(this.finalArray.length!=0){
+  for(let e of this.finalArray) {
+   
   this.k =this.finalArray.indexOf(e);
+  
   if( e.id==this.newArray.id)
  { 
   
-    this.finalArray[this.k]["result"] = testdata;
+   if(this.k>-1){
+    this.finalArray.splice(this.k,1);
+    this.finalArray.push(this.newArray);
     console.log('this.newArray=====',this.finalArray);
-    temp = 0;
     break;
- }
-
-}
-  if (temp == 1)
-  {
-    
-    this.finalArray.push(this.newArray)
-    console.log('this.newArray=====',this.finalArray);
+  
+   }
+  
+//  }
+//  else{
+//   this.finalArray.push(this.newArray)
+//   console.log('this.newArray=====',this.finalArray);
   }
 
+}
+
+}else{
+  this.finalArray.push(this.newArray)
+  console.log('this.newArray=====',this.finalArray);
+}
 }else{alert('please fill the field')}
 }
 
@@ -165,9 +169,7 @@ saveTests(testdata,full){
       //console.log('this.PathResponseArray==',this.PathResponseArray);
      // this.openModAdd(cc);
         this.loaderUpdate = false;
-        this.modalRef.hide();
-        this.finalArray=[];
-        alert('Updated Succesfully')
+        
       }
   if (response.status === 1) {
         this.errormsg = response.error;
@@ -182,47 +184,5 @@ saveTests(testdata,full){
 
 }
 //--------------------------------
- //---------------------update getests---------------------
- updateSingleTest(res,modData) {
-   console.log('modData==',modData);
 
-   console.log('res==',res);
-   this.singleobj=modData;
-   this.singleobj.result=res;
-   this.singleArr.push(this.singleobj);
-  this.loaderUpdate= true;
-  this.model3.hospitalID=this.hospitalID;
-  this.model3.tests=this.singleArr;
-   
-  console.log('model3 ==', this.model3);
-  this.pathService.updateTests(this.model3).subscribe(
-    (response: any) => {
-      if (response.status === 0) {
-        console.log(' response====',response);
-        // response.medicines.forEach(v => {
-        //   this.medStr = v.itemName + ", "+ v.unit+ " "+ v.type;                                      
-        //   this.gettreatmetData.push({"itemName":this.medStr,v});
-        //   // console.log('gettreatmetData==',tfhis.gettreatmetData)
-        // });
-       // this.PathResponseArray=response.data;
-      //console.log('this.PathResponseArray==',this.PathResponseArray);
-     // this.openModAdd(cc);
-        this.loaderUpdate = false;
-        this.modalRef.hide();
-        this.singleArr=[];
-        this.objPath.result='';
-      }
-  if (response.status === 1) {
-        this.errormsg = response.error;
-        this.loaderUpdate = false;
-        alert('Problem in service! please Try again')
-        console.log('error=', this.errormsg);
-        
-      }
-    },
-    (error) => {}
-  );
-
-}
-//--------------------------------
 }

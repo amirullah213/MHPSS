@@ -74,16 +74,16 @@ export class HomeComponent implements OnInit {
       this.userData.status = 0;
       this.getUsersPending(this.userData);
     };
-    // if (tab == 'penPats') {
-    //   console.log('tab==', tab);
-    //   this.tab = tab;
-    //   this.userData.status = 1;
-    //   this.getUsersPending(this.userData)
-    // };
-    if (tab == 'seenPats') {
+    if (tab == 'penPats') {
       console.log('tab==', tab);
       this.tab = tab;
       this.userData.status = 1;
+      this.getUsersPending(this.userData)
+    };
+    if (tab == 'seenPats') {
+      console.log('tab==', tab);
+      this.tab = tab;
+      this.userData.status = 2;
       this.getUsersPending(this.userData)
     };
   }
@@ -94,7 +94,7 @@ getUsersPending(cc) {
   this.model.hospitalID=this.hospitalID;
   this.model.testType=1;
   this.model.userType=this.userType;
-  this.model.status=cc.status;
+  this.model.status=this.userData.status;
  
   console.log('model ==', this.model);
   this.pathService.getPatsListPending(this.model).subscribe(
@@ -133,14 +133,5 @@ gotopathdetail(obpat){
  // this.modalRef.hide();
   //localStorage.setItem('tab',this.tab);
   this.router.navigate(['lab-path/pending'])
-}
-
-//-------------------goto next page
-gotopathdetailSeen(obpat){
-  console.log("patData===",obpat)
-  localStorage.setItem('pathDetails',JSON.stringify(obpat));
- // this.modalRef.hide();
-  //localStorage.setItem('tab',this.tab);
-  this.router.navigate(['lab-path/seen'])
 }
 }

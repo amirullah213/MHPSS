@@ -31,8 +31,6 @@ export class DiagnosticsPathologyComponent implements OnInit {
   loaderUpdate:boolean=false;
   model2:any={};
   model3:any={};
-  singleobj:any={};
-  singleArr:any=[];
 
 
   currentDate = new Date();
@@ -183,19 +181,13 @@ saveTests(testdata,full){
 }
 //--------------------------------
  //---------------------update getests---------------------
- updateSingleTest(res,modData) {
-   console.log('modData==',modData);
-
-   console.log('res==',res);
-   this.singleobj=modData;
-   this.singleobj.result=res;
-   this.singleArr.push(this.singleobj);
+ updateSingleTest(modData) {
   this.loaderUpdate= true;
   this.model3.hospitalID=this.hospitalID;
-  this.model3.tests=this.singleArr;
+  this.model3.tests=modData;
    
-  console.log('model3 ==', this.model3);
-  this.pathService.updateTests(this.model3).subscribe(
+  console.log('model2 ==', this.model2);
+  this.pathService.updateTests(this.model2).subscribe(
     (response: any) => {
       if (response.status === 0) {
         console.log(' response====',response);
@@ -209,8 +201,7 @@ saveTests(testdata,full){
      // this.openModAdd(cc);
         this.loaderUpdate = false;
         this.modalRef.hide();
-        this.singleArr=[];
-        this.objPath.result='';
+       // this.finalArray=[];
       }
   if (response.status === 1) {
         this.errormsg = response.error;
