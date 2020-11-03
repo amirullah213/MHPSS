@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit {
     };
   }
   
-//---------------------get all lab patients---------------------
+//---------------------search by cnic---------------------
 getUsers(cc) {
   this.userLoader= true;
   this.model.hospitalID=this.hospitalID;

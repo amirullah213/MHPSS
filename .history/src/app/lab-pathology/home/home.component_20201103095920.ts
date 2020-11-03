@@ -28,9 +28,6 @@ export class HomeComponent implements OnInit {
   userList: any = [];
   hospitalID:any;
   doctorID:any;
-  model:any={};
-  PathResponseArray:any=[];
-  errormsg:any
 
   constructor(
     private modalService: BsModalService,
@@ -82,40 +79,10 @@ export class HomeComponent implements OnInit {
       this.getUsers(this.userData)
     };
   }
-  
-//---------------------get all lab patients---------------------
-getUsers(cc) {
-  this.userLoader= true;
-  this.model.hospitalID=this.hospitalID;
-  //this.model.cnic=this.searchForm.value.cnic;
-  // this.model.token=this.searchForm.value.token;
-  console.log('model ==', this.model);
-  this.pathService.getPatsList(this.model).subscribe(
-    (response: any) => {
-      if (response.status === 0) {
-        console.log(' response====',response);
-        // response.medicines.forEach(v => {
-        //   this.medStr = v.itemName + ", "+ v.unit+ " "+ v.type;                                      
-        //   this.gettreatmetData.push({"itemName":this.medStr,v});
-        //   // console.log('gettreatmetData==',this.gettreatmetData)
-        // });
-        this.PathResponseArray=response.data;
-      console.log('this.PathResponseArray==',this.PathResponseArray);
-     // this.openModAdd(cc);
-        this.userLoader = false;
-        
-      }
-  if (response.status === 1) {
-        this.errormsg = response.error;
-        this.userLoader = false;
-        alert('Problem in service! please Try again')
-        console.log('error=', this.errormsg);
-        
-      }
-    },
-    (error) => {}
-  );
+  getUsers(obj: any) {
+    this.userLoader = true;
 
-}
-//--------------------------------
+    
+  }
+
 }
