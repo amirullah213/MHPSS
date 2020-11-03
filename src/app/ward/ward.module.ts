@@ -7,6 +7,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { DataTablesModule } from 'angular-datatables';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import {NgxPrintModule} from 'ngx-print';
 
 
 import { WardRoutingModule } from './ward-routing.module';
@@ -27,7 +28,7 @@ import {DischargePatientMedicineComponent} from './discharge-patient-medicine/di
   declarations: [WardComponent, HomeComponent, WardSideBarComponent, PendingPatientsComponent, DischargedPatientsComponent, AdmittedPatientsComponent, WardListComponent, IsdirectPipe,DischargePatientMedicineComponent],
   imports: [
     CommonModule,
-    WardRoutingModule, CommonModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), FormsModule, BsDatepickerModule.forRoot(), CollapseModule.forRoot(),
+    WardRoutingModule, CommonModule, ReactiveFormsModule, NgxPrintModule, SharedModule, DataTablesModule, ModalModule.forRoot(), FormsModule, BsDatepickerModule.forRoot(), CollapseModule.forRoot(),
     TypeaheadModule.forRoot(),
   ]
 })

@@ -8,6 +8,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { DataTablesModule } from 'angular-datatables';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule } from '@angular/forms';
+import {NgxPrintModule} from 'ngx-print';
 
 import { EpiRoutingModule } from './epi-routing.module';
 import { EpiComponent } from './epi/epi.component';
@@ -20,7 +21,7 @@ import { EpiSideBarComponent } from './epi-side-bar/epi-side-bar.component';
 @NgModule({
   declarations: [EpiComponent, HomeComponent, ChildVaccinationComponent, TTVaccinationComponent, EpiSideBarComponent],
   imports: [
-    EpiRoutingModule, CommonModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), FormsModule, BsDatepickerModule.forRoot(), CollapseModule.forRoot(),
+    EpiRoutingModule, CommonModule, NgxPrintModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), FormsModule, BsDatepickerModule.forRoot(), CollapseModule.forRoot(),
   ]
 })
 export class EpiModule { }

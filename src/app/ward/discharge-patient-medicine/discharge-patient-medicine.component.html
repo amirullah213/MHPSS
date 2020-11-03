@@ -16,7 +16,7 @@
                 <div class="card card-statistics h-100">
                     <div class="card-body">
                         <h5 class="card-title mb-0">Treatment</h5>
-                        <form novalidate [formGroup]="treatmentForm" >
+                        <form novalidate [formGroup]="treatmentForm">
                             <hr class="gray">
                             <div class="form-group row mx-0">
                                 <div class="col-md-12">
@@ -26,19 +26,19 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Medicine Name</label>
-                                        <input type="text" formControlName="med_name"  [typeahead]="gettreatmetData" typeaheadOptionField="itemName" (typeaheadOnSelect)="onSelectMedics($event)"  name="medicName" class="form-control" id="formGroupExampleInput" placeholder="Enter Medicine Name">
+                                        <input type="text" formControlName="med_name" [typeahead]="gettreatmetData" typeaheadOptionField="itemName" (typeaheadOnSelect)="onSelectMedics($event)" name="medicName" class="form-control" id="formGroupExampleInput" placeholder="Enter Medicine Name">
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label>Unit</label>
-                                        <input type="text" formControlName="med_unit" class="form-control" id="formGroupExampleInput" placeholder="500 ml">
+                                        <input type="text" formControlName="med_unit" class="form-control" id="formGroupExampleInput" placeholder="Unit">
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label>Type</label>
-                                        <input type="text" formControlName="med_type" class="form-control" id="formGroupExampleInput" placeholder="Enter Medicine Type">
+                                        <input type="text" formControlName="med_type" class="form-control" id="formGroupExampleInput" placeholder="Medicine Type">
                                     </div>
                                 </div>
                                 <!-- <div class="col-md-3">
@@ -83,25 +83,24 @@
                                         </span>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Remarks/Dosing</label>
                                         <input type="text" formControlName="med_remark" class="form-control" id="formGroupExampleInput" placeholder="Remarks/Dosing">
                                     </div>
                                 </div>
-                                <div class="col-md-3 mt-4">
-                                    <div class="form-group text-center">
-                                        <button type="button" (click)="addmoreMedics()"  class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus mr-2"></i>Add More </button>
+                                <div class="col-md-2 mt-4">
+                                    <div class="form-group mt-2 text-center">
+                                        <button type="button" (click)="addmoreMedics()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus mr-2"></i>Add More </button>
                                     </div>
                                 </div>
-                                <div class="col-md-12"  *ngIf="medicShow">
+                                <div class="col-md-12" *ngIf="medicShow">
                                     <h6>New Treatment</h6>
                                     <div class="table-responsive cutomtable">
                                         <table class="table center-aligned-table">
                                             <thead>
                                                 <tr class="text-dark">
                                                     <th>Medicine</th>
-                                                    
                                                     <th>Prescribed Quantity</th>
                                                     <th>Dose</th>
                                                     <th>Prandial</th>
@@ -111,18 +110,15 @@
                                             </thead>
                                             <tbody>
                                                 <tr class="" *ngFor="let addArr of medicinesFinal;let m=index;">
-                                                    <td>{{m+1}})  {{addArr.medicine}}</td>
-                                                   
-                                                   
+                                                    <td>{{m+1}}) {{addArr.medicine}}</td>
                                                     <td>{{addArr.prescribedQuantity}}</td>
                                                     <td>
-                                                         <span *ngIf="addArr.dose=='SOS'">When required</span>
-                                                         <span *ngIf="addArr.dose=='OD'">Daily</span>
-                                                         <span *ngIf="addArr.dose=='STAT'">Take Immediately</span>
-                                                         <span *ngIf="addArr.dose=='BiD'">1+0+1</span>
-                                                         <span *ngIf="addArr.dose=='TDS'">1+1+1</span>
-                                                         <span *ngIf="addArr.dose=='Qid'">1+1+1+1</span>
-
+                                                        <span *ngIf="addArr.dose=='SOS'">When required</span>
+                                                        <span *ngIf="addArr.dose=='OD'">Daily</span>
+                                                        <span *ngIf="addArr.dose=='STAT'">Take Immediately</span>
+                                                        <span *ngIf="addArr.dose=='BiD'">1+0+1</span>
+                                                        <span *ngIf="addArr.dose=='TDS'">1+1+1</span>
+                                                        <span *ngIf="addArr.dose=='Qid'">1+1+1+1</span>
                                                     </td>
                                                     <td>{{addArr.prandial}}</td>
                                                     <td>{{addArr.remarks}}</td>
@@ -136,22 +132,27 @@
                                         </table>
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-md-12 mt-4">
                                     <div class="form-group text-center">
-                                        
-                                        <button type="button" *ngIf="loaderMedic"   class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><span class="spinner-border " role="status" aria-hidden="true"></span>Add Medicines </button>
-                                        <button type="button" *ngIf="!loaderMedic" (click)="addPresMedicines()"  class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus mr-2"></i>Add Medicines </button>
+                                        <button type="button" *ngIf="loaderMedic" class="button">
+                                            <span class="spinner-border mr-2" role="status" aria-hidden="true"></span>Save Medicines 
+                                        </button>
+                                        <button type="button" *ngIf="!loaderMedic" (click)="addPresMedicines()" class="button">
+                                            <i class="fa fa-check-square mr-2"></i>Save Medicines 
+                                        </button>
                                     </div>
                                     <div class="form-group text-center">
-                                        <button type="button" *ngIf="loaderUpdate && showDischargeButton"  class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><span class="spinner-border " role="status" aria-hidden="true"></span>Discharge </button>
-                                        <button type="button"  *ngIf="!loaderUpdate && showDischargeButton" (click)="updateIndoor()"  class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus mr-2"></i>Discharge </button>
+                                        <button type="button" *ngIf="loaderUpdate && showDischargeButton" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
+                                            <span class="spinner-border mr-2 " role="status" aria-hidden="true"></span>Discharge 
+                                        </button>
+                                        <button type="button" *ngIf="!loaderUpdate && showDischargeButton" (click)="updateIndoor()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
+                                            <i class="fa fa-wheelchair mr-2"></i>Discharge 
+                                        </button>
                                     </div>
                                 </div>
-                                
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
