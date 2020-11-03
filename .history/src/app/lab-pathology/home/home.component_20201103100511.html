@@ -45,14 +45,14 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr *ngFor="let pth of PathResponseArray; let i=index">
-                                                                <td>{{i+1}}</td>
+                                                            <tr>
+                                                                <td>1</td>
                                                                 <td>
                                                                     <!-- <img class="mr-3" src="../../../assets/images/profile-avatar.png"> -->
-                                                                    <span>{{pth.firstname}}</span>
+                                                                    <span>Zeeshan Shahid</span>
                                                                 </td>
-                                                                <td>{{pth.DateCreated| date}}</td>
-                                                                <td><a href="javascript:void(0)" class="text-info" (click)="gotopathdetail(pth)">Detail</a></td>
+                                                                <td>2020-10-02</td>
+                                                                <td><a href="javascript:void(0)" class="text-info" [routerLink]="['/lab-path/pending']">Detail</a></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -74,14 +74,14 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr *ngFor="let pth of PathResponseArray; let i=index">
-                                                                <td>{{i+1}}</td>
+                                                            <tr>
+                                                                <td>1</td>
                                                                 <td>
-                                                                    <!-- <img class="mr-3" src="../../../assets/images/profile-avatar.png"> -->
-                                                                    <span>{{pth.firstname}}</span>
+                                                                    <img class="mr-3" src="../../../assets/images/profile-avatar.png">
+                                                                    <span>Zeeshan Shahid</span>
                                                                 </td>
-                                                                <td>{{pth.DateCreated| date}}</td>
-                                                                <td><a href="javascript:void(0)" class="text-info" (click)="gotopathdetailSeen(pth)">Detail</a></td>
+                                                                <td>2020-10-02</td>
+                                                                <td><a href="javascript:void(0)" class="text-info" [routerLink]="['/lab-path/seen']">Detail</a></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>

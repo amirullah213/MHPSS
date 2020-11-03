@@ -6,7 +6,7 @@
                     <div class="col-sm-12 pl-0">
                         <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
                             <li class="breadcrumb-item" href="javascript:void(0)" [routerLink]="['/lab-path/home']"><a href="javascript:void(0)" class="gray-color"><i class="ti-home mr-2"></i>Home</a></li>
-                            <li class="breadcrumb-item active gray-04-color">Seen Patients</li>
+                            <li class="breadcrumb-item active gray-04-color">Pending Patients</li>
                         </ol>
                     </div>
                 </div>
@@ -97,10 +97,9 @@
                                                             <td>Pathology</td>
                                                             <td>{{userData.testName}}</td>
                                                             <td>
-                                                                {{userData.result}}
-                                                                <!-- <form>
-                                                                    <input type="text" [(ngModel)]="objPath.result" class="form-control"  id="findins" placeholder="Findings/ Results" name='result'>
-                                                                </form> -->
+                                                                <form>
+                                                                    <input type="text" [(ngModel)]="objPath.result" class="form-control" id="findins" placeholder="Findings/ Results" name='result'>
+                                                                </form>
                                                             </td>
                                                             <td> {{userData.refRange}}</td>
                                                         </tr>
@@ -111,10 +110,9 @@
                                                             <td>Pathology</td>
                                                             <td>{{tes.testName}}</td>
                                                             <td>
-                                                                {{tes.result}}
-                                                                <!-- <form>
-                                                                    <input type="text" [(ngModel)]="tes[j]" (blur)="saveTests(tes[j],tes)" class="form-control" id="findins" placeholder="Findings/ Results" name='result'>
-                                                                </form> -->
+                                                                <form>
+                                                                    <input type="text" [(ngModel)]="objPath.result" class="form-control" id="findins" placeholder="Findings/ Results" name='result'>
+                                                                </form>
                                                             </td>
                                                             <td> {{tes.refRange}}</td>
                                                         </tr>
@@ -124,8 +122,7 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button *ngIf="userData.subTests && userData.subTests.length>0" type="button" class="button"  (click)="modalRef.hide()"><i class="fa fa-check-square"></i> Close</button>
-                                            <!-- <button *ngIf="!userData.subTests" type="button" class="button" (click)="modalRef.hide()" (click)="updateSingleTest(objPath.result,userData)"><i class="fa fa-check-square"></i> Save</button> -->
+                                            <button type="button" class="button" (click)="modalRef.hide()"><i class="fa fa-check-square"></i> Save</button>
                                         </div>
                                     </ng-template>
                                 </div>

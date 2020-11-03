@@ -134,13 +134,4 @@ gotopathdetail(obpat){
   //localStorage.setItem('tab',this.tab);
   this.router.navigate(['lab-path/pending'])
 }
-
-//-------------------goto next page
-gotopathdetailSeen(obpat){
-  console.log("patData===",obpat)
-  localStorage.setItem('pathDetails',JSON.stringify(obpat));
- // this.modalRef.hide();
-  //localStorage.setItem('tab',this.tab);
-  this.router.navigate(['lab-path/seen'])
-}
 }

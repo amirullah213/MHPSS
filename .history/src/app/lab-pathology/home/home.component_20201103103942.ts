@@ -30,8 +30,7 @@ export class HomeComponent implements OnInit {
   doctorID:any;
   model:any={};
   PathResponseArray:any=[];
-  errormsg:any;
-  userType:any
+  errormsg:any
 
   constructor(
     private modalService: BsModalService,
@@ -44,10 +43,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.hospitalID=localStorage.getItem('hospitalID');
     this.doctorID=localStorage.getItem('docId');
-    this.userType=localStorage.getItem('userType');
-    this.userData.status = 0;
-   this.getUsersPending( this.userData);
-
   }
 
   openModalActivate(userActivate: TemplateRef<any>, data) {
@@ -72,30 +67,28 @@ export class HomeComponent implements OnInit {
       console.log('tab==', tab);
       this.tab = tab;
       this.userData.status = 0;
-      this.getUsersPending(this.userData);
+      this.getUsers(this.userData)
     };
-    // if (tab == 'penPats') {
-    //   console.log('tab==', tab);
-    //   this.tab = tab;
-    //   this.userData.status = 1;
-    //   this.getUsersPending(this.userData)
-    // };
-    if (tab == 'seenPats') {
+    if (tab == 'penPats') {
       console.log('tab==', tab);
       this.tab = tab;
       this.userData.status = 1;
-      this.getUsersPending(this.userData)
+      this.getUsers(this.userData)
+    };
+    if (tab == 'seenPats') {
+      console.log('tab==', tab);
+      this.tab = tab;
+      this.userData.status = 2;
+      this.getUsers(this.userData)
     };
   }
   
 //---------------------get all lab patients---------------------
-getUsersPending(cc) {
+getUsers(cc) {
   this.userLoader= true;
   this.model.hospitalID=this.hospitalID;
-  this.model.testType=1;
-  this.model.userType=this.userType;
-  this.model.status=cc.status;
- 
+  //this.model.cnic=this.searchForm.value.cnic;
+  // this.model.token=this.searchForm.value.token;
   console.log('model ==', this.model);
   this.pathService.getPatsListPending(this.model).subscribe(
     (response: any) => {
@@ -125,22 +118,4 @@ getUsersPending(cc) {
 
 }
 //--------------------------------
-
-//-------------------goto next page
-gotopathdetail(obpat){
-  console.log("patData===",obpat)
-  localStorage.setItem('pathDetails',JSON.stringify(obpat));
- // this.modalRef.hide();
-  //localStorage.setItem('tab',this.tab);
-  this.router.navigate(['lab-path/pending'])
-}
-
-//-------------------goto next page
-gotopathdetailSeen(obpat){
-  console.log("patData===",obpat)
-  localStorage.setItem('pathDetails',JSON.stringify(obpat));
- // this.modalRef.hide();
-  //localStorage.setItem('tab',this.tab);
-  this.router.navigate(['lab-path/seen'])
-}
 }
