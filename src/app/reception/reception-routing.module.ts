@@ -11,12 +11,12 @@ const routes: Routes = [
     component: ReceptionComponent,
     children: [
        
-        // { path: 'updatepassword', loadChildren: () => import('./features/update_pass/update_password.module').then(m => m.UpdatePasswordModule) },
-        { path: 'home', component: HomeComponent },
-        { path: 'print-token', component: NewRegisterComponent },
+      // { path: 'updatepassword', loadChildren: () => import('./features/update_pass/update_password.module').then(m => m.UpdatePasswordModule) },
+      { path: 'home', component: HomeComponent },
+      { path: 'print-token', component: NewRegisterComponent },
       { path: 'old-regis', component: OldRegistrationComponent },
       { path: 'patients', component: PatientsComponent },
-        { path : '', redirectTo : 'home', pathMatch : 'full' }
+      { path : '', redirectTo : 'home', pathMatch : 'full' }
         
     ]
 }

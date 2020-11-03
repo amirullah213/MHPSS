@@ -40,8 +40,8 @@
                                         <p class="mb-1 mt-3"><b>Date : </b>
                                             <span class="ml-4"> {{tokenData.patient.DateCreated | date}}</span>
                                         </p>
-                                        <div class="form-group mt-5">
-                                            <button class="button">
+                                        <div class="form-group mt-5 d-print-none">
+                                            <button class="button" (click)="printPage()">
                                                 <i class="fa fa-print"></i> Print Token
                                             </button>
                                         </div>

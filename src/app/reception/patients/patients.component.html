@@ -17,6 +17,11 @@
                         <div class="card-body">
                             <form novalidate>
                                 <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group float-right">
+                                            <input type="text" class="form-control" name="search" placeholder="Search..." [(ngModel)]="filterTerm">
+                                        </div>
+                                    </div>
                                     <div class="table-responsive">
                                         <table class="table center-aligned-table">
                                             <thead>
@@ -27,13 +32,18 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr class="text-center" *ngFor="let pats of docResponseArray; let i=index">
+                                                <tr class="text-center" *ngFor="let pats of docResponseArray | filter:filterTerm let i=index">
                                                     <td>{{i+1}}</td>
                                                     <td>{{pats.dLName}}</td>
                                                     <td>{{pats.total}}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
+                                        <div *ngIf="loaderDoc" class="text-center">
+                                            <div class="spinner-border theme-color" role="status">
+                                                <span class="sr-only"></span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </form>

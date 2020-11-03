@@ -13,7 +13,7 @@ import { ReceptServiceService } from '../services/recept-service.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  
+
   isCollapsed = true;
 
   // currentDate = new Date();
@@ -29,317 +29,309 @@ export class HomeComponent implements OnInit {
 
   model: any = {};
   modalRef: BsModalRef;
-  hospitalID:any;
-  doctorID:any;
+  hospitalID: any;
+  doctorID: any;
   regisForm: FormGroup;
   searchForm: FormGroup;
   submitted = false;
-  userArray:any =[];
-  loaderCNIC:boolean=false;
-  errormsg:any;
-  nicResponseArray:any=[];
-  tokenResponseObj:any={};
+  userArray: any = [];
+  loaderCNIC: boolean = false;
+  errormsg: any;
+  nicResponseArray: any = [];
+  tokenResponseObj: any = {};
   model1: any = {};
-  loaderToken:boolean=false;
-  model2:any={};
-  loaderNew:boolean=false;
-  loaderDists:boolean=false;
-  model3:any={};
-  distResponseArray:any=[];
-  model4:any={};
-  loaderTehsil:boolean=false;
-  tehsilsResponseArray:any=[];
-  loaderUc:boolean=false;
-  model5:any={};
-  ucResponseArray:any=[];
-  ucID:any;
-  newResponsearr:any=[];
+  loaderToken: boolean = false;
+  model2: any = {};
+  loaderNew: boolean = false;
+  loaderDists: boolean = false;
+  model3: any = {};
+  distResponseArray: any = [];
+  model4: any = {};
+  loaderTehsil: boolean = false;
+  tehsilsResponseArray: any = [];
+  loaderUc: boolean = false;
+  model5: any = {};
+  ucResponseArray: any = [];
+  ucID: any;
+  newResponsearr: any = [];
 
   constructor(
-     private modalService: BsModalService,
-     private fb: FormBuilder,
-     private receptService: ReceptServiceService,
-     private router: Router,
-      ) 
-  {
-    
+    private modalService: BsModalService,
+    private fb: FormBuilder,
+    private receptService: ReceptServiceService,
+    private router: Router,
+  ) {
+
   }
 
   ngOnInit(): void {
-    this.hospitalID=localStorage.getItem('hospitalID');
-    this.doctorID=localStorage.getItem('docId');
+    this.hospitalID = localStorage.getItem('hospitalID');
+    this.doctorID = localStorage.getItem('docId');
 
     this.searchForm = this.fb.group({
       cnic: ['', Validators.required],
       token: ['', Validators.required],
-   },
-  
-   );
-   this.getAllDists();
-   this.regisForm = this.fb.group({
-    firstname: ['', Validators.required],
-    f_hName: ['', Validators.required],
-    cellNo: ['', Validators.required],
-    gender: ['', Validators.required],
-    cnic: ['', Validators.required],
-    dob: ['', Validators.required],
-    address: ['', Validators.required],
-    village: ['', Validators.required],
-    district: ['', Validators.required],
-    tehsil_city: ['', Validators.required],
-    uc: ['', Validators.required],
-    year: ['', Validators.required],
-    months: ['', Validators.required],
-   
- },
+    },
 
- );
-   }
-  
+    );
+    this.getAllDists();
+    this.regisForm = this.fb.group(
+      {
+        firstname: ['', Validators.required],
+        f_hName: ['', Validators.required],
+        cellNo: ['', Validators.required],
+        gender: ['', Validators.required],
+        cnic: ['', Validators.required],
+        dob: ['', Validators.required],
+        address: ['', Validators.required],
+        village: ['', Validators.required],
+        district: ['', Validators.required],
+        tehsil_city: ['', Validators.required],
+        uc: ['', Validators.required],
+        year: ['', Validators.required],
+        months: ['', Validators.required],
+      },
+    );
+  }
+
   openModAdd(captureuser: TemplateRef<any>) {
     this.modalRef = this.modalService.show(captureuser, Object.assign({}, { class: 'gray modal-lg' }));
 
   }
 
-//---------------------search by cnic---------------------
-serchBycnic(cc) {
-  this.loaderCNIC= true;
-  this.model.hospitalID=this.hospitalID;
-  this.model.cnic=this.searchForm.value.cnic;
-  // this.model.token=this.searchForm.value.token;
-  console.log('model ==', this.model);
-  this.receptService.searchBycnic(this.model).subscribe(
-    (response: any) => {
-      if (response.status === 0) {
-        console.log(' response====',response);
-        // response.medicines.forEach(v => {
-        //   this.medStr = v.itemName + ", "+ v.unit+ " "+ v.type;                                      
-        //   this.gettreatmetData.push({"itemName":this.medStr,v});
-        //   // console.log('gettreatmetData==',this.gettreatmetData)
-        // });
-        this.nicResponseArray=response.data;
-      console.log('this.cnicresponseArray==',this.nicResponseArray);
-      this.openModAdd(cc);
-        this.loaderCNIC = false;
-        
-      }
-  if (response.status === 1) {
-        this.errormsg = response.error;
-        this.loaderCNIC = false;
-        alert('Problem in service! please Try again')
-        console.log('error=', this.errormsg);
-        
-      }
-    },
-    (error) => {}
-  );
+  //---------------------search by cnic---------------------
+  serchBycnic(cc) {
+    this.loaderCNIC = true;
+    this.model.hospitalID = this.hospitalID;
+    this.model.cnic = this.searchForm.value.cnic;
+    // this.model.token=this.searchForm.value.token;
+    console.log('model ==', this.model);
+    this.receptService.searchBycnic(this.model).subscribe(
+      (response: any) => {
+        if (response.status === 0) {
+          console.log(' response====', response);
+          // response.medicines.forEach(v => {
+          //   this.medStr = v.itemName + ", "+ v.unit+ " "+ v.type;                                      
+          //   this.gettreatmetData.push({"itemName":this.medStr,v});
+          //   // console.log('gettreatmetData==',this.gettreatmetData)
+          // });
+          this.nicResponseArray = response.data;
+          console.log('this.cnicresponseArray==', this.nicResponseArray);
+          this.openModAdd(cc);
+          this.loaderCNIC = false;
 
-}
-//--------------------------------
+        }
+        if (response.status === 1) {
+          this.errormsg = response.error;
+          this.loaderCNIC = false;
+          alert('Problem in service! please Try again')
+          console.log('error=', this.errormsg);
 
-//---------------------search by token---------------------
-serchByToken(cc) {
-  this.loaderToken= true;
-  this.model1.hospitalID=this.hospitalID;
-  this.model1.tokenID=this.searchForm.value.token;
-  // this.model.token=this.searchForm.value.token;
-  console.log('model1 ==', this.model1);
-  this.receptService.searchByTokenPMS(this.model1).subscribe(
-    (response: any) => {
-      if (response.status === 0) {
-        console.log(' response2====',response);
-        
-        this.tokenResponseObj=response.data;
-      console.log('this.tokenResponseArray==',this.tokenResponseObj);
-      this.openModAdd(cc);
-        this.loaderToken = false;
-        
-      }
-  if (response.status === 1) {
-        this.errormsg = response.error;
-        this.loaderToken = false;
-        alert('Problem in service! please Try again')
-        console.log('error=', this.errormsg);
-        
-      }
-    },
-    (error) => {}
-  );
-
-}
-
-//--------------------------------
-
-//---------------------search by token---------------------
-registerNewPat(formval) {
- 
-  this.loaderNew= true;
-  this.model2.hospitalID=this.hospitalID;
-  this.model2.firstname =formval.firstname;
-  this.model2.lastname  ='';
-  this.model2.dob  =formval.dob;
-  this.model2.f_hName  =formval.f_hName;
-  this.model2.cellNo  =formval.cellNo;
-  this.model2.gender  =formval.gender;
-  this.model2.cnic  =formval.cnic;
-  this.model2.village  =formval.village;
-  this.model2.uc =formval.uc;
-  this.model2.tehsil_city  =formval.tehsil_city.name;
-  this.model2.district  =formval.district.name; 
-  this.model2.address  =formval.address;
-  // this.model2.age  =this.searchForm.value.token;
- 
- 
-  console.log('model2 ==', this.model2);
-  this.receptService.insertpatientpms(this.model2).subscribe(
-    (response: any) => {
-      if (response.status === 0) {
-        console.log(' response2====',response);
-        
-       this.newResponsearr=response.patientID;
-       this.model2.patientID=this.newResponsearr;
-       console.log("idpat====",this.newResponsearr)
-      // console.log('this.tokenResponseArray==',this.tokenResponseObj);
-      //this.openModAdd(cc);
-        this.loaderNew = false;
-        this.regisForm.reset();
-        alert("patient added successfuly");
-        localStorage.setItem('paDetails',JSON.stringify(this.model2));
-        this.router.navigate(['reception/old-regis'])
-
-        
-      }
-  if (response.status === 1) {
-        this.errormsg = response.error;
-        this.loaderNew = false;
-        alert('Problem in service! please Try again')
-        console.log('error=', this.errormsg);
-        
-      }
-    },
-    (error) => {}
-  );
-
-}
-//-------------------goto next page
-gotopatdetailsDetails(obpat){
-  console.log("patData===",obpat,)
-  localStorage.setItem('paDetails',JSON.stringify(obpat));
-  this.modalRef.hide();
-  //localStorage.setItem('tab',this.tab);
-  this.router.navigate(['reception/old-regis'])
-}
-//-------------------goto next page
-
-//---------------get dists-------
-//---------------------search by cnic---------------------
-getAllDists() {
-  this.loaderDists= true;
-  this.model3.hospitalID=this.hospitalID;
-  
-  console.log('model3 ==', this.model3);
-  this.receptService.getDists(this.model3).subscribe(
-    (response: any) => {
-      if (response.status === 0) {
-       
-         this.distResponseArray=response.data;
-         console.log('this.distResponseArray==',this.distResponseArray);
-         this.loaderDists = false;
-        
-      }
-  if (response.status === 1) {
-        this.errormsg = response.error;
-        this.loaderDists = false;
-        alert('Problem in service! please Try again')
-        console.log('error=', this.errormsg);
-        
-      }
-    },
-    (error) => {}
-  );
-
-}
-//--------get dists-----------
-//---------------------search by cnic---------------------
-getDistTehsils(did) {
-  this.loaderTehsil= true;
-  this.model4.hospitalID=this.hospitalID;
-  this.model4.districtID=did;
-  
-  console.log('model4 ==', this.model4);
-  this.receptService.gettehsil(this.model4).subscribe(
-    (response: any) => {
-      if (response.status === 0) {
-       
-         this.tehsilsResponseArray=response.data;
-         console.log('this.tehsilsResponseArray==',this.tehsilsResponseArray);
-         this.loaderTehsil = false;
-        
-      }
-  if (response.status === 1) {
-        this.errormsg = response.error;
-        this.loaderTehsil = false;
-        alert('Problem in service! please Try again')
-        console.log('error=', this.errormsg);
-        
-      }
-    },
-    (error) => {}
-  );
-
-}
-//--------get dists-----------
-
-//---------------------search by cnic---------------------
-getUCs(did) {
-  this.loaderUc= true;
-  this.model5.hospitalID=this.hospitalID;
-  this.model5.tehsilID=did;
-  
-  console.log('model5 ==', this.model5);
-  this.receptService.getUC(this.model5).subscribe(
-    (response: any) => {
-      if (response.status === 0) {
-       
-         this.ucResponseArray=response.data;
-         console.log('this.ucResponseArray==',this.ucResponseArray);
-         this.loaderUc = false;
-        
-      }
-  if (response.status === 1) {
-        this.errormsg = response.error;
-        this.loaderUc = false;
-        alert('Problem in service! please Try again')
-        console.log('error=', this.errormsg);
-        
-      }
-    },
-    (error) => {}
-  );
-
-}
-//--------get dists-----------
-//----reset form
-resetForm(){
-  this.regisForm.reset();
-}
-//reset form
-
-onselectDist(distId){
- 
-console.log("dist data===",distId);
-this.getDistTehsils(distId.id);
-}
-
-onselectTehsil(tehId){
-  console.log("tehsil data===",tehId);
-  this.getUCs(tehId.id);
+        }
+      },
+      (error) => { }
+    );
   }
-  onselectUC(ucId){
-    console.log("uc data===",ucId);
-    this.ucID=ucId;
-   // this.getUCs(ucId);
-    }
+  //--------------------------------
   
-}
+  //---------------------search by token---------------------
+  serchByToken(cc) {
+    this.loaderToken = true;
+    this.model1.hospitalID = this.hospitalID;
+    this.model1.tokenID = this.searchForm.value.token;
+    // this.model.token=this.searchForm.value.token;
+    console.log('model1 ==', this.model1);
+    this.receptService.searchByTokenPMS(this.model1).subscribe(
+      (response: any) => {
+        if (response.status === 0) {
+          console.log(' response2====', response);
+          this.tokenResponseObj = response.data;
+          console.log('this.tokenResponseArray==', this.tokenResponseObj);
+          this.openModAdd(cc);
+          this.loaderToken = false;
+        }
+        if (response.status === 1) {
+          this.errormsg = response.error;
+          this.loaderToken = false;
+          alert('Problem in service! please Try again')
+          console.log('error=', this.errormsg);
+        }
+      },
+      (error) => { }
+    );
+  }
 
+  //--------------------------------
+
+  //---------------------search by token---------------------
+  registerNewPat(formval) {
+
+    this.loaderNew = true;
+    this.model2.hospitalID = this.hospitalID;
+    this.model2.firstname = formval.firstname;
+    this.model2.lastname = '';
+    this.model2.dob = formval.dob;
+    this.model2.f_hName = formval.f_hName;
+    this.model2.cellNo = formval.cellNo;
+    this.model2.gender = formval.gender;
+    this.model2.cnic = formval.cnic;
+    this.model2.village = formval.village;
+    this.model2.uc = formval.uc;
+    this.model2.tehsil_city = formval.tehsil_city.name;
+    this.model2.district = formval.district.name;
+    this.model2.address = formval.address;
+    // this.model2.age  =this.searchForm.value.token;
+
+
+    console.log('model2 ==', this.model2);
+    this.receptService.insertpatientpms(this.model2).subscribe(
+      (response: any) => {
+        if (response.status === 0) {
+          console.log(' response2====', response);
+
+          this.newResponsearr = response.patientID;
+          this.model2.patientID = this.newResponsearr;
+          console.log("idpat====", this.newResponsearr)
+          // console.log('this.tokenResponseArray==',this.tokenResponseObj);
+          //this.openModAdd(cc);
+          this.loaderNew = false;
+          this.regisForm.reset();
+          alert("patient added successfuly");
+          localStorage.setItem('paDetails', JSON.stringify(this.model2));
+          this.router.navigate(['reception/old-regis'])
+
+
+        }
+        if (response.status === 1) {
+          this.errormsg = response.error;
+          this.loaderNew = false;
+          alert('Problem in service! please Try again')
+          console.log('error=', this.errormsg);
+
+        }
+      },
+      (error) => { }
+    );
+
+  }
+  //-------------------goto next page
+  gotopatdetailsDetails(obpat) {
+    console.log("patData===", obpat,)
+    localStorage.setItem('paDetails', JSON.stringify(obpat));
+    this.modalRef.hide();
+    //localStorage.setItem('tab',this.tab);
+    this.router.navigate(['reception/old-regis'])
+  }
+  //-------------------goto next page
+
+  //---------------get dists-------
+  //---------------------search by cnic---------------------
+  getAllDists() {
+    this.loaderDists = true;
+    this.model3.hospitalID = this.hospitalID;
+
+    console.log('model3 ==', this.model3);
+    this.receptService.getDists(this.model3).subscribe(
+      (response: any) => {
+        if (response.status === 0) {
+
+          this.distResponseArray = response.data;
+          console.log('this.distResponseArray==', this.distResponseArray);
+          this.loaderDists = false;
+
+        }
+        if (response.status === 1) {
+          this.errormsg = response.error;
+          this.loaderDists = false;
+          alert('Problem in service! please Try again')
+          console.log('error=', this.errormsg);
+
+        }
+      },
+      (error) => { }
+    );
+
+  }
+  //--------get dists-----------
+  //---------------------search by cnic---------------------
+  getDistTehsils(did) {
+    this.loaderTehsil = true;
+    this.model4.hospitalID = this.hospitalID;
+    this.model4.districtID = did;
+
+    console.log('model4 ==', this.model4);
+    this.receptService.gettehsil(this.model4).subscribe(
+      (response: any) => {
+        if (response.status === 0) {
+
+          this.tehsilsResponseArray = response.data;
+          console.log('this.tehsilsResponseArray==', this.tehsilsResponseArray);
+          this.loaderTehsil = false;
+
+        }
+        if (response.status === 1) {
+          this.errormsg = response.error;
+          this.loaderTehsil = false;
+          alert('Problem in service! please Try again')
+          console.log('error=', this.errormsg);
+
+        }
+      },
+      (error) => { }
+    );
+
+  }
+  //--------get dists-----------
+
+  //---------------------search by cnic---------------------
+  getUCs(did) {
+    this.loaderUc = true;
+    this.model5.hospitalID = this.hospitalID;
+    this.model5.tehsilID = did;
+
+    console.log('model5 ==', this.model5);
+    this.receptService.getUC(this.model5).subscribe(
+      (response: any) => {
+        if (response.status === 0) {
+
+          this.ucResponseArray = response.data;
+          console.log('this.ucResponseArray==', this.ucResponseArray);
+          this.loaderUc = false;
+
+        }
+        if (response.status === 1) {
+          this.errormsg = response.error;
+          this.loaderUc = false;
+          alert('Problem in service! please Try again')
+          console.log('error=', this.errormsg);
+
+        }
+      },
+      (error) => { }
+    );
+
+  }
+  //--------get dists-----------
+  //----reset form
+  resetForm() {
+    this.regisForm.reset();
+  }
+  //reset form
+
+  onselectDist(distId) {
+
+    console.log("dist data===", distId);
+    this.getDistTehsils(distId.id);
+  }
+
+  onselectTehsil(tehId) {
+    console.log("tehsil data===", tehId);
+    this.getUCs(tehId.id);
+  }
+  onselectUC(ucId) {
+    console.log("uc data===", ucId);
+    this.ucID = ucId;
+    // this.getUCs(ucId);
+  }
+
+}

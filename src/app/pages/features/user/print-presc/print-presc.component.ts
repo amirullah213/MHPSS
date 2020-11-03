@@ -8,6 +8,11 @@ import { GlobalService, AuthService, APP_CONFIG } from '../../../../core';
   styleUrls: ['./print-presc.component.scss']
 })
 export class PrintPrescComponent implements OnInit {
+
+  printPage() {
+    window.print();
+  }
+  
   param:any ={};
   userLoader:boolean = false;
   userList:any=[];

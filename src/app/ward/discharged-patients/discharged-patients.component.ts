@@ -11,7 +11,9 @@ import { WardServiceService } from '../service/ward-service.service';
   styleUrls: ['./discharged-patients.component.scss']
 })
 export class DischargedPatientsComponent implements OnInit {
-
+  printPage() {
+    window.print();
+  }
   userData: any = {};
   model5: any = {};
   model6: any = {};

@@ -14,6 +14,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { PatientsComponent } from './patients/patients.component';
 import { SideBarReceptionComponent } from './side-bar-reception/side-bar-reception.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
@@ -21,7 +22,7 @@ import { SideBarReceptionComponent } from './side-bar-reception/side-bar-recepti
 @NgModule({
   declarations: [HomeComponent, ReceptionComponent, NewRegisterComponent, OldRegistrationComponent, PatientsComponent, SideBarReceptionComponent],
   imports: [
-    CommonModule, ReceptionRoutingModule, FormsModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), BsDatepickerModule.forRoot(), CollapseModule.forRoot()
+    CommonModule, ReceptionRoutingModule, FormsModule, Ng2SearchPipeModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), BsDatepickerModule.forRoot(), CollapseModule.forRoot()
   ]
 })
 export class ReceptionModule { }

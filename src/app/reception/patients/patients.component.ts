@@ -12,6 +12,7 @@ import { ReceptServiceService } from '../services/recept-service.service';
 })
 export class PatientsComponent implements OnInit {
 
+  filterTerm: string;
   hospitalID:any;
   todayData:any;
   loaderDoc:boolean=false;

@@ -47,14 +47,11 @@
                                     <h6 class="mb-1"><b>Diagnosis</b></h6>
                                     <p class="mb-1 ml-3"><b>Provisional</b> </p>
                                     <p class="mb-1 ml-4" *ngFor="let dig of diagnosis;let i=index"><span>{{i+1}})</span> {{dig.name}}</p>
-
                                     <h6 class="mb-1"><b>Chief Complaints</b></h6>
                                     <p class="mb-1 ml-4">
                                         <span *ngIf="pharmacyData.complaints!=null">{{pharmacyData.complaints}}</span>
                                         <span *ngIf="pharmacyData.complaints==null">Not Added</span>
-
                                     </p>
-
                                     <h6 class="mb-4"><b>Treatment at Hospital</b></h6>
                                     <p class="mb-1 ml-4" *ngFor="let thosp of pharmacyData.hospitalTreatments;let j=index">
                                         <span class="">{{j+1}})</span> {{thosp.medicine}}
@@ -69,23 +66,14 @@
                                         </span>
                                         <span class="mb-1 ml-4">{{thosp.duration}} </span>
                                         <span class="mb-1 ml-4">{{thosp.prandial}} </span>
-
-
                                     </p>
-
                                     <h6 class="mb-1"><b>Investibations</b></h6>
                                     <p class="mb-1 ml-4" *ngFor="let inv of pharmacyData.investigations; let l=index">
-
                                         <span class="">{{l+1}})</span> {{inv.testName}}
                                         <span class="mb-1 ml-4">{{inv.result}} </span>
-
-
-
                                     </p>
-
                                     <h6 class="mb-1 mt-4"><b>Procedure Notes (if any)</b></h6>
                                     <p class="mb-1 ml-4">{{pharmacyData.operativeProcedure}}</p>
-
                                     <h6 class="mb-1 mt-4"><b>Treatment at Home</b></h6>
                                     <p class="mb-1 ml-4" *ngFor="let pres of pharmacyData.homeTreatments;let k=index">
                                         <span class="">{{k+1}})</span> {{pres.medicine}}
@@ -101,7 +89,6 @@
                                         <span class="mb-1 ml-4">{{pres.duration}} </span>
                                         <span class="mb-1 ml-4">{{pres.prandial}} </span>
                                     </p>
-
                                     <h6 class="mb-1 mt-4"><b>Follow-up</b></h6>
                                     <p class="mb-1 ml-4">
                                         <span *ngIf="pharmacyData.refferel!=null">{{pharmacyData.refferel}}</span>
@@ -113,9 +100,9 @@
                                     <h6 class="mb-1 mt-4"><b>Final</b></h6>
                                     <p class="mb-1 ml-3">Final not added because response is zero</p>
                                 </div>
-                                <div class="col-lg-12 mt mt-5">
+                                <div class="col-lg-12 mt mt-5 d-print-none">
                                     <div class="form-group text-center">
-                                        <button type="button" printSectionId="print-section" ngxPrint class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i
+                                        <button type="button" (click)="printPage()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i
                                             class="fa fa-print"></i> Print
                                         </button>
                                     </div>

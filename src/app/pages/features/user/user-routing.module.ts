@@ -9,7 +9,8 @@ const routes: Routes = [
   {path:'', component: UsersComponent},
   {path:'details', component: PatDetailComponent},
   {path:'print-presc', component: PrintPrescComponent},
-  {path:'change-password', component: ChangePasswordComponent}
+  // { path: 'change-password', component: ChangePasswordComponent },
+  { path: '', redirectTo: 'details', pathMatch: 'full' }
 ];
 
 @NgModule({

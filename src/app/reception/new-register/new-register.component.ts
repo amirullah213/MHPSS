@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-register.component.scss']
 })
 export class NewRegisterComponent implements OnInit {
+  printPage() {
+    window.print();
+  }
 tokenData:any={};
 loginDetails:any={};
   constructor() { }
