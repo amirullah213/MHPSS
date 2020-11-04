@@ -56,8 +56,4 @@ export class PharmacyServicesService {
     let url = APP_CONFIG.apiBaseUrl + 'insertpurchaseorders';
     return this.http.post(url, obj);
   }
-  updateMerfStatus(obj: any) {
-    let url = APP_CONFIG.apiBaseUrlOnline + 'updatemerfposyncstatus';
-    return this.http.post(url, obj);
-  }
 }

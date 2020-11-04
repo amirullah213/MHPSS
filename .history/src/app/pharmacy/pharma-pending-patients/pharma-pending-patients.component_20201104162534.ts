@@ -25,7 +25,7 @@ export class PharmaPendingPatientsComponent implements OnInit {
   model5:any={};
   medicArr:any ={};
   medicArrFinal:any =[];
-  padata:any={};
+
 
 med:any=[];
 newArray:any =[];
@@ -51,13 +51,13 @@ newArray3:any =[];
 
   ngOnInit(): void {
     
-    this.padata=JSON.parse(localStorage.getItem('pharmacyData')) ;
+    let padata=JSON.parse(localStorage.getItem('pharmacyData')) ;
     this.tabb= localStorage.getItem('tab');
-    console.log('pharmacyData',this.padata)
+    console.log('pharmacyData',padata)
 
     this.model.hospitalID=localStorage.getItem('hospitalID');
     this.model.parmacyID=localStorage.getItem('docId');
-    this.model.token=this.padata.token;
+    this.model.token=padata.token;
     
     this.getPharmaPats(this.model);
   }
@@ -135,7 +135,7 @@ issueMedicines(patObj) {
   debugger
   this.model5.hospitalID=localStorage.getItem('hospitalID');
   this.model5.parmacyID=localStorage.getItem('docId');
-   this.model5.ptID=this.padata.ptID;
+   this.model5.ptID=this.pharmacyData.data.patientID;
   this.model5.medicine=this.medicArrFinal;
 console.log('this.model5',this.model5)
  this.pharmacySer.issueMedic(this.model5).subscribe(
@@ -144,8 +144,7 @@ console.log('this.model5',this.model5)
         this.pharmacyData = response;
       console.log('this.pharmacy pats==',this.pharmacyData)
         this.loader_eqp = false;
-        alert('medicine isssued Successfuly');
-        this.router.navigate(['pharma/home'])
+        alert('medicine isssued Successfuly')
       }
 
       if (response.status === 1) {
@@ -167,7 +166,6 @@ console.log('fullObj==',fullObj);
 
 this.medicArr['issuedQuantity']=issueQuan;
 this.medicArr['stockID']=this.medicArr.id;
-this.medicArr['id']=fullObj.id;
 
 
 console.log('new medic array==',this.medicArr);
