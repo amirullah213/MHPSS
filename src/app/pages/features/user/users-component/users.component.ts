@@ -61,7 +61,12 @@ ngOnInit(): void {
       this.getUsers(this.userData)
     };
   }
-
+  gotoPresDetails(udata) {
+    debugger
+    localStorage.setItem('patData', JSON.stringify(udata));
+  //  this.router.navigate(['doctor/user/print-presc'])
+  window.open('doctor/user/print-presc')
+  }
   openModalActivate(userActivate: TemplateRef<any>, data) {
     this.userData = data;
     this.modalRef = this.modalService.show(userActivate, this.userData);

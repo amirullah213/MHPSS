@@ -47,7 +47,7 @@
                                                                         <label class="form-check-label" for="exampleCheck1"></label>
                                                                     </div>
                                                                 </th> -->
-                                                                <th>CRP NO</th>
+                                                                <th>CRP NO#</th>
                                                                 <th>Name</th>
                                                                 <th>Date</th>
                                                                 <th>Details</th>
@@ -95,7 +95,7 @@
                                                                         <label class="form-check-label" for="exampleCheck1"></label>
                                                                     </div>
                                                                 </th> -->
-                                                                <th>CRP NO</th>
+                                                                <th>CRP NO#</th>
                                                                 <th>Name</th>
                                                                 <th>Date</th>
                                                                 <th>Details</th>
@@ -143,10 +143,10 @@
                                                                         <label class="form-check-label" for="exampleCheck1"></label>
                                                                     </div>
                                                                 </th> -->
-                                                                <th>CRP NO</th>
+                                                                <th>CRP NO#</th>
                                                                 <th>Name</th>
                                                                 <th>Date</th>
-                                                                <th>Details</th>
+                                                                <th>Prescription</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody *ngIf="!userLoader">
@@ -161,7 +161,13 @@
                                                                 <td>{{user.token}}</td>
                                                                 <td>{{user.firstname}}</td>
                                                                 <td>{{user.enteringDate | date}}</td>
-                                                                <td><a href="javascript:void(0)" (click)="gotoPatDetails(user)">Detail</a> </td>
+                                                              <td>  <!-- <a href="javascript:void(0)" (click)="gotoPatDetails(user)">Detail</a>
+                                                                 -->
+                                                                 <div class="form-group">
+                                                                    <button type="button" (click)="gotoPresDetails(user)"
+                                                                        class="button float-right">View Prescription </button>
+                                                                </div>
+                                                             </td>
                                                             </tr>
                                                             <tr *ngIf="userList.length === 0" style="text-align: center;">
                                                                 <td colspan="3">No Record Found</td>
@@ -185,7 +191,7 @@
             </div>
 
             <!-- model for users download start-->
-            <div bsModal #usersDownload="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
+            <!-- <div bsModal #usersDownload="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header bb-none">
@@ -208,7 +214,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- model for users download end-->
 
             <!-- model for user Activate start-->
