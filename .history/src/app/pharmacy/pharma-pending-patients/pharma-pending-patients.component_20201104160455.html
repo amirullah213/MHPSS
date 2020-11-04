@@ -60,7 +60,7 @@
                                                     </td>
                                                     <td ><input [(ngModel)]="objtest.inStoc" [id]="'inStoc'+i" [value]="'inStoc'+i"  class="form-control" [disabled]='true'></td>
                                                     <td>{{med.prescribedQuantity}}</td>
-                                                    <td><input [(ngModel)]="med.issuedQuantity" [name]="'issuedQuantity'+i" [value]="'issuedQuantity'+i" (blur)='addMedicArr(med.issuedQuantity,med)'  class="form-control" [disabled]='!med.inStock' ></td> 
+                                                    <td><input [(ngModel)]="med.issuedQuantity" [name]="'issuedQuantity'+i" [value]="'issuedQuantity'+i" (blur)='addMedicArr(med)'  class="form-control" [disabled]='!objtest.inStock' ></td> 
                                                     <td>{{med.dose}}</td>
                                                     <td>{{med.prandial}}</td>
                                                     <td>{{med.remarks}} </td>

@@ -167,7 +167,6 @@ console.log('fullObj==',fullObj);
 
 this.medicArr['issuedQuantity']=issueQuan;
 this.medicArr['stockID']=this.medicArr.id;
-this.medicArr['id']=fullObj.id;
 
 
 console.log('new medic array==',this.medicArr);

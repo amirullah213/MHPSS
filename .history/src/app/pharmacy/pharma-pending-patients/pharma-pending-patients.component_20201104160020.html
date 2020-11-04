@@ -50,7 +50,7 @@
                                                     <td>{{med.type1}}</td>
                                                     <td>
                                                         <span>
-                                                            <select [(ngModel)]="med.inStock"  class="form-control" (ngModelChange)="getdata(med.inStock,i)" aria-label="Text input with segmented dropdown button"
+                                                            <select [(ngModel)]="objtest.inStock"  class="form-control" (ngModelChange)="getdata(objtest.inStock,i)" aria-label="Text input with segmented dropdown button"
                                                                placeholder="Select Stock" >
                                                               <!-- <option *ngFor="let stc of newArray.stock;let j=index" [value]="j" >{{stc.batchNo}}</option> (ngModelChange)="getdata(stc)"-->
                                                               <option *ngFor="let stc of med.stock;let j=index" [ngValue]="stc" >{{stc.batchNo}}</option>
@@ -60,7 +60,7 @@
                                                     </td>
                                                     <td ><input [(ngModel)]="objtest.inStoc" [id]="'inStoc'+i" [value]="'inStoc'+i"  class="form-control" [disabled]='true'></td>
                                                     <td>{{med.prescribedQuantity}}</td>
-                                                    <td><input [(ngModel)]="med.issuedQuantity" [name]="'issuedQuantity'+i" [value]="'issuedQuantity'+i" (blur)='addMedicArr(med.issuedQuantity,med)'  class="form-control" [disabled]='!med.inStock' ></td> 
+                                                    <td><input [(ngModel)]="objtest.issuedQuantity" [name]="'issuedQuantity'+i" [value]="'issuedQuantity'+i" (blur)='addMedicArr(med.issuedQuantity)'  class="form-control" [disabled]='!objtest.inStock' ></td> 
                                                     <td>{{med.dose}}</td>
                                                     <td>{{med.prandial}}</td>
                                                     <td>{{med.remarks}} </td>

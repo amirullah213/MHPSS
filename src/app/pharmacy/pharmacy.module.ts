@@ -24,9 +24,10 @@ import { NonMedicineGrnComponent } from './non-medicine-grn/non-medicine-grn.com
 import { ItemsStatusComponent } from './items-status/items-status.component';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { IssueGrnComponent } from './issue-grn/issue-grn.component';
+import { SyncDataComponent } from './sync-data/sync-data.component';
 
 @NgModule({
-  declarations: [ PharmaComponent, HomeComponent, PharmaSideBarComponent, PharmaSeenPatientsComponent, PharmaPendingPatientsComponent, PharmaPrescriptionComponent, MedicineGrnComponent, MedicineDiscardComponent, NonMedicineDiscardComponent, NonMedicineGrnComponent, ItemsStatusComponent, IssueGrnComponent],
+  declarations: [ PharmaComponent, HomeComponent, PharmaSideBarComponent, PharmaSeenPatientsComponent, PharmaPendingPatientsComponent, PharmaPrescriptionComponent, MedicineGrnComponent, MedicineDiscardComponent, NonMedicineDiscardComponent, NonMedicineGrnComponent, ItemsStatusComponent, IssueGrnComponent, SyncDataComponent],
   imports: [
     CommonModule,
     PharmacyRoutingModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), FormsModule, BsDatepickerModule.forRoot(), CollapseModule.forRoot(),TypeaheadModule.forRoot(),
