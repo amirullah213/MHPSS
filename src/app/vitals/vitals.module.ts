@@ -13,10 +13,11 @@ import { VitalsRoutingModule } from './vitals-routing.module';
 import { HomeComponent } from './home/home.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { VitalsComponent } from './vitals/vitals.component';
+import { NewPatientsComponent } from './new-patients/new-patients.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, SideBarComponent, VitalsComponent],
+  declarations: [HomeComponent, SideBarComponent, VitalsComponent, NewPatientsComponent],
   imports: [
     CommonModule,
     VitalsRoutingModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), FormsModule, BsDatepickerModule.forRoot(), CollapseModule.forRoot(),
