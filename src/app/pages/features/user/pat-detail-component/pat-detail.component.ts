@@ -1,11 +1,8 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray, FormControl, ValidatorFn } from '@angular/forms';
-import { of, Subscription } from 'rxjs';
 import { UserService } from '../user.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GlobalService, AuthService, APP_CONFIG } from '../../../../core';
 import { TypeaheadMatch } from 'ngx-bootstrap/typeahead/typeahead-match.class';
-import { ITS_JUST_ANGULAR } from '@angular/core/src/r3_symbols';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { DateFormatPipe } from 'src/app/core/pipes/datepipe.pipe';
 
