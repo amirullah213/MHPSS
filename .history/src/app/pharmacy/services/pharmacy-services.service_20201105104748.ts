@@ -64,8 +64,5 @@ export class PharmacyServicesService {
     let url = APP_CONFIG.apiBaseUrl + 'getpendingpurchaseorders';
     return this.http.post(url, obj);
   }
-  getordeItems(obj: any) {
-    let url = APP_CONFIG.apiBaseUrl + 'getpurchaseorderitems';
-    return this.http.post(url, obj);
-  }
+  
 }
