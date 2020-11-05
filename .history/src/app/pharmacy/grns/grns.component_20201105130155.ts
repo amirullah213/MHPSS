@@ -128,9 +128,9 @@ getID(poid){
 createItem(obj:any): FormGroup {
   debugger;
   return this.fb.group({
-     medName: obj.itemName,
-     unit: obj.unit,
-     type:obj.type,
+    medName: obj.itemName,
+    unit: obj.unit,
+    type:obj.type,
     issued:obj.issued,
     recieved: obj.recieved,
     batchNo: obj.batchNo,
@@ -139,8 +139,7 @@ createItem(obj:any): FormGroup {
     expDate: obj.expDate,
   });
 }
-saveData(dat){
-  console.log('this.purchaseOrder===',this.purchaseOrder.value);
-  console.log('this.dat===',dat)
+saveData(){
+  console.log('this.purchaseOrder===',this.purchaseOrder.value)
 }
 }

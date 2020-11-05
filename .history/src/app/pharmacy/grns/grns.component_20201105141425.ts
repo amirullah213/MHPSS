@@ -139,8 +139,7 @@ createItem(obj:any): FormGroup {
     expDate: obj.expDate,
   });
 }
-saveData(dat){
-  console.log('this.purchaseOrder===',this.purchaseOrder.value);
-  console.log('this.dat===',dat)
+saveData(){
+  console.log('this.purchaseOrder===',this.purchaseOrder.value)
 }
 }

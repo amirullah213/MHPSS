@@ -57,31 +57,31 @@
                                             <tbody formArrayName="purchaseOrder">
                                                 <tr *ngFor="let item of dynamicForm.get('purchaseOrder').controls; let i = index;">
                                                     <td>
-                                                        <input type="text" formControlName='medName'  class="form-control" id="formGroupExampleInput" placeholder="Recieved Quantity">
+                                                        <input type="text" formControlName='medName' name="medicTrade" class="form-control" id="formGroupExampleInput" placeholder="Recieved Quantity">
                                                     </td>
                                                       <td>
-                                                        <input type="text" formControlName='unit'  class="form-control" id="formGroupExampleInput" placeholder="Recieved Quantity">
+                                                        <input type="text" formControlName='unit' name="medicTrade" class="form-control" id="formGroupExampleInput" placeholder="Recieved Quantity">
                                                       </td>
                                                       <td>
-                                                        <input type="text"formControlName='type' class="form-control" id="formGroupExampleInput" placeholder="Recieved Quantity">
+                                                        <input type="text"formControlName='type' name="medicTrade" class="form-control" id="formGroupExampleInput" placeholder="Recieved Quantity">
                                                       </td>
                                                      <td>
-                                                        <input type="text" formControlName='issued'  class="form-control" id="formGroupExampleInput" placeholder="Recieved Quantity">
+                                                        <input type="text" formControlName='issued' name="medicTrade" class="form-control" id="formGroupExampleInput" placeholder="Recieved Quantity">
                                                      </td>
                                                      <td>
-                                                        <input type="text" formControlName='recieved'  class="form-control" id="formGroupExampleInput" placeholder="Recieved Quantity">
+                                                        <input type="text" formControlName='recieved' name="medicTrade" class="form-control" id="formGroupExampleInput" placeholder="Recieved Quantity">
                                                      </td>
                                                      <td>
-                                                        <input type="text" formControlName='batchNo'  class="form-control" id="formGroupExampleInput" placeholder="Batch">
+                                                        <input type="text" formControlName='batchNo' name="medicTrade" class="form-control" id="formGroupExampleInput" placeholder="Batch">
                                                      </td>
                                                      <td>
-                                                        <input type="text" formControlName='tradeName'  class="form-control" id="formGroupExampleInput" placeholder="trade">
+                                                        <input type="text" formControlName='tradeName' name="medicTrade" class="form-control" id="formGroupExampleInput" placeholder="trade">
                                                      </td>
                                                      <td>
-                                                        <input type="text" formControlName='manuDate'  class="form-control" id="formGroupExampleInput" #datepickerYMD="bsDatepicker" bsDatepicker formControlName="dateYMD" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placeholder="Manufacture Date">
+                                                        <input type="text" formControlName='manuDate' name="medicExpiry" class="form-control" id="formGroupExampleInput" #datepickerYMD="bsDatepicker" bsDatepicker formControlName="dateYMD" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placeholder="Manufacture Date">
                                                      </td>
                                                      <td>
-                                                        <input type="text" formControlName='expDate'  class="form-control" id="formGroupExampleInput" #datepickerYMD="bsDatepicker" bsDatepicker formControlName="dateYMD" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placeholder="Expiry Date">
+                                                        <input type="text" formControlName='expDate' name="medicExpiry" class="form-control" id="formGroupExampleInput" #datepickerYMD="bsDatepicker" bsDatepicker formControlName="dateYMD" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placeholder="Expiry Date">
                                                      </td>
 
 
@@ -97,7 +97,7 @@
                                 <div class="form-group row mx-0">
                                     <div class="col-md-12">
                                         <div class="form-group text-center">
-                                            <button type="button" *ngIf="!loader_eqp" (click)="saveData(dynamicForm.value)" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save</button>
+                                            <button type="button" *ngIf="!loader_eqp" (click)="saveData()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save</button>
                                             <button type="button" *ngIf="loader_eqp" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><span class="spinner-border theme-color" role="status">
                                                     <span class="sr-only"></span>
                                                 </span></button>

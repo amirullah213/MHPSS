@@ -33,22 +33,7 @@ export class GrnsComponent implements OnInit {
     private router: Router,
     private pharmacySer:PharmacyServicesService
     
-  ) {
-    this.dynamicForm = this.fb.group({
-      grnName: ['', Validators.required],
-      medName: ['', Validators.required],
-    unit: ['', Validators.required],
-    type:['', Validators.required],
-    issued:['', Validators.required],
-    recieved:['', Validators.required],
-    batchNo: ['', Validators.required],
-    tradeName:['', Validators.required],
-    manuDate: ['', Validators.required],
-    expDate:['', Validators.required],
-     
-      purchaseOrder: this.fb.array([]),
-  });
-  }
+  ) {}
 
   ngOnInit(): void {
     this.hospitalID=localStorage.getItem('hospitalID');
@@ -56,7 +41,11 @@ export class GrnsComponent implements OnInit {
     this.userType=localStorage.getItem('userType');
     this.getPendingPurOrders();
 
-    
+    this.dynamicForm = this.fb.group({
+      grnName: ['', Validators.required],
+     
+      purchaseOrder: this.fb.array([]),
+  });
   }
 
    //get all diagnostic list
@@ -126,21 +115,19 @@ getID(poid){
  this.getPurchOrderItems(poid);
 }
 createItem(obj:any): FormGroup {
-  debugger;
   return this.fb.group({
-     medName: obj.itemName,
-     unit: obj.unit,
-     type:obj.type,
-    issued:obj.issued,
-    recieved: obj.recieved,
-    batchNo: obj.batchNo,
-    tradeName: obj.tradeName,
-    manuDate: obj.manuDate,
-    expDate: obj.expDate,
+    medName: obj.itemName,
+    // unit: obj.unit,
+    // type:obj.type,
+    // issued:obj.issued,
+    // recieved: obj.recieved,
+    // batchNo: obj.batchNo,
+    // tradeName: obj.tradeName,
+    // manuDate: obj.manuDate,
+    // expDate: obj.expDate,
   });
 }
-saveData(dat){
-  console.log('this.purchaseOrder===',this.purchaseOrder.value);
-  console.log('this.dat===',dat)
+saveData(){
+  console.log('this.purchaseOrder===',this.purchaseOrder.value)
 }
 }
