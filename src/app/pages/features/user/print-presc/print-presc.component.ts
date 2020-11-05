@@ -9,6 +9,11 @@ import { UserService } from '../user.service';
   styleUrls: ['./print-presc.component.scss']
 })
 export class PrintPrescComponent implements OnInit {
+
+  printPage() {
+    window.print();
+  }
+  
   userLoader: boolean;
   diagnosisArr: any=[];
   userList: any=[];

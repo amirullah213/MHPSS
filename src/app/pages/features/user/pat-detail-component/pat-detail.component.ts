@@ -10,7 +10,7 @@ import { DateFormatPipe } from 'src/app/core/pipes/datepipe.pipe';
   selector: 'ncri-create-user',
   templateUrl: './pat-detail.component.html',
   styleUrls: ['./pat-detail.component.scss'],
-  providers:[DateFormatPipe]
+  providers: [DateFormatPipe]
 })
 export class PatDetailComponent implements OnInit {
 
@@ -90,7 +90,7 @@ export class PatDetailComponent implements OnInit {
   strTreat: string;
   depN: string;
   show: boolean = true;
-  showRef: boolean=false;
+  showRef: boolean = false;
   showPath: boolean = false;
   showRad: boolean = false;
   investigationForm: any;
@@ -111,18 +111,18 @@ export class PatDetailComponent implements OnInit {
   localGen: any;
   cityName: any;
   diagItems: FormArray;
-  localDiagData: any=[];
-  insTest: boolean=true;
-  isRad: boolean=false;
+  localDiagData: any = [];
+  insTest: boolean = true;
+  isRad: boolean = false;
   modalRef: BsModalRef;
-  subTests: any=[];
-  a: boolean=false;
+  subTests: any = [];
+  a: boolean = false;
   sData: any;
-  xRayFilms: any=[];
-  idTrue: boolean=false;
+  xRayFilms: any = [];
+  idTrue: boolean = false;
   docType: any;
   id: any;
-  refList: any=[];
+  refList: any = [];
   arrylist: any;
   treatmentItems: FormArray;
   reff: any;
@@ -135,16 +135,16 @@ export class PatDetailComponent implements OnInit {
   treatSelectData: any;
   trtRsp: any;
   diagID: any;
-  NewlocalSign: any=[];
-  signObj: any={};
-  NewSymptoms: any=[];
+  NewlocalSign: any = [];
+  signObj: any = {};
+  NewSymptoms: any = [];
   constructor(
     private fb: FormBuilder,
     private uService: UserService,
     private router: Router,
     private route: ActivatedRoute,
     public modalService: BsModalService,
-   private datepipe:DateFormatPipe
+    private datepipe: DateFormatPipe
 
   ) {
     this.controls = this.phArray.map(c => new FormControl(false));
@@ -180,7 +180,7 @@ export class PatDetailComponent implements OnInit {
       selectedValueSign: [''],
       system_access_enabled: [''],
       Diagnosis: [''],
-      description:['']
+      description: ['']
 
     });
     this.investigationForm = this.fb.group({
@@ -191,7 +191,7 @@ export class PatDetailComponent implements OnInit {
       termination_date: [''],
       chkPath: [false],
       chkRad: [false],
-      ref:['']
+      ref: ['']
 
     });
     this.treatmentForm = this.fb.group({
@@ -207,15 +207,15 @@ export class PatDetailComponent implements OnInit {
       referralNotes: [''],
       Ambulance: [''],
       Department: [''],
-      access_type: ['',false],
+      access_type: ['', false],
       fol_up: [''],
       followUpInterval: [''],
-      tComments:[''],
-      fComments:[''],
-      FollowUpExtInt:[''],
-      refNotes:[''],
-      itemID:[''],
-      itemName:['']
+      tComments: [''],
+      fComments: [''],
+      FollowUpExtInt: [''],
+      refNotes: [''],
+      itemID: [''],
+      itemName: ['']
 
     });
 
@@ -233,84 +233,84 @@ export class PatDetailComponent implements OnInit {
     //   access_type: "0",
     //   itemName: ""
     // })
-    
- 
+
+
     this.getPatPrescrib(this.patInfo);
 
   }
 
-  viewReport(template: TemplateRef<any>,tData,i) {
-    
-    this.modalRef = this.modalService.show(template,Object.assign({}, { class: 'gray modal-lg ',tData,i })); 
+  viewReport(template: TemplateRef<any>, tData, i) {
+
+    this.modalRef = this.modalService.show(template, Object.assign({}, { class: 'gray modal-lg ', tData, i }));
     this.sData = tData;
-    for(let e of this.localPath){
-     
-      this.subTests=[];
-      if( i==this.localPath.indexOf(e))
-      {
-        if(e.subTests!=undefined){
-        this.subTests=e.subTests
-        for(let j of this.subTests)
-        {
-          
-          if(j.xrayFilms6){
-          this.xRayFilms.push(JSON.parse(j.xrayFilms6))
+    for (let e of this.localPath) {
+      debugger;
+      this.subTests = [];
+      if (i == this.localPath.indexOf(e)) {
+        debugger;
+        if (e.subTests != undefined) {
+          this.subTests = e.subTests
+          for (let j of this.subTests) {
+            debugger;
+
+            if (j.xrayFilms6 && j.xrayFilms6 != '0') {
+              this.xRayFilms.push(JSON.parse(j.xrayFilms6))
+            }
+            else {
+              this.xRayFilms = []
+            }
           }
-          else{
-            this.xRayFilms =[]
-          }
+          break;
+
+        } else {
+          this.subTests.push(e);
+          break;
         }
-        break;
-      
-    }else{
-      this.subTests.push(e);
-      break;
+      }
+
     }
-     }
-       
-    }
-  
+
   }
 
 
 
   createSymptom(obj: any): FormGroup {
-    
+
     if (obj == null) {
 
       // obj = { name: '', duration: '', durationType: '', ...obj }
-      return this.fb.group({        
+      return this.fb.group({
         name: '',
         duration: '',
         durationType: ''
       });
     } else {
       return this.fb.group({
-      
+
         name: obj.name,
         duration: obj.duration,
         durationType: obj.durationType
       });
     }
-    
+
   }
 
- 
+
   removeSymptom(i) {
     //this.items.removeAt(i);
     if (i > -1) {
       this.localSymptoms.splice(i, 1);
     }
   }
-  
+
 
 
   createTreatment(obj: any): FormGroup {
-    
-  
+
+
     if (obj == null) {
 
-     return this.fb.group({        
+      return this.fb.group({
         itemName: '',
         prescribedQuantity: '',
         unit: '',
@@ -318,42 +318,41 @@ export class PatDetailComponent implements OnInit {
         dose: '',
         prandial: '',
         remarks: '',
-        itemID:''
-       
+        itemID: ''
+
       });
-     
-    } else  {
-      
-      if(obj.itemName!='')
-      {
+
+    } else {
+
+      if (obj.itemName != '') {
         this.fb.group({
-      
+
           itemName: obj.itemName,
           unit: obj.unit,
-          type: obj.type,          
-          itemID:obj.itemID       
+          type: obj.type,
+          itemID: obj.itemID
         });
       }
       else
-      return this.fb.group({
-      
-        itemName: obj.itemName,
-        prescribedQuantity: obj.prescribedQuantity,
-        unit: obj.unit,
-        type: obj.type,
-        dose: obj.dose,
-        prandial: obj.prandial,
-        remarks: obj.Rremarks,
-        itemID:obj.itemID       
-      });
+        return this.fb.group({
+
+          itemName: obj.itemName,
+          prescribedQuantity: obj.prescribedQuantity,
+          unit: obj.unit,
+          type: obj.type,
+          dose: obj.dose,
+          prandial: obj.prandial,
+          remarks: obj.Rremarks,
+          itemID: obj.itemID
+        });
     }
   }
 
- 
+
   removeTreatment(i: number) {
     this.treatmentItems.removeAt(i);
   }
-  
+
   /*  
   onselectGen(event:TypeaheadMatch):void{
     this.addGen(event.item);
@@ -366,23 +365,23 @@ export class PatDetailComponent implements OnInit {
     }
 */
 
-onSelectSign(event: TypeaheadMatch): void {
+  onSelectSign(event: TypeaheadMatch): void {
 
-  this.signObj= event.item;
- // this.addSign(event.item);
- 
- }
- 
-onSelectDiag(event: TypeaheadMatch): void {
+    this.signObj = event.item;
+    // this.addSign(event.item);
 
-this.diagID = event.item.id
- //this.addDiag(event.item.id);
+  }
 
-}
+  onSelectDiag(event: TypeaheadMatch): void {
+
+    this.diagID = event.item.id
+    //this.addDiag(event.item.id);
+
+  }
 
 
   onSelectSymptom(event: TypeaheadMatch): void {
-    
+
     this.selectedOptionSymptom = event.item;
   }
 
@@ -391,8 +390,8 @@ this.diagID = event.item.id
 
   }
   onSelectRad(event: TypeaheadMatch): void {
-    
-    this.selectedOptionRad=event.item;
+
+    this.selectedOptionRad = event.item;
     this.addRad(event.item);
 
   }
@@ -407,41 +406,40 @@ this.diagID = event.item.id
 
   }
   onSelectTreat(event: TypeaheadMatch): void {
-  
-  
+
+
     this.treatSelectData = event.item.v;
-    this.medId=event.item.v.itemID
+    this.medId = event.item.v.itemID
     this.setUT(event.item.v);
 
   }
 
   setUT(obj: any) {
-     
+
     this.treatmentForm.patchValue({
       unit: obj.unit,
       type: obj.type,
-    itemId:obj.itemID
+      itemId: obj.itemID
 
     })
 
   }
-  changeRefVal(e){
-    this.arrylist=[]
+  changeRefVal(e) {
+    this.arrylist = []
     this.arrylist = this.refList[e];
-  this.docType=this.arrylist.docType;
-  this.id = this.arrylist.id
+    this.docType = this.arrylist.docType;
+    this.id = this.arrylist.id
   }
 
   changeDepVal(e) {
-    
-   // this.arrylist = this.DepartmentD[e];
-   if(e!=undefined){
-   this.depIndex=e;
-  }else
-  {
-    this.depIndex=0;
+
+    // this.arrylist = this.DepartmentD[e];
+    if (e != undefined) {
+      this.depIndex = e;
+    } else {
+      this.depIndex = 0;
+    }
   }
-}
   changFollowUpVal(e) {
     if (e.target.value == '1') {
       this.show = false;
@@ -476,7 +474,7 @@ this.diagID = event.item.id
   }
 
 
- 
+
   getclinicalinfo() {
 
 
@@ -491,69 +489,69 @@ this.diagID = event.item.id
           this.ptID = response.prescription.ptID;
 
           this.diagnosisData = response.diagnosis;
-          
+
           this.signsData = response.signs;
           this.symptomsData = response.symptoms;
           this.vitalsData = response.vitals;
-          
-          if (response.prescription.complaints != '' && response.prescription.complaints!="undefined") {
+
+          if (response.prescription.complaints != '' && response.prescription.complaints != "undefined") {
             this.symptomComplatins = JSON.parse(response.prescription.complaints);
-            
-            if (this.symptomComplatins !=null && this.symptomComplatins.length != 0) {
+
+            if (this.symptomComplatins != null && this.symptomComplatins.length != 0) {
               this.symptomComplatins.forEach((e, v) => {
-              //  (this.items = this.clinicalInformation.get('items') as FormArray).push(this.createSymptom(e));
-                  this.localSymptoms.push(e)
+                //  (this.items = this.clinicalInformation.get('items') as FormArray).push(this.createSymptom(e));
+                this.localSymptoms.push(e)
               });
             }
             else {
-            //  (this.items = this.clinicalInformation.get('items') as FormArray).push(this.createSymptom(null));
+              //  (this.items = this.clinicalInformation.get('items') as FormArray).push(this.createSymptom(null));
 
             }
           } else {
-          //  (this.items = this.clinicalInformation.get('items') as FormArray).push(this.createSymptom(null));
+            //  (this.items = this.clinicalInformation.get('items') as FormArray).push(this.createSymptom(null));
 
           }
-          
-          if (response.prescription.diagnosis != '' && response.prescription.diagnosis!="undefined") {
- 
-          this.localDiag = JSON.parse(response.prescription.diagnosis);
-          
-          if(this.localDiag!=undefined && this.localDiag!=null && this.localDiag.length!=0) {
-          this.localDiag.forEach((e, v) => {             
 
-          if (this.localDiag.length != 0) {
-            
-         //   (this.diagItems = this.clinicalInformation.get('diagItems') as FormArray).push(this.createDiag(e));
-            this.localDiagData.push({ 'id': e.id, 'name': e.name,  description:e.description})
+          if (response.prescription.diagnosis != '' && response.prescription.diagnosis != "undefined") {
 
-        }
-        else {
-         // (this.diagItems = this.clinicalInformation.get('diagItems') as FormArray).push(this.createDiag(null));
+            this.localDiag = JSON.parse(response.prescription.diagnosis);
 
-        }
-      });
-    }
-    else{
-      //  (this.diagItems = this.clinicalInformation.get('diagItems') as FormArray).push(this.createDiag(null));
-      } 
-    
-  }
-  else{
-//    (this.diagItems = this.clinicalInformation.get('diagItems') as FormArray).push(this.createDiag(null));
-  } 
-  
-    if(response.prescription.signs!=undefined){
-          this.getSignData = response.prescription.signs.split(',');
-          
-          this.getSignData.forEach((e, v) => {
-            this.localSign.push({'id':v,'name':e})  
+            if (this.localDiag != undefined && this.localDiag != null && this.localDiag.length != 0) {
+              this.localDiag.forEach((e, v) => {
 
-           
-          });
-        }
+                if (this.localDiag.length != 0) {
+
+                  //   (this.diagItems = this.clinicalInformation.get('diagItems') as FormArray).push(this.createDiag(e));
+                  this.localDiagData.push({ 'id': e.id, 'name': e.name, description: e.description })
+
+                }
+                else {
+                  // (this.diagItems = this.clinicalInformation.get('diagItems') as FormArray).push(this.createDiag(null));
+
+                }
+              });
+            }
+            else {
+              //  (this.diagItems = this.clinicalInformation.get('diagItems') as FormArray).push(this.createDiag(null));
+            }
+
+          }
+          else {
+            //    (this.diagItems = this.clinicalInformation.get('diagItems') as FormArray).push(this.createDiag(null));
+          }
+
+          if (response.prescription.signs != undefined) {
+            this.getSignData = response.prescription.signs.split(',');
+
+            this.getSignData.forEach((e, v) => {
+              this.localSign.push({ 'id': v, 'name': e })
 
 
-          if (this.vitalsData!=undefined && this.vitalsData.length != 0) {
+            });
+          }
+
+
+          if (this.vitalsData != undefined && this.vitalsData.length != 0) {
             this.clinicalInformation.patchValue({
               bps: this.vitalsData.bps,
               pulse: this.vitalsData.pulse,
@@ -606,150 +604,147 @@ this.diagID = event.item.id
   addSymptom() {
     // this.items = this.clinicalInformation.get('items') as FormArray;
     // this.items.push(this.createSymptom(null));
-    
+
     var tempsymp = 0;
-    if(this.localSymptoms.length!=0){
-      for(let e of this.localSymptoms)
-        { 
-          if(this.selectedOptionSymptom==undefined)
- {
-  if(e.name==this.clinicalInformation.value.name){
-    alert("already Exists");
-    tempsymp = 1;
-    break
-   }
- }
-        if(this.selectedOptionSymptom!=undefined && e.name==this.selectedOptionSymptom.name){
-        alert("already Exists");
-        this.selectedOptionSymptom={};
-        tempsymp = 1;
-        break
-       }
-    }
-    if (tempsymp == 0)
-    {
-      this.localSymptoms.push({ name: this.clinicalInformation.value.name,
+    if (this.localSymptoms.length != 0) {
+      for (let e of this.localSymptoms) {
+        if (this.selectedOptionSymptom == undefined) {
+          if (e.name == this.clinicalInformation.value.name) {
+            alert("already Exists");
+            tempsymp = 1;
+            break
+          }
+        }
+        if (this.selectedOptionSymptom != undefined && e.name == this.selectedOptionSymptom.name) {
+          alert("already Exists");
+          this.selectedOptionSymptom = {};
+          tempsymp = 1;
+          break
+        }
+      }
+      if (tempsymp == 0) {
+        this.localSymptoms.push({
+          name: this.clinicalInformation.value.name,
+          duration: this.clinicalInformation.value.duration,
+          durationType: this.clinicalInformation.value.durationType
+        })
+      }
+    } else {
+      this.localSymptoms.push({
+        name: this.clinicalInformation.value.name,
         duration: this.clinicalInformation.value.duration,
-        durationType: this.clinicalInformation.value.durationType})    }
-  }else{
-    this.localSymptoms.push({ name: this.clinicalInformation.value.name,
-      duration: this.clinicalInformation.value.duration,
-      durationType: this.clinicalInformation.value.durationType})  }
-      this.clinicalInformation.patchValue({
-        name:"",
-        durationType:"",
-        duration:""
+        durationType: this.clinicalInformation.value.durationType
       })
-    
+    }
+    this.clinicalInformation.patchValue({
+      name: "",
+      durationType: "",
+      duration: ""
+    })
+
   }
 
   createDiag(obj: any): FormGroup {
-    
+
     if (obj == null) {
-       return this.fb.group({
+      return this.fb.group({
         id: '',
         name: '',
-       description:''
+        description: ''
       });
     } else {
       return this.fb.group({
         id: obj.id,
         name: obj.name,
-        description:obj.description
-      
+        description: obj.description
+
       });
     }
   }
-insertToDiag(obj: any)
-{
-  
-  this.localDiagData.push({ 'id': obj.id, 'name': obj.name,  description:obj.description
-})
+  insertToDiag(obj: any) {
 
-}
+    this.localDiagData.push({
+      'id': obj.id, 'name': obj.name, description: obj.description
+    })
+
+  }
   addDiag() {
-debugger
+    debugger
     // this.diagItems = this.clinicalInformation.get('diagItems') as FormArray;
     // this.diagItems.push(this.createDiag(null));
-var tempdiag = 0;
-    if(this.localDiagData.length!=0){
-      for(let e of this.localDiagData)
-        {  
-        if(this.diagID!=undefined && e.id==this.diagID){
-        alert("Diagnosis already Exists");
-        tempdiag = 1;
-        break
-       }
-       if(this.diagID==undefined)
-       {
-        if(e.name==this.clinicalInformation.value.name){
-          alert("already Exists");
+    var tempdiag = 0;
+    if (this.localDiagData.length != 0) {
+      for (let e of this.localDiagData) {
+        if (this.diagID != undefined && e.id == this.diagID) {
+          alert("Diagnosis already Exists");
           tempdiag = 1;
           break
         }
-       }
+        if (this.diagID == undefined) {
+          if (e.name == this.clinicalInformation.value.name) {
+            alert("already Exists");
+            tempdiag = 1;
+            break
+          }
+        }
+      }
+      if (tempdiag == 0) {
+        this.localDiagData.push({ 'id': this.diagID, 'name': this.clinicalInformation.value.name, description: this.clinicalInformation.value.description })
+
+      }
+    } else {
+      this.localDiagData.push({ 'id': this.diagID, 'name': this.clinicalInformation.value.name, description: this.clinicalInformation.value.description })
     }
-    if (tempdiag == 0)
-    {
-      this.localDiagData.push({ 'id': this.diagID, 'name': this.clinicalInformation.value.name,  description:this.clinicalInformation.value.description})
-   
-    }
-  }else{
-    this.localDiagData.push({ 'id': this.diagID, 'name': this.clinicalInformation.value.name,  description:this.clinicalInformation.value.description})
-  }
     this.clinicalInformation.patchValue({
       'name': ''
     })
-    this.diagID=undefined
-  
+    this.diagID = undefined
+
   }
 
-  removeDiag(i: number) {   
-    
+  removeDiag(i: number) {
+
     if (i > -1) {
       this.localDiagData.splice(i, 1);
     }
-   // this.diagItems.removeAt(i);
+    // this.diagItems.removeAt(i);
   }
   addSign() {
     debugger
     var tempsign = 0;
-    if(this.localSign.length!=0){
-      for(let e of this.localSign)
-        { 
-          if(this.signObj.id==undefined || this.signObj=={})
- {
-  if(e.name==this.clinicalInformation.value.selectedValueSign){
-    alert("already Exists");
-    tempsign = 1;
-    break
-   }
- }
-        if((this.signObj.id!=undefined && this.signObj!={}) && e.name==this.clinicalInformation.value.selectedValueSign){
-        alert("already Exists");
-        tempsign = 1;
-        break
-       }
-    }
-    if (tempsign == 0)
-    {
-      this.NewlocalSign.push({'name':this.clinicalInformation.value.selectedValueSign})
-      this.localSign.push({ 'id': "", 'name':this.clinicalInformation.value.selectedValueSign})
+    if (this.localSign.length != 0) {
+      for (let e of this.localSign) {
+        if (this.signObj.id == undefined || this.signObj == {}) {
+          if (e.name == this.clinicalInformation.value.selectedValueSign) {
+            alert("already Exists");
+            tempsign = 1;
+            break
+          }
+        }
+        if ((this.signObj.id != undefined && this.signObj != {}) && e.name == this.clinicalInformation.value.selectedValueSign) {
+          alert("already Exists");
+          tempsign = 1;
+          break
+        }
+      }
+      if (tempsign == 0) {
+        this.NewlocalSign.push({ 'name': this.clinicalInformation.value.selectedValueSign })
+        this.localSign.push({ 'id': "", 'name': this.clinicalInformation.value.selectedValueSign })
+        this.clinicalInformation.patchValue({
+          'selectedValueSign': '',
+        })
+        this.signObj = {}
+
+      }
+    } else {
+      this.localSign.push({ 'id': this.signObj.id, 'name': this.signObj.name })
+      this.signObj = {}
       this.clinicalInformation.patchValue({
         'selectedValueSign': '',
-      })       
-       this.signObj={}
 
-     }
-  }else{
-    this.localSign.push({ 'id': this.signObj.id, 'name': this.signObj.name })
-      this.signObj={}
-    this.clinicalInformation.patchValue({
-      'selectedValueSign': '',   
+      })
+    }
 
-    })
-  }    
-    
   }
   removeSign(index) {
 
@@ -759,7 +754,7 @@ var tempdiag = 0;
 
   }
 
-  
+
 
 
   addClinicalInfo() {
@@ -780,7 +775,7 @@ var tempdiag = 0;
     const fhNames = this.clinicalInformation.value.fhArray
       .map((v, i) => v ? this.fhArray[i] : null)
       .filter(v => v !== null).toString();
-    
+
     this.param =
     {
       'hospitalID': localStorage.getItem('hospitalID'),
@@ -791,7 +786,7 @@ var tempdiag = 0;
       "pastHistory": phNames, "familyHistory": fhNames, "isFollowUp": this.clinicalInformation.value.isFollowUp, "lmp": "lmp", "isShortHeight": 0, "isMUAC": 0,
       "signs": result, "PNCServices": "", "temperature": this.clinicalInformation.value.temperature,
       "isLowWeight": 1, "isMalnutration": this.clinicalInformation.value.isMalnutration, "ANCServices": "",
-      "edd": "", "complaints": this.localSymptoms, "diagnosis": this.localDiagData,"newSigns":this.NewlocalSign,"newComplaints":this.NewSymptoms, "deptType": 1, "userName": this.fullName,
+      "edd": "", "complaints": this.localSymptoms, "diagnosis": this.localDiagData, "newSigns": this.NewlocalSign, "newComplaints": this.NewSymptoms, "deptType": 1, "userName": this.fullName,
 
       "PregnancyNutritionStatus": "", "isTTVac": 0, "LactionNutritionStatus": ""
     };
@@ -817,40 +812,40 @@ var tempdiag = 0;
     this.radNameData = [];
     this.userLoader = true;
     this.uService.getInvistigation(this.param).subscribe
-        ((response: any) => {
-          
+      ((response: any) => {
+
         if (response.status === 0) {
           this.radData = response.radiologyTypes;
-          if( response.testData.length!=0){
-            
-          response.testData.forEach((obj, v) => {
-            
-            if(this.isRad==false && obj.isDirect==1 ){
-             
-             this.localPath.push(obj)
-             //  this.localPath.push({"id":obj.id,"result":"","patientID":this.patientID,"testName":obj.testName,"testID":obj.testID,"testType":obj.testType,"refRange":obj.refRange,"isSupper":obj.isSupper,"subTests":obj.subTests,'isDirect':obj.isDirect})
-             }
-            
-               });
+          if (response.testData.length != 0) {
+
+            response.testData.forEach((obj, v) => {
+
+              if (this.isRad == false && obj.isDirect == 1) {
+
+                this.localPath.push(obj)
+                //  this.localPath.push({"id":obj.id,"result":"","patientID":this.patientID,"testName":obj.testName,"testID":obj.testID,"testType":obj.testType,"refRange":obj.refRange,"isSupper":obj.isSupper,"subTests":obj.subTests,'isDirect':obj.isDirect})
               }
-              else{
-                
-                if(this.isRad==false){
-             //   this.localPath.push({"id":-1,"result":"","patientID":this.patientID,"testName":"","testID":"","testType":"","refRange":"","isSupper":0,"subTests":[]})
-                }
-              }
+
+            });
+          }
+          else {
+
+            if (this.isRad == false) {
+              //   this.localPath.push({"id":-1,"result":"","patientID":this.patientID,"testName":"","testID":"","testType":"","refRange":"","isSupper":0,"subTests":[]})
+            }
+          }
           this.IndoorDiagData = response.IndoorDiagnosis;
           response.test.forEach(v => {
-            if (v.testType == 1) {              
+            if (v.testType == 1) {
               this.pathData.push(v);
             }
-           if (v.testType == 2) {
-             if (this.selectedOptionRad)
-                if (v.radiologyType == this.selectedOptionRad.id) {                  
+            if (v.testType == 2) {
+              if (this.selectedOptionRad)
+                if (v.radiologyType == this.selectedOptionRad.id) {
                   this.radNameData.push(v);
                 }
             }
-            this.isRad =false;
+            this.isRad = false;
           });
 
           this.userLoader = false;
@@ -862,15 +857,15 @@ var tempdiag = 0;
         (error) => { }
       );
   }
-  addinvestigation() {    
-    this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.ptID,'prescriptionID': this.patInfo.prescriptionID,"patientID": this.patientID,"isHB":0,"investigations":this.localPath}
-     this.userLoader = true;
+  addinvestigation() {
+    this.param = { 'hospitalID': localStorage.getItem('hospitalID'), 'ptID': this.ptID, 'prescriptionID': this.patInfo.prescriptionID, "patientID": this.patientID, "isHB": 0, "investigations": this.localPath }
+    this.userLoader = true;
     this.uService.addinvestigation(this.param).subscribe
       ((response: any) => {
         if (response.status === 0) {
-          this.radData = response.radiologyTypes;   
+          this.radData = response.radiologyTypes;
           this.router.navigate(['doctor/user/'])
-        
+
           this.userLoader = false;
         } else {
           this.userLoader = false;
@@ -880,122 +875,119 @@ var tempdiag = 0;
         (error) => { }
       );
   }
-  
-  addPath(obj: any) {
-    
-   this.matchTests(obj)
-   if(this.insTest==true){
-     this.localPath.push(obj)
-     this.a=false
-    this.investigationForm.patchValue({
-      'selectedValuePath': ''
-    })
 
-  }else{
-    this.insTest=true;
-    
-    alert("Test Already Added");
-    this.investigationForm.patchValue({
-      'selectedValuePath': ''
-    })
-    return false;
-  }
-  
+  addPath(obj: any) {
+
+    this.matchTests(obj)
+    if (this.insTest == true) {
+      this.localPath.push(obj)
+      this.a = false
+      this.investigationForm.patchValue({
+        'selectedValuePath': ''
+      })
+
+    } else {
+      this.insTest = true;
+
+      alert("Test Already Added");
+      this.investigationForm.patchValue({
+        'selectedValuePath': ''
+      })
+      return false;
+    }
+
   }
 
   removePath(index) {
 
     if (index > -1) {
       this.localPath.splice(index, 1);
-      
+
     }
 
   }
 
 
   addRad(obj: any) {
-   this.isRad =true;
+    this.isRad = true;
     this.getInvistigation();
 
   }
 
   addRadName(obj: any) {
 
-   // this.localPath.push({ "id": obj.testID, "name": obj.testName, 'testType': obj.testType, obj })
-   this.addPath(obj)
+    // this.localPath.push({ "id": obj.testID, "name": obj.testName, 'testType': obj.testType, obj })
+    this.addPath(obj)
 
     this.investigationForm.patchValue({
-     // 'selectedValueRad': '',
+      // 'selectedValueRad': '',
       'selectedValueRadName': ''
     })
   }
 
-  removeTest(index,id) {
+  removeTest(index, id) {
 
     if (index > -1) {
       this.localPath.splice(index, 1);
-      if(id!=undefined)
-      this.deleteRadPath(id);
+      if (id != undefined)
+        this.deleteRadPath(id);
 
     }
 
   }
 
-  matchTests(obj:any){  
-    
-    if(this.localPath.length!=0 ){
-    
-      for(let e of this.localPath){ 
-        if(this.a==true)
-        break;
-        this.a=false;
-        if(e.testID==obj.testID) 
-      if(e.isSupper==0 && (e.result=="" || e.result==undefined)){
-          this.insTest= false;
+  matchTests(obj: any) {
+
+    if (this.localPath.length != 0) {
+
+      for (let e of this.localPath) {
+        if (this.a == true)
           break;
-   } else if(e.isSupper==1 ){
-    for(let st of e.subTests){
-     if(st.result==undefined || st.result=="")
-     {
-      this.insTest= false;
-      this.a=true;
-      break ;
-     }else{
-      this.insTest= true;
-     }
-    
-   }
+        this.a = false;
+        if (e.testID == obj.testID)
+          if (e.isSupper == 0 && (e.result == "" || e.result == undefined)) {
+            this.insTest = false;
+            break;
+          } else if (e.isSupper == 1) {
+            for (let st of e.subTests) {
+              if (st.result == undefined || st.result == "") {
+                this.insTest = false;
+                this.a = true;
+                break;
+              } else {
+                this.insTest = true;
+              }
+
+            }
+          }
+          else {
+            this.insTest = true;
+          }
+      };
+    }
+    else {
+      this.insTest = true;
+
+    }
   }
-   else{
-      this.insTest= true;
-   }
-   };
-  }
-  else{
-    this.insTest= true;
-  
-  }
-  }
-  
+
   addIndoorDiag(obj: any) {
-    
+
     var temp = 0;
-    if(this.localIndoorData.length!=0){
-      for(let e of this.localIndoorData)
-        {  
-        if(e.id==obj.id){
-        alert("Diagnosis already Exists");
-        temp = 1;
-        break
-       }
+    if (this.localIndoorData.length != 0) {
+      for (let e of this.localIndoorData) {
+        if (e.id == obj.id) {
+          alert("Diagnosis already Exists");
+          temp = 1;
+          break
+        }
+      }
+      if (temp == 0) {
+        this.localIndoorData.push({ "id": obj.id, "name": obj.name })
+      }
+    } else {
+      this.localIndoorData.push({ "id": obj.id, "name": obj.name })
     }
-    if (temp == 0)
-    {
-      this.localIndoorData.push({ "id": obj.id, "name": obj.name }) 
-    }
-  }else{
-    this.localIndoorData.push({ "id": obj.id, "name": obj.name }) 
-  }
     this.investigationForm.patchValue({
       'selectedValueIndoorDiag': ''
     })
@@ -1023,54 +1015,52 @@ var tempdiag = 0;
             this.depN = v.fName + " " + v.lName;
             this.DepartmentD.push(v)
           });
-          
-          if(response.medicinesData.length!=0)
-             response.medicinesData.forEach(v => {
-              this.localTreat.push(v)            
-          });
-          
-         if(response.prescription!=undefined && response.prescription.length!=0)
-         {  
-           
-          this.trtRsp = response.prescription;
-          if(this.trtRsp.length!=0){
-            this.treatmentForm.patchValue({
-              tComments: this.trtRsp.TreatmentComments,
-              fComments: this.trtRsp.followUpComments,
-              followUpInterval: this.trtRsp.followUpInerval,
-              FollowUpExtInt: this.trtRsp.location,
-              Department: this.trtRsp.Department,
-              fol_up:this.trtRsp.follow_up  
-             
-            }) 
-            if(this.trtRsp.isReferral!=undefined){
+
+          if (response.medicinesData.length != 0)
+            response.medicinesData.forEach(v => {
+              this.localTreat.push(v)
+            });
+
+          if (response.prescription != undefined && response.prescription.length != 0) {
+
+            this.trtRsp = response.prescription;
+            if (this.trtRsp.length != 0) {
               this.treatmentForm.patchValue({
-              access_type: this.trtRsp.isReferral.toString()
+                tComments: this.trtRsp.TreatmentComments,
+                fComments: this.trtRsp.followUpComments,
+                followUpInterval: this.trtRsp.followUpInerval,
+                FollowUpExtInt: this.trtRsp.location,
+                Department: this.trtRsp.Department,
+                fol_up: this.trtRsp.follow_up
+
               })
-            }
-            else{
-              this.treatmentForm.patchValue({
-                access_type: "0"
+              if (this.trtRsp.isReferral != undefined) {
+                this.treatmentForm.patchValue({
+                  access_type: this.trtRsp.isReferral.toString()
                 })
+              }
+              else {
+                this.treatmentForm.patchValue({
+                  access_type: "0"
+                })
+              }
+            }
+
+
+            if (this.treatmentForm.value.access_type == "1") {
+              this.showRef = true
+            } else {
+              this.showRef = false
             }
           }
-         
-          
-        if(this.treatmentForm.value.access_type=="1")
-          { 
-            this.showRef=true
-          }else{
-          this.showRef=false
- }
- }
 
-          
+
           response.medicines.forEach(v => {
             this.strTreat = v.itemName + ", " + v.unit + " " + v.type;
             this.treatData.push({ "itemName": this.strTreat, v })
           });
-          
-         
+
+
 
           this.userLoader = false;
         } else {
@@ -1087,35 +1077,35 @@ var tempdiag = 0;
 
   addtreatmentinfo() {
 
-    if(this.treatmentForm.value.access_type=="0")
-    {
-      this.reff=""
-      this.location=""
-      this.isrefferel=0
+    if (this.treatmentForm.value.access_type == "0") {
+      this.reff = ""
+      this.location = ""
+      this.isrefferel = 0
     }
-    else 
-    {
-      this.reff=this.treatmentForm.value.Department
-      this.location=this.treatmentForm.value.FollowUpExtInt
-      this.isrefferel=1
+    else {
+      this.reff = this.treatmentForm.value.Department
+      this.location = this.treatmentForm.value.FollowUpExtInt
+      this.isrefferel = 1
     }
-   
-        
-    this.param = { 'hospitalID': localStorage.getItem('hospitalID'), 'prescriptionID': this.patInfo.prescriptionID,"patientID":this.patInfo.patientID,
- "isReferral":this.isrefferel,"isImplant":0,"medicines":this.localTreat,"isDMPA":0,"isTubalLigation":0,
- "follow_up":this.treatmentForm.value.fol_up,"isFamilyPlanning":0,"isCOC":0,"isCounselling":0,
- "otherTreatmentProcedure":this.treatmentForm.value.tComments,"otherMethod":"","contraceptiveMethod":"",
- "TreatmentComments":this.treatmentForm.value.tComments,"isPPIUCD":0,"isCuT":0,"isCondom":0,
- "isVasectomy":0,"isNET":0, "refferel":this.reff,"isPPImplant":0,"followUpComments":this.treatmentForm.value.fComments,
- "nextVisitDate":"","followUpInerval":this.treatmentForm.value.followUpInterval,"location":this.location,"isPOP":0,
- "treatmentProcedure":""}
+
+
+    this.param = {
+      'hospitalID': localStorage.getItem('hospitalID'), 'prescriptionID': this.patInfo.prescriptionID, "patientID": this.patInfo.patientID,
+      "isReferral": this.isrefferel, "isImplant": 0, "medicines": this.localTreat, "isDMPA": 0, "isTubalLigation": 0,
+      "follow_up": this.treatmentForm.value.fol_up, "isFamilyPlanning": 0, "isCOC": 0, "isCounselling": 0,
+      "otherTreatmentProcedure": this.treatmentForm.value.tComments, "otherMethod": "", "contraceptiveMethod": "",
+      "TreatmentComments": this.treatmentForm.value.tComments, "isPPIUCD": 0, "isCuT": 0, "isCondom": 0,
+      "isVasectomy": 0, "isNET": 0, "refferel": this.reff, "isPPImplant": 0, "followUpComments": this.treatmentForm.value.fComments,
+      "nextVisitDate": "", "followUpInerval": this.treatmentForm.value.followUpInterval, "location": this.location, "isPOP": 0,
+      "treatmentProcedure": ""
+    }
     this.userLoader = true;
 
     this.uService.addtreatmentinfo(this.param).subscribe
 
       ((response: any) => {
         if (response.status === 0) {
-          
+
           this.updatepatienttoken()
 
           this.userLoader = false;
@@ -1128,8 +1118,8 @@ var tempdiag = 0;
       );
   }
   updatepatienttoken() {
-    
-    this.param={"isPrescribed":1,"deptType":"","ptID":this.ptID,"hospitalID":localStorage.getItem('hospitalID')}
+
+    this.param = { "isPrescribed": 1, "deptType": "", "ptID": this.ptID, "hospitalID": localStorage.getItem('hospitalID') }
     this.userLoader = true;
 
     this.uService.updatepatienttoken(this.param).subscribe
@@ -1144,22 +1134,23 @@ var tempdiag = 0;
           alert('Something went wrong try again');
         }
       },
-        (error) => {  }
+        (error) => { }
       )
   }
   reffer() {
 
-    if(this.show==false)
-    {
-     this.hospt = this.treatmentForm.value.Hospital
-     this.isRefType =1;
+    if (this.show == false) {
+      this.hospt = this.treatmentForm.value.Hospital
+      this.isRefType = 1;
     }
-    else{
-        this.hospt =""
-        this.isRefType =0;
+    else {
+      this.hospt = ""
+      this.isRefType = 0;
     }
-    this.param={"referralType":this.isRefType,"convinceType":this.treatmentForm.value.Ambulance,"ptID":this.ptID,
-    "referralHospital":this.hospt,"refferedTo":this.depIndex,"remarks":this.treatmentForm.value.refNotes,"refferedFrom":localStorage.getItem("docId"),"hospitalID":localStorage.getItem('hospitalID')}
+    this.param = {
+      "referralType": this.isRefType, "convinceType": this.treatmentForm.value.Ambulance, "ptID": this.ptID,
+      "referralHospital": this.hospt, "refferedTo": this.depIndex, "remarks": this.treatmentForm.value.refNotes, "refferedFrom": localStorage.getItem("docId"), "hospitalID": localStorage.getItem('hospitalID')
+    }
 
     this.uService.reffer(this.param).subscribe
 
@@ -1170,7 +1161,7 @@ var tempdiag = 0;
           //   Ambulance:"",
           //   refNotes:"",
           //   Hospital:"",
-        
+
           // })         
           this.userLoader = false;
         } else {
@@ -1178,12 +1169,12 @@ var tempdiag = 0;
           alert('Something went wrong try again');
         }
       },
-        (error) => {  }
+        (error) => { }
       )
-}
-  deleteRadPath(id:any) {
+  }
+  deleteRadPath(id: any) {
 
-    this.param = { 'id':id };
+    this.param = { 'id': id };
 
     this.userLoader = true;
 
@@ -1192,7 +1183,7 @@ var tempdiag = 0;
       ((response: any) => {
         if (response.status === 0) {
 
-        this.userLoader = false;
+          this.userLoader = false;
         } else {
           this.userLoader = false;
           alert('Something went wrong try again');
@@ -1203,45 +1194,43 @@ var tempdiag = 0;
   }
 
   addTreat() {
-    let tVal =this.treatmentForm.value;
-    let medic= tVal.itemName.split(",");
+    let tVal = this.treatmentForm.value;
+    let medic = tVal.itemName.split(",");
 
     // this.treatmentItems = this.treatmentForm.get('treatmentItems') as FormArray;
     // this.treatmentItems.push(this.createTreatment(null));
     // console.log("form", this.treatmentItems.value)
     debugger
     var temptreat = 0;
-    if(this.localTreat.length!=0){
-      for(let e of this.localTreat)
-        { 
-          
-        if(e.medicine==medic[0] && e.unit==tVal.unit && e.type==tVal.type){
-        alert("already Exists");
-        temptreat= 1;
-        this.treatmentForm.patchValue({
-          "itemID":"", "itemName": "", "unit": "", "type": "", "dose": "", "prandial": "", "remarks": "", "quantity": ""
-      
-         })
-        break
-       }
-    }
-    if (temptreat == 0)
-    {
-      
-   this.localTreat.push({"prandial":tVal.prandial,"unit":tVal.unit,"type":tVal.type, "remarks":tVal.remarks,"dose":tVal.dose,"medicine":medic[0],"medicineID":this.medId,"prescribedQuantity":tVal.prescribedQuantity,"issuedQuantity":"","duration":""})
-   this.treatmentForm.patchValue({
-    "itemID":"", "itemName": "", "unit": "", "type": "", "dose": "", "prandial": "", "remarks": "", "quantity": ""
+    if (this.localTreat.length != 0) {
+      for (let e of this.localTreat) {
 
-   })
-         }
-  }else{
-    let medic= tVal.itemName.split(",");
-    this.localTreat.push({"prandial":tVal.prandial,"unit":tVal.unit,"type":tVal.type, "remarks":tVal.remarks,"dose":tVal.dose,"medicine":medic[0],"medicineID":this.medId,"prescribedQuantity":tVal.prescribedQuantity,"issuedQuantity":"","duration":""})
-    this.treatmentForm.patchValue({
-     "itemID":"", "itemName": "", "unit": "", "type": "", "dose": "", "prandial": "", "remarks": "", "quantity": ""
- 
-    })
-  }
+        if (e.medicine == medic[0] && e.unit == tVal.unit && e.type == tVal.type) {
+          alert("already Exists");
+          temptreat = 1;
+          this.treatmentForm.patchValue({
+            "itemID": "", "itemName": "", "unit": "", "type": "", "dose": "", "prandial": "", "remarks": "", "quantity": ""
+
+          })
+          break
+        }
+      }
+      if (temptreat == 0) {
+
+        this.localTreat.push({ "prandial": tVal.prandial, "unit": tVal.unit, "type": tVal.type, "remarks": tVal.remarks, "dose": tVal.dose, "medicine": medic[0], "medicineID": this.medId, "prescribedQuantity": tVal.prescribedQuantity, "issuedQuantity": "", "duration": "" })
+        this.treatmentForm.patchValue({
+          "itemID": "", "itemName": "", "unit": "", "type": "", "dose": "", "prandial": "", "remarks": "", "quantity": ""
+
+        })
+      }
+    } else {
+      let medic = tVal.itemName.split(",");
+      this.localTreat.push({ "prandial": tVal.prandial, "unit": tVal.unit, "type": tVal.type, "remarks": tVal.remarks, "dose": tVal.dose, "medicine": medic[0], "medicineID": this.medId, "prescribedQuantity": tVal.prescribedQuantity, "issuedQuantity": "", "duration": "" })
+      this.treatmentForm.patchValue({
+        "itemID": "", "itemName": "", "unit": "", "type": "", "dose": "", "prandial": "", "remarks": "", "quantity": ""
+
+      })
+    }
 
   }
   removeTreat(index) {
@@ -1289,58 +1278,56 @@ var tempdiag = 0;
       );
   }
 
-  getindoorlist()
-   {
-     this.param={"hospitalID": localStorage.getItem('hospitalID')}
-     this.uService.getindoorlist(this.param).subscribe
-     ((response: any) => {
-       if (response.status === 0) {
-                 
-         
-       this.refList = response.data;
+  getindoorlist() {
+    this.param = { "hospitalID": localStorage.getItem('hospitalID') }
+    this.uService.getindoorlist(this.param).subscribe
+      ((response: any) => {
+        if (response.status === 0) {
 
-         this.userLoader = false;
-       } else {
-         this.userLoader = false;
-         alert('Something went wrong try again');
-       }
-     },
-       (error) => { }
-     );
-    
-    }
-   
-  generatetoken(){
-    
-    this.userLoader=true
-    if(this.localIndoorData.length!=0 && this.localIndoorData!=undefined && this.docType!=undefined && this.id!=undefined){
-  if(this.investigationForm.value.termination_date!=undefined && this.investigationForm.value.termination_date!='')
-{     
-  let operateDate = this.datepipe.transform(new Date(this.investigationForm.value.termination_date))//formatting current ///date here 
-  this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.ptID,'prescriptionID': this.patInfo.prescriptionID,"patientID": this.patientID,"departmentID":this.id,"diagnosis":this.localIndoorData,"isIndoor":this.docType,"refferedFrom":-1,"admitDate":operateDate}
-}else{  
-     this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.ptID,'prescriptionID': this.patInfo.prescriptionID,"patientID": this.patientID,"departmentID":this.patInfo.departmentID,"diagnosis":this.localIndoorData,"isIndoor":3,"refferedFrom":-1}
 
-}
-  this.uService.generatetoken(this.param).subscribe
-    ((response: any) => {
-      if (response.status === 0) {
-        console.log(response);
-        this.investigationForm.patchValue({
-          ref: '',
-          termination_date: ""
-        })
-        this.userLoader = false;
-      } else {
-        this.userLoader = false;
-        alert('Something went wrong try again');
-      }
-    },
-      (error) => { }
-    );
-   
+          this.refList = response.data;
+
+          this.userLoader = false;
+        } else {
+          this.userLoader = false;
+          alert('Something went wrong try again');
+        }
+      },
+        (error) => { }
+      );
+
   }
-}
+
+  generatetoken() {
+
+    this.userLoader = true
+    if (this.localIndoorData.length != 0 && this.localIndoorData != undefined && this.docType != undefined && this.id != undefined) {
+      if (this.investigationForm.value.termination_date != undefined && this.investigationForm.value.termination_date != '') {
+        let operateDate = this.datepipe.transform(new Date(this.investigationForm.value.termination_date))//formatting current ///date here 
+        this.param = { 'hospitalID': localStorage.getItem('hospitalID'), 'ptID': this.ptID, 'prescriptionID': this.patInfo.prescriptionID, "patientID": this.patientID, "departmentID": this.id, "diagnosis": this.localIndoorData, "isIndoor": this.docType, "refferedFrom": -1, "admitDate": operateDate }
+      } else {
+        this.param = { 'hospitalID': localStorage.getItem('hospitalID'), 'ptID': this.ptID, 'prescriptionID': this.patInfo.prescriptionID, "patientID": this.patientID, "departmentID": this.patInfo.departmentID, "diagnosis": this.localIndoorData, "isIndoor": 3, "refferedFrom": -1 }
+
+      }
+      this.uService.generatetoken(this.param).subscribe
+        ((response: any) => {
+          if (response.status === 0) {
+            console.log(response);
+            this.investigationForm.patchValue({
+              ref: '',
+              termination_date: ""
+            })
+            this.userLoader = false;
+          } else {
+            this.userLoader = false;
+            alert('Something went wrong try again');
+          }
+        },
+          (error) => { }
+        );
+
+    }
+  }
   // patient prescription list
   gotoPresDetails(udata) {
     localStorage.setItem('uPresData', JSON.stringify(udata));
@@ -1352,11 +1339,6 @@ var tempdiag = 0;
     var d = new Date("1/1/2013 " + amPmString);
     return d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
   }
-
-
-
-
-
 }
 function minSelectedCheckboxes(min = 1) {
   const validator: ValidatorFn = (formArray: FormArray) => {

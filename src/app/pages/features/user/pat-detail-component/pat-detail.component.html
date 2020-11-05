@@ -5,8 +5,7 @@
                 <div class="row px-3 px-md-0">
                     <div class="col-sm-12 pl-0">
                         <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
-                            <li class="breadcrumb-item" [routerLink]="['/user']"><a href="javascript:void(0)"
-                                    class="gray-color">User</a></li>
+                            <li class="breadcrumb-item" [routerLink]="['/user']"><a href="javascript:void(0)" class="gray-color">User</a></li>
                             <li class="breadcrumb-item active gray-04-color">OPD G.OPD Male</li>
                         </ol>
                     </div>
@@ -17,34 +16,24 @@
                 <div class="col-md-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
-                            <h5 class="page-title">OPD G.OPD Male</h5>
+                            <h5 class="page-title">{{patInfo.departmentName}}</h5>
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item" (click)="setTab('biofh')">
-                                    <a class="nav-link" [ngClass]="{'active show': tab === 'biofh'}" id="tab1"
-                                        data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="home"
-                                        aria-selected="true">Bio And Past History</a>
+                                    <a class="nav-link" [ngClass]="{'active show': tab === 'biofh'}" id="tab1" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="home" aria-selected="true">Bio And Past History</a>
                                 </li>
-                                
+
                                 <li class="nav-item" (click)="setTab('clinicalInfo')">
-                                    <a class="nav-link" [ngClass]="{'active show': tab === 'clinicalInfo'}" id="tab2"
-                                        data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="profile"
-                                        aria-selected="false">Clinical Information</a>
+                                    <a class="nav-link" [ngClass]="{'active show': tab === 'clinicalInfo'}" id="tab2" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="profile" aria-selected="false">Clinical Information</a>
                                 </li>
                                 <li class="nav-item" (click)="setTab('investigation')">
-                                    <a class="nav-link" [ngClass]="{'active show': tab === 'investigation'}" id="tab3"
-                                        href="javascript:void(0)" data-toggle="tab" role="tab" aria-controls="portfolio"
-                                        aria-selected="false">Investigation</a>
+                                    <a class="nav-link" [ngClass]="{'active show': tab === 'investigation'}" id="tab3" href="javascript:void(0)" data-toggle="tab" role="tab" aria-controls="portfolio" aria-selected="false">Investigation</a>
                                 </li>
                                 <li class="nav-item" (click)="setTab('treatment')">
-                                    <a class="nav-link" [ngClass]="{'active show': tab === 'treatment'}" id="tab4"
-                                        href="javascript:void(0)" data-toggle="tab" role="tab" aria-controls="portfolio"
-                                        aria-selected="false">Treatment</a>
+                                    <a class="nav-link" [ngClass]="{'active show': tab === 'treatment'}" id="tab4" href="javascript:void(0)" data-toggle="tab" role="tab" aria-controls="portfolio" aria-selected="false">Treatment</a>
                                 </li>
                             </ul>
                             <div class="tab-content">
-                                <div *ngIf="tab === 'biofh'" class="tab-pane fade"
-                                    [ngClass]="{'active show': tab === 'biofh'}" id="tab1" role="tabpanel"
-                                    aria-labelledby="tab1">
+                                <div *ngIf="tab === 'biofh'" class="tab-pane fade" [ngClass]="{'active show': tab === 'biofh'}" id="tab1" role="tabpanel" aria-labelledby="tab1">
 
                                     <div class="row">
                                         <div class="col-md-3">
@@ -129,83 +118,73 @@
                                                         <tr *ngFor="let user of userList">
                                                             <td>{{user.DateCreated | date:"y/dd/MM"}}</td>
                                                             <td>
-                                                                <div class="form-group">
-                                                                    <button type="button" (click)="gotoPresDetails()"
-                                                                        class="button float-right">View Prescription
+
+                                                                <a class="text-primary float-right" (click)="gotoPresDetails()" href="javascript:void(0)">View Prescription Slip</a>
+                                                                <!-- <div class="form-group">
+                                                                    <button type="button" (click)="gotoPresDetails()" class="button float-right">View Prescription
                                                                         Slip</button>
-                                                                </div>
+                                                                </div> -->
                                                             </td>
                                                         </tr>
 
                                                     </tbody>
-                                                    <div *ngIf="userLoader" class="d-flex justify-content-center">
-                                                        <div class="spinner-border theme-color" role="status">
-                                                            <span class="sr-only"></span>
-                                                        </div>
-                                                    </div>
                                                 </table>
+                                            </div>
+                                            <div *ngIf="userLoader" class="d-flex justify-content-center">
+                                                <div class="spinner-border theme-color" role="status">
+                                                    <span class="sr-only"></span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
                                 </div>
-                                
+
                                 <form [formGroup]="clinicalInformation" novalidate>
-
-                                    <div *ngIf="tab === 'clinicalInfo'" class="tab-pane fade"
-                                        [ngClass]="{'active show': tab === 'clinicalInfo'}" id="tab2" role="tabpanel"
-                                        aria-labelledby="tab2">
-
-
-
-                                        <div class="row">
+                                    <div *ngIf="tab === 'clinicalInfo'" class="tab-pane fade" [ngClass]="{'active show': tab === 'clinicalInfo'}" id="tab2" role="tabpanel" aria-labelledby="tab2">
+                                        <div class="row mx-0 border4">
                                             <div class="col-md-12">
                                                 <h5 class="card-title mb-0">Vitals</h5>
                                             </div>
-                                            <hr class="hr-gray mx-3 my-4">
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Blood Presure</label>
-                                                    <input type="text" formControlName="bps" class="form-control"
-                                                        placeholder="Blood Pressure">
+                                                    <input type="text" formControlName="bps" class="form-control" placeholder="Blood Pressure">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Pulse (Rate Per Minute)</label>
-                                                    <input type="text" formControlName="pulse" class="form-control"
-                                                        placeholder="Pulse">
+                                                    <input type="text" formControlName="pulse" class="form-control" placeholder="Pulse">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Weight (Kg)</label>
-                                                    <input type="text" formControlName="weight" class="form-control"
-                                                        placeholder="Weight">
+                                                    <input type="text" formControlName="weight" class="form-control" placeholder="Weight">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Height (cm)</label>
-                                                    <input type="text" formControlName="height" class="form-control"
-                                                        placeholder="Height">
+                                                    <input type="text" formControlName="height" class="form-control" placeholder="Height">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Temprature (F)</label>
-                                                    <input type="text" formControlName="temperature"
-                                                        class="form-control" placeholder="Height">
+                                                    <input type="text" formControlName="temperature" class="form-control" placeholder="Height">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Oxygen Saturation</label>
-                                                    <input type="text" formControlName="oxygen_saturation"
-                                                        class="form-control" placeholder="Height">
+                                                    <input type="text" formControlName="oxygen_saturation" class="form-control" placeholder="Height">
                                                 </div>
                                             </div>
-                                            <hr class="hr-gray mx-3 my-4">
+                                        </div>
+                                        <hr class="hr-gray mx-0">
+                                        <div class="row mx-0 border4">
                                             <div class="col-md-6">
                                                 <div class="form-group input-group">
                                                     <label for="formGroupExampleInput">Is Follow Up</label>
@@ -232,119 +211,90 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                            <hr class="hr-gray mx-3 my-4">
-
-                                            <div class="row mx-0">
-                                                <div class="col-md-12">
-                                                    <h5 class="card-title mb-0 text-center">Presenting Complaints</h5>
-                                                </div>
-                                                <div class="col-md-3">                                                                
-                                                    <label for="formGroupExampleInput">Name</label>
-                                                </div>
-                                                 <div class="col-md-3">                                                               
-                                                    <label for="formGroupExampleInput">Duration</label>
-                                                </div> 
-                                                <div class="col-md-3">                                                               
-                                                    <label for="formGroupExampleInput">Duration Type</label>
-                                                </div> 
-                                                <div class="col-md-3">                                                               
-                                                    <label for="formGroupExampleInput">Action</label>
-                                                </div>
-                                                <!-- <div  formArrayName="items"
-                                                    *ngFor="let item of clinicalInformation.get('items').controls; let i = index;">
-                                                    <div class="row mx-0" [formGroupName]="i"> -->
-                                                        <div class="col-md-3">
-                                                            <div class="form-group">
-                                                                <input formControlName="name"
-                                                                    [typeahead]="symptomsData"
-                                                                    typeaheadOptionField="name"
-                                                                    [typeaheadScrollable]="true"
-                                                                    (typeaheadOnSelect)="onSelectSymptom($event)"
-                                                                    class="form-control">
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <div class="form-group">
-                                                                <input type="text" formControlName="duration"
-                                                                    class="form-control" id="duration"
-                                                                    placeholder="Duration">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <div class="form-group">
-
-                                                                <select class="form-control"
-                                                                    formControlName="durationType"
-                                                                    aria-label="Text input with segmented dropdown button"
-                                                                    placeholder="Complaint Duration">
-                                                                    <option>Hour(s)</option>
-                                                                    <option>Day(s)</option>
-                                                                    <option>Week(s)</option>
-                                                                    <option>Month(s)</option>
-                                                                    <option>Year(s)</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            
-                                                            <div class="form-group">
-
-                                                                <button type="button" (click)="addSymptom()"
-                                                        class="btn  themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
-                                                        Add </button>
-                                                
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    <!-- </div>
-                                                </div> -->
-                                                <div class="col-md-12">
-                                                    <table>
-                                                        <tr *ngFor="let symp of localSymptoms let i=index">
-
-                                                            <td width="30%">{{symp.name}}</td>
-                                                            <td width="30%">{{symp.duration}}</td>
-                                                            <td width="30%">{{symp.durationType}}</td>
-
-                                                            <td width="25%">
-                                                                <button type="button" class="button float-right"
-                                                                    (click)="removeSymptom(i)"> <i
-                                                                        class="fa fa-close"></i> Remove</button>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                   
-
-                                                    <!-- <button type="button" (click)="addSymptom()"
-                                                        class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
-                                                        Add More </button> -->
-                                                </div>
-                                                
+                                        </div>
+                                        <hr class="hr-gray mx-0">
+                                        <div class="row mx-0 border4">
+                                            <div class="col-md-12">
+                                                <h5 class="card-title mb-0">Presenting Complaints</h5>
                                             </div>
-                                           
-
-
-                                            <hr class="hr-gray mx-3 my-4">
-
+                                            <!-- <div  formArrayName="items"
+                                                *ngFor="let item of clinicalInformation.get('items').controls; let i = index;">
+                                                <div class="row mx-0" [formGroupName]="i"> -->
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="formGroupExampleInput">Name</label>
+                                                    <input formControlName="name" [typeahead]="symptomsData" typeaheadOptionField="name" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectSymptom($event)" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="formGroupExampleInput">Duration</label>
+                                                    <input type="text" formControlName="duration" class="form-control" id="duration" placeholder="Duration">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="formGroupExampleInput">Duration Type</label>
+                                                    <select class="form-control" formControlName="durationType" aria-label="Text input with segmented dropdown button" placeholder="Complaint Duration">
+                                                        <option>Hour(s)</option>
+                                                        <option>Day(s)</option>
+                                                        <option>Week(s)</option>
+                                                        <option>Month(s)</option>
+                                                        <option>Year(s)</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="formGroupExampleInput">Action</label>
+                                                    <button type="button" (click)="addSymptom()" class="btn mt-1 themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
+                                                        <i class="fa fa-plus-square mr-2"></i> Add 
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row mx-0" *ngFor="let symp of localSymptoms let i=index">
+                                                    <hr class="hr-gray mx-0">
+                                                    <div class="col-md-4">
+                                                        <p><b>{{symp.name}}</b></p>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <p><b>{{symp.duration}}</b></p>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <p><b>{{symp.durationType}}</b></p>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group mt-1">
+                                                            <a class="float-right" href="javascript:void(0)" (click)="removeSymptom(i)">
+                                                                <i class="fa fa-close fa-lg text-danger"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="hr-gray mx-0">
+                                        <!-- </div>
+                                            </div> -->
+                                        <div class="row mx-0 border4">
+                                            <div class="col-md-12">
+                                                <h5 class="card-title mb-0">History</h5>
+                                            </div>
+                                            <hr class="hr-gray mx-0">
                                             <div class="col-md-6">
                                                 <h5>Past History</h5>
                                                 <div class="mb-2">
-                                                    <label formArrayName="phArray"
-                                                        *ngFor="let order of clinicalInformation.controls.phArray.controls; let i = index">
+                                                    <label formArrayName="phArray" *ngFor="let order of clinicalInformation.controls.phArray.controls; let i = index">
                                                         <input type="checkbox" [formControlName]="i">
                                                         {{phArray[i]}}
                                                     </label>
-
                                                 </div>
                                             </div>
-                                           
-
                                             <div class="col-md-6">
                                                 <h5>Family History</h5>
                                                 <div class="mb-2">
-                                                    <label class="form-check-label" formArrayName="fhArray"
-                                                        *ngFor="let order of clinicalInformation.controls.fhArray.controls; let j = index">
+                                                    <label class="form-check-label" formArrayName="fhArray" *ngFor="let order of clinicalInformation.controls.fhArray.controls; let j = index">
                                                         <input type="checkbox" [formControlName]="j"
                                                             class="form-check-input">
                                                         {{fhArray[j]}}
@@ -377,128 +327,84 @@
                                                     <label class="form-check-label" for="IschemicHeartDiseases1">Ischemic Heart Diseases</label>
                                                 </div> -->
                                             </div>
-                                            <hr class="hr-gray mx-3 my-4">
+                                        </div>
+                                        <hr class="hr-gray mx-0">
+                                        <div class="row mx-0 border4">
                                             <div class="col-md-12">
-                                                <label for="formGroupExampleInput">Signs</label>
-
+                                                <h5 class="card-title mb-0">Signs</h5>
                                             </div>
-                                            <div class="col-md-9">
+                                            <div class="col-md-10">
                                                 <div class="form-group">
-                                                    <span class="wrapper-select">
-
-                                                        <input formControlName="selectedValueSign"
-                                                            [typeahead]="signsData" typeaheadOptionField="name"
-                                                            [typeaheadScrollable]="true"
-                                                            (typeaheadOnSelect)="onSelectSign($event)"
-                                                            class="form-control">
-
-                                                    </span>
+                                                    <input formControlName="selectedValueSign" placeholder="Signs" [typeahead]="signsData" typeaheadOptionField="name" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectSign($event)" class="form-control">
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <button type="btn" (click)="addSign($event.item)"  class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">Add</button>
+                                            <div class="col-md-2">
+                                                <div class="form-group mt-1">
+                                                    <button type="button" (click)="addSign($event.item)" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"> <i class="fa fa-plus-square mr-2"></i> Add</button>
                                                 </div>
                                             </div>
-
                                             <div class="col-md-12">
-                                                <div class="form-group input-group">
-                                                    <div class="form-group text-center">
-                                                        <table>
-                                                            <tr *ngFor="let sig of localSign let i=index">
+                                                <h5>Selected signs</h5>
+                                                <div class="row mx-0" *ngFor="let sig of localSign let i=index">
+                                                    <hr class="hr-gray mx-0">
+                                                    <div class="col-md-10">
+                                                        <p><b>{{sig.name}}</b></p>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group mt-1">
+                                                            <a class="float-right" href="javascript:void(0)" (click)="removeSign(i)">
+                                                                <i class="fa fa-close fa-lg text-danger"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
 
-                                                                <td width="30%">{{sig.name}}</td>
-
-                                                                <td width="25%">
-                                                                    <button type="button" class="button float-right"
-                                                                        (click)="removeSign(i)"> <i
-                                                                            class="fa fa-close"></i> Remove</button>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                        <!-- <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"> Add More </button> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="hr-gray mx-0">
+                                        <div class="row mx-0 border4">
+                                            <div class="col-md-12">
+                                                <h5 class="card-title mb-0">Provisional Diagnosis</h5>
+                                            </div>
+                                            <div class="col-md-5 ">
+                                                <input formControlName="name" [typeahead]="diagnosisData" typeaheadOptionField="name" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectDiag($event)" class="form-control" [typeaheadMinLength]="0">
+                                            </div>
+                                            <div class="col-md-5 ">
+                                                <input formControlName="description" class="form-control">
+                                            </div>
+                                            <div class="col-md-2 mt-1">
+                                                <button type="button" (click)="addDiag()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus-square mr-2"></i>Add</button>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row mx-0" *ngFor="let trt of localDiagData let i=index">
+                                                    <hr class="hr-gray mx-0">
+                                                    <div class="col-md-5">
+                                                        <p><b>{{trt.name}}</b></p>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <p><b>{{trt.description}}</b></p>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+                                                            <a class="float-right" href="javascript:void(0)" (click)="removeDiag(i)">
+                                                                <i class="fa fa-close fa-lg text-danger"></i>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <hr class="hr-gray mx-3 my-4">
-
                                         </div>
-                                        <div class="row mx-0">
-                                            <div class="col-md-12">
-                                                <h5>Provisional Diagnosis</h5>
-                                            </div>
- 
-                                                <!-- <div  formArrayName="diagItems"
-                                            *ngFor="let ditem of clinicalInformation.get('diagItems').controls; let di = index;">
-                                            <div class="row mx-0" [formGroupName]="di">                                             -->
-
-                                                <div class="col-md-5 ">
-                                                    <input formControlName="name"
-                                                        [typeahead]="diagnosisData" typeaheadOptionField="name"
-                                                        [typeaheadScrollable]="true"
-                                                        (typeaheadOnSelect)="onSelectDiag($event)" class="form-control"
-                                                        [typeaheadMinLength]="0" >
-
-                                                </div>
-                                                <div class="col-md-5 ">
-                                                    <input formControlName="description" class="form-control">
-
-                                                </div>
-                                               
-                                                <div class="col-md-2">
-                                                    <button type="btn" (click)="addDiag()"  class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">Add</button>
-                                                   </div>
-                                            <!-- </div>     
-                                        </div> -->
-                                        <div class="col-md-12">
-                                            <div class="form-group text-center">
-                                                <table>
-                                                   
-                                                  
-
-                                                    <tr *ngFor="let trt of localDiagData let i=index">
-
-
-                                                        <td width="15%">{{trt.name}}</td>
-                                                        <td width="30%">{{trt.description}}</td>
-
-                                                        <td width="10%">
-                                                            <div class="form-group">
-                                                                
-                                                                <button type="button" class="button float-right"
-                                                                    (click)="removeDiag(i)"> <i
-                                                                        class="fa fa-close"></i> Remove</button>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            <!-- <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"> Add More </button>  -->
-                                            </div>
+                                        <hr class="hr-gray mx-0">
+                                        <div class="col-md-12 text-center mt-3">
+                                            <button type="button" (click)="addClinicalInfo()" *ngIf="!userLoader" class="button">
+                                                <span class="spinner-border" *ngIf="userLoader" role="status" aria-hidden="true"></span> <i class="fa fa-check-square mr-2"></i> Save 
+                                            </button>
                                         </div>
-                                       
-                                           
-
-                                        </div>
-
-
-                                        <div class="col-md-12">
-                                            <button  type="button" (click)="addClinicalInfo()" *ngIf="!userLoader"
-                                        class="btn btn-block  themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
-                                        <span class="spinner-border" *ngIf="userLoader" role="status" aria-hidden="true"></span>Save </button>
-                                      
-                                    </div>
-
-
-
-
                                     </div>
                                 </form>
                                 <form [formGroup]="investigationForm" novalidate>
-
-                                    <div *ngIf="tab === 'investigation'" class="tab-pane fade"
-                                        [ngClass]="{'active show': tab === 'investigation'}" id="tab3" role="tabpanel"
-                                        aria-labelledby="tab3">
-                                        <div class="row">
+                                    <div *ngIf="tab === 'investigation'" class="tab-pane fade" [ngClass]="{'active show': tab === 'investigation'}" id="tab3" role="tabpanel" aria-labelledby="tab3">
+                                        <div class="row mx-0 border4">
                                             <!-- <div class="col-md-12">
                                                 <div class="custom-control-inline mr-md-5 mb-2">
                                                     <div class="form-check checkbox">
@@ -511,23 +417,13 @@
                                                 </div>
                                             </div> -->
                                             <div class="col-md-12">
-                                                <div class="col-md-8" >
-                                                    <div class="custom-control-inline mr-md-5 mb-2">
-                                                        <label class="form-check-label">Pathalogy</label>
-                                                    </div>
+                                                <div class="custom-control-inline mr-md-5 mb-2">
+                                                    <label class="form-check-label">Pathalogy</label>
                                                 </div>
                                                 <div class="form-group">
-
-                                                    <input formControlName="selectedValuePath"
-                                                        [value]="selectedValuePath" [typeahead]="pathData"
-                                                        typeaheadOptionField="testName" [typeaheadScrollable]="true"
-                                                        (typeaheadOnSelect)="onSelectPath($event)" class="form-control"
-                                                        [typeaheadMinLength]="0">
-
-
+                                                    <input formControlName="selectedValuePath" [typeahead]="pathData" typeaheadOptionField="testName" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectPath($event)" class="form-control" [typeaheadMinLength]="0">
                                                 </div>
                                             </div>
-
                                             <!-- <div class="col-md-4">
                                                 <div class="custom-control-inline mr-md-5 mb-2">
                                                     <div class="form-check checkbox">
@@ -539,84 +435,54 @@
                                                     </div>
                                                 </div>
                                             </div> -->
-                                            
-                                            <div class="col-md-12" >
-                                                <div class="col-md-8" >
-                                                    <div class="custom-control-inline mr-md-5 mb-2">
-                                                        <label class="form-check-label">Radiology</label>
-                                                    </div>
+                                            <div class="col-md-4">
+                                                <div class="custom-control-inline mr-md-5 mb-2">
+                                                    <label class="form-check-label">Radiology</label>
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group input-group">
-                                                        <span class="wrapper-select">
-
-                                                            <input formControlName="selectedValueRad"
-                                                                 [typeahead]="radData"
-                                                                typeaheadOptionField="name" [typeaheadScrollable]="true"
-                                                                (typeaheadOnSelect)="onSelectRad($event)"
-                                                                class="form-control" [typeaheadMinLength]="0">
-
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="col-md-8" >
-                                                        <div class="custom-control-inline mr-md-5 mb-2">
-                                                            <label class="form-check-label">Radiology Test Name</label>
-                                                        </div>
-                                                    </div>
-                                                <div class="col-md-8">
-                                                    <div class="form-group">
-                                                        <input formControlName="selectedValueRadName"
-                                                         [typeahead]="radNameData"
-                                                            typeaheadOptionField="testName" [typeaheadScrollable]="true"
-                                                            (typeaheadOnSelect)="onSelectRadName($event)"
-                                                            class="form-control" [typeaheadMinLength]="0">
-                                                    </div>
+                                                <div class="form-group input-group">
+                                                    <input formControlName="selectedValueRad" [typeahead]="radData" typeaheadOptionField="name" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectRad($event)" class="form-control" [typeaheadMinLength]="0">
                                                 </div>
                                             </div>
+                                            <div class="col-md-8">
+                                                <div class="custom-control-inline mr-md-5 mb-2">
+                                                    <label class="form-check-label">Radiology Test Name</label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input formControlName="selectedValueRadName" [typeahead]="radNameData" typeaheadOptionField="testName" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectRadName($event)" class="form-control" [typeaheadMinLength]="0">
+                                                </div>
                                             </div>
-                                            <hr class="hr-gray">
                                             <div class="col-md-12">
                                                 <h5>Selected Investigation</h5>
+                                                <hr class="hr-gray">
                                                 <div class="table-responsive">
                                                     <table class="table center-aligned-table">
                                                         <thead>
                                                             <tr class="text-dark text-center">
                                                                 <th>Type</th>
                                                                 <th>Investigation Type</th>
-                                                                <th class="float-right">Action</th>
+                                                                <th class="text-center">Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr class="text-center"
-                                                                *ngFor="let pth of localPath let i=index">
+                                                            <tr class="text-center" *ngFor="let pth of localPath let i=index">
                                                                 <td><span *ngIf="pth.testType==1">Pathalogy</span>
                                                                     <span *ngIf="pth.testType!=1">Radiology</span></td>
                                                                 <td>{{pth.testName}}</td>
                                                                 <td>
                                                                     <div class="form-group">
-                                                                        
-                                                                     <a href="javascript:void(0)" class="text-info" (click)="viewReport(template,pth,i)">View Report</a>
-
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <button type="button" class="button float-right"
-                                                                            (click)="removeTest(i,pth.id)"> <i
-                                                                                class="fa fa-close"></i> Remove</button>
+                                                                        <a href="javascript:void(0)" class="float-right" (click)="removeTest(i,pth.id)">
+                                                                            <i class="fa fa-close fa-lg text-danger mr-1"></i>Remove</a>
+                                                                        <a href="javascript:void(0)" class="text-info" (click)="viewReport(template,pth,i)">View Report</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
-
                                                 </div>
                                                 <div class="form-group text-center">
-                                                    <button type="button"  (click)="addinvestigation()"
-                                                        class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i
+                                                    <button type="button" (click)="addinvestigation()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i
                                                             class="fa fa-send-o"></i> Send To Lab / Radiology </button>
                                                 </div>
-
                                                 <ng-template #template>
                                                     <div class="modal-header ">
                                                         <h4 class="modal-title pull-left">Result Report</h4>
@@ -626,29 +492,26 @@
                                                     </div>
                                                     <div class="modal-body ">
                                                         <div class="row mx-0">
-                                                            <div class="col-md-12 mt-3">
-                                                                <p class="mb-1 mt-3"><b>Token Number</b>
-                                                                    <span class="ml-4">33226-60</span>
+                                                            <div class="col-md-12">
+                                                                <p class="mb-1 mt-2"><b>Token Number</b>
+                                                                    <span class="ml-4">{{patInfo.token}}</span>
                                                                 </p>
                                                             </div>
-                                                            <div class="col-md-6 mt-3">
+                                                            <div class="col-md-6">
                                                                 <p class="mb-1 mt-2"><b>Patient Name</b>
-                                                                    <span class="ml-4">{{fullName}}</span>
+                                                                    <span class="ml-4">{{patInfo.firstname}}</span>
                                                                 </p>
                                                                 <p class="mb-1 mt-3"><b>Date Of Birth</b>
-                                                                    <span class="ml-4">1987-10-20</span>
+                                                                    <span class="ml-4">{{patInfo.dob | date}}</span>
                                                                 </p>
                                                             </div>
-                                                            <div class="col-md-6 mt-3">
+                                                            <div class="col-md-6">
                                                                 <p class="mb-1 mt-3"><b>Father/Husband Name</b>
-                                                                    <span class="ml-4"> Shahid</span>
+                                                                    <span class="ml-4"> {{patInfo.f_hName}}</span>
                                                                 </p>
                                                                 <p class="mb-1 mt-3"><b>Mobile Number</b>
-                                                                    <span class="ml-4"> 0300123456798</span>
+                                                                    <span class="ml-4"> {{patInfo.cellNo}}</span>
                                                                 </p>
-                                                            </div>
-                                                            <div class="col-md-12 mt-3">
-                                                                <p class="mb-2 mt-4"><b>Tests</b></p>
                                                             </div>
                                                         </div>
                                                         <div class="table-responsive">
@@ -665,15 +528,15 @@
                                                                 <tbody>
                                                                     <tr *ngFor="let ts of subTests let i=index">
                                                                         <td><span *ngIf="ts.testType==1">Pathalogy</span>
-                                                                            <span *ngIf="ts.testType!=1">Radiology</span></td> 
-                                                                            <td>{{ts.testName}}</td>
-                                                                        <td> 
-                                                                           <!-- <span *ngIf="sData.isSupper==1 && ts.testType!=1"> -->
+                                                                            <span *ngIf="ts.testType!=1">Radiology</span></td>
+                                                                        <td>{{ts.testName}}</td>
+                                                                        <td>
+                                                                            <!-- <span *ngIf="sData.isSupper==1 && ts.testType!=1"> -->
                                                                             <span>
                                                                           <span *ngFor="let rs of xRayFilms[i] let i=index" >{{rs.name}} ,</span>
-                                                                           </span>
-                                                                           <!-- <span *ngIf="sData.isSupper==0 && ts.testType==1"> {{ts.result}}</span> -->
-                                                                           
+                                                                            </span>
+                                                                            <!-- <span *ngIf="sData.isSupper==0 && ts.testType==1"> {{ts.result}}</span> -->
+
                                                                         </td>
                                                                         <td>{{ts.result}}</td>
                                                                         <td> {{ts.refRange}}</td>
@@ -686,58 +549,34 @@
                                                         <button type="button" class="button" (click)="modalRef.hide()"><i class="fa fa-check-square"></i> Ok</button>
                                                     </div>
                                                 </ng-template>
-                                              
                                             </div>
-                                            <hr class="hr-gray">
+                                        </div>
+                                        <hr class="hr-gray mx-0">
+                                        <div class="row mx-0 border4">
                                             <div class="col-md-12">
                                                 <h5>Provisional Diagnosis For Admission</h5>
                                             </div>
                                             <div class="col-md-10">
-                                                <label>Diagnosis</label>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <label>Remove</label>
-                                            </div>
-                                            <div class="col-md-10">
                                                 <div class="form-group">
-                                                    <input formControlName="selectedValueIndoorDiag"
-                                                        [value]="selectedValueIndoorDiag" [typeahead]="IndoorDiagData"
-                                                        typeaheadOptionField="name" [typeaheadScrollable]="true"
-                                                        (typeaheadOnSelect)="onSelectIndoorDiag($event)"
-                                                        class="form-control" [typeaheadMinLength]="0">
+                                                    <label>Diagnosis</label>
+                                                    <input formControlName="selectedValueIndoorDiag" [value]="selectedValueIndoorDiag" [typeahead]="IndoorDiagData" typeaheadOptionField="name" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectIndoorDiag($event)" class="form-control" [typeaheadMinLength]="0">
                                                 </div>
                                             </div>
+                                            <hr class="hr-gray">
                                             <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <div class="form-group text-center">
-                                                        <table width="100%">
-                                                            <tr *ngFor="let indD of localIndoorData let i=index">
-
-                                                                <td width="70%">{{indD.name}}</td>
-
-                                                                <td width="30%">
-                                                                    <div class="form-group">
-                                                                        <button type="button" class="button float-right"
-                                                                            (click)="removeIndoorDiag(i)"> <i
-                                                                                class="fa fa-close"></i> Remove</button>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
+                                                <h5>Selected Diagnosis</h5>
+                                                <div class="row mx-0" *ngFor="let indD of localIndoorData let i=index">
+                                                    <hr class="hr-gray mx-0">
+                                                    <div class="col-md-10">
+                                                        <p><b>{{indD.name}}</b></p>
                                                     </div>
-                                                    <!-- <table class="table center-aligned-table">
-                                                        
-                                                    
-                                                            <tr class="text-center"  *ngFor="let indD of localIndoorData let i=index">
-                                                                <td>{{indD.name}}</td>
-                                                                <td>
-                                                                    <div class="form-group">
-                                                                        <button type="button" class="button float-right" (click)="removeIndoorDiag(i)"> <i class="fa fa-close"></i> Remove</button>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                        
-                                                    </table>                                                -->
+                                                    <div class="col-md-2">
+                                                        <div class="form-group mt-1">
+                                                            <a href="javascript:void(0)" (click)="removeIndoorDiag(i)">
+                                                                <i class="fa fa-close fa-lg text-danger"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <hr class="hr-gray">
@@ -746,107 +585,86 @@
                                                     <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus"></i> Add More </button>
                                                 </div>
                                             </div> -->
-                                            <div class="col-md-12">
-
-                                            <div class="form-group input-group">
-                                                <label>Select Referral</label>
-                                                <span class="wrapper-select">
-                                                    <select formControlName="ref" class="form-control"
-                                                        (change)="changeRefVal($event.target.selectedIndex)">
-                                                        <option>Choose Referral</option>
-                                                        <option *ngFor="let rl of refList" [value]="rl">{{rl.fname}}
-                                                            {{rl.lname}}</option>
-                                                    </select>
-
-                                                </span>
+                                            <div class="col-md-10">
+                                                <div class="form-group input-group">
+                                                    <label>Select Referral</label>
+                                                    <span class="wrapper-select">
+                                                        <select formControlName="ref" class="form-control"
+                                                            (change)="changeRefVal($event.target.selectedIndex)">
+                                                            <option>Choose Referral</option>
+                                                            <option *ngFor="let rl of refList" [value]="rl">{{rl.fname}}
+                                                                {{rl.lname}}</option>
+                                                        </select>
+                                                    </span>
+                                                </div>
                                             </div>
-                                            </div>
-                                            <div class="col-md-12">
+                                            <div class="col-md-2">
                                                 <div class="form-group text-center">
-                                                    <button type="button" (click)="generatetoken()" class="button"><i class="fa fa-plus"></i>
+                                                    <label for="formGroupExampleInput">Action</label>
+                                                    <button type="button" (click)="generatetoken()" class="button mt-1"><i class="fa fa-plus"></i>
                                                         Admit  </button>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12">
+                                            <hr class="hr-gray">
+                                            <div class="col-md-10">
                                                 <div class="input-group form-group">
                                                     <label for="formGroupExampleInput">Opreation Date</label>
-                                                    <input type="text" formControlName="termination_date"
-                                                        [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
-                                                        class="form-control" id="formGroupExampleInput"
-                                                        placeholder="Select Date of Operation" bsDatepicker>
+                                                    <input type="text" formControlName="termination_date" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" class="form-control" id="formGroupExampleInput" placement="top" placeholder="Select Date of Operation" bsDatepicker>
                                                     <div class="input-group-append">
                                                         <span class="input-group-text"><i
                                                                 class="fa fa-calendar-plus-o"></i></span>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12">
+                                            <div class="col-md-2">
                                                 <div class="form-group text-center">
-                                                    <button type="button"  (click)="generatetoken()" class="button"><i
+                                                    <label for="formGroupExampleInput">Action</label>
+                                                    <button type="button" (click)="generatetoken()" class="button mt-1"><i
                                                          class="fa fa-wheelchair"></i>  Operate</button>
                                                 </div>
                                             </div>
-
-
                                         </div>
                                     </div>
                                 </form>
                                 <form [formGroup]="treatmentForm" novalidate>
-                                    <div *ngIf="tab === 'treatment'" class="tab-pane fade"
-                                        [ngClass]="{'active show': tab === 'treatment'}" id="tab4" role="tabpanel"
-                                        aria-labelledby="tab4">
-                                        
-                                        <div class="row">
+                                    <div *ngIf="tab === 'treatment'" class="tab-pane fade" [ngClass]="{'active show': tab === 'treatment'}" id="tab4" role="tabpanel" aria-labelledby="tab4">
+
+                                        <div class="row mx-0 border4">
                                             <div class="col-md-12">
                                                 <h5>Treatment</h5>
                                             </div>
+                                            <hr class="hr-gray mx-0">
                                             <!-- <div  formArrayName="treatmentItems"
-                                        *ngFor="let item of treatmentForm.get('treatmentItems').controls; let i = index;">
-                                        <div class="row mx-0" [formGroupName]="i"> -->
-                                            <hr class="hr-gray">
-                                            <div class="col-md-10">
-                                                <label>Medicine Name</label>
-                                            </div>
+                                            *ngFor="let item of treatmentForm.get('treatmentItems').controls; let i = index;">
+                                            <div class="row mx-0" [formGroupName]="i"> -->
                                             <!-- <div class="col-md-2">
                                                 <label>Remove</label>
                                             </div> -->
-                                            <div class="col-md-10">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <input formControlName="itemName"
-                                                        [value]="itemName" [typeahead]="treatData"
-                                                        typeaheadOptionField="itemName" [typeaheadScrollable]="true"
-                                                        (typeaheadOnSelect)="onSelectTreat($event)" class="form-control"
-                                                        [typeaheadMinLength]="0">
+                                                    <label>Medicine Name</label>
+                                                    <input formControlName="itemName" [typeahead]="treatData" typeaheadOptionField="itemName" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectTreat($event)" class="form-control" [typeaheadMinLength]="0">
                                                 </div>
                                                 <input type="hidden" formControlName="itemID">
                                             </div>
-                                            <div class="col-md-2"></div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label>Unit</label>
-                                                    <input type="text" formControlName="unit" class="form-control"
-                                                        id="formGroupExampleInput" placeholder="500 ml"
-                                                        [attr.readonly]="true">
+                                                    <input type="text" formControlName="unit" class="form-control" id="formGroupExampleInput" placeholder="500 ml" [attr.readonly]="true">
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label>Type</label>
-                                                    <input type="text" formControlName="type" class="form-control"
-                                                        id="formGroupExampleInput" placeholder="Enter Medicine Type"
-                                                        [attr.readonly]="true">
+                                                    <input type="text" formControlName="type" class="form-control" id="formGroupExampleInput" placeholder="Enter Medicine Type" [attr.readonly]="true">
                                                 </div>
                                             </div>
-                                           
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label>Prescribed Quantity</label>
-                                                    <input type="text" formControlName="prescribedQuantity" class="form-control"
-                                                        id="formGroupExampleInput" placeholder="Prescribed Quantity">
+                                                    <input type="text" formControlName="prescribedQuantity" class="form-control" id="formGroupExampleInput" placeholder="Prescribed Quantity">
                                                 </div>
                                             </div>
-                                          
-                    
                                             <div class="col-md-3">
                                                 <div class="form-group input-group">
                                                     <label>Dose</label>
@@ -884,31 +702,18 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Remarks/Dosing</label>
-                                                    <input type="text" formControlName="remarks" class="form-control"
-                                                        id="formGroupExampleInput" placeholder="Remarks/Dosing">
+                                                    <input type="text" formControlName="remarks" class="form-control" id="formGroupExampleInput" placeholder="Remarks/Dosing">
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>Action</label>                                                   
-                                                        <button type="button" (click)="addTreat()"
-                                                        class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i
-                                                            class="fa fa-plus"></i> Add </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <!-- </div>
-                                    </div> -->
-                                            <div class="col-md-2">
-                                            </div>
-                                            <!-- <div class="col-md-12">
+                                            <div class="col-md-2 mt-4">
                                                 <div class="form-group text-center">
-                                                    <button type="button" (click)="addTreat()"
-                                                        class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i
-                                                            class="fa fa-plus"></i> Add More </button>
+                                                    <button type="button" (click)="addTreat()" class="btn mt-2 themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
+                                                        <i class="fa fa-plus-square mr-2"></i>Add
+                                                    </button>
                                                 </div>
-                                            </div> -->
-                                           <div class="col-md-12">
+                                            </div>
+                                            <hr class="hr-gray mx-0">
+                                            <div class="col-md-12">
                                                 <div class="form-group text-center">
                                                     <table>
                                                         <th width="30%">Medicine Name/Unit Type </th>
@@ -919,169 +724,155 @@
                                                         <th width="10%">Action </th>
 
                                                         <tr *ngFor="let trt of localTreat let i=index">
-
-
                                                             <td width="30%">{{trt.medicine}},{{trt.unit}},{{trt.type}}</td>
                                                             <td width="15%">{{trt.dose}}</td>
                                                             <td width="15%">{{trt.prescribedQuantity}}</td>
-                                                            <td width="15%" ><span *ngIf="trt.prandial!='undefined'">{{trt.prandial}}</span></td>
+                                                            <td width="15%"><span *ngIf="trt.prandial!='undefined'">{{trt.prandial}}</span></td>
                                                             <td width="30%">{{trt.remarks}}</td>
 
                                                             <td width="10%">
                                                                 <div class="form-group">
-                                                                    <button type="button" class="button float-right"
-                                                                        (click)="removeTreat(i)"> <i
+                                                                    <button type="button" class="button float-right" (click)="removeTreat(i)"> <i
                                                                             class="fa fa-close"></i> Remove</button>
                                                                 </div>
                                                             </td>
                                                         </tr>
                                                     </table>
-                                                <!-- <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"> Add More </button>  -->
+                                                    <!-- <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"> Add More </button>  -->
                                                 </div>
-                                            </div> 
-                                            <hr class="hr-gray">
-
+                                            </div>
+                                            <hr class="hr-gray mx-0">
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Treatment Comment</label>
                                                     <textarea class="form-control" formControlName="tComments" name="comments" type=text></textarea>
                                                 </div>
                                             </div>
-                                            <hr class="hr-gray">
-                                            <div class="col-md-4">
+                                        </div>
+                                        <hr class="hr-gray mx-0">
+                                        <div class="row mx-0 border4">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Follow Up</label>
-                                                    <input type="number" formControlName="fol_up" name="fun" class="form-control"
-                                                        id="formGroupExampleInput" placeholder="Follow Up" >
+                                                    <input type="number" formControlName="fol_up" name="fun" class="form-control" id="formGroupExampleInput" placeholder="Follow Up">
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="form-group input-group">
                                                     <label>Intervals</label>
                                                     <span class="wrapper-select">
-                                                        <select class="form-control" formControlName="followUpInterval"
-                                                            aria-label="Text input with segmented dropdown button"
-                                                            placeholder="Is Follow Up">
-                                                            <option>Select Interval</option>
-                                                            <option>Hour(s)</option>
-                                                            <option>Day(s)</option>
-                                                            <option>Week(s)</option>
-                                                            <option>Month(s)</option>
-                                                            <option>Year(s)</option>
-                                                        </select>
-                                                    </span>
+                                                    <select class="form-control" formControlName="followUpInterval"
+                                                        aria-label="Text input with segmented dropdown button"
+                                                        placeholder="Is Follow Up">
+                                                        <option>Select Interval</option>
+                                                        <option>Hour(s)</option>
+                                                        <option>Day(s)</option>
+                                                        <option>Week(s)</option>
+                                                        <option>Month(s)</option>
+                                                        <option>Year(s)</option>
+                                                    </select>
+                                                </span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4"></div>
+                                            <hr class="hr-gray mx-0">
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Follow Up Comment</label>
-                                                    <textarea class="form-control" formControlName="fComments" name="followupcomments"
-                                                        type=text></textarea>
+                                                    <textarea class="form-control" formControlName="fComments" name="followupcomments" type=text></textarea>
                                                 </div>
                                             </div>
-                                            <hr class="hr-gray">
+                                        </div>
+                                        <hr class="hr-gray mx-0">
+                                        <div class="row mx-0 border4">
                                             <div class="col-md-12 mb-4">
                                                 <h5>Referral</h5>
                                                 <div class="custom-radio custom-control-inline mr-md-5">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio"
-                                                            formControlName="access_type" id="gridRadios21" value="0"
-                                                            [checked]='true' (change)="changeCheckboxVal($event)">
+                                                        <input class="form-check-input" type="radio" formControlName="access_type" id="gridRadios21" value="0" [checked]='true' (change)="changeCheckboxVal($event)">
                                                         <label class="form-check-label" for="gridRadios21">No</label>
                                                     </div>
                                                 </div>
                                                 <div class="custom-radio custom-control-inline mr-md-5">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio"
-                                                            formControlName="access_type" id="gridRadios31" value="1"
-                                                            (change)="changeCheckboxVal($event)">
+                                                        <input class="form-check-input" type="radio" formControlName="access_type" id="gridRadios31" value="1" (change)="changeCheckboxVal($event)">
                                                         <label class="form-check-label" for="gridRadios31">Yes</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-12" *ngIf="showRef">
-                                                <div class="col-md-4">
-                                                    <div class="form-group input-group">
-                                                        <label>Location</label>
-
-                                                        <select class="form-control" formControlName="FollowUpExtInt"
-                                                            (change)="changFollowUpVal($event)">
-                                                            <option>Select Location</option>
-                                                            <option [value]="0">Internal</option>
-                                                            <option [value]="1">External</option>
-                                                        </select>
-
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4" *ngIf="show ">
-                                                    <div class="form-group input-group">
-                                                        <label>Department</label>
-                                                        <span class="wrapper-select">
-                                                            <select formControlName="Department" class="form-control"
-                                                                (change)="changeDepVal($event.target.selectedIndex)">
-                                                                <option>Choose Department</option>
-                                                                <option *ngFor="let dep of DepartmentD">{{dep.fname}}
-                                                                    {{dep.lname}}</option>
-                                                            </select>
-
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-8">
-                                                </div>
-                                                <div class="col-md-12" *ngIf="!show ">
-                                                    <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-6">
                                                         <div class="form-group input-group">
-                                                            <label>Hospital Name</label>
-                                                            <input type="text" formControlName="Hospital"
-                                                                class="form-control" id="formGroupExampleInput"
-                                                                placeholder="Hospital Name">
+                                                            <label>Location</label>
+                                                            <select class="form-control" formControlName="FollowUpExtInt" (change)="changFollowUpVal($event)">
+                                                        <option>Select Location</option>
+                                                        <option [value]="0">Internal</option>
+                                                        <option [value]="1">External</option>
+                                                    </select>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label>Referral Notes</label>
-                                                            <textarea class="form-control" formControlName="refNotes" name="referralNotes"
-                                                                type=text></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-6" *ngIf="show ">
                                                         <div class="form-group input-group">
-                                                            <label>Ambulance/conveyance</label>
+                                                            <label>Department</label>
                                                             <span class="wrapper-select">
-                                                                <select class="form-control" formControlName="Ambulance"
-                                                                    aria-label="Text input with segmented dropdown button"
-                                                                    placeholder="Is Follow Up">
-                                                                    <option [value]="0">Self</option>
-                                                                    <option [value]="1">Merf</option>
-                                                                </select>
-                                                            </span>
+                                                        <select formControlName="Department" class="form-control"
+                                                            (change)="changeDepVal($event.target.selectedIndex)">
+                                                            <option>Choose Department</option>
+                                                            <option *ngFor="let dep of DepartmentD">{{dep.fname}}
+                                                                {{dep.lname}}</option>
+                                                        </select>
+                                                    </span>
                                                         </div>
-                                                    
                                                     </div>
-                                                   
+                                                    <div class="col-md-12" *ngIf="!show ">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group input-group">
+                                                                    <label>Hospital Name</label>
+                                                                    <input type="text" formControlName="Hospital" class="form-control" id="formGroupExampleInput" placeholder="Hospital Name">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group input-group">
+                                                                    <label>Ambulance/conveyance</label>
+                                                                    <span class="wrapper-select">
+                                                                        <select class="form-control" formControlName="Ambulance"
+                                                                            aria-label="Text input with segmented dropdown button"
+                                                                            placeholder="Is Follow Up">
+                                                                            <option [value]="0">Self</option>
+                                                                            <option [value]="1">Merf</option>
+                                                                        </select>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <label>Referral Notes</label>
+                                                                    <textarea class="form-control" formControlName="refNotes" name="referralNotes" type=text></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12" *ngIf="showRef">
+                                            <div class="col-md-12 mt-2" *ngIf="showRef">
                                                 <div class="form-group text-center">
-                                                    <button type="button" (click)="reffer()"
-                                                        class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i
-                                                            class="fa fa-send-o"></i> Referred Done</button>
+                                                    <button type="button" (click)="reffer()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
+                                                        <i class="fa fa-check-square mr-2"></i>Referred Done
+                                                    </button>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group text-center">
-                                                    <button type="button" (click)="addtreatmentinfo()" 
-                                                        class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i
-                                                            class="fa fa-send-o"></i> Send To Pharmacy</button>
-                                                </div>
+                                        </div>
+                                        <div class="col-md-12 mt-4">
+                                            <div class="form-group text-center">
+                                                <button type="button" (click)="addtreatmentinfo()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
+                                                    <i class="fa fa-send-o mr-2"></i>Send To Pharmacy
+                                                </button>
                                             </div>
-                                           
+                                        </div>
                                     </div>
                                 </form>
                             </div>
-
                         </div>
                     </div>
                 </div>
