@@ -49,7 +49,6 @@ getDataForSync() {
           this.inserPurOrders();
         }else{
           alert('Data already synced');
-           this.router.navigate(['pharma/home']);
         }
         this.loader_eqp = false;
       
@@ -102,11 +101,13 @@ updateMerfSyncStatus() {
     (response: any) => {
       if (response.status === 0) {
         this.updateMerfData = response.data;
-        console.log('this.updateMerfData==',this.updateMerfData);
-       
+        console.log('this.syncData==',this.syncData);
+        if( this.syncData.length>0){
+          this.inserPurOrders();
+        }
         this.loader_eqp = false;
         alert('synced successfully');
-        this.router.navigate(['pharma/home']);
+        alert('all Ready Synced');
       
       }
 

@@ -25,9 +25,10 @@ import { ItemsStatusComponent } from './items-status/items-status.component';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { IssueGrnComponent } from './issue-grn/issue-grn.component';
 import { SyncDataComponent } from './sync-data/sync-data.component';
+import { GrnsComponent } from './grns/grns.component';
 
 @NgModule({
-  declarations: [ PharmaComponent, HomeComponent, PharmaSideBarComponent, PharmaSeenPatientsComponent, PharmaPendingPatientsComponent, PharmaPrescriptionComponent, MedicineGrnComponent, MedicineDiscardComponent, NonMedicineDiscardComponent, NonMedicineGrnComponent, ItemsStatusComponent, IssueGrnComponent, SyncDataComponent],
+  declarations: [ PharmaComponent, HomeComponent, PharmaSideBarComponent, PharmaSeenPatientsComponent, PharmaPendingPatientsComponent, PharmaPrescriptionComponent, MedicineGrnComponent, MedicineDiscardComponent, NonMedicineDiscardComponent, NonMedicineGrnComponent, ItemsStatusComponent, IssueGrnComponent, SyncDataComponent, GrnsComponent],
   imports: [
     CommonModule,
     PharmacyRoutingModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), FormsModule, BsDatepickerModule.forRoot(), CollapseModule.forRoot(),TypeaheadModule.forRoot(),
