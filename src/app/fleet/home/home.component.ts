@@ -1,7 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-
+import {FleetService} from "../fleet.service"
 @Component({
   selector: 'ncri-home',
   templateUrl: './home.component.html',
@@ -20,14 +20,23 @@ export class HomeComponent implements OnInit {
   activateLoader: boolean = false;
   deactivateLoader: boolean = false;
   userList: any = [];
+  patientsList: any;
 
   constructor(
     private modalService: BsModalService,
-    private router: Router,
+    private router: Router,private fService:FleetService
   ) {
 
   }
   ngOnInit(): void {
+    this.getfleetpatients();
+  }
+
+  pDetails(obj){
+    debugger
+
+  localStorage.setItem("newPatData",JSON.stringify(obj))
+    this.router.navigate(['/fleet/new-patient']);
   }
 
   openModalActivate(userActivate: TemplateRef<any>, data) {
@@ -66,6 +75,23 @@ export class HomeComponent implements OnInit {
       this.userData.status = 2;
       this.getUsers(this.userData)
     };
+  }
+
+
+  getfleetpatients(){
+
+    this.paramData={"status":0}
+    this.fService.getfleetpatients(this.paramData).subscribe((response: any) => {
+      if (response.status === 0) {
+        this.patientsList = response.data
+        this.userLoader = false;
+      } else {
+        this.userLoader = false;
+        alert('Something went wrong try again');
+      }
+    },
+      (error) => { }
+    );
   }
   getUsers(obj: any) {
 

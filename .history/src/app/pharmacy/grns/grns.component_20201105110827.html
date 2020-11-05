@@ -1,0 +1,116 @@
+
+<div class="container-fluid container-wrapper">
+    <div class="row">
+        <div class="content-wrapper">
+            <div class="page-title">
+                <div class="row px-3 px-md-0">
+                    <div class="col-sm-12 pl-0">
+                        <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
+                            <li class="breadcrumb-item active gray-04-color"><a href="javascript:void(0)" [routerLink]="['/pharma/home']" class="gray-color"><i class="ti-home mr-2"></i>Home</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)"> GRN</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- main body -->
+            <div class="row">
+                <div class="col-md-12 mb-30">
+                    <div class="card card-statistics h-100">
+                        <div class="card-body">
+                            <h5 class="card-title mb-0"> GRN</h5>
+                            <form novalidate>
+                                <div class="form-group row mx-0">
+                                    <div class="col-sm-12">
+                                        <label>Select GRN</label>
+                                        <select  [(ngModel)]="grnobj1.grnName" class="form-control" (ngModelChange)="getID(grnobj1.grnName)" name="customSelected" placeholder="select GRN" name="grnName">
+                                            <option *ngFor="let prc of pendPurchData; let i=index" [value]="prc.poID">{{prc.POCode}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                                <div class="form-group row mx-0">
+                                    <div class="col-md-12 text-center">
+                                        <h5>Medicines</h5>
+                                        <h5>(Note: Quantity & Batch no are required fields)</h5>
+                                    </div>
+                                </div>
+                                <hr class="gray">
+                                <div class="form-group row mx-0">
+                                 <form novalidate>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Medicine Name</label>
+                                            <input [(ngModel)]="grnobj.itemName" [typeahead]="pharmacyData" typeaheadOptionField="itemName" (typeaheadOnSelect)="onSelectMedics($event)" class="form-control" name="medicName" placeholder="Enter Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Unit</label>
+                                            <input type="text" [(ngModel)]="grnobj.unit" name="medicUnit" class="form-control" id="formGroupExampleInput" placeholder="Unit">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Type</label>
+                                            <input type="text" [(ngModel)]="grnobj.type" name="medicType" class="form-control" id="formGroupExampleInput" placeholder="Type">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Issued Quantity</label>
+                                            <input type="text" [(ngModel)]="grnobj.tradeName" name="medicTrade" class="form-control" id="formGroupExampleInput" placeholder="Trade Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label>Recieved Quantity</label>
+                                            <input type="text" [(ngModel)]="grnobj.expireDate" name="medicExpiry" class="form-control" id="formGroupExampleInput" #datepickerYMD="bsDatepicker" bsDatepicker formControlName="dateYMD" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placeholder="Expiry Date">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Batch No</label>
+                                            <input type="text" [(ngModel)]="grnobj.recievedQuantity" name="medicRecieved" class="form-control" id="formGroupExampleInput" placeholder="Received">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Trade Name</label>
+                                            <input type="text" [(ngModel)]="grnobj.batchNo" name="medicBatch" class="form-control" id="formGroupExampleInput" placeholder="Batch No">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Manufacturing date</label>
+                                            <input type="text" [(ngModel)]="grnobj.unitPrice" name="medicPrice" class="form-control" id="formGroupExampleInput" placeholder="Price">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Expiry date</label>
+                                            <input type="text" [(ngModel)]="grnobj.unitPrice" name="medicPrice" class="form-control" id="formGroupExampleInput" placeholder="Price">
+                                        </div>
+                                    </div>
+                                 </form>
+                            </div>
+                            
+                               
+                                <hr class="gray">
+                                <div class="form-group row mx-0">
+                                    <div class="col-md-12">
+                                        <div class="form-group text-center">
+                                            <button type="button" *ngIf="!loader_eqp"  class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save</button>
+                                            <button type="button" *ngIf="loader_eqp" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><span class="spinner-border theme-color" role="status">
+                                                    <span class="sr-only"></span>
+                                                </span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -45,14 +45,16 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>555669-56</td>
+                                                        <tr *ngFor="let pt of patientsList">
+                                                            <td>{{pt.token}}</td>
                                                             <td>
                                                                 <img class="mr-3" src="../../../assets/images/profile-avatar.png">
-                                                                <span>Zeeshan Shahid</span>
+                                                                <span>{{pt.firstname}}</span>
                                                             </td>
-                                                            <td>2020-10-02</td>
-                                                            <td><a href="javascript:void(0)" class="text-info" [routerLink]="['/fleet/new-patient']">Details</a></td>
+                                                            <td>{{pt.enteringDate | date}}</td>
+                                                            <td>
+                                                                <a href="javascript:void(0)" class="text-info" (click)="pDetails(pt)">Details</a>
+
                                                         </tr>
                                                     </tbody>
                                                 </table>
