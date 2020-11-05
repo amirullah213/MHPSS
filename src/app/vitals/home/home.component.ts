@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BsComponentRef } from 'ngx-bootstrap/component-loader';
 import {VitalsService} from "../vitals.service"
 
@@ -15,7 +16,7 @@ export class HomeComponent implements OnInit {
   vitalsData: any;
   vForm: FormGroup;
 
-  constructor(    private fb: FormBuilder, private vService: VitalsService,
+  constructor(private fb: FormBuilder, private vService: VitalsService, private router:Router
     ) {
       this.vForm = this.fb.group({
         bps: [''],
@@ -30,7 +31,7 @@ export class HomeComponent implements OnInit {
      }
 
   ngOnInit(): void {
-    debugger
+    
     this.patInfo = JSON.parse(localStorage.getItem("patData"));  
     this.getallpatientvital()
   }
@@ -72,7 +73,7 @@ export class HomeComponent implements OnInit {
     this.vService.addpatientvital(this.param).subscribe
     ((response:any)=> {
     if(response.status === 0 ){
-        this.vitalsData = response.data;
+      this.router.navigate(['/vitals/home']);
         
         
        this.userLoader = false;

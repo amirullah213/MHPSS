@@ -16,7 +16,21 @@ export class FleetService {
     let url = APP_CONFIG.apiBaseUrl + 'getfleetpatients';
     return this.http.post(url, obj);
   }
- 
+  getambulances(obj: any):Observable<any> {
+    let url = APP_CONFIG.apiBaseUrl + 'getambulances';
+    return this.http.post(url, obj);
+  }
+
+  updateambulances(obj: any):Observable<any> {
+    let url = APP_CONFIG.apiBaseUrl + 'updateambulances';
+    return this.http.post(url, obj);
+  }
+
+  updatereferral(obj: any):Observable<any> {
+    let url = APP_CONFIG.apiBaseUrl + 'updatereferral';
+    return this.http.post(url, obj);
+  }
+  
   
 
   

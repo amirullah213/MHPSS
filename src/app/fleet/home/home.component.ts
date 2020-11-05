@@ -21,57 +21,73 @@ export class HomeComponent implements OnInit {
   deactivateLoader: boolean = false;
   userList: any = [];
   patientsList: any;
+  ambulanceList: any;
 
   constructor(
     private modalService: BsModalService,
     private router: Router,private fService:FleetService
   ) {
-
   }
   ngOnInit(): void {
     this.getfleetpatients();
+    this.getambulances()
+    
+    if(localStorage.getItem('tab'))
+    this.setTab(localStorage.getItem('tab'))
   }
 
   pDetails(obj){
-    debugger
-
-  localStorage.setItem("newPatData",JSON.stringify(obj))
+    localStorage.setItem("newPatData",JSON.stringify(obj))
     this.router.navigate(['/fleet/new-patient']);
   }
+  updateambulances(sts:boolean,id:number){
 
-  openModalActivate(userActivate: TemplateRef<any>, data) {
-    this.userData = data;
-    this.modalRef = this.modalService.show(userActivate, this.userData);
-    // this.modalRef.content.userActivate = 'Close';
+    this.userLoader=true;
+    this.paramData={"status":sts,"id":id}
+    this.fService.updateambulances(this.paramData).subscribe((response: any) => {
+      if (response.status == 0) {
+        
+       this.reloadComponent()
+        this.userLoader = false;
+      } else {
+        this.userLoader = false;
+        alert('Something went wrong try again');
+      }
+    },
+      (error) => { }
+    );
   }
-  openModalDeactivate(userDeactivate: TemplateRef<any>, data) {
-    this.userData = data;
-    this.modalRef = this.modalService.show(userDeactivate, this.userData);
-    // this.modalRef.content.userActivate = 'Close';
-  }
-
-  openDeleteUser(deleteUser: TemplateRef<any>, data) {
-    this.userData = data;
-    this.modalRef = this.modalService.show(deleteUser, this.userData);
-    // this.modalRef.content.userActivate = 'Close';
-  }
-  //set tab
+  reloadComponent() {
+    debugger
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    localStorage.setItem("tab",'seenPats')
+    this.router.navigate(['/fleet/home']);
+}
+ //set tab
   setTab(tab: string) {
+    
     if (tab == 'newPats') {
       console.log('tab==', tab);
       this.tab = tab;
+      localStorage.setItem("tab",tab)
+
       this.userData.status = 0;
       this.getUsers(this.userData)
     };
     if (tab == 'penPats') {
       console.log('tab==', tab);
       this.tab = tab;
+      localStorage.setItem("tab",tab)
+
       this.userData.status = 1;
       this.getUsers(this.userData)
     };
     if (tab == 'seenPats') {
       console.log('tab==', tab);
       this.tab = tab;
+      localStorage.setItem("tab",tab)
+
       this.userData.status = 2;
       this.getUsers(this.userData)
     };
@@ -79,11 +95,30 @@ export class HomeComponent implements OnInit {
 
 
   getfleetpatients(){
-
+this.userLoader=true;
     this.paramData={"status":0}
     this.fService.getfleetpatients(this.paramData).subscribe((response: any) => {
       if (response.status === 0) {
         this.patientsList = response.data
+        this.userLoader = false;
+      } else {
+        this.userLoader = false;
+        alert('Something went wrong try again');
+      }
+    },
+      (error) => { }
+    );
+  }
+
+
+  
+  getambulances(){
+    this.userLoader=true;
+    this.paramData={}
+    this.fService.getambulances(this.paramData).subscribe((response: any) => {
+      if (response.status === 0) {
+        
+        this.ambulanceList = response.data
         this.userLoader = false;
       } else {
         this.userLoader = false;

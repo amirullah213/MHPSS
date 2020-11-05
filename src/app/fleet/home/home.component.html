@@ -140,10 +140,13 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>555669-56</td>
-                                                            <td> Available </td>
-                                                            <td><a href="javascript:void(0)" class="button" [routerLink]="['/fleet/seen-patient']">Make Unavailable</a></td>
+                                                        <tr *ngFor="let amb of ambulanceList">
+                                                            <td>{{amb.registrationNo}}</td>
+                                                            <td> <span *ngIf="amb.status==0"  >Available</span><span *ngIf="amb.status==1" class="text-danger">Unavailable</span> </td>
+                                                            <td>
+                                                                <a href="javascript:void(0)" *ngIf="amb.status==0" class="button button-danger" (click)="updateambulances(1,amb.id)"><span   >Make Unavailable</span></a>
+                                                                <a href="javascript:void(0)"  *ngIf="amb.status==1" class="button button-success"  (click)="updateambulances(0,amb.id)"><span  >Make Available</span></a>
+                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
