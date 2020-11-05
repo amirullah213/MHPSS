@@ -135,7 +135,7 @@ createItem(obj:any): FormGroup {
      medName: obj.itemName,
      unit: obj.unit,
      type:obj.type,
-    issued:obj.quantity,
+    issued:'',
     recieved: '',
     batchNo: '',
     tradeName: '',
@@ -152,25 +152,25 @@ saveData(dat){
     this.modal3.poID  = this.poID;
     this.modal3.parmacyID  = this.doctorID;
     this.modal3.items  = this.purchaseOrder.value;
-    console.log('this.modal3===',this.modal3);
+
     
-   this.pharmacySer.addPharmacyGRM(this.modal3).subscribe(
-      (response: any) => {
-        if (response.status === 0) {
-         
-          this.loader_eqp = false;
-          alert('GRN added succesfully')
-        }
-    if (response.status === 1) {
-          this.errormsg = response.errors;
-          this.loader_eqp = false;
-          console.log('error=', this.errormsg);
-          alert('Problem in Service! Please Try again');
-          //this._loginserviceService.logout();
-        }
-      },
-      (error) => {}
-    );
+  //  this.pharmacySer.getPendPurOrd(this.modal3).subscribe(
+  //     (response: any) => {
+  //       if (response.status === 0) {
+  //         this.pendPurchData = response.data;
+  //       console.log('pendPurchData==',this.pendPurchData)
+  //         this.loader_eqp = false;
+  //       }
+  //   if (response.status === 1) {
+  //         this.errormsg = response.errors;
+  //         this.loader_eqp = false;
+  //         console.log('error=', this.errormsg);
+  //         alert('Problem in Service! Please Try again');
+  //         //this._loginserviceService.logout();
+  //       }
+  //     },
+  //     (error) => {}
+  //   );
   
   }
 

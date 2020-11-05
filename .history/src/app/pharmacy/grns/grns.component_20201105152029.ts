@@ -4,7 +4,6 @@ import { Router } from "@angular/router";
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { Subject } from 'rxjs';
 import { PharmacyServicesService } from '../services/pharmacy-services.service';
-import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'ncri-grns',
@@ -19,8 +18,6 @@ export class GrnsComponent implements OnInit {
   pharmacyData:any=[];
   modal:any={};
   modal2:any={};
-  modal3:any={};
-
   errormsg:any;
   grnobj1:any={};
   grnobj:any={};
@@ -29,26 +26,18 @@ export class GrnsComponent implements OnInit {
   purchaseItems:any=[];
   dynamicForm:FormGroup;
   purchaseOrder:FormArray;
-  todayDate:any;
-  poID:any;
 
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private pharmacySer:PharmacyServicesService,
-    private datePipe: DatePipe
+    private pharmacySer:PharmacyServicesService
     
   ) {
     
   }
 
   ngOnInit(): void {
-    var date = new Date();
-  
-   this.todayDate=this.datePipe.transform(date,"yyyy-MM-dd");
-   console.log(this.todayDate);
-
     this.hospitalID=localStorage.getItem('hospitalID');
     this.doctorID=localStorage.getItem('docId');
     this.userType=localStorage.getItem('userType');
@@ -56,6 +45,8 @@ export class GrnsComponent implements OnInit {
 
     this.dynamicForm = this.fb.group({
       grnName: ['', Validators.required],
+   
+     
       purchaseOrder: this.fb.array([]),
   });
     
@@ -125,17 +116,16 @@ onSelectMedics(ob)
   
 }
 getID(poid){
-  this.poID=poid;
  console.log('poid===',poid);
  this.getPurchOrderItems(poid);
 }
 createItem(obj:any): FormGroup {
  
   return this.fb.group({
-     medName: obj.itemName,
+    itemName: obj.itemName,
      unit: obj.unit,
      type:obj.type,
-    issued:obj.quantity,
+    issued:'',
     recieved: '',
     batchNo: '',
     tradeName: '',
@@ -145,33 +135,6 @@ createItem(obj:any): FormGroup {
 }
 saveData(dat){
   console.log('this.purchaseOrder===',this.purchaseOrder.value);
-  console.log('this.dat===',dat);
- 
-    this.loader_eqp = true;
-    this.modal3.recieveDate = this.todayDate;
-    this.modal3.poID  = this.poID;
-    this.modal3.parmacyID  = this.doctorID;
-    this.modal3.items  = this.purchaseOrder.value;
-    console.log('this.modal3===',this.modal3);
-    
-   this.pharmacySer.addPharmacyGRM(this.modal3).subscribe(
-      (response: any) => {
-        if (response.status === 0) {
-         
-          this.loader_eqp = false;
-          alert('GRN added succesfully')
-        }
-    if (response.status === 1) {
-          this.errormsg = response.errors;
-          this.loader_eqp = false;
-          console.log('error=', this.errormsg);
-          alert('Problem in Service! Please Try again');
-          //this._loginserviceService.logout();
-        }
-      },
-      (error) => {}
-    );
-  
-  }
-
+  console.log('this.dat===',dat)
+}
 }
