@@ -78,10 +78,10 @@
                                                         <input type="text" formControlName='tradeName'  class="form-control" placeholder="trade">
                                                      </td>
                                                      <td>
-                                                        <input type="text" formControlName='manuDate'  class="form-control"  #datepickerYMD="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placeholder="Manufacture Date">
+                                                        <input type="text" formControlName='manuDate'  class="form-control"  #datepickerYMD="bsDatepicker" bsDatepicker formControlName="dateYMD" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placeholder="Manufacture Date">
                                                      </td>
                                                      <td>
-                                                        <input type="text" formControlName='expDate'  class="form-control"  #datepickerYMD="bsDatepicker" bsDatepicker  [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placeholder="Expiry Date">
+                                                        <input type="text" formControlName='expDate'  class="form-control"  #datepickerYMD="bsDatepicker" bsDatepicker formControlName="dateYMD" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placeholder="Expiry Date">
                                                      </td>
 
 

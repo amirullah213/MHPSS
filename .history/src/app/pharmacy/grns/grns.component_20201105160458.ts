@@ -154,12 +154,12 @@ saveData(dat){
     this.modal3.items  = this.purchaseOrder.value;
     console.log('this.modal3===',this.modal3);
     
-   this.pharmacySer.addPharmacyGRM(this.modal3).subscribe(
+   this.pharmacySer.getPendPurOrd(this.modal3).subscribe(
       (response: any) => {
         if (response.status === 0) {
-         
+          this.pendPurchData = response.data;
+        console.log('pendPurchData==',this.pendPurchData)
           this.loader_eqp = false;
-          alert('GRN added succesfully')
         }
     if (response.status === 1) {
           this.errormsg = response.errors;
