@@ -35,7 +35,7 @@ const routes: Routes = [
       { path: 'issue-grn', component: IssueGrnComponent },
       { path: 'sync', component: SyncDataComponent },
       { path: 'grns', component: GrnsComponent },
-      { path: 'stockReqSatelite', component: StockreqSateliteComponent },
+      { path: 'stockReqSatelite', component: GrnsComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' }
 
     ]

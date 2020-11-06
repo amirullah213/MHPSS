@@ -152,7 +152,6 @@ saveData(dat){
   console.log('this.dat===',dat);
  
     this.loader_eqp = true;
-    this.modal3.recieveDate = this.hospitalID;
     this.modal3.recieveDate = this.todayDate;
     this.modal3.poID  = this.poID;
     this.modal3.parmacyID  = this.doctorID;
@@ -165,7 +164,7 @@ saveData(dat){
          
           this.loader_eqp = false;
           alert('GRN added succesfully');
-          window.location.reload();
+
         }
     if (response.status === 1) {
           this.errormsg = response.errors;

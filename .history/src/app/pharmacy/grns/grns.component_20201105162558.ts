@@ -144,7 +144,6 @@ createItem(obj:any): FormGroup {
     itemType: obj.itemType,
     unitPrice:obj.unitPrice, 
     itemID :obj.itemID,
-    manufacturer:obj.manufacturer,
   });
 }
 saveData(dat){
@@ -152,7 +151,6 @@ saveData(dat){
   console.log('this.dat===',dat);
  
     this.loader_eqp = true;
-    this.modal3.recieveDate = this.hospitalID;
     this.modal3.recieveDate = this.todayDate;
     this.modal3.poID  = this.poID;
     this.modal3.parmacyID  = this.doctorID;
@@ -164,8 +162,7 @@ saveData(dat){
         if (response.status === 0) {
          
           this.loader_eqp = false;
-          alert('GRN added succesfully');
-          window.location.reload();
+          alert('GRN added succesfully')
         }
     if (response.status === 1) {
           this.errormsg = response.errors;

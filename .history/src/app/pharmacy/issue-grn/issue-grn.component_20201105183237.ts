@@ -7,31 +7,11 @@ import { PharmacyServicesService } from '../services/pharmacy-services.service';
 import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'ncri-grns',
-  templateUrl: './grns.component.html',
-  styleUrls: ['./grns.component.scss']
+  selector: 'ncri-issue-grn',
+  templateUrl: './issue-grn.component.html',
+  styleUrls: ['./issue-grn.component.scss']
 })
-export class GrnsComponent implements OnInit {
-  hospitalID:any;
-  doctorID:any;
-  userType:any;
-  loader_eqp:boolean=false;
-  pharmacyData:any=[];
-  modal:any={};
-  modal2:any={};
-  modal3:any={};
-
-  errormsg:any;
-  grnobj1:any={};
-  grnobj:any={};
-  pendPurchData:any=[];
-  loader_order:any=false;
-  purchaseItems:any=[];
-  dynamicForm:FormGroup;
-  purchaseOrder:FormArray;
-  todayDate:any;
-  poID:any;
-
+export class IssueGrnComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,

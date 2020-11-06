@@ -7,11 +7,11 @@ import { PharmacyServicesService } from '../services/pharmacy-services.service';
 import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'ncri-grns',
-  templateUrl: './grns.component.html',
-  styleUrls: ['./grns.component.scss']
+  selector: 'ncri-issue-grn',
+  templateUrl: './issue-grn.component.html',
+  styleUrls: ['./issue-grn.component.scss']
 })
-export class GrnsComponent implements OnInit {
+export class IssueGrnComponent implements OnInit {
   hospitalID:any;
   doctorID:any;
   userType:any;
@@ -31,8 +31,6 @@ export class GrnsComponent implements OnInit {
   purchaseOrder:FormArray;
   todayDate:any;
   poID:any;
-
-
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -66,7 +64,7 @@ getPendingPurOrders() {
   this.loader_eqp = true;
   
   
- this.pharmacySer.getPendPurOrd(this.modal).subscribe(
+ this.pharmacySer.getStockReqs(this.modal).subscribe(
     (response: any) => {
       if (response.status === 0) {
         this.pendPurchData = response.data;
