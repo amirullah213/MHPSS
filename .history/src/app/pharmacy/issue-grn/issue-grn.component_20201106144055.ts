@@ -100,9 +100,9 @@ getPurchOrderItems(dt) {
         this.loader_order = false;
         this.purchaseItems.forEach(e => {
           console.log('eeee',e);
-          // if(e!=undefined){(this.purchaseOrder = this.dynamicForm.get('purchaseOrder') as FormArray).push(this.createItem(e));}
-          // else{return null}
-          (this.purchaseOrder = this.dynamicForm.get('purchaseOrder') as FormArray).push(this.createItem(e));
+          if(e!=undefined){(this.purchaseOrder = this.dynamicForm.get('purchaseOrder') as FormArray).push(this.createItem(e));}
+          else{return null}
+        //  (this.purchaseOrder = this.dynamicForm.get('purchaseOrder') as FormArray).push(this.createItem(e));
           console.log('this.purchaseOrder4444444===',this.purchaseOrder)
        // purchaseOrder: this.fb.array([ this.createItem(e) ]);
       
