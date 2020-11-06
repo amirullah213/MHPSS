@@ -32,7 +32,6 @@ export class IssueGrnComponent implements OnInit {
   purchaseOrder:FormArray;
   todayDate:any;
   srID:any;
-  stockArr:any=[];
   
   constructor(
     private fb: FormBuilder,
@@ -103,12 +102,10 @@ getPurchOrderItems(dt) {
         this.loader_order = false;
         this.purchaseItems.forEach(e => {
           console.log('eeee',e);
-            this.stockArr=e.stock;
-          
+          // if(e!=undefined){(this.purchaseOrder = this.dynamicForm.get('purchaseOrder') as FormArray).push(this.createItem(e));}
+          // else{return null}
           (this.purchaseOrder = this.dynamicForm.get('purchaseOrder') as FormArray).push(this.createItem(e));
-          console.log('this.purchaseOrder4444444===',this.purchaseOrder);
-          console.log('stock22222==',this.stockArr)
-
+          console.log('this.purchaseOrder4444444===',this.purchaseOrder)
        // purchaseOrder: this.fb.array([ this.createItem(e) ]);
       
 
@@ -142,9 +139,9 @@ getID(srid){
  this.getPurchOrderItems(srid);
 }
 createItem(obj:any): FormGroup {
- 
+ console.log('stock22222==',obj.stock)
     
- 
+
   // if (obj == null) {
 
   // return this.fb.group({ stockID: "",

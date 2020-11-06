@@ -32,7 +32,6 @@ export class IssueGrnComponent implements OnInit {
   purchaseOrder:FormArray;
   todayDate:any;
   srID:any;
-  stockArr:any=[];
   
   constructor(
     private fb: FormBuilder,
@@ -92,9 +91,7 @@ getPendingPurOrders() {
 getPurchOrderItems(dt) {
   this.loader_order = true;
   this.modal2.srID=dt;
-  this.modal2.hospitalID= this.hospitalID;
-  this.modal2.pharmacyID=this.doctorID;
-
+  
  this.pharmacySer.getStockReqItms(this.modal2).subscribe(
     (response: any) => {
       if (response.status === 0) {
@@ -103,12 +100,10 @@ getPurchOrderItems(dt) {
         this.loader_order = false;
         this.purchaseItems.forEach(e => {
           console.log('eeee',e);
-            this.stockArr=e.stock;
-          
+          // if(e!=undefined){(this.purchaseOrder = this.dynamicForm.get('purchaseOrder') as FormArray).push(this.createItem(e));}
+          // else{return null}
           (this.purchaseOrder = this.dynamicForm.get('purchaseOrder') as FormArray).push(this.createItem(e));
-          console.log('this.purchaseOrder4444444===',this.purchaseOrder);
-          console.log('stock22222==',this.stockArr)
-
+          console.log('this.purchaseOrder4444444===',this.purchaseOrder)
        // purchaseOrder: this.fb.array([ this.createItem(e) ]);
       
 
@@ -144,17 +139,17 @@ getID(srid){
 createItem(obj:any): FormGroup {
  
     
- 
-  // if (obj == null) {
 
-  // return this.fb.group({ stockID: "",
-  // requiredQuantity:"",
-  // issuedQuantity: "",
-  // itemName: "",
-  // type: "",
-  // unit: "",
-  // batchNo:'', ...obj})
-  // }
+  if (obj == null) {
+
+  return this.fb.group({ stockID: "",
+  requiredQuantity:"",
+  issuedQuantity: "",
+  itemName: "",
+  type: "",
+  unit: "",
+  batchNo:'', ...obj})
+  }
   return this.fb.group({
     
    
@@ -164,7 +159,7 @@ createItem(obj:any): FormGroup {
     itemName: obj.itemName,
     type: obj.type,
     unit: obj.unit,
-    stock:[obj.stock],
+    batchNo:'',
     inhandQuantity:''
     
    
