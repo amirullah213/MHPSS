@@ -20,7 +20,6 @@ export class IssueGrnComponent implements OnInit {
   modal:any={};
   modal2:any={};
   modal3:any={};
-  controls: FormControl[];
 
   errormsg:any;
   grnobj1:any={};
@@ -32,16 +31,14 @@ export class IssueGrnComponent implements OnInit {
   purchaseOrder:FormArray;
   todayDate:any;
   srID:any;
-  
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private pharmacySer:PharmacyServicesService,
-    private datePipe: DatePipe,
+    private datePipe: DatePipe
     
   ) {
-   // this.controls = this.purchaseOrder.map(c => new FormControl(false));
-
+    
   }
 
   ngOnInit(): void {
@@ -61,12 +58,11 @@ export class IssueGrnComponent implements OnInit {
   });
     
   }
-get f(){
-  return this.dynamicForm.controls;
-}
+
    //get all diagnostic list
 getPendingPurOrders() {
   this.loader_eqp = true;
+  
   
  this.pharmacySer.getStockReqs(this.modal).subscribe(
     (response: any) => {
@@ -100,9 +96,9 @@ getPurchOrderItems(dt) {
         this.loader_order = false;
         this.purchaseItems.forEach(e => {
           console.log('eeee',e);
-          // if(e!=undefined){(this.purchaseOrder = this.dynamicForm.get('purchaseOrder') as FormArray).push(this.createItem(e));}
-          // else{return null}
-          (this.purchaseOrder = this.dynamicForm.get('purchaseOrder') as FormArray).push(this.createItem(e));
+          if(e!=undefined){(this.purchaseOrder = this.dynamicForm.get('purchaseOrder') as FormArray).push(this.createItem(e));}
+          else{(this.purchaseOrder = this.dynamicForm.get('purchaseOrder') as FormArray).push(this.createItem(null));}
+        //  (this.purchaseOrder = this.dynamicForm.get('purchaseOrder') as FormArray).push(this.createItem(e));
           console.log('this.purchaseOrder4444444===',this.purchaseOrder)
        // purchaseOrder: this.fb.array([ this.createItem(e) ]);
       
