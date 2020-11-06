@@ -123,24 +123,13 @@ onSelectMedics(ob)
   
 }
 getID(srid){
- 
   this.srID=srid;
  console.log('srID===',srid);
  this.getPurchOrderItems(srid);
 }
 createItem(obj:any): FormGroup {
-  if (obj == null) {
-
-    return this.fb.group({ stockID: "",
-  requiredQuantity:"",
-  issuedQuantity: "",
-  itemName: "",
-  type: "",
-  unit: "",
-  batchNo:'', ...obj})
-  }
+ 
   return this.fb.group({
-    
     // srID:obj.itemName,
     // issuanceDate:obj.itemName,
     // hospitalID:obj.itemName,
@@ -152,22 +141,19 @@ createItem(obj:any): FormGroup {
     itemName: obj.itemName,
     type: obj.type,
     unit: obj.unit,
-    batchNo:''
-    
+    stock:obj.stock,
    
   });
 }
 saveData(dat){
   console.log('this.purchaseOrder===',this.purchaseOrder.value);
   console.log('this.dat===',dat);
-  
+ 
     this.loader_eqp = true;
+    this.modal3.recieveDate = this.hospitalID;
+    this.modal3.recieveDate = this.todayDate;
     this.modal3.srID  = this.srID;
-    this.modal3.hospitalID = this.hospitalID;
-    this.modal3.issuanceDate = this.todayDate;
-    
-    this.modal3.fromPharmacyID  = this.doctorID;
-    this.modal3.toPharmacyID  = this.doctorID;
+    this.modal3.parmacyID  = this.doctorID;
     this.modal3.items  = this.purchaseOrder.value;
     console.log('this.modal3===',this.modal3);
     

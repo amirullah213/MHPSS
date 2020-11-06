@@ -123,24 +123,14 @@ onSelectMedics(ob)
   
 }
 getID(srid){
- 
+  this.purchaseOrder.clear();  
   this.srID=srid;
  console.log('srID===',srid);
  this.getPurchOrderItems(srid);
 }
 createItem(obj:any): FormGroup {
-  if (obj == null) {
-
-    return this.fb.group({ stockID: "",
-  requiredQuantity:"",
-  issuedQuantity: "",
-  itemName: "",
-  type: "",
-  unit: "",
-  batchNo:'', ...obj})
-  }
+ 
   return this.fb.group({
-    
     // srID:obj.itemName,
     // issuanceDate:obj.itemName,
     // hospitalID:obj.itemName,

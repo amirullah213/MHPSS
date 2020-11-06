@@ -123,7 +123,7 @@ onSelectMedics(ob)
   
 }
 getID(srid){
- 
+  (this.purchaseOrder = this.dynamicForm.get('purchaseOrder') as FormArray).push(this.createItem(null));
   this.srID=srid;
  console.log('srID===',srid);
  this.getPurchOrderItems(srid);
