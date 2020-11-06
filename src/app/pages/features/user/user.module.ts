@@ -12,7 +12,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { ChangePasswordComponent } from './change-password-component/change-password.component';
 import { PrintPrescComponent } from './print-presc/print-presc.component';
-import { TypeaheadModule } from 'ngx-bootstrap/typeahead';      
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';   
 
 @NgModule({
   declarations: [UsersComponent, PatDetailComponent, ChangePasswordComponent, PrintPrescComponent,IsDirectPipe],

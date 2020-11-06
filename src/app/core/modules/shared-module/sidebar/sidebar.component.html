@@ -3,13 +3,13 @@
         <ul *ngIf="!router.url.includes('account-settings')" class="nav navbar-nav side-menu" id="sidebarnav">
             <!-- menu item Dashboard-->
             <li>
-                <a href="javascript:void(0)"><i class="ti-dashboard"></i><span class="right-nav-text">Dashboard</span> </a>
+                <a class="underline-center" href="javascript:void(0)"><i class="ti-dashboard"></i><span class="right-nav-text">Dashboard</span> </a>
             </li>
             <li routerLinkActive="active">
-                <a href="javascript:void(0)" [routerLink]="['user']"><i class="ti-home"></i><span class="right-nav-text">Home</span> </a>
+                <a class="underline-center" href="javascript:void(0)" [routerLink]="['user']"><i class="ti-home"></i><span class="right-nav-text">Home</span> </a>
             </li>
             <li>
-                <a href=""><i class="ti-power-off"></i><span class="right-nav-text">Exit</span> </a>
+                <a class="underline-center" href=""><i class="ti-power-off"></i><span class="right-nav-text">Exit</span> </a>
             </li>
         </ul>
         <ul *ngIf="router.url.includes('account-settings')" class="nav navbar-nav side-menu" id="sidebarnav">
