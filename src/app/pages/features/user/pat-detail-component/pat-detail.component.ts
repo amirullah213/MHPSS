@@ -606,7 +606,7 @@ this.diagID = event.item.id
   addSymptom() {
     // this.items = this.clinicalInformation.get('items') as FormArray;
     // this.items.push(this.createSymptom(null));
-    
+    debugger
     var tempsymp = 0;
     if(this.localSymptoms.length!=0){
       for(let e of this.localSymptoms)
@@ -628,9 +628,12 @@ this.diagID = event.item.id
     }
     if (tempsymp == 0)
     {
-      this.localSymptoms.push({ name: this.clinicalInformation.value.name,
-        duration: this.clinicalInformation.value.duration,
-        durationType: this.clinicalInformation.value.durationType})    }
+      
+      this.NewSymptoms.push({ name: this.clinicalInformation.value.name,
+        })  
+         this.localSymptoms.push({ name: this.clinicalInformation.value.name,
+          duration: this.clinicalInformation.value.duration,
+          durationType: this.clinicalInformation.value.durationType})    }
   }else{
     this.localSymptoms.push({ name: this.clinicalInformation.value.name,
       duration: this.clinicalInformation.value.duration,
@@ -712,7 +715,7 @@ var tempdiag = 0;
    // this.diagItems.removeAt(i);
   }
   addSign() {
-    debugger
+    
     var tempsign = 0;
     if(this.localSign.length!=0){
       for(let e of this.localSign)
@@ -733,6 +736,7 @@ var tempdiag = 0;
     }
     if (tempsign == 0)
     {
+      debugger
       this.NewlocalSign.push({'name':this.clinicalInformation.value.selectedValueSign})
       this.localSign.push({ 'id': "", 'name':this.clinicalInformation.value.selectedValueSign})
       this.clinicalInformation.patchValue({
