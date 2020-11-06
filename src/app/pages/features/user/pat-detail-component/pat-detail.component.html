@@ -491,6 +491,8 @@
                                                     </button>
                                                     </div>
                                                     <div class="modal-body ">
+                                                        <h5>Test Type : <span *ngIf="sData.testType==1">Pathalogy</span><span *ngIf="sData.testType!=1">Radiology</span></h5>
+
                                                         <div class="row mx-0">
                                                             <div class="col-md-12">
                                                                 <p class="mb-1 mt-2"><b>Token Number</b>
@@ -515,47 +517,41 @@
                                                             </div>
                                                         </div>
                                                         <div class="table-responsive">
-                                                            <table class="table center-aligned-table">
+                                                            <table class="table center-aligned-table" *ngIf="sData.testType==1">
                                                                 <thead>
                                                                     <tr class="text-dark">
-                                                                        <th>Test Type</th>
+                                                                        <th>Test Name</th>
+                                                                        <th>Result</th>                                                                      
+                                                                        <th>Range</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody >
+                                                    <tr *ngFor="let ts of subTests let i=index">                                                     
+                                                     <td>{{ts.testName}}</td>                                                     
+                                                         <td>{{ts.result}}</td>
+                                                        <td> {{ts.refRange}}</td>
+                                                              </tr>
+                                                              </tbody>
+                                                                     </table>
+                                                            <table class="table center-aligned-table" *ngIf="sData.testType!=1">
+                                                                <thead>
+                                                                    <tr class="text-dark">
                                                                         <th>Test Name</th>
                                                                         <th>Findings</th>
                                                                         <th>Diagnosis</th>
                                                                         <th>Range</th>
                                                                     </tr>
                                                                 </thead>
-                                                                <!-- <tbody *ngIf="sData.testType!=1">
-                                                                    <tr >
-                                                           <td>Radiology</td>
-                                                           <td>{{testNameF}}</td>
-                                                           <td>
-                                                                <span *ngFor="let rs of xRayFilms let i=index" >{{rs.name}} ,</span>
-
-                                                                <span *ngIf="sData.isSupper==0 && ts.testType==1"> {{ts.result}}</span> 
-
-                                                           </td>
-                                                           <td>{{resultF}}</td>
-                                                           <td> {{refRangeF}}</td>
-                                                       </tr>
-                                                   </tbody> -->
+                                                               
                                                    <tbody >
-                                                    <tr *ngFor="let ts of subTests let i=index">
-                                                     <td><span *ngIf="sData.testType==1">Pathalogy</span><span *ngIf="sData.testType!=1">Radiology</span> </td>
-                                                     <td>{{ts.testName}}</td>
-                                                                        <td>
-                                               <!-- <span *ngIf="sData.isSupper==1 && ts.testType!=1"> -->
-                                               <span>
-                                                <span *ngFor="let rs of xRayFilms let i=index" >{{rs.name}} ,</span>
-
-                                               </span>
-                                               <!-- <span *ngIf="sData.isSupper==0 && ts.testType==1"> {{ts.result}}</span> -->
-
-                                           </td>
-                                           <td>{{ts.result}}</td>
-                                           <td> {{ts.refRange}}</td>
-                                       </tr>
-                                   </tbody>
+                                                    <tr >
+                                                     <td>{{testNameF}}</td>
+                                                     <td>{{xRayFilms}}  </td>                   
+                                                        <td>{{resultF}}</td>
+                                                    <td> {{refRangeF}}</td>
+                                                </tr>
+                                            </tbody>
+                                          
                                                             </table>
                                                         </div>
                                                     </div>

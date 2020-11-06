@@ -118,7 +118,7 @@ export class PatDetailComponent implements OnInit {
   subTests: any=[];
   a: boolean=false;
   sData: any;
-  xRayFilms: any=[];
+  xRayFilms: any;
   idTrue: boolean=false;
   docType: any;
   id: any;
@@ -138,6 +138,9 @@ export class PatDetailComponent implements OnInit {
   NewlocalSign: any=[];
   signObj: any={};
   NewSymptoms: any=[];
+  testNameF: any;
+  resultF: any;
+  refRangeF: any;
   constructor(
     private fb: FormBuilder,
     private uService: UserService,
@@ -244,28 +247,37 @@ export class PatDetailComponent implements OnInit {
     this.modalRef = this.modalService.show(template,Object.assign({}, { class: 'gray modal-lg ',tData,i })); 
     this.sData = tData;
     for(let e of this.localPath){
-     
+     debugger
       this.subTests=[];
-      if( i==this.localPath.indexOf(e))
-      {
-        if(e.subTests!=undefined){
+       if( i==this.localPath.indexOf(e))
+       {
+if(this.sData.testType==1){
+        if(e.isSupper==1 ){
         this.subTests=e.subTests
-        for(let j of this.subTests)
-        {
-          
-          if(j.xrayFilms6){
-          this.xRayFilms.push(JSON.parse(j.xrayFilms6))
-          }
-          else{
-            this.xRayFilms =[]
-          }
-        }
         break;
       
     }else{
       this.subTests.push(e);
       break;
     }
+  }
+  else{
+    // for radialogy
+    debugger
+    
+    this.testNameF = e.testName;
+    this.resultF=e.result;
+    this.refRangeF =e.refRange
+        
+        if(e.xrayFilms6 && e.xrayFilms6!='0'){
+        this.xRayFilms = e.xrayFilms6
+        }
+        else{
+          this.xRayFilms=""
+        }
+      
+      }
+  
      }
        
     }
@@ -426,10 +438,18 @@ this.diagID = event.item.id
 
   }
   changeRefVal(e){
+    
     this.arrylist=[]
-    this.arrylist = this.refList[e];
-  this.docType=this.arrylist.docType;
-  this.id = this.arrylist.id
+    this.arrylist = this.refList
+    this.arrylist.forEach(ele => {
+      debugger
+      let fulName = ele.fname + " " + ele.lname;
+      if(fulName == e){
+      this.docType=ele.docType;
+      this.id = ele.id
+      }
+    });
+
   }
 
   changeDepVal(e) {
@@ -629,8 +649,7 @@ this.diagID = event.item.id
     if (tempsymp == 0)
     {
       
-      this.NewSymptoms.push({ name: this.clinicalInformation.value.name,
-        })  
+      this.NewSymptoms.push({ name: this.clinicalInformation.value.name})  
          this.localSymptoms.push({ name: this.clinicalInformation.value.name,
           duration: this.clinicalInformation.value.duration,
           durationType: this.clinicalInformation.value.durationType})    }
@@ -1315,15 +1334,15 @@ var tempdiag = 0;
     }
    
   generatetoken(){
-    
+    debugger
     this.userLoader=true
-    if(this.localIndoorData.length!=0 && this.localIndoorData!=undefined && this.docType!=undefined && this.id!=undefined){
-  if(this.investigationForm.value.termination_date!=undefined && this.investigationForm.value.termination_date!='')
+    if(this.localIndoorData.length!=0 && this.localIndoorData!=undefined){
+  if(this.investigationForm.value.termination_date!=undefined && this.investigationForm.value.termination_date!='' && this.docType==undefined)
 {     
   let operateDate = this.datepipe.transform(new Date(this.investigationForm.value.termination_date))//formatting current ///date here 
-  this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.ptID,'prescriptionID': this.patInfo.prescriptionID,"patientID": this.patientID,"departmentID":this.id,"diagnosis":this.localIndoorData,"isIndoor":this.docType,"refferedFrom":-1,"admitDate":operateDate}
+  this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.ptID,'prescriptionID': this.patInfo.prescriptionID,"patientID": this.patientID,"departmentID":this.patInfo.departmentID,"diagnosis":this.localIndoorData,"isIndoor":3,"refferedFrom":-1,"admitDate":operateDate}
 }else{  
-     this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.ptID,'prescriptionID': this.patInfo.prescriptionID,"patientID": this.patientID,"departmentID":this.patInfo.departmentID,"diagnosis":this.localIndoorData,"isIndoor":3,"refferedFrom":-1}
+     this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.ptID,'prescriptionID': this.patInfo.prescriptionID,"patientID": this.patientID,"departmentID":this.id,"diagnosis":this.localIndoorData,"isIndoor":this.docType,"refferedFrom":-1,}
 
 }
   this.uService.generatetoken(this.param).subscribe
