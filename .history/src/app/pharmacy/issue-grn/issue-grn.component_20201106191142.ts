@@ -34,9 +34,9 @@ export class IssueGrnComponent implements OnInit {
   srID:any;
   stockArr:any=[];
 
-  yr:any=0;
-     mn:any=6;
-    
+  yr=10;
+     mn=5;
+     dy=19;
     
   
   constructor(
@@ -51,7 +51,7 @@ export class IssueGrnComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.GetBirthDate();
+    
     var date = new Date();
   
    this.todayDate=this.datePipe.transform(date,"yyyy-MM-dd");
@@ -69,13 +69,11 @@ export class IssueGrnComponent implements OnInit {
     
   }
   GetBirthDate() {
-   
-    // this.yr = this.yr.replace(/^\s+|\s+$/g, "");
-    // this.mn = this.mn.replace(/^\s+|\s+$/g, "");
-    // this.dy = this.dy.replace(/^\s+|\s+$/g, "");
-    console.log(' this.yr', this.yr)
-   if (this.mn < 10) { this.mn = '0' + this.mn }
-   alert(new Date(new Date().getFullYear() - this.yr, new Date().getMonth()  - this.mn ));
+    this.yr = this.yr.replace(/^\s+|\s+$/g, "");
+    this.mn = this.mn.replace(/^\s+|\s+$/g, "");
+    this.dy = this.dy.replace(/^\s+|\s+$/g, "");
+   if (this.dy < 10) { this.dy = 0 + this.dy } if (this.mn < 10) { this.mn = 0 + this.mn }
+   alert(new Date(new Date().getFullYear() - this.yr, new Date().getMonth()  - this.mn , (new Date().getDay()+3)-this.dy));
 }
   
 get f(){

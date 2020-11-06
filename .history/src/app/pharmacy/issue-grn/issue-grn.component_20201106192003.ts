@@ -34,9 +34,9 @@ export class IssueGrnComponent implements OnInit {
   srID:any;
   stockArr:any=[];
 
-  yr:any=0;
-     mn:any=6;
-    
+  yr:any=10;
+     mn:any=5;
+     dy:any=19;
     
   
   constructor(
@@ -75,7 +75,7 @@ export class IssueGrnComponent implements OnInit {
     // this.dy = this.dy.replace(/^\s+|\s+$/g, "");
     console.log(' this.yr', this.yr)
    if (this.mn < 10) { this.mn = '0' + this.mn }
-   alert(new Date(new Date().getFullYear() - this.yr, new Date().getMonth()  - this.mn ));
+   alert(new Date(new Date().getFullYear() - this.yr, new Date().getMonth()  - this.mn , (new Date().getDay()+3)-this.dy));
 }
   
 get f(){
