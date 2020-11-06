@@ -7,11 +7,11 @@ import { PharmacyServicesService } from '../services/pharmacy-services.service';
 import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'ncri-issue-grn',
-  templateUrl: './issue-grn.component.html',
-  styleUrls: ['./issue-grn.component.scss']
+  selector: 'ncri-grns',
+  templateUrl: './grns.component.html',
+  styleUrls: ['./grns.component.scss']
 })
-export class IssueGrnComponent implements OnInit {
+export class GrnsComponent implements OnInit {
   hospitalID:any;
   doctorID:any;
   userType:any;
@@ -20,7 +20,6 @@ export class IssueGrnComponent implements OnInit {
   modal:any={};
   modal2:any={};
   modal3:any={};
-  controls: FormControl[];
 
   errormsg:any;
   grnobj1:any={};
@@ -31,17 +30,17 @@ export class IssueGrnComponent implements OnInit {
   dynamicForm:FormGroup;
   purchaseOrder:FormArray;
   todayDate:any;
-  srID:any;
-  
+  poID:any;
+
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private pharmacySer:PharmacyServicesService,
-    private datePipe: DatePipe,
+    private datePipe: DatePipe
     
   ) {
-   // this.controls = this.purchaseOrder.map(c => new FormControl(false));
-
+    
   }
 
   ngOnInit(): void {
@@ -61,14 +60,15 @@ export class IssueGrnComponent implements OnInit {
   });
     
   }
-get f(){
-  return this.dynamicForm.controls;
-}
+  get f(){
+    return this.dynamicForm.controls;
+  }
    //get all diagnostic list
 getPendingPurOrders() {
   this.loader_eqp = true;
   
- this.pharmacySer.getStockReqs(this.modal).subscribe(
+  
+ this.pharmacySer.getPendPurOrd(this.modal).subscribe(
     (response: any) => {
       if (response.status === 0) {
         this.pendPurchData = response.data;
@@ -90,9 +90,9 @@ getPendingPurOrders() {
 //get purchase orde data
 getPurchOrderItems(dt) {
   this.loader_order = true;
-  this.modal2.srID=dt;
+  this.modal2.poID=dt;
   
- this.pharmacySer.getStockReqItms(this.modal2).subscribe(
+ this.pharmacySer.getordeItems(this.modal2).subscribe(
     (response: any) => {
       if (response.status === 0) {
         this.purchaseItems = response.data;
@@ -100,13 +100,9 @@ getPurchOrderItems(dt) {
         this.loader_order = false;
         this.purchaseItems.forEach(e => {
           console.log('eeee',e);
-          // if(e!=undefined){(this.purchaseOrder = this.dynamicForm.get('purchaseOrder') as FormArray).push(this.createItem(e));}
-          // else{return null}
-          (this.purchaseOrder = this.dynamicForm.get('purchaseOrder') as FormArray).push(this.createItem(e));
+         (this.purchaseOrder = this.dynamicForm.get('purchaseOrder') as FormArray).push(this.createItem(e));
           console.log('this.purchaseOrder4444444===',this.purchaseOrder)
        // purchaseOrder: this.fb.array([ this.createItem(e) ]);
-      
-
       });
       }
   if (response.status === 1) {
@@ -130,55 +126,42 @@ onSelectMedics(ob)
   this.grnobj.itemID=ob.item.itemID;
   
 }
-getID(srid){
- // (this.purchaseOrder = this.dynamicForm.get('purchaseOrder') as FormArray).clear();
- this.srID=srid;
- console.log('srID===',srid);
- this.getPurchOrderItems(srid);
+getID(poid){
+  this.poID=poid;
+ console.log('poid===',poid);
+ this.getPurchOrderItems(poid);
 }
 createItem(obj:any): FormGroup {
  
-    
-
-  if (obj == null) {
-
-  return this.fb.group({ stockID: "",
-  requiredQuantity:"",
-  issuedQuantity: "",
-  itemName: "",
-  type: "",
-  unit: "",
-  batchNo:'', ...obj})
-  }
   return this.fb.group({
-    
-   
-    stockID: obj.stockID,
-    requiredQuantity: obj.requiredQuantity,
-    issuedQuantity: obj.issuedQuantity,
     itemName: obj.itemName,
-    type: obj.type,
     unit: obj.unit,
-    batchNo:''
-    
-   
+    type:obj.type,
+    quantity:obj.quantity,
+    recievedQuantity : '',
+    batchNo : '',
+    tradeName: '',
+    mgfDate: '',
+    expireDate : '',
+    itemType: obj.itemType,
+    unitPrice:obj.unitPrice, 
+    itemID :obj.itemID,
+    manufacturer:obj.manufacturer,
   });
 }
 saveData(dat){
   console.log('this.purchaseOrder===',this.purchaseOrder.value);
   console.log('this.dat===',dat);
-  
+ 
     this.loader_eqp = true;
-    this.modal3.srID  = this.srID;
-    this.modal3.hospitalID = this.hospitalID;
-    this.modal3.issuanceDate = this.todayDate;
-    
-    this.modal3.fromPharmacyID  = this.doctorID;
-    this.modal3.toPharmacyID  = this.doctorID;
+    this.modal3.recieveDate = this.hospitalID;
+    this.modal3.recieveDate = this.todayDate;
+    this.modal3.poID  = this.poID;
+    this.modal3.parmacyID  = this.doctorID;
     this.modal3.items  = this.purchaseOrder.value;
     console.log('this.modal3===',this.modal3);
     
-   this.pharmacySer.addissuedStock(this.modal3).subscribe(
+   this.pharmacySer.addPharmacyGRM(this.modal3).subscribe(
       (response: any) => {
         if (response.status === 0) {
          
