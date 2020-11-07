@@ -70,16 +70,15 @@
                                                      <td>
                                                         <input type="text" formControlName='issuedQuantity'  class="form-control"  placeholder="issued Quantity">
                                                      </td>
-                                                     
+                                                     <span>
+                                                        <select [(ngModel)]="med.inStock"  class="form-control" (ngModelChange)="getdata(med.inStock,i)" aria-label="Text input with segmented dropdown button"
+                                                           placeholder="Select Stock" >
+                                                          <!-- <option *ngFor="let stc of newArray.stock;let j=index" [value]="j" >{{stc.batchNo}}</option> (ngModelChange)="getdata(stc)"-->
+                                                          <option *ngFor="let stc of med.stock;let j=index" [ngValue]="stc" >{{stc.batchNo}}</option>
+                                                        </select>
+                                                   </span>
                                                      <td>
-                                                        <span>
-                                                            <select formArrayName='stock'  class="form-control" (change)="AssinIssueQuantity(item.batchNo,i)" 
-                                                               placeholder="Select Stock" >
-                                                             
-                                                              <option *ngFor="let stc of dynamicForm.get('purchaseOrder').value.stock;let j=index" [ngValue]="stc.itemName" >{{stc.itemName}}</option>
-                                                            </select>
-                                                       </span>
-                                                        <!-- <input type="text" formControlName='stock'  class="form-control"  placeholder="Batch"> -->
+                                                        <input type="text" formControlName='batchNo'  class="form-control"  placeholder="Batch">
                                                      </td>
                                                      <td>
                                                         <input type="text" formControlName='inhandQuantity'  class="form-control" placeholder="In hand Quantity">

@@ -32,12 +32,6 @@ export class IssueGrnComponent implements OnInit {
   purchaseOrder:FormArray;
   todayDate:any;
   srID:any;
-  stockArr:any=[];
-
-  yr:any=0;
-     mn:any=6;
-    
-    
   
   constructor(
     private fb: FormBuilder,
@@ -51,7 +45,6 @@ export class IssueGrnComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.GetBirthDate();
     var date = new Date();
   
    this.todayDate=this.datePipe.transform(date,"yyyy-MM-dd");
@@ -68,16 +61,6 @@ export class IssueGrnComponent implements OnInit {
   });
     
   }
-  GetBirthDate() {
-   
-    // this.yr = this.yr.replace(/^\s+|\s+$/g, "");
-    // this.mn = this.mn.replace(/^\s+|\s+$/g, "");
-    // this.dy = this.dy.replace(/^\s+|\s+$/g, "");
-    console.log(' this.yr', this.yr)
-   if (this.mn < 10) { this.mn = '0' + this.mn }
-   alert(new Date(new Date().getFullYear() - this.yr, new Date().getMonth()  - this.mn ));
-}
-  
 get f(){
   return this.dynamicForm.controls;
 }
@@ -119,12 +102,10 @@ getPurchOrderItems(dt) {
         this.loader_order = false;
         this.purchaseItems.forEach(e => {
           console.log('eeee',e);
-            this.stockArr=e.stock;
-          
+          // if(e!=undefined){(this.purchaseOrder = this.dynamicForm.get('purchaseOrder') as FormArray).push(this.createItem(e));}
+          // else{return null}
           (this.purchaseOrder = this.dynamicForm.get('purchaseOrder') as FormArray).push(this.createItem(e));
-          console.log('this.purchaseOrder4444444===',this.purchaseOrder);
-          console.log('stock22222==',this.stockArr)
-
+          console.log('this.purchaseOrder4444444===',this.purchaseOrder)
        // purchaseOrder: this.fb.array([ this.createItem(e) ]);
       
 
@@ -160,17 +141,17 @@ getID(srid){
 createItem(obj:any): FormGroup {
  
     
- 
-  // if (obj == null) {
 
-  // return this.fb.group({ stockID: "",
-  // requiredQuantity:"",
-  // issuedQuantity: "",
-  // itemName: "",
-  // type: "",
-  // unit: "",
-  // batchNo:'', ...obj})
-  // }
+  if (obj == null) {
+
+  return this.fb.group({ stockID: "",
+  requiredQuantity:"",
+  issuedQuantity: "",
+  itemName: "",
+  type: "",
+  unit: "",
+  batchNo:'', ...obj})
+  }
   return this.fb.group({
     
    
@@ -180,7 +161,7 @@ createItem(obj:any): FormGroup {
     itemName: obj.itemName,
     type: obj.type,
     unit: obj.unit,
-    stock:[obj.stock],
+    stock:'',
     inhandQuantity:''
     
    
@@ -224,6 +205,4 @@ saveData(dat){
     console.log('resp from batch quantity==',stocData);
     console.log('resp from batch indx==',indx)
   }
-  // calculate age
- 
 }

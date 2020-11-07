@@ -33,11 +33,6 @@ export class IssueGrnComponent implements OnInit {
   todayDate:any;
   srID:any;
   stockArr:any=[];
-
-  yr:any=0;
-     mn:any=6;
-    
-    
   
   constructor(
     private fb: FormBuilder,
@@ -51,7 +46,6 @@ export class IssueGrnComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.GetBirthDate();
     var date = new Date();
   
    this.todayDate=this.datePipe.transform(date,"yyyy-MM-dd");
@@ -68,16 +62,6 @@ export class IssueGrnComponent implements OnInit {
   });
     
   }
-  GetBirthDate() {
-   
-    // this.yr = this.yr.replace(/^\s+|\s+$/g, "");
-    // this.mn = this.mn.replace(/^\s+|\s+$/g, "");
-    // this.dy = this.dy.replace(/^\s+|\s+$/g, "");
-    console.log(' this.yr', this.yr)
-   if (this.mn < 10) { this.mn = '0' + this.mn }
-   alert(new Date(new Date().getFullYear() - this.yr, new Date().getMonth()  - this.mn ));
-}
-  
 get f(){
   return this.dynamicForm.controls;
 }
@@ -224,6 +208,4 @@ saveData(dat){
     console.log('resp from batch quantity==',stocData);
     console.log('resp from batch indx==',indx)
   }
-  // calculate age
- 
 }

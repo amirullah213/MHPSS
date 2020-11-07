@@ -34,7 +34,7 @@ export class IssueGrnComponent implements OnInit {
   srID:any;
   stockArr:any=[];
 
-  yr:any=0;
+  yr:any=5;
      mn:any=6;
     
     

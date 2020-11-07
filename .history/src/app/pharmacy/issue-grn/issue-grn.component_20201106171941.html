@@ -76,7 +76,7 @@
                                                             <select formArrayName='stock'  class="form-control" (change)="AssinIssueQuantity(item.batchNo,i)" 
                                                                placeholder="Select Stock" >
                                                              
-                                                              <option *ngFor="let stc of dynamicForm.get('purchaseOrder').value.stock;let j=index" [ngValue]="stc.itemName" >{{stc.itemName}}</option>
+                                                              <option *ngFor="let stc of dynamicForm.get('purchaseOrder')['controls'][i]['stock'];let j=index" [ngValue]="stc.type" >{{stc.type}}</option>
                                                             </select>
                                                        </span>
                                                         <!-- <input type="text" formControlName='stock'  class="form-control"  placeholder="Batch"> -->
