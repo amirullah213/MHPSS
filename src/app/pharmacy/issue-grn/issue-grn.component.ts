@@ -159,18 +159,6 @@ getID(srid){
 }
 createItem(obj:any): FormGroup {
  
-    
- 
-  // if (obj == null) {
-
-  // return this.fb.group({ stockID: "",
-  // requiredQuantity:"",
-  // issuedQuantity: "",
-  // itemName: "",
-  // type: "",
-  // unit: "",
-  // batchNo:'', ...obj})
-  // }
   return this.fb.group({
     
    
@@ -181,7 +169,7 @@ createItem(obj:any): FormGroup {
     type: obj.type,
     unit: obj.unit,
     stock:[obj.stock],
-    inhandQuantity:''
+    totalQuantity:''
     
    
   });
@@ -220,9 +208,16 @@ saveData(dat){
     );
   
   }
-  AssinIssueQuantity(stocData,indx){
-    console.log('resp from batch quantity==',stocData);
-    console.log('resp from batch indx==',indx)
+  AssinIssueQuantity(ind){
+
+    console.log('resp from batch quantity==',ind);
+    console.log('resp from batch stock==',this.purchaseOrder.value[ind].stock.totalQuantity);
+    console.log('resp from batch stock==',this.purchaseOrder.value[ind].controls);
+   // this.dynamicForm.get('totalQuantity').setValue('123');
+    this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].totalQuantity.patchValue(this.purchaseOrder.value[ind].stock.totalQuantity)
+   // this.dynamicForm.controls.purchaseOrder.value [ind].controls['itemName'].patchValue('222')
+   // this.purchaseOrder.get('totalQuantity').setValue(this.purchaseOrder.value[ind].stock.totalQuantity);
+    // this.purchaseOrder.value[ind].totalQuantity[ind].patchValue(this.purchaseOrder.value[ind].stock.totalQuantity)
   }
   // calculate age
  
