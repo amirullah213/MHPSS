@@ -23,7 +23,7 @@
                                     <div class="col-sm-12">
                                         <label>Select Issuance</label>
                                         <select  formControlName='grnName' class="form-control" (change)="getID(dynamicForm.value.grnName)" name="customSelected" placeholder="select GRN" name="grnName">
-                                            <option *ngFor="let prc of pendPurchData; let i=index" [ngValue]="prc">{{prc.SRCode}}</option>
+                                            <option *ngFor="let prc of pendPurchData; let i=index" [value]="prc.srID">{{prc.SRCode}}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -73,16 +73,16 @@
                                                      
                                                      <td>
                                                         <span>
-                                                            <select formControlName='stock'  class="form-control" (change)="AssinIssueQuantity(i)" 
+                                                            <select [(ngModel)]="item.inStock"  class="form-control" (change)="AssinIssueQuantity(item.inStock,i)" aria-label="Text input with segmented dropdown button"
                                                                placeholder="Select Stock" >
                                                              
-                                                              <option *ngFor="let stc of stockArr;let j=index" [ngValue]="stc" >{{stc.batchNo}}</option>
+                                                              <option *ngFor="let stc of item.stock;let j=index" [ngValue]="stc" >{{stc.batchNo}}</option>
                                                             </select>
                                                        </span>
-                                                        <!-- <input type="text" formControlName='stock'  class="form-control"  placeholder="Batch"> -->
+                                                        <input type="text" formControlName='batchNo'  class="form-control"  placeholder="Batch">
                                                      </td>
                                                      <td>
-                                                        <input type="text" formControlName='totalQuantity' [disabled]=true  class="form-control" placeholder="In hand Quantity">
+                                                        <input type="text" formControlName='inhandQuantity'  class="form-control" placeholder="In hand Quantity">
                                                      </td>
                                                      
 
