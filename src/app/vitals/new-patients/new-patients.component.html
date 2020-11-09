@@ -45,14 +45,14 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>1</td>
+                                                        <tr *ngFor ="let pt of userList">
+                                                            <td>{{pt.token}}</td>
                                                             <td>
                                                                 <img class="mr-3" src="../../../assets/images/profile-avatar.png">
-                                                                <span>Zeeshan Shahid</span>
+                                                                <span>{{pt.fname}} </span>
                                                             </td>
-                                                            <td>2020-10-02</td>
-                                                            <td><a href="javascript:void(0)" class="text-info" [routerLink]="['/vitals/vitals']">Detail</a></td>
+                                                            <td>{{pt.dob | date}}</td>
+                                                            <td><a href="javascript:void(0)" class="text-info" (click)="pDetails(pt)">Detail</a></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
