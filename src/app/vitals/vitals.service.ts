@@ -18,13 +18,13 @@ export class VitalsService {
     let url = APP_CONFIG.apiBaseUrl + 'addpatientvital';
     return this.http.post(url, obj);
   }
-  getpatients(obj: any):Observable<any> {
-    let url = APP_CONFIG.apiBaseUrl + 'getpatients';
+  getallpatientvital(obj: any):Observable<any> {
+    let url = APP_CONFIG.apiBaseUrl + 'getallpatientvital';
     return this.http.post(url, obj);
   }
 
-  getPatPrescription(obj: any): Observable<any>{
-    let url = APP_CONFIG.apiBaseUrl + 'getpatientprescriptions';
+  getpatients(obj: any): Observable<any>{
+    let url = APP_CONFIG.apiBaseUrl + 'getpatients';
     return this.http.post(url, obj);
   }
   
