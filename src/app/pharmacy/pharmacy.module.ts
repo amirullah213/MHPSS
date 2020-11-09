@@ -27,9 +27,11 @@ import { IssueGrnComponent } from './issue-grn/issue-grn.component';
 import { SyncDataComponent } from './sync-data/sync-data.component';
 import { GrnsComponent } from './grns/grns.component';
 import { StockreqSateliteComponent } from './stockreq-satelite/stockreq-satelite.component';
+import { RecieveGrnSatComponent } from './recieve-grn-sat/recieve-grn-sat.component';
+import { IssueSattMedicComponent } from './issue-satt-medic/issue-satt-medic.component';
 
 @NgModule({
-  declarations: [ PharmaComponent, HomeComponent, PharmaSideBarComponent, PharmaSeenPatientsComponent, PharmaPendingPatientsComponent, PharmaPrescriptionComponent, MedicineGrnComponent, MedicineDiscardComponent, NonMedicineDiscardComponent, NonMedicineGrnComponent, ItemsStatusComponent, IssueGrnComponent, SyncDataComponent, GrnsComponent, StockreqSateliteComponent],
+  declarations: [ PharmaComponent, HomeComponent, PharmaSideBarComponent, PharmaSeenPatientsComponent, PharmaPendingPatientsComponent, PharmaPrescriptionComponent, MedicineGrnComponent, MedicineDiscardComponent, NonMedicineDiscardComponent, NonMedicineGrnComponent, ItemsStatusComponent, IssueGrnComponent, SyncDataComponent, GrnsComponent, StockreqSateliteComponent, RecieveGrnSatComponent, IssueSattMedicComponent],
   imports: [
     CommonModule,
     PharmacyRoutingModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), FormsModule, BsDatepickerModule.forRoot(), CollapseModule.forRoot(),TypeaheadModule.forRoot(),
