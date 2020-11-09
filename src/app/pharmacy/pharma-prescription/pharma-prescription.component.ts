@@ -11,6 +11,11 @@ import { PharmacyServicesService } from '../services/pharmacy-services.service';
   styleUrls: ['./pharma-prescription.component.scss']
 })
 export class PharmaPrescriptionComponent implements OnInit {
+
+  printPage() {
+    window.print();
+  }
+  
   param: any = {};
   userLoader: boolean = false;
   userList: any = [];

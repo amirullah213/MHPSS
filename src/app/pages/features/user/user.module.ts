@@ -7,6 +7,7 @@ import { PatDetailComponent } from './pat-detail-component/pat-detail.component'
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { DataTablesModule } from 'angular-datatables';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
@@ -26,6 +27,7 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     FormsModule,
     PaginationModule.forRoot(),
     ModalModule.forRoot(),
+    DataTablesModule,
     TypeaheadModule.forRoot(), 
   ],
   providers: [],
