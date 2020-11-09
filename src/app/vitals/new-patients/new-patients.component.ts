@@ -25,7 +25,7 @@ export class NewPatientsComponent implements OnInit {
   constructor(private vService: VitalsService, private router:Router) { }
 
   ngOnInit(): void {
-    this.patInfo = JSON.parse(localStorage.getItem("newPatData"));  
+    this.patInfo = JSON.parse(localStorage.getItem("details"));  
 
     this.getpatients()
   }
