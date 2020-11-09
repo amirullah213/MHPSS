@@ -27,6 +27,7 @@ export class PatDetailComponent implements OnInit {
     'Mis Carriage',
     'Still Birth',
     'Twins',
+    'Others'
   ];
   fhArray = [
     'Astama',
@@ -34,6 +35,8 @@ export class PatDetailComponent implements OnInit {
     'Drug Allergy',
     'Hypertension',
     'Ischemic Heart Diseases',
+    'Others'
+
   ];
 
   employeeInformation: FormGroup;
@@ -141,6 +144,8 @@ export class PatDetailComponent implements OnInit {
   testNameF: any;
   resultF: any;
   refRangeF: any;
+  showFh: boolean=false;
+  showPh: boolean=false;
   constructor(
     private fb: FormBuilder,
     private uService: UserService,
@@ -167,9 +172,7 @@ export class PatDetailComponent implements OnInit {
       height: ['', Validators.required],
       temperature: ['', Validators.required],
       oxygen_saturation: ['', [Validators.required, Validators.minLength(6)]],
-      // items: this.fb.array([ this.createSymptom(null)]),  
-
-      items: this.fb.array([]),
+       items: this.fb.array([]),
       diagItems: this.fb.array([]),
       isFollowUp: ['', Validators.required],
       isMalnutration: [false, Validators.requiredTrue],
@@ -183,7 +186,9 @@ export class PatDetailComponent implements OnInit {
       selectedValueSign: [''],
       system_access_enabled: [''],
       Diagnosis: [''],
-      description:['']
+      description:[''],
+      otherFh:[''],
+      otherPh:[''],
 
     });
     this.investigationForm = this.fb.group({
@@ -232,6 +237,9 @@ export class PatDetailComponent implements OnInit {
     this.getInvistigation();
     this.getTreatment();
     this.getindoorlist()
+    
+    if(localStorage.getItem("tab"))
+    this.setTab(localStorage.getItem("tab"))
     // this.treatmentForm.patchValue({
     //   access_type: "0",
     //   itemName: ""
@@ -247,7 +255,7 @@ export class PatDetailComponent implements OnInit {
     this.modalRef = this.modalService.show(template,Object.assign({}, { class: 'gray modal-lg ',tData,i })); 
     this.sData = tData;
     for(let e of this.localPath){
-     debugger
+     
       this.subTests=[];
        if( i==this.localPath.indexOf(e))
        {
@@ -263,9 +271,9 @@ if(this.sData.testType==1){
   }
   else{
     // for radialogy
-    debugger
     
-    this.testNameF = e.testName;
+    
+    this.testNameF = e.oldTestName;
     this.resultF=e.result;
     this.refRangeF =e.refRange
         
@@ -377,7 +385,6 @@ if(this.sData.testType==1){
        })  
     }
 */
-
 onSelectSign(event: TypeaheadMatch): void {
 
   this.signObj= event.item;
@@ -437,12 +444,33 @@ this.diagID = event.item.id
     })
 
   }
+  onSelectPastH(e,chk){
+    
+    if(e=="Others" && chk==true)
+    {
+      this.showPh =true;
+    }  
+    else{
+      this.showPh=false
+    }
+  }
+  onSelectFamilyh(e,chk){
+    
+    if(e=="Others" && chk==true)
+    {
+      this.showFh =true;
+    }  
+    else{
+      this.showFh=false
+    }
+  }
+  
   changeRefVal(e){
     
     this.arrylist=[]
     this.arrylist = this.refList
     this.arrylist.forEach(ele => {
-      debugger
+      
       let fulName = ele.fname + " " + ele.lname;
       if(fulName == e){
       this.docType=ele.docType;
@@ -566,6 +594,7 @@ this.diagID = event.item.id
           this.getSignData = response.prescription.signs.split(',');
           
           this.getSignData.forEach((e, v) => {
+            if(e!="")
             this.localSign.push({'id':v,'name':e})  
 
            
@@ -582,22 +611,20 @@ this.diagID = event.item.id
               temperature: this.vitalsData.temperature,
               oxygen_saturation: this.vitalsData.oxygen_saturation,
               isFollowUp: this.prescriptionData.isFollowUp,
-              isMalnutration: this.prescriptionData.isMalnutration
-
-            })
+              isMalnutration: this.prescriptionData.isMalnutration,
+               })
 
             if (this.prescriptionData.pastHistory.length != 0) {
               this.prString = this.prescriptionData.pastHistory.split(',');
-
-
               this.matchFunc(this.phArray, this.controls, this.prString);
-
+              
+              
+             
             }
             if (this.prescriptionData.familyHistory.length != 0) {
               this.frString = this.prescriptionData.familyHistory.split(',');
-
               this.matchFunc(this.fhArray, this.fhc, this.frString);
-
+              
             }
           }
 
@@ -614,19 +641,50 @@ this.diagID = event.item.id
 
 
   matchFunc(arr, controls, gstr) {
+    
     this.jsonArray = arr.map((i, v) => {
       return { 'ind': v, 'name': i, 'matched': gstr.includes(i) };
     })
     this.jsonArray.forEach(v => {
       if (v.matched == true) {
-        controls[v.ind].setValue(true)
+        controls[v.ind].setValue(true);
+        
+        if(this.jsonArray.length<11)
+        {
+          if(v.name=="Others") {
+          this.showFh=true
+          this.clinicalInformation.patchValue({
+            otherFh:this.prescriptionData.otherFamilyHistory
+          })
+        } 
+        else
+        {
+          this.showFh=false
+        }
+      }else{
+        if(v.name=="Others") {
+          this.showPh=true
+          this.clinicalInformation.patchValue({
+            otherPh:this.prescriptionData.otherPastHistory
+          })
+        } 
+        else
+        {
+          this.showPh=false
+        }
+        
       }
+        
+      }
+
+      
+     
     })
   }
   addSymptom() {
     // this.items = this.clinicalInformation.get('items') as FormArray;
     // this.items.push(this.createSymptom(null));
-    debugger
+    
     var tempsymp = 0;
     if(this.localSymptoms.length!=0){
       for(let e of this.localSymptoms)
@@ -690,7 +748,6 @@ insertToDiag(obj: any)
 
 }
   addDiag() {
-debugger
     // this.diagItems = this.clinicalInformation.get('diagItems') as FormArray;
     // this.diagItems.push(this.createDiag(null));
 var tempdiag = 0;
@@ -755,7 +812,7 @@ var tempdiag = 0;
     }
     if (tempsign == 0)
     {
-      debugger
+      
       this.NewlocalSign.push({'name':this.clinicalInformation.value.selectedValueSign})
       this.localSign.push({ 'id': "", 'name':this.clinicalInformation.value.selectedValueSign})
       this.clinicalInformation.patchValue({
@@ -797,13 +854,14 @@ var tempdiag = 0;
     const tags = this.localSign;
     var result = tags.map(a => a.name);
 
-    const phNames = this.clinicalInformation.value.phArray
+    var phNames = this.clinicalInformation.value.phArray
       .map((v, i) => v ? this.phArray[i] : null)
       .filter(v => v !== null).toString();
-    const fhNames = this.clinicalInformation.value.fhArray
+    var fhNames = this.clinicalInformation.value.fhArray
       .map((v, i) => v ? this.fhArray[i] : null)
       .filter(v => v !== null).toString();
-    
+      
+     
     this.param =
     {
       'hospitalID': localStorage.getItem('hospitalID'),
@@ -815,7 +873,7 @@ var tempdiag = 0;
       "signs": result, "PNCServices": "", "temperature": this.clinicalInformation.value.temperature,
       "isLowWeight": 1, "isMalnutration": this.clinicalInformation.value.isMalnutration, "ANCServices": "",
       "edd": "", "complaints": this.localSymptoms, "diagnosis": this.localDiagData,"newSigns":this.NewlocalSign,"newComplaints":this.NewSymptoms, "deptType": 1, "userName": this.fullName,
-
+      "otherFamilyHistory":this.clinicalInformation.value.otherFh, "otherPastHistory":this.clinicalInformation.value.otherPh,
       "PregnancyNutritionStatus": "", "isTTVac": 0, "LactionNutritionStatus": ""
     };
     this.uService.addclinicalinfo(this.param).subscribe((response: any) => {
@@ -1151,8 +1209,20 @@ var tempdiag = 0;
       );
   }
   updatepatienttoken() {
-    
-    this.param={"isPrescribed":1,"deptType":"","ptID":this.ptID,"hospitalID":localStorage.getItem('hospitalID')}
+    var deptType=0;
+    if(this.patInfo.deptType==0)
+    {
+       deptType = 1
+
+    }
+    else{
+      deptType = this.patInfo.deptType
+
+    }
+
+
+
+    this.param={"isPrescribed":2,"deptType":deptType,"ptID":this.ptID,"hospitalID":localStorage.getItem('hospitalID')}
     this.userLoader = true;
 
     this.uService.updatepatienttoken(this.param).subscribe
@@ -1232,17 +1302,17 @@ var tempdiag = 0;
     // this.treatmentItems = this.treatmentForm.get('treatmentItems') as FormArray;
     // this.treatmentItems.push(this.createTreatment(null));
     // console.log("form", this.treatmentItems.value)
-    debugger
+    
     var temptreat = 0;
     if(this.localTreat.length!=0){
       for(let e of this.localTreat)
         { 
           
-        if(e.medicine==medic[0] && e.unit==tVal.unit && e.type==tVal.type){
+        if(e.medicine==medic[0] && e.unit==tVal.unit && e.type==tVal.type1){
         alert("already Exists");
         temptreat= 1;
         this.treatmentForm.patchValue({
-          "itemID":"", "itemName": "", "unit": "", "type": "", "dose": "", "prandial": "", "remarks": "", "quantity": ""
+          "itemID":"", "itemName": "", "unit": "", "type": "", "dose": "", "prandial": "", "remarks": "", "prescribedQuantity": ""
       
          })
         break
@@ -1253,7 +1323,7 @@ var tempdiag = 0;
       
    this.localTreat.push({"prandial":tVal.prandial,"unit":tVal.unit,"type":tVal.type, "remarks":tVal.remarks,"dose":tVal.dose,"medicine":medic[0],"medicineID":this.medId,"prescribedQuantity":tVal.prescribedQuantity,"issuedQuantity":"","duration":""})
    this.treatmentForm.patchValue({
-    "itemID":"", "itemName": "", "unit": "", "type": "", "dose": "", "prandial": "", "remarks": "", "quantity": ""
+    "itemID":"", "itemName": "", "unit": "", "type": "", "dose": "", "prandial": "", "remarks": "", "prescribedQuantity": ""
 
    })
          }
@@ -1261,7 +1331,7 @@ var tempdiag = 0;
     let medic= tVal.itemName.split(",");
     this.localTreat.push({"prandial":tVal.prandial,"unit":tVal.unit,"type":tVal.type, "remarks":tVal.remarks,"dose":tVal.dose,"medicine":medic[0],"medicineID":this.medId,"prescribedQuantity":tVal.prescribedQuantity,"issuedQuantity":"","duration":""})
     this.treatmentForm.patchValue({
-     "itemID":"", "itemName": "", "unit": "", "type": "", "dose": "", "prandial": "", "remarks": "", "quantity": ""
+     "itemID":"", "itemName": "", "unit": "", "type": "", "dose": "", "prandial": "", "remarks": "", "prescribedQuantity": ""
  
     })
   }
@@ -1289,6 +1359,7 @@ var tempdiag = 0;
 
   //set tab
   setTab(tab: string) {
+    localStorage.setItem("tab",tab)
     this.tab = tab;
   }
 
@@ -1334,7 +1405,7 @@ var tempdiag = 0;
     }
    
   generatetoken(){
-    debugger
+    
     this.userLoader=true
     if(this.localIndoorData.length!=0 && this.localIndoorData!=undefined){
   if(this.investigationForm.value.termination_date!=undefined && this.investigationForm.value.termination_date!='' && this.docType==undefined)

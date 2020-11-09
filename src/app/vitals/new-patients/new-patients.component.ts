@@ -30,7 +30,7 @@ export class NewPatientsComponent implements OnInit {
     this.getpatients()
   }
   getpatients() {
-debugger
+
     this.param = {"doctorID":this.patInfo.id,"status":17, 'hospitalID': this.patInfo.hospitalID };
     this.userLoader = true;
     this.vService.getpatients(this.param).subscribe

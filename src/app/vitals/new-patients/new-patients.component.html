@@ -20,7 +20,7 @@
                             <h5 class="card-title mb-0"></h5>
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item" (click)="setTab('newPats')">
-                                    <a class="nav-link" [ngClass]="{'active show': tab === 'newPats'}" id="tab1" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="home" aria-selected="true">Pendding Patients</a>
+                                    <a class="nav-link" [ngClass]="{'active show': tab === 'newPats'}" id="tab1" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="home" aria-selected="true">New Patients</a>
                                 </li>
                                 <!-- <li class="nav-item" (click)="setTab('seenPats')">
                                     <a class="nav-link" [ngClass]="{'active show': tab === 'seenPats'}" id="portfolio-tab" href="javascript:void(0)" data-toggle="tab" role="tab" aria-controls="portfolio" aria-selected="false">Seen Patients</a>
@@ -49,9 +49,9 @@
                                                             <td>{{pt.token}}</td>
                                                             <td>
                                                                 <img class="mr-3" src="../../../assets/images/profile-avatar.png">
-                                                                <span>{{pt.fname}} </span>
+                                                                <span>{{pt.firstname}} </span>
                                                             </td>
-                                                            <td>{{pt.dob | date}}</td>
+                                                            <td>{{pt.enteringDate | date}}</td>
                                                             <td><a href="javascript:void(0)" class="text-info" (click)="pDetails(pt)">Detail</a></td>
                                                         </tr>
                                                     </tbody>
