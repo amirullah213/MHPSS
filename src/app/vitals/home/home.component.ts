@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   param:any;
   patInfo: any;
   userLoader: boolean;
-  vitalsData: any;
+  vitalsData: any=[];
   vForm: FormGroup;
 
   constructor(private fb: FormBuilder, private vService: VitalsService, private router:Router
@@ -32,14 +32,15 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.patInfo = JSON.parse(localStorage.getItem("patData"));  
+
+    this.patInfo = JSON.parse(localStorage.getItem("vitalsData"));
     this.getallpatientvital()
   }
 
   
   getallpatientvital(){
-
-    this.param={'prescription_id':this.patInfo.prescription_id};
+debugger
+     this.param={'prescription_id':this.patInfo.prescriptionID};
     this.vService.getallpatientvital(this.param).subscribe
     ((response:any)=> {
     if(response.status === 0 ){
@@ -67,8 +68,9 @@ export class HomeComponent implements OnInit {
   }
   addpatientvital()
   {
+    debugger
     let f = this.vForm.value
-    this.param={'prescription_id':this.patInfo.prescription_id,'hospitalID':this.patInfo.hospitalID,"bps":f.bps,"bpd":f.pbd,"pulse":f.pulse,"weight":f.weight,"height":f.height,"temperature":f.temperature,"oxygen_saturation":f.oxygen_saturation};
+    this.param={'prescription_id':this.patInfo.prescriptionID,'hospitalID':this.patInfo.hospitalID,"bps":f.bps,"bpd":f.pbd,"pulse":f.pulse,"weight":f.weight,"height":f.height,"temperature":f.temperature,"oxygen_saturation":f.oxygen_saturation};
     this.userLoader = true;
     this.vService.addpatientvital(this.param).subscribe
     ((response:any)=> {
