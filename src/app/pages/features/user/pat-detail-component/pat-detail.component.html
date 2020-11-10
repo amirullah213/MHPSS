@@ -285,7 +285,7 @@
                                             <div class="col-md-6">
                                                 <h5>Past History</h5>
                                                 <div class="mb-2">
-                                                    <label formArrayName="phArray" *ngFor="let order of clinicalInformation.controls.phArray.controls; let i = index">
+                                                    <label formArrayName="phArray" *ngFor="let order of clinicalInformation.controls.phArray['controls']; let i = index">
                                                         <input type="checkbox" [formControlName]="i" (change)="onSelectPastH(phArray[i],$event.target.checked)">
                                                         {{phArray[i]}}
                                                     </label>
@@ -295,7 +295,7 @@
                                             <div class="col-md-6">
                                                 <h5>Family History</h5>
                                                 <div class="mb-2">
-                                                    <label class="form-check-label" formArrayName="fhArray" *ngFor="let order of clinicalInformation.controls.fhArray.controls; let j = index">
+                                                    <label class="form-check-label" formArrayName="fhArray" *ngFor="let order of clinicalInformation.controls.fhArray['controls']; let j = index">
                                                         <input type="checkbox" [formControlName]="j"(change)="onSelectFamilyh(fhArray[j],$event.target.checked)"
                                                             class="form-check-input" >
                                                         {{fhArray[j]}}
