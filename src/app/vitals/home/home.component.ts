@@ -32,19 +32,18 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.patInfo = JSON.parse(localStorage.getItem("vitalsData"));  
+    this.patInfo = JSON.parse(localStorage.getItem("patData"));  
     this.getallpatientvital()
   }
 
   
   getallpatientvital(){
 
-    this.param={'prescription_id':this.patInfo.prescriptionID};
+    this.param={'prescription_id':this.patInfo.prescription_id};
     this.vService.getallpatientvital(this.param).subscribe
     ((response:any)=> {
     if(response.status === 0 ){
-      debugger
-      if(response.data.length!=0){
+      
         this.vitalsData = response.data[0];
         this.vForm.patchValue({
           bps: this.vitalsData.bps,
@@ -53,10 +52,10 @@ export class HomeComponent implements OnInit {
           height: this.vitalsData.height,
           temperature: this.vitalsData.temperature,
           oxygen_saturation: this.vitalsData.oxygen_saturation,
-        
+
     
         })
-      }
+        
        this.userLoader = false;
       } else {
         this.userLoader = false;
@@ -65,12 +64,11 @@ export class HomeComponent implements OnInit {
     },
     (error) => {}
   );
-    
   }
   addpatientvital()
   {
     let f = this.vForm.value
-    this.param={'prescription_id':this.patInfo.prescriptionID,'hospitalID':this.patInfo.hospitalID,"bps":f.bps,"bpd":f.pbd,"pulse":f.pulse,"weight":f.weight,"height":f.height,"temperature":f.temperature,"oxygen_saturation":f.oxygen_saturation};
+    this.param={'prescription_id':this.patInfo.prescription_id,'hospitalID':this.patInfo.hospitalID,"bps":f.bps,"bpd":f.pbd,"pulse":f.pulse,"weight":f.weight,"height":f.height,"temperature":f.temperature,"oxygen_saturation":f.oxygen_saturation};
     this.userLoader = true;
     this.vService.addpatientvital(this.param).subscribe
     ((response:any)=> {

@@ -32,13 +32,6 @@ export class IssueGrnComponent implements OnInit {
   purchaseOrder:FormArray;
   todayDate:any;
   srID:any;
-  stockArr:any=[];
-  toPharmacyID:any;
-
-  yr:any=0;
-     mn:any=6;
-    
-    
   
   constructor(
     private fb: FormBuilder,
@@ -52,7 +45,6 @@ export class IssueGrnComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.GetBirthDate();
     var date = new Date();
   
    this.todayDate=this.datePipe.transform(date,"yyyy-MM-dd");
@@ -69,16 +61,6 @@ export class IssueGrnComponent implements OnInit {
   });
     
   }
-  GetBirthDate() {
-   
-    // this.yr = this.yr.replace(/^\s+|\s+$/g, "");
-    // this.mn = this.mn.replace(/^\s+|\s+$/g, "");
-    // this.dy = this.dy.replace(/^\s+|\s+$/g, "");
-    console.log(' this.yr', this.yr)
-   if (this.mn < 10) { this.mn = '0' + this.mn }
-   alert(new Date(new Date().getFullYear() - this.yr, new Date().getMonth()  - this.mn ));
-}
-  
 get f(){
   return this.dynamicForm.controls;
 }
@@ -109,9 +91,7 @@ getPendingPurOrders() {
 getPurchOrderItems(dt) {
   this.loader_order = true;
   this.modal2.srID=dt;
-  this.modal2.hospitalID= this.hospitalID;
-  this.modal2.pharmacyID=this.doctorID;
-
+  
  this.pharmacySer.getStockReqItms(this.modal2).subscribe(
     (response: any) => {
       if (response.status === 0) {
@@ -120,12 +100,10 @@ getPurchOrderItems(dt) {
         this.loader_order = false;
         this.purchaseItems.forEach(e => {
           console.log('eeee',e);
-            this.stockArr=e.stock;
-          
+          // if(e!=undefined){(this.purchaseOrder = this.dynamicForm.get('purchaseOrder') as FormArray).push(this.createItem(e));}
+          // else{return null}
           (this.purchaseOrder = this.dynamicForm.get('purchaseOrder') as FormArray).push(this.createItem(e));
-          console.log('this.purchaseOrder4444444===',this.purchaseOrder);
-          console.log('stock22222==',this.stockArr)
-
+          console.log('this.purchaseOrder4444444===',this.purchaseOrder)
        // purchaseOrder: this.fb.array([ this.createItem(e) ]);
       
 
@@ -153,26 +131,35 @@ onSelectMedics(ob)
   
 }
 getID(srid){
-  if(this.purchaseOrder){this.purchaseOrder.clear()}
- 
- this.srID=srid.srID;
- this.toPharmacyID=srid.pharmacyID;
+ // (this.purchaseOrder = this.dynamicForm.get('purchaseOrder') as FormArray).clear();
+ this.srID=srid;
  console.log('srID===',srid);
- this.getPurchOrderItems(this.srID);
+ this.getPurchOrderItems(srid);
 }
 createItem(obj:any): FormGroup {
  
+    
+
+  if (obj == null) {
+
+  return this.fb.group({ stockID: "",
+  requiredQuantity:"",
+  issuedQuantity: "",
+  itemName: "",
+  type: "",
+  unit: "",
+  batchNo:'', ...obj})
+  }
   return this.fb.group({
     
    
-    stockID: '',
+    stockID: obj.stockID,
     requiredQuantity: obj.requiredQuantity,
     issuedQuantity: obj.issuedQuantity,
     itemName: obj.itemName,
     type: obj.type,
     unit: obj.unit,
-    stock:[obj.stock],
-    totalQuantity:''
+    batchNo:''
     
    
   });
@@ -187,8 +174,8 @@ saveData(dat){
     this.modal3.issuanceDate = this.todayDate;
     
     this.modal3.fromPharmacyID  = this.doctorID;
-    this.modal3.toPharmacyID  = this.toPharmacyID;
-    this.modal3.items  = dat.purchaseOrder;
+    this.modal3.toPharmacyID  = this.doctorID;
+    this.modal3.items  = this.purchaseOrder.value;
     console.log('this.modal3===',this.modal3);
     
    this.pharmacySer.addissuedStock(this.modal3).subscribe(
@@ -196,7 +183,7 @@ saveData(dat){
         if (response.status === 0) {
          
           this.loader_eqp = false;
-          alert('GRN stock added succesfully');
+          alert('GRN added succesfully');
           window.location.reload();
         }
     if (response.status === 1) {
@@ -211,18 +198,5 @@ saveData(dat){
     );
   
   }
-  AssinIssueQuantity(ind){
 
-    console.log('resp from batch quantity==',ind);
-    console.log('resp from batch stock==',this.purchaseOrder.value[ind].stock.totalQuantity);
-    console.log('resp from batch stock==',this.purchaseOrder.value[ind].controls);
-   // this.dynamicForm.get('totalQuantity').setValue('123');
-    this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].totalQuantity.patchValue(this.purchaseOrder.value[ind].stock.totalQuantity);
-    this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].stockID.patchValue(this.purchaseOrder.value[ind].stock.id)
-   // this.dynamicForm.controls.purchaseOrder.value [ind].controls['itemName'].patchValue('222')
-   // this.purchaseOrder.get('totalQuantity').setValue(this.purchaseOrder.value[ind].stock.totalQuantity);
-    // this.purchaseOrder.value[ind].totalQuantity[ind].patchValue(this.purchaseOrder.value[ind].stock.totalQuantity)
-  }
-  // calculate age
- 
 }

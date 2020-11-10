@@ -7,11 +7,11 @@ import { PharmacyServicesService } from '../services/pharmacy-services.service';
 import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'ncri-issue-grn',
-  templateUrl: './issue-grn.component.html',
-  styleUrls: ['./issue-grn.component.scss']
+  selector: 'ncri-issue-satt-medic',
+  templateUrl: './issue-satt-medic.component.html',
+  styleUrls: ['./issue-satt-medic.component.scss']
 })
-export class IssueGrnComponent implements OnInit {
+export class IssueSattMedicComponent implements OnInit {
   hospitalID:any;
   doctorID:any;
   userType:any;
@@ -33,12 +33,11 @@ export class IssueGrnComponent implements OnInit {
   todayDate:any;
   srID:any;
   stockArr:any=[];
+  toPharmacyID:any;
+  yr:any=0;
+  mn:any=6;
+  padata:any={};
 
-  yr:any=10;
-     mn:any=5;
-     dy:any=19;
-    
-  
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -53,14 +52,16 @@ export class IssueGrnComponent implements OnInit {
   ngOnInit(): void {
     this.GetBirthDate();
     var date = new Date();
-  
+    this.padata=JSON.parse(localStorage.getItem('pharmacyData')) ;
+   
+    console.log('pharmacyData',this.padata)
    this.todayDate=this.datePipe.transform(date,"yyyy-MM-dd");
    console.log(this.todayDate);
 
     this.hospitalID=localStorage.getItem('hospitalID');
     this.doctorID=localStorage.getItem('docId');
     this.userType=localStorage.getItem('userType');
-    this.getPendingPurOrders();
+    this.getPatMedicItems();
 
     this.dynamicForm = this.fb.group({
       grnName: ['', Validators.required],
@@ -73,48 +74,26 @@ export class IssueGrnComponent implements OnInit {
     // this.yr = this.yr.replace(/^\s+|\s+$/g, "");
     // this.mn = this.mn.replace(/^\s+|\s+$/g, "");
     // this.dy = this.dy.replace(/^\s+|\s+$/g, "");
-    console.log(' this.yr', this.yr)
-   if (this.dy < 10) { this.dy = '0' + this.dy } if (this.mn < 10) { this.mn = '0' + this.mn }
-   alert(new Date(new Date().getFullYear() - this.yr, new Date().getMonth()  - this.mn , (new Date().getDay()+3)-this.dy));
+  //   console.log(' this.yr', this.yr)
+  //  if (this.mn < 10) { this.mn = '0' + this.mn }
+  //  alert(new Date(new Date().getFullYear() - this.yr, new Date().getMonth()  - this.mn ));
 }
   
 get f(){
   return this.dynamicForm.controls;
 }
-   //get all diagnostic list
-getPendingPurOrders() {
-  this.loader_eqp = true;
-  
- this.pharmacySer.getStockReqs(this.modal).subscribe(
-    (response: any) => {
-      if (response.status === 0) {
-        this.pendPurchData = response.data;
-      console.log('pendPurchData==',this.pendPurchData)
-        this.loader_eqp = false;
-      }
-  if (response.status === 1) {
-        this.errormsg = response.errors;
-        this.loader_eqp = false;
-        console.log('error=', this.errormsg);
-        alert('Problem in Service! Please Try again');
-        //this._loginserviceService.logout();
-      }
-    },
-    (error) => {}
-  );
-
-}
+   
 //get purchase orde data
-getPurchOrderItems(dt) {
+getPatMedicItems() {
   this.loader_order = true;
-  this.modal2.srID=dt;
-  this.modal2.hospitalID= this.hospitalID;
-  this.modal2.pharmacyID=this.doctorID;
+  this.modal.hospitalID=this.hospitalID;
+  this.modal.parmacyID=this.doctorID
+  this.modal.token=this.padata.token;
 
- this.pharmacySer.getStockReqItms(this.modal2).subscribe(
+ this.pharmacySer.getPatData(this.modal).subscribe(
     (response: any) => {
       if (response.status === 0) {
-        this.purchaseItems = response.data;
+        this.purchaseItems = response.medicines;
       console.log('purchaseItems==',this.purchaseItems)
         this.loader_order = false;
         this.purchaseItems.forEach(e => {
@@ -152,36 +131,31 @@ onSelectMedics(ob)
   
 }
 getID(srid){
- // (this.purchaseOrder = this.dynamicForm.get('purchaseOrder') as FormArray).clear();
- this.srID=srid;
+  if(this.purchaseOrder){this.purchaseOrder.clear()}
+ 
+ this.srID=srid.srID;
+ this.toPharmacyID=srid.pharmacyID;
  console.log('srID===',srid);
- this.getPurchOrderItems(srid);
+// this.getPurchOrderItems(this.srID);
 }
 createItem(obj:any): FormGroup {
  
-    
- 
-  // if (obj == null) {
-
-  // return this.fb.group({ stockID: "",
-  // requiredQuantity:"",
-  // issuedQuantity: "",
-  // itemName: "",
-  // type: "",
-  // unit: "",
-  // batchNo:'', ...obj})
-  // }
   return this.fb.group({
     
    
-    stockID: obj.stockID,
-    requiredQuantity: obj.requiredQuantity,
+    stockID:obj.id,
+    prescribedQuantity: obj.prescribedQuantity,
     issuedQuantity: obj.issuedQuantity,
-    itemName: obj.itemName,
-    type: obj.type,
+    medicine: obj.medicine,
+    type: obj.type1,
     unit: obj.unit,
     stock:[obj.stock],
-    inhandQuantity:''
+    totalQuantity:'',
+    stockVal:'',
+    dose:obj.dose,
+    prandial:obj.prandial,
+    itemID:obj.id
+
     
    
   });
@@ -190,39 +164,46 @@ saveData(dat){
   console.log('this.purchaseOrder===',this.purchaseOrder.value);
   console.log('this.dat===',dat);
   
-    this.loader_eqp = true;
-    this.modal3.srID  = this.srID;
-    this.modal3.hospitalID = this.hospitalID;
-    this.modal3.issuanceDate = this.todayDate;
+  this.loader_eqp = true;
+  this.modal3.hospitalID=this.hospitalID;
+  this.modal3.parmacyID=this.doctorID;
+   this.modal3.ptID=this.padata.ptID;
+  this.modal3.medicine=dat.purchaseOrder;
+
+
+    console.log('this.modal3===',this.modal3); 
     
-    this.modal3.fromPharmacyID  = this.doctorID;
-    this.modal3.toPharmacyID  = this.doctorID;
-    this.modal3.items  = this.purchaseOrder.value;
-    console.log('this.modal3===',this.modal3);
-    
-   this.pharmacySer.addissuedStock(this.modal3).subscribe(
-      (response: any) => {
-        if (response.status === 0) {
+  //  this.pharmacySer.issueMedic(this.modal3).subscribe(
+  //     (response: any) => {
+  //       if (response.status === 0) {
          
-          this.loader_eqp = false;
-          alert('GRN added succesfully');
-          window.location.reload();
-        }
-    if (response.status === 1) {
-          this.errormsg = response.errors;
-          this.loader_eqp = false;
-          console.log('error=', this.errormsg);
-          alert('Problem in Service! Please Try again');
-          //this._loginserviceService.logout();
-        }
-      },
-      (error) => {}
-    );
+  //         this.loader_eqp = false;
+  //         alert('GRN stock added succesfully');
+  //         window.location.reload();
+  //       }
+  //   if (response.status === 1) {
+  //         this.errormsg = response.errors;
+  //         this.loader_eqp = false;
+  //         console.log('error=', this.errormsg);
+  //         alert('Problem in Service! Please Try again');
+  //         //this._loginserviceService.logout();
+  //       }
+  //     },
+  //     (error) => {}
+  //   );
   
   }
-  AssinIssueQuantity(stocData,indx){
-    console.log('resp from batch quantity==',stocData);
-    console.log('resp from batch indx==',indx)
+  AssinIssueQuantity(ind){
+
+    console.log('resp from batch quantity==',ind);
+    console.log('resp from batch stock==',this.purchaseOrder.value[ind].stockVal.totalQuantity);
+    console.log('resp from batch stock==',this.purchaseOrder.value[ind].controls);
+   // this.dynamicForm.get('totalQuantity').setValue('123');
+    this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].totalQuantity.patchValue(this.purchaseOrder.value[ind].stockVal.totalQuantity);
+    this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].stockID.patchValue(this.purchaseOrder.value[ind].stockVal.id)
+   // this.dynamicForm.controls.purchaseOrder.value [ind].controls['itemName'].patchValue('222')
+   // this.purchaseOrder.get('totalQuantity').setValue(this.purchaseOrder.value[ind].stock.totalQuantity);
+    // this.purchaseOrder.value[ind].totalQuantity[ind].patchValue(this.purchaseOrder.value[ind].stock.totalQuantity)
   }
   // calculate age
  

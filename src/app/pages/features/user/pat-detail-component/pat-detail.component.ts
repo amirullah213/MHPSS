@@ -1276,7 +1276,7 @@ debugger
   }
 
 
-    if(this.treatmentForm.value.access_type=="0")
+    if(tVal.access_type=="0")
     {
       this.reff=""
       this.location=""
@@ -1284,19 +1284,19 @@ debugger
     }
     else 
     {
-      this.reff=this.treatmentForm.value.Department
-      this.location=this.treatmentForm.value.FollowUpExtInt
+      this.reff=tVal.Department
+      this.location=tVal.FollowUpExtInt
       this.isrefferel=1
     }
    
         
     this.param = { 'hospitalID': localStorage.getItem('hospitalID'), 'prescriptionID': this.patInfo.prescriptionID,"patientID":this.patInfo.patientID,
  "isReferral":this.isrefferel,"isImplant":0,"medicines":this.localTreat,"isDMPA":0,"isTubalLigation":0,
- "follow_up":this.treatmentForm.value.fol_up,"isFamilyPlanning":0,"isCOC":0,"isCounselling":0,
- "otherTreatmentProcedure":this.treatmentForm.value.tComments,"otherMethod":"","contraceptiveMethod":"",
- "TreatmentComments":this.treatmentForm.value.tComments,"isPPIUCD":0,"isCuT":0,"isCondom":0,
- "isVasectomy":0,"isNET":0, "refferel":this.reff,"isPPImplant":0,"followUpComments":this.treatmentForm.value.fComments,
- "nextVisitDate":"","followUpInerval":this.treatmentForm.value.followUpInterval,"location":this.location,"isPOP":0,
+ "follow_up":tVal.fol_up,"isFamilyPlanning":0,"isCOC":0,"isCounselling":0,
+ "otherTreatmentProcedure":tVal.tComments,"otherMethod":"","contraceptiveMethod":"",
+ "TreatmentComments":tVal.tComments,"isPPIUCD":0,"isCuT":0,"isCondom":0,
+ "isVasectomy":0,"isNET":0, "refferel":this.reff,"isPPImplant":0,"followUpComments":tVal.fComments,
+ "nextVisitDate":"","followUpInerval":tVal.followUpInterval,"location":this.location,"isPOP":0,
  "treatmentProcedure":""}
     this.userLoader = true;
 debugger
@@ -1317,7 +1317,7 @@ debugger
       );
   }
   updatepatienttoken() {
-    var deptType=0;
+    let deptType=0;
     if(this.patInfo.deptType==0)
     {
        deptType = 1

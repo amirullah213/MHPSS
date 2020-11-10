@@ -9,6 +9,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { DataTablesModule } from 'angular-datatables';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { CKEditorModule } from 'ng2-ckeditor';
 
 import { RadiologyRoutingModule } from './radiology-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -22,7 +23,7 @@ import { DiagnosisSeenRadComponent } from './diagnosis-seen-rad/diagnosis-seen-r
   declarations: [HomeComponent, LabRadiologyComponent, RadiologySideBarComponent, DiagnosisPendingRadComponent, DiagnosisSeenRadComponent],
   imports: [
     CommonModule,
-    RadiologyRoutingModule, FormsModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), BsDatepickerModule.forRoot(), CollapseModule.forRoot()
+    RadiologyRoutingModule, CKEditorModule, FormsModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), BsDatepickerModule.forRoot(), CollapseModule.forRoot()
   ]
 })
 export class RadiologyModule { }
