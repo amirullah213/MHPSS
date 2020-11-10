@@ -269,32 +269,32 @@ saveTests(testdata,full){
   //  this.model3.tests=this.singleArr;
 
    // new method add radiology previous method is above
-   this.model3.id=this.userData;
+   this.model3.id=this.userData.id;
    this.model3.xrayFilms6=diagnos.name;
    this.model3.result=diagnos.result;
 
   console.log('model3 ==', this.model3);
-  this.radService.updateTests(this.model3).subscribe(
-    (response: any) => {
-      if (response.status === 0) {
-        console.log(' response====',response);
+  // this.radService.updateTests(this.model3).subscribe(
+  //   (response: any) => {
+  //     if (response.status === 0) {
+  //       console.log(' response====',response);
         
-        this.loaderUpdate = false;
-        this.modalRef.hide();
-        // this.singleArr=[];
-        // this.objPath.result='';
-        // this.finalAddArray=[];
-      }
-  if (response.status === 1) {
-        this.errormsg = response.error;
-        this.loaderUpdate = false;
-        alert('Problem in service! please Try again')
-        console.log('error=', this.errormsg);
+  //       this.loaderUpdate = false;
+  //       this.modalRef.hide();
+  //       this.singleArr=[];
+  //       this.objPath.result='';
+  //       this.finalAddArray=[];
+  //     }
+  // if (response.status === 1) {
+  //       this.errormsg = response.error;
+  //       this.loaderUpdate = false;
+  //       alert('Problem in service! please Try again')
+  //       console.log('error=', this.errormsg);
         
-      }
-    },
-    (error) => {}
-  );
+  //     }
+  //   },
+  //   (error) => {}
+  // );
 
  }
 //--------------------------------

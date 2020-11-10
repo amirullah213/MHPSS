@@ -281,9 +281,9 @@ saveTests(testdata,full){
         
         this.loaderUpdate = false;
         this.modalRef.hide();
-        // this.singleArr=[];
-        // this.objPath.result='';
-        // this.finalAddArray=[];
+        this.singleArr=[];
+        this.objPath.result='';
+        this.finalAddArray=[];
       }
   if (response.status === 1) {
         this.errormsg = response.error;

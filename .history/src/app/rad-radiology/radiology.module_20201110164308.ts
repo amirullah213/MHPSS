@@ -25,7 +25,7 @@ import { DiagnosisSeenRadComponent } from './diagnosis-seen-rad/diagnosis-seen-r
   declarations: [HomeComponent, LabRadiologyComponent, RadiologySideBarComponent, DiagnosisPendingRadComponent, DiagnosisSeenRadComponent],
   imports: [
     CommonModule,
-    RadiologyRoutingModule, HttpClientModule, AngularEditorModule, FormsModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), BsDatepickerModule.forRoot(), CollapseModule.forRoot(),
+    RadiologyRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), BsDatepickerModule.forRoot(), CollapseModule.forRoot(), AngularEditorModule
   ]
 })
 export class RadiologyModule { }
