@@ -182,6 +182,7 @@ export class PatDetailComponent implements OnInit {
       duration: ['', Validators.required],
       durationType: ['', Validators.required],
       name: [''],
+      pname: [''],
       selectedValueDiag: [''],
       selectedValueSign: [''],
       system_access_enabled: [''],
@@ -374,17 +375,7 @@ if(this.sData.testType==1){
     this.treatmentItems.removeAt(i);
   }
   
-  /*  
-  onselectGen(event:TypeaheadMatch):void{
-    this.addGen(event.item);
-  }
-  addGen(obj:any){
-    this.localGen.push({'id':obj.id,'name':obj.name})             
-    this.clinicalInformation.patchValue({         
-      'selectedValueGen':'',
-       })  
-    }
-*/
+  
 onSelectSign(event: TypeaheadMatch): void {
 
   this.signObj= event.item;
@@ -446,7 +437,8 @@ this.diagID = event.item.id
   }
   onSelectPastH(e,chk){
     
-    if(e=="Others" && chk==true)
+    if(e=="Others"){
+    if( chk==true)
     {
       this.showPh =true;
     }  
@@ -454,6 +446,7 @@ this.diagID = event.item.id
       this.showPh=false
     }
   }
+}
   onSelectFamilyh(e,chk){
     
     if(e=="Others" && chk==true)
@@ -572,7 +565,7 @@ this.diagID = event.item.id
           if (this.localDiag.length != 0) {
             
          //   (this.diagItems = this.clinicalInformation.get('diagItems') as FormArray).push(this.createDiag(e));
-            this.localDiagData.push({ 'id': e.id, 'name': e.name,  description:e.description})
+            this.localDiagData.push({ 'id': e.id, 'name': e.name,  "description":e.description})
 
         }
         else {
@@ -603,6 +596,7 @@ this.diagID = event.item.id
 
 
           if (this.vitalsData!=undefined && this.vitalsData.length != 0) {
+            
             this.clinicalInformation.patchValue({
               bps: this.vitalsData.bps,
               pulse: this.vitalsData.pulse,
@@ -684,14 +678,14 @@ this.diagID = event.item.id
   addSymptom() {
     // this.items = this.clinicalInformation.get('items') as FormArray;
     // this.items.push(this.createSymptom(null));
-    
-    var tempsymp = 0;
+    let ci =this.clinicalInformation.value;
+    let tempsymp = 0;
     if(this.localSymptoms.length!=0){
       for(let e of this.localSymptoms)
         { 
           if(this.selectedOptionSymptom==undefined)
  {
-  if(e.name==this.clinicalInformation.value.name){
+  if(e.name==ci.name){
     alert("already Exists");
     tempsymp = 1;
     break
@@ -707,14 +701,14 @@ this.diagID = event.item.id
     if (tempsymp == 0)
     {
       
-      this.NewSymptoms.push({ name: this.clinicalInformation.value.name})  
-         this.localSymptoms.push({ name: this.clinicalInformation.value.name,
-          duration: this.clinicalInformation.value.duration,
-          durationType: this.clinicalInformation.value.durationType})    }
+      this.NewSymptoms.push({ name: ci.name})  
+         this.localSymptoms.push({ name: ci.name,
+          duration: ci.duration,
+          durationType: ci.durationType})    }
   }else{
-    this.localSymptoms.push({ name: this.clinicalInformation.value.name,
-      duration: this.clinicalInformation.value.duration,
-      durationType: this.clinicalInformation.value.durationType})  }
+    this.localSymptoms.push({ name: ci.name,
+      duration: ci.duration,
+      durationType: ci.durationType})  }
       this.clinicalInformation.patchValue({
         name:"",
         durationType:"",
@@ -723,34 +717,18 @@ this.diagID = event.item.id
     
   }
 
-  createDiag(obj: any): FormGroup {
-    
-    if (obj == null) {
-       return this.fb.group({
-        id: '',
-        name: '',
-       description:''
-      });
-    } else {
-      return this.fb.group({
-        id: obj.id,
-        name: obj.name,
-        description:obj.description
-      
-      });
-    }
-  }
+  
 insertToDiag(obj: any)
 {
   
-  this.localDiagData.push({ 'id': obj.id, 'name': obj.name,  description:obj.description
+  this.localDiagData.push({ 'id': obj.id, 'name': obj.name,  "description":obj.description
 })
 
 }
   addDiag() {
     // this.diagItems = this.clinicalInformation.get('diagItems') as FormArray;
     // this.diagItems.push(this.createDiag(null));
-var tempdiag = 0;
+let tempdiag = 0;
     if(this.localDiagData.length!=0){
       for(let e of this.localDiagData)
         {  
@@ -770,11 +748,11 @@ var tempdiag = 0;
     }
     if (tempdiag == 0)
     {
-      this.localDiagData.push({ 'id': this.diagID, 'name': this.clinicalInformation.value.name,  description:this.clinicalInformation.value.description})
+      this.localDiagData.push({ 'id': this.diagID, 'name': this.clinicalInformation.value.pname,  description:this.clinicalInformation.value.description})
    
     }
   }else{
-    this.localDiagData.push({ 'id': this.diagID, 'name': this.clinicalInformation.value.name,  description:this.clinicalInformation.value.description})
+    this.localDiagData.push({ 'id': this.diagID, 'name': this.clinicalInformation.value.pname,  description:this.clinicalInformation.value.description})
   }
     this.clinicalInformation.patchValue({
       'name': ''
@@ -792,7 +770,7 @@ var tempdiag = 0;
   }
   addSign() {
     
-    var tempsign = 0;
+    let tempsign = 0;
     if(this.localSign.length!=0){
       for(let e of this.localSign)
         { 
@@ -843,6 +821,109 @@ var tempdiag = 0;
 
 
   addClinicalInfo() {
+    debugger
+let ci=this.clinicalInformation.value
+let tempsymp = 0;
+    if(this.localSymptoms.length!=0){
+      for(const e of this.localSymptoms)
+        { 
+          if(this.selectedOptionSymptom==undefined)
+ {
+  if(e.name==ci.name){
+  //  alert("already Exists");
+    tempsymp = 1;
+    break
+   }
+ }
+        if(this.selectedOptionSymptom!=undefined && e.name==this.selectedOptionSymptom.name){
+//        alert("already Exists");
+        this.selectedOptionSymptom={};
+        tempsymp = 1;
+        break
+       }
+    }
+    }
+    if(ci.name!=undefined && ci.name!=''  && ci.name!=null && ci.duration!=undefined  && ci.duration!=null  && ci.duration!='' && ci.durationType!=undefined && ci.durationType!=''  && ci.durationType!=null){
+    if (tempsymp == 0)
+    
+    {
+      if(this.selectedOptionSymptom==undefined){
+      this.NewSymptoms.push({ name: ci.name})  
+      this.localSymptoms.push({ name: ci.name, duration: ci.duration,durationType: ci.durationType})
+    }
+  }else{
+    this.localSymptoms.push({ name: ci.name,duration: ci.duration,durationType: ci.durationType})
+  }
+}
+
+let tempsign = 0;
+    if(this.localSign.length!=0){
+      for(const e of this.localSign)
+        { 
+          if(this.signObj.id==undefined || this.signObj=={})
+ {
+  if(e.name==ci.selectedValueSign){
+ //   alert("already Exists");
+    tempsign = 1;
+    break
+   }
+ }
+        if((this.signObj.id!=undefined && this.signObj!={}) && e.name==this.clinicalInformation.value.selectedValueSign){
+     //   alert("already Exists");
+        tempsign = 1;
+        break
+       }
+    
+  }
+}
+  if(ci.selectedValueSign!=undefined && ci.selectedValueSign!=''  && ci.selectedValueSign!=null){
+
+    if (tempsign == 0)
+    {
+      this.NewlocalSign.push({'name':ci.selectedValueSign})
+      this.localSign.push({ 'id': "", 'name':ci.selectedValueSign})
+           
+       this.signObj={}
+
+     
+  }else{
+    this.localSign.push({ 'id': this.signObj.id, 'name': this.signObj.name })
+      this.signObj={}
+  
+  }
+
+}
+
+
+  let tempdiag = 0;
+    if(this.localDiagData.length!=0){
+      for(const e of this.localDiagData)
+        {  
+        if(this.diagID!=undefined && e.id==this.diagID)
+        {
+      //  alert("Diagnosis already Exists");
+        tempdiag = 1;
+        break
+       }
+       if(this.diagID==undefined)
+       {
+        if(e.name==ci.pname)
+        {
+         // alert("already Exists");
+          tempdiag = 1;
+          break
+        }
+      }
+    }
+    }
+    if(ci.pname!=undefined && ci.pname!='' && ci.pname!=null )
+    if (tempdiag == 0)
+    {
+      this.localDiagData.push({ 'id': this.diagID, 'name': ci.pname,  "description":ci.description})
+   
+    }
+  
+
     this.userLoader = true;
 
     if (this.patInfo.lname != undefined) {
@@ -854,10 +935,10 @@ var tempdiag = 0;
     const tags = this.localSign;
     var result = tags.map(a => a.name);
 
-    var phNames = this.clinicalInformation.value.phArray
+    const phNames = ci.phArray
       .map((v, i) => v ? this.phArray[i] : null)
       .filter(v => v !== null).toString();
-    var fhNames = this.clinicalInformation.value.fhArray
+    const fhNames = ci.fhArray
       .map((v, i) => v ? this.fhArray[i] : null)
       .filter(v => v !== null).toString();
       
@@ -866,20 +947,16 @@ var tempdiag = 0;
     {
       'hospitalID': localStorage.getItem('hospitalID'),
       'prescriptionID': this.patInfo.prescriptionID, "userID": localStorage.getItem('docId'),
-      "patientID": this.patientID, "ptID": this.ptID, "bps": this.clinicalInformation.value.bps,
-      "oxygen_saturation": this.clinicalInformation.value.oxygen_saturation, "pulse": this.clinicalInformation.value.pulse,
-      "height": this.clinicalInformation.value.height, "weight": this.clinicalInformation.value.weight,
-      "pastHistory": phNames, "familyHistory": fhNames, "isFollowUp": this.clinicalInformation.value.isFollowUp, "lmp": "lmp", "isShortHeight": 0, "isMUAC": 0,
-      "signs": result, "PNCServices": "", "temperature": this.clinicalInformation.value.temperature,
-      "isLowWeight": 1, "isMalnutration": this.clinicalInformation.value.isMalnutration, "ANCServices": "",
+      "patientID": this.patientID, "ptID": this.ptID, "bps": ci.bps,"oxygen_saturation": ci.oxygen_saturation, "pulse": ci.pulse,
+      "height": ci.height, "weight": ci.weight,"pastHistory": phNames, "familyHistory": fhNames, "isFollowUp": ci.isFollowUp, "lmp": "lmp", "isShortHeight": 0, "isMUAC": 0,
+      "signs": result, "PNCServices": "", "temperature": ci.temperature,"isLowWeight": 1, "isMalnutration": ci.isMalnutration, "ANCServices": "",
       "edd": "", "complaints": this.localSymptoms, "diagnosis": this.localDiagData,"newSigns":this.NewlocalSign,"newComplaints":this.NewSymptoms, "deptType": 1, "userName": this.fullName,
-      "otherFamilyHistory":this.clinicalInformation.value.otherFh, "otherPastHistory":this.clinicalInformation.value.otherPh,
+      "otherFamilyHistory":ci.otherFh, "otherPastHistory":ci.otherPh,
       "PregnancyNutritionStatus": "", "isTTVac": 0, "LactionNutritionStatus": ""
     };
     this.uService.addclinicalinfo(this.param).subscribe((response: any) => {
       if (response.status === 0) {
-
-        this.router.onSameUrlNavigation = 'reload'
+        location.reload();
         this.userLoader = false;
       } else {
         this.userLoader = false;
@@ -1167,6 +1244,37 @@ var tempdiag = 0;
 
 
   addtreatmentinfo() {
+debugger
+    let tVal =this.treatmentForm.value;
+    let medic= tVal.itemName.split(",");
+    var temptreat = 0;
+    if(this.localTreat.length!=0){
+      for(let e of this.localTreat)
+        { 
+          
+        if(e.medicine==medic[0] && e.unit==tVal.unit && e.type==tVal.type1){
+      //  alert("already Exists");
+        temptreat= 1;
+        this.treatmentForm.patchValue({
+          "itemID":"", "itemName": "", "unit": "", "type": "", "dose": "", "prandial": "", "remarks": "", "prescribedQuantity": ""
+      
+         })
+        break
+       }
+    }
+  }
+  if(tVal.itemName!=undefined && tVal.itemName!='' && tVal.itemName!=null && tVal.unit!=undefined && tVal.unit!='' && tVal.unit!=null){
+    if (temptreat == 0)
+    {      
+   this.localTreat.push({"prandial":tVal.prandial,"unit":tVal.unit,"type":tVal.type, "remarks":tVal.remarks,"dose":tVal.dose,"medicine":medic[0],"medicineID":this.medId,"prescribedQuantity":tVal.prescribedQuantity,"issuedQuantity":"","duration":""})
+   this.treatmentForm.patchValue({
+    "itemID":"", "itemName": "", "unit": "", "type": "", "dose": "", "prandial": "", "remarks": "", "prescribedQuantity": ""
+
+   })
+         
+    }
+  }
+
 
     if(this.treatmentForm.value.access_type=="0")
     {
@@ -1191,13 +1299,13 @@ var tempdiag = 0;
  "nextVisitDate":"","followUpInerval":this.treatmentForm.value.followUpInterval,"location":this.location,"isPOP":0,
  "treatmentProcedure":""}
     this.userLoader = true;
-
+debugger
     this.uService.addtreatmentinfo(this.param).subscribe
 
       ((response: any) => {
         if (response.status === 0) {
           
-          this.updatepatienttoken()
+         this.updatepatienttoken()
 
           this.userLoader = false;
         } else {
@@ -1318,6 +1426,7 @@ var tempdiag = 0;
         break
        }
     }
+    
     if (temptreat == 0)
     {
       

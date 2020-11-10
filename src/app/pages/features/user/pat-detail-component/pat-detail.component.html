@@ -173,13 +173,13 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Temprature (F)</label>
-                                                    <input type="text" formControlName="temperature" class="form-control" placeholder="Height">
+                                                    <input type="text" formControlName="temperature" class="form-control" placeholder="Temprature">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Oxygen Saturation</label>
-                                                    <input type="text" formControlName="oxygen_saturation" class="form-control" placeholder="Height">
+                                                    <input type="text" formControlName="oxygen_saturation" class="form-control" placeholder="Oxygen Saturation">
                                                 </div>
                                             </div>
                                         </div>
@@ -345,7 +345,7 @@
                                                 <h5 class="card-title mb-0">Provisional Diagnosis</h5>
                                             </div>
                                             <div class="col-md-5 ">
-                                                <input formControlName="name" [typeahead]="diagnosisData" typeaheadOptionField="name" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectDiag($event)" class="form-control" [typeaheadMinLength]="0">
+                                                <input formControlName="pname" [typeahead]="diagnosisData" typeaheadOptionField="name" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectDiag($event)" class="form-control" [typeaheadMinLength]="0">
                                             </div>
                                             <div class="col-md-5 ">
                                                 <input formControlName="description" class="form-control">
@@ -492,8 +492,13 @@
                                                                 <p class="mb-1 mt-3"><b>Mobile Number</b>
                                                                     <span class="ml-4"> {{patInfo.cellNo}}</span>
                                                                 </p>
+                                                                
+                                                                
                                                             </div>
-                                                            <h6><span *ngIf="sData.superTestName!=''">{{sData.superTestName}}</span></h6>
+                                                            <div class="col-md-6"><p class="mb-1 mt-3" *ngIf="sData.oldTestName!='' && sData.isSupper==1"><b>Test</b>
+                                                                <span class="ml-4"> {{sData.oldTestName}}</span>
+                                                            </p></div>
+                                                            <!-- <p><span *ngIf="sData.oldTestName!='' && sData.isSupper==1"><b>Test Name :</b>  <span class="ml-4">{{sData.oldTestName}} </span> </span></p> -->
                                                         </div>
                                                         <div class="table-responsive">
                                                             <table class="table center-aligned-table" *ngIf="sData.testType==1">
@@ -518,7 +523,6 @@
                                                                         <th>Test Name</th>
                                                                         <th>Findings</th>
                                                                         <th>Diagnosis</th>
-                                                                        <th>Range</th>
                                                                     </tr>
                                                                 </thead>
                                                                
@@ -527,7 +531,6 @@
                                                      <td>{{testNameF}}</td>
                                                      <td>{{xRayFilms}}  </td>                   
                                                         <td>{{resultF}}</td>
-                                                    <td> {{refRangeF}}</td>
                                                 </tr>
                                             </tbody>
                                           
@@ -712,7 +715,7 @@
                                                         <th width="10%">Action </th>
 
                                                         <tr *ngFor="let trt of localTreat let i=index">
-                                                            <td width="30%">{{trt.medicine}},{{trt.unit}},{{trt.type}}</td>
+                                                            <td width="30%">{{trt.medicine}},{{trt.unit}},{{trt.type1}}</td>
                                                             <td width="15%">{{trt.dose}}</td>
                                                             <td width="15%">{{trt.prescribedQuantity}}</td>
                                                             <td width="15%"><span *ngIf="trt.prandial!='undefined'">{{trt.prandial}}</span></td>
