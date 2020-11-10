@@ -286,46 +286,24 @@
                                                 <h5>Past History</h5>
                                                 <div class="mb-2">
                                                     <label formArrayName="phArray" *ngFor="let order of clinicalInformation.controls.phArray.controls; let i = index">
-                                                        <input type="checkbox" [formControlName]="i">
+                                                        <input type="checkbox" [formControlName]="i" (change)="onSelectPastH(phArray[i],$event.target.checked)">
                                                         {{phArray[i]}}
                                                     </label>
                                                 </div>
+                                                <input type="text" formControlName="otherPh" class="form-control" *ngIf='showPh'>
                                             </div>
                                             <div class="col-md-6">
                                                 <h5>Family History</h5>
                                                 <div class="mb-2">
                                                     <label class="form-check-label" formArrayName="fhArray" *ngFor="let order of clinicalInformation.controls.fhArray.controls; let j = index">
-                                                        <input type="checkbox" [formControlName]="j"
-                                                            class="form-check-input">
+                                                        <input type="checkbox" [formControlName]="j"(change)="onSelectFamilyh(fhArray[j],$event.target.checked)"
+                                                            class="form-check-input" >
                                                         {{fhArray[j]}}
                                                     </label>
-                                                    <!-- <input type="checkbox" formControlName="Abortion"  class="form-check-input" id="Abortion">
-                                                    <label class="form-check-label" for="Abortion">Abortion</label> -->
+                                                    <input type="text" formControlName="otherFh" class="form-control" *ngIf='showFh'>
+
                                                 </div>
-                                                <!-- <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="Astama1" class="form-check-input" name="Astama1" id="Astama1">
-                                                    <label class="form-check-label" for="Astama1">Astama</label>
-                                                </div>
-                                                <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="Cancer1" class="form-check-input" id="Cancer1">
-                                                    <label class="form-check-label" for="Cancer1">Cancer</label>
-                                                </div>
-                                                <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="Diabetes1" class="form-check-input" id="Diabetes1">
-                                                    <label class="form-check-label" for="Diabetes1">Diabetes Mellitus</label>
-                                                </div>
-                                                <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="DrugAllergy1" class="form-check-input" id="DrugAllergy1">
-                                                    <label class="form-check-label" for="DrugAllergy1">Drug Allergy</label>
-                                                </div>
-                                                <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="HyperTension1" class="form-check-input" id="HyperTension1">
-                                                    <label class="form-check-label" for="HyperTension1">Hypertension</label>
-                                                </div>
-                                                <div class="form-check checkbox mb-2">
-                                                    <input type="checkbox" formControlName="IschemicHeartDiseases1" class="form-check-input" id="IschemicHeartDiseases1">
-                                                    <label class="form-check-label" for="IschemicHeartDiseases1">Ischemic Heart Diseases</label>
-                                                </div> -->
+                                              
                                             </div>
                                         </div>
                                         <hr class="hr-gray mx-0">
@@ -471,7 +449,7 @@
                                                                 <td>
                                                                     <div class="form-group">
                                                                         <a href="javascript:void(0)" class="float-right" (click)="removeTest(i,pth.id)">
-                                                                            <i class="fa fa-close fa-lg text-danger mr-1"></i>Remove</a>
+                                                                            <i class="fa fa-close fa-lg text-danger mr-1"></i></a>
                                                                         <a href="javascript:void(0)" class="text-info" (click)="viewReport(template,pth,i)">View Report</a>
                                                                     </div>
                                                                 </td>
@@ -491,6 +469,8 @@
                                                     </button>
                                                     </div>
                                                     <div class="modal-body ">
+                                                        <h5>Test Type : <span *ngIf="sData.testType==1">Pathalogy</span><span *ngIf="sData.testType!=1">Radiology</span></h5>
+
                                                         <div class="row mx-0">
                                                             <div class="col-md-12">
                                                                 <p class="mb-1 mt-2"><b>Token Number</b>
@@ -515,40 +495,38 @@
                                                                 
                                                                 
                                                             </div>
-<<<<<<< HEAD
                                                             <div class="col-md-6"><p class="mb-1 mt-3" *ngIf="sData.oldTestName!='' && sData.isSupper==1"><b>Test</b>
                                                                 <span class="ml-4"> {{sData.oldTestName}}</span>
                                                             </p></div>
                                                             <!-- <p><span *ngIf="sData.oldTestName!='' && sData.isSupper==1"><b>Test Name :</b>  <span class="ml-4">{{sData.oldTestName}} </span> </span></p> -->
-=======
->>>>>>> f743a677409d7006198ca0d4f6db834a2d10a088
                                                         </div>
                                                         <div class="table-responsive">
-                                                            <table class="table center-aligned-table">
+                                                            <table class="table center-aligned-table" *ngIf="sData.testType==1">
                                                                 <thead>
                                                                     <tr class="text-dark">
-                                                                        <th>Test Type</th>
+                                                                        <th>Test Name</th>
+                                                                        <th>Result</th>                                                                      
+                                                                        <th>Range</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody >
+                                                    <tr *ngFor="let ts of subTests let i=index">                                                     
+                                                     <td>{{ts.oldTestName}}</td>                                                     
+                                                         <td>{{ts.result}}</td>
+                                                        <td> {{ts.refRange}}</td>
+                                                              </tr>
+                                                              </tbody>
+                                                                     </table>
+                                                            <table class="table center-aligned-table" *ngIf="sData.testType!=1">
+                                                                <thead>
+                                                                    <tr class="text-dark">
                                                                         <th>Test Name</th>
                                                                         <th>Findings</th>
                                                                         <th>Diagnosis</th>
                                                                     </tr>
                                                                 </thead>
-                                                                <!-- <tbody *ngIf="sData.testType!=1">
-                                                                    <tr >
-                                                           <td>Radiology</td>
-                                                           <td>{{testNameF}}</td>
-                                                           <td>
-                                                                <span *ngFor="let rs of xRayFilms let i=index" >{{rs.name}} ,</span>
-
-                                                                <span *ngIf="sData.isSupper==0 && ts.testType==1"> {{ts.result}}</span> 
-
-                                                           </td>
-                                                           <td>{{resultF}}</td>
-                                                           <td> {{refRangeF}}</td>
-                                                       </tr>
-                                                   </tbody> -->
+                                                               
                                                    <tbody >
-<<<<<<< HEAD
                                                     <tr >
                                                      <td>{{testNameF}}</td>
                                                      <td>{{xRayFilms}}  </td>                   
@@ -556,24 +534,6 @@
                                                 </tr>
                                             </tbody>
                                           
-=======
-                                                    <tr *ngFor="let ts of subTests let i=index">
-                                                     <td><span *ngIf="sData.testType==1">Pathalogy</span><span *ngIf="sData.testType!=1">Radiology</span> </td>
-                                                     <td>{{ts.testName}}</td>
-                                                                        <td>
-                                               <!-- <span *ngIf="sData.isSupper==1 && ts.testType!=1"> -->
-                                               <span>
-                                                <span *ngFor="let rs of xRayFilms let i=index" >{{rs.name}} ,</span>
-
-                                               </span>
-                                               <!-- <span *ngIf="sData.isSupper==0 && ts.testType==1"> {{ts.result}}</span> -->
-
-                                           </td>
-                                           <td>{{ts.result}}</td>
-                                           <td> {{ts.refRange}}</td>
-                                       </tr>
-                                   </tbody>
->>>>>>> f743a677409d7006198ca0d4f6db834a2d10a088
                                                             </table>
                                                         </div>
                                                     </div>
@@ -598,7 +558,6 @@
                                             <div class="col-md-12">
                                                 <h5>Selected Diagnosis</h5>
                                                 <div class="row mx-0" *ngFor="let indD of localIndoorData let i=index">
-                                                    <hr class="hr-gray mx-0">
                                                     <div class="col-md-10">
                                                         <p><b>{{indD.name}}</b></p>
                                                     </div>
