@@ -154,7 +154,7 @@ createItem(obj:any): FormGroup {
     stockVal:'',
     dose:obj.dose,
     prandial:obj.prandial,
-    itemID:'' || 0,
+    itemID:obj.stock.itemID,
     id:obj.id
 
     
@@ -174,24 +174,24 @@ saveData(dat){
 
     console.log('this.modal3===',this.modal3); 
     
-   this.pharmacySer.issueMedic(this.modal3).subscribe(
-      (response: any) => {
-        if (response.status === 0) {
+  //  this.pharmacySer.issueMedic(this.modal3).subscribe(
+  //     (response: any) => {
+  //       if (response.status === 0) {
          
-          this.loader_eqp = false;
-          alert('Medicine Issued succesfully');
-          window.location.reload();
-        }
-    if (response.status === 1) {
-          this.errormsg = response.errors;
-          this.loader_eqp = false;
-          console.log('error=', this.errormsg);
-          alert('Problem in Service! Please Try again');
-          //this._loginserviceService.logout();
-        }
-      },
-      (error) => {}
-    );
+  //         this.loader_eqp = false;
+  //         alert('GRN stock added succesfully');
+  //         window.location.reload();
+  //       }
+  //   if (response.status === 1) {
+  //         this.errormsg = response.errors;
+  //         this.loader_eqp = false;
+  //         console.log('error=', this.errormsg);
+  //         alert('Problem in Service! Please Try again');
+  //         //this._loginserviceService.logout();
+  //       }
+  //     },
+  //     (error) => {}
+  //   );
   
   }
   AssinIssueQuantity(ind){
@@ -201,8 +201,7 @@ saveData(dat){
     console.log('resp from batch stock==',this.purchaseOrder.value[ind].controls);
    // this.dynamicForm.get('totalQuantity').setValue('123');
     this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].totalQuantity.patchValue(this.purchaseOrder.value[ind].stockVal.totalQuantity);
-    this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].stockID.patchValue(this.purchaseOrder.value[ind].stockVal.id);
-    this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].itemID.patchValue(this.purchaseOrder.value[ind].stockVal.itemID)
+    this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].stockID.patchValue(this.purchaseOrder.value[ind].stockVal.id)
    // this.dynamicForm.controls.purchaseOrder.value [ind].controls['itemName'].patchValue('222')
    // this.purchaseOrder.get('totalQuantity').setValue(this.purchaseOrder.value[ind].stock.totalQuantity);
     // this.purchaseOrder.value[ind].totalQuantity[ind].patchValue(this.purchaseOrder.value[ind].stock.totalQuantity)

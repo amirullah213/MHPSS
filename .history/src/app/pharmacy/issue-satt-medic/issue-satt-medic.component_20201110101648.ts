@@ -174,24 +174,24 @@ saveData(dat){
 
     console.log('this.modal3===',this.modal3); 
     
-   this.pharmacySer.issueMedic(this.modal3).subscribe(
-      (response: any) => {
-        if (response.status === 0) {
+  //  this.pharmacySer.issueMedic(this.modal3).subscribe(
+  //     (response: any) => {
+  //       if (response.status === 0) {
          
-          this.loader_eqp = false;
-          alert('Medicine Issued succesfully');
-          window.location.reload();
-        }
-    if (response.status === 1) {
-          this.errormsg = response.errors;
-          this.loader_eqp = false;
-          console.log('error=', this.errormsg);
-          alert('Problem in Service! Please Try again');
-          //this._loginserviceService.logout();
-        }
-      },
-      (error) => {}
-    );
+  //         this.loader_eqp = false;
+  //         alert('GRN stock added succesfully');
+  //         window.location.reload();
+  //       }
+  //   if (response.status === 1) {
+  //         this.errormsg = response.errors;
+  //         this.loader_eqp = false;
+  //         console.log('error=', this.errormsg);
+  //         alert('Problem in Service! Please Try again');
+  //         //this._loginserviceService.logout();
+  //       }
+  //     },
+  //     (error) => {}
+  //   );
   
   }
   AssinIssueQuantity(ind){

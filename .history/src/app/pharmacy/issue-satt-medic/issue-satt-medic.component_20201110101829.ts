@@ -179,7 +179,7 @@ saveData(dat){
         if (response.status === 0) {
          
           this.loader_eqp = false;
-          alert('Medicine Issued succesfully');
+          alert('GRN stock added succesfully');
           window.location.reload();
         }
     if (response.status === 1) {
