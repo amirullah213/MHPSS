@@ -23,4 +23,9 @@ export class VitalsService {
     return this.http.post(url, obj);
   }
 
+  getpatients(obj: any):Observable<any> {
+    let url = APP_CONFIG.apiBaseUrl + 'getpatients';
+    return this.http.post(url, obj);
+  }
+
 }
