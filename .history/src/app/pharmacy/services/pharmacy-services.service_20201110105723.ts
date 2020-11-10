@@ -104,10 +104,6 @@ export class PharmacyServicesService {
     let url = APP_CONFIG.apiBaseUrl + 'getpharmacystock ';
     return this.http.post(url, obj);
   }
-  addDispense (obj: any) {
-    let url = APP_CONFIG.apiBaseUrl + 'adddispense ';
-    return this.http.post(url, obj);
-  }
 
-    
+  
 }

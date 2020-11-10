@@ -120,9 +120,6 @@ gotoPatDetailsPending(obpat){
   console.log("patData===",obpat,"tab data==",this.tab)
   localStorage.setItem('pharmacyData',JSON.stringify(obpat));
   localStorage.setItem('tab',this.tab);
-  //teplate driven form method 
-  // this.router.navigate(['pharma/pending']) 
-  // reactive form method home2page
   this.router.navigate(['pharma/home2'])
 }
 }
