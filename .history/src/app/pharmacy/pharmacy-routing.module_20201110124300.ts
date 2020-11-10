@@ -16,7 +16,7 @@ import { IssueGrnComponent } from './issue-grn/issue-grn.component';
 import { SyncDataComponent } from './sync-data/sync-data.component';
 import { GrnsComponent } from './grns/grns.component';
 import { StockreqSateliteComponent } from './stockreq-satelite/stockreq-satelite.component';
-import { RecieveGrnSatComponent } from './recieve-grn-sat/recieve-grn-sat.component';
+//import { RecieveGrnSatComponent } from './recieve-grn-sat/recieve-grn-sat.component';
 import { IssueSattMedicComponent } from './issue-satt-medic/issue-satt-medic.component';
 import { DispenseStockComponent } from './dispense-stock/dispense-stock.component';
 
@@ -39,7 +39,7 @@ const routes: Routes = [
       { path: 'sync', component: SyncDataComponent },
       { path: 'grns', component: GrnsComponent },
       { path: 'stockReqSatelite', component: StockreqSateliteComponent },
-       { path: 'recievaeGrnSat', component: RecieveGrnSatComponent },
+      // { path: 'recievaeGrnSat', component: RecieveGrnSatComponent },
       { path: 'home2', component: IssueSattMedicComponent },
       { path: 'dispense', component: DispenseStockComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' }

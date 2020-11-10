@@ -39,7 +39,7 @@ const routes: Routes = [
       { path: 'sync', component: SyncDataComponent },
       { path: 'grns', component: GrnsComponent },
       { path: 'stockReqSatelite', component: StockreqSateliteComponent },
-       { path: 'recievaeGrnSat', component: RecieveGrnSatComponent },
+      // { path: 'recievaeGrnSat', component: RecieveGrnSatComponent },
       { path: 'home2', component: IssueSattMedicComponent },
       { path: 'dispense', component: DispenseStockComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' }
