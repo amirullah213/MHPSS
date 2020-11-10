@@ -13,6 +13,7 @@ import { RadServiceService } from '../services/rad-service.service';
   styleUrls: ['./diagnosis-pending-rad.component.scss']
 })
 export class DiagnosisPendingRadComponent implements OnInit {
+  ckeditorContent: string = '<p>Some html</p>';
   isCollapsed = true;
   userLoader:boolean=false;
   model:any={};
@@ -71,6 +72,19 @@ export class DiagnosisPendingRadComponent implements OnInit {
 console.log('pathData1===',this.pathData1)
     // this.userData.status = 0;
    this.getUsersPending();
+  }
+  onChange() {
+  }
+  onEditorChange() {
+  }
+  onReady() {
+  }
+  onFocus() {
+  }
+
+  onBlur() {
+  }
+  onContentDom() {
   }
   openModalWithClass(template: TemplateRef<any>,data) {
     this.userData = data;

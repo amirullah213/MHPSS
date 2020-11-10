@@ -33,17 +33,21 @@
                                                 <tr *ngFor="let pat of PathResponseArray; let i=index">
                                                     <!-- <span *ngIf="pat.isDirect==1"> -->
                                                     <td *ngIf="pat.isDirect==1">{{i+1}}</td>
-                                                    <td  *ngIf="pat.isDirect==1">Radiology</td>
-                                                    <td  *ngIf="pat.isDirect==1">{{pat.testName}}</td>
-                                                    <td  *ngIf="pat.isDirect==1">
+                                                    <td *ngIf="pat.isDirect==1">Radiology</td>
+                                                    <td *ngIf="pat.isDirect==1">{{pat.testName}}</td>
+                                                    <td *ngIf="pat.isDirect==1">
                                                         <a href="javascript:void(0)" class="text-info" (click)="openModalWithClass(template,pat)">View Report</a>
                                                     </td>
-                                                <!-- </span> -->
+                                                    <!-- </span> -->
                                                 </tr>
 
                                             </tbody>
                                         </table>
                                     </div>
+                                    <!-- <form>
+                                        <ckeditor [config]="{uiColor: '#99000'}" [readonly]="false" (change)="onChange($event)" (editorChange)="onEditorChange($event)" (ready)="onReady($event)" (focus)="onFocus($event)" (blur)="onBlur($event)" (contentDom)="onContentDom($event)" debounce="500">
+                                        </ckeditor>
+                                    </form> -->
                                     <!-- <ng-template #template>
                                         <div class="modal-header">
                                             <h4 class="modal-title pull-left">Result Report</h4>
@@ -127,82 +131,85 @@
                                         </div>
                                     </ng-template> -->
                                     <!-- new modal -->
-<ng-template #template>
-    <div class="modal-header">
-        <h4 class="modal-title pull-left">Result Report</h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                    <ng-template #template>
+                                        <div class="modal-header">
+                                            <h4 class="modal-title pull-left">Result Report</h4>
+                                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
     </button>
-    </div>
-    <div class="modal-body">
-        <div class="row mx-0">
-            <div class="col-md-12 mt-3">
-                <p class="mb-1 mt-3"><b>Token Number</b>
-                    <span class="ml-4">{{pathData1.token}}</span>
-                </p>
-            </div>
-            <div class="col-md-6 mt-3">
-                <p class="mb-1 mt-2"><b>Patient Name</b>
-                    <span class="ml-4">{{pathData1.firstname}}</span>
-                </p>
-                <p class="mb-1 mt-3"><b>Date Of Birth</b>
-                    <span class="ml-4">{{pathData1.dob | date}}</span>
-                </p>
-            </div>
-            <div class="col-md-6 mt-3">
-                <p class="mb-1 mt-3"><b>Father/Husband Name</b>
-                    <span class="ml-4"> {{pathData1.f_hName}}</span>
-                </p>
-                <p class="mb-1 mt-3"><b>Mobile Number</b>
-                    <span class="ml-4"> {{pathData1.cellNo}}</span>
-                </p>
-            </div>
-        </div>
-        <hr class="gray">
-        <div class="row mx-0">
-            <div class="col-md-3">
-                <p class="mb-2"><b>Test</b></p>
-            </div>
-            <div class="col-md-9">
-                <p class="mb-2"><b>Test Name</b></p>
-            </div>
-        </div>
-        <hr class="gray">
-        <div class="form-group row mx-0">
-            <div class="col-sm-2 mt-3"><label for="inputState">Radiology</label></div>
-            <div class="col-sm-10 mt-3">
-                <span>{{userData.testName}}</span>
-            </div>
-            
-        </div>
-        <div class="form-group row mx-0">
-            <div class="col-sm-2 mt-3"><label for="inputState">Findings</label></div>
-            <div class="col-sm-8">
-                <input type="text" [(ngModel)]="objPath.name" class="form-control input-sm" id="ARN" placeholder="Findings" name="findings">
-            </div>
-            <div class="col-sm-2 mt-3" (click)="addtoArr(objPath,userData)"><i class="fa fa-plus text-success"></i></div>
-        </div>
-        <div class="form-group row mx-0">
-            <div class="col-sm-2 mt-3"></div>
-            <div class="col-sm-10 mt-3">
-                <p class="mb-2 mt-2"  *ngFor="let fa of finalAddArray; let s=index"><b>Finding {{s+1}} :  <span class="mb-2 ml-4">{{fa.name}}</span></b>
-                    <!-- <span class="pull-right" (click)="removeArr(s)"><i class="fa fa-remove text-danger"></i></span> -->
-                </p>
-            </div>
-            
-        </div>
-        <div class="form-group row mx-0">
-            <div class="col-sm-2 mt-3"><label for="inputState">Diagnosis</label></div>
-            <div class="col-sm-10">
-                <input type="text" [(ngModel)]="objPath.diagnosis" class="form-control" id="DN" placeholder="Diagnosis" name="diagnosis">
-            </div>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="button" (click)="updateSingleTest(objPath.diagnosis)"><i class="fa fa-check-square"></i> Save</button>
-    </div>
-</ng-template>
-<!-- ne wodal -->
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row mx-0">
+                                                <div class="col-md-12 mt-3">
+                                                    <p class="mb-1 mt-3"><b>Token Number</b>
+                                                        <span class="ml-4">{{pathData1.token}}</span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-md-6 mt-3">
+                                                    <p class="mb-1 mt-2"><b>Patient Name</b>
+                                                        <span class="ml-4">{{pathData1.firstname}}</span>
+                                                    </p>
+                                                    <p class="mb-1 mt-3"><b>Date Of Birth</b>
+                                                        <span class="ml-4">{{pathData1.dob | date}}</span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-md-6 mt-3">
+                                                    <p class="mb-1 mt-3"><b>Father/Husband Name</b>
+                                                        <span class="ml-4"> {{pathData1.f_hName}}</span>
+                                                    </p>
+                                                    <p class="mb-1 mt-3"><b>Mobile Number</b>
+                                                        <span class="ml-4"> {{pathData1.cellNo}}</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <hr class="gray">
+                                            <div class="row mx-0">
+                                                <div class="col-md-3">
+                                                    <p class="mb-2"><b>Test</b></p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p class="mb-2"><b>Test Name</b></p>
+                                                </div>
+                                            </div>
+                                            <hr class="gray">
+                                            <div class="form-group row mx-0">
+                                                <div class="col-sm-2 mt-3"><label for="inputState">Radiology</label></div>
+                                                <div class="col-sm-10 mt-3">
+                                                    <span>{{userData.testName}}</span>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group row mx-0">
+                                                <div class="col-sm-2 mt-3"><label for="inputState">Findings</label></div>
+                                                <div class="col-sm-10">
+                                                    <!-- <ckeditor data="<p>Hello, world!</p>"></ckeditor> -->
+                                                    <ckeditor [config]="{uiColor: '#99000'}" [readonly]="false" (change)="onChange($event)" (editorChange)="onEditorChange($event)" (ready)="onReady($event)" (focus)="onFocus($event)" (blur)="onBlur($event)" (contentDom)="onContentDom($event)" debounce="500">
+                                                    </ckeditor>
+                                                    <!-- <input type="text" [(ngModel)]="objPath.name" class="form-control input-sm" id="ARN" placeholder="Findings" name="findings"> -->
+                                                </div>
+                                                <!-- <div class="col-sm-2 mt-3" (click)="addtoArr(objPath,userData)"><i class="fa fa-plus text-success"></i></div> -->
+                                            </div>
+                                            <div class="form-group row mx-0">
+                                                <div class="col-sm-2 mt-3"></div>
+                                                <div class="col-sm-10 mt-3">
+                                                    <p class="mb-2 mt-2" *ngFor="let fa of finalAddArray; let s=index"><b>Finding {{s+1}} :  <span class="mb-2 ml-4">{{fa.name}}</span></b>
+                                                        <!-- <span class="pull-right" (click)="removeArr(s)"><i class="fa fa-remove text-danger"></i></span> -->
+                                                    </p>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group row mx-0">
+                                                <div class="col-sm-2 mt-3"><label for="inputState">Diagnosis</label></div>
+                                                <div class="col-sm-10">
+                                                    <input type="text" [(ngModel)]="objPath.diagnosis" class="form-control" id="DN" placeholder="Diagnosis" name="diagnosis">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="button" (click)="updateSingleTest(objPath.diagnosis)"><i class="fa fa-check-square"></i> Save</button>
+                                        </div>
+                                    </ng-template>
+                                    <!-- ne wodal -->
                                 </div>
                             </div>
                         </div>
@@ -212,6 +219,3 @@
         </div>
     </div>
 </div>
-
-
-
