@@ -146,6 +146,9 @@ export class PatDetailComponent implements OnInit {
   refRangeF: any;
   showFh: boolean=false;
   showPh: boolean=false;
+  detial: any;
+  detail: any;
+  docInfo: any;
   constructor(
     private fb: FormBuilder,
     private uService: UserService,
@@ -231,13 +234,21 @@ export class PatDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(localStorage.getItem("patData"))
     this.patInfo = JSON.parse(localStorage.getItem("patData"));
+    if(localStorage.getItem("docDetails"))
+    this.docInfo = JSON.parse(localStorage.getItem("docDetails"));
+    if(localStorage.getItem("details"))
+    this.detail = JSON.parse(localStorage.getItem("details"));
     this.getclinicalinfo();
     this.getInvistigation();
     this.getTreatment();
-    this.getindoorlist()    
+    this.getindoorlist()   
+    debugger 
     if(localStorage.getItem("tab"))
     this.setTab(localStorage.getItem("tab"))
+   
+
     // this.treatmentForm.patchValue({
     //   access_type: "0",
     //   itemName: ""
@@ -860,11 +871,7 @@ let tempsign = 0;
 
     this.userLoader = true;
 
-    if (this.patInfo.lname != undefined) {
-      this.fullName = this.patInfo.firstname + " " + this.patInfo.lname
-    } else {
-      this.fullName = this.patInfo.firstname
-    }
+   
 
     const tags = this.localSign;
     var result = tags.map(a => a.name);
@@ -880,11 +887,11 @@ let tempsign = 0;
     this.param =
     {
       'hospitalID': localStorage.getItem('hospitalID'),
-      'prescriptionID': this.patInfo.prescriptionID, "userID": localStorage.getItem('docId'),
+      'prescriptionID': this.patInfo.prescriptionID, "userID":this.docInfo.id,
       "patientID": this.patientID, "ptID": this.ptID, "bps": ci.bps,"oxygen_saturation": ci.oxygen_saturation, "pulse": ci.pulse,
       "height": ci.height, "weight": ci.weight,"pastHistory": phNames, "familyHistory": fhNames, "isFollowUp": ci.isFollowUp, "lmp": "lmp", "isShortHeight": 0, "isMUAC": 0,
       "signs": result, "PNCServices": "", "temperature": ci.temperature,"isLowWeight": 1, "isMalnutration": ci.isMalnutration, "ANCServices": "",
-      "edd": "", "complaints": this.localSymptoms, "diagnosis": this.localDiagData,"newSigns":this.NewlocalSign,"newComplaints":this.NewSymptoms, "deptType": 1, "userName": this.fullName,
+      "edd": "", "complaints": this.localSymptoms, "diagnosis": this.localDiagData,"newSigns":this.NewlocalSign,"newComplaints":this.NewSymptoms, "deptType": 1, "userName": this.docInfo.name,
       "otherFamilyHistory":ci.otherFh, "otherPastHistory":ci.otherPh,
       "PregnancyNutritionStatus": "", "isTTVac": 0, "LactionNutritionStatus": ""
     };
@@ -1296,7 +1303,7 @@ debugger
         this.isRefType =0;
     }
     this.param={"referralType":this.isRefType,"convinceType":this.treatmentForm.value.Ambulance,"ptID":this.ptID,
-    "referralHospital":this.hospt,"refferedTo":this.depIndex,"remarks":this.treatmentForm.value.refNotes,"refferedFrom":localStorage.getItem("docId"),"hospitalID":localStorage.getItem('hospitalID')}
+    "referralHospital":this.hospt,"refferedTo":this.depIndex,"remarks":this.treatmentForm.value.refNotes,"refferedFrom":this.docInfo.id,"hospitalID":localStorage.getItem('hospitalID')}
 
     this.uService.reffer(this.param).subscribe
 
