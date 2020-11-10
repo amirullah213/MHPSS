@@ -230,15 +230,12 @@ export class PatDetailComponent implements OnInit {
 
   }
 
-
   ngOnInit(): void {
-
     this.patInfo = JSON.parse(localStorage.getItem("patData"));
     this.getclinicalinfo();
     this.getInvistigation();
     this.getTreatment();
-    this.getindoorlist()
-    
+    this.getindoorlist()    
     if(localStorage.getItem("tab"))
     this.setTab(localStorage.getItem("tab"))
     // this.treatmentForm.patchValue({
@@ -260,7 +257,7 @@ export class PatDetailComponent implements OnInit {
       this.subTests=[];
        if( i==this.localPath.indexOf(e))
        {
-if(this.sData.testType==1){
+    if(this.sData.testType==1){
         if(e.isSupper==1 ){
         this.subTests=e.subTests
         break;
@@ -274,7 +271,7 @@ if(this.sData.testType==1){
     // for radialogy
     
     
-    this.testNameF = e.oldTestName;
+    this.testNameF = e.testName;
     this.resultF=e.result;
     this.refRangeF =e.refRange
         
@@ -295,27 +292,6 @@ if(this.sData.testType==1){
 
 
 
-  createSymptom(obj: any): FormGroup {
-    
-    if (obj == null) {
-
-      // obj = { name: '', duration: '', durationType: '', ...obj }
-      return this.fb.group({        
-        name: '',
-        duration: '',
-        durationType: ''
-      });
-    } else {
-      return this.fb.group({
-      
-        name: obj.name,
-        duration: obj.duration,
-        durationType: obj.durationType
-      });
-    }
-    
-  }
-
  
   removeSymptom(i) {
     //this.items.removeAt(i);
@@ -326,49 +302,7 @@ if(this.sData.testType==1){
   
 
 
-  createTreatment(obj: any): FormGroup {
-    
   
-    if (obj == null) {
-
-     return this.fb.group({        
-        itemName: '',
-        prescribedQuantity: '',
-        unit: '',
-        type: '',
-        dose: '',
-        prandial: '',
-        remarks: '',
-        itemID:''
-       
-      });
-     
-    } else  {
-      
-      if(obj.itemName!='')
-      {
-        this.fb.group({
-      
-          itemName: obj.itemName,
-          unit: obj.unit,
-          type: obj.type,          
-          itemID:obj.itemID       
-        });
-      }
-      else
-      return this.fb.group({
-      
-        itemName: obj.itemName,
-        prescribedQuantity: obj.prescribedQuantity,
-        unit: obj.unit,
-        type: obj.type,
-        dose: obj.dose,
-        prandial: obj.prandial,
-        remarks: obj.Rremarks,
-        itemID:obj.itemID       
-      });
-    }
-  }
 
  
   removeTreatment(i: number) {
@@ -1028,7 +962,7 @@ let tempsign = 0;
         if (response.status === 0) {
           this.radData = response.radiologyTypes;   
           this.router.navigate(['doctor/user/'])
-        
+          localStorage.removeItem("tab")
           this.userLoader = false;
         } else {
           this.userLoader = false;
@@ -1042,6 +976,7 @@ let tempsign = 0;
   addPath(obj: any) {
     
    this.matchTests(obj)
+   debugger
    if(this.insTest==true){
      this.localPath.push(obj)
      this.a=false
@@ -1050,8 +985,7 @@ let tempsign = 0;
     })
 
   }else{
-    this.insTest=true;
-    
+    this.insTest=true;    
     alert("Test Already Added");
     this.investigationForm.patchValue({
       'selectedValuePath': ''
@@ -1244,7 +1178,7 @@ let tempsign = 0;
 
 
   addtreatmentinfo() {
-debugger
+
     let tVal =this.treatmentForm.value;
     let medic= tVal.itemName.split(",");
     var temptreat = 0;
@@ -1339,6 +1273,8 @@ debugger
         if (response.status === 0) {
 
           this.router.navigate(['doctor/user/'])
+          localStorage.removeItem("tab")
+
           this.userLoader = false;
         } else {
           this.userLoader = false;
@@ -1367,6 +1303,8 @@ debugger
       ((response: any) => {
         if (response.status === 0) {
           this.router.navigate(['doctor/user/'])
+          localStorage.removeItem("tab")
+
           // this.treatmentForm.patchValue({
           //   Ambulance:"",
           //   refNotes:"",
@@ -1548,6 +1486,8 @@ debugger
   gotoPresDetails(udata) {
     localStorage.setItem('uPresData', JSON.stringify(udata));
     this.router.navigate(['doctor/user/print-presc'])
+    localStorage.removeItem("tab")
+
   }
 
 

@@ -115,6 +115,8 @@ export class UsersComponent implements OnInit {
     console.log("patData===", paObj)
     localStorage.setItem('patData', JSON.stringify(paObj));
     this.router.navigate(['doctor/user/details'])
+    localStorage.removeItem("tab")
+
   }
 
 
