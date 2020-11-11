@@ -322,7 +322,7 @@ export class DiagnosisPendingRadComponent implements OnInit {
         // called once readAsDataURL is completed
         this.url = reader.result; //add source to image
         console.log('imagebaseProfile', this.url);
-       // this.saveToS3(this.url);
+        this.saveToS3(this.url);
       };
     }
   }

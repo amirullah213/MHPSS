@@ -72,8 +72,13 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                           
-                                           
+                                            <hr class="gray">
+                                            <div class="row mx-0">
+                                                <div class="col-md-10">
+                                                    <p class="mb-2"><b>Test</b></p>
+                                                </div>
+                                               
+                                            </div>
                                             <hr class="gray">
                                             <div class="form-group row mx-0">
                                                 <div class="col-sm-2 mt-3"><label for="inputState">Test Name</label></div>
@@ -84,10 +89,10 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row mx-0">
-                                                <div class="col-sm-2 mt-2"><label for="inputState">Report</label></div>
-                                                <div class="col-sm-10"  [innerHTML]="userData.xrayFilms6" > </div>
-                                                  
-                                               
+                                                <div class="col-sm-2 mt-2"><label for="inputState">Findings</label></div>
+                                                <div class="col-sm-10">
+                                                  [innerHTML]="xrayString"  
+                                                </div>
                                             </div>
                                             <div class="form-group row mx-0">
                                                 <div class="col-sm-2 mt-3"><label for="inputState">Diagnosis</label></div>

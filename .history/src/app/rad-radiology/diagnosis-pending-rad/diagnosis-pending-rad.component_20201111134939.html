@@ -162,8 +162,15 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            
-                                            
+                                            <hr class="gray">
+                                            <div class="row mx-0">
+                                                <div class="col-md-3">
+                                                    <p class="mb-2"><b>Test</b></p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p class="mb-2"><b>Test Name</b></p>
+                                                </div>
+                                            </div>
                                             <hr class="gray">
                                             <div class="form-group row mx-0">
                                                 <div class="col-sm-2 mt-3"><label for="inputState">Radiology</label></div>
@@ -195,18 +202,6 @@
                                                     <input type="text" [(ngModel)]="objPath.result" class="form-control" id="DN" placeholder="Result" name="diagnosis">
                                                 </div>
                                             </div>
-                                            <div class="form-group row mx-0">
-                                                <div class="col-sm-2 mt-3"><label for="inputState">Image upload</label></div>
-                                                <div class="col-sm-6">
-                                                    <input type='file' (change)="onSelectFile($event)" class="form-control" id="inputTo" [(ngModel)]="objPath.uplImage" placeholder="Image to Upload">
-                
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <!-- <span *ngIf="imageUrl!=null"> <img [src]="imageUrl"  height="60" class="pull-right hover rounded"></span> -->
-                
-                                                </div>
-                                            </div>
-                                            
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="button" (click)="updateSingleTest(objPath)"><i class="fa fa-check-square"></i> Save</button>

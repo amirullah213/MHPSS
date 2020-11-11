@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
     this.hospitalID=localStorage.getItem('hospitalID');
     this.doctorID=localStorage.getItem('docId');
     this.userType=localStorage.getItem('userType');
-    this.userData.status = 11;
+    this.userData.status = 0;
    this.getUsersPending( this.userData);
 
   }
@@ -92,7 +92,7 @@ getUsersPending(cc) {
   this.userLoader= true;
   this.model.hospitalID=this.hospitalID;
  
-  this.model.doctorID=this.doctorID;
+  this.model.userType=this.userType;
   this.model.status=cc.status;
  
   console.log('model ==', this.model);
@@ -128,14 +128,18 @@ getUsersPending(cc) {
 //-------------------goto next page
 gotopathdetail(obpat){
   console.log("patData===",obpat)
-  localStorage.setItem('otDetails',JSON.stringify(obpat));
-  this.router.navigate(['ot/pending'])
+  localStorage.setItem('pathDetails',JSON.stringify(obpat));
+ // this.modalRef.hide();
+  //localStorage.setItem('tab',this.tab);
+  this.router.navigate(['lab-rad/pending'])
 }
 
 //-------------------goto next page
 gotopathdetailSeen(obpat){
   console.log("patData===",obpat)
-  localStorage.setItem('pathDotDetailsetails',JSON.stringify(obpat));
-  this.router.navigate(['ot/pending'])
+  localStorage.setItem('pathDetails',JSON.stringify(obpat));
+ // this.modalRef.hide();
+  //localStorage.setItem('tab',this.tab);
+  this.router.navigate(['lab-rad/seen'])
 }
 }

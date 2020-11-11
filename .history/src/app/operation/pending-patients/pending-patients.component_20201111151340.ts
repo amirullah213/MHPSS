@@ -27,13 +27,11 @@ export class PendingPatientsComponent implements OnInit {
   hospitalID:any;
   doctorID:any;
   model:any={};
-  model3:any={};
   PathResponseArray:any=[];
   errormsg:any;
   userType:any
   otDetails:any={};
   dynamicForm:FormGroup;
-  userLoader2:boolean=false;
 
   constructor(
     private modalService: BsModalService,
@@ -52,40 +50,29 @@ export class PendingPatientsComponent implements OnInit {
       remarks: ['', Validators.required],
      
   });
-    this.otDetails=JSON.parse(localStorage.getItem('otDetails'))
-    console.log("otDetails===",this.otDetails)
-    this.hospitalID=localStorage.getItem('hospitalID');
-    this.doctorID=localStorage.getItem('docId');
-    this.userType=localStorage.getItem('userType');
-    this.userData.status = 11;
-   this.getOperationTheatreData();
+   
 
   }
 
   
   
   
-//---------------------get ot form data---------------------
+//---------------------get all lab patients---------------------
 getOperationTheatreData() {
   this.userLoader= true;
   this.model.hospitalID=this.hospitalID;
-  this.model.tokenID=this.otDetails.ptID;
-  
- console.log('model ==', this.model);
+ 
+  this.model.doctorID=this.doctorID;
+ 
+ 
+  console.log('model ==', this.model);
   this.otServices.getOperationTheatre(this.model).subscribe(
     (response: any) => {
       if (response.status === 0) {
         console.log(' response====',response);
         this.PathResponseArray=response.data;
-        console.log('this.PathResponseArray==',this.PathResponseArray);
-        this.userLoader = false;
-        this.dynamicForm.setValue({
-          anesthesiaType:  this.PathResponseArray.anesthesiaType,
-          operationName: this.PathResponseArray.operationName,
-          surgeonName: this.PathResponseArray.surgeonName,
-          anethetistName: this.PathResponseArray.anethetistName,
-          remarks: this.PathResponseArray.remarks,
-        })
+         console.log('this.PathResponseArray==',this.PathResponseArray);
+         this.userLoader = false;
         
       }
   if (response.status === 1) {
@@ -101,43 +88,7 @@ getOperationTheatreData() {
 
 }
 //--------------------------------
-//---------------------get all lab patients---------------------
-updateOperationData(fromData) {
-  console.log("Form data==",fromData)
-  this.userLoader2= true;
-  this.model3.hospitalID=this.hospitalID;
-  this.model3.tokenID=this.otDetails.ptID;
-  this.model3.anesthesiaType=fromData.anesthesiaType;
-  this.model3.operationName=fromData.operationName;
-  this.model3.surgeonName=fromData.surgeonName;
-  this.model3.anethetistName=fromData.anethetistName;
-  this.model3.remarks=fromData.remarks;
-  
- console.log('model ==', this.model);
-  this.otServices.updateOperationTheatre(this.model3).subscribe(
-    (response: any) => {
-      if (response.status === 0) {
-        console.log(' response====',response);
-        this.PathResponseArray=response.data;
-        console.log('this.PathResponseArray==',this.PathResponseArray);
-        this.userLoader2 = false;
-        this.router.navigate(['ot/home']);
-        
-        
-      }
-  if (response.status === 1) {
-        this.errormsg = response.error;
-        this.userLoader2 = false;
-        alert('Problem in service! please Try again')
-        console.log('error=', this.errormsg);
-        
-      }
-    },
-    (error) => {}
-  );
 
-}
-//--------------------------------
 //-------------------goto next page
 gotopathdetail(obpat){
   console.log("patData===",obpat)

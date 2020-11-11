@@ -33,7 +33,6 @@ export class PendingPatientsComponent implements OnInit {
   userType:any
   otDetails:any={};
   dynamicForm:FormGroup;
-  userLoader2:boolean=false;
 
   constructor(
     private modalService: BsModalService,
@@ -104,7 +103,7 @@ getOperationTheatreData() {
 //---------------------get all lab patients---------------------
 updateOperationData(fromData) {
   console.log("Form data==",fromData)
-  this.userLoader2= true;
+  this.userLoader= true;
   this.model3.hospitalID=this.hospitalID;
   this.model3.tokenID=this.otDetails.ptID;
   this.model3.anesthesiaType=fromData.anesthesiaType;
@@ -120,14 +119,13 @@ updateOperationData(fromData) {
         console.log(' response====',response);
         this.PathResponseArray=response.data;
         console.log('this.PathResponseArray==',this.PathResponseArray);
-        this.userLoader2 = false;
-        this.router.navigate(['ot/home']);
+        this.userLoader = false;
         
         
       }
   if (response.status === 1) {
         this.errormsg = response.error;
-        this.userLoader2 = false;
+        this.userLoader = false;
         alert('Problem in service! please Try again')
         console.log('error=', this.errormsg);
         

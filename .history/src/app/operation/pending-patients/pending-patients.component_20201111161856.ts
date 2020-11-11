@@ -121,7 +121,6 @@ updateOperationData(fromData) {
         this.PathResponseArray=response.data;
         console.log('this.PathResponseArray==',this.PathResponseArray);
         this.userLoader2 = false;
-        this.router.navigate(['ot/home']);
         
         
       }

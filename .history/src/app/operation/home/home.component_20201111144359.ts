@@ -128,14 +128,18 @@ getUsersPending(cc) {
 //-------------------goto next page
 gotopathdetail(obpat){
   console.log("patData===",obpat)
-  localStorage.setItem('otDetails',JSON.stringify(obpat));
-  this.router.navigate(['ot/pending'])
+  localStorage.setItem('pathDetails',JSON.stringify(obpat));
+ // this.modalRef.hide();
+  //localStorage.setItem('tab',this.tab);
+  this.router.navigate(['lab-rad/pending'])
 }
 
 //-------------------goto next page
 gotopathdetailSeen(obpat){
   console.log("patData===",obpat)
-  localStorage.setItem('pathDotDetailsetails',JSON.stringify(obpat));
-  this.router.navigate(['ot/pending'])
+  localStorage.setItem('pathDetails',JSON.stringify(obpat));
+ // this.modalRef.hide();
+  //localStorage.setItem('tab',this.tab);
+  this.router.navigate(['lab-rad/seen'])
 }
 }

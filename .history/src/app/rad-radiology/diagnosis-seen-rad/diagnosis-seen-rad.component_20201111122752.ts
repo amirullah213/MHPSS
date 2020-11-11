@@ -33,7 +33,6 @@ export class DiagnosisSeenRadComponent implements OnInit {
   model3:any={};
   singleobj:any={};
   singleArr:any=[];
-  xrayString:any;
 
 
 
@@ -72,9 +71,8 @@ console.log('pathData1===',this.pathData1)
   openModalWithClass(template: TemplateRef<any>,data) {
     this.userData=data;
     console.log('this.userData',this.userData);
-   
-   // this.singleArr=JSON.parse(this.userData.xrayFilms6); 
-   // console.log(' this.singleArr',this.singleArr);
+    this.singleArr=JSON.parse(this.userData.xrayFilms6); 
+    console.log(' this.singleArr',this.singleArr);
     this.modalRef = this.modalService.show(
       template,
       Object.assign({}, { class: 'gray modal-lg' })
@@ -118,18 +116,4 @@ getUsersPending() {
   );
 
 }
-
-stringToHTML = function (str) {
-  var parser = new DOMParser();
-  var doc = parser.parseFromString(str, 'text/html');
-  return doc.body;
-  };
-
-   createElementFromHTML(htmlString) {
-    var div = document.createElement('div');
-    div.innerHTML = htmlString.trim();
-   
-    // Change this to div.childNodes to support multiple top-level nodes
-    return div.firstChild;
-   }
 }

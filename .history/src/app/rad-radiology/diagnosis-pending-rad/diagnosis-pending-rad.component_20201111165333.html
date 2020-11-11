@@ -202,7 +202,7 @@
                 
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <!-- <span *ngIf="imageUrl!=null"> <img [src]="imageUrl"  height="60" class="pull-right hover rounded"></span> -->
+                                                    <input type='file' (change)="onSelectFile($event)" class="form-control" id="inputTo" [(ngModel)]="objPath.uplImage" placeholder="Image to Upload">
                 
                                                 </div>
                                             </div>

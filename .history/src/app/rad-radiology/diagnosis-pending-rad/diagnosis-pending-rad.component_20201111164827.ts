@@ -322,36 +322,9 @@ export class DiagnosisPendingRadComponent implements OnInit {
         // called once readAsDataURL is completed
         this.url = reader.result; //add source to image
         console.log('imagebaseProfile', this.url);
-       // this.saveToS3(this.url);
+        this.saveToS3(this.url);
       };
     }
   }
   //u[pload mage]
-   //---------------------------------------------------------------------------------//--------------------------------------
-   //save image
-  //  saveToS3(base64){
-  //   this.loader_s3=true;
-  
-  //  this.params.auth_token =  localStorage.getItem('auth_token');
-  //  this.params.encoded_photo_string =  base64;
-   
-  //  this._AllequipService.uploadS3(this.params).subscribe(response => {
-  //     if (response.status === 0) {
-  //      this.allList=JSON.parse(response.data);
-  //      console.log('allList==',this.allList);
-  //       this.imageUrl=this.allList.object_url;
-  //       console.log('allListurl==',this.imageUrl);
-  //       this.imageArr.push(this.imageUrl);
-  //        this.loader_s3=false;
-  //     }
-  //  if (response.status === 1) {
-  //      this.errormsg = response.errors;
-  //       this.loader_s3=false;
-  //       console.log('error=',this.errormsg);
-  //          }
-  //  }, error => {
-  
-  //  });
-  // }
-  //save image
 }

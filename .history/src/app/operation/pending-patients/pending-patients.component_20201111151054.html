@@ -25,11 +25,10 @@
                                         </div>
                                         <div class="col-sm-10">
                                             <select class="form-control" formControlName='anesthesiaType'>
-                                                <option selected disabled value=''>Select Anesthesia Type</option>
-                                                <option value='1'>General</option>
-                                                <option value='2'>Spinal</option>
-                                                <option value='3'>Local</option>
-                                                <option value='4'>Without Anesthesia</option>
+                                                <option value='General'>General</option>
+                                                <option value='Spinal'>Spinal</option>
+                                                <option value='Local'>Local</option>
+                                                <option value='Without Anesthesia'>Without Anesthesia</option>
                                             </select>
                                         </div>
                                     </div>
@@ -37,7 +36,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Name Of Operation</label>
-                                                <input type="text" class="form-control"  formControlName='operationName' placeholder="Name Of Operation">
+                                                <input type="text" class="form-control" id="" formControlName='operationName' placeholder="Name Of Operation">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -65,8 +64,7 @@
                                     <div class="form-group row mx-0">
                                         <div class="col-md-12">
                                             <div class="form-group text-center">
-                                                 <button type="button" *ngIf="!userLoader2" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" (click)="updateOperationData(dynamicForm.value)"><i class="ti-save-alt"></i> Save</button>
-                                                 <button type="button" *ngIf="userLoader2" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" > <span class="spinner-border " role="status" aria-hidden="true"></span> Saving</button>
+                                                <button type="button" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save</button>
                                             </div>
                                         </div>
                                     </div>

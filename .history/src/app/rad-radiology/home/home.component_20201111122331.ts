@@ -5,7 +5,7 @@ import { Router } from "@angular/router";
 import { Subject } from 'rxjs';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
-import { OtServiceService } from '../services/ot-service.service';
+import { RadServiceService } from '../services/rad-service.service';
 
 @Component({
   selector: 'ncri-home',
@@ -13,6 +13,7 @@ import { OtServiceService } from '../services/ot-service.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
 
   userData: any = {};
   paramData: any = {};
@@ -35,7 +36,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private modalService: BsModalService,
      private fb: FormBuilder,
-     private otServices: OtServiceService,
+     private radService: RadServiceService,
      private router: Router,
   ) {
 
@@ -44,7 +45,7 @@ export class HomeComponent implements OnInit {
     this.hospitalID=localStorage.getItem('hospitalID');
     this.doctorID=localStorage.getItem('docId');
     this.userType=localStorage.getItem('userType');
-    this.userData.status = 11;
+    this.userData.status = 0;
    this.getUsersPending( this.userData);
 
   }
@@ -70,7 +71,7 @@ export class HomeComponent implements OnInit {
     if (tab == 'newPats') {
       console.log('tab==', tab);
       this.tab = tab;
-      this.userData.status = 11;
+      this.userData.status = 0;
       this.getUsersPending(this.userData);
     };
     // if (tab == 'penPats') {
@@ -82,7 +83,7 @@ export class HomeComponent implements OnInit {
     if (tab == 'seenPats') {
       console.log('tab==', tab);
       this.tab = tab;
-      this.userData.status = 12;
+      this.userData.status = 1;
       this.getUsersPending(this.userData)
     };
   }
@@ -91,12 +92,12 @@ export class HomeComponent implements OnInit {
 getUsersPending(cc) {
   this.userLoader= true;
   this.model.hospitalID=this.hospitalID;
- 
-  this.model.doctorID=this.doctorID;
+  this.model.testType=2;
+  this.model.userType=this.userType;
   this.model.status=cc.status;
  
   console.log('model ==', this.model);
-  this.otServices.getPatList(this.model).subscribe(
+  this.radService.getPatsListPending(this.model).subscribe(
     (response: any) => {
       if (response.status === 0) {
         console.log(' response====',response);
@@ -128,14 +129,18 @@ getUsersPending(cc) {
 //-------------------goto next page
 gotopathdetail(obpat){
   console.log("patData===",obpat)
-  localStorage.setItem('otDetails',JSON.stringify(obpat));
-  this.router.navigate(['ot/pending'])
+  localStorage.setItem('pathDetails',JSON.stringify(obpat));
+ // this.modalRef.hide();
+  //localStorage.setItem('tab',this.tab);
+  this.router.navigate(['lab-rad/pending'])
 }
 
 //-------------------goto next page
 gotopathdetailSeen(obpat){
   console.log("patData===",obpat)
-  localStorage.setItem('pathDotDetailsetails',JSON.stringify(obpat));
-  this.router.navigate(['ot/pending'])
+  localStorage.setItem('pathDetails',obpat);
+ // this.modalRef.hide();
+  //localStorage.setItem('tab',this.tab);
+  this.router.navigate(['lab-rad/seen'])
 }
 }
