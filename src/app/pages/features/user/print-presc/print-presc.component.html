@@ -45,14 +45,18 @@
                         </div>
                         <div class="col-lg-5 col-md-5 col-sm-5" style="border-right: #000 2px solid;">
                             <h5 class="mb-1 mt-4"><b>Vitals :</b></h5>
-                            <h6 class="mb-1 ml-4">BP: <span class="ml-4"> {{userList[0].vitals.bps}}</span></h6>
-                            <h6 class="mb-1 ml-4">Pulse (Per Min): <span class="ml-4">{{userList[0].vitals.pulse}}</span></h6>
-                            <h6 class="mb-1 ml-4">Weight(Kg): <span class="ml-4">{{userList[0].vitals.weight}}</span>
-                            </h6>
-                            <h6 class="mb-1 ml-4">Height (cm): <span class="ml-4">{{userList[0].vitals.height}}</span>
-                            </h6>
-                            <h6 class="mb-1 ml-4">Temprature(F): <span class="ml-4">{{userList[0].vitals.temperature}}</span></h6>
-                            <h6 class="mb-2 ml-4">Oxygen Saturation <span class="ml-4">{{userList[0].vitals.oxygen_saturation}}</span></h6>
+                            <h6 class="float-right"> {{userList[0].vitals.bps}}</h6>
+                            <h6 class="mb-1 ml-4">BP:</h6>
+                            <h6 class="float-right">{{userList[0].vitals.pulse}}</h6>
+                            <h6 class="mb-1 ml-4">Pulse (Per Min):</h6>
+                            <h6 class="float-right">{{userList[0].vitals.weight}}</h6>
+                            <h6 class="mb-1 ml-4">Weight(Kg): </h6>
+                            <h6 class="float-right">{{userList[0].vitals.height}}</h6>
+                            <h6 class="mb-1 ml-4">Height (cm): </h6>
+                            <h6 class="float-right">{{userList[0].vitals.temperature}}</h6>
+                            <h6 class="mb-1 ml-4">Temprature(F): </h6>
+                            <h6 class="float-right">{{userList[0].vitals.oxygen_saturation}}</h6>
+                            <h6 class="mb-2 ml-4">Oxygen Saturation : </h6>
 
                             <h5 class="mb-2"><b>Investigation (With Results)</b></h5>
                             <span *ngFor="let tst of userList[0].test">
