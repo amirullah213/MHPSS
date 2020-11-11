@@ -17,7 +17,7 @@ themeObj:any={};
   constructor(@Inject(DOCUMENT) private document: Document, private sharedService:SharedService) { }
 
   ngOnInit(): void {
-   // this.userThemes();
+    this.userThemes();
   }
   //fitch themes
   

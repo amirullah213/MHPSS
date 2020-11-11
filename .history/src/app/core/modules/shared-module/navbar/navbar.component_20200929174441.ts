@@ -9,12 +9,10 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-loginName:any;
+
   constructor(@Inject(DOCUMENT) private document: Document,private global: GlobalService) { }
 
   ngOnInit(): void {
-    this.loginName=JSON.parse(localStorage.getItem('details')) ;
-    console.log('this.loginName===',this.loginName)
   }
   //log out
   logout() {
