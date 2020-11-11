@@ -190,7 +190,7 @@ export class HomeComponent implements OnInit {
       console.log('this.newDOB',this.newDOB)
 
          }else{
-           this.newDOB=this.datePipe.transform(formval.dob,"yyyy-MM-dd");
+           this.newDOB=this.datePipe.transform(formval.dob);
          }
 
     this.loaderNew = true;
@@ -211,33 +211,33 @@ export class HomeComponent implements OnInit {
 
 
     console.log('model2 ==', this.model2);
-    this.receptService.insertpatientpms(this.model2).subscribe(
-      (response: any) => {
-        if (response.status === 0) {
-          console.log(' response2====', response);
+    // this.receptService.insertpatientpms(this.model2).subscribe(
+    //   (response: any) => {
+    //     if (response.status === 0) {
+    //       console.log(' response2====', response);
 
-          this.newResponsearr = response.patientID;
-          this.model2.patientID = this.newResponsearr;
-          console.log("idpat====", this.newResponsearr)
+    //       this.newResponsearr = response.patientID;
+    //       this.model2.patientID = this.newResponsearr;
+    //       console.log("idpat====", this.newResponsearr)
          
-          this.loaderNew = false;
-          this.regisForm.reset();
-          alert("patient added successfuly");
-          localStorage.setItem('paDetails', JSON.stringify(this.model2));
-          this.router.navigate(['reception/old-regis'])
+    //       this.loaderNew = false;
+    //       this.regisForm.reset();
+    //       alert("patient added successfuly");
+    //       localStorage.setItem('paDetails', JSON.stringify(this.model2));
+    //       this.router.navigate(['reception/old-regis'])
 
 
-        }
-        if (response.status === 1) {
-          this.errormsg = response.error;
-          this.loaderNew = false;
-          alert('Problem in service! please Try again')
-          console.log('error=', this.errormsg);
+    //     }
+    //     if (response.status === 1) {
+    //       this.errormsg = response.error;
+    //       this.loaderNew = false;
+    //       alert('Problem in service! please Try again')
+    //       console.log('error=', this.errormsg);
 
-        }
-      },
-      (error) => { }
-    );
+    //     }
+    //   },
+    //   (error) => { }
+    // );
 
   }
   //-------------------goto next page

@@ -6,7 +6,6 @@ import { Subject } from 'rxjs';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { ReceptServiceService } from '../services/recept-service.service';
-import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'ncri-home',
@@ -55,22 +54,17 @@ export class HomeComponent implements OnInit {
   ucResponseArray: any = [];
   ucID: any;
   newResponsearr: any = [];
-  newDOB:any;
-  yr:any=0;
-  mn:any=6;
 
   constructor(
     private modalService: BsModalService,
     private fb: FormBuilder,
     private receptService: ReceptServiceService,
     private router: Router,
-    private datePipe: DatePipe,
   ) {
 
   }
 
   ngOnInit(): void {
-    this.GetBirthDate();
     this.hospitalID = localStorage.getItem('hospitalID');
     this.doctorID = localStorage.getItem('docId');
 
@@ -99,17 +93,7 @@ export class HomeComponent implements OnInit {
       },
     );
   }
-  GetBirthDate() {
-   
-    // this.yr = this.yr.replace(/^\s+|\s+$/g, "");
-    // this.mn = this.mn.replace(/^\s+|\s+$/g, "");
-    // this.dy = this.dy.replace(/^\s+|\s+$/g, "");
-    console.log(' this.yr', this.yr)
-   if (this.mn < 10) { this.mn = '0' + this.mn }
-  // alert(new Date(new Date().getFullYear() - this.yr, new Date().getMonth()  - this.mn ));
-   this.newDOB=this.datePipe.transform(new Date(new Date().getFullYear() - this.yr, new Date().getMonth()  - this.mn ),"yyyy-MM-dd");
-   console.log('this.newDOB',this.newDOB)
-}
+
   openModAdd(captureuser: TemplateRef<any>) {
     this.modalRef = this.modalService.show(captureuser, Object.assign({}, { class: 'gray modal-lg' }));
 
@@ -181,23 +165,12 @@ export class HomeComponent implements OnInit {
 
   //---------------------search by token---------------------
   registerNewPat(formval) {
-     if(formval.dob=='' || null || undefined){
-    
-      this.yr=formval.year;
-      this.mn=formval.months;
-      if (this.mn < 10) { this.mn = '0' + this.mn }
-      this.newDOB=this.datePipe.transform(new Date(new Date().getFullYear() - this.yr, new Date().getMonth()  - this.mn ),"yyyy-MM-dd");
-      console.log('this.newDOB',this.newDOB)
-
-         }else{
-           this.newDOB=this.datePipe.transform(formval.dob,"yyyy-MM-dd");
-         }
 
     this.loaderNew = true;
     this.model2.hospitalID = this.hospitalID;
     this.model2.firstname = formval.firstname;
     this.model2.lastname = '';
-    this.model2.dob = this.newDOB;
+    this.model2.dob = formval.dob;
     this.model2.f_hName = formval.f_hName;
     this.model2.cellNo = formval.cellNo;
     this.model2.gender = formval.gender;
@@ -219,7 +192,8 @@ export class HomeComponent implements OnInit {
           this.newResponsearr = response.patientID;
           this.model2.patientID = this.newResponsearr;
           console.log("idpat====", this.newResponsearr)
-         
+          // console.log('this.tokenResponseArray==',this.tokenResponseObj);
+          //this.openModAdd(cc);
           this.loaderNew = false;
           this.regisForm.reset();
           alert("patient added successfuly");

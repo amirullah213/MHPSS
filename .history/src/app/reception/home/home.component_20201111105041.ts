@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
   ucResponseArray: any = [];
   ucID: any;
   newResponsearr: any = [];
-  newDOB:any;
+  todayDate:any;
   yr:any=0;
   mn:any=6;
 
@@ -106,9 +106,8 @@ export class HomeComponent implements OnInit {
     // this.dy = this.dy.replace(/^\s+|\s+$/g, "");
     console.log(' this.yr', this.yr)
    if (this.mn < 10) { this.mn = '0' + this.mn }
-  // alert(new Date(new Date().getFullYear() - this.yr, new Date().getMonth()  - this.mn ));
-   this.newDOB=this.datePipe.transform(new Date(new Date().getFullYear() - this.yr, new Date().getMonth()  - this.mn ),"yyyy-MM-dd");
-   console.log('this.newDOB',this.newDOB)
+   alert(new Date(new Date().getFullYear() - this.yr, new Date().getMonth()  - this.mn ));
+   this.todayDate=this.datePipe.transform(date,"yyyy-MM-dd");
 }
   openModAdd(captureuser: TemplateRef<any>) {
     this.modalRef = this.modalService.show(captureuser, Object.assign({}, { class: 'gray modal-lg' }));
@@ -181,23 +180,12 @@ export class HomeComponent implements OnInit {
 
   //---------------------search by token---------------------
   registerNewPat(formval) {
-     if(formval.dob=='' || null || undefined){
-    
-      this.yr=formval.year;
-      this.mn=formval.months;
-      if (this.mn < 10) { this.mn = '0' + this.mn }
-      this.newDOB=this.datePipe.transform(new Date(new Date().getFullYear() - this.yr, new Date().getMonth()  - this.mn ),"yyyy-MM-dd");
-      console.log('this.newDOB',this.newDOB)
-
-         }else{
-           this.newDOB=this.datePipe.transform(formval.dob,"yyyy-MM-dd");
-         }
 
     this.loaderNew = true;
     this.model2.hospitalID = this.hospitalID;
     this.model2.firstname = formval.firstname;
     this.model2.lastname = '';
-    this.model2.dob = this.newDOB;
+    this.model2.dob = formval.dob;
     this.model2.f_hName = formval.f_hName;
     this.model2.cellNo = formval.cellNo;
     this.model2.gender = formval.gender;
@@ -219,7 +207,8 @@ export class HomeComponent implements OnInit {
           this.newResponsearr = response.patientID;
           this.model2.patientID = this.newResponsearr;
           console.log("idpat====", this.newResponsearr)
-         
+          // console.log('this.tokenResponseArray==',this.tokenResponseObj);
+          //this.openModAdd(cc);
           this.loaderNew = false;
           this.regisForm.reset();
           alert("patient added successfuly");

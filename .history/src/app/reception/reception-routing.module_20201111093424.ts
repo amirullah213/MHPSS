@@ -6,7 +6,6 @@ import { NewRegisterComponent } from './new-register/new-register.component';
 import { OldRegistrationComponent } from './old-registration/old-registration.component';
 import { PatientsComponent } from './patients/patients.component';
 import { TodayPatientsComponent } from './today-patients/today-patients.component';
-import { Print2Component } from './print2/print2.component';
 const routes: Routes = [
   {
     path: '',
@@ -19,9 +18,6 @@ const routes: Routes = [
       { path: 'old-regis', component: OldRegistrationComponent },
       { path: 'patients', component: PatientsComponent },
       { path: 'today-patients', component: TodayPatientsComponent },
-      { path: 'print2', component: Print2Component },
-
-      
       { path : '', redirectTo : 'home', pathMatch : 'full' }
         
     ]

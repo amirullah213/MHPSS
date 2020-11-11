@@ -103,7 +103,7 @@ export class OldRegistrationComponent implements OnInit {
          alert('token generated successfuly');
          this.modalRef.hide();
          localStorage.setItem('tokenDetails',JSON.stringify(this.genResponseArray));
-         this.router.navigate(['reception/print-token'])
+        // this.router.navigate(['reception/print-token'])
         
       }
   if (response.status === 1) {

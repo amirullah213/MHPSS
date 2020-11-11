@@ -26,7 +26,6 @@ import { Print2Component } from './print2/print2.component';
   declarations: [HomeComponent, ReceptionComponent, NewRegisterComponent, OldRegistrationComponent, PatientsComponent, SideBarReceptionComponent, TodayPatientsComponent, Print2Component],
   imports: [
     CommonModule, ReceptionRoutingModule, FormsModule, Ng2SearchPipeModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), BsDatepickerModule.forRoot(), CollapseModule.forRoot()
-  ],
-  providers: [DatePipe]
+  ]
 })
 export class ReceptionModule { }

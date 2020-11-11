@@ -23,22 +23,22 @@
                                             <span class="ml-4"> {{tokenData.token}}</span>
                                         </p>
                                         <p class="mb-1 mt-2"><b>Patient Name : </b>
-                                            <span class="ml-4">{{tokenData.patient.firstname}}</span>
+                                            <span class="ml-4">{{tokenData.f_hName}}</span>
                                         </p>
                                         <p class="mb-1 mt-3"><b>Father/Husband Name : </b>
-                                            <span class="ml-4"> {{tokenData.patient.f_hName}}</span>
+                                            <span class="ml-4"> {{tokenData.f_hName}}</span>
                                         </p>
                                         <p class="mb-1 mt-3"><b>Referred to : </b>
                                             <span class="ml-4"> {{tokenData.deptName}}</span>
                                         </p>
                                         <p class="mb-1 mt-3"><b>Gender : </b>
-                                            <span class="ml-4"> {{tokenData.patient.gender}}</span>
+                                            <span class="ml-4"> {{tokenData.gender}}</span>
                                         </p>
                                         <p class="mb-1 mt-3"><b>Date Of Birth : </b>
-                                            <span class="ml-4"> {{tokenData.patient.dob| date}}</span>
+                                            <span class="ml-4"> {{tokenData.dob}}</span>
                                         </p>
                                         <p class="mb-1 mt-3"><b>Date : </b>
-                                            <span class="ml-4"> {{tokenData.patient.DateCreated | date}}</span>
+                                            <span class="ml-4"> {{tokenData.DateCreated | date}}</span>
                                         </p>
                                         <div class="form-group mt-5 d-print-none">
                                             <button class="button" (click)="printPage()">
