@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { Signin2RoutingModule } from './signin2-routing.module';
 import { DoctorSinginComponent } from './doctor-singin/doctor-singin.component';
@@ -9,7 +10,9 @@ import { DoctorSinginComponent } from './doctor-singin/doctor-singin.component';
   declarations: [DoctorSinginComponent],
   imports: [
     CommonModule,
-    Signin2RoutingModule
+    Signin2RoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class Signin2Module { }

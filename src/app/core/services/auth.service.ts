@@ -15,6 +15,10 @@ export class AuthService {
     let url = APP_CONFIG.apiBaseUrl + 'loginpms';
     return this.http.post(url, obj);
   }
+  userlogin(obj: any) {
+    let url = APP_CONFIG.apiBaseUrl + 'userlogin';
+    return this.http.post(url, obj);
+  }
   getindoorlist(obj: any) {
     let url = APP_CONFIG.apiBaseUrl + 'getindoorlist';
     return this.http.post(url, obj);
@@ -58,7 +62,7 @@ export class AuthService {
     let url = APP_CONFIG.apiBaseUrl + '/api/v1/sso/ObtainJWTWithQRCode/';
     return this.http.post(url, obj);
   }
-
+  
   setUser(resp: any) {
     console.log('resp details===',resp)
     localStorage.setItem('details', JSON.stringify(resp) );
@@ -66,7 +70,7 @@ export class AuthService {
     localStorage.setItem('hospitalID', resp.hospitalID);
     localStorage.setItem('docId', resp.id);
     localStorage.setItem('indoorID', resp.indoorID);
-    
+  
     //-----------testing routs
     // if(resp==1){ this.router.navigate(['/doctor'])};
     // if(resp==2){ this.router.navigate(['/lab-path'])}
@@ -74,7 +78,7 @@ export class AuthService {
     // if(resp==4 || resp==44 || resp==444 ){ this.router.navigate(['/radiology'])}
     //-----------testing routs  
     
-    if(resp.userType==1){ this.router.navigate(['/doctor'])};
+    if(resp.userType==1){ this.router.navigate(['/docsignin'])};
     if(resp.userType==2){ this.router.navigate(['/lab-path'])}
     if(resp.userType==3){ this.router.navigate(['/reception'])}
     if(resp.userType==4 || resp.userType==44 || resp.userType==444 ){ this.router.navigate(['/lab-rad'])}
