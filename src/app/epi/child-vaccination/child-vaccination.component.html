@@ -31,24 +31,15 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>At Birth</td>
-                                                <td>At Birth</td>
-                                                <td>BCG OPV-0 Hep-B</td>
-                                                <td>After 6 Months of 1st visit</td>
+                                            <tr *ngFor ="let ep of epiData">
+                                                <td>{{ep.sr}}</td>
+                                                <td>{{ep.when}}</td>
+                                                <td>{{ep.age}}</td>
+                                                <td>{{ep.vaccines}}</td>
+                                                <td></td>
                                                 <td><i class="fa fa-check-square-o"></i></td>
                                             </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>2nd visit</td>
-                                                <td>6 Weeks</td>
-                                                <td>OPV-1 Hep-B</td>
-                                                <td>After 2 Weeks of 2nd visit <span class="ml-5 text-danger">20-03-2020</span></td>
-                                                <td>
-                                                    <button class="btn btn-default" type="button"><i class="fa fa-plus-square"></i> Done</button>
-                                                </td>
-                                            </tr>
+                                           
                                         </tbody>
                                     </table>
                                 </div>
