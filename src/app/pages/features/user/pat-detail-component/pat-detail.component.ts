@@ -244,7 +244,7 @@ export class PatDetailComponent implements OnInit {
     this.getInvistigation();
     this.getTreatment();
     this.getindoorlist()   
-    debugger 
+     
     if(localStorage.getItem("tab"))
     this.setTab(localStorage.getItem("tab"))
    
