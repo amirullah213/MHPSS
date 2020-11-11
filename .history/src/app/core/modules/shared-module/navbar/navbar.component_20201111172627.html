@@ -1,0 +1,30 @@
+<nav class="admin-header navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <!-- logo -->
+    <div class="navbar-brand-wrapper text-center">
+        <a class="navbar-brand brand-logo" [routerLink]="['../signin']"><img src="../../../../../assets/images/ncri-dashlogo.png" alt=""></a>
+        <a class="navbar-brand brand-logo-mini" [routerLink]="['../signin']"><img src="../../../../../assets/images/ncri-dashlogo.png" alt=""></a>
+    </div>
+    <!-- Top bar left -->
+    <ul class="nav navbar-nav mr-auto">
+        <li class="nav-item">
+            <h5>testing</h5>
+            <!-- <a id="button-toggle" class="button-toggle-nav inline-block ml-20 pull-left" href="javascript:void(0);"><i class="zmdi zmdi-menu ti-align-right"></i></a> -->
+        </li>
+    </ul>
+    <!-- top bar right -->
+    <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item dropdown mr-4">
+            <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="javascript:void(0)">
+                <img src="../../../../../assets/images/admin.png" alt="avatar">
+                <span class="user-online-status"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="javascript: void(0)" [routerLink]="['/profile']">Profile</a>
+                <a class="dropdown-item" href="javascript: void(0)" [routerLink]="['/account-settings']">Account Settings</a>
+                <a class="dropdown-item" href="javascript: void(0)">More Setting</a>
+                <a class="dropdown-item" href="javascript: void(0)" (click)="openDrawer()">Change Theme</a>
+                <a class="dropdown-item" href="javascript: void(0)" (click)="logout()">Logout</a>
+            </div>
+        </li>
+    </ul>
+</nav>
