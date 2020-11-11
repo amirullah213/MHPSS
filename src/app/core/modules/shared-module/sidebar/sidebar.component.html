@@ -1,10 +1,10 @@
-<div class="side-menu-fixed">
+<div class="side-menu-fixed leftColfix">
     <div class="scrollbar side-menu-bg">
         <ul *ngIf="!router.url.includes('account-settings')" class="nav navbar-nav side-menu" id="sidebarnav">
-            <!-- menu item Dashboard-->
-            <li>
+            <!-- menu item Dashboard -->
+            <!-- <li>
                 <a class="underline-center" href="javascript:void(0)"><i class="ti-dashboard"></i><span class="right-nav-text">Dashboard</span> </a>
-            </li>
+            </li> -->
             <li routerLinkActive="active">
                 <a class="underline-center" href="javascript:void(0)" [routerLink]="['user']"><i class="ti-home"></i><span class="right-nav-text">Home</span> </a>
             </li>

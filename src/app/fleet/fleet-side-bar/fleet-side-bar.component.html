@@ -1,15 +1,15 @@
-<div class="side-menu-fixed">
+<div class="side-menu-fixed leftColfix">
     <div class="scrollbar side-menu-bg">
         <ul class="nav navbar-nav side-menu" id="sidebarnav">
             <!-- menu item Dashboard-->
-            <li [routerLink]="['home']" routerLinkActive="active">
-                <a href="javascript:void(0)">
+            <li routerLinkActive="active">
+                <a class="underline-center" [routerLink]="['home']" href="javascript:void(0)">
                     <i class="ti-home"></i>
                     <span class="right-nav-text">Home</span>
                 </a>
             </li>
             <li routerLinkActive="active">
-                <a href=""><i class="ti-power-off"></i><span class="right-nav-text">Exit</span> </a>
+                <a class="underline-center" href=""><i class="ti-power-off"></i><span class="right-nav-text">Exit</span> </a>
             </li>
         </ul>
     </div>
