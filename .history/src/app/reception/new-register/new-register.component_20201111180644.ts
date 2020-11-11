@@ -42,15 +42,15 @@ export class NewRegisterComponent implements OnInit {
   //   this.printService.setDriver(this.webPrintDriver, 'WebPRNT');
   // }
 
-  print(driver: PrintDriver) {
-    this.printService.init()
-      .setBold(true)
-      .writeLine('Hello World!')
-      .setBold(false)
-      .feed(4)
-      .cut('full')
-      .flush();
-  }
+  // print(driver: PrintDriver) {
+  //   this.printService.init()
+  //     .setBold(true)
+  //     .writeLine('Hello World!')
+  //     .setBold(false)
+  //     .feed(4)
+  //     .cut('full')
+  //     .flush();
+  // }
 
   ngOnInit(): void {
     this.loginDetails=JSON.parse(localStorage.getItem('details')) ;
