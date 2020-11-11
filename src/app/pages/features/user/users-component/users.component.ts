@@ -26,6 +26,7 @@ export class UsersComponent implements OnInit {
   activateLoader: boolean = false;
   deactivateLoader: boolean = false;
   userList: any = [];
+  detail: any;
 
   constructor(
     private modalService: BsModalService,
@@ -39,6 +40,8 @@ export class UsersComponent implements OnInit {
     this.userData.hospitalID = localStorage.getItem('hospitalID');
     this.userData.status = 0;
     this.userData.doctorID = localStorage.getItem('docId');
+    this.detail = JSON.parse(localStorage.getItem("details"));
+  
     this.getUsers(this.userData);
     if (localStorage.getItem("tab"))
     this.setTab(localStorage.getItem("tab"))
@@ -112,11 +115,20 @@ export class UsersComponent implements OnInit {
 
   gotoPatDetails(paObj) {
 
-    console.log("patData===", paObj)
+debugger
     localStorage.setItem('patData', JSON.stringify(paObj));
+   if(paObj.deptType==3)
+   {
+    this.router.navigate(['/epi/child-vaccination'])
+    localStorage.removeItem("tab")
+   } else if(paObj.deptType==2){
+    this.router.navigate(['/tt'])
+    localStorage.removeItem("tab")
+   }
+   else{
     this.router.navigate(['doctor/user/details'])
     localStorage.removeItem("tab")
-
+   }
   }
 
 
