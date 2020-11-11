@@ -13,7 +13,7 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'child-vaccination', component: ChildVaccinationComponent },
       { path: 'tt-vaccination', component: TTVaccinationComponent },
-      { path: '', redirectTo: 'home', pathMatch: 'full' }
+      { path: '', redirectTo: '/doctor', pathMatch: 'full' }
 
     ]
   }
