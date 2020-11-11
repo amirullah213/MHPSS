@@ -1052,3 +1052,26 @@ textarea.form-control {
         }
     }
 }
+
+html {
+    overflow: auto;
+}
+
+::-webkit-scrollbar {
+    width: .8rem;
+    height: .8rem;
+}
+
+::-webkit-scrollbar-track {
+    background: #123b4e;
+    box-shadow: inset 0 0 3px #123b4e;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #52C9C8;
+    box-shadow: inset 0 0 3px #123b4e;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+    background: #52C9C8;
+}

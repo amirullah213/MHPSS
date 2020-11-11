@@ -17,6 +17,7 @@ import { SideBarReceptionComponent } from './side-bar-reception/side-bar-recepti
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { TodayPatientsComponent } from './today-patients/today-patients.component';
 import { Print2Component } from './print2/print2.component';
+import { ThermalPrintModule } from 'ng-thermal-print';
 
 
 
@@ -25,7 +26,7 @@ import { Print2Component } from './print2/print2.component';
 @NgModule({
   declarations: [HomeComponent, ReceptionComponent, NewRegisterComponent, OldRegistrationComponent, PatientsComponent, SideBarReceptionComponent, TodayPatientsComponent, Print2Component],
   imports: [
-    CommonModule, ReceptionRoutingModule, FormsModule, Ng2SearchPipeModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), BsDatepickerModule.forRoot(), CollapseModule.forRoot()
+    CommonModule, ReceptionRoutingModule, FormsModule, Ng2SearchPipeModule, ReactiveFormsModule, SharedModule, DataTablesModule, ThermalPrintModule, ModalModule.forRoot(), BsDatepickerModule.forRoot(), CollapseModule.forRoot()
   ],
   providers: [DatePipe]
 })

@@ -5,8 +5,8 @@
                 <div class="row px-3 px-md-0">
                     <div class="col-sm-12 pl-0">
                         <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)" class="gray-color">Home</a></li>
-                            <!-- <li class="breadcrumb-item active gray-04-color">Commission</li> -->
+                            <li class="breadcrumb-item"><a href="javascript:void(0)" class="gray-color"><i class="fa fa-home mr-2"></i> Reception</a></li>
+                            <li class="breadcrumb-item active gray-04-color">Print Token</li>
                         </ol>
                     </div>
                 </div>
@@ -40,10 +40,23 @@
                                         <p class="mb-1 mt-3"><b>Date : </b>
                                             <span class="ml-4"> {{tokenData.patient.DateCreated | date}}</span>
                                         </p>
-                                        <div class="form-group mt-5 d-print-none">
+                                        <!-- <div class="form-group mt-5 d-print-none">
                                             <button class="button" (click)="printPage()">
                                                 <i class="fa fa-print"></i> Print Token
                                             </button>
+                                        </div> -->
+                                        <p class="mt-5 d-print-none"><strong>Status: {{status}}</strong></p>
+                                        <!-- <div class="form-group mt-5 d-print-none">
+                                            <input class="form-control mb-2 col-3" [(ngModel)]="ip" type="text" name="ip" placeholder="IP of printer with WebPRNT">
+                                            <button class="button" (click)="connectToWebPrint()">Connect to WebPRNT</button>
+                                        </div> -->
+
+                                        <div class="form-group mt-5 d-print-none">
+                                            <button *ngIf="status === false" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" (click)="requestUsb()">Connect to USB</button>
+                                        </div>
+
+                                        <div class="form-group mt-5 d-print-none">
+                                            <button class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" (click)="print()" [disabled]="status === false"> <i class="fa fa-print"></i> Print!</button>
                                         </div>
                                     </div>
                                 </div>

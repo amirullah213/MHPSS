@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
   }
   openModalpending(template1: TemplateRef<any>, data) {
     this.userDataRow = data;
-    this.modalRef = this.modalService.show(template1, this.userDataRow);
+    this.modalRef = this.modalService.show(template1, Object.assign({}, { class: 'modal-lg' }, this.userDataRow));
     console.log('modal beds data==',this.userDataRow)
     // this.modalRef.content.userActivate = 'Close';
   }

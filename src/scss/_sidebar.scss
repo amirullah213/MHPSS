@@ -49,7 +49,7 @@
 .admin-header.navbar {
     .navbar-brand-wrapper {
         transition: width .5s ease-in-out;
-        width: 250px;
+        width: 259px;
         .navbar-brand {
             color: #5a5f61;
             font-size: 2rem;
@@ -446,7 +446,7 @@ a.button-toggle-nav {
 }
 
 .content-wrapper {
-    margin-left: 250px;
+    margin-left: 259px;
     background: $body;
     position: relative;
     @include transition (all, 0.5s, ease);
@@ -494,4 +494,35 @@ a.button-toggle-nav {
 
 .theme-customizer.open {
     right: 0;
+}
+
+.leftColfix {
+    position: fixed;
+    overflow-y: scroll;
+    width: 259px;
+    top: 65px;
+    bottom: 0;
+}
+
+html {
+    overflow: auto;
+}
+
+::-webkit-scrollbar {
+    width: .8rem;
+    height: .8rem;
+}
+
+::-webkit-scrollbar-track {
+    background: #123b4e;
+    box-shadow: inset 0 0 3px #123b4e;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #52C9C8;
+    box-shadow: inset 0 0 3px #123b4e;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+    background: #52C9C8;
 }

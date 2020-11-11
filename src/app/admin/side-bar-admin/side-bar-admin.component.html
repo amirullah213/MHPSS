@@ -1,11 +1,11 @@
-<div class="side-menu-fixed">
+<div class="side-menu-fixed leftColfix">
     <div class="scrollbar side-menu-bg">
         <ul class="nav navbar-nav side-menu" id="sidebarnav">
-            <li routerLinkActive="active">
+            <!-- <li routerLinkActive="active">
                 <a class="underline-center" href="javascript:void(0)">
                     <i class="fa fa-dashboard"></i><span class="right-nav-text">Dashboard</span>
                 </a>
-            </li>
+            </li> -->
             <!-- menu item Dashboard-->
             <li routerLinkActive="active">
                 <a class="underline-center" href="javascript:void(0)" [routerLink]="['home']">
@@ -51,6 +51,9 @@
                 <a class="underline-center" href="javascript:void(0)" [routerLink]="['emrsummaryreport']">
                     <i class="ti-layers-alt"></i><span class="right-nav-text">EMR Summary Report </span>
                 </a>
+            </li>
+            <li routerLinkActive="active">
+                <a class="underline-center" href=""><i class="ti-power-off"></i><span class="right-nav-text">Exit</span> </a>
             </li>
         </ul>
     </div>
