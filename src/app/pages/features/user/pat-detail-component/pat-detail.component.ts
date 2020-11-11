@@ -301,9 +301,6 @@ export class PatDetailComponent implements OnInit {
   
   }
 
-
-
- 
   removeSymptom(i) {
     //this.items.removeAt(i);
     if (i > -1) {
@@ -311,11 +308,6 @@ export class PatDetailComponent implements OnInit {
     }
   }
   
-
-
-  
-
- 
   removeTreatment(i: number) {
     this.treatmentItems.removeAt(i);
   }
