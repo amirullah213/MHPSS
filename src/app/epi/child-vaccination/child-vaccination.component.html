@@ -26,7 +26,7 @@
                                                 <th>When</th>
                                                 <th>Baby Age</th>
                                                 <th>Vaccination</th>
-                                                <th>Next Vist / <span class="ml-5 text-danger">Vaccine Date</span></th>
+                                                <th>Next Vist <br> <span class="text-danger">Vaccine Date</span></th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -36,7 +36,8 @@
                                                 <td>{{ep.when}}</td>
                                                 <td>{{ep.age}}</td>
                                                 <td>{{ep.vaccines}}</td>
-                                                <td><span>{{ep.nextVisit | date}} </span> <span class="ml-5 text-danger">/{{ep.vaccineDate | date}}</span> </td>
+                                                <td><span *ngIf='ep.nextVisit!="0000" && epiRes.length!=0'>{{ep.nextVisit | date}} </span> <span *ngIf='ep.vaccineDate!="0000" && epiRes.length!=0' class="ml-5 text-danger"><br>{{ep.vaccineDate | date}}</span>
+                                                    <span *ngIf='epiRes.length==0'>{{ep.nextVisit}} </span> <span *ngIf='epiRes.length==0' class="ml-5 text-danger"><br>{{ep.vaccineDate}}</span> </td>
                                                 <td><span *ngIf="ep.status==1"><i class="fa fa-check-square-o"></i></span>
                                                     <span *ngIf="ep.action==1 && ep.status==0"><button class="btn btn-default" (click)="funcCall(i,ep.id)" type="button"><i class="fa fa-plus-square"></i> Done</button>
                                                     </span>

@@ -160,7 +160,7 @@
                                                             <td>{{user.firstname}}</td>
                                                             <td>{{user.enteringDate | date}}</td>
                                                             <td>
-                                                                <a class="text-primary" (click)="gotoPresDetails(user)" href="javascript:void(0)">View Prescription</a>
+                                                                <a class="text-primary" *ngIf="user.deptType!=3 && user.deptType!=2" (click)="gotoPresDetails(user)" href="javascript:void(0)">View Prescription</a>
                                                                 <!-- <button type="button" class="button"> </button> -->
 
                                                             </td>

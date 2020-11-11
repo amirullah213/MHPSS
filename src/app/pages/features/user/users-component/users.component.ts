@@ -122,7 +122,7 @@ debugger
     this.router.navigate(['/epi/child-vaccination'])
     localStorage.removeItem("tab")
    } else if(paObj.deptType==2){
-    this.router.navigate(['/tt'])
+    this.router.navigate(['/epi/tt-vaccination'])
     localStorage.removeItem("tab")
    }
    else{
