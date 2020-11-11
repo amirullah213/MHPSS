@@ -16,8 +16,7 @@ export class ChildVaccinationComponent implements OnInit {
   "age": "At Birth",
   "vaccines": "BCG,OPV-0,Hep-B",
   "action":"",
-  "nextVisit": "0000",
-  "vaccineDate": "0000",
+  
   "status":0,
   "id":''}
 ,
@@ -26,8 +25,7 @@ export class ChildVaccinationComponent implements OnInit {
     "age": "6 Weeks",
     "vaccines": "OPV-1, Rotavirus-I, Pneumococcal-I, Pentavalent-I",
     "action":"",
-    "nextVisit": "0000",
-    "vaccineDate": "0000",
+ 
     "status":0,
     "id":''},
     {"sr": 3,
@@ -35,8 +33,7 @@ export class ChildVaccinationComponent implements OnInit {
     "age": "10 Weeks",
     "vaccines": "OPV-II, Rotavirus-II, Pneumococcal-II, Pentavalent-II",
     "action":"", 
-     "nextVisit": "0000",
-    "vaccineDate": "0000",
+   
   "status":0,
   "id":''}
   ,
@@ -45,8 +42,7 @@ export class ChildVaccinationComponent implements OnInit {
   "age": "14 Weeks",
   "vaccines": "OPV-III,Rotavirus-III,Pneumococcal-III,Pentavalent-III",
   "action":"",
-  "nextVisit": "0000",
-  "vaccineDate": "0000",
+
   "status":0,
   "id":''},
   {"sr": 5,
@@ -54,17 +50,15 @@ export class ChildVaccinationComponent implements OnInit {
   "age": "9 Months",
   "vaccines": "Measles-I",
   "action":"",
-  "nextVisit": "0000",
-  "vaccineDate": "0000",
+ 
   "status":0,
   "id":''},
   {"sr": 6,
   "when": "6th Visit",
   "age": "15 Months",
-  "nextVisit": "0000",
   "vaccines": "Measles-II",
   "action":"",
-  "vaccineDate": "0000",
+ 
   "status":0,
 "id":''}];
   epiRes: any=[];
@@ -195,6 +189,7 @@ export class ChildVaccinationComponent implements OnInit {
       if (response.status == 0) {
         this.adData = response.data
         this.router.navigate(['/epi/child-vaccination'])
+
         this.userLoader = false;
       } else {
         this.userLoader = false;

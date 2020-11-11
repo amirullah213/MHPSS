@@ -36,7 +36,7 @@
                                                 <td>{{ep.when}}</td>
                                                 <td>{{ep.age}}</td>
                                                 <td>{{ep.vaccines}}</td>
-                                                <td><span *ngIf='ep.nextVisit'>{{ep.nextVisit | date}} </span> <span *ngIf='ep.vaccineDate' class="ml-5 text-danger">/{{ep.vaccineDate | date}}</span> </td>
+                                                <td><span>{{ep.nextVisit | date}} </span> <span class="ml-5 text-danger">/{{ep.vaccineDate | date}}</span> </td>
                                                 <td><span *ngIf="ep.status==1"><i class="fa fa-check-square-o"></i></span>
                                                     <span *ngIf="ep.action==1 && ep.status==0"><button class="btn btn-default" (click)="funcCall(i,ep.id)" type="button"><i class="fa fa-plus-square"></i> Done</button>
                                                     </span>
