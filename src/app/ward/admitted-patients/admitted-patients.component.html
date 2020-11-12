@@ -6,7 +6,7 @@
                     <div class="col-sm-12 pl-0">
                         <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
                             <li class="breadcrumb-item active gray-04-color"><a href="javascript:void(0)" [routerLink]="['/ward-list/home']" class="gray-color"><i class="ti-home mr-2"></i>Home</a></li>
-                            <li class="breadcrumb-item"><a href="javascript:void(0)"><i class="ti-home mr-2"></i>Admitted Patient</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)"> Admitted Patient</a></li>
                         </ol>
                     </div>
                 </div>
@@ -155,8 +155,6 @@
                                                     <tbody>
                                                         <tr class="" *ngFor="let addArr of medicinesFinal;let m=index;">
                                                             <td>{{m+1}}) {{addArr.medicine}}</td>
-
-
                                                             <td>{{addArr.prescribedQuantity}}</td>
                                                             <td>
                                                                 <span *ngIf="addArr.dose=='SOS'">When required</span>

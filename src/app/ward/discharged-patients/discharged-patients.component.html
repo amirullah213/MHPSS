@@ -32,12 +32,12 @@
                                     </h5>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <h5><b>Gender : </b><span class="ml-3">{{pharmacyData.gender}}</span></h5>
+                                    <h5><b>Gender : </b><span class="ml-3 text-capitalize">{{pharmacyData.gender}}</span></h5>
                                     <h5><b>Bed No : </b><span class="ml-3">{{pharmacyData.bedNo}}</span></h5>
-                                    <h5><b>Admission No :</b> <span class="ml-3">not available in service</span> </h5>
+                                    <!-- <h5><b>Admission No :</b> <span class="ml-3">not available in service</span> </h5> -->
                                     <h5><b>Address :</b> <span class="ml-3">{{pharmacyData.address}}</span> </h5>
                                 </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12" style="border-bottom: #000 2px solid;"></div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 mt-3" style="border-bottom: #000 2px solid;"></div>
                                 <div class="col-lg-5 col-md-5 col-sm-5" style="border-right: #000 2px solid;">
                                     <h5 class="mb-1 mt-4"><b>Diagnosis</b></h5>
                                     <h6 class="mb-1 ml-3"><b>Provisional</b> </h6>
@@ -47,8 +47,8 @@
                                         <span *ngIf="pharmacyData.complaints!=null">{{pharmacyData.complaints}}</span>
                                         <span *ngIf="pharmacyData.complaints==null">Not Added</span>
                                     </h6>
-                                    <h5 class="mb-4"><b>Treatment at Hospital</b></h5>
-                                    <h6 class="mb-1 ml-4" *ngFor="let thosp of pharmacyData.hospitalTreatments;let j=index">
+                                    <h5 class="mb-2"><b>Treatment at Hospital</b></h5>
+                                    <h6 class="mb-2 ml-4" *ngFor="let thosp of pharmacyData.hospitalTreatments;let j=index">
                                         <span class="">{{j+1}})</span> {{thosp.medicine}}
                                         <span class="mb-1 ml-4">{{thosp.unit}} </span>
                                         <span class="mb-1 ml-4">
@@ -74,7 +74,7 @@
                                         <span class="">{{k+1}})</span> {{pres.medicine}}
                                         <span class="mb-1 ml-4">{{pres.unit}} </span>
                                         <span class="mb-1 ml-4">
-                                            <span *ngIf="pres.dose=='SOS'">When Required</span>
+                                        <span *ngIf="pres.dose=='SOS'">When Required</span>
                                         <span *ngIf="pres.dose=='OD'">Daily</span>
                                         <span *ngIf="pres.dose=='STAT'">Take Immediately</span>
                                         <span *ngIf="pres.dose=='BiD'">1+0+1</span>

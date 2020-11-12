@@ -21,7 +21,7 @@
                                     <a class="nav-link" [ngClass]="{'active show': tab === 'newPats'}" id="tab1" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="home" aria-selected="true">Pending Patients</a>
                                 </li>
                                 <li class="nav-item" (click)="setTab('seenPats')">
-                                    <a class="nav-link" [ngClass]="{'active show': tab === 'seenPats'}" id="portfolio-tab" href="javascript:void(0)" data-toggle="tab" role="tab" aria-controls="portfolio" aria-selected="false">Seen Patients</a>
+                                    <a class="nav-link" [ngClass]="{'active show': tab === 'seenPats'}" id="portfolio-tab" href="javascript:void(0)" data-toggle="tab" role="tab" aria-controls="portfolio" aria-selected="false">Operated Patients</a>
                                 </li>
 
                                 <!-- <li class="nav-item" (click)="setTab('commComp')">
@@ -36,8 +36,8 @@
                                                 <table class="table center-aligned-table">
                                                     <thead>
                                                         <tr class="text-dark">
-                                                            <th>CRP NO#</th>
-                                                            <th>Name</th>
+                                                            <th>CRP NO</th>
+                                                            <th>Patient Name</th>
                                                             <th>Date</th>
                                                             <th>Details</th>
                                                         </tr>
@@ -55,6 +55,11 @@
                                                     </tbody>
                                                 </table>
                                             </div>
+                                            <div *ngIf="userLoader" class="d-flex justify-content-center">
+                                                <div class="spinner-border theme-color" role="status">
+                                                    <span class="sr-only"></span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -65,8 +70,8 @@
                                                 <table class="table center-aligned-table">
                                                     <thead>
                                                         <tr class="text-dark">
-                                                            <th>CRP NO#</th>
-                                                            <th>Name</th>
+                                                            <th>CRP NO</th>
+                                                            <th>Patient Name</th>
                                                             <th>Date</th>
                                                             <th>Details</th>
                                                         </tr>
@@ -84,16 +89,19 @@
                                                     </tbody>
                                                 </table>
                                             </div>
+                                            <div *ngIf="userLoader" class="d-flex justify-content-center">
+                                                <div class="spinner-border theme-color" role="status">
+                                                    <span class="sr-only"></span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
             <!-- model for users download start-->
 
             <!-- user delete confirmation -->

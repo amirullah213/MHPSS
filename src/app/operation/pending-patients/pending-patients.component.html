@@ -20,10 +20,8 @@
                                 <!-- <h5 class="card-title mb-0">Ward Managment</h5> -->
                                 <form [formGroup]="dynamicForm" novalidate>
                                     <div class="form-group row mx-0">
-                                        <div class="col-sm-2">
-                                            <label class="mt-3"  for="inputState">Type of Anesthesia</label>
-                                        </div>
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-6">
+                                            <label for="inputState">Type of Anesthesia</label>
                                             <select class="form-control" formControlName='anesthesiaType'>
                                                 <option selected disabled value=''>Select Anesthesia Type</option>
                                                 <option value='1'>General</option>
@@ -32,21 +30,19 @@
                                                 <option value='4'>Without Anesthesia</option>
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="form-group row mx-0">
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Name Of Operation</label>
-                                                <input type="text" class="form-control"  formControlName='operationName' placeholder="Name Of Operation">
+                                                <input type="text" class="form-control" formControlName='operationName' placeholder="Name Of Operation">
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Name Of Operation Surgeon</label>
                                                 <input type="text" class="form-control" formControlName='surgeonName' placeholder="Name Of Operation Surgeon">
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Name Of Anesthetist</label>
                                                 <input type="text" class="form-control" formControlName='anethetistName' placeholder="Name Of Anesthesia">
@@ -59,14 +55,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
-                                    
                                     <hr class="gray">
                                     <div class="form-group row mx-0">
                                         <div class="col-md-12">
                                             <div class="form-group text-center">
-                                                 <button type="button" *ngIf="!userLoader2" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" (click)="updateOperationData(dynamicForm.value)"><i class="ti-save-alt"></i> Save</button>
-                                                 <button type="button" *ngIf="userLoader2" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" > <span class="spinner-border " role="status" aria-hidden="true"></span> Saving</button>
+                                                <button type="button" *ngIf="!userLoader2" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" (click)="updateOperationData(dynamicForm.value)"><i class="ti-save-alt"></i> Save</button>
+                                                <button type="button" *ngIf="userLoader2" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"> <span class="spinner-border " role="status" aria-hidden="true"></span> Saving</button>
                                             </div>
                                         </div>
                                     </div>

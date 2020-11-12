@@ -13,6 +13,11 @@ import { AdminServiceService } from '../services/admin-service.service';
   styleUrls: ['./emr-summary-report.component.scss']
 })
 export class EmrSummaryReportComponent implements OnInit {
+
+  printPage() {
+    window.print();
+  }
+  
   loader_eqp:boolean= false;
   reporData:any =[];
   isCollapsed = true;
