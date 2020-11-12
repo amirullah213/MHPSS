@@ -301,6 +301,9 @@ export class PatDetailComponent implements OnInit {
   
   }
 
+
+
+ 
   removeSymptom(i) {
     //this.items.removeAt(i);
     if (i > -1) {
@@ -399,27 +402,34 @@ this.diagID = event.item.id
     
     this.arrylist=[]
     this.arrylist = this.refList
-    this.arrylist.forEach(ele => {
+    for(let ele of this.arrylist ){
       
       let fulName = ele.fname + " " + ele.lname;
       if(fulName == e){
       this.docType=ele.docType;
-      this.id = ele.id
+      this.id = ele.id;
+      break;
       }
-    });
+    }
 
   }
 
   changeDepVal(e) {
     
-   // this.arrylist = this.DepartmentD[e];
-   if(e!=undefined){
-   this.depIndex=e;
-  }else
-  {
-    this.depIndex=0;
+    debugger
+    this.arrylist=[]
+    this.arrylist = this.DepartmentD
+  for(let ele of this.arrylist ){
+      let fulName = ele.fname + " " + ele.lname;
+      debugger
+      if(fulName == e){
+        this.depIndex=ele.id;
+        break;
+      }else{
+        this.depIndex=0
+      }
+    };  
   }
-}
   changFollowUpVal(e) {
     if (e.target.value == '1') {
       this.show = false;
@@ -616,6 +626,9 @@ this.diagID = event.item.id
     // this.items = this.clinicalInformation.get('items') as FormArray;
     // this.items.push(this.createSymptom(null));
     let ci =this.clinicalInformation.value;
+    debugger
+  if(ci.name!=undefined && ci.name!='')
+  {
     let tempsymp = 0;
     if(this.localSymptoms.length!=0){
       for(let e of this.localSymptoms)
@@ -630,7 +643,7 @@ this.diagID = event.item.id
  }
         if(this.selectedOptionSymptom!=undefined && e.name==this.selectedOptionSymptom.name){
         alert("already Exists");
-        this.selectedOptionSymptom={};
+        this.selectedOptionSymptom=undefined;
         tempsymp = 1;
         break
        }
@@ -651,9 +664,10 @@ this.diagID = event.item.id
         durationType:"",
         duration:""
       })
-    
-  }
+      this.selectedOptionSymptom=undefined;
 
+  }
+  }
   
 insertToDiag(obj: any)
 {
@@ -1284,7 +1298,7 @@ debugger
       )
   }
   reffer() {
-
+debugger
     if(this.show==false)
     {
      this.hospt = this.treatmentForm.value.Hospital
@@ -1295,7 +1309,7 @@ debugger
         this.isRefType =0;
     }
     this.param={"referralType":this.isRefType,"convinceType":this.treatmentForm.value.Ambulance,"ptID":this.ptID,
-    "referralHospital":this.hospt,"refferedTo":this.depIndex,"remarks":this.treatmentForm.value.refNotes,"refferedFrom":this.docInfo.id,"hospitalID":localStorage.getItem('hospitalID')}
+    "referralHospital":this.hospt,"refferedTo":this.depIndex,"remarks":this.treatmentForm.value.refNotes,"refferedFrom":this.patInfo.departmentID,"hospitalID":localStorage.getItem('hospitalID')}
 
     this.uService.reffer(this.param).subscribe
 

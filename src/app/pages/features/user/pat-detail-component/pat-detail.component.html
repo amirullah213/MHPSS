@@ -375,7 +375,11 @@
                                         <hr class="hr-gray mx-0">
                                         <div class="col-md-12 text-center mt-3">
                                             <button type="button" (click)="addClinicalInfo()" *ngIf="!userLoader" class="button">
-                                                <span class="spinner-border" *ngIf="userLoader" role="status" aria-hidden="true"></span> <i class="fa fa-check-square mr-2"></i> Save 
+                                              <i class="fa fa-check-square mr-2"></i> Save 
+                                            </button>
+                                            <button type="button" *ngIf="userLoader" class="button">
+                                                <span class="spinner-border" *ngIf="userLoader" role="status" aria-hidden="true"></span> 
+                                                 Save 
                                             </button>
                                         </div>
                                     </div>
@@ -806,7 +810,7 @@
                                                             <label>Department</label>
                                                             <span class="wrapper-select">
                                                         <select formControlName="Department" class="form-control"
-                                                            (change)="changeDepVal($event.target.selectedIndex)">
+                                                            (change)="changeDepVal($event.target.value)">
                                                             <option>Choose Department</option>
                                                             <option *ngFor="let dep of DepartmentD">{{dep.fname}}
                                                                 {{dep.lname}}</option>

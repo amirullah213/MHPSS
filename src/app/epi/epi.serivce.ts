@@ -27,5 +27,19 @@ export class epiService {
     return this.http.post(url, obj);
   }
  
+  getwomenepischedule(obj: any):Observable<any> {
+    let url = APP_CONFIG.apiBaseUrl + 'getwomenepischedule';
+    return this.http.post(url, obj);
+  }
+ 
+  addwomenepischedule(obj: any):Observable<any> {
+    let url = APP_CONFIG.apiBaseUrl + 'addwomenepischedule';
+    return this.http.post(url, obj);
+  }
+  updatewomenepischedule(obj: any):Observable<any> {
+    let url = APP_CONFIG.apiBaseUrl + 'updatewomenepischedule';
+    return this.http.post(url, obj);
+  }
+ 
   
 }

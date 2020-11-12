@@ -19,6 +19,7 @@
                             <div class="card-body">
                                 <h5 class="card-title mb-0">Child Vaccination</h5>
                                 <div class="table-responsive">
+                                    
                                     <table class="table center-aligned-table">
                                         <thead>
                                             <tr class="text-dark">
@@ -36,8 +37,11 @@
                                                 <td>{{ep.when}}</td>
                                                 <td>{{ep.age}}</td>
                                                 <td>{{ep.vaccines}}</td>
-                                                <td><span *ngIf='ep.nextVisit!="0000" && epiRes.length!=0'>{{ep.nextVisit | date}} </span> <span *ngIf='ep.vaccineDate!="0000" && epiRes.length!=0' class="ml-5 text-danger"><br>{{ep.vaccineDate | date}}</span>
-                                                    <span *ngIf='epiRes.length==0'>{{ep.nextVisit}} </span> <span *ngIf='epiRes.length==0' class="ml-5 text-danger"><br>{{ep.vaccineDate}}</span> </td>
+                                                <td><span *ngIf='epiRes.length!=0'>{{ep.nextVisit | date:'d-M-y'}} </span> 
+                                                    <span *ngIf='ep.vaccineDate!="0000" && epiRes.length!=0' class="ml-5 text-danger"><br>
+                                                        {{ep.vaccineDate | date:'d-M-y' }}</span>
+                                                    <span *ngIf='epiRes.length==0'>{{ep.nextVisit}} </span> 
+                                                     </td>
                                                 <td><span *ngIf="ep.status==1"><i class="fa fa-check-square-o"></i></span>
                                                     <span *ngIf="ep.action==1 && ep.status==0"><button class="btn btn-default" (click)="funcCall(i,ep.id)" type="button"><i class="fa fa-plus-square"></i> Done</button>
                                                     </span>

@@ -23,26 +23,26 @@
                                         <thead>
                                             <tr class="text-dark">
                                                 <th>S.NO</th>
-                                                <th>When</th>
+                                                <th>Title</th>
                                                 <th>Next Vist</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>TT-I</td>
-                                                <td>Any time at first Cntact or as Early as Possible during Pregnancy</td>
-                                                <td>
-                                                    <i class="fa fa-check-square-o"></i>
+                                            
+                                            <tr *ngFor ="let ep of epiData let i=index">
+                                                <td>{{ep.sr}}</td>
+                                                <td>{{ep.vaccines}}</td>
+                                                <!-- <td>{{ep.age}}</td> -->
+                                                <td><span *ngIf='epiRes.length!=0'>{{ep.nextVisit | date:'d-M-y'}} </span> 
+                                                    <!-- <span *ngIf='epiRes.length!=0' class="ml-5 text-danger"><br>{{ep.vaccineDate | date}}</span> -->
+                                                    <span *ngIf='epiRes.length==0'>{{ep.nextVisit}} </span> 
+                                                    <!-- <span *ngIf='epiRes.length==0' class="ml-5 text-danger"><br>{{ep.vaccineDate}}</span>  -->
                                                 </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>TT-II</td>
-                                                <td>One month after TT-I</td>
-                                                <td>
-                                                    <button class="btn btn-default" type="button"><i class="fa fa-plus-square"></i> Done</button>
+                                                <td><span *ngIf="ep.status==1"><i class="fa fa-check-square-o"></i></span>
+                                                    <span *ngIf="ep.action==1 && ep.status==0"><button class="btn btn-default" (click)="funcCall(i,ep.id)" type="button"><i class="fa fa-plus-square"></i> Done</button>
+                                                    </span>
+                                                        
                                                 </td>
                                             </tr>
                                         </tbody>
