@@ -177,7 +177,6 @@ export class ChildVaccinationComponent implements OnInit {
             this.epiData[5].nextVisit =this.epiRes[5].nextVisit
             this.epiData[5].vaccineDate =this.epiRes[5].vaccineDate
           }  
-          console.log("epidata",this.epiData)    
                 this.userLoader = false;
       } else {
         this.userLoader = false;
