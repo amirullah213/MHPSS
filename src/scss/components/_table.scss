@@ -39,3 +39,28 @@
         }
     }
 }
+
+.tbl-custom {
+    max-width: 100%;
+    max-height: 38em;
+    overflow: auto;
+    position: relative;
+    display: block;
+    clear: both;
+    /* margin-left: 15px; */
+    table {
+        position: relative;
+        border-collapse: collapse;
+        thead {
+            th {
+                border-bottom-width: 2px;
+                position: -webkit-sticky;
+                position: sticky;
+                font-family: Poppins;
+                top: 0;
+                /*background: #6e9698c7;*/
+                /*color: #000;*/
+            }
+        }
+    }
+}

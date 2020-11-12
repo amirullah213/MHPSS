@@ -106,9 +106,9 @@ export class AmbulanceComponent implements OnInit {
           //setTimeout(this.rerender, 2500);
          // if(this.allMedcis.length>1){this.rerender();}
           
+          this.loader_eqp = false;
           this.rerender();
           //this.dtTrigger.next();
-          this.loader_eqp = false;
          
         }
 

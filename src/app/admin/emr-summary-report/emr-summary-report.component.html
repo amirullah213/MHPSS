@@ -22,7 +22,7 @@
                             <h5 class="page-title text-center">CAT-D Hospital Mamad Gat</h5>
                             <div class="row mx-0">
                                 <div class="col-md-12">
-                                    <form class="form-inline" novalidate [formGroup]="form">
+                                    <form class="form-inline d-print-none" novalidate [formGroup]="form">
                                         <label class="mr-2">From</label>
                                         <input type="text" class="form-control col-3 mr-2" placeholder="Start Date" #datepickerYMD="bsDatepicker" bsDatepicker formControlName="dateYMD" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" [(ngModel)]="medOb.startDate">
                                         <label class="mr-2">To</label>
@@ -65,6 +65,13 @@
                                             <p class="ml-3 mt-3">4- No of Children vaccinated against DPT-III = <span *ngIf="reporData.epi.dpt!=null"> {{reporData.epi.dpt}}</span> <span *ngIf="reporData.epi.dpt==null">0</span></p>
                                             <p class="ml-3 mt-3">5- No of Children vaccinated against Measles = <span *ngIf="reporData.epi.measles!=null"> {{reporData.epi.measles}}</span> <span *ngIf="reporData.epi.measles==null">0</span></p>
 
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 mt mt-5 d-print-none">
+                                            <div class="form-group text-center">
+                                                <button type="button" (click)="printPage()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
+                                            <i class="fa fa-print"></i> Print
+                                        </button>
+                                            </div>
                                         </div>
                                         <div class="col-md-12 mt-5">
                                             <div *ngIf="loader_eqp" class="d-flex justify-content-center">
