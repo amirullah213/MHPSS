@@ -15,8 +15,8 @@ export class ChildVaccinationComponent implements OnInit {
   "when": "At Birth",
   "age": "At Birth",
   "vaccines": "BCG,OPV-0,Hep-B",
-  "action":"",
-  "nextVisit": "0000",
+  "action":1,
+  "nextVisit": "After 6 weeks of 1st visit",
   "vaccineDate": "0000",
   "status":0,
   "id":''}
@@ -26,7 +26,7 @@ export class ChildVaccinationComponent implements OnInit {
     "age": "6 Weeks",
     "vaccines": "OPV-1, Rotavirus-I, Pneumococcal-I, Pentavalent-I",
     "action":"",
-    "nextVisit": "0000",
+    "nextVisit": "After 4 weeks of 2nd visit",
     "vaccineDate": "0000",
     "status":0,
     "id":''},
@@ -35,7 +35,7 @@ export class ChildVaccinationComponent implements OnInit {
     "age": "10 Weeks",
     "vaccines": "OPV-II, Rotavirus-II, Pneumococcal-II, Pentavalent-II",
     "action":"", 
-     "nextVisit": "0000",
+     "nextVisit": "After 4 weeks of 3rd visit",
     "vaccineDate": "0000",
   "status":0,
   "id":''}
@@ -45,7 +45,7 @@ export class ChildVaccinationComponent implements OnInit {
   "age": "14 Weeks",
   "vaccines": "OPV-III,Rotavirus-III,Pneumococcal-III,Pentavalent-III",
   "action":"",
-  "nextVisit": "0000",
+  "nextVisit": "After 5 months of 4th visit",
   "vaccineDate": "0000",
   "status":0,
   "id":''},
@@ -54,17 +54,17 @@ export class ChildVaccinationComponent implements OnInit {
   "age": "9 Months",
   "vaccines": "Measles-I",
   "action":"",
-  "nextVisit": "0000",
+  "nextVisit": "After 6 months of 5th visit",
   "vaccineDate": "0000",
   "status":0,
   "id":''},
   {"sr": 6,
   "when": "6th Visit",
   "age": "15 Months",
-  "nextVisit": "0000",
+  "nextVisit": "",
   "vaccines": "Measles-II",
   "action":"",
-  "vaccineDate": "0000",
+  "vaccineDate": "",
   "status":0,
 "id":''}];
   epiRes: any=[];
@@ -91,23 +91,23 @@ export class ChildVaccinationComponent implements OnInit {
         if(this.epiRes.length==0)
         {         
           this.epiData[0].action=1
-          this.epiData[0].nextVisit ="After 6 weeks of 1st visit"        
-          this.epiData[0].vaccineDate =""        
+          // this.epiData[0].nextVisit ="After 6 weeks of 1st visit"        
+          // this.epiData[0].vaccineDate =""        
 
         }else{
     
 
           this.epiData[0].status=this.epiRes[0].status
           this.epiData[0].id=this.epiRes[0].id
-          this.epiData[0].action=0
+          if(this.epiData[0].status==1)
           this.epiData[1].action=1
           this.epiData[0].nextVisit =this.epiRes[0].nextVisit
           this.epiData[0].vaccineDate =this.epiRes[0].vaccineDate
         }
       if(this.epiRes.length==0)
           { 
-          this.epiData[1].nextVisit ="After 4 weeks of 2nd visit"
-          this.epiData[1].vaccineDate =""
+          // this.epiData[1].nextVisit ="After 4 weeks of 2nd visit"
+          // this.epiData[1].vaccineDate =""
           }else{
             this.epiData[1].status=this.epiRes[1].status
             this.epiData[1].id=this.epiRes[1].id
@@ -117,8 +117,9 @@ export class ChildVaccinationComponent implements OnInit {
             this.epiData[1].vaccineDate =this.epiRes[1].vaccineDate
           }
       if(this.epiRes.length==0)
-          {  this.epiData[2].nextVisit ="After 4 weeks of 3rd visit"
-          this.epiData[2].vaccineDate =""
+          {  
+          // this.epiData[2].nextVisit ="After 4 weeks of 3rd visit"
+          // this.epiData[2].vaccineDate =""
         }else{
           this.epiData[2].status=this.epiRes[2].status
           this.epiData[2].id=this.epiRes[2].id
@@ -129,8 +130,8 @@ export class ChildVaccinationComponent implements OnInit {
         } 
       if(this.epiRes.length==0)
           { 
-          this.epiData[3].nextVisit ="After 5 months of 4th visit"
-          this.epiData[3].vaccineDate =""
+          // this.epiData[3].nextVisit ="After 5 months of 4th visit"
+          // this.epiData[3].vaccineDate =""
         }else{
           this.epiData[3].status=this.epiRes[3].status
           this.epiData[3].id=this.epiRes[3].id
@@ -143,8 +144,8 @@ export class ChildVaccinationComponent implements OnInit {
       
   
       if(this.epiRes.length==0 && this.epiData[4].vaccineDate=="0000"){
-          this.epiData[4].nextVisit ="After 6 months of 5th visit"
-          this.epiData[4].vaccineDate =""
+          // this.epiData[4].nextVisit ="After 6 months of 5th visit"
+          // this.epiData[4].vaccineDate =""
           }else{
             this.epiData[4].status=this.epiRes[4].status
             this.epiData[4].id=this.epiRes[4].id
@@ -160,8 +161,8 @@ export class ChildVaccinationComponent implements OnInit {
             this.epiData[4].vaccineDate =this.epiRes[4].vaccineDate
           }
       if(this.epiRes.length==0 && this.epiData[5].nextVisit=="0000"){
-          this.epiData[5].nextVisit =""
-          this.epiData[5].vaccineDate =""
+          // this.epiData[5].nextVisit =""
+          // this.epiData[5].vaccineDate =""
           }else{
             this.epiData[5].status=this.epiRes[5].status
             this.epiData[5].id=this.epiRes[5].id
