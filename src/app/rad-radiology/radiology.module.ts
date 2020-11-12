@@ -19,10 +19,12 @@ import { LabRadiologyComponent } from './lab-radiology/lab-radiology.component';
 import { RadiologySideBarComponent } from './radiology-side-bar/radiology-side-bar.component';
 import { DiagnosisPendingRadComponent } from './diagnosis-pending-rad/diagnosis-pending-rad.component';
 import { DiagnosisSeenRadComponent } from './diagnosis-seen-rad/diagnosis-seen-rad.component';
+import { SafePipe } from './safe.pipe';
+
 
 
 @NgModule({
-  declarations: [HomeComponent, LabRadiologyComponent, RadiologySideBarComponent, DiagnosisPendingRadComponent, DiagnosisSeenRadComponent],
+  declarations: [HomeComponent, LabRadiologyComponent, RadiologySideBarComponent, DiagnosisPendingRadComponent, DiagnosisSeenRadComponent, SafePipe],
   imports: [
     CommonModule,
     RadiologyRoutingModule, HttpClientModule, AngularEditorModule, FormsModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), BsDatepickerModule.forRoot(), CollapseModule.forRoot(),

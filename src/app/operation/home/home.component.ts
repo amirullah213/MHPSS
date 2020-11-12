@@ -135,7 +135,7 @@ gotopathdetail(obpat){
 //-------------------goto next page
 gotopathdetailSeen(obpat){
   console.log("patData===",obpat)
-  localStorage.setItem('pathDotDetailsetails',JSON.stringify(obpat));
-  this.router.navigate(['ot/pending'])
+  localStorage.setItem('otDetails',JSON.stringify(obpat));
+  this.router.navigate(['ot/seen'])
 }
 }

@@ -25,6 +25,10 @@ export class RadServiceService {
     let url = APP_CONFIG.apiBaseUrl + 'uploadimage  ';
     return this.http.post(url, obj);
   } 
+  gettestImages  (obj: any) {
+    let url = APP_CONFIG.apiBaseUrl + 'gettestimages   ';
+    return this.http.post(url, obj);
+  } 
 
 }
 

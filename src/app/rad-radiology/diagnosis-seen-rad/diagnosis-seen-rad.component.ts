@@ -6,6 +6,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { RadServiceService } from '../services/rad-service.service';
+import { DomSanitizer, SafeHtml, SafeStyle, SafeScript, SafeUrl, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'ncri-diagnosis-seen-rad',
@@ -34,6 +35,8 @@ export class DiagnosisSeenRadComponent implements OnInit {
   singleobj:any={};
   singleArr:any=[];
   xrayString:any;
+  modelimg:any={};
+  imagesArr:any=[];
 
 
 
@@ -52,10 +55,12 @@ export class DiagnosisSeenRadComponent implements OnInit {
   modalRef: BsModalRef;
 
   constructor(
+    
     private modalService: BsModalService,
     private fb: FormBuilder,
     private radService: RadServiceService,
     private router: Router,
+    private sanitizer:DomSanitizer
     ) {
 
   }
@@ -72,7 +77,7 @@ console.log('pathData1===',this.pathData1)
   openModalWithClass(template: TemplateRef<any>,data) {
     this.userData=data;
     console.log('this.userData',this.userData);
-   
+    this.getImages(this.userData.id);
    // this.singleArr=JSON.parse(this.userData.xrayFilms6); 
    // console.log(' this.singleArr',this.singleArr);
     this.modalRef = this.modalService.show(
@@ -132,4 +137,38 @@ stringToHTML = function (str) {
     // Change this to div.childNodes to support multiple top-level nodes
     return div.firstChild;
    }
+  //  git images
+  getImages(presID) {
+    this.userLoader= true;
+    this.modelimg.prescriptiontest_id=presID;
+    //  this.model.testType=2;
+    //  this.model.userType=this.userType;
+    //  this.model.patientID=this.pathData1.ptID;
+   
+   
+    console.log('modelimg ==', this.modelimg);
+    this.radService.gettestImages(this.modelimg).subscribe(
+      (response: any) => {
+        if (response.status === 0) {
+          console.log(' response images====',response);
+          this.imagesArr=response.data;
+          this.getlink();
+          this.userLoader = false;
+          
+        }
+    if (response.status === 1) {
+          this.errormsg = response.error;
+          this.userLoader = false;
+          alert('Problem in service! please Try again')
+          console.log('error=', this.errormsg);
+          
+        }
+      },
+      (error) => {}
+    );
+  
+  }
+  getlink():SafeUrl {
+    return this.sanitizer.bypassSecurityTrustUrl("C:/path/to/executable");
+}
 }

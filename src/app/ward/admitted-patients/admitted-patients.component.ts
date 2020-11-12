@@ -583,10 +583,12 @@ onSelectDiagnos(edat){
   console.log('edat',edat.item);
   
  // this.diagnosArr.push(edat.item);
-   this.diagObj['name']=edat.item.name;
-   this.diagObj['id']=edat.item.id; 
-   console.log('this.diagObj5555',this.diagObj);
-   this.diagnosArr.push(this.diagObj);
+  //  this.diagObj['name']=edat.item.name;
+  //  this.diagObj['id']=edat.item.id; 
+  //  console.log('this.diagObj5555',this.diagObj);
+   this.diagnosArr.push({"name":edat.item.name,"id":edat.item.id});
+   console.log('this.diagnosArr',this.diagnosArr);
+   //this.diagnosArr.push(this.diagObj);
    this.outdoorForm.patchValue({
     diagnosis: '',
     

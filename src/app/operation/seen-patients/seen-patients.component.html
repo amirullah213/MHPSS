@@ -24,15 +24,15 @@
                                             <p class="mt-3" for="inputState"><b>Type of Anesthesia : </b></p>
                                             <p class="mt-3" for="inputState"><b>Name Of Operation : </b></p>
                                             <p class="mt-3" for="inputState"><b>Name Of Operation Surgeon : </b></p>
-                                            <p class="mt-3" for="inputState"><b>Name of Anesthesia : </b></p>
+                                            <p class="mt-3" for="inputState"><b>Name of Anesthetist : </b></p>
                                             <p class="mt-3" for="inputState"><b>Remarks : </b></p>
                                         </div>
                                         <div class="col-sm-8">
-                                            <p class="mt-3" for="inputState"> General</p>
-                                            <p class="mt-3" for="inputState"> Apendixs</p>
-                                            <p class="mt-3" for="inputState"> Nadir Shah</p>
-                                            <p class="mt-3" for="inputState"> Local</p>
-                                            <p class="mt-3" for="inputState"> Remarks Remarks Remarks Remarks Remarks</p>
+                                            <p class="mt-3" for="inputState"> {{PathResponseArray.anesthesiaType}}</p>
+                                            <p class="mt-3" for="inputState"> {{PathResponseArray.operationName}}</p>
+                                            <p class="mt-3" for="inputState"> {{PathResponseArray.surgeonName}}</p>
+                                            <p class="mt-3" for="inputState"> {{PathResponseArray.anethetistName}}</p>
+                                            <p class="mt-3" for="inputState"> {{PathResponseArray.remarks}}</p>
                                         </div>
                                     </div>
                                     <hr class="gray">
@@ -40,19 +40,19 @@
                                         <div class="col-md-12">
                                             <ul>
                                                 <h4>Provisional Dignosis</h4>
-                                                <li class="ml-3">Typhoid Fever</li>
-                                                <li class="ml-3">Amoebiasis</li>
+                                                <li class="ml-3" *ngFor="let dig of diagArrOT; let i = index">{{dig.name}}</li>
+                                               
                                             </ul>
                                         </div>
                                     </div>
                                     <hr class="gray">
-                                    <div class="form-group row mx-0">
+                                    <!-- <div class="form-group row mx-0">
                                         <div class="col-md-12">
                                             <div class="form-group text-center">
                                                 <button type="button" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save</button>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </form>
                             </div>
                         </div>

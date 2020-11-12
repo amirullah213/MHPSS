@@ -42,6 +42,7 @@ export class PendingPatientsComponent implements OnInit {
   diagObj:any={};
   modalToken:any={};
   deptID:any;
+  selectedValueIndoorDiag: string;
 
   constructor(
     private modalService: BsModalService,
@@ -59,7 +60,7 @@ export class PendingPatientsComponent implements OnInit {
       anethetistName: ['', Validators.required],
       remarks: ['', Validators.required],
 
-      selectedValueIndoorDiag: ['', Validators.required],
+      selectedValueIndoorDiag: [''],
       ref: ['', Validators.required],
       
 
@@ -137,7 +138,8 @@ updateOperationData(fromData) {
         this.PathResponseArray=response.data;
         console.log('this.PathResponseArray==',this.PathResponseArray);
         this.userLoader2 = false;
-        this.router.navigate(['ot/home']);
+        // this.router.navigate(['ot/home']);
+        alert('sucessfully done')
         
         
       }
@@ -271,6 +273,8 @@ generatetoken() {
         console.log(' response for generatetoken====',response);
        
         this.userLoader = false;
+        alert('Successfully Admitted');
+         this.router.navigate(['ot/home']);
        
       }
   if (response.status === 1) {
