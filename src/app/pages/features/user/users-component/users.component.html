@@ -62,8 +62,12 @@
                                                             </td> -->
                                                             <td>{{user.token}}</td>
                                                             <td>{{user.firstname}}</td>
-                                                            <td>{{user.enteringDate | date}}</td>
-                                                            <td><a class="text-primary" href="javascript:void(0)" (click)="gotoPatDetails(user)">Detail</a> </td>
+                                                            <td>{{user.enteringDate | date : 'd-M-y'}}</td>
+                                                            <td>
+                                                                <a *ngIf="user.deptType!=3 && user.deptType!=2" class="text-primary" href="javascript:void(0)" (click)="gotoPatDetails(user)">Detail</a> 
+                                                                <a *ngIf="user.deptType==3" class="text-primary" href="javascript:void(0)" (click)="gotoPatDetails(user)">View EPI Vaccination</a> 
+                                                                <a *ngIf="user.deptType==2" class="text-primary" href="javascript:void(0)" (click)="gotoPatDetails(user)">View TT Vaccination</a> 
+                                                            </td>
                                                         </tr>
                                                         <tr *ngIf="userList.length === 0" style="text-align: center;">
                                                             <td colspan="3">No Record Found</td>
@@ -110,7 +114,7 @@
                                                             </td> -->
                                                             <td>{{user.token}}</td>
                                                             <td>{{user.firstname}}</td>
-                                                            <td>{{user.enteringDate | date}}</td>
+                                                            <td>{{user.enteringDate | date:'d-M-y'}}</td>
                                                             <td><a class="text-primary" href="javascript:void(0)" (click)="gotoPatDetails(user)">Detail</a> </td>
                                                         </tr>
                                                         <tr *ngIf="userList.length === 0" style="text-align: center;">
@@ -144,7 +148,7 @@
                                                             <th>CRP NO</th>
                                                             <th>Patient Name</th>
                                                             <th>Date</th>
-                                                            <th>Prescription</th>
+                                                            <th *ngIf="userList[0].deptType!=3 && userList[0].deptType!=2">Prescription</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody *ngIf="!userLoader">
@@ -158,10 +162,9 @@
                                                             </td> -->
                                                             <td>{{user.token}}</td>
                                                             <td>{{user.firstname}}</td>
-                                                            <td>{{user.enteringDate | date}}</td>
-                                                            <td>
-                                                                <a class="text-primary" *ngIf="user.deptType!=3 && user.deptType!=2" (click)="gotoPresDetails(user)" href="javascript:void(0)">View Prescription</a>
-                                                                <!-- <button type="button" class="button"> </button> -->
+                                                            <td>{{user.enteringDate | date:'d-M-y'}}</td>
+                                                            <td *ngIf="user.deptType!=3 && user.deptType!=2">
+                                                                <a class="text-primary"  (click)="gotoPresDetails(user)" href="javascript:void(0)">View Prescription</a>
 
                                                             </td>
                                                         </tr>

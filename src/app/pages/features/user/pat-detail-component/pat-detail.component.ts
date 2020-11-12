@@ -319,6 +319,7 @@ export class PatDetailComponent implements OnInit {
   
 onSelectSign(event: TypeaheadMatch): void {
 
+  debugger
   this.signObj= event.item;
  // this.addSign(event.item);
  
@@ -721,27 +722,12 @@ let tempdiag = 0;
    // this.diagItems.removeAt(i);
   }
   addSign() {
-    debugger
+    
     let s =this.clinicalInformation.value;
     if(s.selectedValueSign!=undefined && s.selectedValueSign!='')
   {
     let tempsign = 0;
-    if(this.signObj.id==undefined)
-     {
-       var tempnew = 0;
-      for(let f of this.NewlocalSign)
-      {
-        if(f.name==s.selectedValueSign)
-        {
-          tempnew = 1;
-          break;
-        }
-      } 
-      if(tempnew == 0)
-      {
-        this.NewlocalSign.push({'name':s.selectedValueSign})
-      }
-     }
+   
     if(this.localSign.length!=0){
       for(let e of this.localSign)
         { 
@@ -753,6 +739,7 @@ let tempdiag = 0;
     break
    }
 // }
+debugger
         if((this.signObj.id!=undefined && this.signObj!={}) && e.name==s.selectedValueSign){
         alert("already Exists");
         tempsign = 1;
@@ -761,8 +748,8 @@ let tempdiag = 0;
     }
     if (tempsign == 0)
     {
-      
-      this.localSign.push({ 'id': "", 'name':this.clinicalInformation.value.selectedValueSign})
+      //the id will be undefined
+      this.localSign.push({ 'id':this.signObj.id , 'name':s.selectedValueSign})
       this.clinicalInformation.patchValue({
         'selectedValueSign': '',
       })       
@@ -770,13 +757,17 @@ let tempdiag = 0;
 
      }
   }else{
-    this.localSign.push({ 'id': this.signObj.id, 'name': this.signObj.name })
+    this.localSign.push({ 'id': this.signObj.id, 'name': s.selectedValueSign })
       this.signObj={}
     this.clinicalInformation.patchValue({
       'selectedValueSign': '',   
 
     })
-  }    
+  }   
+  this.clinicalInformation.patchValue({
+    'selectedValueSign': '',   
+
+  }) 
 }
   }
   removeSign(index) {
@@ -829,28 +820,13 @@ let tempsymp = 0;
 }
 
 for (let symp of this.localSymptoms)
-{debugger
+{
   if(symp.sympId==undefined)
   {
     this.NewSymptoms.push({"name":symp.name})
   }
 }
-// if(this.selectedOptionSymptom==undefined)
-//      {
-//        var tempnew = 0;
-//       for(let f of this.NewSymptoms)
-//       {
-//         if(f.name==ci.name)
-//         {
-//           tempnew = 1;
-//           break;
-//         }
-//       } 
-//       if(tempnew == 0)
-//       {
-//        this.NewSymptoms.push({"name":ci.name})
-//       }
-//      }
+
 let tempsign = 0;
     if(this.localSign.length!=0){
       for(const e of this.localSign)
@@ -863,6 +839,8 @@ let tempsign = 0;
     break
    }
  }
+
+ 
         if((this.signObj.id!=undefined && this.signObj!={}) && e.name==this.clinicalInformation.value.selectedValueSign){
      //   alert("already Exists");
         tempsign = 1;
@@ -875,8 +853,8 @@ let tempsign = 0;
 
     if (tempsign == 0)
     {
-      this.NewlocalSign.push({'name':ci.selectedValueSign})
-      this.localSign.push({ 'id': "", 'name':ci.selectedValueSign})
+      // the id will be undefied
+      this.localSign.push({ 'id': this.signObj.id, 'name':ci.selectedValueSign})
            
        this.signObj={}
 
@@ -888,7 +866,14 @@ let tempsign = 0;
   }
 
 }
-
+for (let sgn of this.localSign)
+{
+  debugger
+  if(sgn.id==undefined)
+  {
+    this.NewlocalSign.push({'name':sgn.name})
+  }
+}
 
   let tempdiag = 0;
     if(this.localDiagData.length!=0){
