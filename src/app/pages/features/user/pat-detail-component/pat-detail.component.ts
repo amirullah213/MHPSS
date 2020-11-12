@@ -149,6 +149,7 @@ export class PatDetailComponent implements OnInit {
   detial: any;
   detail: any;
   docInfo: any;
+  sympId: any;
   constructor(
     private fb: FormBuilder,
     private uService: UserService,
@@ -334,6 +335,7 @@ this.diagID = event.item.id
   onSelectSymptom(event: TypeaheadMatch): void {
     
     this.selectedOptionSymptom = event.item;
+    this.sympId = event.item.id;
   }
 
   onSelectPath(event: TypeaheadMatch): void {
@@ -623,46 +625,45 @@ this.diagID = event.item.id
     })
   }
   addSymptom() {
-    // this.items = this.clinicalInformation.get('items') as FormArray;
-    // this.items.push(this.createSymptom(null));
     let ci =this.clinicalInformation.value;
     debugger
   if(ci.name!=undefined && ci.name!='')
   {
     let tempsymp = 0;
-    if(this.localSymptoms.length!=0){
+    
+    if(this.localSymptoms.length!=0)
+    {
       for(let e of this.localSymptoms)
         { 
-          if(this.selectedOptionSymptom==undefined)
- {
-  if(e.name==ci.name){
-    alert("already Exists");
-    tempsymp = 1;
-    break
-   }
- }
+       //  if(this.selectedOptionSymptom==undefined)
+         //  {
+            if(e.name==ci.name){
+            alert("already Exists");
+            tempsymp = 1;
+            break
+                   }
+                    // }
         if(this.selectedOptionSymptom!=undefined && e.name==this.selectedOptionSymptom.name){
         alert("already Exists");
         this.selectedOptionSymptom=undefined;
         tempsymp = 1;
         break
        }
-    }
-    if (tempsymp == 0)
-    {
-      
-      this.NewSymptoms.push({ name: ci.name})  
-         this.localSymptoms.push({ name: ci.name,
+          }
+          if (tempsymp == 0)
+          {
+         this.localSymptoms.push({sympId:this.sympId, name: ci.name,
           duration: ci.duration,
-          durationType: ci.durationType})    }
-  }else{
-    this.localSymptoms.push({ name: ci.name,
-      duration: ci.duration,
-      durationType: ci.durationType})  }
-      this.clinicalInformation.patchValue({
-        name:"",
-        durationType:"",
-        duration:""
+          durationType: ci.durationType})  
+          }
+      }else{
+                 this.localSymptoms.push({sympId:this.sympId, name: ci.name,
+                 duration: ci.duration,
+                 durationType: ci.durationType})  }
+                 this.clinicalInformation.patchValue({
+                 name:"",
+                 durationType:"",
+                 duration:""
       })
       this.selectedOptionSymptom=undefined;
 
@@ -720,20 +721,39 @@ let tempdiag = 0;
    // this.diagItems.removeAt(i);
   }
   addSign() {
-    
+    debugger
+    let s =this.clinicalInformation.value;
+    if(s.selectedValueSign!=undefined && s.selectedValueSign!='')
+  {
     let tempsign = 0;
+    if(this.signObj.id==undefined)
+     {
+       var tempnew = 0;
+      for(let f of this.NewlocalSign)
+      {
+        if(f.name==s.selectedValueSign)
+        {
+          tempnew = 1;
+          break;
+        }
+      } 
+      if(tempnew == 0)
+      {
+        this.NewlocalSign.push({'name':s.selectedValueSign})
+      }
+     }
     if(this.localSign.length!=0){
       for(let e of this.localSign)
         { 
-          if(this.signObj.id==undefined || this.signObj=={})
- {
-  if(e.name==this.clinicalInformation.value.selectedValueSign){
+       //   if(this.signObj.id==undefined || this.signObj=={})
+ //{
+  if(e.name==s.selectedValueSign){
     alert("already Exists");
     tempsign = 1;
     break
    }
- }
-        if((this.signObj.id!=undefined && this.signObj!={}) && e.name==this.clinicalInformation.value.selectedValueSign){
+// }
+        if((this.signObj.id!=undefined && this.signObj!={}) && e.name==s.selectedValueSign){
         alert("already Exists");
         tempsign = 1;
         break
@@ -742,7 +762,6 @@ let tempdiag = 0;
     if (tempsign == 0)
     {
       
-      this.NewlocalSign.push({'name':this.clinicalInformation.value.selectedValueSign})
       this.localSign.push({ 'id': "", 'name':this.clinicalInformation.value.selectedValueSign})
       this.clinicalInformation.patchValue({
         'selectedValueSign': '',
@@ -758,7 +777,7 @@ let tempdiag = 0;
 
     })
   }    
-    
+}
   }
   removeSign(index) {
 
@@ -773,10 +792,13 @@ let tempdiag = 0;
 
   addClinicalInfo() {
     debugger
+    this.NewSymptoms=[]
+
 let ci=this.clinicalInformation.value
 let tempsymp = 0;
+
     if(this.localSymptoms.length!=0){
-      for(const e of this.localSymptoms)
+      for(let e of this.localSymptoms)
         { 
           if(this.selectedOptionSymptom==undefined)
  {
@@ -788,7 +810,7 @@ let tempsymp = 0;
  }
         if(this.selectedOptionSymptom!=undefined && e.name==this.selectedOptionSymptom.name){
 //        alert("already Exists");
-        this.selectedOptionSymptom={};
+        this.selectedOptionSymptom=undefined;
         tempsymp = 1;
         break
        }
@@ -799,14 +821,36 @@ let tempsymp = 0;
     
     {
       if(this.selectedOptionSymptom==undefined){
-      this.NewSymptoms.push({ name: ci.name})  
-      this.localSymptoms.push({ name: ci.name, duration: ci.duration,durationType: ci.durationType})
+      this.localSymptoms.push({sympId:this.sympId, name: ci.name, duration: ci.duration,durationType: ci.durationType})
     }
   }else{
-    this.localSymptoms.push({ name: ci.name,duration: ci.duration,durationType: ci.durationType})
+    this.localSymptoms.push({sympId:this.sympId, name: ci.name,duration: ci.duration,durationType: ci.durationType})
   }
 }
 
+for (let symp of this.localSymptoms)
+{debugger
+  if(symp.sympId==undefined)
+  {
+    this.NewSymptoms.push({"name":symp.name})
+  }
+}
+// if(this.selectedOptionSymptom==undefined)
+//      {
+//        var tempnew = 0;
+//       for(let f of this.NewSymptoms)
+//       {
+//         if(f.name==ci.name)
+//         {
+//           tempnew = 1;
+//           break;
+//         }
+//       } 
+//       if(tempnew == 0)
+//       {
+//        this.NewSymptoms.push({"name":ci.name})
+//       }
+//      }
 let tempsign = 0;
     if(this.localSign.length!=0){
       for(const e of this.localSign)
@@ -1471,9 +1515,9 @@ debugger
   if(this.investigationForm.value.termination_date!=undefined && this.investigationForm.value.termination_date!='' && this.docType==undefined)
 {     
   let operateDate = this.datepipe.transform(new Date(this.investigationForm.value.termination_date))//formatting current ///date here 
-  this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.ptID,'prescriptionID': this.patInfo.prescriptionID,"patientID": this.patientID,"departmentID":this.patInfo.departmentID,"diagnosis":this.localIndoorData,"isIndoor":3,"refferedFrom":-1,"admitDate":operateDate}
+  this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.ptID,"patientID": this.patientID,"departmentID":this.patInfo.departmentID,"diagnosis":this.localIndoorData,"isIndoor":3,"refferedFrom":-1,"admitDate":operateDate}
 }else{  
-     this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.ptID,'prescriptionID': this.patInfo.prescriptionID,"patientID": this.patientID,"departmentID":this.id,"diagnosis":this.localIndoorData,"isIndoor":this.docType,"refferedFrom":-1,}
+     this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.ptID,"patientID": this.patientID,"departmentID":this.id,"diagnosis":this.localIndoorData,"isIndoor":this.docType,"refferedFrom":-1,}
 
 }
   this.uService.generatetoken(this.param).subscribe
