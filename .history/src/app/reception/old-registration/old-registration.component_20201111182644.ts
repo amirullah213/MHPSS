@@ -166,8 +166,8 @@ export class OldRegistrationComponent implements OnInit {
   this.model4.isIndoor=6;
   this.model4.refferedFrom=modData.reff;
  
-  console.log('model4 ==', this.model4);
-  this.receptService.generToken(this.model4).subscribe(
+  console.log('model3 ==', this.model3);
+  this.receptService.generToken(this.model3).subscribe(
    (response: any) => {
      if (response.status === 0) {
       
