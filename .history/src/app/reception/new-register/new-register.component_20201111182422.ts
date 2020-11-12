@@ -31,26 +31,26 @@ export class NewRegisterComponent implements OnInit {
       }
     });
   }
-  requestUsb() {
-    this.usbPrintDriver.requestUsb().subscribe(result => {
-      this.printService.setDriver(this.usbPrintDriver, 'ESC/POS');
-    });
-  }
+  // requestUsb() {
+  //   this.usbPrintDriver.requestUsb().subscribe(result => {
+  //     this.printService.setDriver(this.usbPrintDriver, 'ESC/POS');
+  //   });
+  // }
 
-  connectToWebPrint() {
-    this.webPrintDriver = new WebPrintDriver(this.ip);
-    this.printService.setDriver(this.webPrintDriver, 'WebPRNT');
-  }
+  // connectToWebPrint() {
+  //   this.webPrintDriver = new WebPrintDriver(this.ip);
+  //   this.printService.setDriver(this.webPrintDriver, 'WebPRNT');
+  // }
 
-  print(driver: PrintDriver) {
-    this.printService.init()
-      .setBold(true)
-      .writeLine('Hello World!')
-      .setBold(false)
-      .feed(4)
-      .cut('full')
-      .flush();
-  }
+  // print(driver: PrintDriver) {
+  //   this.printService.init()
+  //     .setBold(true)
+  //     .writeLine('Hello World!')
+  //     .setBold(false)
+  //     .feed(4)
+  //     .cut('full')
+  //     .flush();
+  // }
 
   ngOnInit(): void {
     this.loginDetails=JSON.parse(localStorage.getItem('details')) ;

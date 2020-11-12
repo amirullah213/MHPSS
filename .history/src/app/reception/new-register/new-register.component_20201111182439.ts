@@ -31,16 +31,16 @@ export class NewRegisterComponent implements OnInit {
       }
     });
   }
-  requestUsb() {
-    this.usbPrintDriver.requestUsb().subscribe(result => {
-      this.printService.setDriver(this.usbPrintDriver, 'ESC/POS');
-    });
-  }
+  // requestUsb() {
+  //   this.usbPrintDriver.requestUsb().subscribe(result => {
+  //     this.printService.setDriver(this.usbPrintDriver, 'ESC/POS');
+  //   });
+  // }
 
-  connectToWebPrint() {
-    this.webPrintDriver = new WebPrintDriver(this.ip);
-    this.printService.setDriver(this.webPrintDriver, 'WebPRNT');
-  }
+  // connectToWebPrint() {
+  //   this.webPrintDriver = new WebPrintDriver(this.ip);
+  //   this.printService.setDriver(this.webPrintDriver, 'WebPRNT');
+  // }
 
   print(driver: PrintDriver) {
     this.printService.init()
