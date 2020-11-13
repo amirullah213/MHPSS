@@ -84,7 +84,7 @@ console.log('imageUrl===',this.imageUrl)
    
     this.modalRef = this.modalService.show(
       template,
-      Object.assign({}, {id: 1, class: 'gray modal-lg' })
+      Object.assign({}, { class: 'gray modal-lg' })
     );
   }
   showImageModal(template1: TemplateRef<any>,img) {
@@ -92,12 +92,10 @@ console.log('imageUrl===',this.imageUrl)
     console.log('this.imageInModal',this.imageInModal);
     this.modalRef = this.modalService.show(
       template1,
-      Object.assign({}, {id: 2, class: 'gray modal-lg' })
+      Object.assign({}, { class: 'gray modal-lg' })
     );
   }
-  closeModal(modalId?: number){
-    this.modalService.hide(modalId);
-  }
+  
 //---------------------get all lab patients---------------------
 getUsersPending() {
   this.userLoader= true;

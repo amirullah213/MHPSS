@@ -14,7 +14,7 @@ import { RadServiceService } from '../services/rad-service.service';
 import { FormsModule } from '@angular/forms';
 
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { APP_CONFIG } from '../../core';
+
 @Component({
   selector: 'ncri-diagnosis-pending-rad',
   templateUrl: './diagnosis-pending-rad.component.html',
@@ -65,8 +65,6 @@ export class DiagnosisPendingRadComponent implements OnInit {
     toolbarHiddenButtons: [['bold', 'italic'], ['fontSize']],
   };
    imageUrl:any;
-   imageInModal:any;
-   
   isCollapsed = true;
   userLoader: boolean = false;
   model: any = {};
@@ -119,13 +117,11 @@ export class DiagnosisPendingRadComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.imageUrl=APP_CONFIG.apiBaseUrl+'getImage/';
     this.hospitalID = localStorage.getItem('hospitalID');
     this.doctorID = localStorage.getItem('docId');
     this.userType = localStorage.getItem('userType');
     this.pathData1 = JSON.parse(localStorage.getItem('pathDetails'));
     console.log('pathData1===', this.pathData1);
-    console.log('imageUrl===',this.imageUrl);
     // this.userData.status = 0;
     this.getUsersPending();
   }
@@ -144,17 +140,6 @@ export class DiagnosisPendingRadComponent implements OnInit {
       template,
       Object.assign({}, { class: 'gray modal-lg' })
     );
-  }
-  showImageModal(template1: TemplateRef<any>,img) {
-    this.imageInModal=img;
-    console.log('this.imageInModal',this.imageInModal);
-    this.modalRef = this.modalService.show(
-      template1,
-      Object.assign({}, {id: 2, class: 'gray modal-lg' })
-    );
-  }
-  closeModal(modalId?: number){
-    this.modalService.hide(modalId);
   }
   //---------------------get all lab patients---------------------
   getUsersPending() {

@@ -65,7 +65,6 @@ export class DiagnosisPendingRadComponent implements OnInit {
     toolbarHiddenButtons: [['bold', 'italic'], ['fontSize']],
   };
    imageUrl:any;
-   imageInModal:any;
    
   isCollapsed = true;
   userLoader: boolean = false;
@@ -144,17 +143,6 @@ export class DiagnosisPendingRadComponent implements OnInit {
       template,
       Object.assign({}, { class: 'gray modal-lg' })
     );
-  }
-  showImageModal(template1: TemplateRef<any>,img) {
-    this.imageInModal=img;
-    console.log('this.imageInModal',this.imageInModal);
-    this.modalRef = this.modalService.show(
-      template1,
-      Object.assign({}, {id: 2, class: 'gray modal-lg' })
-    );
-  }
-  closeModal(modalId?: number){
-    this.modalService.hide(modalId);
   }
   //---------------------get all lab patients---------------------
   getUsersPending() {
