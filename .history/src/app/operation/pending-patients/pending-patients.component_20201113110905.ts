@@ -95,7 +95,6 @@ getOperationTheatreData() {
         console.log(' response====',response);
         this.PathResponseArray=response.data;
         console.log('this.PathResponseArray==',this.PathResponseArray);
-       this.diagnosArr2=JSON.parse(this.PathResponseArray.diagnosis) ;
         this.userLoader = false;
         this.dynamicForm.patchValue({
           anesthesiaType:  this.PathResponseArray.anesthesiaType,

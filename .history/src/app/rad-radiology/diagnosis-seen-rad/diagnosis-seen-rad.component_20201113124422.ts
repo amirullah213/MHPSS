@@ -95,9 +95,7 @@ console.log('imageUrl===',this.imageUrl)
       Object.assign({}, {id: 2, class: 'gray modal-lg' })
     );
   }
-  closeModal(modalId?: number){
-    this.modalService.hide(modalId);
-  }
+  
 //---------------------get all lab patients---------------------
 getUsersPending() {
   this.userLoader= true;

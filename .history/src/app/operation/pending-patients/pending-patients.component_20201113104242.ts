@@ -95,9 +95,8 @@ getOperationTheatreData() {
         console.log(' response====',response);
         this.PathResponseArray=response.data;
         console.log('this.PathResponseArray==',this.PathResponseArray);
-       this.diagnosArr2=JSON.parse(this.PathResponseArray.diagnosis) ;
         this.userLoader = false;
-        this.dynamicForm.patchValue({
+        this.dynamicForm.setValue({
           anesthesiaType:  this.PathResponseArray.anesthesiaType,
           operationName: this.PathResponseArray.operationName,
           surgeonName: this.PathResponseArray.surgeonName,
@@ -238,16 +237,16 @@ onSelectDiagnos(edat){
  // this.diagnosArr.push(edat.item);
    
    
-   this.diagnosArr2.push({"name":edat.item.name,"id":edat.item.id});
+   this.diagnosArr.push({"name":edat.item.name,"id":edat.item.id});
    this.dynamicForm.patchValue({
     selectedValueIndoorDiag: '',
     
   });
-  console.log('this.diagnosArr2',this.diagnosArr2);
+  console.log('this.diagnosArr',this.diagnosArr);
 }
 removeDiag(indx){
-  this.diagnosArr2.splice(indx, 1);
-  console.log('$x==',this.diagnosArr2)
+  this.diagnosArr.splice(indx, 1);
+  console.log('$x==',this.diagnosArr)
 }
 
 changeRefVal(evt){
