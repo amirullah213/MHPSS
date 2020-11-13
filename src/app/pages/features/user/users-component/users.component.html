@@ -138,13 +138,6 @@
                                                 <table class="table center-aligned-table">
                                                     <thead>
                                                         <tr class="text-dark">
-                                                            <!-- <th class=" d-flex align-items-center">
-                                                                <div class="form-check checkbox justify-content-center">
-                                                                    <input type="checkbox" class="form-check-input"
-                                                                        id="exampleCheck1">
-                                                                    <label class="form-check-label" for="exampleCheck1"></label>
-                                                                </div>
-                                                            </th> -->
                                                             <th>CRP NO</th>
                                                             <th>Patient Name</th>
                                                             <th>Date</th>
@@ -153,19 +146,11 @@
                                                     </thead>
                                                     <tbody *ngIf="!userLoader">
                                                         <tr *ngFor="let user of userList">
-                                                            <!-- <td class="d-flex align-items-center">
-                                                                <div class="form-check checkbox justify-content-center">
-                                                                    <input type="checkbox" class="form-check-input"
-                                                                        id="exampleCheck1">
-                                                                    <label class="form-check-label" for="exampleCheck1"></label>
-                                                                </div>
-                                                            </td> -->
                                                             <td>{{user.token}}</td>
                                                             <td>{{user.firstname}}</td>
                                                             <td>{{user.enteringDate | date:'d-M-y'}}</td>
                                                             <td *ngIf="user.deptType!=3 && user.deptType!=2">
-                                                                <a class="text-primary"  (click)="gotoPresDetails(user)" href="javascript:void(0)">View Prescription</a>
-
+                                                            <a class="text-primary"  (click)="gotoPresDetails(user)" href="javascript:void(0)">View Prescription</a>
                                                             </td>
                                                         </tr>
                                                         <tr *ngIf="userList.length === 0" style="text-align: center;">

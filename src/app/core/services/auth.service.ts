@@ -64,8 +64,9 @@ export class AuthService {
   }
   
   setUser(resp: any) {
-    console.log('resp details===',resp)
     localStorage.setItem('details', JSON.stringify(resp) );
+
+    localStorage.removeItem('tab');
     localStorage.setItem('userType', resp.userType);
     localStorage.setItem('hospitalID', resp.hospitalID);
     localStorage.setItem('docId', resp.id);

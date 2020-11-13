@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TypeaheadMatch } from 'ngx-bootstrap/typeahead/typeahead-match.class';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { DateFormatPipe } from 'src/app/core/pipes/datepipe.pipe';
+import { PrintService } from 'ng-thermal-print';
 
 @Component({
   selector: 'ncri-create-user',
@@ -150,6 +151,7 @@ export class PatDetailComponent implements OnInit {
   detail: any;
   docInfo: any;
   sympId: any;
+  deptType: any;
   constructor(
     private fb: FormBuilder,
     private uService: UserService,
@@ -194,6 +196,16 @@ export class PatDetailComponent implements OnInit {
       description:[''],
       otherFh:[''],
       otherPh:[''],
+      isTTVac:[''],
+      durPrg:[''],
+      durLac:[''],
+      ANCServices:[''],
+      PNCServices:[''],
+      LMP:[''],
+      EDD:[''],
+      isShortHeight:[''],
+      isLowWeight:[''],
+      isMUAC:['']
 
     });
     this.investigationForm = this.fb.group({
@@ -478,11 +490,11 @@ this.diagID = event.item.id
       ((response: any) => {
         if (response.status === 0) {
           this.prescriptionData = response.prescription;
+          this.putValue(this.prescriptionData)
+
           this.patientID = response.prescription.patientID;
           this.ptID = response.prescription.ptID;
-
-          this.diagnosisData = response.diagnosis;
-          
+          this.diagnosisData = response.diagnosis;          
           this.signsData = response.signs;
           this.symptomsData = response.symptoms;
           this.vitalsData = response.vitals;
@@ -492,7 +504,6 @@ this.diagID = event.item.id
             
             if (this.symptomComplatins !=null && this.symptomComplatins.length != 0) {
               this.symptomComplatins.forEach((e, v) => {
-              //  (this.items = this.clinicalInformation.get('items') as FormArray).push(this.createSymptom(e));
                   this.localSymptoms.push(e)
               });
             }
@@ -582,6 +593,22 @@ this.diagID = event.item.id
         (error) => { }
       );
   }
+  putValue(pd: any) {
+
+    this.clinicalInformation.patchValue({
+      ANCServices:pd.ANCServices,
+      PNCServices:pd.PNCServices,
+      isTTVac:pd.isTTVac,
+      durPrg:pd.PregnancyNutritionStatus,
+      durLac:pd.LactionNutritionStatus,
+      LMP:pd.LMP,
+      EDD:pd.EDD,
+      isMUAC:pd.isMUAC,
+      isShortHeight:pd.isShortHeight,
+      isLowWeight:pd.isLowWeight
+    })
+
+  }
 
 
   matchFunc(arr, controls, gstr) {
@@ -627,7 +654,7 @@ this.diagID = event.item.id
   }
   addSymptom() {
     let ci =this.clinicalInformation.value;
-    debugger
+    
   if(ci.name!=undefined && ci.name!='')
   {
     let tempsymp = 0;
@@ -647,6 +674,7 @@ this.diagID = event.item.id
         if(this.selectedOptionSymptom!=undefined && e.name==this.selectedOptionSymptom.name){
         alert("already Exists");
         this.selectedOptionSymptom=undefined;
+        this.sympId=undefined
         tempsymp = 1;
         break
        }
@@ -667,6 +695,7 @@ this.diagID = event.item.id
                  duration:""
       })
       this.selectedOptionSymptom=undefined;
+      this.sympId=undefined
 
   }
   }
@@ -778,7 +807,9 @@ debugger
 
   }
 
-  
+  eddCalc(lmp){
+console.log(lmp)
+  }
 
 
   addClinicalInfo() {
@@ -821,9 +852,10 @@ let tempsymp = 0;
 
 for (let symp of this.localSymptoms)
 {
-  if(symp.sympId==undefined)
+  
+  if(symp.sympId==undefined )
   {
-    this.NewSymptoms.push({"name":symp.name})
+        this.NewSymptoms.push({"name":symp.name})
   }
 }
 
@@ -902,12 +934,7 @@ for (let sgn of this.localSign)
       this.localDiagData.push({ 'id': this.diagID, 'name': ci.pname,  "description":ci.description})
    
     }
-  
-
-    this.userLoader = true;
-
-   
-
+      this.userLoader = true;
     const tags = this.localSign;
     var result = tags.map(a => a.name);
 
@@ -924,11 +951,11 @@ for (let sgn of this.localSign)
       'hospitalID': localStorage.getItem('hospitalID'),
       'prescriptionID': this.patInfo.prescriptionID, "userID":this.docInfo.id,
       "patientID": this.patientID, "ptID": this.ptID, "bps": ci.bps,"oxygen_saturation": ci.oxygen_saturation, "pulse": ci.pulse,
-      "height": ci.height, "weight": ci.weight,"pastHistory": phNames, "familyHistory": fhNames, "isFollowUp": ci.isFollowUp, "lmp": "lmp", "isShortHeight": 0, "isMUAC": 0,
-      "signs": result, "PNCServices": "", "temperature": ci.temperature,"isLowWeight": 1, "isMalnutration": ci.isMalnutration, "ANCServices": "",
-      "edd": "", "complaints": this.localSymptoms, "diagnosis": this.localDiagData,"newSigns":this.NewlocalSign,"newComplaints":this.NewSymptoms, "deptType": 1, "userName": this.docInfo.name,
+      "height": ci.height, "weight": ci.weight,"pastHistory": phNames, "familyHistory": fhNames, "isFollowUp": ci.isFollowUp, "lmp": ci.LMP, "isShortHeight": ci.isShortHeight, "isMUAC": ci.isMUAC,
+      "signs": result, "PNCServices":ci.PNCServices, "temperature": ci.temperature,"isLowWeight": ci.isLowWeight, "isMalnutration": ci.isMalnutration, "ANCServices": ci.ANCServices,
+      "edd": ci.EDD, "complaints": this.localSymptoms, "diagnosis": this.localDiagData,"newSigns":this.NewlocalSign,"newComplaints":this.NewSymptoms, "deptType": this.deptType, "userName": this.docInfo.name,
       "otherFamilyHistory":ci.otherFh, "otherPastHistory":ci.otherPh,
-      "PregnancyNutritionStatus": "", "isTTVac": 0, "LactionNutritionStatus": ""
+      "PregnancyNutritionStatus": ci.durPrg, "isTTVac": ci.isTTVac, "LactionNutritionStatus": ci.durLac
     };
     this.uService.addclinicalinfo(this.param).subscribe((response: any) => {
       if (response.status === 0) {
@@ -1293,20 +1320,20 @@ debugger
       );
   }
   updatepatienttoken() {
-    let deptType=0;
+    this.deptType=0;
     if(this.patInfo.deptType==0)
     {
-       deptType = 1
+       this.deptType = 1
 
     }
     else{
-      deptType = this.patInfo.deptType
+      this.deptType = this.patInfo.deptType
 
     }
 
 
 
-    this.param={"isPrescribed":2,"deptType":deptType,"ptID":this.ptID,"hospitalID":localStorage.getItem('hospitalID')}
+    this.param={"isPrescribed":2,"deptType":this.deptType,"ptID":this.ptID,"hospitalID":localStorage.getItem('hospitalID')}
     this.userLoader = true;
 
     this.uService.updatepatienttoken(this.param).subscribe

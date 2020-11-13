@@ -184,7 +184,7 @@
                                             </div>
                                         </div>
                                         <hr class="hr-gray mx-0">
-                                        <div class="row mx-0 border4">
+                                        <div class="row mx-0 border4" *ngIf='detail.isSync!=9'>
                                             <div class="col-md-6">
                                                 <div class="form-group input-group">
                                                     <label for="formGroupExampleInput">Is Follow Up</label>
@@ -204,6 +204,46 @@
                                                     <span class="wrapper-select">
                                                         <select class="form-control" formControlName="isMalnutration"
                                                             aria-label="Text input with segmented dropdown button"
+                                                            placeholder="Is Follow Up" >
+                                                            <option [value]="0">No</option>
+                                                            <option [value]="1">Yes</option>
+                                                        </select>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6" *ngIf="clinicalInformation.value.isMalnutration==1">
+                                                <div class="form-group input-group">
+                                                    <label for="formGroupExampleInput">Low Weight for Age</label>
+                                                    <span class="wrapper-select">
+                                                        <select class="form-control" formControlName="isLowWeight"
+                                                            aria-label="Text input with segmented dropdown button"
+                                                            placeholder="Is Follow Up">
+                                                            <option [value]="0">No</option>
+                                                            <option [value]="1">Yes</option>
+                                                        </select>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-md-6" *ngIf="clinicalInformation.value.isMalnutration==1">
+                                                <div class="form-group input-group">
+                                                    <label for="formGroupExampleInput">MAUC < 12.5 cm</label>
+                                                    <span class="wrapper-select">
+                                                        <select class="form-control" formControlName="isMUAC"
+                                                            aria-label="Text input with segmented dropdown button"
+                                                            placeholder="Is Follow Up">
+                                                            <option [value]="0">No</option>
+                                                            <option [value]="1">Yes</option>
+                                                        </select>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6" *ngIf="clinicalInformation.value.isMalnutration==1">
+                                                <div class="form-group input-group">
+                                                    <label for="formGroupExampleInput">Short Height for Age</label>
+                                                    <span class="wrapper-select">
+                                                        <select class="form-control" formControlName="isShortHeight"
+                                                            aria-label="Text input with segmented dropdown button"
                                                             placeholder="Is Follow Up">
                                                             <option [value]="0">No</option>
                                                             <option [value]="1">Yes</option>
@@ -212,6 +252,135 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row mx-0 border4" *ngIf='detail.isSync==9'>
+                                            <div class="col-md-6">
+                                                <div class="form-group input-group">
+                                                    <label for="formGroupExampleInput">Anc Services</label>
+                                                    <span class="wrapper-select">
+                                                        <select class="form-control" formControlName="ANCServices"
+                                                            aria-label="Text input with segmented dropdown button"
+                                                            placeholder="Is Follow Up">
+                                                            <option>ANC1</option>
+                                                            <option>ANC2</option>
+                                                            <option>ANC3</option>
+                                                            <option>ANC4 or More</option>
+                                                          
+                                                        </select>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group input-group">
+                                                    <label for="formGroupExampleInput">Pnc Services</label>
+                                                    <span class="wrapper-select">
+                                                        <select class="form-control" formControlName="PNCServices"
+                                                            aria-label="Text input with segmented dropdown button"
+                                                            placeholder="Anc Services">
+                                                            
+                                                            <option >PNC1</option>
+                                                            <option>PNC2</option>
+                                                            <option >PNC3</option>
+                                                            <option >PNC4 or More</option>
+                                                        </select>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12" ><h6>Nutration Status  (if MAUC < 21 cm)</h6></div>   
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="formGroupExampleInput">During Pregnancy</label>
+                                                    <input formControlName="durPrg" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="formGroupExampleInput">During Lactation</label>
+                                                    <input formControlName="durLac" class="form-control">
+                                                </div>
+                                            
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group input-group">
+                                                    <label for="formGroupExampleInput">TT Vaccination Adivce</label>
+                                                    <span class="wrapper-select">
+                                                        <select class="form-control" formControlName="isTTVac"
+                                                            aria-label="Text input with segmented dropdown button"
+                                                            placeholder="Is Follow Up">
+                                                            <option [value]="0">No</option>
+                                                            <option [value]="1">Yes</option>
+                                                        </select>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group input-group">
+                                                    <label for="formGroupExampleInput">Is Follow Up</label>
+                                                    <span class="wrapper-select">
+                                                        <select class="form-control" formControlName="isFollowUp"
+                                                            aria-label="Text input with segmented dropdown button"
+                                                            placeholder="Is Follow Up">
+                                                            <option [value]="0">No</option>
+                                                            <option [value]="1">Yes</option>
+                                                        </select>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-md-6">
+                                                <div class="form-group input-group">
+                                                    <label for="formGroupExampleInput">Malnutrition</label>
+                                                    <span class="wrapper-select">
+                                                        <select class="form-control" formControlName="isMalnutration"
+                                                            aria-label="Text input with segmented dropdown button"
+                                                            placeholder="Is Follow Up">
+                                                            <option [value]="0">No</option>
+                                                            <option [value]="1">Yes</option>
+                                                        </select>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6" *ngIf="clinicalInformation.value.isMalnutration==1">
+                                                <div class="form-group input-group">
+                                                    <label for="formGroupExampleInput">Low Weight for Age</label>
+                                                    <span class="wrapper-select">
+                                                        <select class="form-control" formControlName="isLowWeight"
+                                                            aria-label="Text input with segmented dropdown button"
+                                                            placeholder="Is Follow Up">
+                                                            <option [value]="0">No</option>
+                                                            <option [value]="1">Yes</option>
+                                                        </select>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-md-6" *ngIf="clinicalInformation.value.isMalnutration==1">
+                                                <div class="form-group input-group">
+                                                    <label for="formGroupExampleInput">MAUC < 12.5 cm</label>
+                                                    <span class="wrapper-select">
+                                                        <select class="form-control" formControlName="isMUAC"
+                                                            aria-label="Text input with segmented dropdown button"
+                                                            placeholder="Is Follow Up">
+                                                            <option [value]="0">No</option>
+                                                            <option [value]="1">Yes</option>
+                                                        </select>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6" *ngIf="clinicalInformation.value.isMalnutration==1">
+                                                <div class="form-group input-group">
+                                                    <label for="formGroupExampleInput">Short Height for Age</label>
+                                                    <span class="wrapper-select">
+                                                        <select class="form-control" formControlName="isShortHeight"
+                                                            aria-label="Text input with segmented dropdown button"
+                                                            placeholder="Is Follow Up">
+                                                            <option [value]="0">No</option>
+                                                            <option [value]="1">Yes</option>
+                                                        </select>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <hr class="hr-gray mx-0">
                                         <div class="row mx-0 border4">
                                             <div class="col-md-12">
@@ -373,13 +542,26 @@
                                             </div>
                                         </div>
                                         <hr class="hr-gray mx-0">
+                                        <div class="row mx-0 border4">
+
+                                            <div class="col-md-6">
+                                                    <label for="formGroupExampleInput">LMP</label>
+                                                    <input type="text" formControlName="LMP" (blur)="eddCalc(clinicalInformation.value.LMP)" placeholder="During Pregnancy" class="form-control" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" bsDatepicker>
+                                                    
+                                                </div>
+                                            <div class="col-md-6">
+                                                    <label for="formGroupExampleInput">EDD</label>
+                                                    <input formControlName="EDD" [attr.readonly]="true" class="form-control">
+                                            </div>
+                                            </div>
+                                        <hr class="hr-gray mx-0">
                                         <div class="col-md-12 text-center mt-3">
                                             <button type="button" (click)="addClinicalInfo()" *ngIf="!userLoader" class="button">
-                                              <i class="fa fa-check-square mr-2"></i> Save 
+                                              <i class="fa fa-check-square mr-2"></i> Next 
                                             </button>
                                             <button type="button" *ngIf="userLoader" class="button">
                                                 <span class="spinner-border" *ngIf="userLoader" role="status" aria-hidden="true"></span> 
-                                                 Save 
+                                                  
                                             </button>
                                         </div>
                                     </div>
