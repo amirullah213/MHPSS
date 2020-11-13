@@ -114,10 +114,10 @@ export class UserService {
     let url = APP_CONFIG.apiBaseUrl + 'updatePassword';
     return this.http.post(url, obj);
   }
-
-  
-
-  
+  gettestImages  (obj: any) {
+    let url = APP_CONFIG.apiBaseUrl + 'gettestimages';
+    return this.http.post(url, obj);
+  } 
   
   
 }

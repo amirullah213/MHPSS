@@ -6,6 +6,8 @@ import { TypeaheadMatch } from 'ngx-bootstrap/typeahead/typeahead-match.class';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { DateFormatPipe } from 'src/app/core/pipes/datepipe.pipe';
 import { PrintService } from 'ng-thermal-print';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { APP_CONFIG } from 'src/app/core';
 
 @Component({
   selector: 'ncri-create-user',
@@ -152,13 +154,21 @@ export class PatDetailComponent implements OnInit {
   docInfo: any;
   sympId: any;
   deptType: any;
+  imagesArr: any;
+  errormsg: any;
+  Indid: any;
+  imageInModal: any;
+  imageUrl: any;
+  
   constructor(
     private fb: FormBuilder,
     private uService: UserService,
     private router: Router,
     private route: ActivatedRoute,
     public modalService: BsModalService,
-   private datepipe:DateFormatPipe
+   private datepipe:DateFormatPipe,
+   private sanitizer:DomSanitizer
+
 
   ) {
     this.controls = this.phArray.map(c => new FormControl(false));
@@ -216,7 +226,8 @@ export class PatDetailComponent implements OnInit {
       termination_date: [''],
       chkPath: [false],
       chkRad: [false],
-      ref:['']
+      ref:[''],
+      descriptionIndoor:['']
 
     });
     this.treatmentForm = this.fb.group({
@@ -247,6 +258,7 @@ export class PatDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.imageUrl=APP_CONFIG.apiBaseUrl+'getImage/';
     if(localStorage.getItem("patData"))
     this.patInfo = JSON.parse(localStorage.getItem("patData"));
     if(localStorage.getItem("docDetails"))
@@ -271,11 +283,51 @@ export class PatDetailComponent implements OnInit {
     this.getPatPrescrib(this.patInfo);
 
   }
+  getlink():SafeUrl {
+    return this.sanitizer.bypassSecurityTrustUrl("C:/path/to/executable");
+  }
+  gettestImages(presID) {
+    debugger
+    this.userLoader= true;
+    this.param={prescriptiontest_id:presID};
 
+    debugger
+    this.uService.gettestImages(this.param).subscribe
+
+    ((response: any) => {
+      if (response.status === 0) {
+        
+        this.imagesArr=response.data;
+
+//       this.getlink()
+
+        this.userLoader = false;
+      } else {
+        this.userLoader = false;
+        alert('Something went wrong try again');
+      }
+    },
+      (error) => { }
+    );
+  
+  }
+  showImageModal(template1: TemplateRef<any>,img) {
+    this.imageInModal=img;
+    console.log('this.imageInModal',this.imageInModal);
+    this.modalRef = this.modalService.show(
+      template1,
+      Object.assign({}, {id: 2, class: 'gray modal-lg' })
+    );
+  }
+  closeModal(modalId?: number){
+    this.modalService.hide(modalId);
+  }
   viewReport(template: TemplateRef<any>,tData,i) {
-    
+   
     this.modalRef = this.modalService.show(template,Object.assign({}, { class: 'gray modal-lg ',tData,i })); 
     this.sData = tData;
+    debugger
+    this.gettestImages(this.sData.id);
     for(let e of this.localPath){
      
       this.subTests=[];
@@ -368,7 +420,10 @@ this.diagID = event.item.id
   }
 
   onSelectIndoorDiag(event: TypeaheadMatch): void {
-    this.addIndoorDiag(event.item);
+   // this.addIndoorDiag(event.item);
+   debugger
+    this.Indid = event.item.id
+    
 
   }
   onSelectTreat(event: TypeaheadMatch): void {
@@ -569,14 +624,14 @@ this.diagID = event.item.id
               isMalnutration: this.prescriptionData.isMalnutration,
                })
 
-            if (this.prescriptionData.pastHistory.length != 0) {
+            if (this.prescriptionData.pastHistory != null && this.prescriptionData.pastHistory.length != 0) {
               this.prString = this.prescriptionData.pastHistory.split(',');
               this.matchFunc(this.phArray, this.controls, this.prString);
               
               
              
             }
-            if (this.prescriptionData.familyHistory.length != 0) {
+            if (this.prescriptionData.familyHistory != null && this.prescriptionData.familyHistory.length != 0) {
               this.frString = this.prescriptionData.familyHistory.split(',');
               this.matchFunc(this.fhArray, this.fhc, this.frString);
               
@@ -708,8 +763,7 @@ insertToDiag(obj: any)
 
 }
   addDiag() {
-    // this.diagItems = this.clinicalInformation.get('diagItems') as FormArray;
-    // this.diagItems.push(this.createDiag(null));
+    
 let tempdiag = 0;
     if(this.localDiagData.length!=0){
       for(let e of this.localDiagData)
@@ -1138,13 +1192,14 @@ for (let sgn of this.localSign)
   }
   }
   
-  addIndoorDiag(obj: any) {
-    
+  addIndoorDiag() {
+    debugger
+    let inv = this.investigationForm.value;
     var temp = 0;
     if(this.localIndoorData.length!=0){
       for(let e of this.localIndoorData)
         {  
-        if(e.id==obj.id){
+        if(e.id==this.Indid){
         alert("Diagnosis already Exists");
         temp = 1;
         break
@@ -1152,13 +1207,14 @@ for (let sgn of this.localSign)
     }
     if (temp == 0)
     {
-      this.localIndoorData.push({ "id": obj.id, "name": obj.name }) 
+      this.localIndoorData.push({ "id": this.Indid, "name": inv.selectedValueIndoorDiag,"description":inv.descriptionIndoor }) 
     }
   }else{
-    this.localIndoorData.push({ "id": obj.id, "name": obj.name }) 
+    this.localIndoorData.push({ "id": this.Indid, "name": inv.selectedValueIndoorDiag,"description":inv.descriptionIndoor }) 
   }
     this.investigationForm.patchValue({
-      'selectedValueIndoorDiag': ''
+      'selectedValueIndoorDiag': '',
+      'descriptionIndoor':''
     })
   }
   removeIndoorDiag(index) {
@@ -1521,7 +1577,7 @@ debugger
     }
    
   generatetoken(){
-    
+    debugger
     this.userLoader=true
     if(this.localIndoorData.length!=0 && this.localIndoorData!=undefined){
   if(this.investigationForm.value.termination_date!=undefined && this.investigationForm.value.termination_date!='' && this.docType==undefined)
