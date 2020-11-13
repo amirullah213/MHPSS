@@ -82,7 +82,6 @@ export class AdmittedPatientsComponent implements OnInit {
   modelimg:any={};
   imagesArr:any=[];
   imageUrl:any;
-  imageInModal:any
   //form related variables here
   outdoorForm: FormGroup;
     submitted = false;
@@ -192,17 +191,6 @@ onSubmit() {
     );
     this.getImages(this.userData.id);
   }
-  showImageModal(template1: TemplateRef<any>,img) {
-    this.imageInModal=img;
-    console.log('this.imageInModal',this.imageInModal);
-    this.modalRef = this.modalService.show(
-      template1,
-      Object.assign({}, {id: 2, class: 'gray modal-lg' })
-    );
-  }
-  closeModal(modalId?: number){
-    this.modalService.hide(modalId);
-  }
   //================get test images
 getImages(presIDdata) {
   console.log('presIDdata===',presIDdata);
@@ -215,7 +203,6 @@ getImages(presIDdata) {
       if (response.status === 0) {
         console.log(' response images====',response);
         this.imagesArr=response.data;
-        console.log(' response this.imagesArr====',this.imagesArr);
         //this.getlink();
         this.userLoader = false;
         
@@ -232,7 +219,6 @@ getImages(presIDdata) {
   );
 
 }
-
 
 //=================mage sended
  //get all diagnostic list

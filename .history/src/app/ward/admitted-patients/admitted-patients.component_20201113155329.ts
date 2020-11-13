@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { WardServiceService } from '../service/ward-service.service';
-import { APP_CONFIG } from '../../core';
+
 @Component({
   selector: 'ncri-admitted-patients',
   templateUrl: './admitted-patients.component.html',
@@ -79,10 +79,8 @@ export class AdmittedPatientsComponent implements OnInit {
   xraySingle:any=[];
   model12:any={};
   loaderOutdoor:boolean=false;
-  modelimg:any={};
-  imagesArr:any=[];
-  imageUrl:any;
-  imageInModal:any
+  
+
   //form related variables here
   outdoorForm: FormGroup;
     submitted = false;
@@ -100,8 +98,6 @@ export class AdmittedPatientsComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.imageUrl=APP_CONFIG.apiBaseUrl+'getImage/';
-    console.log('imageUrl===',this.imageUrl)
    this.indoor= localStorage.getItem('indoorID');
    this.detailsData=JSON.parse(localStorage.getItem('wardData')) ;
 
@@ -182,59 +178,31 @@ onSubmit() {
     this.xraySingle=[];
     this.userData = data;
     console.log('user data===',this.userData);
-     
+    debugger
+    if(this.userData.subTests && this.userData.subTests.length>0){
+    this.userData.subTests.forEach(element => {
+      //if(element.xrayFilms6=="0"){
+              // this.xrayArr=[];
+         // }else{
+          this.xrayArr.push(JSON.parse(element.xrayFilms6));
+    // }
+    
+    
+      
+    });
+  }else{
+    if(this.userData.xrayFilms6!='0'){
+    this.xraySingle.push(JSON.parse(this.userData.xrayFilms6) )
    
- 
+    }
+    console.log('tesssst==',this.xraySingle)
+  }
     //console.log('xray arra==',this.xrayArr)
     this.modalRef = this.modalService.show(
       template,
       Object.assign({}, { class: 'gray modal-lg' })
     );
-    this.getImages(this.userData.id);
   }
-  showImageModal(template1: TemplateRef<any>,img) {
-    this.imageInModal=img;
-    console.log('this.imageInModal',this.imageInModal);
-    this.modalRef = this.modalService.show(
-      template1,
-      Object.assign({}, {id: 2, class: 'gray modal-lg' })
-    );
-  }
-  closeModal(modalId?: number){
-    this.modalService.hide(modalId);
-  }
-  //================get test images
-getImages(presIDdata) {
-  console.log('presIDdata===',presIDdata);
-  this.userLoader= true;
-  this.modelimg.prescriptiontest_id=presIDdata;
- 
-  console.log('modelimg ==', this.modelimg);
-  this.wardService.gettestimages(this.modelimg).subscribe(
-    (response: any) => {
-      if (response.status === 0) {
-        console.log(' response images====',response);
-        this.imagesArr=response.data;
-        console.log(' response this.imagesArr====',this.imagesArr);
-        //this.getlink();
-        this.userLoader = false;
-        
-      }
-  if (response.status === 1) {
-        this.errormsg = response.error;
-        this.userLoader = false;
-        alert('Problem in service! please Try again')
-        console.log('error=', this.errormsg);
-        
-      }
-    },
-    (error) => {}
-  );
-
-}
-
-
-//=================mage sended
  //get all diagnostic list
  getoutDoorData() {
   this.loaderOutdoor= true;
@@ -603,16 +571,12 @@ removeArr(indx){
 }
 // add new diagnisis
 addnewDiag(dia){
-  console.log('new diag==',dia);
-  this.diagObj.description=dia;
-  this.diagnosArr.push(this.diagObj);
-  console.log('diagnosArr==',this.diagnosArr);
+  console.log('new diag==',dia)
+  this.newDiagArr.push(dia);
+  console.log('medicArr==',this.newDiagArr);
   this.outdoorForm.value.diagnosis='';
-  this.outdoorForm.value.description='';
-
   this.outdoorForm.patchValue({
     diagnosis: '',
-    description: '',
     
   });
 }
@@ -620,16 +584,16 @@ onSelectDiagnos(edat){
   console.log('edat',edat.item);
   
  // this.diagnosArr.push(edat.item);
-    this.diagObj=edat.item;
+  //  this.diagObj['name']=edat.item.name;
   //  this.diagObj['id']=edat.item.id; 
   //  console.log('this.diagObj5555',this.diagObj);
-  //  this.diagnosArr.push({"name":edat.item.name,"id":edat.item.id});
-  //  console.log('this.diagnosArr',this.diagnosArr);
+   this.diagnosArr.push({"name":edat.item.name,"id":edat.item.id});
+   console.log('this.diagnosArr',this.diagnosArr);
    //this.diagnosArr.push(this.diagObj);
-  //  this.outdoorForm.patchValue({
-  //   diagnosis: '',
+   this.outdoorForm.patchValue({
+    diagnosis: '',
     
-  // });
+  });
   console.log('this.diagnosArr22',this.diagnosArr);
 }
 removeDiag(indx){

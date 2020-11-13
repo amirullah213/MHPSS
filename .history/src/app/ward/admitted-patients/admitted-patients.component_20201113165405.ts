@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { WardServiceService } from '../service/ward-service.service';
-import { APP_CONFIG } from '../../core';
+
 @Component({
   selector: 'ncri-admitted-patients',
   templateUrl: './admitted-patients.component.html',
@@ -79,10 +79,8 @@ export class AdmittedPatientsComponent implements OnInit {
   xraySingle:any=[];
   model12:any={};
   loaderOutdoor:boolean=false;
-  modelimg:any={};
+  modelimg:any;
   imagesArr:any=[];
-  imageUrl:any;
-  imageInModal:any
   //form related variables here
   outdoorForm: FormGroup;
     submitted = false;
@@ -100,8 +98,6 @@ export class AdmittedPatientsComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.imageUrl=APP_CONFIG.apiBaseUrl+'getImage/';
-    console.log('imageUrl===',this.imageUrl)
    this.indoor= localStorage.getItem('indoorID');
    this.detailsData=JSON.parse(localStorage.getItem('wardData')) ;
 
@@ -151,7 +147,35 @@ export class AdmittedPatientsComponent implements OnInit {
 );
 
 }
+//================get test images
+getImages(presID) {
+  this.userLoader= true;
+  this.modelimg.prescriptiontest_id=presID;
+ 
+  console.log('modelimg ==', this.modelimg);
+  this.wardService.gettestimages(this.modelimg).subscribe(
+    (response: any) => {
+      if (response.status === 0) {
+        console.log(' response images====',response);
+        this.imagesArr=response.data;
+        //this.getlink();
+        this.userLoader = false;
+        
+      }
+  if (response.status === 1) {
+        this.errormsg = response.error;
+        this.userLoader = false;
+        alert('Problem in service! please Try again')
+        console.log('error=', this.errormsg);
+        
+      }
+    },
+    (error) => {}
+  );
 
+}
+
+//=================mage sended
 // convenience getter for easy access to form fields
 get f() { return this.outdoorForm.controls; }
 
@@ -182,7 +206,7 @@ onSubmit() {
     this.xraySingle=[];
     this.userData = data;
     console.log('user data===',this.userData);
-     
+     this.getImages(this.userData.id)
    
  
     //console.log('xray arra==',this.xrayArr)
@@ -190,51 +214,7 @@ onSubmit() {
       template,
       Object.assign({}, { class: 'gray modal-lg' })
     );
-    this.getImages(this.userData.id);
   }
-  showImageModal(template1: TemplateRef<any>,img) {
-    this.imageInModal=img;
-    console.log('this.imageInModal',this.imageInModal);
-    this.modalRef = this.modalService.show(
-      template1,
-      Object.assign({}, {id: 2, class: 'gray modal-lg' })
-    );
-  }
-  closeModal(modalId?: number){
-    this.modalService.hide(modalId);
-  }
-  //================get test images
-getImages(presIDdata) {
-  console.log('presIDdata===',presIDdata);
-  this.userLoader= true;
-  this.modelimg.prescriptiontest_id=presIDdata;
- 
-  console.log('modelimg ==', this.modelimg);
-  this.wardService.gettestimages(this.modelimg).subscribe(
-    (response: any) => {
-      if (response.status === 0) {
-        console.log(' response images====',response);
-        this.imagesArr=response.data;
-        console.log(' response this.imagesArr====',this.imagesArr);
-        //this.getlink();
-        this.userLoader = false;
-        
-      }
-  if (response.status === 1) {
-        this.errormsg = response.error;
-        this.userLoader = false;
-        alert('Problem in service! please Try again')
-        console.log('error=', this.errormsg);
-        
-      }
-    },
-    (error) => {}
-  );
-
-}
-
-
-//=================mage sended
  //get all diagnostic list
  getoutDoorData() {
   this.loaderOutdoor= true;

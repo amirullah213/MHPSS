@@ -28,21 +28,15 @@
                                             <p class="mt-3" for="inputState"><b>Remarks : </b></p>
                                         </div>
                                         <div class="col-sm-8">
-                                            <p class="mt-3" for="inputState">  
-                                                <span *ngIf="PathResponseArray.anesthesiaType==1">General</span>
-                                                <span *ngIf="PathResponseArray.anesthesiaType==2">Spinal</span>
-                                                <span *ngIf="PathResponseArray.anesthesiaType==3">Local</span>
-                                                <span *ngIf="PathResponseArray.anesthesiaType==4">Without Anesthesia</span>
-                                                
-                                            </p>
+                                            <p class="mt-3" for="inputState"> {{PathResponseArray.anesthesiaType}}</p>
                                             <p class="mt-3" for="inputState"> {{PathResponseArray.operationName}}</p>
                                             <p class="mt-3" for="inputState"> {{PathResponseArray.surgeonName}}</p>
                                             <p class="mt-3" for="inputState"> {{PathResponseArray.anethetistName}}</p>
                                             <p class="mt-3" for="inputState"> {{PathResponseArray.remarks}}</p>
                                         </div>
                                     </div>
-                                    <!-- <hr class="gray"> -->
-                                    <!-- <div class="form-group row mx-0">
+                                    <hr class="gray">
+                                    <div class="form-group row mx-0">
                                         <div class="col-md-12">
                                             <ul>
                                                 <h4>Provisional Dignosis</h4>
@@ -50,7 +44,7 @@
                                                
                                             </ul>
                                         </div>
-                                    </div> -->
+                                    </div>
                                     <hr class="gray">
                                     <!-- <div class="form-group row mx-0">
                                         <div class="col-md-12">
