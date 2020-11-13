@@ -79,10 +79,9 @@ export class AdmittedPatientsComponent implements OnInit {
   xraySingle:any=[];
   model12:any={};
   loaderOutdoor:boolean=false;
-  modelimg:any={};
+  modelimg:any;
   imagesArr:any=[];
   imageUrl:any;
-  imageInModal:any
   //form related variables here
   outdoorForm: FormGroup;
     submitted = false;
@@ -182,7 +181,7 @@ onSubmit() {
     this.xraySingle=[];
     this.userData = data;
     console.log('user data===',this.userData);
-     
+   //  this.getImages(this.userData.id)
    
  
     //console.log('xray arra==',this.xrayArr)
@@ -190,24 +189,11 @@ onSubmit() {
       template,
       Object.assign({}, { class: 'gray modal-lg' })
     );
-    this.getImages(this.userData.id);
-  }
-  showImageModal(template1: TemplateRef<any>,img) {
-    this.imageInModal=img;
-    console.log('this.imageInModal',this.imageInModal);
-    this.modalRef = this.modalService.show(
-      template1,
-      Object.assign({}, {id: 2, class: 'gray modal-lg' })
-    );
-  }
-  closeModal(modalId?: number){
-    this.modalService.hide(modalId);
   }
   //================get test images
-getImages(presIDdata) {
-  console.log('presIDdata===',presIDdata);
+getImages(presID) {
   this.userLoader= true;
-  this.modelimg.prescriptiontest_id=presIDdata;
+  this.modelimg.prescriptiontest_id=presID;
  
   console.log('modelimg ==', this.modelimg);
   this.wardService.gettestimages(this.modelimg).subscribe(
@@ -215,7 +201,6 @@ getImages(presIDdata) {
       if (response.status === 0) {
         console.log(' response images====',response);
         this.imagesArr=response.data;
-        console.log(' response this.imagesArr====',this.imagesArr);
         //this.getlink();
         this.userLoader = false;
         
@@ -232,7 +217,6 @@ getImages(presIDdata) {
   );
 
 }
-
 
 //=================mage sended
  //get all diagnostic list

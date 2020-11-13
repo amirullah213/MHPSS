@@ -82,7 +82,6 @@ export class AdmittedPatientsComponent implements OnInit {
   modelimg:any={};
   imagesArr:any=[];
   imageUrl:any;
-  imageInModal:any
   //form related variables here
   outdoorForm: FormGroup;
     submitted = false;
@@ -233,7 +232,7 @@ getImages(presIDdata) {
 
 }
 
-
+showImageModal(){}
 //=================mage sended
  //get all diagnostic list
  getoutDoorData() {
