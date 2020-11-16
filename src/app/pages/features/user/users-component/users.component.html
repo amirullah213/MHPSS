@@ -65,7 +65,7 @@
                                                             <td>{{user.enteringDate | date : 'd-M-y'}}</td>
                                                             <td>
                                                                 <a *ngIf="user.deptType!=3 && user.deptType!=2" class="text-primary" href="javascript:void(0)" (click)="gotoPatDetails(user)">Detail</a> 
-                                                                <a *ngIf="user.deptType==3" class="text-primary" href="javascript:void(0)" (click)="gotoPatDetails(user)">View EPI Vaccination</a> 
+                                                                <a *ngIf="user.deptType==3" class="text-primary" href="javascript:void(0)" (click)="gotoPatDetails(user)">View Child Vaccination</a> 
                                                                 <a *ngIf="user.deptType==2" class="text-primary" href="javascript:void(0)" (click)="gotoPatDetails(user)">View TT Vaccination</a> 
                                                             </td>
                                                         </tr>
