@@ -542,11 +542,11 @@
                                             </div>
                                         </div>
                                         <hr class="hr-gray mx-0">
-                                        <div class="row mx-0 border4" *ngIf="patInfo.isSync==9">
+                                        <div class="row mx-0 border4" *ngIf="detail.isSync==9">
 
                                             <div class="col-md-6">
                                                     <label for="formGroupExampleInput">LMP</label>
-                                                    <input type="text" formControlName="LMP" (blur)="eddCalc(clinicalInformation.value.LMP)" placeholder="During Pregnancy" class="form-control" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" bsDatepicker>
+                                                    <input type="text" formControlName="LMP" (bsValueChange)="eddCalc(clinicalInformation.value.LMP)" placeholder="During Pregnancy" class="form-control" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" bsDatepicker>
                                                     
                                                 </div>
                                             <div class="col-md-6">

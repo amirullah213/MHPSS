@@ -8,6 +8,8 @@ import { DateFormatPipe } from 'src/app/core/pipes/datepipe.pipe';
 import { PrintService } from 'ng-thermal-print';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { APP_CONFIG } from 'src/app/core';
+import { contains } from 'jquery';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'ncri-create-user',
@@ -159,6 +161,8 @@ export class PatDetailComponent implements OnInit {
   Indid: any;
   imageInModal: any;
   imageUrl: any;
+  eddDate: any;
+  lmpDate: any;
   
   constructor(
     private fb: FormBuilder,
@@ -860,11 +864,31 @@ debugger
     }
 
   }
-
   eddCalc(lmp){
-console.log(lmp)
-  }
 
+    
+    if(lmp!='' && lmp!=undefined){
+debugger
+    let d = lmp
+    let lmpDate = d;
+// const format = 'y/M/d';
+// const myDate = lmp;
+// const locale = 'en-PK';
+// const formattedDate = formatDate(myDate, format, locale);
+d.setMonth(d.getMonth() + 9);
+console.log(d.toLocaleDateString(),"months");
+
+d.setDate((d.getDate()+7));
+console.log(d.toLocaleDateString(),"days");
+this.eddDate = d.toLocaleDateString()
+this.eddDate = formatDate(this.eddDate, "y-M-d", "en-PK");
+this.lmpDate = formatDate(lmpDate, "y-M-d", "en-PK");
+this.clinicalInformation.patchValue({
+ EDD: this.eddDate,
+ LMP:lmp
+})
+  }
+  }
 
   addClinicalInfo() {
     debugger
