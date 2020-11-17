@@ -27,6 +27,7 @@ export class UsersComponent implements OnInit {
   deactivateLoader: boolean = false;
   userList: any = [];
   detail: any;
+  interval: number;
 
   constructor(
     private modalService: BsModalService,
@@ -34,6 +35,17 @@ export class UsersComponent implements OnInit {
     private router: Router,
     private auth: AuthService
   ) {
+
+
+
+    if(this.router.url === '/doctor/user'){
+       this.interval = setInterval(() => {
+                  this.getUsers(this.userData); // api call
+               }, 30000);
+   }
+  
+  
+   
 
   }
   ngOnInit(): void {
@@ -46,7 +58,11 @@ export class UsersComponent implements OnInit {
     if (localStorage.getItem("tab"))
     this.setTab(localStorage.getItem("tab"))
   }
-  
+  ngOnDestroy() {
+   if (this.interval) {
+     clearInterval(this.interval);
+   }
+ }
   //set tab
   setTab(tab: string) {
     localStorage.setItem("tab", tab)
@@ -94,6 +110,10 @@ export class UsersComponent implements OnInit {
     // this.modalRef.content.userActivate = 'Close';
   }
 
+
+
+ 
+
   getUsers(obj: any) {
 
     this.userLoader = true;
@@ -115,7 +135,7 @@ export class UsersComponent implements OnInit {
 
   gotoPatDetails(paObj) {
 
-debugger
+
     localStorage.setItem('patData', JSON.stringify(paObj));
    if(paObj.deptType==3)
    {

@@ -255,21 +255,26 @@
                                         <div class="row mx-0 border4" *ngIf='detail.isSync==9'>
                                             <div class="col-md-6">
                                                 <div class="form-group input-group">
-                                                    <label for="formGroupExampleInput">Anc Services</label>
+                                                    <label for="formGroupExampleInput">ANC/PNC Services</label>
                                                     <span class="wrapper-select">
                                                         <select class="form-control" formControlName="ANCServices"
                                                             aria-label="Text input with segmented dropdown button"
                                                             placeholder="Is Follow Up">
+                                                            <option>Choose ANC/PNC</option>
                                                             <option>ANC1</option>
                                                             <option>ANC2</option>
                                                             <option>ANC3</option>
                                                             <option>ANC4 or More</option>
+                                                            <option >PNC1</option>
+                                                            <option>PNC2</option>
+                                                            <option >PNC3</option>
+                                                            <option >PNC4 or More</option>
                                                           
                                                         </select>
                                                     </span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <!-- <div class="col-md-6">
                                                 <div class="form-group input-group">
                                                     <label for="formGroupExampleInput">Pnc Services</label>
                                                     <span class="wrapper-select">
@@ -284,7 +289,7 @@
                                                         </select>
                                                     </span>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div class="col-md-12" ><h6>Nutration Status  (if MAUC < 21 cm)</h6></div>   
                                             <div class="col-md-6">
                                                 <div class="form-group">
@@ -557,7 +562,7 @@
                                         <hr class="hr-gray mx-0">
                                         <div class="col-md-12 text-center mt-3">
                                             <button type="button" (click)="addClinicalInfo()" *ngIf="!userLoader" class="button">
-                                              <i class="fa fa-check-square mr-2"></i> Next 
+                                              <i class="fa fa-check-square mr-2"></i> Save 
                                             </button>
                                             <button type="button" *ngIf="userLoader" class="button">
                                                 <span class="spinner-border" *ngIf="userLoader" role="status" aria-hidden="true"></span> 
@@ -828,7 +833,7 @@
                                                     <label for="formGroupExampleInput">Action</label>
                                                     <button type="button" (click)="generatetoken()" *ngIf="!userLoader" class="button mt-1"><i class="fa fa-plus"></i>
                                                         Admit  </button>
-                                                        <button type="button" *ngIf="userLoader" class="button mt-1"><i class="fa fa-plus"></i>
+                                                        <button type="button" *ngIf="userLoader" class="button mt-1">
                                                             <span class="spinner-border" *ngIf="userLoader" role="status" aria-hidden="true"></span>  </button>
 
 
@@ -852,8 +857,7 @@
                                                     <label for="formGroupExampleInput">Action</label>
                                                     <button type="button" (click)="generatetoken()" *ngIf="!userLoader" class="button mt-1"><i
                                                         class="fa fa-wheelchair"></i>  Operate</button>
-                                                        <button type="button" *ngIf="userLoader" class="button mt-1"><i
-                                                            class="fa fa-wheelchair"></i>                                                             
+                                                        <button type="button" *ngIf="userLoader" class="button mt-1">                               
                                                              <span class="spinner-border" *ngIf="userLoader" role="status" aria-hidden="true"></span>  </button>
 
                                                 </div>
@@ -1040,7 +1044,7 @@
                                                         <div class="form-group input-group">
                                                             <label>Location</label>
                                                             <select class="form-control" formControlName="FollowUpExtInt" (change)="changFollowUpVal($event)">
-                                                        <option>Select Location</option>
+                                                        <option [value]="">Select Location</option>
                                                         <option [value]="0">Internal</option>
                                                         <option [value]="1">External</option>
                                                     </select>
