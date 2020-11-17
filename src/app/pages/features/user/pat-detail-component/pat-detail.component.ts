@@ -401,7 +401,23 @@ this.diagID = event.item.id
  //this.addDiag(event.item.id);
 
 }
-
+// onChangeDiag(e){
+  
+// if(e!="Choose Diagnosis"){
+//   this.arrylist=[]
+//   this.arrylist = this.diagnosisData
+//   for(let ele of this.arrylist ){
+    
+//     if(ele.name === e){
+//     this.diagID = ele.id;
+//     break;
+//     }
+//     else{
+//       this.diagID=undefined
+//     }
+//   }
+// }
+// }
 
   onSelectSymptom(event: TypeaheadMatch): void {
     
@@ -547,10 +563,10 @@ this.diagID = event.item.id
 
  
   getclinicalinfo() {
-
+    
 
     this.param = { 'hospitalID': localStorage.getItem('hospitalID'), 'prescriptionID': this.patInfo.prescriptionID };
-
+    
     this.userLoader = true;
     this.uService.getclinicalinfo(this.param).subscribe
       ((response: any) => {
@@ -561,6 +577,7 @@ this.diagID = event.item.id
           this.ptID = response.prescription.ptID;
           this.diagnosisData = response.diagnosis;          
           this.signsData = response.signs;
+          
           this.symptomsData = response.symptoms;
           this.vitalsData = response.vitals;
           
@@ -659,7 +676,8 @@ this.diagID = event.item.id
   }
   putValue(pd: any) {
     
-    if(pd.lmp!=undefined){
+    
+    if(pd.lmp!="0000-00-00 00:00:00"){
       this.lmpDate = formatDate(pd.lmp, "y-M-d", "en-PK")
             this.eddDate = formatDate(pd.edd, "y-M-d", "en-PK");
 
@@ -813,7 +831,8 @@ let tempdiag = 0;
     this.localDiagData.push({ 'id': this.diagID, 'name': this.clinicalInformation.value.pname,  description:this.clinicalInformation.value.description})
   }
     this.clinicalInformation.patchValue({
-      'name': ''
+      'pname': '',
+      'description':''
     })
     this.diagID=undefined
   
@@ -1619,7 +1638,7 @@ debugger
     
     }
    
-  generatetoken(){
+  generatetoken(op){
     let serCall =false;
     let inv =this.investigationForm.value;
     if(inv.selectedValueIndoorDiag!=undefined && this.Indid!=undefined)
@@ -1649,7 +1668,7 @@ this.investigationForm.patchValue({
     {
 
       this.userLoader=true
-      if(this.investigationForm.value.termination_date!=undefined && this.investigationForm.value.termination_date!='')
+      if(this.investigationForm.value.termination_date!=undefined && this.investigationForm.value.termination_date!='' && op==1)
       {
         serCall=true;  
         let operateDate = this.datepipe.transform(new Date(this.investigationForm.value.termination_date))//formatting current ///date here 
@@ -1657,9 +1676,9 @@ this.investigationForm.patchValue({
       
         
       }
-      if(this.docType!=undefined)
+      if(this.docType!=undefined && op==0)
 {   
-         debugger
+         
         serCall=true;
         this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.patInfo.ptID,"patientID": this.patientID,"departmentID":this.id,"diagnosis":this.localIndoorData,"isIndoor":this.docType,"refferedFrom":-1,}
 
@@ -1669,13 +1688,8 @@ if(serCall==true){
   this.uService.generatetoken(this.param).subscribe
     ((response: any) => {
       if (response.status === 0) {
-        this.docType=undefined
-        this.id=undefined
-        this.investigationForm.patchValue({
-          ref: '',
-          termination_date: ""
-          
-        })
+        this.router.navigate(["doctor/user"])
+       
         this.userLoader = false;
       } else {
         this.userLoader = false;

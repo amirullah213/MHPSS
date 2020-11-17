@@ -516,10 +516,17 @@
                                         <hr class="hr-gray mx-0">
                                         <div class="row mx-0 border4">
                                             <div class="col-md-12">
-                                                <h5 class="card-title mb-0">Provisional Diagnosis</h5>
+                                                <h5 class="card-title mb-0">Diagnosis</h5>
                                             </div>
                                             <div class="col-md-5 ">
-                                                <input formControlName="pname" [typeahead]="diagnosisData" typeaheadOptionField="name" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectDiag($event)" class="form-control" [typeaheadMinLength]="0">
+                                                <input formControlName="pname" [typeahead]="diagnosisData" typeaheadOptionField="name" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectDiag($event)" class="form-control">
+                                                <!-- <select formControlName="pname" class="form-control"
+                                                (change)="changeRefVal($event)">
+                                                <option>Choose Diagnosis</option>
+                                                <option *ngFor="let dg of diagnosisData">
+                                                    {{dg.name}}
+                                                    </option>
+                                            </select> -->
                                             </div>
                                             <div class="col-md-5 ">
                                                 <input formControlName="description" class="form-control">
@@ -590,7 +597,7 @@
                                                     <label class="form-check-label">Pathalogy</label>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input formControlName="selectedValuePath" [typeahead]="pathData" typeaheadOptionField="testName" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectPath($event)" class="form-control" [typeaheadMinLength]="0">
+                                                    <input formControlName="selectedValuePath" [typeahead]="pathData" typeaheadOptionField="testName" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectPath($event)" class="form-control">
                                                 </div>
                                             </div>
                                             <!-- <div class="col-md-4">
@@ -774,12 +781,12 @@
                                         <hr class="hr-gray mx-0">
                                         <div class="row mx-0 border4">
                                             <div class="col-md-12">
-                                                <h5>Provisional Diagnosis For Admission / OT</h5>
+                                                <h5>Diagnosis For Admission / OT</h5>
                                             </div>
                                             <div class="col-md-5">
                                                 <div class="form-group">
                                                     <label>Diagnosis</label>
-                                                    <input formControlName="selectedValueIndoorDiag" [value]="selectedValueIndoorDiag" [typeahead]="IndoorDiagData" typeaheadOptionField="name" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectIndoorDiag($event)" class="form-control" [typeaheadMinLength]="0">
+                                                    <input formControlName="selectedValueIndoorDiag" [value]="selectedValueIndoorDiag" [typeahead]="IndoorDiagData" typeaheadOptionField="name" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectIndoorDiag($event)" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-md-5 ">
@@ -831,7 +838,7 @@
                                             <div class="col-md-2">
                                                 <div class="form-group text-center">
                                                     <label for="formGroupExampleInput">Action</label>
-                                                    <button type="button" (click)="generatetoken()" *ngIf="!userLoader" class="button mt-1"><i class="fa fa-plus"></i>
+                                                    <button type="button" (click)="generatetoken(0)" *ngIf="!userLoader" class="button mt-1"><i class="fa fa-plus"></i>
                                                         Admit  </button>
                                                         <button type="button" *ngIf="userLoader" class="button mt-1">
                                                             <span class="spinner-border" *ngIf="userLoader" role="status" aria-hidden="true"></span>  </button>
@@ -855,7 +862,7 @@
                                             <div class="col-md-2">
                                                 <div class="form-group text-center">
                                                     <label for="formGroupExampleInput">Action</label>
-                                                    <button type="button" (click)="generatetoken()" *ngIf="!userLoader" class="button mt-1"><i
+                                                    <button type="button" (click)="generatetoken(1)" *ngIf="!userLoader" class="button mt-1"><i
                                                         class="fa fa-wheelchair"></i>  Operate</button>
                                                         <button type="button" *ngIf="userLoader" class="button mt-1">                               
                                                              <span class="spinner-border" *ngIf="userLoader" role="status" aria-hidden="true"></span>  </button>
@@ -882,7 +889,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Medicine Name</label>
-                                                    <input formControlName="itemName" [typeahead]="treatData" typeaheadOptionField="itemName" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectTreat($event)" class="form-control" [typeaheadMinLength]="0">
+                                                    <input formControlName="itemName" [typeahead]="treatData" typeaheadOptionField="itemName" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectTreat($event)" class="form-control" >
                                                 </div>
                                                 <input type="hidden" formControlName="itemID">
                                             </div>
