@@ -7,6 +7,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { DrawerComponent } from './drawer/drawer.component';
 import { SharedService } from '../../services/shared.service';
+import { PrintPrecComponent } from './print-prec/print-prec.component';
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import { SharedService } from '../../services/shared.service';
     RouterModule,
     ReactiveFormsModule
   ],
-  declarations: [NavbarComponent, SidebarComponent, FooterComponent, DrawerComponent],
+  declarations: [NavbarComponent, SidebarComponent, FooterComponent, DrawerComponent, PrintPrecComponent],
   exports: [NavbarComponent, SidebarComponent, FooterComponent, DrawerComponent]
 })
 
