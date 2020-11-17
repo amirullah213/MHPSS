@@ -62,6 +62,10 @@ export class AuthService {
     let url = APP_CONFIG.apiBaseUrl + '/api/v1/sso/ObtainJWTWithQRCode/';
     return this.http.post(url, obj);
   }
+  getPrescription(obj: any) {
+    let url = APP_CONFIG.apiBaseUrl + 'getopdticket ';
+    return this.http.post(url, obj);
+  }
   
   setUser(resp: any) {
     localStorage.setItem('details', JSON.stringify(resp) );
@@ -84,7 +88,7 @@ export class AuthService {
     if(resp.userType==3){ this.router.navigate(['/reception'])}
     if(resp.userType==4 || resp.userType==44 || resp.userType==444 ){ this.router.navigate(['/lab-rad'])}
     if(resp.userType==5){ this.router.navigate(['/ward-list'])}
-    if(resp.userType==6){ this.router.navigate(['/obs-reg'])}
+    if(resp.userType==6){ this.router.navigate(['/labour-room'])}
     if(resp.userType==7){ this.router.navigate(['/ot'])}
     if(resp.userType==8){ this.router.navigate(['/pharma'])}
     if(resp.userType==9){ this.router.navigate(['/community'])}
@@ -93,6 +97,7 @@ export class AuthService {
     if(resp.userType==12) { this.router.navigate(['/docsignin'])}
     if (resp.userType == 555) { this.router.navigate(['/vitals']) }
     if (resp.userType == 13) { this.router.navigate(['/fleet']) }
+
   
     // this.router.navigate(['/dashboard']);
   }

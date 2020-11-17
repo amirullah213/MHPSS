@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { GlobalService, AuthService, APP_CONFIG } from '../../../../core';
 import { UserService } from '../user.service';
 
+
 @Component({
   selector: 'ncri-print-presc',
   templateUrl: './print-presc.component.html',

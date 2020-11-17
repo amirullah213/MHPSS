@@ -23,22 +23,13 @@
                                 </div>
                                 <div class="col-lg-8 col-md-8 col-sm-8 mb-4">
                                     <h6><b>EMR NO :</b> <span class="ml-3"> {{patInfo.token}}</span></h6>
-                                    <h6><b>Patient Name :</b> <span class="ml-3"> {{userList[0].firstname}} <span
-                                        *ngIf=userList[0].lastname!='undefined'>userList[0].lastname</span></span>
+                                    <h6><b>Patient Name :</b> <span class="ml-3"> {{userList[0].firstname}} <span *ngIf=userList[0].lastname!='undefined'>userList[0].lastname</span> </span>
                                     </h6>
-                                    <h6><b>Father / Husband's Name : </b> <span class="ml-3">{{patInfo.f_hName}}</span></h6>
-                                    <h6><b>Age :</b>
-                                        <span class="ml-3">
-                                    <span
-                                        *ngIf='userList[0].ageYear!=0 && userList[0].ageYear!="undefined"'>{{userList[0].ageYear}}
-                                        Years</span>
-                                        <span *ngIf='userList[0].ageMonth!=0'>{{userList[0].ageMonth}} Months</span>
-                                        </span>
+                                    <h6><b>Father / Husband's Name : </b><span class="ml-3">{{patInfo.f_hName}}</span> </h6>
+                                    <h6><b>Age :</b> <span class="ml-3"> <span *ngIf='userList[0].ageYear!=0 && userList[0].ageYear!="undefined"'>{{userList[0].ageYear}} Years</span> <span *ngIf='userList[0].ageMonth!=0'>{{userList[0].ageMonth}} Months</span></span>
                                     </h6>
-                                    <h6><b>Gender : </b><span class="ml-3">{{patInfo.gender}}</span></h6>
-                                    <h6><b>Consulting Doctor :</b> <span class="ml-3">{{userList[0].docFName}}
-                                    {{userList[0].docLNmae}}</span>
-                                    </h6>
+                                    <h6><b>Gender : </b><span class="ml-3 text-capitalize">{{patInfo.gender}}</span></h6>
+                                    <h6><b>Consulting Doctor :</b> <span class="ml-3">{{userList[0].docFName}} {{userList[0].docLNmae}}</span> </h6>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4">
                                     <img class="" src="../../../../../assets/images/merf.png" width="200" height="100">
@@ -47,43 +38,26 @@
                                 </div>
                                 <div class="col-lg-5 col-md-5 col-sm-5" style="border-right: #000 2px solid;">
                                     <h5 class="mb-1 mt-4"><span class="colorback"><b> Vitals : </b></span></h5>
-
                                     <h6 class="mb-1 ml-4">BP: <span class="ml-5"> {{userList[0].vitals.bps}}</span></h6>
-
                                     <h6 class="mb-1 ml-4">Pulse (Per Min): <span class="ml-5">{{userList[0].vitals.pulse}}</span></h6>
-
                                     <h6 class="mb-1 ml-4">Weight(Kg): <span class="ml-5">{{userList[0].vitals.weight}}</span></h6>
-
                                     <h6 class="mb-1 ml-4">Height (cm): <span class="ml-5">{{userList[0].vitals.height}}</span></h6>
-
                                     <h6 class="mb-1 ml-4">Temprature(F): <span class="ml-5">{{userList[0].vitals.temperature}}</span></h6>
-
                                     <h6 class="mb-2 ml-4">Oxygen Saturation : <span class="ml-5">{{userList[0].vitals.oxygen_saturation}}</span></h6>
-
                                     <h5 class="mb-2"><b><span class="colorback">Investigation (With Results) </span></b></h5>
                                     <h5 class="mb-1 ml-2"><b><span class="colorback">Pathology : </span></b> </h5>
                                     <span *ngFor="let tst of userList[0].test">
                                         <span *ngIf="tst.testType==1">
-                                    <h6 class="mb-1 ml-4"><b><u>{{tst.testName}}</u></b></h6>
-                                    <h6 class="mb-1 ml-5">Findings:
-                                        <span class="ml-4" *ngIf="tst.result==''">Not Found</span>
-                                    <span class="ml-5" *ngIf="tst.result!=''">{{tst.result}}</span>
-                                    </h6>
+                                            <h6 class="mb-1 ml-4"><b><u>{{tst.testName}}</u></b></h6>
+                                            <!-- <h6 class="mb-1 ml-5">Findings: <span class="ml-5" *ngIf="tst.result==''">Not Found</span> <span class="ml-5" *ngIf="tst.result!=''">{{tst.result}}</span> </h6> -->
                                     </span>
                                     <span *ngIf="tst.testType==2">
-                                    <h5 class="mb-1 ml-2"><b><span class="colorback">Radiology : </span></b>
+                                            <h5 class="mb-1 ml-2"><b><span class="colorback">Radiology : </span></b>
                                     </h5>
                                     <h6 class="mb-1 ml-4"><b><u>{{tst.testName}}</u></b></h6>
-                                    <h6 class="mb-1 ml-5">Diagnosis: <span class="ml-4" *ngIf="tst.result==''">Not
-                                            Found</span>
-                                        <span class="ml-4" *ngIf="tst.result!=''">{{tst.result}}</span>
-                                    </h6>
-                                    <h6 class="mb-1 ml-5" *ngIf="tst.xrayFilms6=='0'">Findings:
-                                        <span class="ml-4">Not Found</span>
-                                    </h6>
-                                    <h6 class="mb-1 ml-5" *ngIf="tst.xrayFilms6!='0'">Findings:
-                                        <span class="ml-4">{{tst.xrayFilms6 }},</span>
-                                    </h6>
+                                    <!-- <h6 class="mb-1 ml-5"> Diagnosis: <span class="mb-1 ml-5" *ngIf="tst.result==''">Not Found</span> <span class="mb-1 ml-5" *ngIf="tst.result!=''">{{tst.result}}</span> </h6>
+                                    <h6 class="mb-1 ml-5" *ngIf="tst.xrayFilms6=='0'">Findings: <span class="mb-1 ml-5">Not Found</span> </h6>
+                                    <h6 class="mb-1 ml-5" *ngIf="tst.xrayFilms6!='0'"> Findings : <span class="mb-1 ml-5">{{tst.xrayFilms6 }},</span> </h6> -->
                                     </span>
                                     </span>
                                 </div>

@@ -293,7 +293,8 @@ export class PatDetailComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustUrl("C:/path/to/executable");
   }
   gettestImages(presID) {
-    
+    this.imagesArr=[];
+    if(presID!=undefined){
     this.userLoader= true;
     this.param={prescriptiontest_id:presID};
 
@@ -317,6 +318,7 @@ export class PatDetailComponent implements OnInit {
     );
   
   }
+}
   showImageModal(template1: TemplateRef<any>,img) {
     this.imageInModal=img;
     console.log('this.imageInModal',this.imageInModal);
@@ -332,7 +334,7 @@ export class PatDetailComponent implements OnInit {
    
     this.modalRef = this.modalService.show(template,Object.assign({}, { class: 'gray modal-lg ',tData,i })); 
     this.sData = tData;
-    
+    debugger
     this.gettestImages(this.sData.id);
     for(let e of this.localPath){
      

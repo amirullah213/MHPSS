@@ -91,7 +91,9 @@ export class UsersComponent implements OnInit {
     debugger
     localStorage.setItem('patData', JSON.stringify(udata));
     //  this.router.navigate(['doctor/user/print-presc'])
+   //
     window.open('doctor/user/print-presc')
+    // window.open('core/modules/shared-module/print-prec')
   }
   openModalActivate(userActivate: TemplateRef<any>, data) {
     this.userData = data;
