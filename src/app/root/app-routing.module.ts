@@ -23,6 +23,7 @@ const routes: Routes = [
   { path: 'epi', loadChildren: () => import('../epi/epi.module').then(m => m.EpiModule) },
   { path: 'vitals', loadChildren: () => import('../vitals/vitals.module').then(m => m.VitalsModule) },
   { path: 'fleet', loadChildren: () => import('../fleet/Fleet.module').then(m => m.FleetModule) },
+  { path: 'labour-room', loadChildren: () => import('../labour-room/labour-room.module').then(m => m.LabourRoomModule) },
   { path: '**', redirectTo: '' }
   
  

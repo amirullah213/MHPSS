@@ -19,7 +19,7 @@
                             <div class="card-body">
                                 <!-- <h5 class="card-title mb-0">Ward Managment</h5> -->
                                 <form [formGroup]="dynamicForm" novalidate>
-                                    <div class="form-group row mx-0">
+                                    <div class="form-group row mx-0 border4">
                                         <div class="col-sm-6">
                                             <label for="inputState">Type of Anesthesia</label>
                                             <select class="form-control" formControlName='anesthesiaType'>
@@ -72,8 +72,8 @@
                                         <div class="col-md-10">
                                             <div class="form-group">
                                                 <label>Diagnosis</label>
-                                                
-                                                <input  class="text" formControlName="selectedValueIndoorDiag" [value]="selectedValueIndoorDiag" [typeahead]="diagnosArr" typeaheadOptionField="name" (typeaheadOnSelect)="onSelectDiagnos($event)" class="form-control" name="daignosis">
+
+                                                <input class="text" formControlName="selectedValueIndoorDiag" [value]="selectedValueIndoorDiag" [typeahead]="diagnosArr" typeaheadOptionField="name" (typeaheadOnSelect)="onSelectDiagnos($event)" class="form-control" name="daignosis">
                                             </div>
                                         </div>
                                         <hr class="hr-gray">
@@ -98,7 +98,7 @@
                                                 <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus"></i> Add More </button>
                                             </div>
                                         </div> -->
-                                        <div class="col-md-10">
+                                        <div class="col-md-12">
                                             <div class="form-group input-group">
                                                 <label>Select Referral</label>
                                                 <span class="wrapper-select">
@@ -106,21 +106,13 @@
                                                         (change)="changeRefVal(dynamicForm.value.ref)">
                                                         <option>Choose Referral</option>
                                                         <option *ngFor="let wr of wardArr" [ngValue]='wr.id'>{{wr.fname}} {{wr.lname}}</option>
-                                                           
                                                     </select>
                                                 </span>
                                             </div>
-                                        </div>
-                                        <div class="col-md-2">
                                             <div class="form-group text-center">
-                                                <label for="formGroupExampleInput">Action</label>
-                                                <button type="button" (click)="generatetoken()" class="button mt-1"><i class="fa fa-plus"></i>
-                                                    Admit  </button>
+                                                <button type="button" (click)="generatetoken()" class="button mt-1"><i class="fa fa-plus"></i> Admit</button>
                                             </div>
                                         </div>
-                                       
-                                      
-                                       
                                     </div>
                                     <!-- admission ended -->
                                 </form>
