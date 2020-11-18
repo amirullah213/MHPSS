@@ -100,7 +100,7 @@
                                                             <!-- <form>
                                                                 <input type="text" [(ngModel)]="objPath.result" class="form-control"  id="findins" placeholder="Findings/ Results" name='result'>
                                                             </form> -->
-                                                            <span>{{userData.result}}</span>
+                                                            <span>userData.result</span>
                                                         </td>
                                                         <td> {{userData.refRange}}</td>
                                                     </tr>
@@ -111,10 +111,9 @@
                                                         <!-- <td>Pathology</td> -->
                                                         <td>{{tes.oldTestName}}</td>
                                                         <td>
-                                                            <!-- <form>
+                                                            <form>
                                                                 <input type="text" [(ngModel)]="tes[j]" (blur)="saveTests(tes[j],tes)" class="form-control" id="findins" placeholder="Findings/ Results" name='result'>
-                                                            </form> -->
-                                                            <span>{{tes.result}}</span>
+                                                            </form>
                                                         </td>
                                                         <td> {{tes.refRange}}</td>
                                                     </tr>
