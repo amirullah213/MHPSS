@@ -16,33 +16,32 @@
                 <div class="col-md-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
-                            <div class="card-body">
-                                <!-- <h5 class="card-title mb-0">Ward Managment</h5> -->
-                                <form novalidate>
-                                    <div class="form-group row mx-0">
-                                        <div class="col-sm-4">
-                                            <p class="mt-3" for="inputState"><b>Type of Anesthesia : </b></p>
-                                            <p class="mt-3" for="inputState"><b>Name Of Operation : </b></p>
-                                            <p class="mt-3" for="inputState"><b>Name Of Operation Surgeon : </b></p>
-                                            <p class="mt-3" for="inputState"><b>Name of Anesthetist : </b></p>
-                                            <p class="mt-3" for="inputState"><b>Remarks : </b></p>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <p class="mt-3" for="inputState">  
-                                                <span *ngIf="PathResponseArray.anesthesiaType==1">General</span>
-                                                <span *ngIf="PathResponseArray.anesthesiaType==2">Spinal</span>
-                                                <span *ngIf="PathResponseArray.anesthesiaType==3">Local</span>
-                                                <span *ngIf="PathResponseArray.anesthesiaType==4">Without Anesthesia</span>
-                                                
-                                            </p>
-                                            <p class="mt-3" for="inputState"> {{PathResponseArray.operationName}}</p>
-                                            <p class="mt-3" for="inputState"> {{PathResponseArray.surgeonName}}</p>
-                                            <p class="mt-3" for="inputState"> {{PathResponseArray.anethetistName}}</p>
-                                            <p class="mt-3" for="inputState"> {{PathResponseArray.remarks}}</p>
-                                        </div>
+                            <!-- <h5 class="card-title mb-0">Ward Managment</h5> -->
+                            <form novalidate>
+                                <div class="form-group row mx-0">
+                                    <div class="col-sm-4">
+                                        <p class="mt-3" for="inputState"><b>Type of Anesthesia : </b></p>
+                                        <p class="mt-3" for="inputState"><b>Name Of Operation : </b></p>
+                                        <p class="mt-3" for="inputState"><b>Name Of Operation Surgeon : </b></p>
+                                        <p class="mt-3" for="inputState"><b>Name of Anesthetist : </b></p>
+                                        <p class="mt-3" for="inputState"><b>Remarks : </b></p>
                                     </div>
-                                    <!-- <hr class="gray"> -->
-                                    <!-- <div class="form-group row mx-0">
+                                    <div class="col-sm-8">
+                                        <p class="mt-3" for="inputState">
+                                            <span *ngIf="PathResponseArray.anesthesiaType==1">General</span>
+                                            <span *ngIf="PathResponseArray.anesthesiaType==2">Spinal</span>
+                                            <span *ngIf="PathResponseArray.anesthesiaType==3">Local</span>
+                                            <span *ngIf="PathResponseArray.anesthesiaType==4">Without Anesthesia</span>
+
+                                        </p>
+                                        <p class="mt-3" for="inputState"> {{PathResponseArray.operationName}}</p>
+                                        <p class="mt-3" for="inputState"> {{PathResponseArray.surgeonName}}</p>
+                                        <p class="mt-3" for="inputState"> {{PathResponseArray.anethetistName}}</p>
+                                        <p class="mt-3" for="inputState"> {{PathResponseArray.remarks}}</p>
+                                    </div>
+                                </div>
+                                <!-- <hr class="gray"> -->
+                                <!-- <div class="form-group row mx-0">
                                         <div class="col-md-12">
                                             <ul>
                                                 <h4>Provisional Dignosis</h4>
@@ -51,16 +50,15 @@
                                             </ul>
                                         </div>
                                     </div> -->
-                                    <hr class="gray">
-                                    <!-- <div class="form-group row mx-0">
+                                <hr class="gray">
+                                <!-- <div class="form-group row mx-0">
                                         <div class="col-md-12">
                                             <div class="form-group text-center">
                                                 <button type="button" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save</button>
                                             </div>
                                         </div>
                                     </div> -->
-                                </form>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>

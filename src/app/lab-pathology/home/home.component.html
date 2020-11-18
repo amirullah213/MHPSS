@@ -15,91 +15,87 @@
                 <div class="col-md-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
+                            <h5 class="card-title mb-0"></h5>
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item" (click)="setTab('newPats')">
+                                    <a class="nav-link" [ngClass]="{'active show': tab === 'newPats'}" id="tab1" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="home" aria-selected="true">Pending Patients</a>
+                                </li>
+                                <li class="nav-item" (click)="setTab('seenPats')">
+                                    <a class="nav-link" [ngClass]="{'active show': tab === 'seenPats'}" id="portfolio-tab" href="javascript:void(0)" data-toggle="tab" role="tab" aria-controls="portfolio" aria-selected="false">Seen Patients</a>
+                                </li>
 
-                            <div class="card-body">
-                                <h5 class="card-title mb-0"></h5>
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <li class="nav-item" (click)="setTab('newPats')">
-                                        <a class="nav-link" [ngClass]="{'active show': tab === 'newPats'}" id="tab1" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="home" aria-selected="true">Pending Patients</a>
-                                    </li>
-                                    <li class="nav-item" (click)="setTab('seenPats')">
-                                        <a class="nav-link" [ngClass]="{'active show': tab === 'seenPats'}" id="portfolio-tab" href="javascript:void(0)" data-toggle="tab" role="tab" aria-controls="portfolio" aria-selected="false">Seen Patients</a>
-                                    </li>
-
-                                    <!-- <li class="nav-item" (click)="setTab('commComp')">
+                                <!-- <li class="nav-item" (click)="setTab('commComp')">
                                         <a class="nav-link" [ngClass]="{'active show': tab === 'commComp'}" id="contact-tab" href="javascript:void(0)" data-toggle="tab" role="tab" aria-controls="contact" aria-selected="false">Commission & Compensation</a>
                                     </li> -->
-                                </ul>
-                                <div class="tab-content">
-                                    <div *ngIf="tab === 'newPats'" class="tab-pane fade" [ngClass]="{'active show': tab === 'newPats'}" id="tab1" role="tabpanel" aria-labelledby="tab1">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="table-responsive">
-                                                    <table class="table center-aligned-table">
-                                                        <thead>
-                                                            <tr class="text-dark">
-                                                                <th>CRP NO#</th>
-                                                                <th>Name</th>
-                                                                <th>Date</th>
-                                                                <th>Details</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr *ngFor="let pth of PathResponseArray; let i=index">
-                                                                <td>{{pth.token}}</td>
-                                                                <td>
-                                                                    <!-- <img class="mr-3" src="../../../assets/images/profile-avatar.png"> -->
-                                                                    <span>{{pth.firstname}}</span>
-                                                                </td>
-                                                                <td>{{pth.DateCreated| date}}</td>
-                                                                <td><a href="javascript:void(0)" class="text-info" (click)="gotopathdetail(pth)">Detail</a></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                            </ul>
+                            <div class="tab-content">
+                                <div *ngIf="tab === 'newPats'" class="tab-pane fade" [ngClass]="{'active show': tab === 'newPats'}" id="tab1" role="tabpanel" aria-labelledby="tab1">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="table-responsive">
+                                                <table class="table center-aligned-table">
+                                                    <thead>
+                                                        <tr class="text-dark">
+                                                            <th>CRP NO#</th>
+                                                            <th>Name</th>
+                                                            <th>Date</th>
+                                                            <th>Details</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let pth of PathResponseArray; let i=index">
+                                                            <td>{{pth.token}}</td>
+                                                            <td>
+                                                                <!-- <img class="mr-3" src="../../../assets/images/profile-avatar.png"> -->
+                                                                <span>{{pth.firstname}}</span>
+                                                            </td>
+                                                            <td>{{pth.DateCreated| date}}</td>
+                                                            <td><a href="javascript:void(0)" class="text-info" (click)="gotopathdetail(pth)">Detail</a></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
-                                    <div *ngIf="tab === 'seenPats'" class="tab-pane fade" [ngClass]="{'active show': tab === 'seenPats'}" id="tab2" role="tabpanel" aria-labelledby="tab2">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="table-responsive">
-                                                    <table class="table center-aligned-table">
-                                                        <thead>
-                                                            <tr class="text-dark">
-                                                                <th>CRP NO#</th>
-                                                                <th>Name</th>
-                                                                <th>Date</th>
-                                                                <th>Details</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr *ngFor="let pth of PathResponseArray; let i=index">
-                                                                <td>{{pth.token}}</td>
-                                                                <td>
-                                                                    <!-- <img class="mr-3" src="../../../assets/images/profile-avatar.png"> -->
-                                                                    <span>{{pth.firstname}}</span>
-                                                                </td>
-                                                                <td>{{pth.DateCreated| date}}</td>
-                                                                <td><a href="javascript:void(0)" class="text-info" (click)="gotopathdetailSeen(pth)">Detail</a></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                 </div>
-                            </div>
+                                <div *ngIf="tab === 'seenPats'" class="tab-pane fade" [ngClass]="{'active show': tab === 'seenPats'}" id="tab2" role="tabpanel" aria-labelledby="tab2">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="table-responsive">
+                                                <table class="table center-aligned-table">
+                                                    <thead>
+                                                        <tr class="text-dark">
+                                                            <th>CRP NO#</th>
+                                                            <th>Name</th>
+                                                            <th>Date</th>
+                                                            <th>Details</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let pth of PathResponseArray; let i=index">
+                                                            <td>{{pth.token}}</td>
+                                                            <td>
+                                                                <!-- <img class="mr-3" src="../../../assets/images/profile-avatar.png"> -->
+                                                                <span>{{pth.firstname}}</span>
+                                                            </td>
+                                                            <td>{{pth.DateCreated| date}}</td>
+                                                            <td><a href="javascript:void(0)" class="text-info" (click)="gotopathdetailSeen(pth)">Detail</a></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- model for users download start-->
-            
+
             <!-- user delete confirmation -->
             <ng-template #deleteUser class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
                 <div class="modal-dialog modal-dialog-centered">
