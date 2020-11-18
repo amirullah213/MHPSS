@@ -16,7 +16,7 @@
                 <div class="col-md-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
-                            <h5 class="page-title">Diagnostics Pathology</h5>
+                            <!-- <h5 class="page-title">Diagnostics Pathology</h5> -->
                             <div class="row mx-0">
                                 <div class="col-md-12">
                                     <div class="table-responsive">
@@ -33,12 +33,12 @@
                                                 <tr *ngFor="let pat of PathResponseArray; let i=index">
                                                     <!-- <span *ngIf="pat.isDirect==1"> -->
                                                     <td *ngIf="pat.isDirect==1">{{i+1}}</td>
-                                                    <td  *ngIf="pat.isDirect==1">Pathology</td>
-                                                    <td  *ngIf="pat.isDirect==1">{{pat.testName}}</td>
-                                                    <td  *ngIf="pat.isDirect==1">
+                                                    <td *ngIf="pat.isDirect==1">Pathology</td>
+                                                    <td *ngIf="pat.isDirect==1">{{pat.testName}}</td>
+                                                    <td *ngIf="pat.isDirect==1">
                                                         <a href="javascript:void(0)" class="text-info" (click)="openModalWithClass(template,pat)">View Report</a>
                                                     </td>
-                                                <!-- </span> -->
+                                                    <!-- </span> -->
                                                 </tr>
 
                                             </tbody>
@@ -48,8 +48,8 @@
                                         <div class="modal-header">
                                             <h4 class="modal-title pull-left">Result Report</h4>
                                             <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                         </div>
                                         <div class="modal-body">
                                             <div class="row mx-0">
@@ -78,29 +78,29 @@
                                             <hr class="gray">
                                             <div class="row mx-0">
                                                 <div class="col-md-12">
-                                                    <p class="mb-2"><b>Test</b></p>
+                                                    <p class="mb-2"><b>Test</b>: <span class="ml-5"><b>{{userData.testName}}</b></span> </p>
                                                 </div>
                                             </div>
-                                            <hr class="gray">
+
                                             <div class="table-responsive">
                                                 <table class="table center-aligned-table">
                                                     <thead>
                                                         <tr class="text-dark">
-                                                            <th>Test Type</th>
-                                                            <th>Test Nme</th>
-                                                            <th>Findings/ Results</th>
+                                                            <!-- <th>Test Type</th> -->
+                                                            <th width="20%">Test Name</th>
+                                                            <th width="30%">Results</th>
                                                             <th>Range</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody *ngIf="!userData.subTests">
                                                         <tr>
-                                                            <td>Pathology</td>
+                                                            <!-- <td>Pathology</td> -->
                                                             <td>{{userData.testName}}</td>
                                                             <td>
-                                                                {{userData.result}}
                                                                 <!-- <form>
-                                                                    <input type="text" [(ngModel)]="objPath.result" class="form-control"  id="findins" placeholder="Findings/ Results" name='result'>
-                                                                </form> -->
+                                                                <input type="text" [(ngModel)]="objPath.result" class="form-control"  id="findins" placeholder="Findings/ Results" name='result'>
+                                                            </form> -->
+                                                                <span>{{userData.result}}</span>
                                                             </td>
                                                             <td> {{userData.refRange}}</td>
                                                         </tr>
@@ -108,13 +108,13 @@
                                                     <!-- for array daata -->
                                                     <tbody *ngIf="userData.subTests && userData.subTests.length>0">
                                                         <tr *ngFor="let tes of userData.subTests; let j=index">
-                                                            <td>Pathology</td>
-                                                            <td>{{tes.testName}}</td>
+                                                            <!-- <td>Pathology</td> -->
+                                                            <td>{{tes.oldTestName}}</td>
                                                             <td>
-                                                                {{tes.result}}
                                                                 <!-- <form>
-                                                                    <input type="text" [(ngModel)]="tes[j]" (blur)="saveTests(tes[j],tes)" class="form-control" id="findins" placeholder="Findings/ Results" name='result'>
-                                                                </form> -->
+                                                                <input type="text" [(ngModel)]="tes[j]" (blur)="saveTests(tes[j],tes)" class="form-control" id="findins" placeholder="Findings/ Results" name='result'>
+                                                            </form> -->
+                                                                <span>{{tes.result}}</span>
                                                             </td>
                                                             <td> {{tes.refRange}}</td>
                                                         </tr>
@@ -124,8 +124,8 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button *ngIf="userData.subTests && userData.subTests.length>0" type="button" class="button"  (click)="modalRef.hide()"><i class="fa fa-check-square"></i> Close</button>
-                                            <!-- <button *ngIf="!userData.subTests" type="button" class="button" (click)="modalRef.hide()" (click)="updateSingleTest(objPath.result,userData)"><i class="fa fa-check-square"></i> Save</button> -->
+                                            <button *ngIf="userData.subTests && userData.subTests.length>0" type="button" class="button" (click)="updateTests()"><i class="fa fa-check-square"></i> Save</button>
+                                            <button *ngIf="!userData.subTests" type="button" class="button" (click)="modalRef.hide()" (click)="updateSingleTest(objPath.result,userData)"><i class="fa fa-check-square"></i> Save</button>
                                         </div>
                                     </ng-template>
                                 </div>
