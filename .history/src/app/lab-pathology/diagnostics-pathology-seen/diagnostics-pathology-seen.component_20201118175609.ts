@@ -69,7 +69,7 @@ export class DiagnosticsPathologySeenComponent implements OnInit {
   openModalWithClass(template: TemplateRef<any>,data) {
 
     this.userData = data;
-    localStorage.setItem('pathologyPrint', JSON.stringify(data))
+    localStorage.setItem('pathologyPrint',data)
     console.log("this.userData===",this.userData);
     this.modalRef = this.modalService.show(
       template,

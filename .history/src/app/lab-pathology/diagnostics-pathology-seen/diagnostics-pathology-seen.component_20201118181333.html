@@ -124,7 +124,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button *ngIf="userData.subTests && userData.subTests.length>0" type="button" class="button " (click)="modalRef.hide()"  [routerLink]="['/print/pathology']"><i class="fa fa-check-square"></i> Print</button>
+                                        <button *ngIf="userData.subTests && userData.subTests.length>0" type="button" class="primary"  [routerLink]="['/print/pathology']"><i class="fa fa-check-square"></i> Print</button>
                                         <button *ngIf="userData.subTests && userData.subTests.length>0" type="button" class="button"  (click)="updateTests()"><i class="fa fa-check-square"></i> Save</button>
                                         <button *ngIf="!userData.subTests" type="button" class="button" (click)="modalRef.hide()" (click)="updateSingleTest(objPath.result,userData)"><i class="fa fa-check-square"></i> Save</button>
                                     </div>

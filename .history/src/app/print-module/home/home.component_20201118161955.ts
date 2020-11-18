@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { Router } from "@angular/router";
 import { Subject } from 'rxjs';
-
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { DataTableDirective } from 'angular-datatables';
 import { ServiceService } from '../services/service.service';
 
@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   diagnosisArr: any = [];
   daig: any = [];
 
-  constructor(
+  constructor(private modalService: BsModalService,
     private router: Router,
     private printService:ServiceService) { }
 

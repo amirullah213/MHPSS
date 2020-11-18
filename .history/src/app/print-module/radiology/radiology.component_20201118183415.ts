@@ -8,12 +8,13 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { ServiceService } from '../services/service.service';
 
 @Component({
-  selector: 'ncri-pathology',
-  templateUrl: './pathology.component.html',
-  styleUrls: ['./pathology.component.scss']
+  selector: 'ncri-radiology',
+  templateUrl: './radiology.component.html',
+  styleUrls: ['./radiology.component.scss']
 })
-export class PathologyComponent implements OnInit {
-  printPage() {
+export class RadiologyComponent implements OnInit {
+
+  cprintPage() {
     window.print();
   }
   
