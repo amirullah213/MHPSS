@@ -40,10 +40,10 @@ export class PrintPrescComponent implements OnInit {
       if(response.status === 0 ){
         console.log(response );
         this.userList = response.data;
-        if(this.userList.length!=0 && this.userList[0].test.length!=0){
-          console.log('userPresc list===',JSON.parse(this.userList[0].test[2].xrayFilms6) );
-          this.diagnosisArr=JSON.parse(this.userList[0].test[2].xrayFilms6)
-        }
+        // if(this.userList.length!=0 && this.userList[0].test.length!=0){
+        //   console.log('userPresc list===',JSON.parse(this.userList[0].test[2].xrayFilms6) );
+        //   this.diagnosisArr=JSON.parse(this.userList[0].test[2].xrayFilms6)
+        // }
         //  this.diagnosisArr.forEach(function (value) {
         //  console.log("diagnosisArr",value);
         // this.daig.push(value);
