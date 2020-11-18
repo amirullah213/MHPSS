@@ -16,7 +16,7 @@
                 <div class="col-md-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
-                            <h5 class="page-title"> Seen Patients</h5>
+                            <!-- <h5 class="page-title"> Seen Patients</h5> -->
                             <div class="row mx-0">
                                 <div class="col-md-12">
                                     <div class="table-responsive">
@@ -29,7 +29,7 @@
                                                     <th>Type</th>
                                                     <!-- <th>Batch No</th>
                                                     <th>In Stock</th> -->
-                                                    
+
                                                     <th>Prescribed Quantity</th>
                                                     <th>Issued Quantity</th>
                                                     <th>Dose</th>
@@ -39,9 +39,9 @@
                                             </thead>
                                             <tbody *ngIf="!loader_eqp">
                                                 <tr *ngIf="pharmacyData.medicines.length==0" style="text-align: center;">
-                                                    
-                                                        <td colspan="11">No Record Found</td>
-                                                    
+
+                                                    <td colspan="11">No Record Found</td>
+
                                                 </tr>
                                                 <tr *ngFor="let med of pharmacyData.medicines;let i=index">
                                                     <td>{{i+1}}</td>
@@ -60,7 +60,7 @@
                                                     </td>
                                                     <td ><input [(ngModel)]="med.instoc" name="instock{{i}}" disabled="tabb=='newPats'" class="form-control" value="{{med.inStock}}" [disabled]='true'></td> -->
                                                     <td>{{med.prescribedQuantity}}</td>
-                                                    <td><input [(ngModel)]="med.issuedQuantity" name="issuedQuantity{{i}}"  (blur)="addMedicArr(med)" class="form-control" [disabled]='!med.inStock' ></td> 
+                                                    <td><input [(ngModel)]="med.issuedQuantity" name="issuedQuantity{{i}}" (blur)="addMedicArr(med)" class="form-control" [disabled]='!med.inStock'></td>
                                                     <td>{{med.dose}}</td>
                                                     <td>{{med.prandial}}</td>
                                                     <td>{{med.remarks}} </td>
@@ -80,7 +80,7 @@
                                     </div> -->
                                     <div class="row mx-0">
                                         <div class="col-md-12 mt-3 text-center">
-                                            <button type="button" href="javascript:void(0)"  [routerLink]="['/pharma/prescription']" class="button"><i class="ti-eye"></i> View Priscription </button>
+                                            <button type="button" href="javascript:void(0)" [routerLink]="['/pharma/prescription']" class="button"><i class="ti-eye"></i> View Priscription </button>
                                         </div>
                                     </div>
                                 </div>
