@@ -165,12 +165,12 @@ export class HomeComponent implements OnInit {
     console.log("patData===", obpat, "tab data==", this.tab)
     localStorage.setItem('wardData', JSON.stringify(obpat));
     localStorage.setItem('tab', this.tab);
-    this.router.navigate(['ward-list/admitted'])
+    this.router.navigate(['ward/admitted'])
   }
   gotoDischargeDetails(obpat) {
     console.log("patData===", obpat, "tab data==", this.tab)
     localStorage.setItem('wardData', JSON.stringify(obpat));
     localStorage.setItem('tab', this.tab);
-    this.router.navigate(['ward-list/discharged'])
+    this.router.navigate(['ward/discharged'])
   }
 }

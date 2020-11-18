@@ -30,7 +30,8 @@ export class DischargedPatientsComponent implements OnInit {
   loader_eqp2:boolean=false;
   detailsData:any={};
   hospitalID:any;
-  diagnosis:any =[];
+  diagnosis: any = [];
+  complaint: any = [];
 
   constructor(
     private modalService: BsModalService,
@@ -54,13 +55,14 @@ export class DischargedPatientsComponent implements OnInit {
   this.model5.hospitalID=this.hospitalID;
   this.model5.tokenID=this.detailsData.ptID;
   console.log('modal 5==', this.model5);
- this.wardService.dischargeCard(this.model5).subscribe(
+  this.wardService.dischargeCard(this.model5).subscribe(
     (response: any) => {
       if (response.status === 0) {
         this.pharmacyData = response.data;
         this.diagnosis=JSON.parse(this.pharmacyData.diagnosis);
-        console.log('diagnosus====',this.diagnosis); 
-      console.log('this.pharmacy pats==',this.pharmacyData)
+        console.log('diagnosus====',this.diagnosis);
+        this.complaint= JSON.parse(this.pharmacyData.complaints);
+        console.log('this.pharmacy pats==',this.pharmacyData)
         this.loader_eqp2 = false;
       }
   if (response.status === 1) {
