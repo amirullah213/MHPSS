@@ -15,6 +15,7 @@ import { LabourRoomComponent } from './labour-room/labour-room.component';
 import { AdmittedPatientsComponent } from './admitted-patients/admitted-patients.component';
 import { DischargedPatientComponent } from './discharged-patient/discharged-patient.component';
 import { PendingPatientsComponent } from './pending-patients/pending-patients.component';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 
 @NgModule({
@@ -30,6 +31,8 @@ import { PendingPatientsComponent } from './pending-patients/pending-patients.co
     FormsModule,
     ModalModule.forRoot(),
     DataTablesModule,
+    TypeaheadModule.forRoot(), 
+
   ]
 })
 export class LabourRoomModule { }

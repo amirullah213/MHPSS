@@ -50,7 +50,11 @@ export class LabourRoomSerivce {
     let url = APP_CONFIG.apiBaseUrl + 'generatetoken';
     return this.http.post(url, obj);
   }
-
+  getindoordiagnosis(obj: any):Observable<any> {
+    let url = APP_CONFIG.apiBaseUrl + 'getindoordiagnosis';
+    return this.http.post(url, obj);
+  }
+  
   
   
   

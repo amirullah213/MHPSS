@@ -23,7 +23,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group mb-3">
                                                 <label>
-                                                    <input type="checkbox" class="mr-2 "> Misoprostol Given
+                                                    <input type="checkbox" formControlName="isMisoprostol" class="mr-2 "> Misoprostol Given
                                                 </label>
                                             </div>
                                         </div>
@@ -51,7 +51,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group mb-3">
                                                 <label>
-                                                    <input type="checkbox" class="mr-2"> Still Birth
+                                                    <input type="checkbox" formControlName="isStillBirth" class="mr-2"> Still Birth
                                                 </label>
                                             </div>
                                         </div>
@@ -111,12 +111,12 @@
                                                 <label>Neonatal Death</label>
                                                 <select class="form-control" formControlName="neonatalDeathType">
                                                     <option>Select</option>
-                                                    <option>Brith Trauma</option>
-                                                    <option>Brith Asphyxia</option>
-                                                    <option>Bacterial sepsis</option>
-                                                    <option>Congenital Abnormality</option>
-                                                    <option>Prematurity</option>
-                                                    <option>Hypothermia</option>
+                                                    <option [value]=1>Birth Trauma</option>
+                                                    <option [value]=2>Birth Asphyxia</option>
+                                                    <option [value]=3>Bacterial sepsis</option>
+                                                    <option [value]=4>Congenital Abnormality</option>
+                                                    <option [value]=5>Prematurity</option>
+                                                    <option [value]=6>Hypothermia</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
@@ -131,30 +131,49 @@
                                     </div>
                                     <div class="col-md-12 text-center mt-4">
                                         <div class="form-group">
-                                            <button class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus-square mr-1"></i> Save</button>
+                                            <button class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" (click)="updateobstetric()"><i class="fa fa-plus-square mr-1"></i> Save</button>
                                         </div>
                                     </div>
                                     <h5 class="card-title mb-0 mt-3">Diagnosis</h5>
                                     <!-- <hr class="hr-gray mx-0"> -->
-                                    <div class="row mx-0 border4">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Diagnosis</label>
-                                                <input type="text" formControlName="diagnosis" class="form-control" placeholder="Diagnosis">
+                                        <div class="row mx-0 border4">
+                                            <div class="col-md-12">
+                                                <h5>Diagnosis For Admission</h5>
                                             </div>
-                                            <h5>Selected Diagnosis</h5>
-                                            <div class="row mx-0">
-                                                <div class="col-md-10">
-                                                    <p><b>sadsadsad</b></p>
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <label>Diagnosis</label>
+                                                    <input formControlName="selectedValueIndoorDiag" [value]="selectedValueIndoorDiag" [typeahead]="IndoorDiagData" typeaheadOptionField="name" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectIndoorDiag($event)" class="form-control"  [typeaheadOptionsLimit]='1000' [typeaheadMinLength]="0">
                                                 </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-group mt-1">
-                                                        <a href="javascript:void(0)">
-                                                            <i class="fa fa-close fa-lg text-danger"></i>
-                                                        </a>
+                                            </div>
+                                            <div class="col-md-5 ">
+                                                <label>Description</label>
+                                                <input formControlName="descriptionIndoor" class="form-control">
+                                            </div>
+                                            <div class="col-md-2 mt-1">
+                                                <label>Action</label>
+                                                <button type="button" (click)="addIndoorDiag()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus-square mr-2"></i>Add</button>
+                                            </div>
+                                            <hr class="hr-gray">
+                                            <div class="col-md-12">
+                                                <h5>Selected Diagnosis</h5>
+                                                <div class="row mx-0" *ngFor="let indD of localIndoorData let i=index">
+                                                    <div class="col-md-5">
+                                                        <p><b>{{indD.name}}</b></p>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <p><b>{{indD.description}}</b></p>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group mt-1">
+                                                            <a href="javascript:void(0)" (click)="removeIndoorDiag(i)">
+                                                                <i class="fa fa-close fa-lg text-danger"></i>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Select Referreal</label>
                                                 <div class="col-md-10">
@@ -169,12 +188,13 @@
                                                         </span>
                                                   </div>
                                             </div>
+                                            </div>
+                                            
                                             <div class="form-group text-center mt-4">
-                                                <button class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus-square mr-1"></i> Admit</button>
+                                                <button class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" (click)="generatetoken(1)"><i class="fa fa-plus-square mr-1"></i> Admit</button>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- <h5 class="card-title mb-0 mt-3">Discharge</h5> -->
+                                                <!-- <h5 class="card-title mb-0 mt-3">Discharge</h5> -->
                                     <!-- <hr class="hr-gray mx-0"> -->
                                     <!-- <div class="row mx-0 border4">
                                         <div class="col-md-12">
