@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'docsignin', loadChildren: () => import('../auth/signin2/signin2.module').then(m => m.Signin2Module) },
   { path: 'signup', loadChildren: () => import('../auth/signup/signup.module').then(m => m.SignupModule)},
   { path: 'recovery', loadChildren: () => import('../auth/recovery/recovery.module').then(m => m.RecoveryModule)},
-  { path: 'ward-list', loadChildren: () => import('../ward/ward.module').then(m => m.WardModule) },
+  { path: 'ward', loadChildren: () => import('../ward/ward.module').then(m => m.WardModule) },
   { path: 'ot', loadChildren: () => import('../operation/operation.module').then(m => m.OperationModule) },
   { path: 'epi', loadChildren: () => import('../epi/epi.module').then(m => m.EpiModule) },
   { path: 'vitals', loadChildren: () => import('../vitals/vitals.module').then(m => m.VitalsModule) },
