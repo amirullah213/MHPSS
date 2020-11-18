@@ -5,7 +5,7 @@
                 <div class="row px-3 px-md-0">
                     <div class="col-sm-12 pl-0">
                         <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)" class="gray-color">Home</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)" class="gray-color"><i class="ti-home mr-1"></i> Home</a></li>
                         </ol>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
                                     <div class="col-md-10">
                                         <div class="form-group">
                                             <label for="formGroupExampleInput">CNIC Number</label>
-                                            <input type="text" formControlName="cnic" class="form-control" placeholder="Enter CNIC Number">
+                                            <input type="number" formControlName="cnic" class="form-control" placeholder="Enter CNIC Number" maxlength="13">
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -44,7 +44,7 @@
                                     <div class="col-md-10">
                                         <div class="form-group">
                                             <label for="formGroupExampleInput">Token ID</label>
-                                            <input type="text" formControlName="token" class="form-control" placeholder="Enter Token">
+                                            <input type="number" formControlName="token" class="form-control" placeholder="Enter Token">
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -213,7 +213,6 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr colspan='4' *ngIf="nicResponseArray.length==0" class="text-center">No data available</tr>
                                                 <tr class="text-center" *ngFor="let ncRes of nicResponseArray; let i=index">
                                                     <td>{{i+1}}</td>
                                                     <td>
@@ -223,6 +222,7 @@
                                                     <td>{{ncRes.DateCreated|date}}</td>
                                                     <td><a href="javascript:void(0)" (click)="gotopatdetailsDetails(ncRes)" class="text-info">Detail</a></td>
                                                 </tr>
+                                                <tr colspan='4' *ngIf="nicResponseArray.length==0" class="text-center text-capitalize">No data available</tr>
                                             </tbody>
                                         </table>
                                     </div>
