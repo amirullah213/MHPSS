@@ -44,7 +44,7 @@
                                     <h6 class="mb-1 ml-4">Height (cm): <span class="ml-5">{{userList[0].vitals.height}}</span></h6>
                                     <h6 class="mb-1 ml-4">Temprature(F): <span class="ml-5">{{userList[0].vitals.temperature}}</span></h6>
                                     <h6 class="mb-2 ml-4">Oxygen Saturation : <span class="ml-5">{{userList[0].vitals.oxygen_saturation}}</span></h6>
-                                    <h5 class="mb-2"><b><span class="colorback">Investigation (With Results) </span></b></h5>
+                                    <h5 class="mb-2"><b><span class="colorback">Investigation</span></b></h5>
                                     <h5 class="mb-1 ml-2"><b><span class="colorback">Pathology : </span></b> </h5>
                                     <span *ngFor="let tst of userList[0].test">
                                         <span *ngIf="tst.testType==1">

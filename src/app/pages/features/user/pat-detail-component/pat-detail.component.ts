@@ -289,9 +289,9 @@ export class PatDetailComponent implements OnInit {
     this.getPatPrescrib(this.patInfo);
 
   }
-  getlink():SafeUrl {
-    return this.sanitizer.bypassSecurityTrustUrl("C:/path/to/executable");
-  }
+  // getlink():SafeUrl {
+  //   return this.sanitizer.bypassSecurityTrustUrl("C:/path/to/executable");
+  // }
   gettestImages(presID) {
     this.imagesArr=[];
     if(presID!=undefined){
@@ -1082,7 +1082,8 @@ for (let sgn of this.localSign)
 
   getInvistigation() {
     this.param = { 'hospitalID': localStorage.getItem('hospitalID'), 'prescriptionID': this.patInfo.prescriptionID };
-
+    this.IndoorDiagData=[]
+    this.radData=[];
     this.radNameData = [];
     this.userLoader = true;
     this.uService.getInvistigation(this.param).subscribe
@@ -1138,8 +1139,8 @@ for (let sgn of this.localSign)
       ((response: any) => {
         if (response.status === 0) {
           this.radData = response.radiologyTypes;   
+          localStorage.setItem("tab",'penPats')
           this.router.navigate(['doctor/user/'])
-          localStorage.removeItem("tab")
           this.userLoader = false;
         } else {
           this.userLoader = false;

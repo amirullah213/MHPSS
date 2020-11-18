@@ -636,7 +636,7 @@
                                                             <tr class="text-dark text-center">
                                                                 <th>Type</th>
                                                                 <th>Investigation Type</th>
-                                                                <th class="text-center">Action</th>
+                                                                <th class="text-center">Report /Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -646,9 +646,10 @@
                                                                 <td>{{pth.testName}}</td>
                                                                 <td>
                                                                     <div class="form-group">
-                                                                        <a href="javascript:void(0)" class="float-right" (click)="removeTest(i,pth.id)">
+                                                                      
+                                                                        <a href="javascript:void(0)" class="text-info" (click)="viewReport(template,pth,i)">View Report</a> /
+                                                                        <a href="javascript:void(0)" class="text-center" (click)="removeTest(i,pth.id)">
                                                                             <i class="fa fa-close fa-lg text-danger mr-1"></i></a>
-                                                                        <a href="javascript:void(0)" class="text-info" (click)="viewReport(template,pth,i)">View Report</a>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -658,8 +659,7 @@
                                                 <div class="form-group text-center">
                                                     <button type="button" (click)="addinvestigation()" *ngIf="!userLoader" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i
                                                         class="fa fa-send-o"></i> Send To Lab / Radiology </button>
-                                                        <button type="button" *ngIf="userLoader" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i
-                                                            class="fa fa-send-o"></i>                                                 
+                                                        <button type="button" *ngIf="userLoader" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">                                               
                                                          <span class="spinner-border" *ngIf="userLoader" role="status" aria-hidden="true"></span>  </button>
 
                                                             
@@ -704,7 +704,7 @@
                                                             <!-- <p><span *ngIf="sData.oldTestName!='' && sData.isSupper==1"><b>Test Name :</b>  <span class="ml-4">{{sData.oldTestName}} </span> </span></p> -->
                                                         </div>
                                                         <div class="table-responsive">
-                                                            <!-- <table class="table center-aligned-table" *ngIf="sData.testType==1">
+                                                            <table class="table center-aligned-table" *ngIf="sData.testType==1">
                                                                 <thead>
                                                                     <tr class="text-dark">
                                                                         <th>Test Name</th>
@@ -719,9 +719,9 @@
                                                         <td> {{ts.refRange}}</td>
                                                               </tr>
                                                               </tbody>
-                                                                     </table> -->
+                                                                     </table>
                                                                      <hr class="gray">
-                                                                     <div  *ngIf="sData.testType==1">
+                                                                     <!-- <div  *ngIf="sData.testType==1">
                                                                      <div *ngFor="let ts of subTests let i=index">
                                                                         <div class="form-group row mx-0">
                                                                             <div class="col-sm-2 mt-3"><label for="inputState">Test Name</label></div>
@@ -745,7 +745,7 @@
                                                                         </div>
                                                                         
                                                                     </div>
-                                                                    </div>
+                                                                    </div> -->
                                                             <div class="table center-aligned-table" *ngIf="sData.testType!=1">
                                                                 <div class="form-group row mx-0">
                                                                     <div class="col-sm-2 mt-3"><label for="inputState">Test Name</label></div>
@@ -936,7 +936,7 @@
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label>Prescribed Quantity</label>
-                                                    <input type="text" formControlName="prescribedQuantity" class="form-control" id="formGroupExampleInput" placeholder="Prescribed Quantity">
+                                                    <input type="text" formControlName="prescribedQuantity" class="form-control" id="formGroupExampleInput" placeholder="Prescribed Quantity" >
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
@@ -1007,7 +1007,7 @@
                                                             <td width="10%">
                                                                 <div class="form-group">
                                                                     <button type="button" class="button float-right" (click)="removeTreat(i)"> <i
-                                                                            class="fa fa-close"></i> Remove</button>
+                                                                            class="fa fa-close"></i> </button>
                                                                 </div>
                                                             </td>
                                                         </tr>

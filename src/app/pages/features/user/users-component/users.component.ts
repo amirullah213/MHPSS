@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { UserService } from '../user.service';
 import { DataTableDirective } from 'angular-datatables';
-import { GlobalService, AuthService, APP_CONFIG } from '../../../../core';
 
 @Component({
   selector: 'ncri-users',
@@ -33,11 +32,7 @@ export class UsersComponent implements OnInit {
     private modalService: BsModalService,
     private service: UserService,
     private router: Router,
-    private auth: AuthService
   ) {
-
-
-
     if(this.router.url === '/doctor/user'){
        this.interval = setInterval(() => {
                   this.getUsers(this.userData); // api call
@@ -88,7 +83,7 @@ export class UsersComponent implements OnInit {
 
 
   gotoPresDetails(udata) {
-    debugger
+    
     localStorage.setItem('patData', JSON.stringify(udata));
     //  this.router.navigate(['doctor/user/print-presc'])
    //
@@ -119,7 +114,7 @@ export class UsersComponent implements OnInit {
   getUsers(obj: any) {
 
     this.userLoader = true;
-    this.auth.userList(obj).subscribe
+    this.service.userList(obj).subscribe
       ((response: any) => {
         if (response.status === 0) {
           console.log(response);

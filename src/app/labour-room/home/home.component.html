@@ -46,11 +46,11 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <td>123123</td>
-                                                                <td>fadfsd</td>
-                                                                <td>324324</td>
-                                                                <td><a href="javascript:void(0)" [routerLink]="['/labour-room/pending']" class="text-info">Detail</a></td>
+                                                            <tr  *ngFor="let pt of userList">
+                                                                <td>{{pt.token}}</td>
+                                                                <td>{{pt.firstname}}</td>
+                                                                <td>{{pt.enteringDate | date:'y-M-d'}}</td>
+                                                                <td><a href="javascript:void(0)" (click)="goToDetails(pt,0)" class="text-info">Detail</a></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -72,11 +72,11 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <td>123123</td>
-                                                                <td>fadfsd</td>
-                                                                <td>324324</td>
-                                                                <td><a href="javascript:void(0)" class="text-info">Detail</a></td>
+                                                            <tr  *ngFor="let pt of userList">
+                                                                <td>{{pt.token}}</td>
+                                                                <td>{{pt.firstname}}</td>
+                                                                <td>{{pt.enteringDate | date:'y-M-d'}}</td>
+                                                                <td><a href="javascript:void(0)" (click)=goToDetails(pt,1) class="text-info">Detail</a></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -94,15 +94,13 @@
                                                                 <th>CRP NO</th>
                                                                 <th>Patient Name</th>
                                                                 <th>Date</th>
-                                                                <th>Details</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <td>123123</td>
-                                                                <td>fadfsd</td>
-                                                                <td>324324</td>
-                                                                <td><a href="javascript:void(0)" class="text-info">Detail</a></td>
+                                                            <tr  *ngFor="let pt of userList">
+                                                                <td>{{pt.token}}</td>
+                                                                <td>{{pt.firstname}}</td>
+                                                                <td>{{pt.enteringDate | date:'y-M-d'}}</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
