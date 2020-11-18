@@ -16,10 +16,8 @@
                 <div class="col-md-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
-                            <h5 class="card-title mb-0">Stock Request</h5>
+                            <!-- <h5 class="card-title mb-0">Stock Request</h5> -->
                             <form novalidate>
-                                
-                                
                                 <hr class="gray">
                                 <div class="form-group row mx-0">
                                     <div class="col-md-4">
@@ -52,10 +50,10 @@
                                             <a href="javascript:void(0)" (click)="addToMedicArr(grnobj)" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus mr-2"></i>Add More</a>
                                         </div>
                                     </div>
-                                    
-                                    
-                                   
-                                    
+
+
+
+
                                 </div>
                                 <hr class="gray" *ngIf="medArray.length!=0">
                                 <!-- <div class="form-group row mx-0" *ngIf="medArray.length!=0">
@@ -89,7 +87,7 @@
                                     <div class="col-md-2">
                                         <label>{{md.requiredQuantity}}</label>
                                     </div>
-                                    
+
                                     <div class="col-md-1">
                                         <a href="javascript:void(0)" (click)="removeArr(i)"><i class="fa fa-remove text-danger"></i></a>
                                     </div>

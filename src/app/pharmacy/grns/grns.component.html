@@ -1,4 +1,3 @@
-
 <div class="container-fluid container-wrapper">
     <div class="row">
         <div class="content-wrapper">
@@ -17,18 +16,18 @@
                 <div class="col-md-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
-                            <h5 class="card-title mb-0"> GRN</h5>
+                            <!-- <h5 class="card-title mb-0"> GRN</h5> -->
                             <form [formGroup]="dynamicForm">
                                 <div class="form-group row mx-0">
                                     <div class="col-sm-12">
                                         <label>Select Purchase Order</label>
-                                        <select  formControlName='grnName' class="form-control" (change)="getID(dynamicForm.value.grnName)" name="customSelected" placeholder="select GRN" name="grnName">
+                                        <select formControlName='grnName' class="form-control" (change)="getID(dynamicForm.value.grnName)" name="customSelected" placeholder="select GRN" name="grnName">
                                            <option selected value="">Select PO</option>
                                             <option *ngFor="let prc of pendPurchData; let i=index" [value]="prc.poID">{{prc.POCode}}</option>
                                         </select>
                                     </div>
                                 </div>
-                           
+
                                 <div class="form-group row mx-0">
                                     <div class="col-md-12 text-center">
                                         <h5>Medicines</h5>
@@ -36,7 +35,7 @@
                                     </div>
                                 </div>
                                 <hr class="gray">
-                               
+
                                 <div class="form-group row mx-0">
                                     <div class="table-responsive">
                                         <table class="table center-aligned-table">
@@ -52,60 +51,60 @@
                                                     <th>Trade Name </th>
                                                     <th>Manufacturing date </th>
                                                     <th>Expiry date </th>
-                                                    
+
                                                 </tr>
                                             </thead>
                                             <tbody formGroupName="purchaseOrder">
-                                                <tr *ngFor="let item of dynamicForm.get('purchaseOrder')['controls']; let i = index;"  [formGroupName]="i">
+                                                <tr *ngFor="let item of dynamicForm.get('purchaseOrder')['controls']; let i = index;" [formGroupName]="i">
                                                     <td>
-                                                        <input type="text" formControlName='itemName'  class="form-control"  placeholder="Recieved Quantity">
+                                                        <input type="text" formControlName='itemName' class="form-control" placeholder="Recieved Quantity">
                                                     </td>
-                                                      <td>
-                                                        <input type="text" formControlName='unit'  class="form-control"  placeholder="Recieved Quantity">
-                                                      </td>
-                                                      <td>
-                                                        <input type="text"formControlName='type' class="form-control"  placeholder="Recieved Quantity">
-                                                      </td>
-                                                     <td>
-                                                        <input type="text" formControlName='quantity'  class="form-control"  placeholder="Recieved Quantity">
-                                                     </td>
-                                                     <td>
-                                                        <input type="text" formControlName='recievedQuantity'  class="form-control"  placeholder="Recieved Quantity">
-                                                     </td>
-                                                     <td>
-                                                        <input type="text" formControlName='batchNo'  class="form-control"  placeholder="Batch">
-                                                     </td>
-                                                     <td>
-                                                        <input type="text" formControlName='tradeName'  class="form-control" placeholder="trade">
-                                                     </td>
-                                                     <td>
-                                                        <input type="text" formControlName='mgfDate'  class="form-control"  #datepickerYMD="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placeholder="Manufacture Date">
-                                                     </td>
-                                                     <td>
-                                                        <input type="text" formControlName='expireDate'  class="form-control"  #datepickerYMD="bsDatepicker" bsDatepicker  [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placeholder="Expiry Date">
-                                                     </td>
+                                                    <td>
+                                                        <input type="text" formControlName='unit' class="form-control" placeholder="Recieved Quantity">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" formControlName='type' class="form-control" placeholder="Recieved Quantity">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" formControlName='quantity' class="form-control" placeholder="Recieved Quantity">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" formControlName='recievedQuantity' class="form-control" placeholder="Recieved Quantity">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" formControlName='batchNo' class="form-control" placeholder="Batch">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" formControlName='tradeName' class="form-control" placeholder="trade">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" formControlName='mgfDate' class="form-control" #datepickerYMD="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placeholder="Manufacture Date">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" formControlName='expireDate' class="form-control" #datepickerYMD="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placeholder="Expiry Date">
+                                                    </td>
 
 
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
-                                    
-                            </div>
-                        </form>
-                               
-                                <hr class="gray">
-                                <div class="form-group row mx-0">
-                                    <div class="col-md-12">
-                                        <div class="form-group text-center">
-                                            <button type="button" *ngIf="!loader_eqp" (click)="saveData(dynamicForm.value)" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save</button>
-                                            <button type="button" *ngIf="loader_eqp" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><span class="spinner-border theme-color" role="status">
+
+                                </div>
+                            </form>
+
+                            <hr class="gray">
+                            <div class="form-group row mx-0">
+                                <div class="col-md-12">
+                                    <div class="form-group text-center">
+                                        <button type="button" *ngIf="!loader_eqp" (click)="saveData(dynamicForm.value)" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save</button>
+                                        <button type="button" *ngIf="loader_eqp" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><span class="spinner-border theme-color" role="status">
                                                     <span class="sr-only"></span>
                                                 </span></button>
-                                        </div>
                                     </div>
                                 </div>
-                            
+                            </div>
+
                         </div>
                     </div>
                 </div>

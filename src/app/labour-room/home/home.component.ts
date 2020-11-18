@@ -36,11 +36,18 @@ export class HomeComponent implements OnInit {
   details: any;
   userList: any;
   userLoader: boolean;
+  interval: number;
   constructor(
     private modalService: BsModalService,
     private router: Router,
     private labrService : LabourRoomSerivce
   ) {
+    if(this.router.url === '/labour-room/home'){
+      this.interval = setInterval(() => {
+        this.getpatients(8)
+        // api call
+              }, 30000);
+  }
   }
 
   ngOnInit(): void {
@@ -49,7 +56,11 @@ export class HomeComponent implements OnInit {
     if (localStorage.getItem("tab"))
     this.setTab(localStorage.getItem("tab"))
   }
-
+  ngOnDestroy() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+  }
   //set tab
   setTab(tab: string) {
    localStorage.setItem("tab",tab)   

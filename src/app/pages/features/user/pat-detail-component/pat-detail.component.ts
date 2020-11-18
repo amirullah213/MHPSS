@@ -358,13 +358,9 @@ export class PatDetailComponent implements OnInit {
     this.testNameF = e.testName;
     this.resultF=e.result;
     this.refRangeF =e.refRange
+    this.xRayFilms=e.xrayFilms6;
+      
         
-        if(e.xrayFilms6 && e.xrayFilms6!='0'){
-        this.xRayFilms = e.xrayFilms6
-        }
-        else{
-          this.xRayFilms=""
-        }
       
       }
   
@@ -1042,7 +1038,7 @@ for (let sgn of this.localSign)
       this.localDiagData.push({ 'id': this.diagID, 'name': ci.pname,  "description":ci.description})
    
     }
-      this.userLoader = true;
+
     const tags = this.localSign;
     var result = tags.map(a => a.name);
 

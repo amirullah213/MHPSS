@@ -43,7 +43,6 @@ export class PendingPatientsComponent implements OnInit {
   ngOnInit(): void {
     
     this.patInfo= JSON.parse(localStorage.getItem("patData"));
-    this.getobstetric();
 
   }
   get f() {
@@ -70,25 +69,6 @@ export class PendingPatientsComponent implements OnInit {
     },
       (error) => { }
     );
+  }
 }
 
-getobstetric(){
-  let opl = this.OpLab.value;
-  this.userLoader = true;
-
-  this.param= {"token":this.patInfo.ptID,"hospitalID":this.patInfo.hospitalID}
-  this.labrService.getobstetric(this.param).subscribe
-
-  ((response: any) => {
-    if (response.status === 0) {
-      
-      this.userLoader = false;
-    } else {
-      this.userLoader = false;
-      alert('Something went wrong try again');
-    }
-  },
-    (error) => { }
-  );
-}
-}
