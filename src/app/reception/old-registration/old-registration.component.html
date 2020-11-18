@@ -5,7 +5,7 @@
                 <div class="row px-3 px-md-0">
                     <div class="col-sm-12 pl-0">
                         <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)" class="gray-color">Home</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)" [routerLink]="['/reception/home']" class="gray-color"><i class="ti-home mr-1"></i> Home</a></li>
                             <!-- <li class="breadcrumb-item active gray-04-color">Commission</li> -->
                         </ol>
                     </div>
@@ -66,29 +66,29 @@
 
                                     <!-- model for View patient start-->
                                     <ng-template #captureuser class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
-                                       
-                                                <div class="modal-header">
-                                                    <h4 id="dialog-sizes-name1" class="modal-title pull-left">User</h4>
-                                                    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+
+                                        <div class="modal-header">
+                                            <h4 id="dialog-sizes-name1" class="modal-title pull-left">User</h4>
+                                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
                                                 <span aria-hidden="true"><i class="ti-close"></i></span>
                                             </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="form-group input-group">
-                                                        <div class="col-sm-3 mt-3"><label for="inputState">Select Doctor</label></div>
-                                                        <div class="col-sm-9">
-                                                            <span class="wrapper-select">
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group input-group">
+                                                <div class="col-sm-3 mt-3"><label for="inputState">Select Doctor</label></div>
+                                                <div class="col-sm-9">
+                                                    <span class="wrapper-select">
                                                                 <select class="form-control" [(ngModel)]="objDoc.doctor" (ngModelChange)="onselectDoctor(objDoc.doctor)" name="doctor">
                                                                     <option *ngFor="let docs of docResponseArray; let i=index" [ngValue]="docs">{{docs.NAME}}</option>
                                                                     
                                                                 </select>
                                                             </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group input-group">
-                                                        <div class="col-sm-3 mt-3"><label for="inputState">Referred From</label></div>
-                                                        <div class="col-sm-9">
-                                                            <span class="wrapper-select">
+                                                </div>
+                                            </div>
+                                            <div class="form-group input-group">
+                                                <div class="col-sm-3 mt-3"><label for="inputState">Referred From</label></div>
+                                                <div class="col-sm-9">
+                                                    <span class="wrapper-select">
                                                                 <select class="form-control" [(ngModel)]="objDoc.reff" name='reff'>
                                                                     <option value='Self'>Self</option>
                                                                     <option value='RHC'>RHC</option>
@@ -99,26 +99,26 @@
                                                                     <option value='Others'>Others</option>
                                                                 </select>
                                                             </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group input-group">
-                                                        <div class="col-sm-12">
-                                                            <button class="button-info mr-3"  (click)="childVacination(objDoc)">
+                                                </div>
+                                            </div>
+                                            <div class="form-group input-group">
+                                                <div class="col-sm-12">
+                                                    <button class="button-info mr-3" (click)="childVacination(objDoc)">
                                                                 <i class="fa fa-plus"></i> Childe Vaccination
                                                             </button>
-                                                            <button class="button mr-3" (click)="ttvacination(objDoc)">
+                                                    <button class="button mr-3" (click)="ttvacination(objDoc)">
                                                                 <i class="fa fa-plus"></i> TT Vaccination
                                                             </button>
-                                                            <button class="button-success mr-3" (click)="generateToken(objDoc)">
+                                                    <button class="button-success mr-3" (click)="generateToken(objDoc)">
                                                                 <i class="fa fa-plus"></i> Generate Token
                                                             </button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="button-danger" (click)="modalRef.hide()"><i class="fa fa-remove"></i> Close</button>
-                                                    </div>
                                                 </div>
-                                          
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="button-danger" (click)="modalRef.hide()"><i class="fa fa-remove"></i> Close</button>
+                                            </div>
+                                        </div>
+
                                     </ng-template>
                                     <!-- model for View patient end-->
 
