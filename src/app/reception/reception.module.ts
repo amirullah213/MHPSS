@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule,DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../core';
@@ -14,14 +14,20 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { PatientsComponent } from './patients/patients.component';
 import { SideBarReceptionComponent } from './side-bar-reception/side-bar-reception.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { TodayPatientsComponent } from './today-patients/today-patients.component';
+import { Print2Component } from './print2/print2.component';
+import { ThermalPrintModule } from 'ng-thermal-print';
+
 
 
 
 
 @NgModule({
-  declarations: [HomeComponent, ReceptionComponent, NewRegisterComponent, OldRegistrationComponent, PatientsComponent, SideBarReceptionComponent],
+  declarations: [HomeComponent, ReceptionComponent, NewRegisterComponent, OldRegistrationComponent, PatientsComponent, SideBarReceptionComponent, TodayPatientsComponent, Print2Component],
   imports: [
-    CommonModule, ReceptionRoutingModule, FormsModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), BsDatepickerModule.forRoot(), CollapseModule.forRoot()
-  ]
+    CommonModule, ReceptionRoutingModule, FormsModule, Ng2SearchPipeModule, ReactiveFormsModule, SharedModule, DataTablesModule, ThermalPrintModule, ModalModule.forRoot(), BsDatepickerModule.forRoot(), CollapseModule.forRoot()
+  ],
+  providers: [DatePipe]
 })
 export class ReceptionModule { }

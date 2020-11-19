@@ -1,0 +1,83 @@
+<div class="container-fluid container-wrapper">
+    <div class="row">
+        <div class="content-wrapper">
+            <div class="page-title">
+                <div class="row px-3 px-md-0">
+                    <div class="col-sm-12 pl-0">
+                        <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
+                            <li class="breadcrumb-item gray-04-color"><a href="javascript:void(0)" [routerLink]="['/fleet/home']"><i class="ti-home mr-2"></i>Home</a></li>
+                            <li class="breadcrumb-item active gray-04-color"><a href="javascript:void(0)">External Referral Patient</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- main body -->
+            <div class="row">
+                <div class="col-md-12 mb-30">
+                    <div class="card card-statistics h-100">
+                        <div class="card-body">
+                            <h5 class="card-title mb-0">Fleet/Logistics Officer</h5>
+                            <div class="row mx-0">
+                                <div class="col-md-12 mt-3">
+                                    <p class="mb-1"><b>Token Number</b>
+                                        <span class="ml-4">{{newPatInfo.token}}</span>
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="mb-1 mt-3"><b>Patient Name</b>
+                                        <span class="ml-4">{{newPatInfo.firstname}}</span>
+                                    </p>
+                                    <p class="mb-1 mt-3"><b>Date Of Birth</b>
+                                        <span class="ml-4">{{newPatInfo.dob | date}}</span>
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="mb-1 mt-3"><b>Father/Husband Name</b>
+                                        <span class="ml-4"> {{newPatInfo.f_hName}}</span>
+                                    </p>
+                                    <p class="mb-1 mt-3"><b>Mobile Number</b>
+                                        <span class="ml-4"> {{newPatInfo.cellNo}}</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <hr class="gray">
+                            <div class="row mx-0">
+                                <div class="col-md-12">
+                                    <p class="mb-2"><b>Available Ambulances</b></p>
+                                </div>
+                            </div>
+                            <form [formGroup]="upForm" novalidate>
+                            <hr class="gray">
+                            <div class="form-group row mx-0">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                    <label for="inputState">Ambulance</label>
+                                    <input formControlName="ambulance"  [typeahead]="ambulanceData" typeaheadOptionField="registrationNo" [typeaheadScrollable]="true"
+                                    (typeaheadOnSelect)="onSelectAmb($event)" class="form-control"
+                                    [typeaheadMinLength]="0">
+                                    <!-- <select class="form-control">
+                                        <option>GH-3123</option>
+                                        <option>GH-53534</option>
+                                        <option>GH-78978</option>
+                                    </select> -->
+                                </div>
+                                 </div>
+                                                               
+
+                                                            
+                                <div class="col-sm-6">
+                                    <label for="inputState">Estimated Return Time</label>
+                                    <input class="form-control" type="text" formControlName="returntime" placeholder="Estimated Return Time">
+                                </div>
+                                <div class="col-sm-12 mt-4 text-center">
+                                    <button type="button" (click)="updatereferral()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-send"></i> Assign Ambulance</button>
+                                </div>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

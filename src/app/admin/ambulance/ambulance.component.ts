@@ -68,19 +68,19 @@ export class AmbulanceComponent implements OnInit {
   }
   openModAdd(AmbAdd: TemplateRef<any>) {
     // this.userData = data;
-    this.modalRef = this.modalService.show(AmbAdd);
+    this.modalRef = this.modalService.show(AmbAdd, Object.assign({}, { class: 'modal-lg' }));
     // this.modalRef.content.userActivate = 'Close';
   }
   openModedit(AmbEdit: TemplateRef<any>,edtObj) {
      this.userData = edtObj;
-    this.modalRef = this.modalService.show(AmbEdit);
+    this.modalRef = this.modalService.show(AmbEdit, Object.assign({}, { class: 'modal-lg' }));
     console.log('med data====',this.userData);
     this.showEditData(this.userData)
     // this.modalRef.content.userActivate = 'Close';
   }
   openModdelete(Ambdelete: TemplateRef<any>,dataOb) {
     this.ambID = dataOb.id;
-    this.modalRef = this.modalService.show(Ambdelete);
+    this.modalRef = this.modalService.show(Ambdelete, Object.assign({}, { class: 'modal-sm' }));
     console.log('med id====',this.ambID);
   }
   showEditData(edtObj){
@@ -106,9 +106,9 @@ export class AmbulanceComponent implements OnInit {
           //setTimeout(this.rerender, 2500);
          // if(this.allMedcis.length>1){this.rerender();}
           
+          this.loader_eqp = false;
           this.rerender();
           //this.dtTrigger.next();
-          this.loader_eqp = false;
          
         }
 

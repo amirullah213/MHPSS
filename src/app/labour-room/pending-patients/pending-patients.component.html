@@ -1,0 +1,116 @@
+<div class="container-fluid container-wrapper">
+    <div class="row">
+        <div class="content-wrapper">
+            <!-- <div class="page-title">
+                <div class="row px-3 px-md-0">
+                    <div class="col-sm-12 pl-0">
+                        <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
+                            <li class="breadcrumb-item active gray-04-color"><a href="javascript:void(0)" [routerLink]="['/labour-room/home']"><i class="ti-home mr-2"></i>Home</a></li>
+                            <li class="breadcrumb-item active gray-04-color"><a href="javascript:void(0)">Operation</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div> -->
+            <!-- main body -->
+            <div class="row mx-0">
+                <div class="col-md-12 mb-30">
+                    <div class="card card-statistics h-100">
+                        <div class="card-body">
+                            <div class="card-body">
+                                <!-- <h5 class="card-title mb-0">Operation</h5> -->
+                                <!-- <hr class="hr-gray mx-0"> -->
+                                <form [formGroup]="OpLab" novalidate>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Pairty</label>
+                                            <input type="text" formControlName=parity class="form-control" id="pairty" placeholder="Pairty">
+                                        </div>
+                                    </div>
+                                    <div class="row mx-0 border4">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label>
+                                                <input type="checkbox" formControlName="isAPH" class="mr-2" >
+                                                Ante partum Hemorrhage
+                                            </label>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label>
+                                                <input type="checkbox" formControlName="isEctopic" class="mr-2">
+                                                Ectopic Pregnancies
+
+                                            </label>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label>
+                                                <input type="checkbox" formControlName="isEclampsia" class="mr-2">
+                                                Pre-Eclampsia/ Eclampsia
+                                            </label>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label>
+                                                <input type="checkbox" formControlName="isPerperal" class="mr-2">
+                                                Puerperal Sepsis
+
+                                            </label>
+                                            </div>
+                                           
+                                            <div class="mb-3">
+                                                <label>
+                                                <input type="checkbox" formControlName="isDeath"  class="mr-2">
+                                                Intrauterine Death
+                                            </label>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label>
+                                                <input type="checkbox"  formControlName="isOther" class="mr-2">
+                                                Others
+                                            </label>
+                                            </div>
+                                            <div class="mb-3" *ngIf="OpLab.value.isOther">
+                                                <input type="text" formControlName="otherDiagnostics"  class="mr-2 form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label>
+                                                <input type="checkbox" formControlName="isAbortion" class="mr-2">
+                                                Complications of Abortion
+
+                                            </label>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label>
+                                                <input type="checkbox" formControlName="isPPH" class="mr-2">
+                                                Postpartum Hemorrhage
+                                            </label>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label>
+                                                <input type="checkbox" formControlName="isProlonged" class="mr-2">
+                                                Prolonged/ Obstructed Labors
+                                            </label>
+                                            </div>
+                                           
+                                            <div class="mb-3">
+                                                <label>
+                                                <input type="checkbox" formControlName="isRupture" class="mr-2">
+                                                Rupture Uterus
+                                            </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 text-center mt-4">
+                                        <div class="form-group">
+                                            <button class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" (click)="admitobstetric()"><i class="fa fa-plus-square mr-1"></i> Admit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

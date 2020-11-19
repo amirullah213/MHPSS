@@ -1,0 +1,235 @@
+<div class="container-fluid container-wrapper">
+    <div class="row">
+        <div class="content-wrapper">
+            <div class="page-title">
+                <div class="row px-3 px-md-0">
+                    <div class="col-sm-12 pl-0">
+                        <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
+                            <li class="breadcrumb-item active gray-04-color"><a href="javascript:void(0)" [routerLink]="['/labour-room/home']"><i class="ti-home mr-2"></i>Home</a></li>
+                            <li class="breadcrumb-item active gray-04-color"><a href="javascript:void(0)">Admit Patient</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- main body -->
+            <div class="row mx-0">
+                <div class="col-md-12 mb-30">
+                    <div class="card card-statistics h-100">
+                        <div class="card-body">
+                            <div class="card-body">
+                                <form [formGroup]="opAdmit" novalidate>
+                                    <h5 class="card-title mb-0 mt-3">Preventive Managment</h5>
+                                    <div class="row mx-0 border4">
+                                        <div class="col-md-12">
+                                            <div class="form-group mb-3">
+                                                <label>
+                                                    <input type="checkbox" formControlName="isMisoprostol" class="mr-2 "> Misoprostol Given
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <hr class="hr-gray mx-0">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Nature Of Devlivery</label>
+                                                <select class="form-control" formControlName="deliveryNature">
+                                                    <option>Select Delivery Nature</option>
+                                                    <option [value]=1>Normal</option>
+                                                    <option [value]=2>Assisted</option>
+                                                    <option [value]=3>Cesarean</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Other Procedure Done</label>
+                                                <input type="text" class="form-control" formControlName="otherProcedure">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h5 class="card-title mb-0 mt-3">Devlivery</h5>
+                                    <!-- <hr class="hr-gray mx-0"> -->
+                                    <div class="row mx-0 border4">
+                                        <div class="col-md-12">
+                                            <div class="form-group mb-3">
+                                                <label>
+                                                    <input type="checkbox" formControlName="isStillBirth" class="mr-2"> Still Birth
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <hr class="hr-gray mx-0">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Select Date</label>
+                                                <input type="text" placeholder="Datepicker" formControlName="deliveryDate" class="form-control" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" bsDatepicker placement="top">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Select Time</label>
+                                                <!-- <input type="text" class="form-control"> -->
+                                                <timepicker formControlName="deliveryTime" ></timepicker>
+                                                <!-- <pre class="alert alert-info">Time is: {{mytime}}</pre> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h5 class="card-title mb-0 mt-3">Live Birth</h5>
+                                    <!-- <hr class="hr-gray mx-0"> -->
+                                    <div class="row mx-0 border4">
+                                        <div class="col-md-12">
+                                            <div class="form-group mb-3">
+                                                <label>
+                                                    <input type="checkbox" formControlName="isPreterm" class="mr-2"> Preterm
+                                                </label>
+                                            </div>
+                                            <div class="form-group mb-3">
+                                                <label>
+                                                    <input type="checkbox" formControlName="birthAsphyxia" class="mr-2"> Birth ASphyxia
+                                                </label>
+                                            </div>
+                                            <div class="form-group mb-3">
+                                                <label>
+                                                    <input type="checkbox" formControlName="isCHX" class="mr-2"> CHX applied 
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <hr class="hr-gray mx-0">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Weight in KG's</label>
+                                                <input type="number"  formControlName="isLessWeight" placeholder="Weight in KG's" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Number of Babies (Male)</label>
+                                                <input type="number"  formControlName="maleCount" placeholder="Number of Babies (male)" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Number of Babies (Female)</label>
+                                                <input type="number" formControlName="femaleCount" placeholder="Number of Babies (Female)" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Neonatal Death</label>
+                                                <select class="form-control" formControlName="neonatalDeathType">
+                                                    <option>Select</option>
+                                                    <option [value]=1>Birth Trauma</option>
+                                                    <option [value]=2>Birth Asphyxia</option>
+                                                    <option [value]=3>Bacterial sepsis</option>
+                                                    <option [value]=4>Congenital Abnormality</option>
+                                                    <option [value]=5>Prematurity</option>
+                                                    <option [value]=6>Hypothermia</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Complications after Delivery</label>
+                                                <input type="text" formControlName="complicationAfterDelivery" placeholder="Complications after Delivery" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Delivery Conducted By</label>
+                                                <input type="text" placeholder="Delivery Conducted By" class="form-control" formControlName="deliveryConductedBy">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 text-center mt-4">
+                                        <div class="form-group">
+                                            <button class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" (click)="updateobstetric()"><i class="fa fa-plus-square mr-1"></i> Save</button>
+                                        </div>
+                                    </div>
+                                    <h5 class="card-title mb-0 mt-3">Diagnosis</h5>
+                                    <!-- <hr class="hr-gray mx-0"> -->
+                                        <div class="row mx-0 border4">
+                                            <div class="col-md-12">
+                                                <h5>Diagnosis For Admission</h5>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <label>Diagnosis</label>
+                                                    <input formControlName="selectedValueIndoorDiag" [value]="selectedValueIndoorDiag" [typeahead]="IndoorDiagData" typeaheadOptionField="name" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectIndoorDiag($event)" class="form-control"  [typeaheadOptionsLimit]='1000' [typeaheadMinLength]="0">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5 ">
+                                                <label>Description</label>
+                                                <input formControlName="descriptionIndoor" class="form-control">
+                                            </div>
+                                            <div class="col-md-2 mt-1">
+                                                <label>Action</label>
+                                                <button type="button" (click)="addIndoorDiag()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus-square mr-2"></i>Add</button>
+                                            </div>
+                                            <hr class="hr-gray">
+                                            <div class="col-md-12">
+                                                <h5>Selected Diagnosis</h5>
+                                                <div class="row mx-0" *ngFor="let indD of localIndoorData let i=index">
+                                                    <div class="col-md-5">
+                                                        <p><b>{{indD.name}}</b></p>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <p><b>{{indD.description}}</b></p>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group mt-1">
+                                                            <a href="javascript:void(0)" (click)="removeIndoorDiag(i)">
+                                                                <i class="fa fa-close fa-lg text-danger"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Select Referreal</label>
+                                                <div class="col-md-10">
+                                                    
+                                                        <span class="wrapper-select">
+                                                            <select formControlName="ref" class="form-control"
+                                                                (change)="changeRefVal($event.target.value)">
+                                                                <option>Choose Referral</option>
+                                                                <option *ngFor="let rl of refList">{{rl.fname}}
+                                                                    {{rl.lname}}</option>
+                                                            </select>
+                                                        </span>
+                                                  </div>
+                                            </div>
+                                            </div>
+                                            
+                                            <div class="form-group text-center mt-4">
+                                                <button class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" (click)="generatetoken(1)"><i class="fa fa-plus-square mr-1"></i> Admit</button>
+                                            </div>
+                                        </div>
+                                                <!-- <h5 class="card-title mb-0 mt-3">Discharge</h5> -->
+                                    <!-- <hr class="hr-gray mx-0"> -->
+                                    <!-- <div class="row mx-0 border4">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Discharged Type</label>
+                                                <select class="form-control">
+                                                    <option>Select</option>
+                                                    <option>Discharged/DOR</option>
+                                                    <option>LAMA</option>
+                                                    <option>Referred</option>
+                                                    <option>Maternal Death</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Select Date</label>
+                                                <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker placement="top">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Remarks</label>
+                                                <input type="text" placeholder="Remarks" class="form-control">
+                                            </div>
+                                            <div class="col-md-12 text-center mt-4">
+                                                <div class="form-group">
+                                                    <button class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-check-square mr-1"></i> Discharged</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

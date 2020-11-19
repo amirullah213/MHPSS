@@ -134,5 +134,13 @@ export class AdminServiceService {
     let url = APP_CONFIG.apiBaseUrl + 'searchdiagnosis  ';
     return this.http.post(url, obj);
   }
-   
+  
+  addDiagnosis(obj: any) {
+    let url = APP_CONFIG.apiBaseUrl + 'adddiagnosis  ';
+    return this.http.post(url, obj);
+  }
+  deletDiagnosis(obj: any) {
+    let url = APP_CONFIG.apiBaseUrl + 'deletediagnosis';
+    return this.http.post(url, obj);
+  }
 }

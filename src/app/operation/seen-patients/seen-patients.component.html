@@ -1,0 +1,68 @@
+<div class="container-fluid container-wrapper">
+    <div class="row">
+        <div class="content-wrapper">
+            <div class="page-title">
+                <div class="row px-3 px-md-0">
+                    <div class="col-sm-12 pl-0">
+                        <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
+                            <li class="breadcrumb-item active gray-04-color"><a href="javascript:void(0)" [routerLink]="['/ot/home']" class="gray-color"><i class="ti-home mr-2"></i>Home</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Seen OT Patient</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- main body -->
+            <div class="row">
+                <div class="col-md-12 mb-30">
+                    <div class="card card-statistics h-100">
+                        <div class="card-body">
+                            <!-- <h5 class="card-title mb-0">Ward Managment</h5> -->
+                            <form novalidate>
+                                <div class="form-group row mx-0">
+                                    <div class="col-sm-4">
+                                        <p class="mt-3" for="inputState"><b>Type of Anesthesia : </b></p>
+                                        <p class="mt-3" for="inputState"><b>Name Of Operation : </b></p>
+                                        <p class="mt-3" for="inputState"><b>Name Of Operation Surgeon : </b></p>
+                                        <p class="mt-3" for="inputState"><b>Name of Anesthetist : </b></p>
+                                        <p class="mt-3" for="inputState"><b>Remarks : </b></p>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <p class="mt-3" for="inputState">
+                                            <span *ngIf="PathResponseArray.anesthesiaType==1">General</span>
+                                            <span *ngIf="PathResponseArray.anesthesiaType==2">Spinal</span>
+                                            <span *ngIf="PathResponseArray.anesthesiaType==3">Local</span>
+                                            <span *ngIf="PathResponseArray.anesthesiaType==4">Without Anesthesia</span>
+
+                                        </p>
+                                        <p class="mt-3" for="inputState"> {{PathResponseArray.operationName}}</p>
+                                        <p class="mt-3" for="inputState"> {{PathResponseArray.surgeonName}}</p>
+                                        <p class="mt-3" for="inputState"> {{PathResponseArray.anethetistName}}</p>
+                                        <p class="mt-3" for="inputState"> {{PathResponseArray.remarks}}</p>
+                                    </div>
+                                </div>
+                                <!-- <hr class="gray"> -->
+                                <!-- <div class="form-group row mx-0">
+                                        <div class="col-md-12">
+                                            <ul>
+                                                <h4>Provisional Dignosis</h4>
+                                                <li class="ml-3" *ngFor="let dig of diagArrOT; let i = index">{{dig.name}}</li>
+                                               
+                                            </ul>
+                                        </div>
+                                    </div> -->
+                                <hr class="gray">
+                                <!-- <div class="form-group row mx-0">
+                                        <div class="col-md-12">
+                                            <div class="form-group text-center">
+                                                <button type="button" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save</button>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

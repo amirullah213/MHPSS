@@ -2,7 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { UserService } from '../user.service';
-import { GlobalService, AuthService, APP_CONFIG } from '../../../../core';
+import { DataTableDirective } from 'angular-datatables';
 
 @Component({
   selector: 'ncri-users',
@@ -11,8 +11,11 @@ import { GlobalService, AuthService, APP_CONFIG } from '../../../../core';
 })
 export class UsersComponent implements OnInit {
 
+  // @ViewChild(DataTableDirective, { static: false })
+  // dtElement: DataTableDirective;
+
   userData: any = {};
-  paramData:any={};
+  paramData: any = {};
   loader: boolean = false;
   responseText: any = '';
   tab: string = 'newPats';
@@ -22,46 +25,74 @@ export class UsersComponent implements OnInit {
   activateLoader: boolean = false;
   deactivateLoader: boolean = false;
   userList: any = [];
+  detail: any;
+  interval: number;
 
   constructor(
     private modalService: BsModalService,
     private service: UserService,
     private router: Router,
-    private auth: AuthService
   ) {
+    if(this.router.url === '/doctor/user'){
+       this.interval = setInterval(() => {
+                  this.getUsers(this.userData); // api call
+               }, 30000);
+   }
+  
+  
+   
 
   }
-ngOnInit(): void {
-   this.userData.hospitalID=localStorage.getItem('hospitalID');
-   this.userData.status=0;
-   this.userData.doctorID=localStorage.getItem('docId');
-   this.getUsers(this.userData);
+  ngOnInit(): void {
+    this.userData.hospitalID = localStorage.getItem('hospitalID');
+    this.userData.status = 0;
+    this.userData.doctorID = localStorage.getItem('docId');
+    this.detail = JSON.parse(localStorage.getItem("details"));
+  
+    this.getUsers(this.userData);
+    if (localStorage.getItem("tab"))
+    this.setTab(localStorage.getItem("tab"))
   }
- //set tab
+  ngOnDestroy() {
+   if (this.interval) {
+     clearInterval(this.interval);
+   }
+ }
+  //set tab
   setTab(tab: string) {
-   if(tab=='newPats')
-     {
-       console.log('tab==',tab);
-       this.tab = tab;
-        this.userData.status=0;
-        this.getUsers(this.userData) 
-      };
-     if(tab=='penPats')
-     { 
-      console.log('tab==',tab);
+    localStorage.setItem("tab", tab)
+    if (tab == 'newPats') {
+      console.log('tab==', tab);
       this.tab = tab;
-       this.userData.status=1;
-       this.getUsers(this.userData)
-      };
-    if(tab=='seenPats')
-    { 
-      console.log('tab==',tab);
+      this.userData.status = 0;
+      this.getUsers(this.userData)
+    };
+    if (tab == 'penPats') {
+      console.log('tab==', tab);
       this.tab = tab;
-      this.userData.status=2;
+      this.userData.status = 1;
+      this.getUsers(this.userData)
+    };
+    if (tab == 'seenPats') {
+      console.log('tab==', tab);
+      this.tab = tab;
+      this.userData.status = 2;
       this.getUsers(this.userData)
     };
   }
 
+
+  gotoPresDetails(udata) {
+    
+    localStorage.setItem('patData', JSON.stringify(udata));
+    //  this.router.navigate(['doctor/user/print-presc'])
+   // for print page of print module
+   localStorage.setItem('pharmacyData', JSON.stringify(udata));
+
+   window.open('print/home')
+//   window.open('doctor/user/print-presc')
+   // window.open('core/modules/shared-module/print-prec')
+  }
   openModalActivate(userActivate: TemplateRef<any>, data) {
     this.userData = data;
     this.modalRef = this.modalService.show(userActivate, this.userData);
@@ -79,33 +110,48 @@ ngOnInit(): void {
     // this.modalRef.content.userActivate = 'Close';
   }
 
-  getUsers(obj:any) {
-  
+
+
+ 
+
+  getUsers(obj: any) {
+
     this.userLoader = true;
-    this.auth.userList(obj).subscribe
-      ((response:any)=> {
-      if(response.status === 0 ){
-          console.log(response );
+    this.service.userList(obj).subscribe
+      ((response: any) => {
+        if (response.status === 0) {
+          console.log(response);
           this.userList = response.data;
-          console.log('userList',this.userList)
-         this.userLoader = false;
+          console.log('userList', this.userList)
+          this.userLoader = false;
         } else {
           this.userLoader = false;
           alert('Something went wrong try again');
         }
       },
-      (error) => {}
-    );
+      (error) => { }
+      );
   }
 
   gotoPatDetails(paObj) {
-    
-    console.log("patData===",paObj)
-    localStorage.setItem('patData',JSON.stringify(paObj));
+
+
+    localStorage.setItem('patData', JSON.stringify(paObj));
+   if(paObj.deptType==3)
+   {
+    this.router.navigate(['/epi/child-vaccination'])
+    localStorage.removeItem("tab")
+   } else if(paObj.deptType==2){
+    this.router.navigate(['/epi/tt-vaccination'])
+    localStorage.removeItem("tab")
+   }
+   else{
     this.router.navigate(['doctor/user/details'])
+    localStorage.removeItem("tab")
+   }
   }
 
- 
+
   // downloadFile() {
   //   var url =
   //     'https://8o51sigf6i.execute-api.us-east-1.amazonaws.com/dev/api/v1/uam/DownloadUsersList/';
@@ -119,10 +165,10 @@ ngOnInit(): void {
   //     xhr.onreadystatechange = function () {
   //       if (xhr.readyState === 4) {
   //         console.log(xhr.response);
-         
+
   //         var hiddenElement = document.createElement('a');
   //         hiddenElement.href = window.URL.createObjectURL(xhr.response);
-         
+
   //         hiddenElement.download = 'data.xlsx';
   //         hiddenElement.click();
   //       }
@@ -152,17 +198,17 @@ ngOnInit(): void {
   //   }
   // }
   //activate User
- 
+
 
   //activate User
- 
 
-  
+
+
 
   // confirmDelete(obj:any){
   //   let check = confirm("Are you sure you want to delete this user "+obj.first_name + ' ' + obj.last_name+"");
   //   check ? this.deleteUser(obj.id) : "";
   // }
 
-  
+
 }

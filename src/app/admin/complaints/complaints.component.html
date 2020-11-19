@@ -5,8 +5,11 @@
                 <div class="row px-3 px-md-0">
                     <div class="col-sm-12 pl-0">
                         <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)" class="gray-color">Complaints </a></li>
-                            <!-- <li class="breadcrumb-item active gray-04-color">Commission</li> -->
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0)" class="gray-color">
+                                    <i class="fa fa-television mr-1"></i> Complaints
+                                </a>
+                            </li>
                         </ol>
                     </div>
                 </div>
@@ -17,7 +20,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h5 class="card-title mb-0">Complaints </h5>
+                                    <!-- <h5 class="card-title mb-0">Complaints </h5> -->
                                 </div>
                                 <div class="col-md-6">
                                     <span class="pull-right btn btn-sm">
@@ -32,57 +35,47 @@
                                             <tr>
                                                 <th>S.No</th>
                                                 <th>Complaints</th>
-                                                <th>Action</th>
+                                                <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr *ngFor="let com of allComplaints;index as i">
                                                 <td>{{i+1}}</td>
                                                 <td>{{com.name}}</td>
-                                                <td>
-                                                    <button class="mr-3 btn btn-info" (click)="openModedit(ComplaintsEdit,com)"><i class="ti-pencil-alt"></i></button>
+                                                <td class="text-center">
+                                                    <button class="mr-1 btn btn-info" (click)="openModedit(ComplaintsEdit,com)"><i class="ti-pencil-alt"></i></button>
                                                     <!-- model for Complaints Update start-->
-                                                    <ng-template  #ComplaintsEdit class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
-                                                        <div class="modal-dialog modal-lg modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h2>Edit Complaints</h2>
-                                                                    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                                                                        <span aria-hidden="true"><i class="ti-close"></i></span>
-                                                                    </button>
+                                                    <ng-template #ComplaintsEdit>
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title pull-left">Edit Complaints</h4>
+                                                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body p-5">
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-2 mt-3"><label for="inputState">Complaints</label></div>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" class="form-control input-sm" name="UComplaintsname" id="UComplaintsname" [(ngModel)]="EmedOb.Ename">
                                                                 </div>
-                                                                <div class="modal-body p-5">
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-2 mt-3"><label for="inputState">Complaints</label></div>
-                                                                        <div class="col-sm-10">
-                                                                            <input type="text" class="form-control input-sm" name="UComplaintsname" id="UComplaintsname" [(ngModel)]="EmedOb.Ename">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="button-danger" (click)="modalRef.hide()"><i class="fa fa-remove"></i> Close</button>
-                                                                        <button type="button" class="button" (click)="updateComp(EmedOb)"><i class="fa fa-check-square"></i> Update Complaints</button>
-                                                                    </div>
-                                                                </div>
-
                                                             </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-lg btn-default" (click)="modalRef.hide()"><i class="fa fa-remove"></i> Cancel</button>
+                                                            <button type="button" class="btn btn-lg btn-info" (click)="updateComp(EmedOb)"><i class="fa fa-check-square"></i> Update Complaints</button>
                                                         </div>
                                                     </ng-template>
                                                     <!-- model for Complaints Update end-->
-                                                    <button class="mr-3 btn btn-danger" (click)="openModdelete(Complaintsdelete,com)"><i class="ti-trash"></i></button>
+                                                    <button class="btn btn-danger" (click)="openModdelete(Complaintsdelete,com)"><i class="ti-trash"></i></button>
                                                     <!-- model for Complaints delete start-->
-                                                    <ng-template  #Complaintsdelete class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
-                                                        <div class="modal-dialog modal-sm modal-dialog-centered">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header bb-none"></div>
-                                                                <div class="modal-body p-5 text-center">
-                                                                    <i class="fa fa-exclamation-circle fa-5x text-danger"></i>
-                                                                    <p>Are You Sure To delete this Item!</p>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="button-danger" (click)="modalRef.hide()"><i class="fa fa-remove"></i> Cancel</button>
-                                                                    <button type="button" class="button" (click)="deleteComp()"><i class="fa fa-check-square"></i> Delete</button>
-                                                                </div>
-                                                            </div>
+                                                    <ng-template #Complaintsdelete>
+                                                        <div class="modal-body p-5 text-center">
+                                                            <i class="fa fa-exclamation-circle mb-3 fa-5x text-warning"></i>
+                                                            <p>Are You Sure To delete this Item!</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default" (click)="modalRef.hide()"><i class="fa fa-remove"></i> Cancel</button>
+                                                            <button type="button" class="btn btn-danger" (click)="deleteComp()"><i class="ti-trash"></i> Delete</button>
                                                         </div>
                                                     </ng-template>
                                                     <!-- model for Complaints delete end-->
@@ -104,29 +97,31 @@
             </div>
 
             <!-- model for Add Complaints download start-->
-            <ng-template  #ComplaintsAdd class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
-                <div class="modal-dialog modal-lg modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h2>Add Complaints</h2>
-                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                                <span aria-hidden="true"><i class="ti-close"></i></span>
-                            </button>
-                        </div>
-                        <div class="modal-body p-5">
-                            <div class="form-group row">
-                                <div class="col-sm-2 mt-3"><label for="inputState">Complaints</label></div>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control input-sm" name="Complaintsname" id="Complaintsname" [(ngModel)]="medOb.name" placeholder="Complaints Name">
+            <ng-template #ComplaintsAdd>
+                <div class="modal-header">
+                    <h4 class="modal-title pull-left">Add Complaints</h4>
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form #UserForm="ngForm">
+                        <div class="form-group row">
+                            <div class="col-sm-2 mt-3"><label for="inputState">Complaints</label></div>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control input-sm" name="UComplaintsname" id="UComplaintsname" [(ngModel)]="medOb.name" required #UComplaintsname="ngModel">
+                                <div *ngIf="UComplaintsname.invalid && (UComplaintsname.dirty || UComplaintsname.touched)" class="text-danger">
+                                    <div *ngIf="UComplaintsname.errors.required">
+                                        Complaint is required *
+                                    </div>
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="button-danger" (click)="modalRef.hide()"><i class="fa fa-remove"></i> Close</button>
-                                <button type="button" class="button" (click)="addNewCom(medOb)"><i class="fa fa-check-square"></i> Add Complaints</button>
-                            </div>
                         </div>
-
-                    </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-lg btn-default" (click)="modalRef.hide()"><i class="fa fa-remove"></i> Cancel</button>
+                    <button type="button" class="btn btn-lg btn-success" [disabled]="UserForm.form.invalid" (click)="addNewCom(medOb)"><i class="fa fa-check-square"></i> Add Complaints</button>
                 </div>
             </ng-template>
             <!-- model for Add Complaints download end-->
@@ -136,6 +131,6 @@
 </div>
 <!-- ------------------------------------------------------- -->
 
-<!-- <div *ngIf="loader_eqp" class="text-center">
-    <i class="fa fa-pulse fa-spinner fa-3x fa-fw"></i>
+<!-- <div *ngIf="loader_eqp " class="text-center ">
+    <i class="fa fa-pulse fa-spinner fa-3x fa-fw "></i>
 </div> -->

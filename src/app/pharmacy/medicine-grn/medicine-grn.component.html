@@ -16,110 +16,129 @@
                 <div class="col-md-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
-                            <div class="card-body">
-                                <!-- <h5 class="card-title mb-0">Ward Managment</h5> -->
-                                <form novalidate>
-                                    <div class="form-group row mx-0">
-                                        <div class="col-sm-2">
-                                            <label class="mt-3" for="inputState">Enter GRN</label>
-                                        </div>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" placeholder="Enter GRN">
-                                        </div>
+                            <!-- <h5 class="card-title mb-0">Medicine GRN</h5> -->
+                            <form novalidate>
+                                <div class="form-group row mx-0">
+                                    <div class="col-sm-12">
+                                        <label>Enter GRN</label>
+                                        <input type="text" [(ngModel)]="grnobj1.referenceNo" class="form-control" name="customSelected" placeholder="Enter GRN">
                                     </div>
-                                    <hr class="gray">
-                                    <div class="form-group row mx-0">
-                                        <div class="col-md-12 text-center">
-                                            <h5>Treatment</h5>
-                                        </div>
+                                </div>
+                                <div class="form-group row mx-0">
+                                    <div class="col-md-12 text-center">
+                                        <h5>Treatment</h5>
                                     </div>
-                                    <hr class="gray">
-                                    <div class="form-group row mx-0">
-                                        <div class="col-md-6">
+                                </div>
+                                <hr class="gray">
+                                <div class="form-group row mx-0">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
                                             <label>Medicine Name</label>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label>Unit</label>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label>Type</label>
-                                        </div>
-                                        <div class="col-md-2 text-center">
-                                            <label>Action</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Medicine Name">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Unit">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Type">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2 text-center">
-                                        </div>
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label>Received</label>
-                                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Received">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label>Batch No</label>
-                                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Batch No">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2 text-center">
-                                            <div class="form-group">
-                                                <a href="javascript:void(0)"><i class="fa fa-plus text-success"></i></a>
-                                                <!-- <button type="button" class="button-danger"><i class="fa fa-close"></i> Remove</button> -->
-                                            </div>
+                                            <input [(ngModel)]="grnobj.itemName" [typeahead]="pharmacyData" typeaheadOptionField="itemName" (typeaheadOnSelect)="onSelectMedics($event)" class="form-control" name="medicName" placeholder="Enter Name">
                                         </div>
                                     </div>
-                                    <hr class="gray">
-                                    <div class="form-group row mx-0">
-                                        <div class="col-md-3">
-                                            <label>Medicine Name</label>
-                                            <p class="mt-2">Paracetamole</p>
-                                        </div>
-                                        <div class="col-md-2">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
                                             <label>Unit</label>
-                                            <p class="mt-2">500 mg</p>
+                                            <input type="text" [(ngModel)]="grnobj.unit" name="medicUnit" class="form-control" id="formGroupExampleInput" placeholder="Unit">
                                         </div>
-                                        <div class="col-md-2">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
                                             <label>Type</label>
-                                            <p class="mt-2">Tablet</p>
+                                            <input type="text" [(ngModel)]="grnobj.type" name="medicType" class="form-control" id="formGroupExampleInput" placeholder="Type">
                                         </div>
-                                        <div class="col-md-2">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Trade Name</label>
+                                            <input type="text" [(ngModel)]="grnobj.tradeName" name="medicTrade" class="form-control" id="formGroupExampleInput" placeholder="Trade Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Expiry Date</label>
+                                            <input type="text" [(ngModel)]="grnobj.expireDate" name="medicExpiry" class="form-control" id="formGroupExampleInput" #datepickerYMD="bsDatepicker" bsDatepicker formControlName="dateYMD" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placeholder="Expiry Date">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
                                             <label>Received</label>
-                                            <p class="mt-2">500</p>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label>Bath No</label>
-                                            <p class="mt-2">5478787</p>
-                                        </div>
-                                        <div class="col-md-1">
-                                            <label>Remove</label>
-                                            <a href="javascript:void(0)"><i class="fa fa-remove text-danger"></i></a>
+                                            <input type="text" [(ngModel)]="grnobj.recievedQuantity" name="medicRecieved" class="form-control" id="formGroupExampleInput" placeholder="Received">
                                         </div>
                                     </div>
-                                    <hr class="gray">
-                                    <div class="form-group row mx-0">
-                                        <div class="col-md-12">
-                                            <div class="form-group text-center">
-                                                <button type="button" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save</button>
-                                            </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Batch No</label>
+                                            <input type="text" [(ngModel)]="grnobj.batchNo" name="medicBatch" class="form-control" id="formGroupExampleInput" placeholder="Batch No">
                                         </div>
                                     </div>
-                                </form>
-                            </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Price</label>
+                                            <input type="text" [(ngModel)]="grnobj.unitPrice" name="medicPrice" class="form-control" id="formGroupExampleInput" placeholder="Price">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mt-3 text-center">
+                                        <div class="form-group">
+                                            <a href="javascript:void(0)" (click)="addToMedicArr(grnobj)" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus mr-2"></i>Add More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="gray" *ngIf="medArray.length!=0">
+                                <div class="form-group row mx-0" *ngIf="medArray.length!=0">
+                                    <div class="col-md-3">
+                                        <label>Medicine Name</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label>Unit</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label>Type</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label>Received</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label>Bath No</label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <label>Remove</label>
+                                        <!-- <a href="javascript:void(0)"><i class="fa fa-remove text-danger"></i></a> -->
+                                    </div>
+                                </div>
+                                <div class="form-group row mx-0" *ngFor="let md of medArray; let i=index">
+                                    <div class="col-md-3">
+                                        <label>{{md.itemName}}</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label>{{md.unit}}</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label>{{md.type}}</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label>{{md.recievedQuantity}}</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label>{{md.batchNo}}</label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <a href="javascript:void(0)" (click)="removeArr(i)"><i class="fa fa-remove text-danger"></i></a>
+                                    </div>
+                                </div>
+                                <hr class="gray">
+                                <div class="form-group row mx-0">
+                                    <div class="col-md-12">
+                                        <div class="form-group text-center">
+                                            <button type="button" *ngIf="!loader_eqp1" (click)="addNewGRN(grnobj1.referenceNo)" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save</button>
+                                            <button type="button" *ngIf="loader_eqp1" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><span class="spinner-border theme-color" role="status">
+                                                    <span class="sr-only"></span>
+                                                </span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

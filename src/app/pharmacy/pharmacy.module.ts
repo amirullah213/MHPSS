@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule,DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../core';
@@ -10,7 +10,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { PharmacyRoutingModule } from './pharmacy-routing.module';
-import { PharmacyComponent } from './pharmacy/pharmacy.component';
+
 import { PharmaComponent } from './pharma/pharma.component';
 import { HomeComponent } from './home/home.component';
 import { PharmaSideBarComponent } from './pharma-side-bar/pharma-side-bar.component';
@@ -22,13 +22,24 @@ import { MedicineDiscardComponent } from './medicine-discard/medicine-discard.co
 import { NonMedicineDiscardComponent } from './non-medicine-discard/non-medicine-discard.component';
 import { NonMedicineGrnComponent } from './non-medicine-grn/non-medicine-grn.component';
 import { ItemsStatusComponent } from './items-status/items-status.component';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { IssueGrnComponent } from './issue-grn/issue-grn.component';
+import { SyncDataComponent } from './sync-data/sync-data.component';
+import { GrnsComponent } from './grns/grns.component';
+import { StockreqSateliteComponent } from './stockreq-satelite/stockreq-satelite.component';
 
+import { IssueSattMedicComponent } from './issue-satt-medic/issue-satt-medic.component';
+import { DispenseStockComponent } from './dispense-stock/dispense-stock.component';
+import { RecieveGrnSatComponent } from './recieve-grn-sat/recieve-grn-sat.component';
+import { AllgrnsComponent } from './allgrns/allgrns.component';
 
 @NgModule({
-  declarations: [PharmacyComponent, PharmaComponent, HomeComponent, PharmaSideBarComponent, PharmaSeenPatientsComponent, PharmaPendingPatientsComponent, PharmaPrescriptionComponent, MedicineGrnComponent, MedicineDiscardComponent, NonMedicineDiscardComponent, NonMedicineGrnComponent, ItemsStatusComponent],
+  
+  declarations: [ PharmaComponent, HomeComponent, PharmaSideBarComponent, PharmaSeenPatientsComponent, PharmaPendingPatientsComponent, PharmaPrescriptionComponent, MedicineGrnComponent, MedicineDiscardComponent, NonMedicineDiscardComponent, NonMedicineGrnComponent, ItemsStatusComponent, IssueGrnComponent, SyncDataComponent, GrnsComponent, StockreqSateliteComponent,  IssueSattMedicComponent, DispenseStockComponent, RecieveGrnSatComponent, AllgrnsComponent],
   imports: [
     CommonModule,
-    PharmacyRoutingModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), FormsModule, BsDatepickerModule.forRoot(), CollapseModule.forRoot(),
-  ]
+    PharmacyRoutingModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), FormsModule, BsDatepickerModule.forRoot(), CollapseModule.forRoot(),TypeaheadModule.forRoot(),
+  ],
+  providers: [DatePipe]
 })
 export class PharmacyModule { }

@@ -71,25 +71,26 @@ export class PathologyListComponent implements OnInit {
     });
   }
   openModAdd(addmod: TemplateRef<any>) {
-    // this.userData = data;
-    this.modalRef = this.modalService.show(addmod);
-    // this.modalRef.content.userActivate = 'Close';
+    this.modalRef = this.modalService.show(
+      addmod,
+      Object.assign({}, { class: 'modal-lg' })
+    );
   }
-  openModedit(SignsEdit: TemplateRef<any>,edtObj) {
+  openModedit(pathEdit: TemplateRef<any>,edtObj) {
      this.userData = edtObj;
-    this.modalRef = this.modalService.show(SignsEdit);
+    this.modalRef = this.modalService.show(pathEdit, Object.assign({}, { class: 'modal-lg' }, this.userData));
     console.log('med data====',this.userData);
-    this.showEditData(this.userData)
+    this.showEditData(this.userData,)
     // this.modalRef.content.userActivate = 'Close';
   }
-  openModdelete(Complaintsdelete: TemplateRef<any>,dataOb) {
+  openModdelete(deletepathology: TemplateRef<any>,dataOb) {
     this.testID = dataOb.testID;
-    this.modalRef = this.modalService.show(Complaintsdelete);
+    this.modalRef = this.modalService.show(deletepathology, Object.assign({}, { class: 'modal-sm' }, this.userData));
     console.log('med id====',this.testID);
   }
-  viewTestsModal(SignsEdit: TemplateRef<any>,edtObj) {
+  viewTestsModal(pathEdit: TemplateRef<any>,edtObj) {
     this.userData = edtObj.subTests;
-   this.modalRef = this.modalService.show(SignsEdit);
+    this.modalRef = this.modalService.show(pathEdit, Object.assign({}, { class: 'modal-lg' }));
    console.log('med data====',this.userData);
   // this.showEditData(this.userData)
    // this.modalRef.content.userActivate = 'Close';
@@ -106,21 +107,17 @@ export class PathologyListComponent implements OnInit {
    //get all medicine  List
    getAllPathList() {
     this.loader_eqp = true;
-this.model.testType=1;
+    this.model.testType=1;
     this.adminService.getPatology(this.model).subscribe(
-     
       (response: any) => {
         if (response.status === 0) {
           this.allpathology = response.data;
           console.log('all allpathology==', this.allpathology);
-         
           //setTimeout(this.rerender, 2500);
          // if(this.allMedcis.length>1){this.rerender();}
-          
           this.rerender();
           //this.dtTrigger.next();
           this.loader_eqp = false;
-         
         }
 
         if (response.status === 1) {

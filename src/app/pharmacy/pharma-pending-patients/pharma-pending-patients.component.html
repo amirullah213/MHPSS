@@ -16,7 +16,7 @@
                 <div class="col-md-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
-                            <h5 class="page-title">Main Pharmacy Pending Patients</h5>
+                            <!-- <h5 class="page-title">Issue Medicines to Patients</h5> -->
                             <div class="row mx-0">
                                 <div class="col-md-12">
                                     <div class="table-responsive">
@@ -27,7 +27,9 @@
                                                     <th>Medicine Name</th>
                                                     <th>Unit</th>
                                                     <th>Type</th>
+                                                    <th>Batch No</th>
                                                     <th>In Stock</th>
+
                                                     <th>Prescribed Quantity</th>
                                                     <th>Issued Quantity</th>
                                                     <th>Dose</th>
@@ -35,25 +37,45 @@
                                                     <th>Remarks</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Paracetmole</td>
-                                                    <td>500<span class="small">mg</span></td>
-                                                    <td>Tablet</td>
-                                                    <td>50</td>
-                                                    <td>15</td>
-                                                    <td>20</td>
-                                                    <td>As Required</td>
-                                                    <td>After Meal</td>
-                                                    <td>Remarks</td>
+                                            <tbody *ngIf="!loader_eqp">
+                                                <tr *ngIf="pharmacyData.medicines.length==0" style="text-align: center;">
+
+                                                    <td colspan="11">No Record Found</td>
+
+                                                </tr>
+                                                <tr *ngFor="let med of pharmacyData.medicines;let i=index;trackBy:trackByIndex;">
+                                                    <td>{{i+1}}</td>
+                                                    <td>{{med.medicine}}</td>
+                                                    <td>{{med.unit}}</td>
+                                                    <td>{{med.type1}}</td>
+                                                    <td>
+                                                        <span>
+                                                            <select [(ngModel)]="med.inStock"  class="form-control" (ngModelChange)="getdata(med.inStock,i)" aria-label="Text input with segmented dropdown button"
+                                                               placeholder="Select Stock" >
+                                                              <!-- <option *ngFor="let stc of newArray.stock;let j=index" [value]="j" >{{stc.batchNo}}</option> (ngModelChange)="getdata(stc)"-->
+                                                              <option *ngFor="let stc of med.stock;let j=index" [ngValue]="stc" >{{stc.batchNo}}</option>
+                                                            </select>
+                                                       </span>
+                                                        <!-- <span>{{batchNo}}</span> -->
+                                                    </td>
+                                                    <td><input [(ngModel)]="objtest.inStoc" [id]="'inStoc'+i" [value]="'inStoc'+i" class="form-control" [disabled]='true'></td>
+                                                    <td>{{med.prescribedQuantity}}</td>
+                                                    <td><input [(ngModel)]="med.issuedQuantity" [name]="'issuedQuantity'+i" [value]="'issuedQuantity'+i" (blur)='addMedicArr(med.issuedQuantity,med)' class="form-control" [disabled]='!med.inStock'></td>
+                                                    <td>{{med.dose}}</td>
+                                                    <td>{{med.prandial}}</td>
+                                                    <td>{{med.remarks}} </td>
                                                 </tr>
                                             </tbody>
                                         </table>
+                                        <div *ngIf="loader_eqp" class="d-flex justify-content-center">
+                                            <div class="spinner-border theme-color" role="status">
+                                                <span class="sr-only"></span>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row mx-0">
                                         <div class="col-md-12 mt-3 text-center">
-                                            <button type="button" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save </button>
+                                            <button type="button" (click)="issueMedicines(med)" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save </button>
                                         </div>
                                     </div>
                                     <div class="row mx-0">
