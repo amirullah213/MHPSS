@@ -7,7 +7,7 @@
                         <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
                             <li class="breadcrumb-item"><a href="javascript:void(0)" [routerLink]="['/ward/home']" class="gray-color"><i class="ti-home mr-2"></i>Home</a></li>
                             <li class="breadcrumb-item">
-                                <a href="javascript:void(0)">Prescreption</a>
+                                <a href="javascript:void(0)">Discharged Card</a>
                             </li>
                         </ol>
                     </div>
@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 mt-3" style="border-bottom: #000 2px solid;"></div>
                                 <div class="col-lg-5 col-md-5 col-sm-5" style="border-right: #000 2px solid;">
-                                    <h5 class="mb-1 mt-4"><b>Diagnosis</b></h5>
+                                    <h5 class="mb-1 mt-4"><b><span class="colorback">Diagnosis : </span></b></h5>
                                     <h6 class="mb-1 ml-3"><b>Provisional</b> </h6>
                                     <h6 class="mb-1 ml-4" *ngFor="let dig of diagnosis;let i=index"><span>{{i+1}})</span> {{dig.name}}</h6>
                                     <h5 class="mb-1"><b>Chief Complaints</b></h5>
@@ -47,7 +47,7 @@
                                         <span *ngIf="complaint.length>0"> {{j+1}}) {{com.name}}</span>
                                         <!-- <span *ngIf="complaint<0">Not Added</span> -->
                                     </h6>
-                                    <h5 class="mb-2"><b>Treatment at Hospital</b></h5>
+                                    <h5 class="mb-2"><b><span class="colorback">Treatment at Hospital : </span></b></h5>
                                     <h6 class="mb-2 ml-4" *ngFor="let thosp of pharmacyData.hospitalTreatments;let j=index">
                                         <span class="">{{j+1}})</span> {{thosp.medicine}}
                                         <span class="mb-1 ml-4">{{thosp.unit}} </span>
@@ -62,12 +62,12 @@
                                         <span class="mb-1 ml-4">{{thosp.duration}} </span>
                                         <span class="mb-1 ml-4">{{thosp.prandial}} </span>
                                     </h6>
-                                    <h5 class="mb-1"><b>Investibations</b></h5>
+                                    <h5 class="mb-1"><b><span class="colorback">Investibations :</span></b></h5>
                                     <h6 class="mb-1 ml-4" *ngFor="let inv of pharmacyData.investigations; let l=index">
                                         <span class="">{{l+1}})</span> {{inv.testName}}
                                         <span class="mb-1 ml-4">{{inv.result}} </span>
                                     </h6>
-                                    <h5 class="mb-1 mt-4"><b>Procedure Notes (if any)</b></h5>
+                                    <h5 class="mb-1 mt-4"><b><span class="colorback">Procedure Notes (if any) :</span></b></h5>
                                     <h6 class="mb-1 ml-4">{{pharmacyData.operativeProcedure}}</h6>
                                     <h5 class="mb-1 mt-4"><b>Treatment at Home</b></h5>
                                     <h6 class="mb-1 ml-4" *ngFor="let pres of pharmacyData.homeTreatments;let k=index">
@@ -84,7 +84,7 @@
                                         <span class="mb-1 ml-4">{{pres.duration}} </span>
                                         <span class="mb-1 ml-4">{{pres.prandial}} </span>
                                     </h6>
-                                    <h5 class="mb-1 mt-4"><b>Follow-up</b></h5>
+                                    <h5 class="mb-1 mt-4"><b><span class="colorback">Follow-Up :</span></b></h5>
                                     <h6 class="mb-1 ml-4">
                                         <span *ngIf="pharmacyData.refferel!=null">{{pharmacyData.refferel}}</span>
                                         <span *ngIf="pharmacyData.refferel==null">Not Added</span>
@@ -92,8 +92,8 @@
                                 </div>
                                 <!-- <div class="col-lg-1"></div> -->
                                 <div class="col-lg-7 col-md-7 col-sm-7">
-                                    <h5 class="mb-1 mt-4"><b>Final</b></h5>
-                                    <h6 class="mb-1 ml-3">{{pharmacyData.prescription.signs}}</h6>
+                                    <h5 class="mb-1 mt-4"><b><span class="colorback">Final : </span></b></h5>
+                                    <h6 class="mb-1 ml-3">{{ pharmacyData.prescription.signs }}</h6>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 mt mt-5 d-print-none">
                                     <div class="form-group text-center">
