@@ -20,16 +20,22 @@
                                         <h5 class="card-title mb-0">Search By CNIC</h5>
                                     </div>
                                     <div class="col-md-10">
-                                        <div class="form-group">
+                                        <div class="form-group" [ngClass]="{'has-error': ((searchForm.get('cnic').touched || searchForm.get('cnic').dirty) && searchForm.get('cnic').errors)}">
                                             <label for="formGroupExampleInput">CNIC Number</label>
-                                            <input type="number" formControlName="cnic" class="form-control" placeholder="Enter CNIC Number" maxlength="13">
+                                            <input type="text" id="cnic" formControlName="cnic" class="form-control" placeholder="Enter CNIC Number">
+                                            <span class="help-block text-danger" *ngIf="((searchForm.get('cnic').touched || searchForm.get('cnic').dirty) &&  searchForm.get('cnic').errors)">
+                                                <span *ngIf="searchForm.get('cnic').errors.minlength || searchForm.get('cnic').errors.maxlength">
+                                                    CNIC Number must be Equal to 13 characters
+                                                </span>
+                                            </span>
                                         </div>
                                     </div>
+                                    <!-- [disabled]="!searchForm.valid" -->
                                     <div class="col-md-2">
                                         <div class="form-group mt-2">
                                             <label for="formGroupExampleInput"></label>
-                                            <button class="button-success mt-4" *ngIf="loaderCNIC"> <span class="spinner-border " role="status" aria-hidden="true"></span> Capturring</button>
-                                            <button class="button-success mt-4" *ngIf="!loaderCNIC" (click)="serchBycnic(captureuser)"><i class="fa fa-eye"></i> Capture</button>
+                                            <button class="btn btn-lg btn-success mt-4" *ngIf="loaderCNIC"> <span class="spinner-border mr-1" role="status" aria-hidden="true"></span>Capturring</button>
+                                            <button type="submit" class="btn btn-lg btn-success mt-4" *ngIf="!loaderCNIC" (click)="serchBycnic(captureuser)"><i class="fa fa-search mr-1"></i>Capture</button>
                                             <!-- captureuser.show() -->
                                         </div>
                                     </div>
@@ -50,16 +56,16 @@
                                     <div class="col-md-2">
                                         <div class="form-group mt-2">
                                             <label for="formGroupExampleInput"></label>
-                                            <button class="button-success mt-4" *ngIf="loaderToken"><span class="spinner-border " role="status" aria-hidden="true"></span> Capturing</button>
-                                            <button class="button-success mt-4" *ngIf="!loaderToken" (click)="serchByToken(captureuser2)"><i class="fa fa-eye"></i> Capture</button>
+                                            <button class="btn btn-lg btn-success mt-4" *ngIf="loaderToken"><span class="spinner-border mr-1" role="status" aria-hidden="true"></span>Capturing</button>
+                                            <button class="btn btn-lg btn-success mt-4" *ngIf="!loaderToken" (click)="serchByToken(captureuser2)"><i class="fa fa-search mr-1"></i>Capture</button>
                                             <!-- captureuser.show() -->
                                         </div>
                                     </div>
                                     <hr class="hr-gray mx-3 my-4">
                                     <div class="col-md-12">
                                         <div class="form-group float-right">
-                                            <button class="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
-                                                <i class="fa fa-plus"></i> New Registration
+                                            <button class="btn btn-lg btn-info" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
+                                                <i class="fa fa-plus mr-1"></i>New Registration
                                             </button>
                                         </div>
                                         <h4>Add Patient</h4>
@@ -67,19 +73,34 @@
                                 </div>
                                 <!-- -------------------search by token------------ -->
                             </form>
-                            <form [formGroup]="regisForm">
-                                <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+                            <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+                                <form [formGroup]="regisForm" novalidate>
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <div class="form-group">
+                                            <div class="form-group" [ngClass]="{'has-error': ((regisForm.get('firstname').touched || regisForm.get('firstname').dirty) && regisForm.get('firstname').errors)}">
                                                 <label for="formGroupExampleInput">Full Name</label>
-                                                <input type="text" formControlName="firstname" class="form-control" placeholder="Enter Patient Name">
+                                                <input type="text" id="firstname" formControlName="firstname" class="form-control" placeholder="Enter Patient Name">
+                                                <span class="help-block text-danger" *ngIf="((regisForm.get('firstname').touched || regisForm.get('firstname').dirty) &&  regisForm.get('firstname').errors)">
+                                                    <span class="text-danger" *ngIf="regisForm.get('firstname').errors.required">
+                                                        Name is required
+                                                    </span>
+                                                </span>
                                             </div>
+                                            <!-- <div *ngIf="regisForm.controls['firstname'].invalid && (regisForm.controls['firstname'].dirty || regisForm.controls['firstname'].touched)" class="alert alert-danger">
+                                                <div *ngIf="regisForm.controls['firstname'].errors.required">
+                                                    Name is required.
+                                                </div>
+                                            </div> -->
                                         </div>
                                         <div class="col-md-3">
-                                            <div class="form-group">
+                                            <div class="form-group" [ngClass]="{'has-error': ((regisForm.get('f_hName').touched || regisForm.get('f_hName').dirty) && regisForm.get('f_hName').errors)}">
                                                 <label for="formGroupExampleInput">Father Name</label>
                                                 <input type="text" formControlName="f_hName" class="form-control" placeholder="Enter Patient Father Name">
+                                                <span class="help-block text-danger" *ngIf="((regisForm.get('f_hName').touched || regisForm.get('f_hName').dirty) &&  regisForm.get('f_hName').errors)">
+                                                    <span class="text-danger" *ngIf="regisForm.get('f_hName').errors.required">
+                                                        Father Name is required
+                                                    </span>
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -112,15 +133,25 @@
                                             </div>
                                         </div> -->
                                         <div class="col-md-3">
-                                            <div class="form-group">
+                                            <div class="form-group" [ngClass]="{'has-error': ((regisForm.get('cnic').touched || regisForm.get('cnic').dirty) && regisForm.get('cnic').errors)}">
                                                 <label for="formGroupExampleInput">CNIC Number</label>
-                                                <input type="number" formControlName="cnic" class="form-control" placeholder="Enter CNIC Number">
+                                                <input type="text" formControlName="cnic" class="form-control" placeholder="Enter CNIC Number">
+                                                <span class="help-block text-danger" *ngIf="((regisForm.get('cnic').touched || regisForm.get('cnic').dirty) &&  regisForm.get('cnic').errors)">
+                                                    <span *ngIf="regisForm.get('cnic').errors.minlength || regisForm.get('cnic').errors.maxlength">
+                                                        CNIC Number must be Equal to 13 characters
+                                                    </span>
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="form-group">
+                                            <div class="form-group" [ngClass]="{'has-error': ((regisForm.get('dob').touched || regisForm.get('dob').dirty) && regisForm.get('dob').errors)}">
                                                 <label for="formGroupExampleInput">Date Of Birth</label>
                                                 <input type="text" formControlName="dob" class="form-control" placeholder="Start Date" #datepickerYMD="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placement="top">
+                                                <span class="help-block text-danger" *ngIf="((regisForm.get('dob').touched || regisForm.get('dob').dirty) &&  regisForm.get('dob').errors)">
+                                                    <span class="text-danger" *ngIf="regisForm.get('dob').errors.required">
+                                                        Date Of Birth is required
+                                                    </span>
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="col-md-1">
@@ -184,15 +215,15 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group mt-2">
-                                                <button class="button-danger mr-2 mt-4" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
+                                                <button class="btn btn-lg btn-danger mr-2 mt-4" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
                                                     <i class="fa fa-remove"></i> Cancel 
                                                 </button>
-                                                <button class="button-success mt-4" (click)="registerNewPat(regisForm.value)"><i class="fa fa-check-square"></i> Add Patient</button>
+                                                <button type="submit" [disabled]="!regisForm.valid" class="btn btn-success btn-lg mt-4" (click)="registerNewPat(regisForm.value)"><i class="fa fa-check-square"></i> Add Patient</button>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                             <!-- model for View patient start-->
                             <ng-template #captureuser>
                                 <div class="modal-header">

@@ -55,9 +55,9 @@ export class HomeComponent implements OnInit {
   ucResponseArray: any = [];
   ucID: any;
   newResponsearr: any = [];
-  newDOB:any;
-  yr:any=0;
-  mn:any=6;
+  newDOB: any;
+  yr: any = 0;
+  mn: any = 6;
 
   constructor(
     private modalService: BsModalService,
@@ -75,7 +75,7 @@ export class HomeComponent implements OnInit {
     this.doctorID = localStorage.getItem('docId');
 
     this.searchForm = this.fb.group({
-      cnic: ['', Validators.required],
+      cnic: ['', [Validators.required,Validators.minLength(13), Validators.maxLength(13)]],
       token: ['', Validators.required],
     },
 
@@ -85,31 +85,30 @@ export class HomeComponent implements OnInit {
       {
         firstname: ['', Validators.required],
         f_hName: ['', Validators.required],
-        cellNo: ['', Validators.required],
-        gender: ['', Validators.required],
-        cnic: ['', Validators.required],
         dob: ['', Validators.required],
-        address: ['', Validators.required],
-        village: ['', Validators.required],
-        district: ['', Validators.required],
-        tehsil_city: ['', Validators.required],
-        uc: ['', Validators.required],
-        year: ['', Validators.required],
-        months: ['', Validators.required],
+        cellNo: [''],
+        gender: [''],
+        cnic: ['', [Validators.minLength(13), Validators.maxLength(13)]],
+        address: [''],
+        village: [''],
+        district: [''],
+        tehsil_city: [''],
+        uc: [''],
+        year: [''],
+        months: [''],
       },
     );
   }
   GetBirthDate() {
-   
     // this.yr = this.yr.replace(/^\s+|\s+$/g, "");
     // this.mn = this.mn.replace(/^\s+|\s+$/g, "");
     // this.dy = this.dy.replace(/^\s+|\s+$/g, "");
     console.log(' this.yr', this.yr)
-   if (this.mn < 10) { this.mn = '0' + this.mn }
-  // alert(new Date(new Date().getFullYear() - this.yr, new Date().getMonth()  - this.mn ));
-   this.newDOB=this.datePipe.transform(new Date(new Date().getFullYear() - this.yr, new Date().getMonth()  - this.mn ),"yyyy-MM-dd");
-   console.log('this.newDOB',this.newDOB)
-}
+    if (this.mn < 10) { this.mn = '0' + this.mn }
+    // alert(new Date(new Date().getFullYear() - this.yr, new Date().getMonth()  - this.mn ));
+    this.newDOB = this.datePipe.transform(new Date(new Date().getFullYear() - this.yr, new Date().getMonth() - this.mn), "yyyy-MM-dd");
+    console.log('this.newDOB', this.newDOB)
+  }
   openModAdd(captureuser: TemplateRef<any>) {
     this.modalRef = this.modalService.show(captureuser, Object.assign({}, { class: 'gray modal-lg' }));
 
@@ -149,7 +148,7 @@ export class HomeComponent implements OnInit {
     );
   }
   //--------------------------------
-  
+
   //---------------------search by token---------------------
   serchByToken(cc) {
     this.loaderToken = true;
@@ -181,17 +180,17 @@ export class HomeComponent implements OnInit {
 
   //---------------------search by token---------------------
   registerNewPat(formval) {
-     if(formval.dob=='' || null || undefined){
-    
-      this.yr=formval.year;
-      this.mn=formval.months;
-      if (this.mn < 10) { this.mn = '0' + this.mn }
-      this.newDOB=this.datePipe.transform(new Date(new Date().getFullYear() - this.yr, new Date().getMonth()  - this.mn ),"yyyy-MM-dd");
-      console.log('this.newDOB',this.newDOB)
+    if (formval.dob == '' || null || undefined) {
 
-         }else{
-           this.newDOB=this.datePipe.transform(formval.dob,"yyyy-MM-dd");
-         }
+      this.yr = formval.year;
+      this.mn = formval.months;
+      if (this.mn < 10) { this.mn = '0' + this.mn }
+      this.newDOB = this.datePipe.transform(new Date(new Date().getFullYear() - this.yr, new Date().getMonth() - this.mn), "yyyy-MM-dd");
+      console.log('this.newDOB', this.newDOB)
+
+    } else {
+      this.newDOB = this.datePipe.transform(formval.dob, "yyyy-MM-dd");
+    }
 
     this.loaderNew = true;
     this.model2.hospitalID = this.hospitalID;
@@ -219,7 +218,7 @@ export class HomeComponent implements OnInit {
           this.newResponsearr = response.patientID;
           this.model2.patientID = this.newResponsearr;
           console.log("idpat====", this.newResponsearr)
-         
+
           this.loaderNew = false;
           this.regisForm.reset();
           alert("patient added successfuly");
