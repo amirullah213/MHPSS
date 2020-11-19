@@ -5,7 +5,7 @@
                 <div class="row px-3 px-md-0">
                     <div class="col-sm-12 pl-0">
                         <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
-                            <li class="breadcrumb-item active gray-04-color"><a href="javascript:void(0)"><i class="ti-home mr-2"></i>Home</a></li>
+                            <li class="breadcrumb-item active gray-04-color"><a href="javascript:void(0)"><i class="ti-home mr-2"></i>Viatls</a></li>
                         </ol>
                     </div>
                 </div>
@@ -15,54 +15,54 @@
                 <div class="col-md-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
-                            <!-- <h5 class="card-title mb-0">Viatls</h5> -->
+                            <h5 class="card-title mb-0">Viatls</h5>
                             <hr class="hr-gray mx-3 my-4">
                             <form [formGroup]="vForm" novalidate>
-                            <div class="row">
-                                
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="formGroupExampleInput">Blood Presure</label>
-                                        <input type="text" formControlName="bps" class="form-control" placeholder="Blood Pressure">
+                                <div class="row">
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput">Blood Presure</label>
+                                            <input type="text" formControlName="bps" class="form-control" placeholder="Blood Pressure">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput">Pulse (Rate Per Minute)</label>
+                                            <input type="text" formControlName="pulse" class="form-control" placeholder="Pulse">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput">Weight (Kg)</label>
+                                            <input type="text" formControlName="weight" class="form-control" placeholder="Weight">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput">Height (cm)</label>
+                                            <input type="text" formControlName="height" class="form-control" placeholder="Height">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput">Temprature (F)</label>
+                                            <input type="text" formControlName="temperature" class="form-control" placeholder="Temprature">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput">Oxygen Saturation</label>
+                                            <input type="text" formControlName="oxygen_saturation" class="form-control" placeholder="Oxygen Saturation">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group text-center">
+                                            <button type="button" (click)="addpatientvital()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus-square"></i> Add Vitals</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="formGroupExampleInput">Pulse (Rate Per Minute)</label>
-                                        <input type="text" formControlName="pulse" class="form-control" placeholder="Pulse">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="formGroupExampleInput">Weight (Kg)</label>
-                                        <input type="text" formControlName="weight" class="form-control" placeholder="Weight">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="formGroupExampleInput">Height (cm)</label>
-                                        <input type="text" formControlName="height" class="form-control" placeholder="Height">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="formGroupExampleInput">Temprature (F)</label>
-                                        <input type="text" formControlName="temperature" class="form-control" placeholder="Temprature">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="formGroupExampleInput">Oxygen Saturation</label>
-                                        <input type="text" formControlName="oxygen_saturation" class="form-control" placeholder="Oxygen Saturation">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group text-center">
-                                        <button type="button" (click)="addpatientvital()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus-square"></i> Add Vitals</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
                             <hr class="hr-gray mx-3 my-4">
                         </div>
                     </div>
