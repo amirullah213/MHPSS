@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { Router } from "@angular/router";
 import { Subject } from 'rxjs';
-
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { DataTableDirective } from 'angular-datatables';
-import { ServiceService } from '../services/service.service';
+import { PharmacyServicesService } from '../services/pharmacy-services.service';
 
 @Component({
   selector: 'ncri-home',
@@ -22,9 +22,9 @@ export class HomeComponent implements OnInit {
   diagnosisArr: any = [];
   daig: any = [];
 
-  constructor(
+  constructor(private modalService: BsModalService,
     private router: Router,
-    private printService:ServiceService) { }
+    private pharmacySer:PharmacyServicesService) { }
 
   ngOnInit(): void {
     this.patInfo = JSON.parse(localStorage.getItem("pharmacyData"));
@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
     this.param = { 'crp': obj.token, 'hospitalID': obj.hospitalID };
 
     this.userLoader = true;
-    this.printService.getprescription(this.param).subscribe
+    this.pharmacySer.getPrescription(this.param).subscribe
       ((response: any) => {
         if (response.status === 0) {
           console.log(response);

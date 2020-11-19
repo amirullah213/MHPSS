@@ -26,7 +26,7 @@
                                     <h6><b>Patient Name :</b> <span class="ml-3"> {{userList[0].firstname}} <span *ngIf=userList[0].lastname!='undefined'>userList[0].lastname</span> </span>
                                     </h6>
                                     <h6><b>Father / Husband's Name : </b><span class="ml-3">{{patInfo.f_hName}}</span> </h6>
-                                    <h6><b>DOB :</b> <span class="ml-3">  <span *ngIf="userList[0].dob!='0000-00-00 00:00:00'">{{userList[0].dob | date}} </span></span>
+                                    <h6><b>Age :</b> <span class="ml-3">  <span *ngIf="userList[0].dob!='0000-00-00 00:00:00'">{{userList[0].dob | date}} </span></span>
                                     </h6>
                                     <h6><b>Gender : </b><span class="ml-3 text-capitalize">{{patInfo.gender}}</span></h6>
                                     <h6><b>Consulting Doctor :</b> <span class="ml-3">{{userList[0].docFName}} {{userList[0].docLNmae}}</span> </h6>
@@ -111,8 +111,8 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12 mt mt-5 d-print-none">
                                     <div class="form-group text-center">
                                         <button type="button" (click)="printPage()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
-                                         <i class="fa fa-print"></i> Print
-                                       </button>
+                                    <i class="fa fa-print"></i> Print
+                                </button>
                                     </div>
                                 </div>
                             </div>
