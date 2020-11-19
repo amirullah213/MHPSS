@@ -32,9 +32,10 @@
                                             <div class="form-group">
                                                 <label>Nature Of Devlivery</label>
                                                 <select class="form-control" formControlName="deliveryNature">
-                                                    <option>Normal</option>
-                                                    <option>Assisted</option>
-                                                    <option>Cesarean</option>
+                                                    <option>Select Delivery Nature</option>
+                                                    <option [value]=1>Normal</option>
+                                                    <option [value]=2>Assisted</option>
+                                                    <option [value]=3>Cesarean</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -59,14 +60,14 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Select Date</label>
-                                                <input type="text" placeholder="Datepicker" formControlName="deliveryDate" class="form-control" bsDatepicker placement="top">
+                                                <input type="text" placeholder="Datepicker" formControlName="deliveryDate" class="form-control" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" bsDatepicker placement="top">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Select Time</label>
                                                 <!-- <input type="text" class="form-control"> -->
-                                                <timepicker formControlName="deliveryTime"></timepicker>
+                                                <timepicker formControlName="deliveryTime" ></timepicker>
                                                 <!-- <pre class="alert alert-info">Time is: {{mytime}}</pre> -->
                                             </div>
                                         </div>
