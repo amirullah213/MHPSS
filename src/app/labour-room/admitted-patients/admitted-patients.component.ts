@@ -7,6 +7,10 @@ import { Router } from '@angular/router';
 import { LabourRoomSerivce } from '../labour-room.service';
 import { formatDate } from '@angular/common';
 import { TypeaheadMatch } from 'ngx-bootstrap/typeahead';
+import { PharmaSeenPatientsComponent } from 'src/app/pharmacy/pharma-seen-patients/pharma-seen-patients.component';
+import { datepickerAnimation } from 'ngx-bootstrap/datepicker/datepicker-animations';
+import { setHours } from 'ngx-bootstrap/chronos/utils/date-setters';
+import { getDate } from 'ngx-bootstrap/chronos/utils/date-getters';
 
 @Component({
   selector: 'ncri-admitted-patients',
@@ -84,8 +88,7 @@ export class AdmittedPatientsComponent implements OnInit {
     debugger
   }
   updateobstetric(){
-    let opl = this.opAdmit.value;  
-    
+    let opl = this.opAdmit.value;     
      let delTime = opl.deliveryTime.toString().split(" ");
     console.log(delTime[4]);
      let delDate = formatDate(opl.deliveryDate, "y-M-d", "en-PK")
@@ -94,10 +97,10 @@ export class AdmittedPatientsComponent implements OnInit {
 
     this.param= {"isMisoprostol": opl.isMisoprostol?1:0,"patientID":this.patInfo.patientID,"deliveryTime":delTime[4],
     "isStillBirth":opl.isStillBirth?1:0,"isLessWeight":opl.isLessWeight,
-    "departmentID":this.patInfo.departmentID,"maleCount":opl.maleCount,"birthAsphyxia":opl.birthAsphyxia?1:0,"token":this.patInfo.ptID,
+    "departmentID":this.patInfo.departmentID,"maleCount":opl.maleCount,"birthAsphyxia":opl.birthAsphyxia?1:0,"tokenID":this.patInfo.ptID,
     "deliveryConductedBy":opl.deliveryConductedBy,"deliveryDate":delDate,"deliveryNature":opl.deliveryNature,
     "isCHX":opl.isCHX?1:0,"hospitalID":this.patInfo.hospitalID,"neonatalDeathType":opl.neonatalDeathType,"femaleCount":opl.femaleCount,
-  "otherProcedure":opl.otherProcedure,"isPreterm":opl.isPreterm?1:0,}
+  "otherProcedure":opl.otherProcedure,"isPreterm":opl.isPreterm?1:0,"complicationAfterDelivery":opl.complicationAfterDelivery}
     this.labrService.updateobstetric(this.param).subscribe
 
     ((response: any) => {
@@ -115,13 +118,15 @@ export class AdmittedPatientsComponent implements OnInit {
 }
 getobstetric(){
   this.userLoader = true;
-
-  this.param= {"token":this.patInfo.ptID,"hospitalID":this.patInfo.hospitalID}
+  this.param= {"tokenID":this.patInfo.ptID,"hospitalID":this.patInfo.hospitalID}
   this.labrService.getobstetric(this.param).subscribe
-
   ((response: any) => {
     if (response.status === 0) {
-      
+
+      if(response.data && response.data!=undefined && response.data.length!=0)
+      {
+        this.putAdmt(response.data);
+      }
       this.userLoader = false;
     } else {
       this.userLoader = false;
@@ -133,6 +138,38 @@ getobstetric(){
 
 }
 
+putAdmt(dt)
+{
+  var timeArr = dt.deliveryTime.split(':');
+  let h1 = parseInt(timeArr[0]);
+  let m1 = parseInt(timeArr[1]);
+  let s1 = parseInt(timeArr[2]);
+  
+var date1 = new Date();
+var h = date1.setHours(h1,m1,s1);
+var endTime =formatDate(h,"y-M-d h:mm:ss",'en-PK');
+  debugger
+this.opAdmit.patchValue({
+
+  isMisoprostol: dt.isMisoprostol,
+  deliveryTime:endTime,
+  isStillBirth:dt.isStillBirth,
+  complicationAfterDelivery: dt.complicationAfterDelivery,
+  isLessWeight: dt.isLessWeight,
+  otherProcedure:dt.otherProcedure,
+  femaleCount:dt.femaleCount,
+  neonatalDeathType:dt.neonatalDeathType,
+  isCHX:dt.isCHX,
+  maleCount:dt.maleCount,
+  deliveryNature:dt.deliveryNature,
+  birthAsphyxia:dt.birthAsphyxia,
+  isPreterm:dt.isPreterm,
+  deliveryDate:dt.deliveryDate,
+  deliveryConductedBy:dt.deliveryConductedBy,
+  
+})
+
+}
 
 
 getindoordiagnosis() {

@@ -123,6 +123,7 @@ export class PatDetailComponent implements OnInit {
   insTest: boolean=true;
   isRad: boolean=false;
   modalRef: BsModalRef;
+  modalRef1: BsModalRef;
   subTests: any=[];
   a: boolean=false;
   sData: any;
@@ -322,7 +323,7 @@ export class PatDetailComponent implements OnInit {
   showImageModal(template1: TemplateRef<any>,img) {
     this.imageInModal=img;
     console.log('this.imageInModal',this.imageInModal);
-    this.modalRef = this.modalService.show(
+    this.modalRef1 = this.modalService.show(
       template1,
       Object.assign({}, {id: 2, class: 'gray modal-lg' })
     );
@@ -358,8 +359,12 @@ export class PatDetailComponent implements OnInit {
     this.testNameF = e.testName;
     this.resultF=e.result;
     this.refRangeF =e.refRange
-    this.xRayFilms=e.xrayFilms6;
-      
+    if(e.xrayFilms6 && e.xrayFilms6!=0){
+     this.xRayFilms=e.xrayFilms6;
+    }else
+    {
+      this.xRayFilms=""
+    }
         
       
       }
@@ -1077,8 +1082,9 @@ for (let sgn of this.localSign)
   ///////////////////////////Clinical info ends//////////////////////////
 
   getInvistigation() {
+    debugger
     this.param = { 'hospitalID': localStorage.getItem('hospitalID'), 'prescriptionID': this.patInfo.prescriptionID };
-    this.IndoorDiagData=[]
+    this.pathData=[]
     this.radData=[];
     this.radNameData = [];
     this.userLoader = true;
@@ -1094,17 +1100,11 @@ for (let sgn of this.localSign)
             if(this.isRad==false && obj.isDirect==1 ){
              
              this.localPath.push(obj)
-             //  this.localPath.push({"id":obj.id,"result":"","patientID":this.patientID,"testName":obj.testName,"testID":obj.testID,"testType":obj.testType,"refRange":obj.refRange,"isSupper":obj.isSupper,"subTests":obj.subTests,'isDirect':obj.isDirect})
              }
             
                });
               }
-              else{
-                
-                if(this.isRad==false){
-             //   this.localPath.push({"id":-1,"result":"","patientID":this.patientID,"testName":"","testID":"","testType":"","refRange":"","isSupper":0,"subTests":[]})
-                }
-              }
+              
           this.IndoorDiagData = response.IndoorDiagnosis;
           response.test.forEach(v => {
             if (v.testType == 1) {              
