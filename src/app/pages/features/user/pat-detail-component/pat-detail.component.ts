@@ -123,6 +123,7 @@ export class PatDetailComponent implements OnInit {
   insTest: boolean=true;
   isRad: boolean=false;
   modalRef: BsModalRef;
+  modalRef1: BsModalRef;
   subTests: any=[];
   a: boolean=false;
   sData: any;
@@ -322,7 +323,7 @@ export class PatDetailComponent implements OnInit {
   showImageModal(template1: TemplateRef<any>,img) {
     this.imageInModal=img;
     console.log('this.imageInModal',this.imageInModal);
-    this.modalRef = this.modalService.show(
+    this.modalRef1 = this.modalService.show(
       template1,
       Object.assign({}, {id: 2, class: 'gray modal-lg' })
     );
@@ -358,8 +359,12 @@ export class PatDetailComponent implements OnInit {
     this.testNameF = e.testName;
     this.resultF=e.result;
     this.refRangeF =e.refRange
-    this.xRayFilms=e.xrayFilms6;
-      
+    if(e.xrayFilms6 && e.xrayFilms6!=0){
+     this.xRayFilms=e.xrayFilms6;
+    }else
+    {
+      this.xRayFilms=""
+    }
         
       
       }

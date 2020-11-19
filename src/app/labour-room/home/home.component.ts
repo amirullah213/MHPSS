@@ -42,8 +42,8 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private labrService : LabourRoomSerivce
   ) {
-    if(this.router.url === '/labour-room/home'){
-      this.interval = setInterval(() => {
+    if(this.router.url === '/labour-room/home' && this.tab=='newPats'){
+          this.interval = setInterval(() => {
         this.getpatients(8)
         // api call
               }, 30000);

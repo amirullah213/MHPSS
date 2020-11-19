@@ -76,7 +76,7 @@ export class UsersComponent implements OnInit {
     if (tab == 'seenPats') {
       console.log('tab==', tab);
       this.tab = tab;
-      this.userData.status = 2
+      this.userData.status = 2;
       this.getUsers(this.userData)
     };
   }
@@ -86,9 +86,12 @@ export class UsersComponent implements OnInit {
     
     localStorage.setItem('patData', JSON.stringify(udata));
     //  this.router.navigate(['doctor/user/print-presc'])
-   //
-    window.open('doctor/user/print-presc')
-    // window.open('core/modules/shared-module/print-prec')
+   // for print page of print module
+   localStorage.setItem('pharmacyData', JSON.stringify(udata));
+
+   window.open('print/home')
+//   window.open('doctor/user/print-presc')
+   // window.open('core/modules/shared-module/print-prec')
   }
   openModalActivate(userActivate: TemplateRef<any>, data) {
     this.userData = data;
