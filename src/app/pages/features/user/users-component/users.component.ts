@@ -76,7 +76,7 @@ export class UsersComponent implements OnInit {
     if (tab == 'seenPats') {
       console.log('tab==', tab);
       this.tab = tab;
-      this.userData.status = 2;
+      this.userData.status = 2
       this.getUsers(this.userData)
     };
   }
