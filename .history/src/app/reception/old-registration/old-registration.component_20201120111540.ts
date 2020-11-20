@@ -31,7 +31,7 @@ export class OldRegistrationComponent implements OnInit {
   model: any = {};
   model2: any = {};
   modalRef: BsModalRef;
-  age:any; 
+
   constructor(
     private modalService: BsModalService,
     private fb: FormBuilder,
@@ -45,13 +45,6 @@ export class OldRegistrationComponent implements OnInit {
     this.hospitalID=localStorage.getItem('hospitalID');
     this.doctorID=localStorage.getItem('docId');
     console.log('patDataLocal ==', this.patDataLocal.dob);
-    if (this.patDataLocal.dob) {
-      //convert date again to type Date
-      const bdate = new Date(this.patDataLocal.dob);
-      const timeDiff = Math.abs(Date.now() - bdate.getTime() );
-      this.age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
-      console.log('age ==', this.age);
-    }
   }
   openModAdd(captureuser: TemplateRef<any>) {
    this.getAllDoctros();
