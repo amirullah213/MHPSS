@@ -586,17 +586,7 @@
                                 <form [formGroup]="investigationForm" novalidate>
                                     <div *ngIf="tab === 'investigation'" class="tab-pane fade" [ngClass]="{'active show': tab === 'investigation'}" id="tab3" role="tabpanel" aria-labelledby="tab3">
                                         <div class="row mx-0 border4">
-                                            <!-- <div class="col-md-12">
-                                                <div class="custom-control-inline mr-md-5 mb-2">
-                                                    <div class="form-check checkbox">
-                                                        <input type="checkbox" formControlName="chkPath"
-                                                            (change)="changePath($event)" class="form-check-input"
-                                                            id="Pathalogy">
-                                                        <label class="form-check-label"
-                                                            for="Pathalogy">Pathalogy</label>
-                                                    </div>
-                                                </div>
-                                            </div> -->
+                          
                                             <div class="col-md-12">
                                                 <div class="custom-control-inline mr-md-5 mb-2">
                                                     <label class="form-check-label">Pathalogy</label>
@@ -605,17 +595,7 @@
                                                     <input formControlName="selectedValuePath" placeholder="Pathalogy" [typeahead]="pathData" typeaheadOptionField="testName" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectPath($event)" class="form-control"[typeaheadOptionsLimit]='1000' [typeaheadMinLength]="0">
                                                 </div>
                                             </div>
-                                            <!-- <div class="col-md-4">
-                                                <div class="custom-control-inline mr-md-5 mb-2">
-                                                    <div class="form-check checkbox">
-                                                        <input type="checkbox" formControlName="chkRad"
-                                                            (change)="changeRad($event)" class="form-check-input"
-                                                            id="Radiology">
-                                                        <label class="form-check-label"
-                                                            for="Radiology">Radiology</label>
-                                                    </div>
-                                                </div>
-                                            </div> -->
+                                           
                                             <div class="col-md-4">
                                                 <div class="custom-control-inline mr-md-5 mb-2">
                                                     <label class="form-check-label">Radiology</label>

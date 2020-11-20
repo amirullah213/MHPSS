@@ -166,6 +166,7 @@ export class PatDetailComponent implements OnInit {
   lmpDate: any;
   ANCServices: any;
   location1: any;
+  newLocalPath: any=[];
   
   constructor(
     private fb: FormBuilder,
@@ -1129,8 +1130,8 @@ for (let sgn of this.localSign)
       );
   }
   addinvestigation() {   
-    if(this.localPath.length>0){ 
-    this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.patInfo.ptID,'prescriptionID': this.patInfo.prescriptionID,"patientID": this.patientID,"isHB":0,"investigations":this.localPath}
+    if(this.newLocalPath.length>0 ){ 
+    this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.patInfo.ptID,'prescriptionID': this.patInfo.prescriptionID,"patientID": this.patientID,"isHB":0,"investigations":this.newLocalPath}
      this.userLoader = true;
     this.uService.addinvestigation(this.param).subscribe
       ((response: any) => {
@@ -1161,6 +1162,8 @@ else
    
    if(this.insTest==true){
      this.localPath.push(obj)
+     this.newLocalPath.push(obj);
+     
      this.a=false
     this.investigationForm.patchValue({
       'selectedValuePath': ''
@@ -1195,7 +1198,6 @@ else
 
   addRadName(obj: any) {
 
-   // this.localPath.push({ "id": obj.testID, "name": obj.testName, 'testType': obj.testType, obj })
    this.addPath(obj)
 
     this.investigationForm.patchValue({
@@ -1426,7 +1428,7 @@ else
  "nextVisitDate":"","followUpInerval":tVal.followUpInterval,"location":this.location,"isPOP":0,
  "treatmentProcedure":""}
     this.userLoader = true;
-debugger
+
     this.uService.addtreatmentinfo(this.param).subscribe
 
       ((response: any) => {
