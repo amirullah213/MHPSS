@@ -33,7 +33,8 @@ export class UsersComponent implements OnInit {
     private service: UserService,
     private router: Router,
   ) {
-    if(this.router.url === '/doctor/user'){
+    debugger
+    if(this.router.url === '/doctor/user' && localStorage.getItem('tab')==="newPats"){
        this.interval = setInterval(() => {
                   this.getUsers(this.userData); // api call
                }, 30000);
@@ -54,6 +55,7 @@ export class UsersComponent implements OnInit {
     this.setTab(localStorage.getItem("tab"))
   }
   ngOnDestroy() {
+    
    if (this.interval) {
      clearInterval(this.interval);
    }

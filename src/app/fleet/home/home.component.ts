@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   userList: any = [];
   patientsList: any;
   ambulanceList: any;
+  interval: number;
 
   constructor(
     private modalService: BsModalService,
@@ -34,8 +35,19 @@ export class HomeComponent implements OnInit {
     
     if(localStorage.getItem('tab'))
     this.setTab(localStorage.getItem('tab'))
+    if(this.router.url === '/fleet/home' && localStorage.getItem('tab')==="newPats"){
+      this.interval = setInterval(() => {
+        this.getfleetpatients();
+      }, 30000);
   }
-
+ 
+  }
+  ngOnDestroy() {
+    
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+  }
   pDetails(obj){
     localStorage.setItem("newPatData",JSON.stringify(obj))
     this.router.navigate(['/fleet/new-patient']);

@@ -1129,7 +1129,11 @@ for (let sgn of this.localSign)
         (error) => { }
       );
   }
-  addinvestigation() {   
+  
+  alertFunc(st)
+{
+  alert(st + " Added Successfuly")
+}  addinvestigation() {   
     if(this.newLocalPath.length>0 ){ 
     this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.patInfo.ptID,'prescriptionID': this.patInfo.prescriptionID,"patientID": this.patientID,"isHB":0,"investigations":this.newLocalPath}
      this.userLoader = true;
@@ -1163,7 +1167,8 @@ else
    if(this.insTest==true){
      this.localPath.push(obj)
      this.newLocalPath.push(obj);
-     
+     this.alertFunc("Test")
+
      this.a=false
     this.investigationForm.patchValue({
       'selectedValuePath': ''
@@ -1209,11 +1214,13 @@ else
   removeTest(index,obj) {
     debugger
     let idsArr=[]
-    if(obj.subTests && obj.subTests.length>0){
+    if(obj.subTests!=undefined && obj.subTests.length>0){
 for(let sb of obj.subTests)
-    {
+    { 
        idsArr.push(sb.id)
     }
+    idsArr[obj.subTests.length+1]=obj.id
+
   }
   else
   {
@@ -1221,7 +1228,6 @@ for(let sb of obj.subTests)
   }
     if (index > -1) {
       this.localPath.splice(index, 1);
-      debugger
       if(idsArr.length>0)
       this.deleteRadPath(idsArr);
 
@@ -1511,14 +1517,7 @@ debugger
       ((response: any) => {
         if (response.status === 0) {
           this.router.navigate(['doctor/user/'])
-          localStorage.removeItem("tab")
-
-          // this.treatmentForm.patchValue({
-          //   Ambulance:"",
-          //   refNotes:"",
-          //   Hospital:"",
-        
-          // })         
+          localStorage.removeItem("tab")        
           this.userLoader = false;
         } else {
           this.userLoader = false;

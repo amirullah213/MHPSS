@@ -37,6 +37,7 @@ export class NewPatientsComponent implements OnInit {
      this.newPatInfo=JSON.parse(this.ptInf)
     debugger
     this.getambulances()
+
   }
  
   onSelectAmb(event: TypeaheadMatch): void {
@@ -44,13 +45,14 @@ export class NewPatientsComponent implements OnInit {
     this.ambId = event.item.id
   }
   updatereferral(){
-
+debugger
     this.userLoader=true;
     this.paramData={"id": this.newPatInfo.id,"ambulanceID":this.ambId,"estimatedReturnTime":this.upForm.value.returntime}
     this.fService.updatereferral(this.paramData).subscribe((response: any) => {
       if (response.status == 0) {
-                this.userLoader = false;
-      } else {
+         this.userLoader = false;
+         this.router.navigate(['/fleet/home'])
+      } else {  
         this.userLoader = false;
         alert('Something went wrong try again');
       }
@@ -59,7 +61,7 @@ export class NewPatientsComponent implements OnInit {
     );
   }
   getambulances(){
-    this.userLoader=true;
+    
     this.paramData={}
     this.fService.getambulances(this.paramData).subscribe((response: any) => {
       if (response.status === 0) {
