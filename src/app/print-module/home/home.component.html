@@ -45,7 +45,8 @@
                                     <h6 class="mb-1 ml-4">Temprature(F): <span class="ml-5">{{userList[0].vitals.temperature}}</span></h6>
                                     <h6 class="mb-2 ml-4">Oxygen Saturation : <span class="ml-5">{{userList[0].vitals.oxygen_saturation}}</span></h6>
                                     <h5 class="mb-2"><b><span class="colorback">Investigations</span></b></h5>
-                                    <h5 class="mb-1 ml-2"><b><span class="colorback">Pathology : </span></b> </h5>
+                                    <h5 class="mb-1 ml-2"><b><span class="colorback" *ngIf="userList[0].test[0].testType!=1 && userList[0].test[0].testType!=2">No Investigations Suggested </span></b> </h5>
+                                    <h5 class="mb-1 ml-2"><b><span class="colorback" *ngIf="userList[0].test[0].testType==1">Pathology : </span></b> </h5>
                                     <span *ngFor="let tst of userList[0].test">
                                         <h6  class="mb-1 ml-4"><span *ngIf="tst.isDirect==1 && tst.testType==1">{{tst.testName}}</span> </h6>
                                     <!-- <span *ngIf="tst.testType==1">
@@ -62,7 +63,7 @@
                                     <h6 class="mb-1 ml-5" *ngIf="tst.xrayFilms6!='0'"> Findings : <span class="mb-1 ml-5">{{tst.xrayFilms6 }},</span> </h6>
                                     </span> -->
                                     </span>
-                                    <h5 class="mb-1 ml-2"><b><span class="colorback">Radiology : </span></b> </h5>
+                                    <h5 class="mb-1 ml-2"><b><span class="colorback" *ngIf="userList[0].test[0].testType==2">Radiology : </span></b> </h5>
                                     <span *ngFor="let tst of userList[0].test">
                                         <h6  class="mb-1 ml-4"><span *ngIf="tst.isDirect==1 && tst.testType==2">{{tst.testName}}</span> </h6>
                                    
