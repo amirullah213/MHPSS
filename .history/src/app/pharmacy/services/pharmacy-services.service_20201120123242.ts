@@ -116,10 +116,6 @@ export class PharmacyServicesService {
     let url = APP_CONFIG.apiBaseUrl + 'gettodaypatinets ';
     return this.http.post(url, obj);
   } 
-  getInvestigation(obj: any) {
-    let url = APP_CONFIG.apiBaseUrl + 'getinvestigations';
-    return this.http.post(url, obj);
-  } 
 
     
 }

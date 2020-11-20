@@ -34,12 +34,11 @@ import { DispenseStockComponent } from './dispense-stock/dispense-stock.componen
 import { RecieveGrnSatComponent } from './recieve-grn-sat/recieve-grn-sat.component';
 import { AllgrnsComponent } from './allgrns/allgrns.component';
 import { AllPatsComponent } from './all-pats/all-pats.component';
-import { PrintRadiologyComponent } from './print-radiology/print-radiology.component';
 
 
 @NgModule({
   
-  declarations: [ PharmaComponent, HomeComponent, PharmaSideBarComponent, PharmaSeenPatientsComponent, PharmaPendingPatientsComponent, PharmaPrescriptionComponent, MedicineGrnComponent, MedicineDiscardComponent, NonMedicineDiscardComponent, NonMedicineGrnComponent, ItemsStatusComponent, IssueGrnComponent, SyncDataComponent, GrnsComponent, StockreqSateliteComponent,  IssueSattMedicComponent, DispenseStockComponent, RecieveGrnSatComponent, AllgrnsComponent, AllPatsComponent, PrintRadiologyComponent],
+  declarations: [ PharmaComponent, HomeComponent, PharmaSideBarComponent, PharmaSeenPatientsComponent, PharmaPendingPatientsComponent, PharmaPrescriptionComponent, MedicineGrnComponent, MedicineDiscardComponent, NonMedicineDiscardComponent, NonMedicineGrnComponent, ItemsStatusComponent, IssueGrnComponent, SyncDataComponent, GrnsComponent, StockreqSateliteComponent,  IssueSattMedicComponent, DispenseStockComponent, RecieveGrnSatComponent, AllgrnsComponent, AllPatsComponent],
   imports: [
     CommonModule,
     PharmacyRoutingModule, Ng2SearchPipeModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), FormsModule, BsDatepickerModule.forRoot(), CollapseModule.forRoot(),TypeaheadModule.forRoot(),

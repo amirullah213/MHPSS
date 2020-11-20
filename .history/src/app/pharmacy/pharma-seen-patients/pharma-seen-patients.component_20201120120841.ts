@@ -161,7 +161,7 @@ getdata(dataobj){
   console.log('batch data ==',this.newArray3.stock[Number(dataobj)]  );
 }
 gotoPrintPage(){
-  //this.modalRef.hide();
+  this.modalRef.hide();
   //this.router.navigate(['/print/pathology']);
   window.open('/print/home')
   
