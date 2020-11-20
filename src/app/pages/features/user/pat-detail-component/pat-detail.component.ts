@@ -1128,7 +1128,8 @@ for (let sgn of this.localSign)
         (error) => { }
       );
   }
-  addinvestigation() {    
+  addinvestigation() {   
+    if(this.localPath.length>0){ 
     this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.patInfo.ptID,'prescriptionID': this.patInfo.prescriptionID,"patientID": this.patientID,"isHB":0,"investigations":this.localPath}
      this.userLoader = true;
     this.uService.addinvestigation(this.param).subscribe
@@ -1145,7 +1146,14 @@ for (let sgn of this.localSign)
       },
         (error) => { }
       );
-  }
+  
+}
+else
+{
+  alert("Please Add Invistigations")
+
+}
+}
   
   addPath(obj: any) {
     
