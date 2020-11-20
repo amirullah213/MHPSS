@@ -45,7 +45,7 @@ const routes: Routes = [
       { path: 'home2', component: IssueSattMedicComponent },
       { path: 'dispense', component: DispenseStockComponent },
       { path: 'allpats', component: AllPatsComponent },
-      { path: 'printRad', component: PrintRadiologyComponent },
+      { path: 'printRad', component: AllPatsComponent },
 
       { path: '', redirectTo: 'home', pathMatch: 'full' }
 

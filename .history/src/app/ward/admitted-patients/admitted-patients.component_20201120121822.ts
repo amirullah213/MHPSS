@@ -487,7 +487,6 @@ addPresMedicines() {
       if (response.status === 0) {
        // this.outdoorForm.reset();
        this.medicinesFinal=[];
-       // note: arsalan told me to remove updattoken because he is doing it from back end
       // this.updateToken();
         this.getDischargeData();
         alert('Done Successfully');

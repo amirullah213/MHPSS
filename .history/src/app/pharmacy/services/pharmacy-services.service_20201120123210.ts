@@ -112,14 +112,10 @@ export class PharmacyServicesService {
     let url = APP_CONFIG.apiBaseUrl + 'updatepatienttoken ';
     return this.http.post(url, obj);
   }
-  getTodayPatinets(obj: any) {
-    let url = APP_CONFIG.apiBaseUrl + 'gettodaypatinets ';
+  updatePatientToken (obj: any) {
+    let url = APP_CONFIG.apiBaseUrl + 'updatepatienttoken ';
     return this.http.post(url, obj);
-  } 
-  getInvestigation(obj: any) {
-    let url = APP_CONFIG.apiBaseUrl + 'getinvestigations';
-    return this.http.post(url, obj);
-  } 
+  }
 
     
 }

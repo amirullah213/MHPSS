@@ -20,7 +20,6 @@ import { RecieveGrnSatComponent } from './recieve-grn-sat/recieve-grn-sat.compon
 import { IssueSattMedicComponent } from './issue-satt-medic/issue-satt-medic.component';
 import { DispenseStockComponent } from './dispense-stock/dispense-stock.component';
 import { AllPatsComponent } from './all-pats/all-pats.component';
-import { PrintRadiologyComponent } from './print-radiology/print-radiology.component';
 
 const routes: Routes = [
   { 
@@ -45,8 +44,6 @@ const routes: Routes = [
       { path: 'home2', component: IssueSattMedicComponent },
       { path: 'dispense', component: DispenseStockComponent },
       { path: 'allpats', component: AllPatsComponent },
-      { path: 'printRad', component: PrintRadiologyComponent },
-
       { path: '', redirectTo: 'home', pathMatch: 'full' }
 
     ]
