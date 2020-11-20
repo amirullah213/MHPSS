@@ -1083,7 +1083,7 @@ for (let sgn of this.localSign)
   ///////////////////////////Clinical info ends//////////////////////////
 
   getInvistigation() {
-    debugger
+    
     this.param = { 'hospitalID': localStorage.getItem('hospitalID'), 'prescriptionID': this.patInfo.prescriptionID };
     this.pathData=[]
     this.radData=[];
@@ -1206,12 +1206,24 @@ else
     })
   }
 
-  removeTest(index,id) {
-
+  removeTest(index,obj) {
+    debugger
+    let idsArr=[]
+    if(obj.subTests && obj.subTests.length>0){
+for(let sb of obj.subTests)
+    {
+       idsArr.push(sb.id)
+    }
+  }
+  else
+  {
+    idsArr.push(obj.id)
+  }
     if (index > -1) {
       this.localPath.splice(index, 1);
-      if(id!=undefined)
-      this.deleteRadPath(id);
+      debugger
+      if(idsArr.length>0)
+      this.deleteRadPath(idsArr);
 
     }
 
