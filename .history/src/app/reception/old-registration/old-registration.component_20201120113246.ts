@@ -45,12 +45,34 @@ export class OldRegistrationComponent implements OnInit {
     this.hospitalID=localStorage.getItem('hospitalID');
     this.doctorID=localStorage.getItem('docId');
     console.log('patDataLocal ==', this.patDataLocal.dob);
-    if (this.patDataLocal.dob) {
-      //convert date again to type Date
-      const bdate = new Date(this.patDataLocal.dob);
-      const timeDiff = Math.abs(Date.now() - bdate.getTime() );
-      this.age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
-      console.log('age ==', this.age);
+    // if (this.patDataLocal.dob) {
+    //   //convert date again to type Date
+    //   const bdate = new Date(this.patDataLocal.dob);
+    //   const timeDiff = Math.abs(Date.now() - bdate.getTime() );
+    //   this.age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
+    //   console.log('age ==', this.age);
+    // }
+    if (this.patDataLocal.dob!=undefined) {
+      var  nowDay,dobDay
+      var todayDate=new Date();
+      var ageyear = todayDate.getFullYear() - this.patDataLocal.dob.getFullYear();
+      var agemonth = todayDate.getMonth() - this.patDataLocal.dob.getMonth();
+      var ageday = todayDate.getDate() - this.patDataLocal.dob.getDate();
+    
+      if (agemonth <= 0) {
+        ageyear--;
+        agemonth = (12 + agemonth);
+      }
+      if (nowDay < dobDay) {
+        agemonth--;
+        ageday = 30 + ageday;
+      }  if (agemonth == 12) {
+        ageyear = ageyear + 1;
+        agemonth = 0;
+      }
+    
+      alert("Age in Year:" + ageyear + ',' + 'Month:' + agemonth + ',' + 'Day:' + ageday);
+    
     }
   }
   openModAdd(captureuser: TemplateRef<any>) {

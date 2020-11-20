@@ -64,7 +64,7 @@
                                     <hr class="hr-gray mx-3 my-4">
                                     <div class="col-md-12">
                                         <div class="form-group float-right">
-                                            <button class="btn btn-lg btn-info" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
+                                            <button class="btn btn-lg btn-info" (click)="clear()" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
                                                 <i class="fa fa-plus mr-1"></i>New Registration
                                             </button>
                                         </div>
@@ -86,11 +86,6 @@
                                                     </span>
                                                 </span>
                                             </div>
-                                            <!-- <div *ngIf="regisForm.controls['firstname'].invalid && (regisForm.controls['firstname'].dirty || regisForm.controls['firstname'].touched)" class="alert alert-danger">
-                                                <div *ngIf="regisForm.controls['firstname'].errors.required">
-                                                    Name is required.
-                                                </div>
-                                            </div> -->
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group" [ngClass]="{'has-error': ((regisForm.get('f_hName').touched || regisForm.get('f_hName').dirty) && regisForm.get('f_hName').errors)}">
@@ -110,12 +105,19 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <label>Gender</label>
-                                            <select class="form-control" formControlName="gender">
+                                            <div class="form-group" [ngClass]="{'has-error': ((regisForm.get('gender').touched || regisForm.get('gender').dirty) && regisForm.get('gender').errors)}">
+                                                <label>Gender</label>
+                                                <select class="form-control" formControlName="gender">
                                                 <option>Select Gender</option>
                                                 <option value="male">Male</option>
                                                 <option value="female">Female</option>
                                             </select>
+                                                <span class="help-block text-danger" *ngIf="((regisForm.get('gender').touched || regisForm.get('gender').dirty) &&  regisForm.get('gender').errors)">
+                                                <span class="text-danger" *ngIf="regisForm.get('gender').errors.required">
+                                                    Gender is required
+                                                </span>
+                                                </span>
+                                            </div>
                                         </div>
                                         <!-- <div class="col-md-3">
                                             <p>Gender</p>
@@ -144,13 +146,11 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="form-group" [ngClass]="{'has-error': ((regisForm.get('dob').touched || regisForm.get('dob').dirty) && regisForm.get('dob').errors)}">
+                                            <div class="form-group">
                                                 <label for="formGroupExampleInput">Date Of Birth</label>
                                                 <input type="text" formControlName="dob" class="form-control" placeholder="Start Date" #datepickerYMD="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placement="top">
-                                                <span class="help-block text-danger" *ngIf="((regisForm.get('dob').touched || regisForm.get('dob').dirty) &&  regisForm.get('dob').errors)">
-                                                    <span class="text-danger" *ngIf="regisForm.get('dob').errors.required">
-                                                        Date Of Birth is required
-                                                    </span>
+                                                <span class="text-danger" *ngIf="!showdob && !showaddmsg">
+                                                    Date Of Birth, Year or Month required *
                                                 </span>
                                             </div>
                                         </div>
@@ -215,7 +215,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group mt-2">
-                                                <button class="btn btn-lg btn-danger mr-2 mt-4" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
+                                                <button class="btn btn-lg btn-danger mr-2 mt-4" (click)="clear()" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
                                                     <i class="fa fa-remove"></i> Cancel 
                                                 </button>
                                                 <button type="submit" [disabled]="!regisForm.valid" class="btn btn-success btn-lg mt-4" (click)="registerNewPat(regisForm.value)"><i class="fa fa-check-square"></i> Add Patient</button>

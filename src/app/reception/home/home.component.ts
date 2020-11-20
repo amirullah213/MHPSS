@@ -58,6 +58,8 @@ export class HomeComponent implements OnInit {
   newDOB: any;
   yr: any = 0;
   mn: any = 6;
+  showdob: boolean = false;
+  showaddmsg: boolean = true;
 
   constructor(
     private modalService: BsModalService,
@@ -85,9 +87,9 @@ export class HomeComponent implements OnInit {
       {
         firstname: ['', Validators.required],
         f_hName: ['', Validators.required],
-        dob: ['', Validators.required],
+        dob: [''],
         cellNo: [''],
-        gender: [''],
+        gender: ['', Validators.required],
         cnic: ['', [Validators.minLength(13), Validators.maxLength(13)]],
         address: [''],
         village: [''],
@@ -178,8 +180,13 @@ export class HomeComponent implements OnInit {
 
   //--------------------------------
 
+  clear() {
+    this.regisForm.reset();
+  }
+
   //---------------------search by token---------------------
   registerNewPat(formval) {
+    this.showaddmsg = false;
     if (formval.dob == '' || null || undefined) {
 
       this.yr = formval.year;
@@ -191,7 +198,12 @@ export class HomeComponent implements OnInit {
     } else {
       this.newDOB = this.datePipe.transform(formval.dob, "yyyy-MM-dd");
     }
+    if ((formval.dob != '' && formval.dob != undefined && formval.dob != null) || (formval.year != '' && formval.year != undefined && formval.year != null) || (formval.months != '' && formval.months != undefined && formval.months != null)) {
 
+      this.showdob = true;
+    } else {
+      this.showdob = false;
+    }
     this.loaderNew = true;
     this.model2.hospitalID = this.hospitalID;
     this.model2.firstname = formval.firstname;
@@ -208,6 +220,9 @@ export class HomeComponent implements OnInit {
     this.model2.address = formval.address;
     // this.model2.age  =this.searchForm.value.token;
 
+    if (this.showdob==true) {
+      
+   
 
     console.log('model2 ==', this.model2);
     this.receptService.insertpatientpms(this.model2).subscribe(
@@ -237,7 +252,7 @@ export class HomeComponent implements OnInit {
       },
       (error) => { }
     );
-
+    }
   }
   //-------------------goto next page
   gotopatdetailsDetails(obpat) {
