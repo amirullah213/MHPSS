@@ -63,7 +63,7 @@ export class DiagnosticListComponent implements OnInit {
 
     this.model5.search = this.selected;
     console.log('this.selected.length==', this.selected.length)
-   // if (this.selected.length >= 3) {
+    // if (this.selected.length >= 3) {
       this.adminService.searchDiagnosis(this.model5).subscribe(
         (response: any) => {
           if (response.status === 0) {
@@ -84,7 +84,7 @@ export class DiagnosticListComponent implements OnInit {
         },
         (error) => { }
       );
-   // }
+    // }
   }
   //get all diagnostic list
   showData(td) {
