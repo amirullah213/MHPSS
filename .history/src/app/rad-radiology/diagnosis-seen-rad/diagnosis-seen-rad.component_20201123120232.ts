@@ -54,7 +54,6 @@ export class DiagnosisSeenRadComponent implements OnInit {
 
   
   modalRef: BsModalRef;
-  modalRef1: BsModalRef;
 
   constructor(
     
@@ -92,7 +91,7 @@ console.log('imageUrl===',this.imageUrl)
   showImageModal(template1: TemplateRef<any>,img) {
     this.imageInModal=img;
     console.log('this.imageInModal',this.imageInModal);
-    this.modalRef1 = this.modalService.show(
+    this.modalRef = this.modalService.show(
       template1,
       Object.assign({}, {id: 2, class: 'gray modal-lg' })
     );
