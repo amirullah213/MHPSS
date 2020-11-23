@@ -8,6 +8,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { DataTablesModule } from 'angular-datatables';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { PharmacyRoutingModule } from './pharmacy-routing.module';
 
@@ -32,13 +33,16 @@ import { IssueSattMedicComponent } from './issue-satt-medic/issue-satt-medic.com
 import { DispenseStockComponent } from './dispense-stock/dispense-stock.component';
 import { RecieveGrnSatComponent } from './recieve-grn-sat/recieve-grn-sat.component';
 import { AllgrnsComponent } from './allgrns/allgrns.component';
+import { AllPatsComponent } from './all-pats/all-pats.component';
+import { PrintRadiologyComponent } from './print-radiology/print-radiology.component';
+
 
 @NgModule({
   
-  declarations: [ PharmaComponent, HomeComponent, PharmaSideBarComponent, PharmaSeenPatientsComponent, PharmaPendingPatientsComponent, PharmaPrescriptionComponent, MedicineGrnComponent, MedicineDiscardComponent, NonMedicineDiscardComponent, NonMedicineGrnComponent, ItemsStatusComponent, IssueGrnComponent, SyncDataComponent, GrnsComponent, StockreqSateliteComponent,  IssueSattMedicComponent, DispenseStockComponent, RecieveGrnSatComponent, AllgrnsComponent],
+  declarations: [ PharmaComponent, HomeComponent, PharmaSideBarComponent, PharmaSeenPatientsComponent, PharmaPendingPatientsComponent, PharmaPrescriptionComponent, MedicineGrnComponent, MedicineDiscardComponent, NonMedicineDiscardComponent, NonMedicineGrnComponent, ItemsStatusComponent, IssueGrnComponent, SyncDataComponent, GrnsComponent, StockreqSateliteComponent,  IssueSattMedicComponent, DispenseStockComponent, RecieveGrnSatComponent, AllgrnsComponent, AllPatsComponent, PrintRadiologyComponent],
   imports: [
     CommonModule,
-    PharmacyRoutingModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), FormsModule, BsDatepickerModule.forRoot(), CollapseModule.forRoot(),TypeaheadModule.forRoot(),
+    PharmacyRoutingModule, Ng2SearchPipeModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), FormsModule, BsDatepickerModule.forRoot(), CollapseModule.forRoot(),TypeaheadModule.forRoot(),
   ],
   providers: [DatePipe]
 })
