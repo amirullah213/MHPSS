@@ -186,11 +186,16 @@ export class HomeComponent implements OnInit {
 
   //---------------------search by token---------------------
   registerNewPat(formval) {
-    this.showaddmsg = false;
-    if (formval.dob == '' || null || undefined) {
-
+    console.log('month year',formval.year +"   " +formval.months +"   "+formval.tehsil_city)
+   this.showaddmsg = false;
+    if (formval.dob == null || 'null' || undefined || '') {
+    if(formval.year==null || ''){this.yr=0}else{
       this.yr = formval.year;
+    }
+    if(formval.months==null || ''){this.mn=0}else{
       this.mn = formval.months;
+    }
+      
       if (this.mn < 10) { this.mn = '0' + this.mn }
       this.newDOB = this.datePipe.transform(new Date(new Date().getFullYear() - this.yr, new Date().getMonth() - this.mn), "yyyy-MM-dd");
       console.log('this.newDOB', this.newDOB)
@@ -198,29 +203,40 @@ export class HomeComponent implements OnInit {
     } else {
       this.newDOB = this.datePipe.transform(formval.dob, "yyyy-MM-dd");
     }
-    if ((formval.dob != '' && formval.dob != undefined && formval.dob != null) || (formval.year != '' && formval.year != undefined && formval.year != null) || (formval.months != '' && formval.months != undefined && formval.months != null)) {
+   if ((formval.dob != '' && formval.dob != undefined && formval.dob != null) || (formval.year != '' && formval.year != undefined && formval.year != null) || (formval.months != '' && formval.months != undefined && formval.months != null)) {
 
-      this.showdob = true;
-    } else {
+     this.showdob = true;
+     } else {
       this.showdob = false;
-    }
+     }
+
     this.loaderNew = true;
     this.model2.hospitalID = this.hospitalID;
     this.model2.firstname = formval.firstname;
     this.model2.lastname = '';
     this.model2.dob = this.newDOB;
     this.model2.f_hName = formval.f_hName;
-    this.model2.cellNo = formval.cellNo;
+    this.model2.cellNo = formval.cellNo || '';
     this.model2.gender = formval.gender;
-    this.model2.cnic = formval.cnic;
-    this.model2.village = formval.village;
-    this.model2.uc = formval.uc;
-    this.model2.tehsil_city = formval.tehsil_city.name;
-    this.model2.district = formval.district.name;
-    this.model2.address = formval.address;
+    this.model2.cnic = formval.cnic || '';
+    this.model2.village = formval.village || '';
+    this.model2.uc = formval.uc || '';
+
+    if(formval.tehsil_city==null){
+      this.model2.tehsil_city='';
+    }else{
+      this.model2.tehsil_city = formval.tehsil_city.name;
+    }
+     if(formval.district==null){
+      this.model2.district='';
+     }else{
+      this.model2.district = formval.district.name ;
+     }
+    
+    this.model2.address = formval.address || '';
     // this.model2.age  =this.searchForm.value.token;
 
-    if (this.showdob==true) {
+     if (this.showdob==true) {
       
    
 
@@ -252,6 +268,9 @@ export class HomeComponent implements OnInit {
       },
       (error) => { }
     );
+    }else{
+      alert('Enter DOB or age in year or months')
+    
     }
   }
   //-------------------goto next page
