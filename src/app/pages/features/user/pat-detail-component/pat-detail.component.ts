@@ -538,7 +538,6 @@ this.diagID = event.item.id
       this.show = true
     }
   }
-
   changeCheckboxVal(e) {
 
     if (e.target.value == '0') {
