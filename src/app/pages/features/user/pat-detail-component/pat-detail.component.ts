@@ -516,7 +516,7 @@ this.diagID = event.item.id
   }
 
   changeDepVal(e) {
-        
+       debugger 
     let vra = e.replace(/\s/g, "");
     this.arrylist=[]
     this.arrylist = this.DepartmentD
@@ -538,7 +538,6 @@ this.diagID = event.item.id
       this.show = true
     }
   }
-
   changeCheckboxVal(e) {
 
     if (e.target.value == '0') {
