@@ -1077,8 +1077,7 @@
                                                         <select formControlName="Department" class="form-control"
                                                             (change)="changeDepVal($event.target.value)">
                                                             <option>Choose Department</option>
-                                                            <option *ngFor="let dep of DepartmentD">{{dep.fname}}
-                                                                {{dep.lname}}</option>
+                                                            <option *ngFor="let dep of DepartmentD">{{dep.NAME}}</option>
                                                         </select>
                                                     </span>
                                                         </div>

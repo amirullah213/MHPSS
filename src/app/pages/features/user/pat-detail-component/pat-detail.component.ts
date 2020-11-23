@@ -336,7 +336,6 @@ export class PatDetailComponent implements OnInit {
    
     this.modalRef = this.modalService.show(template,Object.assign({}, { class: 'gray modal-lg ',tData,i })); 
     this.sData = tData;
-    debugger
     this.gettestImages(this.sData.id);
     for(let e of this.localPath){
      
@@ -517,13 +516,14 @@ this.diagID = event.item.id
   }
 
   changeDepVal(e) {
-    
-    
+        
+    let vra = e.replace(/\s/g, "");
     this.arrylist=[]
     this.arrylist = this.DepartmentD
   for(let ele of this.arrylist ){
-      let fulName = ele.fname + " " + ele.lname;
-      if(fulName == e){
+    //  let fulName = ele.fname + " " + ele.lname;
+    let out = ele.NAME.replace(/\s/g, "");
+      if(out === vra){
         this.depIndex=ele.id;
         break;
       }else{
@@ -922,7 +922,6 @@ this.clinicalInformation.patchValue({
   }
 
   addClinicalInfo() {
-  debugger  
   this.NewSymptoms=[]
 
 let ci=this.clinicalInformation.value
@@ -1212,7 +1211,7 @@ else
   }
 
   removeTest(index,obj) {
-    debugger
+    
     let idsArr=[]
     if(obj.subTests!=undefined && obj.subTests.length>0){
 for(let sb of obj.subTests)
@@ -1316,7 +1315,9 @@ for(let sb of obj.subTests)
         if (response.status === 0) {
 
           response.doctors.forEach(v => {
-            this.depN = v.fName + " " + v.lName;
+         //   this.depN = v.fName + " " + v.lName;
+         this.depN=v.NAME;
+         
             this.DepartmentD.push(v)
           });
           
@@ -1499,7 +1500,7 @@ for(let sb of obj.subTests)
       )
   }
   reffer() {
-debugger
+
     if(this.show==false)
     {
      this.hospt = this.treatmentForm.value.Hospital
