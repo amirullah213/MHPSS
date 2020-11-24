@@ -662,15 +662,34 @@ onSelectPathology(path){
   
  
 }
-removeTests(indx,iddata){
-  this.pathArrNew.splice(indx, 1);
-  console.log('$x==',this.pathArrNew)
-  if(iddata!=undefined){
-   this.deleteTest(iddata);
-  }
- 
-  console.log('$x222==',iddata);
+removeTests(index,obj){
 
+  // this.pathArrNew.splice(indx, 1);
+  // console.log('$x==',this.pathArrNew)
+  // if(iddata!=undefined){
+  //  this.deleteTest(iddata);
+  // }
+ 
+  // console.log('$x222==',iddata);
+  let idsArr=[]
+  if(obj.subTests!=undefined && obj.subTests.length>0){
+for(let sb of obj.subTests)
+  { 
+     idsArr.push(sb.id)
+  }
+  idsArr[obj.subTests.length+1]=obj.id
+
+}
+else
+{
+  idsArr.push(obj.id)
+}
+  if (index > -1) {
+    this.pathArrNew.splice(index, 1);
+    if(idsArr.length>0)
+    this.deleteTest(idsArr);
+
+  }
   
 }
 getType(typ){

@@ -647,6 +647,7 @@
                                                         <button type="button" *ngIf="userLoader" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">                                               
                                                          <span class="spinner-border" *ngIf="userLoader" role="status" aria-hidden="true"></span>  </button>
 
+                                                         
                                                             
                                                 </div>
                                                 <ng-template #template>
@@ -799,7 +800,7 @@
                                             <div class="col-md-5">
                                                 <div class="form-group">
                                                     <label>Diagnosis</label>
-                                                    <input formControlName="selectedValueIndoorDiag" placeholder="Diagnosis" [value]="selectedValueIndoorDiag" [typeahead]="IndoorDiagData" typeaheadOptionField="name" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectIndoorDiag($event)" class="form-control"[typeaheadOptionsLimit]='1000' [typeaheadMinLength]="0">
+                                                    <input formControlName="selectedValueIndoorDiag" placeholder="Diagnosis" [value]="selectedValueIndoorDiag" [typeahead]="IndoorDiagData" typeaheadOptionField="name" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectIndoorDiag($event)" class="form-control" [typeaheadOptionsLimit]='1000' [typeaheadMinLength]="0">
                                                 </div>
                                             </div>
                                             <div class="col-md-5 ">

@@ -277,7 +277,7 @@ export class PatDetailComponent implements OnInit {
     this.getInvistigation();
     this.getTreatment();
     this.getindoorlist()   
-     
+
     if(localStorage.getItem("tab"))
     this.setTab(localStorage.getItem("tab"))
    
@@ -800,14 +800,17 @@ this.diagID = event.item.id
   
 insertToDiag(obj: any)
 {
-  
+
   this.localDiagData.push({ 'id': obj.id, 'name': obj.name,  "description":obj.description
+  
 })
 
 }
   addDiag() {
-    
+    debugger
 let tempdiag = 0;
+if(this.clinicalInformation.value.pname!=undefined && this.clinicalInformation.value.pname!="" && this.diagID!=undefined ){
+
     if(this.localDiagData.length!=0){
       for(let e of this.localDiagData)
         {  
@@ -825,7 +828,7 @@ let tempdiag = 0;
         }
        }
     }
-    if (tempdiag == 0)
+    if (tempdiag == 0 )
     {
       this.localDiagData.push({ 'id': this.diagID, 'name': this.clinicalInformation.value.pname,  description:this.clinicalInformation.value.description})
    
@@ -833,6 +836,7 @@ let tempdiag = 0;
   }else{
     this.localDiagData.push({ 'id': this.diagID, 'name': this.clinicalInformation.value.pname,  description:this.clinicalInformation.value.description})
   }
+}
     this.clinicalInformation.patchValue({
       'pname': '',
       'description':''
@@ -840,6 +844,7 @@ let tempdiag = 0;
     this.diagID=undefined
   
   }
+
 
   removeDiag(i: number) {   
     
@@ -1130,8 +1135,10 @@ for (let sgn of this.localSign)
   
   alertFunc(st)
 {
+
   alert(st + " Added Successfuly")
-}  addinvestigation() {   
+}  
+addinvestigation() {   
     if(this.newLocalPath.length>0 ){ 
     this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.patInfo.ptID,'prescriptionID': this.patInfo.prescriptionID,"patientID": this.patientID,"isHB":0,"investigations":this.newLocalPath}
      this.userLoader = true;
@@ -1165,7 +1172,7 @@ else
    if(this.insTest==true){
      this.localPath.push(obj)
      this.newLocalPath.push(obj);
-     this.alertFunc("Test")
+    // this.alertFunc("Test")
 
      this.a=false
     this.investigationForm.patchValue({
@@ -1273,6 +1280,7 @@ for(let sb of obj.subTests)
     
     let inv = this.investigationForm.value;
     var temp = 0;
+    if(inv.selectedValueIndoorDiag!=undefined && inv.selectedValueIndoorDiag!="" && this.Indid!=undefined ){
     if(this.localIndoorData.length!=0){
       for(let e of this.localIndoorData)
         {  
@@ -1289,10 +1297,12 @@ for(let sb of obj.subTests)
   }else{
     this.localIndoorData.push({ "id": this.Indid, "name": inv.selectedValueIndoorDiag,"description":inv.descriptionIndoor }) 
   }
+}
     this.investigationForm.patchValue({
       'selectedValueIndoorDiag': '',
       'descriptionIndoor':''
     })
+    this.Indid=undefined
   }
   removeIndoorDiag(index) {
 
