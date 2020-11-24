@@ -48,13 +48,12 @@
                                                 <button class="button" (click)="addnewDiag(outdoorForm.value.description)">Add</button>
                                             </div>
                                             <div class="col-sm-12">
-                                                <!-- <ol> -->
-                                                    Provisional Diagnosis
-                                                    <p *ngFor="let diag of diagnosArr; let i=index;">
+                                                <ol>Provisional Diagnosis
+                                                    <li *ngFor="let diag of diagnosArr; let i=index;">
                                                         <a class="float-right" (click)="removeDiag(i)"><i class="fa fa-remove text-danger"></i></a>
                                                         <span class="col-sm-3">{{diag.name}}</span> <span class="col-sm-4" >{{diag.description}}</span>
-                                                    <p>
-                                                <!-- </ol> -->
+                                                    </li>
+                                                </ol>
                                             </div>
                                             <div class="col-sm-12 text-center">
                                                 <button class="button mr-1" *ngIf="!loaderUpdate" type="button" (click)="updateIndoor(outdoorForm.value)"><i class="ti-save-alt"></i> Save</button>

@@ -610,31 +610,23 @@ removeArr(indx){
 }
 // add new diagnisis
 addnewDiag(dia){
-  let diagExist=false;
   console.log('new diag==',dia);
- debugger
+  this.diagObj.description=dia;
   if(!this.diagObj.id){
     alert('Please select Diagnosis');
-   
-  }else{
-  for (let i = 0; i < this.diagnosArr.length; i++) {
-    if(this.diagObj.id==this.diagnosArr[i].id){
-      console.log ("Block statement execution no." + this.diagnosArr[i].id);
-     
-       diagExist=true;
-      break;
-    }
-   
   }
-if(diagExist){ alert('Diagnosis already exists')}else{
-  this.diagObj.description=dia;
+  for (let i = 0; i < this.diagnosArr.length; i++) {
+    console.log ("Block statement execution no." + this.diagnosArr[1]);
+  }
+  if(this.diagObj.id ==){
+
+  }
   this.diagnosArr.push(this.diagObj);
   console.log('diagnosArr==',this.diagnosArr);
   this.outdoorForm.controls.diagnosis.reset();
   this.outdoorForm.controls.description.reset();
   this.diagObj={};
-}
-}
+
   // this.outdoorForm.patchValue({
   //   diagnosis: '',
   //   description: '',
