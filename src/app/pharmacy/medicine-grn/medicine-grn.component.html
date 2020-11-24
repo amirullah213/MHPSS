@@ -58,7 +58,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Expiry Date</label>
-                                            <input type="text" [(ngModel)]="grnobj.expireDate" name="medicExpiry" class="form-control" id="formGroupExampleInput" #datepickerYMD="bsDatepicker" bsDatepicker formControlName="dateYMD" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placeholder="Expiry Date">
+                                            <input type="text" [(ngModel)]="grnobj.expireDate" name="medicExpiry" class="form-control" id="formGroupExampleInput" #datepickerYMD="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placeholder="Expiry Date">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
