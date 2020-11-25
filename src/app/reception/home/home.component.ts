@@ -253,7 +253,6 @@ export class HomeComponent implements OnInit {
 
           this.loaderNew = false;
           this.regisForm.reset();
-          alert("patient added successfuly");
           localStorage.setItem('paDetails', JSON.stringify(this.model2));
           this.router.navigate(['reception/old-regis'])
 
