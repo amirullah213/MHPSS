@@ -807,7 +807,7 @@ insertToDiag(obj: any)
 
 }
   addDiag() {
-    debugger
+    
 let tempdiag = 0;
 if(this.clinicalInformation.value.pname!=undefined && this.clinicalInformation.value.pname!="" && this.diagID!=undefined ){
 
@@ -987,7 +987,6 @@ let tempsign = 0;
 
  
         if((this.signObj.id!=undefined && this.signObj!={}) && e.name==this.clinicalInformation.value.selectedValueSign){
-     //   alert("already Exists");
         tempsign = 1;
         break
        }
@@ -1026,7 +1025,6 @@ for (let sgn of this.localSign)
         {  
         if(this.diagID!=undefined && e.id==this.diagID)
         {
-      //  alert("Diagnosis already Exists");
         tempdiag = 1;
         break
        }
@@ -1034,7 +1032,6 @@ for (let sgn of this.localSign)
        {
         if(e.name==ci.pname)
         {
-         // alert("already Exists");
           tempdiag = 1;
           break
         }
@@ -1410,8 +1407,7 @@ for(let sb of obj.subTests)
         { 
           
         if(e.medicine==medic[0] && e.unit==tVal.unit && e.type==tVal.type1){
-      //  alert("already Exists");
-        temptreat= 1;
+         temptreat= 1;
         this.treatmentForm.patchValue({
           "itemID":"", "itemName": "", "unit": "", "type": "", "dose": "", "prandial": "", "remarks": "", "prescribedQuantity": ""
       
@@ -1456,7 +1452,8 @@ for(let sb of obj.subTests)
  "nextVisitDate":"","followUpInerval":tVal.followUpInterval,"location":this.location,"isPOP":0,
  "treatmentProcedure":""}
     this.userLoader = true;
-
+    debugger
+if(this.localDiag!=undefined && this.localDiag!=null && this.localDiag.length!=0){
     this.uService.addtreatmentinfo(this.param).subscribe
 
       ((response: any) => {
@@ -1473,6 +1470,13 @@ for(let sb of obj.subTests)
         (error) => { }
       );
   }
+  else{
+    
+    alert("Please insert and Save Diagnosis first");
+    localStorage.setItem('tab','clinicalInfo');
+location.reload()
+  }
+}
   updatepatienttoken() {
     
     this.deptType=0;
@@ -1518,12 +1522,13 @@ for(let sb of obj.subTests)
     else{
         this.hospt =""
         this.isRefType =0;
+       
     }
     this.param={"referralType":this.isRefType,"convinceType":this.treatmentForm.value.Ambulance,"ptID":this.patInfo.ptID,
     "referralHospital":this.hospt,"refferedTo":this.depIndex,"remarks":this.treatmentForm.value.refNotes,"refferedFrom":this.patInfo.departmentID,"hospitalID":localStorage.getItem('hospitalID')}
-
-    this.uService.reffer(this.param).subscribe
-
+   debugger
+    if(this.localDiag!=undefined && this.localDiag!=null && this.localDiag.length!=0 &&  this.isRefType==0){
+      this.uService.reffer(this.param).subscribe
       ((response: any) => {
         if (response.status === 0) {
           this.router.navigate(['doctor/user/'])
@@ -1536,7 +1541,13 @@ for(let sb of obj.subTests)
       },
         (error) => {  }
       )
+} else
+{
+  alert("Please insert and Save Diagnosis first");
+  localStorage.setItem('tab','clinicalInfo');
+location.reload()
 }
+  }
   deleteRadPath(id:any) {
 
     this.param = { 'id':id };
@@ -1561,11 +1572,6 @@ for(let sb of obj.subTests)
   addTreat() {
     let tVal =this.treatmentForm.value;
     let medic= tVal.itemName.split(",");
-
-    // this.treatmentItems = this.treatmentForm.get('treatmentItems') as FormArray;
-    // this.treatmentItems.push(this.createTreatment(null));
-    // console.log("form", this.treatmentItems.value)
-    
     var temptreat = 0;
     if(this.localTreat.length!=0){
       for(let e of this.localTreat)
