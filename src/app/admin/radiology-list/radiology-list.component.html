@@ -52,11 +52,11 @@
                                             <br>
                                             <input type="text" class="form-control col-12 mt-2 " id="fee" [(ngModel)]="medOb.fee" placeholder="Fee" name="fee">
                                             <br>
-                                            <select class="form-control  col-12 mt-2" aria-label="Text input with segmented dropdown button" [(ngModel)]="medOb.isSupper" name="subtest">
+                                            <!-- <select class="form-control  col-12 mt-2" aria-label="Text input with segmented dropdown button" [(ngModel)]="medOb.isSupper" name="subtest">
                                                 <option value="1" >Has Sub Tests</option>
                                                 <option value="0" selected>No Sub Tests </option>
                                             </select>
-                                            <br>
+                                            <br> -->
 
                                             <input type="text" *ngIf="medOb.isSupper==1" class="form-control mr-1 mt-2 col-md-5" id="subtest" [(ngModel)]="subObj.testName" placeholder="Sub Test Name" name="subname">
                                             <!-- <input type="text"  *ngIf="medOb.isSupper==1" class="form-control mr-1 mt-2 col-md-4" id="normalrang"  [(ngModel)]="subObj.refRange" placeholder="Normal Range" name="normalrange"> -->
@@ -136,6 +136,7 @@
                                                 <td>{{path.fee}}</td>
                                                 <td>
                                                     <button href="" class="mr-1 btn btn-info" (click)="openModedit(editradiology,path)"><i class="ti-pencil-alt"></i></button>
+                                                    <!-- <button href="" class="btn btn-danger" (click)="openModdelete(deleteradiology,path)"><i class="ti-trash"></i></button> -->
                                                     <!-- model for Add Diagnostic download start-->
                                                     <ng-template #editradiology>
                                                         <div class="modal-header">
@@ -189,9 +190,6 @@
                                                             </button>
                                                         </div>
                                                     </ng-template>
-                                                    <!-- model for Add Diagnostic download end-->
-                                                    <button href="" class="btn btn-danger" (click)="openModdelete(deleteradiology,path)"><i class="ti-trash"></i></button>
-                                                    <!-- model for Diagnostic delete start-->
 
                                                     <ng-template #deleteradiology>
                                                         <div class="modal-body p-5 text-center">

@@ -92,6 +92,7 @@ export class AdmittedPatientsComponent implements OnInit {
 
     treatmentForm:FormGroup;
     dischargeForm:FormGroup;
+  pathArrNewNew: any=[];
 
   constructor(
     private modalService: BsModalService, 
@@ -507,16 +508,15 @@ addPresMedicines() {
 
 //operate indoor details
 sendTolab() {
-  
+  debugger
   this.loaderLab= true;
   this.model11.hospitalID=this.hospitalID;
   this.model11.prescriptionID=-1;
   this.model11.patientID=this.detailsData.patientID;
   this.model11.isHB=0;
   this.model11.indoorType=this.outdoorData.bedNo;
-  this.model11.departmentID=this.doctorID;
-  
-  this.model11.investigations=this.pathArrNew;
+  this.model11.departmentID=this.doctorID;  
+  this.model11.investigations=this.pathArrNewNew;
   this.model11.ptID=this.detailsData.ptID;
   
  console.log('model11 ==', this.model11);
@@ -563,7 +563,6 @@ addmoreMedics(){
   this.medicinesNewdata['dose']=this.treatmentForm.value.med_dose;
   this.medicinesNewdata['prandial']=this.treatmentForm.value.med_parandials;
   this.medicinesNewdata['remarks']=this.treatmentForm.value.med_remark;
-
   this.medicinesNewdata['medicineID']=this.medicID;
   this.medicinesNewdata['issuedQuantity']='';
   this.medicinesNewdata['duration']='';
@@ -664,11 +663,10 @@ removeDiag(indx){
 
 // pathology addind data 
 onSelectPathology(path){
+  
   this.pathArrNew_added=true;
- 
-  console.log("pathology data===",path.item);
-  this.pathArrNew.push({"result":"","patientID":this.detailsData.patientID,"testName":path.item.testName,"testID":path.item.testID,"testType":path.item.testType,"refRange":path.item.refRange,"isSupper":path.item.isSupper,"subTests":path.item.subTests?path.item.subTests:[]})
-  //this.pathArrNew.push(path.item);
+   this.pathArrNew.push({"result":"","patientID":this.detailsData.patientID,"testName":path.item.testName,"testID":path.item.testID,"testType":path.item.testType,"refRange":path.item.refRange,"isSupper":path.item.isSupper,"subTests":path.item.subTests?path.item.subTests:[]})
+   this.pathArrNewNew.push({"result":"","patientID":this.detailsData.patientID,"testName":path.item.testName,"testID":path.item.testID,"testType":path.item.testType,"refRange":path.item.refRange,"isSupper":path.item.isSupper,"subTests":path.item.subTests?path.item.subTests:[]})
   this.objPath={};
   console.log("this.pathArrNew===",this.pathArrNew);
   // this.medicID=medic.item.v.itemID;

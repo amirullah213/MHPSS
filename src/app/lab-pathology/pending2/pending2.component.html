@@ -114,7 +114,7 @@
                                                             <td>
                                                                
                                                                 <input type="text" formControlName='result' class="form-control"  placeholder="Findings/ Results" name='result'>
-                                                               
+                                                               <span *ngIf="singlemsgShow">Result is required</span>
                                                             </td>
                                                             <td> {{item.value.refRange}}</td>
                                                         </tr>
@@ -129,7 +129,7 @@
                                         
                                         <div class="modal-footer">
                                             <button *ngIf="userData.subTests && userData.subTests.length>0" type="button" class="button" (click)="updateTests()"><i class="fa fa-check-square"></i> Save</button>
-                                            <button *ngIf="!userData.subTests" type="button" class="button" (click)="modalRef.hide()" (click)="updateSingleTest(objPath.result,userData)"><i class="fa fa-check-square"></i> Save</button>
+                                            <button *ngIf="!userData.subTests" type="button" class="button"  (click)="updateSingleTest(objPath.result,userData)"><i class="fa fa-check-square"></i> Save</button>
                                         </div>
                                     </ng-template>
                                 </div>

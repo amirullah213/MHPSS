@@ -23,7 +23,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Medicine Name</label>
-                                            <input [(ngModel)]="grnobj.itemName" [typeahead]="pharmacyData" typeaheadOptionField="itemName" (typeaheadOnSelect)="onSelectMedics($event)" class="form-control" name="medicName" placeholder="Enter Name">
+                                            <input [(ngModel)]="grnobj.itemName" [typeahead]="pharmacyData" typeaheadOptionField="itemName" [typeaheadOptionsLimit]='1000' [typeaheadMinLength]="0" [typeaheadScrollable]="true" autocomplete="off" (typeaheadOnSelect)="onSelectMedics($event)" class="form-control" name="medicName" placeholder="Enter Name">
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -38,7 +38,7 @@
                                             <input type="text" [(ngModel)]="grnobj.type" name="medicType" class="form-control" id="formGroupExampleInput" placeholder="Type">
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Stock</label>
                                             <span>
@@ -50,24 +50,33 @@
                                             </select>
                                        </span>
                                         </div>
+                                      
+
                                         <!-- <span>{{batchNo}}</span> -->
                                     </div>
-                                    <div class="col-md-1">
+                                    
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Instock</label>
                                             <input type="text" [(ngModel)]="grnobj.totalQuantity" name="totalQuantity" class="form-control" placeholder="Instock">
                                         </div>
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Issued</label>
                                             <input type="text" [(ngModel)]="grnobj.quantity" name="quantity" class="form-control" placeholder="Issued Quantity">
                                         </div>
                                     </div>
-                                    <div class="col-md-1">
+                                    <div class="col-md-3">
                                         <div class="form-group">
-                                            <label>Action</label>
-                                            <a href="javascript:void(0)" (click)="addToMedicArr(grnobj)" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus mr-2"></i>Add</a>
+                                            <label>Remarks</label>
+                                            <input type="text" [(ngModel)]="grnobj.remarks" name="remarks" class="form-control" placeholder="Remarks">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label></label>
+                                            <a href="javascript:void(0)" (click)="addToMedicArr(grnobj)" class="themeauth-bg text-white btn-lg"><i class="fa fa-plus mr-2"></i>Add</a>
                                         </div>
                                     </div>
 
