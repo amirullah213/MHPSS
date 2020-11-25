@@ -33,9 +33,8 @@ import { ToastrModule } from 'ngx-toastr';
     CommonModule, ReceptionRoutingModule, FormsModule, Ng2SearchPipeModule,
      ReactiveFormsModule, SharedModule, DataTablesModule, ThermalPrintModule,
       ModalModule.forRoot(), BsDatepickerModule.forRoot(), CollapseModule.forRoot(),
-     ToastrModule.forRoot()
+     ToastrModule
   ],
-  providers: [DatePipe],
-  
+  providers: [DatePipe]
 })
 export class ReceptionModule { }

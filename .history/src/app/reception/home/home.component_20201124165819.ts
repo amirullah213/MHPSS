@@ -7,7 +7,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { ReceptServiceService } from '../services/recept-service.service';
 import { DatePipe } from '@angular/common';
-import { ToastrService } from 'ngx-toastr';
+//import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'ncri-home',
@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit {
     private receptService: ReceptServiceService,
     private router: Router,
     private datePipe: DatePipe,
-    //  private toastr: ToastrService
+    // private toastr: ToastrService
   ) {
 
   }
@@ -403,8 +403,8 @@ export class HomeComponent implements OnInit {
     // this.getUCs(ucId);
   }
   //toaster function calling
-  // showSuccess() {
-  //   this.toastr.success('done suuccsefully');
-  // }
+  showSuccess() {
+    this.toastr.success('done suuccsefully');
+  }
 
 }

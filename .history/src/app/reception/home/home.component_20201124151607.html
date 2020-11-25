@@ -15,7 +15,9 @@
                     <div class="card card-statistics h-100">
                         <div class="card-body">
                             <!-- testin alerts in reception -->
-                            
+                            <alert type="success" [dismissible]="dismissible" (onClosed)="onClosed(alert)">
+                                <strong>Well done!</strong> You successfully .
+                              </alert>
                               <!-- testin alerts in reception -->
                             <form novalidate [formGroup]="searchForm">
                                 <div class="row">

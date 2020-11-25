@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit {
     private receptService: ReceptServiceService,
     private router: Router,
     private datePipe: DatePipe,
-    //  private toastr: ToastrService
+    private toastr: ToastrService
   ) {
 
   }
@@ -403,8 +403,8 @@ export class HomeComponent implements OnInit {
     // this.getUCs(ucId);
   }
   //toaster function calling
-  // showSuccess() {
-  //   this.toastr.success('done suuccsefully');
-  // }
+  showSuccess() {
+    this.toastr.success('done suuccsefully');
+  }
 
 }

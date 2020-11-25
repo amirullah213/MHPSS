@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit {
     private receptService: ReceptServiceService,
     private router: Router,
     private datePipe: DatePipe,
-    //  private toastr: ToastrService
+     private toastr: ToastrService
   ) {
 
   }

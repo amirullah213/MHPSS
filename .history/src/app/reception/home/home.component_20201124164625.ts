@@ -70,13 +70,12 @@ export class HomeComponent implements OnInit {
     private receptService: ReceptServiceService,
     private router: Router,
     private datePipe: DatePipe,
-    //  private toastr: ToastrService
+    private toastr: ToastrService
   ) {
 
   }
 
   ngOnInit(): void {
-    // this.showSuccess();
     this.GetBirthDate();
     
     this.hospitalID = localStorage.getItem('hospitalID');
@@ -403,8 +402,8 @@ export class HomeComponent implements OnInit {
     // this.getUCs(ucId);
   }
   //toaster function calling
-  // showSuccess() {
-  //   this.toastr.success('done suuccsefully');
-  // }
+  showSuccess() {
+    this.toastr.success('done suuccsefully');
+  }
 
 }

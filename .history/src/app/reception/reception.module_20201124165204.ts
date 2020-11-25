@@ -35,7 +35,6 @@ import { ToastrModule } from 'ngx-toastr';
       ModalModule.forRoot(), BsDatepickerModule.forRoot(), CollapseModule.forRoot(),
      ToastrModule.forRoot()
   ],
-  providers: [DatePipe],
-  
+  providers: [DatePipe]
 })
 export class ReceptionModule { }

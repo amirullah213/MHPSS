@@ -19,9 +19,6 @@ import { TodayPatientsComponent } from './today-patients/today-patients.componen
 import { Print2Component } from './print2/print2.component';
 import { ThermalPrintModule } from 'ng-thermal-print';
 
-//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
-
 
 
 
@@ -30,12 +27,8 @@ import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [HomeComponent, ReceptionComponent, NewRegisterComponent, OldRegistrationComponent, PatientsComponent, SideBarReceptionComponent, TodayPatientsComponent, Print2Component],
   imports: [
-    CommonModule, ReceptionRoutingModule, FormsModule, Ng2SearchPipeModule,
-     ReactiveFormsModule, SharedModule, DataTablesModule, ThermalPrintModule,
-      ModalModule.forRoot(), BsDatepickerModule.forRoot(), CollapseModule.forRoot(),
-     ToastrModule.forRoot()
+    CommonModule, ReceptionRoutingModule, FormsModule, Ng2SearchPipeModule, ReactiveFormsModule, SharedModule, DataTablesModule, ThermalPrintModule, ModalModule.forRoot(), BsDatepickerModule.forRoot(), CollapseModule.forRoot()
   ],
-  providers: [DatePipe],
-  
+  providers: [DatePipe]
 })
 export class ReceptionModule { }

@@ -7,7 +7,6 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { ReceptServiceService } from '../services/recept-service.service';
 import { DatePipe } from '@angular/common';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'ncri-home',
@@ -61,8 +60,7 @@ export class HomeComponent implements OnInit {
   mn: any = 6;
   showdob: boolean = false;
   showaddmsg: boolean = true;
- 
-  
+  dismissible = true;
 
   constructor(
     private modalService: BsModalService,
@@ -70,15 +68,12 @@ export class HomeComponent implements OnInit {
     private receptService: ReceptServiceService,
     private router: Router,
     private datePipe: DatePipe,
-    //  private toastr: ToastrService
   ) {
 
   }
 
   ngOnInit(): void {
-    // this.showSuccess();
     this.GetBirthDate();
-    
     this.hospitalID = localStorage.getItem('hospitalID');
     this.doctorID = localStorage.getItem('docId');
 
@@ -87,11 +82,15 @@ export class HomeComponent implements OnInit {
       token: ['', Validators.required],
       
     },
-    
 
     );
 
-    
+    // testing alerts in reception
+
+    onClosed(dismissedAlert: any): void {
+      this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
+    }
+    // testing alerts in reception
     this.getAllDists();
     this.regisForm = this.fb.group(
       {
@@ -402,9 +401,5 @@ export class HomeComponent implements OnInit {
     this.ucID = ucId;
     // this.getUCs(ucId);
   }
-  //toaster function calling
-  // showSuccess() {
-  //   this.toastr.success('done suuccsefully');
-  // }
 
 }

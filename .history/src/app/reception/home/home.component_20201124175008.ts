@@ -65,12 +65,13 @@ export class HomeComponent implements OnInit {
   
 
   constructor(
+    private toastr: ToastrService,
     private modalService: BsModalService,
     private fb: FormBuilder,
     private receptService: ReceptServiceService,
     private router: Router,
     private datePipe: DatePipe,
-    //  private toastr: ToastrService
+    
   ) {
 
   }
