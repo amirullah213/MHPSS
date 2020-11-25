@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~10.0.9",
+    "@angular/animations": "^10.0.14",
     "@angular/common": "~10.0.9",
     "@angular/compiler": "~10.0.9",
     "@angular/core": "~10.0.9",
@@ -32,6 +32,7 @@
     "ngx-bootstrap-multiselect": "^2.1.0",
     "ngx-material-timepicker": "^5.5.3",
     "ngx-print": "^1.2.0-beta.5",
+    "ngx-toastr": "^13.1.0",
     "rxjs": "~6.5.5",
     "rxjs-compat": "^6.6.3",
     "tslib": "^2.0.0",
