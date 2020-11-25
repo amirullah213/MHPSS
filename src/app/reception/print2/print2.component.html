@@ -1,17 +1,72 @@
-<div class="container-fluid container-wrapper">
-    <div class="row">
+<style>
+    * {
+    font-size: 12px;
+    font-family: 'Times New Roman';
+}
+
+td,
+th,
+tr,
+table {
+    border-top: 1px solid black;
+    border-collapse: collapse;
+}
+
+td.description,
+th.description {
+    width: 175px;
+    max-width: 175px;
+    font-weight: bolder;
+}
+
+td.quantity,
+th.quantity {
+    width: 80px;
+    max-width: 80px;
+    word-break: break-all;
+    font-weight: bold;
+}
+
+td.price,
+th.price {
+    width: 40px;
+    max-width: 40px;
+    word-break: break-all;
+}
+
+.centered {
+    text-align: center;
+    align-content: center;
+}
+
+.ticket {
+    width: 300px;
+    max-width: 300px;
+}
+
+
+@media print {
+    .hidden-print,
+    .hidden-print * {
+        display: none !important;
+    }
+}
+</style>
+
+<div class="container-fluid container-wrapper" >
+   <div class="row">
         <div class="content-wrapper">
-            <div class="page-title">
+       <!--       <div class="page-title">
                 <div class="row px-3 px-md-0">
                     <div class="col-sm-12 pl-0">
                         <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
                             <li class="breadcrumb-item"><a href="javascript:void(0)" [routerLink]="['/reception/home']" class="gray-color"><i class="ti-home mr-1"></i> Home</a></li>
-                            <!-- <li class="breadcrumb-item active gray-04-color">Commission</li> -->
+                             <li class="breadcrumb-item active gray-04-color">Commission</li> 
                         </ol>
                     </div>
                 </div>
-            </div>
-            <div class="row">
+            </div> -->
+             <!-- <div class="row ticket" >
                 <div class="col-md-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
@@ -23,7 +78,7 @@
                                             <span class="ml-4"> {{tokenData.token}}</span>
                                         </p>
                                         <p class="mb-1 mt-2"><b>Patient Name : </b>
-                                            <span class="ml-4">{{tokenData.f_hName}}</span>
+                                            <span class="ml-4">{{tokenData.firstname}}</span>
                                         </p>
                                         <p class="mb-1 mt-3"><b>Father/Husband Name : </b>
                                             <span class="ml-4"> {{tokenData.f_hName}}</span>
@@ -38,9 +93,9 @@
                                             <span class="ml-4"> {{tokenData.dob | date}}</span>
                                         </p>
                                         <p class="mb-1 mt-3"><b>Date : </b>
-                                            <span class="ml-4"> {{tokenData.DateCreated | date}}</span>
+                                            <span class="ml-4"> {{tokenData.enteringDate | date}}</span>
                                         </p>
-                                        <div class="form-group mt-5 d-print-none">
+ <div class="form-group mt-5 d-print-none">
                                             <button class="button" (click)="printPage()">
                                                 <i class="fa fa-print"></i> Print Token
                                             </button>
@@ -51,7 +106,63 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>  -->
+         
+                 <div class="ticket">
+                   
+                <h1><b><strong>  <span class="description">{{loginDetails.hospitalName}}</span> </strong></b></h1>
+                      
+                    <table>
+                        
+                        <tbody>
+                            <tr>
+                                <td class="quantity">Token</td>
+                                <td class="description">{{tokenData.token}}</td>
+                           
+                            </tr>
+                            <tr>
+                                <td class="quantity">Patient Name</td>
+                                <td class="description">{{tokenData.firstname}}</td>
+                              
+                            </tr>
+                            <tr>
+                                <td class="quantity">F/H Name</td>
+                                <td class="description">{{tokenData.f_hName}}</td>
+                               
+                            </tr>
+                            <tr>
+                                <td class="quantity">Reffered To </td>
+                                <td class="description">  {{tokenData.departmentName}}</td>
+                               
+                            </tr>
+                            <tr>
+                                <td class="quantity">Gender</td>
+                                <td class="description">{{tokenData.gender}}</td>
+                               
+                            </tr>
+                            <tr>
+                                <td class="quantity">Date Of Birth</td>
+                                <td class="description">{{tokenData.dob | date}}</td>
+                               
+                            </tr>
+                            <tr>
+                                <td class="quantity">Date</td>
+                                <td class="description">{{tokenData.enteringDate | date}}</td>
+                               
+                            </tr>
+                          
+                        </tbody>
+                    </table>
+                
+                </div> 
+                <!-- <button id="btnPrint" (click)="printPage()" class="hidden-print">Print</button> -->
+                <div class="form-group mt-5 d-print-none">
+                    <button class="button" (click)="printPage()">
+                        <i class="fa fa-print"></i> Print Token
+                    </button>
+                </div>
+           
         </div>
     </div>
+   
 </div>
