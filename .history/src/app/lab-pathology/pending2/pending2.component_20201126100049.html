@@ -81,13 +81,13 @@
                                                     <p class="mb-2"><b>Test</b>: <span class="ml-5"><b>{{userData.testName}}</b></span> </p>
                                                 </div>
                                             </div>
-
+                                            <form [formGroup]="diagnosisForm">
                                             <div class="table-responsive">
                                                 <table class="table center-aligned-table">
                                                     <thead>
                                                         <tr class="text-dark">
                                                             <!-- <th>Test Type</th> -->
-                                                            <th width="20%">Test Name</th>
+                                                            <th width="40%">Test Name</th>
                                                             <th width="30%">Results</th>
                                                             <th>Range</th>
                                                         </tr>
@@ -95,33 +95,41 @@
                                                     <tbody *ngIf="!userData.subTests">
                                                         <tr>
                                                             <!-- <td>Pathology</td> -->
-                                                            <td>{{userData.oldTestName}}</td>
+                                                            <td>{{userData.testName}}</td>
                                                             <td>
-                                                               <input type="text" [(ngModel)]="objPath.result" class="form-control" id="findi" placeholder="Findings/ Results" name='result'>
+                                                                <form>
+                                                                    <input type="text" [(ngModel)]="objPath.result" class="form-control" id="findins" placeholder="Result" name='result'>
+                                                                </form>
                                                             </td>
                                                             <td> {{userData.refRange}}</td>
                                                         </tr>
                                                     </tbody>
                                                     <!-- for array daata -->
-                                                    <tbody *ngIf="userData.subTests && userData.subTests.length>0">
-                                                        <tr *ngFor="let tes of userData.subTests; let j=index">
-                                                            <!-- <td>Pathology</td> -->
-                                                            <td>{{tes.oldTestName}}</td>
+                                                   
+                                                    <tbody formGroupName="purchaseOrder" >
+                                                        
+                                                        <tr *ngFor="let item of diagnosisForm.get('purchaseOrder')['controls']; let i = index;" [formGroupName]="i">
+                                                           <!-- <td>Pathology</td>  -->
+                                                            <td>{{item.value.oldTestName}}</td>
                                                             <td>
-                                                              
-                                                                    <input type="text" [(ngModel)]="tes[j]" [value]="tes.result" (blur)="saveTests(tes[j],tes)" class="form-control" id="findins" placeholder="Results" name='result'>
                                                                
+                                                                <input type="text" formControlName='result' class="form-control"  placeholder="Findings/ Results" name='result'>
+                                                               <span *ngIf="singlemsgShow">Result is required</span>
                                                             </td>
-                                                            <td> {{tes.refRange}}</td>
+                                                            <td> {{item.value.refRange}}</td>
                                                         </tr>
+                                                   
                                                     </tbody>
+                                                
                                                     <!-- for array data -->
                                                 </table>
                                             </div>
+                                        </form>
                                         </div>
+                                        
                                         <div class="modal-footer">
                                             <button *ngIf="userData.subTests && userData.subTests.length>0" type="button" class="button" (click)="updateTests()"><i class="fa fa-check-square"></i> Save</button>
-                                            <button *ngIf="!userData.subTests" type="button" class="button" (click)="modalRef.hide()" (click)="updateSingleTest(objPath.result,userData)"><i class="fa fa-check-square"></i> Save</button>
+                                            <button *ngIf="!userData.subTests" type="button" class="button"  (click)="updateSingleTest(objPath.result,userData)"><i class="fa fa-check-square"></i> Save</button>
                                         </div>
                                     </ng-template>
                                 </div>

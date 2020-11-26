@@ -95,9 +95,11 @@
                                                     <tbody *ngIf="!userData.subTests">
                                                         <tr>
                                                             <!-- <td>Pathology</td> -->
-                                                            <td>{{userData.oldTestName}}</td>
+                                                            <td>{{userData.testName}}</td>
                                                             <td>
-                                                               <input type="text" [(ngModel)]="objPath.result" class="form-control" id="findi" placeholder="Findings/ Results" name='result'>
+                                                               
+                                                                    <input type="text" [(ngModel)]="objPath.result" class="form-control" id="findi" placeholder="Findings/ Results" name='result'>
+                                                               
                                                             </td>
                                                             <td> {{userData.refRange}}</td>
                                                         </tr>

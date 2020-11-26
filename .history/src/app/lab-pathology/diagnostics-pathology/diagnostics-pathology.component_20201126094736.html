@@ -95,9 +95,11 @@
                                                     <tbody *ngIf="!userData.subTests">
                                                         <tr>
                                                             <!-- <td>Pathology</td> -->
-                                                            <td>{{userData.oldTestName}}</td>
+                                                            <td>{{userData.testName}}</td>
                                                             <td>
-                                                               <input type="text" [(ngModel)]="objPath.result" class="form-control" id="findi" placeholder="Findings/ Results" name='result'>
+                                                                <form>
+                                                                    <input type="text" [(ngModel)]="objPath.result" class="form-control" id="findins" placeholder="Findings/ Results" name='result'>
+                                                                </form>
                                                             </td>
                                                             <td> {{userData.refRange}}</td>
                                                         </tr>
@@ -108,9 +110,9 @@
                                                             <!-- <td>Pathology</td> -->
                                                             <td>{{tes.oldTestName}}</td>
                                                             <td>
-                                                              
-                                                                    <input type="text" [(ngModel)]="tes[j]" [value]="tes.result" (blur)="saveTests(tes[j],tes)" class="form-control" id="findins" placeholder="Results" name='result'>
-                                                               
+                                                                <form>
+                                                                    <input type="text" [(ngModel)]="tes[j]" [value]="tes.result" (blur)="saveTests(tes[j],tes)" class="form-control" id="findins" placeholder="Findings/ Results" name='result'>
+                                                                </form>
                                                             </td>
                                                             <td> {{tes.refRange}}</td>
                                                         </tr>
