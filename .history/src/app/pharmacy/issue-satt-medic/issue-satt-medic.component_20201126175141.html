@@ -84,7 +84,7 @@
                                                         <input type="text" formControlName='prescribedQuantity' [attr.disabled]='true' class="form-control" placeholder="Prescribed Quantity">
                                                     </td>
                                                     <td>
-                                                        <input type="text" formControlName='issuedQuantity'  class="form-control" (change)="compareValues(i)" placeholder="Issued Quantity">
+                                                        <input type="text" formControlName='issuedQuantity' [attr.disabled]=" f.purchaseOrder.value[i].totalQuantity='' "  class="form-control" (change)="compareValues(i)" placeholder="Issued Quantity">
                                                     </td>
                                                     <td>
                                                         <input type="text" formControlName='dose' class="form-control" placeholder="Dose">

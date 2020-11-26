@@ -41,7 +41,6 @@ export class IssueSattMedicComponent implements OnInit {
   showAlert:boolean=false;
   alerts:any={};
   issuedGreater:boolean=false;
-  disableIssued:boolean=false;
 
   constructor(
     private fb: FormBuilder,
@@ -213,12 +212,7 @@ saveData(dat){
    // this.dynamicForm.get('totalQuantity').setValue('123');
     this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].totalQuantity.patchValue(this.purchaseOrder.value[ind].stockVal.totalQuantity);
     this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].stockID.patchValue(this.purchaseOrder.value[ind].stockVal.id);
-    this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].itemID.patchValue(this.purchaseOrder.value[ind].stockVal.itemID);
-    console.log('resp from batch quantityrrrrrr==',this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].totalQuantity.value);
-    // if(this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].totalQuantity.value =='' || this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].totalQuantity.value < 1 ){
-    //     this.disableIssued=true;
-    // }
-   // this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].totalQuantity.value
+    this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].itemID.patchValue(this.purchaseOrder.value[ind].stockVal.itemID)
    // this.dynamicForm.controls.purchaseOrder.value [ind].controls['itemName'].patchValue('222')
    // this.purchaseOrder.get('totalQuantity').setValue(this.purchaseOrder.value[ind].stock.totalQuantity);
     // this.purchaseOrder.value[ind].totalQuantity[ind].patchValue(this.purchaseOrder.value[ind].stock.totalQuantity)

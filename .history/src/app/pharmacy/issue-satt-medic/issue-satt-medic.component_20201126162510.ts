@@ -41,7 +41,6 @@ export class IssueSattMedicComponent implements OnInit {
   showAlert:boolean=false;
   alerts:any={};
   issuedGreater:boolean=false;
-  disableIssued:boolean=false;
 
   constructor(
     private fb: FormBuilder,
@@ -85,7 +84,7 @@ export class IssueSattMedicComponent implements OnInit {
 }
   
 get f(){
-  console.log(' this.dynamicForm.controls==============', this.dynamicForm.controls)
+  console.log(' this.dynamicForm.controls;', this.dynamicForm.controls)
   return this.dynamicForm.controls;
 }
    
@@ -148,6 +147,7 @@ createItem(obj:any): FormGroup {
  
   return this.fb.group({
     
+   
     stockID:'' || 0,
     prescribedQuantity: obj.prescribedQuantity,
     issuedQuantity: obj.issuedQuantity,
@@ -162,6 +162,8 @@ createItem(obj:any): FormGroup {
     itemID:'' || 0,
     id:obj.id
 
+    
+   
   });
 }
 saveData(dat){
@@ -180,6 +182,7 @@ saveData(dat){
    this.modal3.ptID=this.padata.ptID;
   this.modal3.medicine=dat.purchaseOrder;
 
+
     console.log('this.modal3===',this.modal3); 
     
    this.pharmacySer.issueMedic(this.modal3).subscribe(
@@ -192,7 +195,7 @@ saveData(dat){
           this.router.navigate(['/pharma/home'])
           // window.location.reload();
         }
-        if (response.status === 1) {
+    if (response.status === 1) {
           this.errormsg = response.errors;
           this.loader_eqp = false;
           console.log('error=', this.errormsg);
@@ -213,12 +216,7 @@ saveData(dat){
    // this.dynamicForm.get('totalQuantity').setValue('123');
     this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].totalQuantity.patchValue(this.purchaseOrder.value[ind].stockVal.totalQuantity);
     this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].stockID.patchValue(this.purchaseOrder.value[ind].stockVal.id);
-    this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].itemID.patchValue(this.purchaseOrder.value[ind].stockVal.itemID);
-    console.log('resp from batch quantityrrrrrr==',this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].totalQuantity.value);
-    // if(this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].totalQuantity.value =='' || this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].totalQuantity.value < 1 ){
-    //     this.disableIssued=true;
-    // }
-   // this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].totalQuantity.value
+    this.dynamicForm['controls'].purchaseOrder['controls'][ind]['controls'].itemID.patchValue(this.purchaseOrder.value[ind].stockVal.itemID)
    // this.dynamicForm.controls.purchaseOrder.value [ind].controls['itemName'].patchValue('222')
    // this.purchaseOrder.get('totalQuantity').setValue(this.purchaseOrder.value[ind].stock.totalQuantity);
     // this.purchaseOrder.value[ind].totalQuantity[ind].patchValue(this.purchaseOrder.value[ind].stock.totalQuantity)
