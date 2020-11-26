@@ -11,6 +11,7 @@ import { ServiceService } from '../services/service.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  diag: any;
   printPage() {
     window.print();
   }
@@ -42,14 +43,9 @@ export class HomeComponent implements OnInit {
         if (response.status === 0) {
           console.log(response);
           this.userList = response.data;
+          this.diag = JSON.parse(response.data[0].diagnosis)
           console.log('userPresc list===', this.userList);
-          //console.log('userPresc list===', JSON.parse(this.userList[0].test[2].xrayFilms6));
-         // this.diagnosisArr = JSON.parse(this.userList[0].test[2].xrayFilms6)
-          this.diagnosisArr.forEach(function (value) {
-            console.log("diagnosisArr", value);
-            // this.daig.push(value);
-            // console.log("this.daig",this.daig);
-          })
+         
           this.userLoader = false;
         } else {
           this.userLoader = false;

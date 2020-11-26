@@ -32,11 +32,10 @@ export class DiagnosticListComponent implements OnInit {
   selectedData:any={};
   model9:any={};
   Diagnosticname:any;
-  ambID:number;
-  // We use this trigger because fetching the list of persons can be quite long,
-  // thus we ensure the data is fetched before rendering
-  //dtTrigger: Subject = new Subject();
+  ambID:any;
+
   dtTrigger: Subject<any> = new Subject();
+
 
 
   constructor(
@@ -45,10 +44,30 @@ export class DiagnosticListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 25,
+      dom: 'lBfrtip',
+     // buttons: ['print', 'excel'],
+    };
     this.getAllDiagnostics();
   }
- 
+  ngAfterViewInit(): void {
+    this.dtTrigger.next();
+  }
+  ngOnDestroy(): void {
+    // Do not forget to unsubscribe the event
+    this.dtTrigger.unsubscribe();
+  }
+  rerender(): void {
+    
+    this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+      // Destroy the table first
+      dtInstance.destroy();
+      // Call the dtTrigger to rerender again
+      this.dtTrigger.next();
+    });
+  }
   openModAdd(diagnosticAdd: TemplateRef<any>) {
     this.modalRef = this.modalService.show(
       diagnosticAdd,
@@ -110,7 +129,7 @@ export class DiagnosticListComponent implements OnInit {
             this.modalRef.hide()
             this.loader_eqp = false;
             this.showTable=false;
-            alert("Diagnosis Added Successfuly");
+            location.reload();
           }
 
           if (response.status === 1) {
@@ -135,7 +154,7 @@ export class DiagnosticListComponent implements OnInit {
   deleteDiagnosis() {
     this.loader_eqp = true;
 
-    this.model10.id = this.ambID;
+    this.model10.id = this.ambID.id;
     console.log('this.selected.length==', this.model10)
    
       this.adminService.deletDiagnosis(this.model10).subscribe(
@@ -147,7 +166,7 @@ export class DiagnosticListComponent implements OnInit {
             this.loader_eqp = false;
             this.selectedData={};
             this.selected='';
-            alert("Diagnosis deleted Successfuly");
+            location.reload();
           }
 
           if (response.status === 1) {

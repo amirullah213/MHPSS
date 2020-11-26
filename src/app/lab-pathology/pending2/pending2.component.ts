@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnDestroy, OnInit, Pipe, PipeTransform, TemplateRef } from '@angular/core';
 
 import { FormBuilder, FormControl, FormGroup,FormArray, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
@@ -7,11 +7,11 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { PathServiceService } from '../services/path-service.service';
-
 @Component({
   selector: 'ncri-pending2',
   templateUrl: './pending2.component.html',
-  styleUrls: ['./pending2.component.scss']
+  styleUrls: ['./pending2.component.scss'],
+
 })
 export class Pending2Component implements OnInit {
   isCollapsed = true;
@@ -38,11 +38,13 @@ export class Pending2Component implements OnInit {
   k: any;
   diagnosisForm:FormGroup;
   purchaseOrder:FormArray;
+  notKhali: boolean=false;
   constructor(
     private modalService: BsModalService,
      private fb: FormBuilder,
      private pathService: PathServiceService,
      private router: Router,
+
   ) {
 
   }
@@ -65,10 +67,10 @@ export class Pending2Component implements OnInit {
     this.userData = data;
    // this.objPath.result=this.userData.result
     console.log("this.userData===",this.userData);
-    
+    let config = {backdrop: false,ignoreBackdropClick: true     }
     this.modalRef = this.modalService.show(
       template,
-      Object.assign({}, { class: 'gray modal-lg' })
+      Object.assign({}, { class: 'gray modal-lg' },config)
     );
     //for single test modal show assigment
     if(!this.userData.subTests){
@@ -77,10 +79,10 @@ export class Pending2Component implements OnInit {
     // for dynamic form data form assigment
     if(this.userData.subTests){
     this.userData.subTests.forEach(e => {
-      console.log('eeee',e);
+
      (this.purchaseOrder = this.diagnosisForm.get('purchaseOrder') as FormArray).push(this.createItem(e));
       console.log('this.purchaseOrder4444444===',this.purchaseOrder);
-   // purchaseOrder: this.fb.array([ this.createItem(e) ]);
+   
   });
 }
   }
@@ -170,22 +172,36 @@ saveTests(testdata,full){
 
  //---------------------update getests---------------------
  updateTests() {
-   console.log('kjsjd hsabdhb,',this.purchaseOrder.value)
+   debugger
   this.loaderUpdate= true;
   this.model2.hospitalID=this.hospitalID;
+  for(let pr of this.purchaseOrder.value)
+  {
+    debugger
+    if(pr.result!="")
+    {
+      this.notKhali =true;
+      break;
+}
+else{
+  this.notKhali =false;
+
+}
+
+}
+if(this.notKhali==true){
   this.model2.tests=this.purchaseOrder.value;
-   
-  console.log('model2 ==', this.model2);
   this.pathService.updateTests(this.model2).subscribe(
     (response: any) => {
       if (response.status === 0) {
-        console.log(' response====',response);
        
         this.loaderUpdate = false;
         this.modalRef.hide();
         this.finalArray=[];
         alert('Updated Succesfully');
         this.getUsersPending();
+        this.router.navigate(['/lab-path/home'])
+
       }
   if (response.status === 1) {
         this.errormsg = response.error;
@@ -197,14 +213,19 @@ saveTests(testdata,full){
     },
     (error) => {}
   );
-
+  }
+  else{
+    alert("Please enter at least one result")
+  }
  }
 //--------------------------------
  //---------------------update getests---------------------
  updateSingleTest(res,modData) {
+   debugger
    console.log('modData==',modData);
 
-   console.log('res==',res);
+   if(res!=undefined && res!='' && res!=null)
+   {
    this.singleobj=modData;
    this.singleobj.result=res;
    this.singleArr.push(this.singleobj);
@@ -217,18 +238,11 @@ saveTests(testdata,full){
     (response: any) => {
       if (response.status === 0) {
         console.log(' response====',response);
-        // response.medicines.forEach(v => {
-        //   this.medStr = v.itemName + ", "+ v.unit+ " "+ v.type;                                      
-        //   this.gettreatmetData.push({"itemName":this.medStr,v});
-        //   // console.log('gettreatmetData==',tfhis.gettreatmetData)
-        // });
-       // this.PathResponseArray=response.data;
-      //console.log('this.PathResponseArray==',this.PathResponseArray);
-     // this.openModAdd(cc);
         this.loaderUpdate = false;
         this.modalRef.hide();
         this.singleArr=[];
         this.objPath.result='';
+        this.router.navigate(['/lab-path/home'])
       }
   if (response.status === 1) {
         this.errormsg = response.error;
@@ -240,7 +254,13 @@ saveTests(testdata,full){
     },
     (error) => {}
   );
+  }
+  else
+  {
+    alert("Please enter result")
 
+
+  }
 }
 //--------------------------------
 }

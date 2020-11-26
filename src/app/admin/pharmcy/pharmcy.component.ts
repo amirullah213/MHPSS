@@ -47,6 +47,7 @@ export class PharmcyComponent implements OnInit {
      // buttons: ['print', 'excel'],
     };
     this.getAllMedics();
+    this.medOb.itemType=1
   }
  
   ngAfterViewInit(): void {
@@ -85,11 +86,13 @@ export class PharmcyComponent implements OnInit {
     console.log('med id====',this.medicID);
   }
   showEditData(edtObj){
+    debugger
     this.EmedOb.itemID=edtObj.itemID;
     this.EmedOb.Ename=edtObj.itemName;
     this.EmedOb.Eunit=edtObj.unit;
     this.EmedOb.Etype=edtObj.type;
-    
+    this.EmedOb.EitemType=edtObj.itemType;
+ 
    
   }
    //get all medicine  List
@@ -126,12 +129,14 @@ export class PharmcyComponent implements OnInit {
 
  //add new medicine  List
  addNewMedic(objmed) {
+   debugger
     this.loader_eqp = true;
 
     //  console.log('local storage==',localStorage.getItem('auth_token'));
       this.model.itemName = objmed.name;
       this.model.unit = objmed.unit;
       this.model.type = objmed.type;
+      this.model.itemType = objmed.itemType;
     //  console.log('test==',this.model)
 
     this.adminService.addNewMedic(this.model).subscribe(
@@ -188,11 +193,12 @@ export class PharmcyComponent implements OnInit {
    //update medic
    updateMedic(objmed) {
     this.loader_eqp = true;
-
+debugger
     this.model2.itemID =  this.EmedOb.itemID;
     this.model2.itemName =  objmed.Ename;
     this.model2.unit =  objmed.Eunit;
     this.model2.type =  objmed.Etype;
+    this.model2.itemType =  objmed.EitemType;
     
     console.log('test==', this.model2);
 

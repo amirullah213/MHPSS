@@ -66,7 +66,7 @@
                                     <h6 class="mb-1 ml-4">Faimly History:<span class="ml-3">{{userList[0].familyHistory }}</span></h6>
                                     <h6 class="mb-1 ml-4">Past History:<span class="ml-3">{{userList[0].pastHistory }}</span></h6>
                                     <h5 class="mb-1 mt-4"><b><span class="colorback">Diagonosis : </span></b></h5>
-                                    <h6 class="mb-1 ml-4">{{userList[0].diagnosis}}</h6>
+                                    <h6 class="mb-1 ml-4">{{diag[0].name}}<span *ngIf="diag[0].description!='' && diag[0].description!=undefined"> - {{diag[0].description}}</span></h6>
 
                                     <h5 class="mb-1 mt-4"><b><span class="colorback">Treatment : </span></b></h5>
                                     <h6 class="mb-1 ml-4" *ngFor="let med of userList[0].medicines; let i=index">
@@ -84,7 +84,7 @@
                                         <span class="small ml-3">{{med.duration}}</span>
                                         <span class="small ml-3">{{med.remarks}}</span>
                                     </h6>
-                                    <h6 class="mb-1 ml-4"> <b> Treatment Comments :</b> {{userList[0].TreatmentComments}}</h6>
+                                    <h6 class="mb-1 ml-4"> <b> Other Medicine :</b> {{userList[0].TreatmentComments}}</h6>
                                     <!-- affan said -->
                                     <h5 class="mb-1 mt-4"><b><span class="colorback">Follow Up : </span></b></h5>
                                     <h6 class="mb-1 ml-4"> <span *ngIf="userList[0].follow_up=='null'">Not added</span>

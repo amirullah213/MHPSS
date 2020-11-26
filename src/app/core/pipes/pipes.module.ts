@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DateFormatPipe } from './datepipe.pipe';
+import { SplitLastPipe } from './splitString.pip';
 
 
 @NgModule({
@@ -9,5 +10,6 @@ import { DateFormatPipe } from './datepipe.pipe';
     CommonModule
   ],
   exports: [],
+  providers:    [  ]
 })
 export class PipesModule { }

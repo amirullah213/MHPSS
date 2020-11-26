@@ -223,7 +223,8 @@ export class PatDetailComponent implements OnInit {
       EDD:[''],
       isShortHeight:[''],
       isLowWeight:[''],
-      isMUAC:['']
+      isMUAC:[''],
+      pregnancyStatus:['']
 
     });
     this.investigationForm = this.fb.group({
@@ -680,7 +681,9 @@ this.diagID = event.item.id
   putValue(pd: any) {
     
     
-    if(pd.lmp!="0000-00-00 00:00:00"){
+    if(pd.lmp!="0000-00-00 00:00:00" && pd.lmp!="1969-12-31T19:00:00.000Z"){
+
+
       this.lmpDate = formatDate(pd.lmp, "y-M-d", "en-PK")
             this.eddDate = formatDate(pd.edd, "y-M-d", "en-PK");
 
@@ -703,7 +706,8 @@ this.diagID = event.item.id
       EDD:this.eddDate,
       isMUAC:pd.isMUAC,
       isShortHeight:pd.isShortHeight,
-      isLowWeight:pd.isLowWeight
+      isLowWeight:pd.isLowWeight,
+      pregnancyStatus:pd.pregnancyStatus
     })
 
   }
@@ -926,6 +930,7 @@ this.clinicalInformation.patchValue({
   }
 
   addClinicalInfo() {
+    debugger
   this.NewSymptoms=[]
 
 let ci=this.clinicalInformation.value
@@ -1065,7 +1070,7 @@ for (let sgn of this.localSign)
       "signs": result, "PNCServices":ci.PNCServices, "temperature": ci.temperature,"isLowWeight": ci.isLowWeight, "isMalnutration": ci.isMalnutration, "ANCServices": ci.ANCServices,
       "edd": ci.EDD, "complaints": this.localSymptoms, "diagnosis": this.localDiagData,"newSigns":this.NewlocalSign,"newComplaints":this.NewSymptoms, "deptType": this.deptType, "userName": this.docInfo.name,
       "otherFamilyHistory":ci.otherFh, "otherPastHistory":ci.otherPh,
-      "PregnancyNutritionStatus": ci.durPrg, "isTTVac": ci.isTTVac, "LactionNutritionStatus": ci.durLac
+      "PregnancyNutritionStatus": ci.durPrg, "isTTVac": ci.isTTVac, "LactionNutritionStatus": ci.durLac,"pregnancyStatus":ci.pregnancyStatus
     };
     this.uService.addclinicalinfo(this.param).subscribe((response: any) => {
       if (response.status === 0) {
@@ -1091,15 +1096,13 @@ for (let sgn of this.localSign)
     this.userLoader = true;
     this.uService.getInvistigation(this.param).subscribe
         ((response: any) => {
-          
         if (response.status === 0) {
           this.radData = response.radiologyTypes;
           if( response.testData.length!=0){
             
           response.testData.forEach((obj, v) => {
             
-            if(this.isRad==false && obj.isDirect==1 ){
-             
+            if(this.isRad==false && obj.isDirect==1 ){             
              this.localPath.push(obj)
              }
             
@@ -1108,8 +1111,11 @@ for (let sgn of this.localSign)
               
           this.IndoorDiagData = response.IndoorDiagnosis;
           response.test.forEach(v => {
-            if (v.testType == 1) {              
+            if (v.testType == 1) { 
+               if(v.supperTest!=1098 && v.supperTest!=1132)
+              {
               this.pathData.push(v);
+              }
             }
            if (v.testType == 2) {
              if (this.selectedOptionRad)
@@ -1143,7 +1149,7 @@ addinvestigation() {
       ((response: any) => {
         if (response.status === 0) {
           this.radData = response.radiologyTypes;   
-          localStorage.setItem("tab",'penPats')
+          localStorage.setItem("tab",'penPats') 
           this.router.navigate(['doctor/user/'])
           this.userLoader = false;
         } else {
@@ -1374,9 +1380,7 @@ for(let sb of obj.subTests)
           }else{
           this.showRef=false
  }
- }
-
-          
+ }          
           response.medicines.forEach(v => {
             this.strTreat = v.itemName + ", " + v.unit + " " + v.type;
             this.treatData.push({ "itemName": this.strTreat, v })
