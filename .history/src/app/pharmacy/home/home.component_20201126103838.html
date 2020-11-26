@@ -38,9 +38,7 @@
                                                         <tr class="text-dark">
                                                             <th>CRP NO#</th>
                                                             <th>Patient/Father</th>
-                                                            <th>Dated</th>
-                                                            <th>DOB</th>
-                                                            <th>Gender</th>
+                                                            <th>Date</th>
                                                             <th>Details</th>
                                                         </tr>
                                                     </thead>
@@ -53,8 +51,6 @@
                                                                 
                                                             </td>
                                                             <td>{{pend.DateCreated | date}}</td>
-                                                            <td>{{pend.dob | date}}</td>
-                                                            <td>{{pend.gender}}</td>
                                                             <td><a href="javascript:void(0)" class="text-info" (click)="gotoPatDetailsPending(pend)">Detail</a></td>
                                                         </tr>
                                                         <tr *ngIf="pharmacyData.length === 0" style="text-align: center;">
@@ -79,10 +75,8 @@
                                                     <thead>
                                                         <tr class="text-dark">
                                                             <th>CRP NO#</th>
-                                                            <th>Patient/Father</th>
-                                                            <th>Dated</th>
-                                                            <th>DOB</th>
-                                                            <th>Gender</th>
+                                                            <th>Name</th>
+                                                            <th>Date</th>
                                                             <th>Details</th>
                                                         </tr>
                                                     </thead>
@@ -90,13 +84,10 @@
                                                         <tr *ngFor="let pend of pharmacyData;index as i">
                                                             <td>{{pend.token}}</td>
                                                             <td>
-                                                                <!-- <img class="mr-3" src="../../../assets/images/profile-avatar.png"> -->
-                                                                <span>{{pend.firstname}} /  {{pend.f_hName}}</span>
-                                                                
+                                                                <img class="mr-3" src="../../../assets/images/profile-avatar.png">
+                                                                <span>{{pend.firstname}}</span>
                                                             </td>
                                                             <td>{{pend.DateCreated | date}}</td>
-                                                            <td>{{pend.dob | date}}</td>
-                                                            <td>{{pend.gender}}</td>
                                                             <td><a href="javascript:void(0)" class="text-info" (click)="gotoPatDetailsSeen(pend)">Detail</a></td>
                                                         </tr>
                                                         <tr *ngIf="pharmacyData.length === 0" style="text-align: center;">

@@ -166,7 +166,6 @@ createItem(obj:any): FormGroup {
   });
 }
 saveData(dat){
-  
   if(this.issuedGreater){
       let type='danger';
       let msg='Issued quantity should not be greater than prescribed quantity/total quantity';
@@ -222,8 +221,6 @@ saveData(dat){
   }
   // calculate age
   compareValues(indx){
-    console.log('issuedQuantity',this.purchaseOrder.value[indx].issuedQuantity);
-    console.log('totalQuantity',this.purchaseOrder.value[indx].totalQuantity)
     this.issuedGreater=false;
     if(this.purchaseOrder.value[indx].issuedQuantity > this.purchaseOrder.value[indx].prescribedQuantity){
       this.issuedGreater=true;

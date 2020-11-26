@@ -166,7 +166,6 @@ createItem(obj:any): FormGroup {
   });
 }
 saveData(dat){
-  
   if(this.issuedGreater){
       let type='danger';
       let msg='Issued quantity should not be greater than prescribed quantity/total quantity';

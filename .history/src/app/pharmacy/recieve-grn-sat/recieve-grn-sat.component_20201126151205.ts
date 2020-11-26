@@ -143,7 +143,6 @@ createItem(obj:any): FormGroup {
   });
 }
 saveData(dat){
- 
   console.log('this.purchaseOrder===',this.purchaseOrder.value);
   console.log('this.dat===',dat);
      this.modal3.istID   = this.istID;
@@ -173,18 +172,15 @@ saveData(dat){
       },
       (error) => {}
      );
-   
+  
   }
   reciveValidate(ind){
     this.hideSaveButton=false;
     if(this.purchaseOrder.value[ind].recievedQuantity > this.purchaseOrder.value[ind].issuedQuantity){
-      alert('Recieved quantity should be less than issued quantity')
         this.hideSaveButton=true;
     }
     if(this.purchaseOrder.value[ind].recievedQuantity =='' || undefined || null ){
-      
       this.hideSaveButton=true;
-      alert('Please fill recieved Quantity')
   }
      
   }

@@ -40,7 +40,6 @@ export class IssueSattMedicComponent implements OnInit {
   modal34:any={};
   showAlert:boolean=false;
   alerts:any={};
-  issuedGreater:boolean=false;
 
   constructor(
     private fb: FormBuilder,
@@ -166,12 +165,6 @@ createItem(obj:any): FormGroup {
   });
 }
 saveData(dat){
-  
-  if(this.issuedGreater){
-      let type='danger';
-      let msg='Issued quantity should not be greater than prescribed quantity/total quantity';
-      this.alertDanger(type,msg);
-  }else{
   console.log('this.purchaseOrder===',this.purchaseOrder.value);
   console.log('this.dat===',dat);
   
@@ -204,7 +197,6 @@ saveData(dat){
       },
       (error) => {}
     );
-  }
   
   }
   AssinIssueQuantity(ind){
@@ -222,18 +214,15 @@ saveData(dat){
   }
   // calculate age
   compareValues(indx){
-    console.log('issuedQuantity',this.purchaseOrder.value[indx].issuedQuantity);
-    console.log('totalQuantity',this.purchaseOrder.value[indx].totalQuantity)
-    this.issuedGreater=false;
     if(this.purchaseOrder.value[indx].issuedQuantity > this.purchaseOrder.value[indx].prescribedQuantity){
-      this.issuedGreater=true;
+      // alert('Issued quantity should not be greater than prescribed quantity');
       let type='danger';
       let msg='Issued quantity should not be greater than prescribed quantity';
       this.alertDanger(type,msg);
 
     }
     if(this.purchaseOrder.value[indx].issuedQuantity > this.purchaseOrder.value[indx].totalQuantity){
-      this.issuedGreater=true;
+    
       let type='danger';
       let msg='Issued quantity should not be greater than total quantity';
       this.alertDanger(type,msg);

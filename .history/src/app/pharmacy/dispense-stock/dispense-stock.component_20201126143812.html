@@ -76,8 +76,7 @@
                                     <div class="col-md-3 mt-5">
                                         <div class="form-group">
                                             <label> </label>
-                                           
-                                            <button type="button"   (click)="addToMedicArr(grnobj)" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" [disabled]="!grnobj.totalQuantity || !grnobj.stock || !grnobj.quantity"><i class="ti-save-alt"></i> Add</button>
+                                            <a href="javascript:void(0)" (click)="addToMedicArr(grnobj)" class="themeauth-bg text-white btn-lg"><i class="fa fa-plus mr-2"></i>Add</a>
                                         </div>
                                     </div>
 
@@ -139,7 +138,7 @@
                                 <div class="form-group row mx-0">
                                     <div class="col-md-12">
                                         <div class="form-group text-center">
-                                            <button type="button" *ngIf="!loader_eqp1" [disabled]="medArray.length<1"  (click)="addDispenseOrd()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save</button>
+                                            <button type="button" *ngIf="!loader_eqp1" [disabled]="!grnobj.totalQuantity || !grnobj.stock || !grnobj.quantity"  (click)="addDispenseOrd()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save</button>
                                             <button type="button" *ngIf="loader_eqp1" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><span class="spinner-border theme-color" role="status">
                                                     <span class="sr-only"></span>
                                                 </span></button>

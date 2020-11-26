@@ -38,9 +38,6 @@ export class IssueSattMedicComponent implements OnInit {
   mn:any=6;
   padata:any={};
   modal34:any={};
-  showAlert:boolean=false;
-  alerts:any={};
-  issuedGreater:boolean=false;
 
   constructor(
     private fb: FormBuilder,
@@ -166,12 +163,6 @@ createItem(obj:any): FormGroup {
   });
 }
 saveData(dat){
-  
-  if(this.issuedGreater){
-      let type='danger';
-      let msg='Issued quantity should not be greater than prescribed quantity/total quantity';
-      this.alertDanger(type,msg);
-  }else{
   console.log('this.purchaseOrder===',this.purchaseOrder.value);
   console.log('this.dat===',dat);
   
@@ -204,7 +195,6 @@ saveData(dat){
       },
       (error) => {}
     );
-  }
   
   }
   AssinIssueQuantity(ind){
@@ -222,52 +212,10 @@ saveData(dat){
   }
   // calculate age
   compareValues(indx){
-    console.log('issuedQuantity',this.purchaseOrder.value[indx].issuedQuantity);
-    console.log('totalQuantity',this.purchaseOrder.value[indx].totalQuantity)
-    this.issuedGreater=false;
-    if(this.purchaseOrder.value[indx].issuedQuantity > this.purchaseOrder.value[indx].prescribedQuantity){
-      this.issuedGreater=true;
-      let type='danger';
-      let msg='Issued quantity should not be greater than prescribed quantity';
-      this.alertDanger(type,msg);
+    if(this.dynamicForm['controls'].purchaseOrder['controls'][indx]['controls'].issuedQuantity > this.dynamicForm['controls'].purchaseOrder['controls'][indx]['controls'].prescribedQuantity){
+      alert('Issued quantity should not be greater than prescribed quantity')
 
-    }
-    if(this.purchaseOrder.value[indx].issuedQuantity > this.purchaseOrder.value[indx].totalQuantity){
-      this.issuedGreater=true;
-      let type='danger';
-      let msg='Issued quantity should not be greater than total quantity';
-      this.alertDanger(type,msg);
     }
   }
- // alert message functions
-alertSuccess(typ,msg){
-  this.showAlert=true;
-  this.alerts = {
-    type: typ,
-    msg:msg,
-   // timeout: 3000
-  };
-  this.delay();
-}
-alertDanger(typ,msg){
-  this.showAlert=true;
-  this.alerts = {
-    type: typ,
-    msg:msg,
-    //timeout: 3000
-  };
-  this.delay();
-}
-
-delay(){
-  console.log('this.showAlertup',this.showAlert);
-  setTimeout(()=>{                           //<<<---using ()=> syntax
-    console.log('this.showAlertdown',this.showAlert)
-  this.showAlert=false;
-  
-  console.log('this.showAlertdown',this.showAlert)
-}, 5000);
-
-}
-//alert message functions
+ 
 }

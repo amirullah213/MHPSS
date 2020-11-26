@@ -178,7 +178,7 @@ saveData(dat){
   reciveValidate(ind){
     this.hideSaveButton=false;
     if(this.purchaseOrder.value[ind].recievedQuantity > this.purchaseOrder.value[ind].issuedQuantity){
-      alert('Recieved quantity should be less than issued quantity')
+      
         this.hideSaveButton=true;
     }
     if(this.purchaseOrder.value[ind].recievedQuantity =='' || undefined || null ){

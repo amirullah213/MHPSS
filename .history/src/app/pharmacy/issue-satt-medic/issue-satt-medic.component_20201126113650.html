@@ -16,7 +16,6 @@
                 <div class="col-md-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
-                            <alert [type]="alerts.type" *ngIf="showAlert" class="alert-fixpos">{{ alerts.msg }}</alert>
                             <!-- <h5 class="card-title mb-0">Dispense Patient</h5> -->
                             <form [formGroup]="dynamicForm">
                                 <!-- <div class="form-group row mx-0">
@@ -77,7 +76,7 @@
 
                                                     </td>
                                                     <td>
-                                                        <input type="text" formControlName='totalQuantity' [attr.disabled]='true' class="form-control" placeholder="Total Quantity instock">
+                                                        <input type="text" formControlName='totalQuantity' [attr.disabled]='true' class="form-control" placeholder="Total Quantity">
                                                     </td>
 
                                                     <td>
@@ -107,7 +106,7 @@
                             <div class="form-group row mx-0">
                                 <div class="col-md-12">
                                     <div class="form-group text-center">
-                                        <button type="button" *ngIf="!loader_eqp" [disabled]="this.issuedGreater" (click)="saveData(dynamicForm.value)" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save</button>
+                                        <button type="button" *ngIf="!loader_eqp" (click)="saveData(dynamicForm.value)" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save</button>
                                         <button type="button" *ngIf="loader_eqp" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><span class="spinner-border theme-color" role="status">
                                                     <span class="sr-only"></span>
                                                 </span></button>
