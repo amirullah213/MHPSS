@@ -136,7 +136,7 @@ export class DiagnosticListComponent implements OnInit {
             this.errormsg = response.error;
             this.loader_eqp = false;
             console.log('error=', this.errormsg);
-            alert('Error in Service! Refresh the page')
+            alert('Error in Service! Refresh the page' )
             //this._loginserviceService.logout();
           }
         },
