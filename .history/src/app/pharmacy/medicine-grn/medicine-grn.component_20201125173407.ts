@@ -84,11 +84,10 @@ export class MedicineGrnComponent implements OnInit {
 //get all diagnostic list
 onSelectMedics(ob)
 {
-  
   console.log('medics data selected==',ob.item);
-  this.grnobj.unit=ob.item.v.unit;
-  this.grnobj.type=ob.item.v.type;
-  this.grnobj.itemID=ob.item.v.itemID;
+  this.grnobj.unit=ob.item.unit;
+  this.grnobj.type=ob.item.type;
+  this.grnobj.itemID=ob.item.itemID;
   
 }
 addToMedicArr(medArr){

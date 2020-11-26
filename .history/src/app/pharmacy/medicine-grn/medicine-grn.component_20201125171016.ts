@@ -42,7 +42,6 @@ export class MedicineGrnComponent implements OnInit {
   errormsg:string;
   model5:any ={};
   model6:any ={};
-  medStr:any;
   userData:any ={};
   statesComplex:any[]=[];
   customSelected: string;
@@ -61,12 +60,7 @@ export class MedicineGrnComponent implements OnInit {
  this.pharmacySer.getMidicines(patObj).subscribe(
     (response: any) => {
       if (response.status === 0) {
-         response.data.forEach(v => {
-          this.medStr = v.itemName + ", "+ v.unit+ " "+ v.type;                                      
-          this.pharmacyData.push({"itemName":this.medStr,v});
-          // console.log('gettreatmetData==',this.gettreatmetData)
-        });
-     
+        this.pharmacyData = response.data;
       console.log('this.pharmacy pats==',this.pharmacyData)
         this.loader_eqp = false;
       }
@@ -84,11 +78,10 @@ export class MedicineGrnComponent implements OnInit {
 //get all diagnostic list
 onSelectMedics(ob)
 {
-  
   console.log('medics data selected==',ob.item);
-  this.grnobj.unit=ob.item.v.unit;
-  this.grnobj.type=ob.item.v.type;
-  this.grnobj.itemID=ob.item.v.itemID;
+  this.grnobj.unit=ob.item.unit;
+  this.grnobj.type=ob.item.type;
+  this.grnobj.itemID=ob.item.itemID;
   
 }
 addToMedicArr(medArr){
