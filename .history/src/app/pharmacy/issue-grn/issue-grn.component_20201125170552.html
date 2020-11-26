@@ -81,7 +81,7 @@
                                                         <!-- <input type="text" formControlName='stock'  class="form-control"  placeholder="Batch"> -->
                                                     </td>
                                                     <td>
-                                                        <input type="text" formControlName='totalQuantity'  class="form-control" placeholder="In hand Quantity">
+                                                        <input type="text" formControlName='totalQuantity' [disabled] class="form-control" placeholder="In hand Quantity">
                                                     </td>
 
 
@@ -98,7 +98,7 @@
                             <div class="form-group row mx-0">
                                 <div class="col-md-12">
                                     <div class="form-group text-center">
-                                        <button type="button" *ngIf="!loader_eqp"  (click)="saveData(dynamicForm.value)" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save</button>
+                                        <button type="button" *ngIf="!loader_eqp" (click)="saveData(dynamicForm.value)" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save</button>
                                         <button type="button" *ngIf="loader_eqp" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><span class="spinner-border theme-color" role="status">
                                                     <span class="sr-only"></span>
                                                 </span></button>
