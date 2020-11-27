@@ -29,7 +29,7 @@
                                     <h6><b>DOB :</b> <span class="ml-3">  <span *ngIf="userList[0].dob!='0000-00-00 00:00:00'">{{userList[0].dob | date}} </span></span>
                                     </h6>
                                     <h6><b>Gender : </b><span class="ml-3 text-capitalize">{{patInfo.gender}}</span></h6>
-                                    <h6><b>Consulting Doctor :</b> <span class="ml-3">{{userList[0].docFName}} {{userList[0].docLNmae}}</span><span> ({{userList[0].userName}})</span></h6>
+                                    <h6><b>Consulting Doctor :</b> <span class="ml-3">{{userList[0].docFName}} {{userList[0].docLNmae}}</span> <span>{{userList[0].userName}}</span> </h6>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4">
                                     <img class="" src="../../../../../assets/images/merf.png" width="200" height="100">
@@ -37,42 +37,13 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12" style="border-bottom: #000 2px solid;">
                                 </div>
                                 <div class="col-lg-5 col-md-5 col-sm-5" style="border-right: #000 2px solid;">
-                                    <h5 class="mb-1 mt-4"><span class="colorback" ><b> Vitals : </b></span></h5>
-                                    <h6 class="mb-1 ml-4">
-                                        <span *ngIf="userList[0].vitals.bps=='' && userList[0].vitals.pulse==''
-                                         && userList[0].vitals.weight=='' && userList[0].vitals.height=='' && userList[0].vitals.temperature==''
-                                         && userList[0].vitals.oxygen_saturation==''"   > Not Added</span> 
-                                        
-                                   </h6>
-                                    <h6 class="mb-1 ml-4">
-                                         <span *ngIf="userList[0].vitals.bps==''" > </span> 
-                                         <span *ngIf="userList[0].vitals.bps!=''">BP:<span class="ml-5" > {{userList[0].vitals.bps}} </span></span>
-                                    </h6>
-                                    <h6 class="mb-1 ml-4">
-                                      
-                                        <span *ngIf="userList[0].vitals.pulse==''" > </span> 
-                                        <span *ngIf="userList[0].vitals.pulse!=''">Pulse (Per Min):<span class="ml-5" >  {{userList[0].vitals.pulse}} </span></span>
-                                    </h6>
-                                    <h6 class="mb-1 ml-4">
-                                        
-                                        <span *ngIf="userList[0].vitals.weight==''" > </span> 
-                                        <span *ngIf="userList[0].vitals.weight!=''"> Weight(Kg):<span class="ml-5" >  {{userList[0].vitals.weight}} </span></span>
-                                    </h6>
-                                    <h6 class="mb-1 ml-4">
-                                       
-                                        <span *ngIf="userList[0].vitals.height==''" > </span> 
-                                        <span *ngIf="userList[0].vitals.height!=''">  Height (cm):<span class="ml-5" >  {{userList[0].vitals.height}} </span></span>
-                                    </h6>
-                                    <h6 class="mb-1 ml-4">
-                                        
-                                        <span *ngIf="userList[0].vitals.temperature==''" > </span> 
-                                        <span *ngIf="userList[0].vitals.temperature!=''">  Temprature(F):<span class="ml-5" >  {{userList[0].vitals.temperature}} </span></span>
-                                    </h6>
-                                    <h6 class="mb-2 ml-4">
-                                      
-                                        <span *ngIf="userList[0].vitals.oxygen_saturation==''" > </span> 
-                                        <span *ngIf="userList[0].vitals.oxygen_saturation!=''">  Oxygen Saturation :<span class="ml-5" >  {{userList[0].vitals.oxygen_saturation}} </span></span>
-                                    </h6>
+                                    <h5 class="mb-1 mt-4"><span class="colorback"><b> Vitals : </b></span></h5>
+                                    <h6 class="mb-1 ml-4">BP: <span class="ml-5"> {{userList[0].vitals.bps}}</span></h6>
+                                    <h6 class="mb-1 ml-4">Pulse (Per Min): <span class="ml-5">{{userList[0].vitals.pulse}}</span></h6>
+                                    <h6 class="mb-1 ml-4">Weight(Kg): <span class="ml-5">{{userList[0].vitals.weight}}</span></h6>
+                                    <h6 class="mb-1 ml-4">Height (cm): <span class="ml-5">{{userList[0].vitals.height}}</span></h6>
+                                    <h6 class="mb-1 ml-4">Temprature(F): <span class="ml-5">{{userList[0].vitals.temperature}}</span></h6>
+                                    <h6 class="mb-2 ml-4">Oxygen Saturation : <span class="ml-5">{{userList[0].vitals.oxygen_saturation}}</span></h6>
                                     <div *ngIf="userList[0].test.length!=0">
                                     <h5 class="mb-2"><b><span class="colorback" >Investigations</span></b></h5>
                                     <h5 class="mb-1 ml-2"><b><span class="colorback">Pathology : </span></b> </h5>
@@ -90,26 +61,10 @@
                                 <!-- <div class="col-lg-1"></div> -->
                                 <div class="col-lg-7 col-md-7 col-sm-7">
                                     <h5 class="mb-1 mt-4"><b><span class="colorback">Signs And Symptoms : </span> </b></h5>
-                                    <h6 class="mb-1 ml-4">
-                                       
-                                        <span *ngIf="userList[0].signs==''" > </span> 
-                                        <span *ngIf="userList[0].signs!=''">  Signs:<span class="ml-5" >  {{userList[0].signs}} </span></span>
-                                    </h6>
-                                    <h6 class="mb-1 ml-4">
-                                        
-                                        <span *ngIf="userList[0].complaints==''" > </span> 
-                                        <span *ngIf="userList[0].complaints!=''">  Complaints:<span class="ml-5" >  {{userList[0].complaints}} </span></span>
-                                    </h6>
-                                    <h6 class="mb-1 ml-4">
-                                        
-                                        <span *ngIf="userList[0].familyHistory==''" > </span> 
-                                        <span *ngIf="userList[0].familyHistory!=''">  Faimly History:<span class="ml-5" >  {{userList[0].familyHistory}} </span></span>
-                                    </h6>
-                                    <h6 class="mb-1 ml-4">
-                                       
-                                        <span *ngIf="userList[0].pastHistory==''" > </span> 
-                                        <span *ngIf="userList[0].pastHistory!=''">  Past History:<span class="ml-5" >  {{userList[0].pastHistory}} </span></span>
-                                    </h6>
+                                    <h6 class="mb-1 ml-4">Signs: <span class="ml-3"> {{userList[0].signs}}</span></h6>
+                                    <h6 class="mb-1 ml-4">Complaints:<span class="ml-3">{{ userList[0].complaints }}</span></h6>
+                                    <h6 class="mb-1 ml-4">Faimly History:<span class="ml-3">{{userList[0].familyHistory }}</span></h6>
+                                    <h6 class="mb-1 ml-4">Past History:<span class="ml-3">{{userList[0].pastHistory }}</span></h6>
                                     <h5 class="mb-1 mt-4"><b><span class="colorback">Diagonosis : </span></b></h5>
                                     <h6 class="mb-1 ml-4">{{diag[0].name}}<span *ngIf="diag[0].description!='' && diag[0].description!=undefined"> - {{diag[0].description}}</span></h6>
 
@@ -127,23 +82,19 @@
                                         <span class="small ml-3" *ngIf="med.dose=='Qid'">1 + 1 + 1 + 1</span>
                                         <span class="small ml-3">({{med.prescribedQuantity}})</span>
                                         <span class="small ml-3">{{med.duration}}</span>
-                                        <span class="ml-3">Remarks: ({{med.remarks}})</span>
+                                        <span class="small ml-3">{{med.remarks}}</span>
                                     </h6>
-                                    <h6 class="mb-1 ml-4">
-                                         
-                                         <span *ngIf="userList[0].TreatmentComments=='null'" > </span> 
-                                         <span *ngIf=" userList[0].TreatmentComments!='null'">  <b> Other Medicine :</b><span class="ml-5" >  {{userList[0].TreatmentComments}} </span></span>
-                                        </h6>
+                                    <h6 class="mb-1 ml-4"> <b> Other Medicine :</b> {{userList[0].TreatmentComments}}</h6>
                                     <!-- affan said -->
                                     <h5 class="mb-1 mt-4"><b><span class="colorback">Follow Up : </span></b></h5>
-                                    <h6 class="mb-1 ml-4"> <span *ngIf="userList[0].follow_up=='null'"></span>
+                                    <h6 class="mb-1 ml-4"> <span *ngIf="userList[0].follow_up=='null'">Not added</span>
                                         <span *ngIf="userList[0].follow_up!='null'">{{userList[0].follow_up}} {{userList[0].followUpInerval}}</span>
                                          </h6>
-                                    <h6 class="mb-1 ml-4"><span *ngIf="userList[0].followUpComments=='null'"></span> 
+                                    <h6 class="mb-1 ml-4"><span *ngIf="userList[0].followUpComments=='null'">Not added</span> 
                                     <span *ngIf="userList[0].followUpComments!='null'">{{userList[0].followUpComments}}</span></h6>
                                     <h5 class="mb-1 mt-5"><b><span class="colorback">Referral (if applicable) : </span></b></h5>
                                     <h6 class="mb-1 ml-4"><span *ngIf="userList[0].refferel!=''">{{userList[0].refferel}}</span>
-                                        <span *ngIf="userList[0].refferel==''"></span>
+                                        <span *ngIf="userList[0].refferel==''">Not added</span>
                                     
                                     </h6>
                                 </div>

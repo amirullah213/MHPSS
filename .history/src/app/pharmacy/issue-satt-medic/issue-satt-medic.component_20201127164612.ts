@@ -56,7 +56,7 @@ export class IssueSattMedicComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   
+    
    //console.log('alertMesssage',this.pharmacySer.alertMessage('weee','test')) ;
    //this.GetBirthDate();
     var date = new Date();
@@ -77,7 +77,6 @@ export class IssueSattMedicComponent implements OnInit {
   });
     
   }
-
   GetBirthDate() {
    
     // this.yr = this.yr.replace(/^\s+|\s+$/g, "");

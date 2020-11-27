@@ -56,7 +56,7 @@ export class IssueSattMedicComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   
+    navBarObj.alertSuccess('success','new message')
    //console.log('alertMesssage',this.pharmacySer.alertMessage('weee','test')) ;
    //this.GetBirthDate();
     var date = new Date();

@@ -17,8 +17,7 @@ alerts:any={};
 
   ngOnInit(): void {
     this.loginName=JSON.parse(localStorage.getItem('details')) ;
-    console.log('this.loginName===',this.loginName);
-   // this.alertSuccess('success','testing message');
+    console.log('this.loginName===',this.loginName)
   }
   //log out
   logout() {

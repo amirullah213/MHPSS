@@ -12,9 +12,8 @@
         </li>
     </ul>
     <!-- top bar right -->
-    
     <ul class="nav navbar-nav ml-auto">
-       
+        <alert [type]="alerts.type" *ngIf="showAlert" class="alert-fixpos">{{ alerts.msg }}</alert>
         <li class="nav-item dropdown mr-4">
             <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="javascript:void(0)">
                 <img src="../../../../../assets/images/admin.png" alt="avatar">
@@ -29,5 +28,4 @@
             </div>
         </li>
     </ul>
-    <alert [type]="alerts.type" *ngIf="showAlert" class="alert-fixpos">{{ alerts.msg }}</alert>
 </nav>

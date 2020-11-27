@@ -12,7 +12,7 @@
         </li>
     </ul>
     <!-- top bar right -->
-    
+    <alert [type]="alerts.type" *ngIf="showAlert" class="alert-fixpos">{{ alerts.msg }}</alert>
     <ul class="nav navbar-nav ml-auto">
        
         <li class="nav-item dropdown mr-4">
@@ -29,5 +29,4 @@
             </div>
         </li>
     </ul>
-    <alert [type]="alerts.type" *ngIf="showAlert" class="alert-fixpos">{{ alerts.msg }}</alert>
 </nav>

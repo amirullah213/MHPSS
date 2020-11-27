@@ -131,19 +131,19 @@
                                     </h6>
                                     <h6 class="mb-1 ml-4">
                                          
-                                         <span *ngIf="userList[0].TreatmentComments=='null'" > </span> 
-                                         <span *ngIf=" userList[0].TreatmentComments!='null'">  <b> Other Medicine :</b><span class="ml-5" >  {{userList[0].TreatmentComments}} </span></span>
+                                         <span *ngIf="userList[0].TreatmentComments=='' || userList[0].TreatmentComments==null" > </span> 
+                                         <span *ngIf="userList[0].TreatmentComments!='' ||userList[0].TreatmentComments!=null">  <b> Other Medicine :</b><span class="ml-5" >  {{userList[0].TreatmentComments}} </span></span>
                                         </h6>
                                     <!-- affan said -->
                                     <h5 class="mb-1 mt-4"><b><span class="colorback">Follow Up : </span></b></h5>
-                                    <h6 class="mb-1 ml-4"> <span *ngIf="userList[0].follow_up=='null'"></span>
+                                    <h6 class="mb-1 ml-4"> <span *ngIf="userList[0].follow_up=='null'">Not added</span>
                                         <span *ngIf="userList[0].follow_up!='null'">{{userList[0].follow_up}} {{userList[0].followUpInerval}}</span>
                                          </h6>
-                                    <h6 class="mb-1 ml-4"><span *ngIf="userList[0].followUpComments=='null'"></span> 
+                                    <h6 class="mb-1 ml-4"><span *ngIf="userList[0].followUpComments=='null'">Not added</span> 
                                     <span *ngIf="userList[0].followUpComments!='null'">{{userList[0].followUpComments}}</span></h6>
                                     <h5 class="mb-1 mt-5"><b><span class="colorback">Referral (if applicable) : </span></b></h5>
                                     <h6 class="mb-1 ml-4"><span *ngIf="userList[0].refferel!=''">{{userList[0].refferel}}</span>
-                                        <span *ngIf="userList[0].refferel==''"></span>
+                                        <span *ngIf="userList[0].refferel==''">Not added</span>
                                     
                                     </h6>
                                 </div>

@@ -56,8 +56,10 @@ export class IssueSattMedicComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   
-   //console.log('alertMesssage',this.pharmacySer.alertMessage('weee','test')) ;
+    let navbarData = new NavbarComponent();
+  
+    navbarData.myFunctionOne();
+   console.log('alertMesssage',this.pharmacySer.alertMessage('weee','test')) ;
    //this.GetBirthDate();
     var date = new Date();
     this.padata=JSON.parse(localStorage.getItem('pharmacyData')) ;
@@ -77,7 +79,6 @@ export class IssueSattMedicComponent implements OnInit {
   });
     
   }
-
   GetBirthDate() {
    
     // this.yr = this.yr.replace(/^\s+|\s+$/g, "");

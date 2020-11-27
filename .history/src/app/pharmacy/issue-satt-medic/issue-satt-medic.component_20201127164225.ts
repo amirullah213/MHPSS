@@ -5,7 +5,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { Subject } from 'rxjs';
 import { PharmacyServicesService } from '../services/pharmacy-services.service';
 import { DatePipe } from '@angular/common';
-import { NavbarComponent } from '../../core/modules/shared-module/navbar/navbar.component';
+
 
 @Component({
   selector: 'ncri-issue-satt-medic',
@@ -56,7 +56,7 @@ export class IssueSattMedicComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   
+    
    //console.log('alertMesssage',this.pharmacySer.alertMessage('weee','test')) ;
    //this.GetBirthDate();
     var date = new Date();
@@ -77,7 +77,6 @@ export class IssueSattMedicComponent implements OnInit {
   });
     
   }
-
   GetBirthDate() {
    
     // this.yr = this.yr.replace(/^\s+|\s+$/g, "");

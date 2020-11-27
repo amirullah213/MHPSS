@@ -122,7 +122,7 @@ export class PharmacyServicesService {
   } 
 
   // for alert messages
-  alertMessage(typ,msg){
+  alertDanger(typ,msg){
     
     let alerts = {
       showAlert:true,
