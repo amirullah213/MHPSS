@@ -1517,40 +1517,66 @@ location.reload()
       )
   }
   reffer() {
+    debugger
 
     if(this.show==false)
     {
      this.hospt = this.treatmentForm.value.Hospital
      this.isRefType =1;
+     this.param={"referralType":this.isRefType,"convinceType":this.treatmentForm.value.Ambulance,"ptID":this.patInfo.ptID,
+     "referralHospital":this.hospt,"refferedTo":this.depIndex,"remarks":this.treatmentForm.value.refNotes,"refferedFrom":this.patInfo.departmentID,"hospitalID":localStorage.getItem('hospitalID')}
+    
+     this.uService.reffer(this.param).subscribe
+     ((response: any) => {
+       if (response.status === 0) {
+         this.router.navigate(['doctor/user/'])
+         localStorage.removeItem("tab")        
+         this.userLoader = false;
+       } else {
+         this.userLoader = false;
+         alert('Something went wrong try again');
+       }
+     },
+       (error) => {  }
+     )
+
     }
     else{
         this.hospt =""
         this.isRefType =0;
+        if(this.localDiag!=undefined && this.localDiag!=null && this.localDiag.length!=0){
+     if(this.depIndex!=undefined && this.depIndex!=0){
+          this.param={"referralType":this.isRefType,"convinceType":this.treatmentForm.value.Ambulance,"ptID":this.patInfo.ptID,
+          "referralHospital":this.hospt,"refferedTo":this.depIndex,"remarks":this.treatmentForm.value.refNotes,"refferedFrom":this.patInfo.departmentID,"hospitalID":localStorage.getItem('hospitalID')}
        
-    }
-    this.param={"referralType":this.isRefType,"convinceType":this.treatmentForm.value.Ambulance,"ptID":this.patInfo.ptID,
-    "referralHospital":this.hospt,"refferedTo":this.depIndex,"remarks":this.treatmentForm.value.refNotes,"refferedFrom":this.patInfo.departmentID,"hospitalID":localStorage.getItem('hospitalID')}
-   debugger
-    if(this.localDiag!=undefined && this.localDiag!=null && this.localDiag.length!=0 &&  this.isRefType==0){
-      this.uService.reffer(this.param).subscribe
-      ((response: any) => {
-        if (response.status === 0) {
-          this.router.navigate(['doctor/user/'])
-          localStorage.removeItem("tab")        
-          this.userLoader = false;
-        } else {
-          this.userLoader = false;
-          alert('Something went wrong try again');
+          this.uService.reffer(this.param).subscribe
+          ((response: any) => {
+            if (response.status === 0) {
+              this.router.navigate(['doctor/user/'])
+              localStorage.removeItem("tab")        
+              this.userLoader = false;
+            } else {
+              this.userLoader = false;
+              alert('Something went wrong try again');
+            }
+          },
+            (error) => {  }
+          )
+        }else
+        {
+          alert("Please select a departement")
         }
-      },
-        (error) => {  }
-      )
-} else
-{
-  alert("Please insert and Save Diagnosis first");
-  localStorage.setItem('tab','clinicalInfo');
-location.reload()
-}
+        } 
+    else
+    {
+      alert("Please insert and Save Diagnosis first");
+      localStorage.setItem('tab','clinicalInfo');
+    location.reload()
+    }
+    }
+   
+    
+   
   }
   deleteRadPath(id:any) {
 
