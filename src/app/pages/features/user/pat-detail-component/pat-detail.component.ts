@@ -568,6 +568,16 @@ this.diagID = event.item.id
  
   getclinicalinfo() {
     
+    this.diagnosisData=[];
+    this.signsData=[];
+    this.symptomsData = []
+    this.vitalsData =[];
+    this.localDiag=[];
+    this.localSign=[];
+    this.prescriptionData=[];
+    this.symptomComplatins=[];
+    this.localSymptoms=[];
+    this.localDiagData=[];
 
     this.param = { 'hospitalID': localStorage.getItem('hospitalID'), 'prescriptionID': this.patInfo.prescriptionID };
     
@@ -580,11 +590,10 @@ this.diagID = event.item.id
           this.patientID = response.prescription.patientID;
           this.ptID = response.prescription.ptID;
           this.diagnosisData = response.diagnosis;          
-          this.signsData = response.signs;
-          
+          this.signsData = response.signs;          
           this.symptomsData = response.symptoms;
           this.vitalsData = response.vitals;
-          
+
           if (response.prescription.complaints != '' && response.prescription.complaints!="undefined") {
             this.symptomComplatins = JSON.parse(response.prescription.complaints);
             
@@ -603,7 +612,6 @@ this.diagID = event.item.id
           }
           
           if (response.prescription.diagnosis != '' && response.prescription.diagnosis!="undefined") {
- 
           this.localDiag = JSON.parse(response.prescription.diagnosis);
           
           if(this.localDiag!=undefined && this.localDiag!=null && this.localDiag.length!=0) {
@@ -811,7 +819,7 @@ insertToDiag(obj: any)
 
 }
   addDiag() {
-    
+    debugger
 let tempdiag = 0;
 if(this.clinicalInformation.value.pname!=undefined && this.clinicalInformation.value.pname!="" && this.diagID!=undefined ){
 
@@ -840,6 +848,9 @@ if(this.clinicalInformation.value.pname!=undefined && this.clinicalInformation.v
   }else{
     this.localDiagData.push({ 'id': this.diagID, 'name': this.clinicalInformation.value.pname,  description:this.clinicalInformation.value.description})
   }
+}
+else{
+  alert("Please select a diagnosis from the list")
 }
     this.clinicalInformation.patchValue({
       'pname': '',
@@ -1075,6 +1086,7 @@ for (let sgn of this.localSign)
     };
     this.uService.addclinicalinfo(this.param).subscribe((response: any) => {
       if (response.status === 0) {
+        this.getclinicalinfo();
         this.userLoader = false;
       } else {
         this.userLoader = false;
@@ -1525,7 +1537,8 @@ location.reload()
      this.isRefType =1;
      this.param={"referralType":this.isRefType,"convinceType":this.treatmentForm.value.Ambulance,"ptID":this.patInfo.ptID,
      "referralHospital":this.hospt,"refferedTo":this.depIndex,"remarks":this.treatmentForm.value.refNotes,"refferedFrom":this.patInfo.departmentID,"hospitalID":localStorage.getItem('hospitalID')}
-    
+     if(this.localDiag!=undefined && this.localDiag!=null && this.localDiag.length!=0){
+
      this.uService.reffer(this.param).subscribe
      ((response: any) => {
        if (response.status === 0) {
@@ -1539,12 +1552,18 @@ location.reload()
      },
        (error) => {  }
      )
-
+    } 
+    else
+    {
+      alert("Please insert and Save Diagnosis first");
+      localStorage.setItem('tab','clinicalInfo');
+    location.reload()
     }
+    }
+    
     else{
         this.hospt =""
         this.isRefType =0;
-        if(this.localDiag!=undefined && this.localDiag!=null && this.localDiag.length!=0){
      if(this.depIndex!=undefined && this.depIndex!=0){
           this.param={"referralType":this.isRefType,"convinceType":this.treatmentForm.value.Ambulance,"ptID":this.patInfo.ptID,
           "referralHospital":this.hospt,"refferedTo":this.depIndex,"remarks":this.treatmentForm.value.refNotes,"refferedFrom":this.patInfo.departmentID,"hospitalID":localStorage.getItem('hospitalID')}
@@ -1566,13 +1585,7 @@ location.reload()
         {
           alert("Please select a departement")
         }
-        } 
-    else
-    {
-      alert("Please insert and Save Diagnosis first");
-      localStorage.setItem('tab','clinicalInfo');
-    location.reload()
-    }
+        
     }
    
     
