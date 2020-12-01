@@ -1,4 +1,4 @@
-<div class="container-fluid container-wrapper">
+<!-- <div class="container-fluid container-wrapper">
     <div class="row">
         <div class="content-wrapper">
             <div class="page-title">
@@ -23,7 +23,7 @@
                                             <span class="ml-4"> {{tokenData.token}}</span>
                                         </p>
                                         <p class="mb-1 mt-2"><b>Patient Name : </b>
-                                            <span class="ml-4">{{tokenData.patient.firstname}}</span>
+                                            <span class="ml-4">{{c}}</span>
                                         </p>
                                         <p class="mb-1 mt-3"><b>Father/Husband Name : </b>
                                             <span class="ml-4"> {{tokenData.patient.f_hName}}</span>
@@ -40,16 +40,9 @@
                                         <p class="mb-1 mt-3"><b>Date : </b>
                                             <span class="ml-4"> {{tokenData.patient.DateCreated | date}}</span>
                                         </p>
-                                        <!-- <div class="form-group mt-5 d-print-none">
-                                            <button class="button" (click)="printPage()">
-                                                <i class="fa fa-print"></i> Print Token
-                                            </button>
-                                        </div> -->
+                                       
                                         <p class="mt-5 d-print-none"><strong>Status: {{status}}</strong></p>
-                                        <!-- <div class="form-group mt-5 d-print-none">
-                                            <input class="form-control mb-2 col-3" [(ngModel)]="ip" type="text" name="ip" placeholder="IP of printer with WebPRNT">
-                                            <button class="button" (click)="connectToWebPrint()">Connect to WebPRNT</button>
-                                        </div> -->
+                                       
 
                                         <div class="form-group mt-5 d-print-none">
                                             <button *ngIf="status === false" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" (click)="requestUsb()">Connect to USB</button>
@@ -67,4 +60,126 @@
             </div>
         </div>
     </div>
+</div> -->
+
+<style>
+    * {
+    font-size: 12px;
+    font-family: 'Times New Roman';
+}
+
+td,
+th,
+tr,
+table {
+    border-top: 1px solid black;
+    border-collapse: collapse;
+}
+
+td.description,
+th.description {
+    width: 175px;
+    max-width: 175px;
+    font-weight: bolder;
+}
+
+td.quantity,
+th.quantity {
+    width: 80px;
+    max-width: 80px;
+    word-break: break-all;
+    font-weight: bold;
+}
+
+td.price,
+th.price {
+    width: 40px;
+    max-width: 40px;
+    word-break: break-all;
+}
+
+.centered {
+    text-align: center;
+    align-content: center;
+}
+
+.ticket {
+    width: 300px;
+    max-width: 300px;
+}
+
+img {
+    max-width: inherit;
+    width: inherit;
+}
+
+@media print {
+    .hidden-print,
+    .hidden-print * {
+        display: none !important;
+    }
+}
+</style>
+
+<div class="container-fluid container-wrapper" >
+    <div class="row">
+        <div class="content-wrapper">
+           
+                 <div class="ticket">
+                   
+                <h1><b><strong>  <span class="description">{{loginDetails.hospitalName}}</span> </strong></b></h1>
+                      
+                    <table>
+                        
+                        <tbody>
+                            <tr>
+                                <td class="quantity">Token</td>
+                                <td class="description">{{tokenData.token}}</td>
+                           
+                            </tr>
+                            <tr>
+                                <td class="quantity">Patient Name</td>
+                                <td class="description">{{tokenData.patient.firstname}}</td>
+                              
+                            </tr>
+                            <tr>
+                                <td class="quantity">F/H Name</td>
+                                <td class="description">{{tokenData.patient.f_hName}}</td>
+                               
+                            </tr>
+                            <tr>
+                                <td class="quantity">Reffered To </td>
+                                <td class="description">  {{tokenData.deptName}}</td>
+                               
+                            </tr>
+                            <tr>
+                                <td class="quantity">Gender</td>
+                                <td class="description">{{tokenData.patient.gender}}</td>
+                               
+                            </tr>
+                            <tr>
+                                <td class="quantity">Date Of Birth</td>
+                                <td class="description">{{tokenData.patient.dob | date}}</td>
+                               
+                            </tr>
+                            <tr>
+                                <td class="quantity">Date</td>
+                                <td class="description">{{tokenData.patient.DateCreated | date}}</td>
+                               
+                            </tr>
+                          
+                        </tbody>
+                    </table>
+                
+                </div> 
+                <!-- <button id="btnPrint" (click)="printPage()" class="hidden-print">Print</button> -->
+                <div class="form-group mt-5 d-print-none">
+                    <button class="button" (click)="printPage()">
+                        <i class="fa fa-print"></i> Print Token
+                    </button>
+                </div>
+           
+        </div>
+    </div>
+   
 </div>

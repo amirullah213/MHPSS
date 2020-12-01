@@ -33,7 +33,7 @@ export class UsersComponent implements OnInit {
     private service: UserService,
     private router: Router,
   ) {
-    debugger
+    
     if(this.router.url === '/doctor/user' && localStorage.getItem('tab')==="newPats"){
        this.interval = setInterval(() => {
                   this.getUsers(this.userData); // api call

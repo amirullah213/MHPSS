@@ -274,7 +274,15 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                            <!-- <div class="col-md-6">
+                                            <div class="col-md-6">
+                                                <div class="form-group input-group">
+                                                    <label for="formGroupExampleInput">Pregnancy Status</label>
+                                                    <span class="wrapper-select">
+                                                        <textarea formControlName="pregnancyStatus" cols="80" placeholder="Pregnancy Status"></textarea>
+                                                    </span>
+                                                </div>
+                                            </div> 
+                                             <!-- <div class="col-md-6">
                                                 <div class="form-group input-group">
                                                     <label for="formGroupExampleInput">Pnc Services</label>
                                                     <span class="wrapper-select">
@@ -422,7 +430,7 @@
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Action</label>
                                                     <button type="button" (click)="addSymptom()" class="btn mt-1 themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
-                                                        <i class="fa fa-plus-square mr-2"></i> Add 
+                                                        <i class="fa fa-plus-square mr-2"></i> Add More
                                                     </button>
                                                 </div>
                                             </div>
@@ -470,7 +478,7 @@
                                                 <h5>Family History</h5>
                                                 <div class="mb-2">
                                                     <label class="form-check-label" formArrayName="fhArray" *ngFor="let order of clinicalInformation.controls.fhArray['controls']; let j = index">
-                                                        <input type="checkbox" [formControlName]="j"(change)="onSelectFamilyh(fhArray[j],$event.target.checked)"
+                                                        <input type="checkbox" [formControlName]="j" (change)="onSelectFamilyh(fhArray[j],$event.target.checked)"
                                                             class="form-check-input" >
                                                         {{fhArray[j]}}
                                                     </label>
@@ -537,7 +545,7 @@
                                                 <input formControlName="description" placeholder="Description" class="form-control">
                                             </div>
                                             <div class="col-md-2 mt-1">
-                                                <button type="button" (click)="addDiag()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus-square mr-2"></i>Add</button>
+                                                <button type="button" (click)="addDiag()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus-square mr-2"></i>Add More</button>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="row mx-0" *ngFor="let trt of localDiagData let i=index">
@@ -592,7 +600,7 @@
                                                     <label class="form-check-label">Pathalogy</label>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input formControlName="selectedValuePath" placeholder="Pathalogy" [typeahead]="pathData" typeaheadOptionField="testName" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectPath($event)" class="form-control"[typeaheadOptionsLimit]='1000' [typeaheadMinLength]="0">
+                                                    <input formControlName="selectedValuePath" placeholder="Pathalogy" [typeahead]="pathData" typeaheadOptionField="testName" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectPath($event)" class="form-control" [typeaheadOptionsLimit]='1000' [typeaheadMinLength]="0">
                                                 </div>
                                             </div>
                                            
@@ -647,6 +655,7 @@
                                                         <button type="button" *ngIf="userLoader" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">                                               
                                                          <span class="spinner-border" *ngIf="userLoader" role="status" aria-hidden="true"></span>  </button>
 
+                                                         
                                                             
                                                 </div>
                                                 <ng-template #template>
@@ -799,7 +808,7 @@
                                             <div class="col-md-5">
                                                 <div class="form-group">
                                                     <label>Diagnosis</label>
-                                                    <input formControlName="selectedValueIndoorDiag" placeholder="Diagnosis" [value]="selectedValueIndoorDiag" [typeahead]="IndoorDiagData" typeaheadOptionField="name" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectIndoorDiag($event)" class="form-control"[typeaheadOptionsLimit]='1000' [typeaheadMinLength]="0">
+                                                    <input formControlName="selectedValueIndoorDiag" placeholder="Diagnosis" [value]="selectedValueIndoorDiag" [typeahead]="IndoorDiagData" typeaheadOptionField="name" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectIndoorDiag($event)" class="form-control" [typeaheadOptionsLimit]='1000' [typeaheadMinLength]="0">
                                                 </div>
                                             </div>
                                             <div class="col-md-5 ">
@@ -808,7 +817,7 @@
                                             </div>
                                             <div class="col-md-2 mt-1">
                                                 <label>Action</label>
-                                                <button type="button" (click)="addIndoorDiag()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus-square mr-2"></i>Add</button>
+                                                <button type="button" (click)="addIndoorDiag()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus-square mr-2"></i>Add More</button>
                                             </div>
                                             <hr class="hr-gray">
                                             <div class="col-md-12">
@@ -918,13 +927,8 @@
                                                     <input type="text" formControlName="type" class="form-control" id="formGroupExampleInput" placeholder="Enter Medicine Type" [attr.readonly]="true">
                                                 </div>
                                             </div>
+                                           
                                             <div class="col-md-2">
-                                                <div class="form-group">
-                                                    <label>Prescribed Quantity</label>
-                                                    <input type="text" formControlName="prescribedQuantity" class="form-control" id="formGroupExampleInput" placeholder="Prescribed Quantity" >
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
                                                 <div class="form-group input-group">
                                                     <label>Dose</label>
                                                     <span class="wrapper-select">
@@ -958,16 +962,22 @@
                                                     </span>
                                                 </div>
                                             </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Prescribed Quantity</label>
+                                                    <input type="text" formControlName="prescribedQuantity" class="form-control" id="formGroupExampleInput" placeholder="Prescribed Quantity" >
+                                                </div>
+                                            </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Remarks/Dosing</label>
-                                                    <input type="text" formControlName="remarks" class="form-control" id="formGroupExampleInput" placeholder="Remarks/Dosing">
+                                                    <textarea formControlName="remarks" cols="19" class="form-control" id="formGroupExampleInput" placeholder="Remarks/Dosing"></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-md-2 mt-4">
                                                 <div class="form-group text-center">
                                                     <button type="button" (click)="addTreat()" class="btn mt-2 themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
-                                                        <i class="fa fa-plus-square mr-2"></i>Add
+                                                        <i class="fa fa-plus-square mr-2"></i>Add More
                                                     </button>
                                                 </div>
                                             </div>
@@ -997,17 +1007,28 @@
                                                             </td>
                                                         </tr>
                                                     </table>
+                                                    <br>
+                                                    <h4>Or</h4>
+                                                    <hr class="hr-gray mx-0">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Other Medicine</label>
+                                                    <textarea class="form-control" formControlName="tComments" name="comments" type=text></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                                     <!-- <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"> Add More </button>  -->
                                                 </div>
                                             </div>
-                                            <hr class="hr-gray mx-0">
+                                            <!-- <hr class="hr-gray mx-0">
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Treatment Comment</label>
                                                     <textarea class="form-control" formControlName="tComments" name="comments" type=text></textarea>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <hr class="hr-gray mx-0">
                                         <div class="row mx-0 border4">
                                             <div class="col-md-6">

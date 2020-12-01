@@ -92,6 +92,7 @@ export class AdmittedPatientsComponent implements OnInit {
 
     treatmentForm:FormGroup;
     dischargeForm:FormGroup;
+  pathArrNewNew: any=[];
 
   constructor(
     private modalService: BsModalService, 
@@ -507,16 +508,15 @@ addPresMedicines() {
 
 //operate indoor details
 sendTolab() {
-  
+  debugger
   this.loaderLab= true;
   this.model11.hospitalID=this.hospitalID;
   this.model11.prescriptionID=-1;
   this.model11.patientID=this.detailsData.patientID;
   this.model11.isHB=0;
   this.model11.indoorType=this.outdoorData.bedNo;
-  this.model11.departmentID=this.doctorID;
-  
-  this.model11.investigations=this.pathArrNew;
+  this.model11.departmentID=this.doctorID;  
+  this.model11.investigations=this.pathArrNewNew;
   this.model11.ptID=this.detailsData.ptID;
   
  console.log('model11 ==', this.model11);
@@ -563,7 +563,6 @@ addmoreMedics(){
   this.medicinesNewdata['dose']=this.treatmentForm.value.med_dose;
   this.medicinesNewdata['prandial']=this.treatmentForm.value.med_parandials;
   this.medicinesNewdata['remarks']=this.treatmentForm.value.med_remark;
-
   this.medicinesNewdata['medicineID']=this.medicID;
   this.medicinesNewdata['issuedQuantity']='';
   this.medicinesNewdata['duration']='';
@@ -610,18 +609,36 @@ removeArr(indx){
 }
 // add new diagnisis
 addnewDiag(dia){
+  let diagExist=false;
   console.log('new diag==',dia);
+ debugger
+  if(!this.diagObj.id){
+    alert('Please select Diagnosis');
+   
+  }else{
+  for (let i = 0; i < this.diagnosArr.length; i++) {
+    if(this.diagObj.id==this.diagnosArr[i].id){
+      console.log ("Block statement execution no." + this.diagnosArr[i].id);
+     
+       diagExist=true;
+      break;
+    }
+   
+  }
+if(diagExist){ alert('Diagnosis already exists')}else{
   this.diagObj.description=dia;
   this.diagnosArr.push(this.diagObj);
   console.log('diagnosArr==',this.diagnosArr);
-  this.outdoorForm.value.diagnosis='';
-  this.outdoorForm.value.description='';
-
-  this.outdoorForm.patchValue({
-    diagnosis: '',
-    description: '',
+  this.outdoorForm.controls.diagnosis.reset();
+  this.outdoorForm.controls.description.reset();
+  this.diagObj={};
+}
+}
+  // this.outdoorForm.patchValue({
+  //   diagnosis: '',
+  //   description: '',
     
-  });
+  // });
 }
 onSelectDiagnos(edat){
   console.log('edat',edat.item);
@@ -646,11 +663,10 @@ removeDiag(indx){
 
 // pathology addind data 
 onSelectPathology(path){
+  
   this.pathArrNew_added=true;
- 
-  console.log("pathology data===",path.item);
-  this.pathArrNew.push({"result":"","patientID":this.detailsData.patientID,"testName":path.item.testName,"testID":path.item.testID,"testType":path.item.testType,"refRange":path.item.refRange,"isSupper":path.item.isSupper,"subTests":path.item.subTests?path.item.subTests:[]})
-  //this.pathArrNew.push(path.item);
+   this.pathArrNew.push({"result":"","patientID":this.detailsData.patientID,"testName":path.item.testName,"testID":path.item.testID,"testType":path.item.testType,"refRange":path.item.refRange,"isSupper":path.item.isSupper,"subTests":path.item.subTests?path.item.subTests:[]})
+   this.pathArrNewNew.push({"result":"","patientID":this.detailsData.patientID,"testName":path.item.testName,"testID":path.item.testID,"testType":path.item.testType,"refRange":path.item.refRange,"isSupper":path.item.isSupper,"subTests":path.item.subTests?path.item.subTests:[]})
   this.objPath={};
   console.log("this.pathArrNew===",this.pathArrNew);
   // this.medicID=medic.item.v.itemID;
@@ -662,15 +678,34 @@ onSelectPathology(path){
   
  
 }
-removeTests(indx,iddata){
-  this.pathArrNew.splice(indx, 1);
-  console.log('$x==',this.pathArrNew)
-  if(iddata!=undefined){
-   this.deleteTest(iddata);
-  }
- 
-  console.log('$x222==',iddata);
+removeTests(index,obj){
 
+  // this.pathArrNew.splice(indx, 1);
+  // console.log('$x==',this.pathArrNew)
+  // if(iddata!=undefined){
+  //  this.deleteTest(iddata);
+  // }
+ 
+  // console.log('$x222==',iddata);
+  let idsArr=[]
+  if(obj.subTests!=undefined && obj.subTests.length>0){
+for(let sb of obj.subTests)
+  { 
+     idsArr.push(sb.id)
+  }
+  idsArr[obj.subTests.length+1]=obj.id
+
+}
+else
+{
+  idsArr.push(obj.id)
+}
+  if (index > -1) {
+    this.pathArrNew.splice(index, 1);
+    if(idsArr.length>0)
+    this.deleteTest(idsArr);
+
+  }
   
 }
 getType(typ){
@@ -691,7 +726,7 @@ gotoDischarge(disform,outForm){
   
   localStorage.setItem('prescriptionID',this.outdoorData.prescriptionID);
   
-  this.router.navigate(['/ward-list/discharged-med'])
+  this.router.navigate(['/ward/discharged-med'])
 }
 //==================
 updateToken(){

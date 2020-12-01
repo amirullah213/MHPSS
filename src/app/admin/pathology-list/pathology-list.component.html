@@ -130,6 +130,8 @@
                                                 <td>{{path.fee}}</td>
                                                 <td>
                                                     <button href="" class="mr-1 btn btn-info" (click)="openModedit(pathEdit,path)"><i class="ti-pencil-alt"></i></button>
+                                                    <!-- <button href="" class="btn btn-danger" (click)="openModdelete(deletepathology,path)"><i class="ti-trash"></i></button> -->
+
                                                     <!-- model for Add Diagnostic download start-->
                                                     <ng-template #pathEdit>
                                                         <div class="modal-header">
@@ -184,7 +186,6 @@
                                                         </div>
                                                     </ng-template>
                                                     <!-- model for Add Diagnostic download end-->
-                                                    <button href="" class="btn btn-danger" (click)="openModdelete(deletepathology,path)"><i class="ti-trash"></i></button>
                                                     <!-- model for Diagnostic delete start-->
                                                     <ng-template #deletepathology>
                                                         <div class="modal-body p-5 text-center">

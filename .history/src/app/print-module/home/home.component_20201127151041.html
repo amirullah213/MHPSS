@@ -1,0 +1,139 @@
+<div class="container-fluid container-wrapper">
+    <div class="row">
+        <div class="content-wrapper">
+            <div class="page-title">
+                <div class="row px-3 px-md-0">
+                    <div class="col-sm-12 pl-0">
+                        <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)" class="gray-color">Print
+                                    Prescreption</a></li>
+                            <!-- <li class="breadcrumb-item active gray-04-color">Commission</li> -->
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mb-30">
+                    <div class="card card-statistics h-100">
+                        <div class="card-body">
+                            <div class="row" *ngIf="!userLoader">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <h2 class="text-center"><b> {{userList[0].hospitalName}} </b></h2>
+                                    <h6 class="text-center mb-2"><b>OUTDOOR PATIENT TICKET</b></h6>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-sm-8 mb-4">
+                                    <h6><b>EMR NO :</b> <span class="ml-3"> {{patInfo.token}}</span></h6>
+                                    <h6><b>Patient Name :</b> <span class="ml-3"> {{userList[0].firstname}} <span *ngIf=userList[0].lastname!='undefined'>userList[0].lastname</span> </span>
+                                    </h6>
+                                    <h6><b>Father / Husband's Name : </b><span class="ml-3">{{patInfo.f_hName}}</span> </h6>
+                                    <h6><b>DOB :</b> <span class="ml-3">  <span *ngIf="userList[0].dob!='0000-00-00 00:00:00'">{{userList[0].dob | date}} </span></span>
+                                    </h6>
+                                    <h6><b>Gender : </b><span class="ml-3 text-capitalize">{{patInfo.gender}}</span></h6>
+                                    <h6><b>Consulting Doctor :</b> <span class="ml-3">{{userList[0].docFName}} {{userList[0].docLNmae}}</span><span> ({{userList[0].userName}})</span></h6>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <img class="" src="../../../../../assets/images/merf.png" width="200" height="100">
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12" style="border-bottom: #000 2px solid;">
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-5" style="border-right: #000 2px solid;">
+                                    <h5 class="mb-1 mt-4"><span class="colorback"><b> Vitals : </b></span></h5>
+                                    <h6 class="mb-1 ml-4">
+                                         <span *ngIf="userList[0].vitals.bps==''" > </span> 
+                                         <span *ngIf="userList[0].vitals.bps!=''">BP:<span class="ml-5" > {{userList[0].vitals.bps}} </span></span>
+                                    </h6>
+                                    <h6 class="mb-1 ml-4">
+                                      
+                                        <span *ngIf="userList[0].vitals.pulse==''" > </span> 
+                                        <span *ngIf="userList[0].vitals.pulse!=''">Pulse (Per Min):<span class="ml-5" >  {{userList[0].vitals.pulse}} </span></span>
+                                    </h6>
+                                    <h6 class="mb-1 ml-4">
+                                        
+                                        <span *ngIf="userList[0].vitals.weight==''" > </span> 
+                                        <span *ngIf="userList[0].vitals.weight!=''"> Weight(Kg):<span class="ml-5" >  {{userList[0].vitals.weight}} </span></span>
+                                    </h6>
+                                    <h6 class="mb-1 ml-4">
+                                       
+                                        <span *ngIf="userList[0].vitals.height==''" > </span> 
+                                        <span *ngIf="userList[0].vitals.height!=''">  Height (cm):<span class="ml-5" >  {{userList[0].vitals.height}} </span></span>
+                                    </h6>
+                                    <h6 class="mb-1 ml-4">
+                                        
+                                        <span *ngIf="userList[0].vitals.temperature==''" > </span> 
+                                        <span *ngIf="userList[0].vitals.temperature!=''">  Temprature(F):<span class="ml-5" >  {{userList[0].vitals.temperature}} </span></span>
+                                    </h6>
+                                    <h6 class="mb-2 ml-4">Oxygen Saturation : <span class="ml-5">{{userList[0].vitals.oxygen_saturation}}</span></h6>
+                                    <div *ngIf="userList[0].test.length!=0">
+                                    <h5 class="mb-2"><b><span class="colorback" >Investigations</span></b></h5>
+                                    <h5 class="mb-1 ml-2"><b><span class="colorback">Pathology : </span></b> </h5>
+                                    <span *ngFor="let tst of userList[0].test">
+                                        <h6  class="mb-1 ml-4"><span *ngIf="tst.isDirect==1 && tst.testType==1">{{tst.testName}}</span> </h6>
+                                    </span>
+                                    <h5 class="mb-1 ml-2"><b><span class="colorback">Radiology : </span></b> </h5>
+                                    <span *ngFor="let tst of userList[0].test">
+                                        <h6  class="mb-1 ml-4"><span *ngIf="tst.isDirect==1 && tst.testType==2">{{tst.testName}}</span> </h6>
+                                   
+                                    </span>
+                                </div>
+                                    <h5 class="mb-1 ml-2"><b><span class="colorback" *ngIf="userList[0].test.length==0">No Investigations Suggested </span></b> </h5>
+                                </div>
+                                <!-- <div class="col-lg-1"></div> -->
+                                <div class="col-lg-7 col-md-7 col-sm-7">
+                                    <h5 class="mb-1 mt-4"><b><span class="colorback">Signs And Symptoms : </span> </b></h5>
+                                    <h6 class="mb-1 ml-4">Signs: <span class="ml-3"> {{userList[0].signs}}</span></h6>
+                                    <h6 class="mb-1 ml-4">Complaints:<span class="ml-3">{{ userList[0].complaints }}</span></h6>
+                                    <h6 class="mb-1 ml-4">Faimly History:<span class="ml-3">{{userList[0].familyHistory }}</span></h6>
+                                    <h6 class="mb-1 ml-4">Past History:<span class="ml-3">{{userList[0].pastHistory }}</span></h6>
+                                    <h5 class="mb-1 mt-4"><b><span class="colorback">Diagonosis : </span></b></h5>
+                                    <h6 class="mb-1 ml-4">{{diag[0].name}}<span *ngIf="diag[0].description!='' && diag[0].description!=undefined"> - {{diag[0].description}}</span></h6>
+
+                                    <h5 class="mb-1 mt-4"><b><span class="colorback">Treatment : </span></b></h5>
+                                    <h6 class="mb-1 ml-4" *ngFor="let med of userList[0].medicines; let i=index">
+                                        <span>{{i+1}}-{{med.medicine}}</span>
+                                        
+                                        <span class="small ml-2"> {{med.type1}}</span>
+                                        <span class="small ml-2"> {{med.unit}}</span>
+                                        <span class="small ml-3" *ngIf="med.dose=='SOS'">When Required</span>
+                                        <span class="small ml-3" *ngIf="med.dose=='OD'">Daily</span>
+                                        <span class="small ml-3" *ngIf="med.dose=='STAT'">Take Immediately</span>
+                                        <span class="small ml-3" *ngIf="med.dose=='BiD'">1 + 0 + 1</span>
+                                        <span class="small ml-3" *ngIf="med.dose=='TDS'">1 + 1 + 1</span>
+                                        <span class="small ml-3" *ngIf="med.dose=='Qid'">1 + 1 + 1 + 1</span>
+                                        <span class="small ml-3">({{med.prescribedQuantity}})</span>
+                                        <span class="small ml-3">{{med.duration}}</span>
+                                        <span class="small ml-3">{{med.remarks}}</span>
+                                    </h6>
+                                    <h6 class="mb-1 ml-4"> <b> Other Medicine :</b> {{userList[0].TreatmentComments}}</h6>
+                                    <!-- affan said -->
+                                    <h5 class="mb-1 mt-4"><b><span class="colorback">Follow Up : </span></b></h5>
+                                    <h6 class="mb-1 ml-4"> <span *ngIf="userList[0].follow_up=='null'">Not added</span>
+                                        <span *ngIf="userList[0].follow_up!='null'">{{userList[0].follow_up}} {{userList[0].followUpInerval}}</span>
+                                         </h6>
+                                    <h6 class="mb-1 ml-4"><span *ngIf="userList[0].followUpComments=='null'">Not added</span> 
+                                    <span *ngIf="userList[0].followUpComments!='null'">{{userList[0].followUpComments}}</span></h6>
+                                    <h5 class="mb-1 mt-5"><b><span class="colorback">Referral (if applicable) : </span></b></h5>
+                                    <h6 class="mb-1 ml-4"><span *ngIf="userList[0].refferel!=''">{{userList[0].refferel}}</span>
+                                        <span *ngIf="userList[0].refferel==''">Not added</span>
+                                    
+                                    </h6>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 mt mt-5 d-print-none">
+                                    <div class="form-group text-center">
+                                        <button type="button" (click)="printPage()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
+                                         <i class="fa fa-print"></i> Print
+                                       </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="userLoader" class="d-flex justify-content-center">
+                                <div class="spinner-border theme-color" role="status">
+                                    <span class="sr-only"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

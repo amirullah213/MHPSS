@@ -223,7 +223,8 @@ export class PatDetailComponent implements OnInit {
       EDD:[''],
       isShortHeight:[''],
       isLowWeight:[''],
-      isMUAC:['']
+      isMUAC:[''],
+      pregnancyStatus:['']
 
     });
     this.investigationForm = this.fb.group({
@@ -277,7 +278,7 @@ export class PatDetailComponent implements OnInit {
     this.getInvistigation();
     this.getTreatment();
     this.getindoorlist()   
-     
+
     if(localStorage.getItem("tab"))
     this.setTab(localStorage.getItem("tab"))
    
@@ -680,7 +681,9 @@ this.diagID = event.item.id
   putValue(pd: any) {
     
     
-    if(pd.lmp!="0000-00-00 00:00:00"){
+    if(pd.lmp!="0000-00-00 00:00:00" && pd.lmp!="1969-12-31T19:00:00.000Z"){
+
+
       this.lmpDate = formatDate(pd.lmp, "y-M-d", "en-PK")
             this.eddDate = formatDate(pd.edd, "y-M-d", "en-PK");
 
@@ -703,7 +706,8 @@ this.diagID = event.item.id
       EDD:this.eddDate,
       isMUAC:pd.isMUAC,
       isShortHeight:pd.isShortHeight,
-      isLowWeight:pd.isLowWeight
+      isLowWeight:pd.isLowWeight,
+      pregnancyStatus:pd.pregnancyStatus
     })
 
   }
@@ -800,14 +804,17 @@ this.diagID = event.item.id
   
 insertToDiag(obj: any)
 {
-  
+
   this.localDiagData.push({ 'id': obj.id, 'name': obj.name,  "description":obj.description
+  
 })
 
 }
   addDiag() {
     
 let tempdiag = 0;
+if(this.clinicalInformation.value.pname!=undefined && this.clinicalInformation.value.pname!="" && this.diagID!=undefined ){
+
     if(this.localDiagData.length!=0){
       for(let e of this.localDiagData)
         {  
@@ -825,7 +832,7 @@ let tempdiag = 0;
         }
        }
     }
-    if (tempdiag == 0)
+    if (tempdiag == 0 )
     {
       this.localDiagData.push({ 'id': this.diagID, 'name': this.clinicalInformation.value.pname,  description:this.clinicalInformation.value.description})
    
@@ -833,6 +840,7 @@ let tempdiag = 0;
   }else{
     this.localDiagData.push({ 'id': this.diagID, 'name': this.clinicalInformation.value.pname,  description:this.clinicalInformation.value.description})
   }
+}
     this.clinicalInformation.patchValue({
       'pname': '',
       'description':''
@@ -840,6 +848,7 @@ let tempdiag = 0;
     this.diagID=undefined
   
   }
+
 
   removeDiag(i: number) {   
     
@@ -921,6 +930,7 @@ this.clinicalInformation.patchValue({
   }
 
   addClinicalInfo() {
+    debugger
   this.NewSymptoms=[]
 
 let ci=this.clinicalInformation.value
@@ -982,7 +992,6 @@ let tempsign = 0;
 
  
         if((this.signObj.id!=undefined && this.signObj!={}) && e.name==this.clinicalInformation.value.selectedValueSign){
-     //   alert("already Exists");
         tempsign = 1;
         break
        }
@@ -1021,7 +1030,6 @@ for (let sgn of this.localSign)
         {  
         if(this.diagID!=undefined && e.id==this.diagID)
         {
-      //  alert("Diagnosis already Exists");
         tempdiag = 1;
         break
        }
@@ -1029,7 +1037,6 @@ for (let sgn of this.localSign)
        {
         if(e.name==ci.pname)
         {
-         // alert("already Exists");
           tempdiag = 1;
           break
         }
@@ -1063,7 +1070,7 @@ for (let sgn of this.localSign)
       "signs": result, "PNCServices":ci.PNCServices, "temperature": ci.temperature,"isLowWeight": ci.isLowWeight, "isMalnutration": ci.isMalnutration, "ANCServices": ci.ANCServices,
       "edd": ci.EDD, "complaints": this.localSymptoms, "diagnosis": this.localDiagData,"newSigns":this.NewlocalSign,"newComplaints":this.NewSymptoms, "deptType": this.deptType, "userName": this.docInfo.name,
       "otherFamilyHistory":ci.otherFh, "otherPastHistory":ci.otherPh,
-      "PregnancyNutritionStatus": ci.durPrg, "isTTVac": ci.isTTVac, "LactionNutritionStatus": ci.durLac
+      "PregnancyNutritionStatus": ci.durPrg, "isTTVac": ci.isTTVac, "LactionNutritionStatus": ci.durLac,"pregnancyStatus":ci.pregnancyStatus
     };
     this.uService.addclinicalinfo(this.param).subscribe((response: any) => {
       if (response.status === 0) {
@@ -1089,15 +1096,13 @@ for (let sgn of this.localSign)
     this.userLoader = true;
     this.uService.getInvistigation(this.param).subscribe
         ((response: any) => {
-          
         if (response.status === 0) {
           this.radData = response.radiologyTypes;
           if( response.testData.length!=0){
             
           response.testData.forEach((obj, v) => {
             
-            if(this.isRad==false && obj.isDirect==1 ){
-             
+            if(this.isRad==false && obj.isDirect==1 ){             
              this.localPath.push(obj)
              }
             
@@ -1106,8 +1111,11 @@ for (let sgn of this.localSign)
               
           this.IndoorDiagData = response.IndoorDiagnosis;
           response.test.forEach(v => {
-            if (v.testType == 1) {              
+            if (v.testType == 1) { 
+               if(v.supperTest!=1098 && v.supperTest!=1132)
+              {
               this.pathData.push(v);
+              }
             }
            if (v.testType == 2) {
              if (this.selectedOptionRad)
@@ -1130,8 +1138,10 @@ for (let sgn of this.localSign)
   
   alertFunc(st)
 {
+
   alert(st + " Added Successfuly")
-}  addinvestigation() {   
+}  
+addinvestigation() {   
     if(this.newLocalPath.length>0 ){ 
     this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.patInfo.ptID,'prescriptionID': this.patInfo.prescriptionID,"patientID": this.patientID,"isHB":0,"investigations":this.newLocalPath}
      this.userLoader = true;
@@ -1139,7 +1149,7 @@ for (let sgn of this.localSign)
       ((response: any) => {
         if (response.status === 0) {
           this.radData = response.radiologyTypes;   
-          localStorage.setItem("tab",'penPats')
+          localStorage.setItem("tab",'penPats') 
           this.router.navigate(['doctor/user/'])
           this.userLoader = false;
         } else {
@@ -1165,7 +1175,7 @@ else
    if(this.insTest==true){
      this.localPath.push(obj)
      this.newLocalPath.push(obj);
-     this.alertFunc("Test")
+    // this.alertFunc("Test")
 
      this.a=false
     this.investigationForm.patchValue({
@@ -1273,6 +1283,7 @@ for(let sb of obj.subTests)
     
     let inv = this.investigationForm.value;
     var temp = 0;
+    if(inv.selectedValueIndoorDiag!=undefined && inv.selectedValueIndoorDiag!="" && this.Indid!=undefined ){
     if(this.localIndoorData.length!=0){
       for(let e of this.localIndoorData)
         {  
@@ -1289,10 +1300,12 @@ for(let sb of obj.subTests)
   }else{
     this.localIndoorData.push({ "id": this.Indid, "name": inv.selectedValueIndoorDiag,"description":inv.descriptionIndoor }) 
   }
+}
     this.investigationForm.patchValue({
       'selectedValueIndoorDiag': '',
       'descriptionIndoor':''
     })
+    this.Indid=undefined
   }
   removeIndoorDiag(index) {
 
@@ -1367,9 +1380,7 @@ for(let sb of obj.subTests)
           }else{
           this.showRef=false
  }
- }
-
-          
+ }          
           response.medicines.forEach(v => {
             this.strTreat = v.itemName + ", " + v.unit + " " + v.type;
             this.treatData.push({ "itemName": this.strTreat, v })
@@ -1400,8 +1411,7 @@ for(let sb of obj.subTests)
         { 
           
         if(e.medicine==medic[0] && e.unit==tVal.unit && e.type==tVal.type1){
-      //  alert("already Exists");
-        temptreat= 1;
+         temptreat= 1;
         this.treatmentForm.patchValue({
           "itemID":"", "itemName": "", "unit": "", "type": "", "dose": "", "prandial": "", "remarks": "", "prescribedQuantity": ""
       
@@ -1446,7 +1456,8 @@ for(let sb of obj.subTests)
  "nextVisitDate":"","followUpInerval":tVal.followUpInterval,"location":this.location,"isPOP":0,
  "treatmentProcedure":""}
     this.userLoader = true;
-
+    debugger
+if(this.localDiag!=undefined && this.localDiag!=null && this.localDiag.length!=0){
     this.uService.addtreatmentinfo(this.param).subscribe
 
       ((response: any) => {
@@ -1463,6 +1474,13 @@ for(let sb of obj.subTests)
         (error) => { }
       );
   }
+  else{
+    
+    alert("Please insert and Save Diagnosis first");
+    localStorage.setItem('tab','clinicalInfo');
+location.reload()
+  }
+}
   updatepatienttoken() {
     
     this.deptType=0;
@@ -1508,12 +1526,13 @@ for(let sb of obj.subTests)
     else{
         this.hospt =""
         this.isRefType =0;
+       
     }
     this.param={"referralType":this.isRefType,"convinceType":this.treatmentForm.value.Ambulance,"ptID":this.patInfo.ptID,
     "referralHospital":this.hospt,"refferedTo":this.depIndex,"remarks":this.treatmentForm.value.refNotes,"refferedFrom":this.patInfo.departmentID,"hospitalID":localStorage.getItem('hospitalID')}
-
-    this.uService.reffer(this.param).subscribe
-
+   debugger
+    if(this.localDiag!=undefined && this.localDiag!=null && this.localDiag.length!=0 &&  this.isRefType==0){
+      this.uService.reffer(this.param).subscribe
       ((response: any) => {
         if (response.status === 0) {
           this.router.navigate(['doctor/user/'])
@@ -1526,7 +1545,13 @@ for(let sb of obj.subTests)
       },
         (error) => {  }
       )
+} else
+{
+  alert("Please insert and Save Diagnosis first");
+  localStorage.setItem('tab','clinicalInfo');
+location.reload()
 }
+  }
   deleteRadPath(id:any) {
 
     this.param = { 'id':id };
@@ -1551,11 +1576,6 @@ for(let sb of obj.subTests)
   addTreat() {
     let tVal =this.treatmentForm.value;
     let medic= tVal.itemName.split(",");
-
-    // this.treatmentItems = this.treatmentForm.get('treatmentItems') as FormArray;
-    // this.treatmentItems.push(this.createTreatment(null));
-    // console.log("form", this.treatmentItems.value)
-    
     var temptreat = 0;
     if(this.localTreat.length!=0){
       for(let e of this.localTreat)

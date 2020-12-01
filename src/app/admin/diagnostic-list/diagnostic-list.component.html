@@ -29,41 +29,67 @@
                                         </button>
                                     </span>
                                 </div>
-                                <div class="col-md-12">
-                                    <form>
-                                        <div class="form-group row mx-0">
-                                            <div class="col-sm-2 mt-4"><label for="inputState">Search Diagnosis</label></div>
-                                            <div class="col-sm-10 mt-3">
-                                                <input [(ngModel)]="selected" [typeahead]="diagnosis" (ngModelChange)="getAllDiagnostics()" typeaheadOptionField="name" (typeaheadOnSelect)="onSelectDiagnos($event)" class="form-control" name="medicName" placeholder="Select Diagnosis">
-                                                <!-- <input [(ngModel)]="selected"  [typeahead]="diagnosis" typeaheadOptionField="name" [typeaheadScrollable]="true" (ngModelChange)="getAllDiagnostics()" class="form-control" >   -->
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <hr class="gray" *ngIf="showTable">
-                                    <div class="form-group row mx-0" *ngIf="showTable">
-                                        <div class="col-md-5">
-                                            <label>Diagnosis Id</label>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <label>Name</label>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label>Action</label>
-                                            <!-- <a href="javascript:void(0)"><i class="fa fa-remove text-danger"></i></a> -->
+                                <div class="table-responsive">
+                                    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table center-aligned-table">
+                                        <thead>
+                                            <tr>
+                                                <th>S.No</th>
+                                                <th>Diagnosis</th>
+                                                <th class="text-center">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let sgn of diagnosis;index as i">
+                                                <td>{{i+1}}</td>
+                                                <td>{{sgn.name}}</td>
+                                                <td class="text-center">
+                                                    <!-- <button class="mr-1 btn btn-info" (click)="openModedit(SignsEdit,sgn)"><i class="ti-pencil-alt"></i></button> -->
+                                                    <button class="btn btn-danger" (click)="openModdelete(Signsdelete,sgn)"><i class="ti-trash"></i></button>
+
+                                                    <!-- model for Signs Update start-->
+                                                    <ng-template #SignsEdit>
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title pull-left">Edit Diagnosis</h4>
+                                                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="form-group row">
+                                                                <div class="col-sm-2 mt-3"><label for="inputState">DiagnosisName</label></div>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" class="form-control input-sm" name="USignsname" id="USignsname" [(ngModel)]="EmedOb.Ename">
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-lg btn-default" (click)="modalRef.hide()"><i class="fa fa-remove"></i> Cancel</button>
+                                                                <button type="button" class="btn btn-lg btn-info" (click)="updateSign(EmedOb)"><i class="fa fa-check-square"></i> Update Signs</button>
+                                                            </div>
+                                                        </div>
+                                                    </ng-template>
+                                                    <!-- model for Signs Update end-->
+                                                    <!-- model for Signs delete start-->
+                                                    <ng-template #Signsdelete>
+                                                        <div class="modal-body p-5 text-center">
+                                                            <i class="fa fa-exclamation-circle mb-3 fa-5x text-warning"></i>
+                                                            <p>Are You Sure To delete this Item!</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default" (click)="modalRef.hide()"><i class="fa fa-remove"></i> Cancel</button>
+                                                            <button type="button" class="btn btn-danger" (click)="deleteDiagnosis()"><i class="ti-trash"></i> Delete</button>
+                                                        </div>
+                                                    </ng-template>
+                                                    <!-- model for Signs delete end-->
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div *ngIf="loader_eqp" class="d-flex justify-content-center">
+                                        <div class="spinner-border theme-color" role="status">
+                                            <span class="sr-only"></span>
                                         </div>
                                     </div>
-                                    <div class="form-group row mx-0" *ngIf="showTable">
-                                        <div class="col-md-5">
-                                            <label>{{selectedData.id}}</label>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <label>{{selectedData.name}}</label>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <a href="javascript:void(0)" (click)="openModdelete(Ambdelete,selectedData.id)"><i class="fa fa-remove text-danger"></i> &nbsp; Delete</a>
-                                        </div>
-                                    </div>
-                                    <hr class="gray">
+                                    <hr class="hr-gray mx-3 my-3">
                                 </div>
                                 <!-- model for Ambulance delete start-->
                                 <ng-template #Ambdelete>

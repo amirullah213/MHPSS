@@ -108,6 +108,7 @@ getdata(tsc){
 }
 //add new grn
 addDispenseOrd() {
+  debugger
   this.loader_eqp1 = true;
   this.model6.pharmacyID=localStorage.getItem('docId');
   this.model6.date=this.todayDate;

@@ -107,7 +107,6 @@ export class OldRegistrationComponent implements OnInit {
          this.genResponseArray=response;
          console.log('hospitl list==',this.genResponseArray);
          this.loaderGen = false;
-         alert('token generated successfuly');
          this.modalRef.hide();
          localStorage.setItem('tokenDetails',JSON.stringify(this.genResponseArray));
          this.router.navigate(['reception/print-token'])
