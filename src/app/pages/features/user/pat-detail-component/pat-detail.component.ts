@@ -517,7 +517,7 @@ this.diagID = event.item.id
   }
 
   changeDepVal(e) {
-        
+      
     let vra = e.replace(/\s/g, "");
     this.arrylist=[]
     this.arrylist = this.DepartmentD
