@@ -13,6 +13,7 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./dispense-stock.component.scss']
 })
 export class DispenseStockComponent implements OnInit {
+  medStr: string;
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -65,7 +66,12 @@ export class DispenseStockComponent implements OnInit {
  this.pharmacySer.getPharmacyStock(this.modal1).subscribe(
     (response: any) => {
       if (response.status === 0) {
-        this.pharmacyData = response.data;
+        response.data.forEach(v => {
+          
+          this.medStr = v.itemName + ", "+ v.unit+ " "+ v.type;                                      
+          this.pharmacyData.push({"itemName":this.medStr,v});
+          // console.log('gettreatmetData==',this.gettreatmetData)
+        });
       console.log('this.pharmacy pats==',this.pharmacyData)
         this.loader_eqp = false;
       }
@@ -83,11 +89,15 @@ export class DispenseStockComponent implements OnInit {
 //get all diagnostic list
 onSelectMedics(ob)
 {
+  debugger
   console.log('medics data selected==',ob.item);
-  this.grnobj.unit=ob.item.unit;
-  this.grnobj.type=ob.item.type;
-  this.grnobj.itemID=ob.item.itemID;
-  this.stckArr=ob.item.stock;
+  this.grnobj.unit=ob.item.v.unit;
+  this.grnobj.type=ob.item.v.type;
+  this.grnobj.itemID=ob.item.v.itemID;
+  
+  this.stckArr=ob.item.v.stock;
+ 
+  
   
 }
 addToMedicArr(medArr){

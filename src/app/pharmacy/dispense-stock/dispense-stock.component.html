@@ -24,6 +24,7 @@
                                         <div class="form-group">
                                             <label>Item Name</label>
                                             <input [(ngModel)]="grnobj.itemName" [typeahead]="pharmacyData" typeaheadOptionField="itemName" [typeaheadOptionsLimit]='1000' [typeaheadMinLength]="0" [typeaheadScrollable]="true" autocomplete="off" (typeaheadOnSelect)="onSelectMedics($event)" class="form-control" name="medicName" placeholder="Enter Name">
+
                                         </div>
                                     </div>
                                     <div class="col-md-2">

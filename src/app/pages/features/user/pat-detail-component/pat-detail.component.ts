@@ -274,6 +274,9 @@ export class PatDetailComponent implements OnInit {
     this.docInfo = JSON.parse(localStorage.getItem("docDetails"));
     if(localStorage.getItem("details"))
     this.detail = JSON.parse(localStorage.getItem("details"));
+    this.treatmentForm.patchValue({
+      Ambulance:0,
+    })
     this.getclinicalinfo();
     this.getInvistigation();
     this.getTreatment();
