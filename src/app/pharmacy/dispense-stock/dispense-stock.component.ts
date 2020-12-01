@@ -13,7 +13,7 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./dispense-stock.component.scss']
 })
 export class DispenseStockComponent implements OnInit {
-  medStr: string;
+  // medStr: string;
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -40,6 +40,7 @@ export class DispenseStockComponent implements OnInit {
   pharmacyid:any;
   modal1:any={};
   stckArr:any=[];
+   medStr:any;
 
 
   ngOnInit(): void {
@@ -67,12 +68,11 @@ export class DispenseStockComponent implements OnInit {
     (response: any) => {
       if (response.status === 0) {
         response.data.forEach(v => {
-          
           this.medStr = v.itemName + ", "+ v.unit+ " "+ v.type;                                      
           this.pharmacyData.push({"itemName":this.medStr,v});
           // console.log('gettreatmetData==',this.gettreatmetData)
         });
-      console.log('this.pharmacy pats==',this.pharmacyData)
+      console.log('this.pharmacy pats==',this.pharmacyData);
         this.loader_eqp = false;
       }
   if (response.status === 1) {
@@ -94,9 +94,8 @@ onSelectMedics(ob)
   this.grnobj.unit=ob.item.v.unit;
   this.grnobj.type=ob.item.v.type;
   this.grnobj.itemID=ob.item.v.itemID;
-  
   this.stckArr=ob.item.v.stock;
- 
+  
   
   
 }
