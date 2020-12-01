@@ -931,6 +931,7 @@ this.clinicalInformation.patchValue({
 
   addClinicalInfo() {
     debugger
+   this.userLoader=true;
   this.NewSymptoms=[]
 
 let ci=this.clinicalInformation.value
@@ -1074,7 +1075,6 @@ for (let sgn of this.localSign)
     };
     this.uService.addclinicalinfo(this.param).subscribe((response: any) => {
       if (response.status === 0) {
-       location.reload();    
         this.userLoader = false;
       } else {
         this.userLoader = false;
