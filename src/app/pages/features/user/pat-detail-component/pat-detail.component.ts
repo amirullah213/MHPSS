@@ -274,6 +274,9 @@ export class PatDetailComponent implements OnInit {
     this.docInfo = JSON.parse(localStorage.getItem("docDetails"));
     if(localStorage.getItem("details"))
     this.detail = JSON.parse(localStorage.getItem("details"));
+    this.treatmentForm.patchValue({
+      Ambulance:0,
+    })
     this.getclinicalinfo();
     this.getInvistigation();
     this.getTreatment();
@@ -517,7 +520,7 @@ this.diagID = event.item.id
   }
 
   changeDepVal(e) {
-        
+      
     let vra = e.replace(/\s/g, "");
     this.arrylist=[]
     this.arrylist = this.DepartmentD
@@ -568,6 +571,16 @@ this.diagID = event.item.id
  
   getclinicalinfo() {
     
+    this.diagnosisData=[];
+    this.signsData=[];
+    this.symptomsData = []
+    this.vitalsData =[];
+    this.localDiag=[];
+    this.localSign=[];
+    this.prescriptionData=[];
+    this.symptomComplatins=[];
+    this.localSymptoms=[];
+    this.localDiagData=[];
 
     this.param = { 'hospitalID': localStorage.getItem('hospitalID'), 'prescriptionID': this.patInfo.prescriptionID };
     
@@ -580,11 +593,10 @@ this.diagID = event.item.id
           this.patientID = response.prescription.patientID;
           this.ptID = response.prescription.ptID;
           this.diagnosisData = response.diagnosis;          
-          this.signsData = response.signs;
-          
+          this.signsData = response.signs;          
           this.symptomsData = response.symptoms;
           this.vitalsData = response.vitals;
-          
+
           if (response.prescription.complaints != '' && response.prescription.complaints!="undefined") {
             this.symptomComplatins = JSON.parse(response.prescription.complaints);
             
@@ -603,7 +615,6 @@ this.diagID = event.item.id
           }
           
           if (response.prescription.diagnosis != '' && response.prescription.diagnosis!="undefined") {
- 
           this.localDiag = JSON.parse(response.prescription.diagnosis);
           
           if(this.localDiag!=undefined && this.localDiag!=null && this.localDiag.length!=0) {
@@ -811,7 +822,7 @@ insertToDiag(obj: any)
 
 }
   addDiag() {
-    
+    debugger
 let tempdiag = 0;
 if(this.clinicalInformation.value.pname!=undefined && this.clinicalInformation.value.pname!="" && this.diagID!=undefined ){
 
@@ -840,6 +851,9 @@ if(this.clinicalInformation.value.pname!=undefined && this.clinicalInformation.v
   }else{
     this.localDiagData.push({ 'id': this.diagID, 'name': this.clinicalInformation.value.pname,  description:this.clinicalInformation.value.description})
   }
+}
+else{
+  alert("Please select a diagnosis from the list")
 }
     this.clinicalInformation.patchValue({
       'pname': '',
@@ -931,6 +945,7 @@ this.clinicalInformation.patchValue({
 
   addClinicalInfo() {
     debugger
+   this.userLoader=true;
   this.NewSymptoms=[]
 
 let ci=this.clinicalInformation.value
@@ -1074,7 +1089,7 @@ for (let sgn of this.localSign)
     };
     this.uService.addclinicalinfo(this.param).subscribe((response: any) => {
       if (response.status === 0) {
-       location.reload();    
+        this.getclinicalinfo();
         this.userLoader = false;
       } else {
         this.userLoader = false;
@@ -1517,40 +1532,67 @@ location.reload()
       )
   }
   reffer() {
+    debugger
 
     if(this.show==false)
     {
      this.hospt = this.treatmentForm.value.Hospital
      this.isRefType =1;
+     this.param={"referralType":this.isRefType,"convinceType":this.treatmentForm.value.Ambulance,"ptID":this.patInfo.ptID,
+     "referralHospital":this.hospt,"refferedTo":this.depIndex,"remarks":this.treatmentForm.value.refNotes,"refferedFrom":this.patInfo.departmentID,"hospitalID":localStorage.getItem('hospitalID')}
+     if(this.localDiag!=undefined && this.localDiag!=null && this.localDiag.length!=0){
+
+     this.uService.reffer(this.param).subscribe
+     ((response: any) => {
+       if (response.status === 0) {
+         this.router.navigate(['doctor/user/'])
+         localStorage.removeItem("tab")        
+         this.userLoader = false;
+       } else {
+         this.userLoader = false;
+         alert('Something went wrong try again');
+       }
+     },
+       (error) => {  }
+     )
+    } 
+    else
+    {
+      alert("Please insert and Save Diagnosis first");
+      localStorage.setItem('tab','clinicalInfo');
+    location.reload()
     }
+    }
+    
     else{
         this.hospt =""
         this.isRefType =0;
+     if(this.depIndex!=undefined && this.depIndex!=0){
+          this.param={"referralType":this.isRefType,"convinceType":this.treatmentForm.value.Ambulance,"ptID":this.patInfo.ptID,
+          "referralHospital":this.hospt,"refferedTo":this.depIndex,"remarks":this.treatmentForm.value.refNotes,"refferedFrom":this.patInfo.departmentID,"hospitalID":localStorage.getItem('hospitalID')}
        
-    }
-    this.param={"referralType":this.isRefType,"convinceType":this.treatmentForm.value.Ambulance,"ptID":this.patInfo.ptID,
-    "referralHospital":this.hospt,"refferedTo":this.depIndex,"remarks":this.treatmentForm.value.refNotes,"refferedFrom":this.patInfo.departmentID,"hospitalID":localStorage.getItem('hospitalID')}
-   debugger
-    if(this.localDiag!=undefined && this.localDiag!=null && this.localDiag.length!=0 &&  this.isRefType==0){
-      this.uService.reffer(this.param).subscribe
-      ((response: any) => {
-        if (response.status === 0) {
-          this.router.navigate(['doctor/user/'])
-          localStorage.removeItem("tab")        
-          this.userLoader = false;
-        } else {
-          this.userLoader = false;
-          alert('Something went wrong try again');
+          this.uService.reffer(this.param).subscribe
+          ((response: any) => {
+            if (response.status === 0) {
+              this.router.navigate(['doctor/user/'])
+              localStorage.removeItem("tab")        
+              this.userLoader = false;
+            } else {
+              this.userLoader = false;
+              alert('Something went wrong try again');
+            }
+          },
+            (error) => {  }
+          )
+        }else
+        {
+          alert("Please select a departement")
         }
-      },
-        (error) => {  }
-      )
-} else
-{
-  alert("Please insert and Save Diagnosis first");
-  localStorage.setItem('tab','clinicalInfo');
-location.reload()
-}
+        
+    }
+   
+    
+   
   }
   deleteRadPath(id:any) {
 
