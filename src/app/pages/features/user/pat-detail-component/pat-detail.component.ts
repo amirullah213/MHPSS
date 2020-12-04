@@ -276,6 +276,16 @@ export class PatDetailComponent implements OnInit {
     this.detail = JSON.parse(localStorage.getItem("details"));
     this.treatmentForm.patchValue({
       Ambulance:0,
+      prandial:"After Meal",
+      dose:"SOS",
+      followUpInterval:'Week(s)'
+    }) 
+    this.clinicalInformation.patchValue({
+      isTTVac:"0",
+      isFollowUp:"0",
+      isLowWeight:"0",
+      isShortHeight:'0',
+      durationType:"Day(s)"
     })
     this.getclinicalinfo();
     this.getInvistigation();
@@ -691,8 +701,8 @@ this.diagID = event.item.id
   }
   putValue(pd: any) {
     
-    
-    if(pd.lmp!="0000-00-00 00:00:00" && pd.lmp!="1969-12-31T19:00:00.000Z"){
+    debugger
+    if(pd.lmp!=null && pd.lmp!="0000-00-00 00:00:00" && pd.lmp!="1969-12-31T19:00:00.000Z"){
 
 
       this.lmpDate = formatDate(pd.lmp, "y-M-d", "en-PK")
