@@ -700,7 +700,7 @@ this.diagID = event.item.id
 
     }
     if(pd.ANCServices=="null" || pd.ANCServices==undefined || pd.ANCServices==""){
-      this.ANCServices = "Choose ANC/PNC"
+      this.ANCServices = ""
     }
     else{
       this.ANCServices= pd.ANCServices

@@ -143,4 +143,17 @@ export class AdminServiceService {
     let url = APP_CONFIG.apiBaseUrl + 'deletediagnosis';
     return this.http.post(url, obj);
   }
+  getlocaldataforsync(obj: any) {
+    let url = APP_CONFIG.apiBaseUrl + 'getlocaldataforsync';
+    return this.http.post(url, obj);
+  }
+  syncMerfDHIS(obj: any) {
+    let url ="https://yoa6yqfdfg.execute-api.us-east-1.amazonaws.com/merf_dhis/syncmerfdhis";
+    return this.http.post(url, obj);
+  }
+  updatesyncstatus(obj: any) {
+    let url = APP_CONFIG.apiBaseUrl + 'updatesyncstatus';
+    return this.http.post(url, obj);
+  }
+
 }

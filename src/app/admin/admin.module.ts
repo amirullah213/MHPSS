@@ -21,13 +21,16 @@ import { SignsComponent } from './signs/signs.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { EmrSummaryReportComponent } from './emr-summary-report/emr-summary-report.component';
+import { syncDataComponent } from './syncData/syncData.component';
+import {ConnectionServiceModule} from 'ng-connection-service';   
 
 
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 @NgModule({
-  declarations: [AdminHomeComponent, AdminComponentComponent, SideBarAdminComponent, DiagnosticListComponent, PathologyListComponent, RadiologyListComponent, PharmcyComponent, AmbulanceComponent, ComplaintsComponent, SignsComponent, EmrSummaryReportComponent],
+  declarations: [AdminHomeComponent, AdminComponentComponent, SideBarAdminComponent, DiagnosticListComponent, PathologyListComponent, RadiologyListComponent, PharmcyComponent, AmbulanceComponent, ComplaintsComponent, SignsComponent, EmrSummaryReportComponent,syncDataComponent],
   imports: [
+    ConnectionServiceModule,
     CommonModule,
     AdminRoutingModule, FormsModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), BsDatepickerModule.forRoot(), CollapseModule.forRoot(),
     TypeaheadModule.forRoot()

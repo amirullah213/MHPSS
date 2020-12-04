@@ -10,6 +10,7 @@ import { AmbulanceComponent } from './ambulance/ambulance.component'
 import { ComplaintsComponent } from './complaints/complaints.component';
 import { SignsComponent } from './signs/signs.component';
 import { EmrSummaryReportComponent } from './emr-summary-report/emr-summary-report.component';
+import { syncDataComponent } from './syncData/syncData.component';
 
 const routes: Routes = [
 
@@ -28,6 +29,7 @@ const routes: Routes = [
       { path: 'signs', component: SignsComponent },
       { path: 'complaints', component: ComplaintsComponent },
       { path: 'emrsummaryreport', component: EmrSummaryReportComponent },
+      { path: 'syncData', component: syncDataComponent },
 
       { path: '', redirectTo: 'home', pathMatch: 'full' }
 
