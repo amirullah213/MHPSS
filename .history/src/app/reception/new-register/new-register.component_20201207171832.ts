@@ -57,9 +57,11 @@ export class NewRegisterComponent implements OnInit {
     this.loginDetails=JSON.parse(localStorage.getItem('details')) ;
     this.tokenData=  JSON.parse(localStorage.getItem('tokenDetails'));
     
+    
+    
   }
  callAlert(){
   let objAlert= new AlertComponent();
-  objAlert.alertSuccess('success','new message from token page')
+  objAlert.alertDanger('success','new message from token page')
  }
 }

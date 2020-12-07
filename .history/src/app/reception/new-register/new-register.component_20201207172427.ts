@@ -60,6 +60,6 @@ export class NewRegisterComponent implements OnInit {
   }
  callAlert(){
   let objAlert= new AlertComponent();
-  objAlert.alertSuccess('success','new message from token page')
+  objAlert.alertDanger('success','new message from token page')
  }
 }
