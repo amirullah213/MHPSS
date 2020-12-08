@@ -167,6 +167,7 @@ export class PatDetailComponent implements OnInit {
   ANCServices: any;
   location1: any;
   newLocalPath: any=[];
+  showds: boolean;
   
   constructor(
     private fb: FormBuilder,
@@ -224,8 +225,9 @@ export class PatDetailComponent implements OnInit {
       isShortHeight:[''],
       isLowWeight:[''],
       isMUAC:[''],
-      pregnancyStatus:['']
-
+      pregnancyStatus:[''],
+      txtDisabilities:[''],
+      chkDisabilities:['']
     });
     this.investigationForm = this.fb.group({
       selectedValuePath: [''],
@@ -412,6 +414,16 @@ onSelectSign(event: TypeaheadMatch): void {
  
  }
  
+ onSelectDisabilities(evn){
+   if(evn==true)
+   {
+  this.showds=true
+   }
+   else{
+    this.showds=false
+   }
+   debugger
+ }
 onSelectDiag(event: TypeaheadMatch): void {
 
 this.diagID = event.item.id
@@ -700,8 +712,18 @@ this.diagID = event.item.id
       );
   }
   putValue(pd: any) {
-    
     debugger
+    let disabilities =""
+    if(pd.disabilities!="" && pd.disabilities!=undefined && pd.disabilities!=null)
+    {
+      
+    disabilities=pd.disabilities
+    this.showds=true;
+    }
+    else{
+      disabilities=""
+      this.showds=false;
+    }
     if(pd.lmp!=null && pd.lmp!="0000-00-00 00:00:00" && pd.lmp!="1969-12-31T19:00:00.000Z"){
 
 
@@ -728,12 +750,14 @@ this.diagID = event.item.id
       isMUAC:pd.isMUAC,
       isShortHeight:pd.isShortHeight,
       isLowWeight:pd.isLowWeight,
-      pregnancyStatus:pd.pregnancyStatus
+      pregnancyStatus:pd.pregnancyStatus,
+      txtDisabilities:disabilities,
+      chkDisabilities:this.showds
     })
 
   }
 
-
+  
   matchFunc(arr, controls, gstr) {
     
     this.jsonArray = arr.map((i, v) => {
@@ -954,7 +978,7 @@ this.clinicalInformation.patchValue({
   }
 
   addClinicalInfo() {
-    debugger
+    
    this.userLoader=true;
   this.NewSymptoms=[]
 
@@ -1084,8 +1108,17 @@ for (let sgn of this.localSign)
     const fhNames = ci.fhArray
       .map((v, i) => v ? this.fhArray[i] : null)
       .filter(v => v !== null).toString();
-      
-     
+      debugger
+      let disabilitiesVal=""
+     if(ci.txtDisabilities!='' && ci.txtDisabilities!=undefined && ci.txtDisabilities!=null && ci.chkDisabilities==true)
+     {
+       disabilitiesVal =ci.txtDisabilities;
+     }
+     else 
+     {
+      disabilitiesVal = ""
+     }
+     debugger
     this.param =
     {
       'hospitalID': localStorage.getItem('hospitalID'),
@@ -1094,7 +1127,7 @@ for (let sgn of this.localSign)
       "height": ci.height, "weight": ci.weight,"pastHistory": phNames, "familyHistory": fhNames, "isFollowUp": ci.isFollowUp, "lmp": this.lmpDate, "isShortHeight": ci.isShortHeight, "isMUAC": ci.isMUAC,
       "signs": result, "PNCServices":ci.PNCServices, "temperature": ci.temperature,"isLowWeight": ci.isLowWeight, "isMalnutration": ci.isMalnutration, "ANCServices": ci.ANCServices,
       "edd": ci.EDD, "complaints": this.localSymptoms, "diagnosis": this.localDiagData,"newSigns":this.NewlocalSign,"newComplaints":this.NewSymptoms, "deptType": this.deptType, "userName": this.docInfo.name,
-      "otherFamilyHistory":ci.otherFh, "otherPastHistory":ci.otherPh,
+      "otherFamilyHistory":ci.otherFh, "otherPastHistory":ci.otherPh,"disabilities":disabilitiesVal,
       "PregnancyNutritionStatus": ci.durPrg, "isTTVac": ci.isTTVac, "LactionNutritionStatus": ci.durLac,"pregnancyStatus":ci.pregnancyStatus
     };
     this.uService.addclinicalinfo(this.param).subscribe((response: any) => {
@@ -1161,11 +1194,7 @@ for (let sgn of this.localSign)
       );
   }
   
-  alertFunc(st)
-{
 
-  alert(st + " Added Successfuly")
-}  
 addinvestigation() {   
     if(this.newLocalPath.length>0 ){ 
     this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.patInfo.ptID,'prescriptionID': this.patInfo.prescriptionID,"patientID": this.patientID,"isHB":0,"investigations":this.newLocalPath}
@@ -1210,6 +1239,7 @@ else
   }else{
     this.insTest=true;    
     alert("Test Already Added");
+   // this.alertFunc();
     this.investigationForm.patchValue({
       'selectedValuePath': ''
     })
@@ -1271,22 +1301,38 @@ for(let sb of obj.subTests)
   matchTests(obj:any){  
     
     if(this.localPath.length!=0 ){
-    
+    debugger
       for(let e of this.localPath){ 
         if(this.a==true)
         break;
         this.a=false;
         if(e.testID==obj.testID) 
       if(e.isSupper==0 && (e.result=="" || e.result==undefined)){
+        let cnf =  confirm("Already added! Are u sure you want to add the same test again"); 
+        if(cnf==true){
           this.insTest= false;
           break;
+        }
+        else
+        {
+          this.insTest= true; 
+        }
    } else if(e.isSupper==1 ){
     for(let st of e.subTests){
      if(st.result==undefined || st.result=="")
      {
-      this.insTest= false;
-      this.a=true;
-      break ;
+      let cnf =  confirm("Already added! Are u sure you want to add the same test again"); 
+      if(cnf==true){
+        this.insTest= false;
+        this.a=true;
+        break ;
+      }
+      else
+      {
+        this.insTest= true; 
+        this.a=false;
+      }
+      
      }else{
       this.insTest= true;
      }
@@ -1313,6 +1359,7 @@ for(let sb of obj.subTests)
       for(let e of this.localIndoorData)
         {  
         if(e.id==this.Indid){
+         
         alert("Diagnosis already Exists");
         temp = 1;
         break

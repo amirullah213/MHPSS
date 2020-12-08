@@ -465,7 +465,7 @@
                                                 <h5 class="card-title mb-0">History</h5>
                                             </div>
                                             <hr class="hr-gray mx-0">
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <h5>Past History</h5>
                                                 <div class="mb-2">
                                                     <label formArrayName="phArray" *ngFor="let order of clinicalInformation.controls.phArray['controls']; let i = index">
@@ -475,7 +475,7 @@
                                                 </div>
                                                 <input type="text" formControlName="otherPh" class="form-control" *ngIf='showPh'>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <h5>Family History</h5>
                                                 <div class="mb-2">
                                                     <label class="form-check-label" formArrayName="fhArray" *ngFor="let order of clinicalInformation.controls.fhArray['controls']; let j = index">
@@ -485,6 +485,21 @@
                                                     </label>
                                                     <input type="text" formControlName="otherFh" class="form-control" *ngIf='showFh'>
 
+                                                </div>
+                                              
+                                            </div>
+                                             <div class="col-md-4">
+                                                <h5>Disabilities</h5>
+                                                <div class="mb-2">
+                                                    <label class="form-check-label">
+                                                        <input type="checkbox" formControlName="chkDisabilities" (change)="onSelectDisabilities
+                                                        ($event.target.checked)" class="form-check-input">
+                                                        isDisable
+                                                    </label>
+                                                    <span *ngIf='showds'>
+                                                    <h5>Disability Description</h5>
+                                                    <input type="text" formControlName="txtDisabilities" class="form-control" >
+                                                    </span>
                                                 </div>
                                               
                                             </div>
