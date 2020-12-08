@@ -352,7 +352,7 @@
                                                                         <table class="table center-aligned-table">
                                                                             <thead>
                                                                                 <tr class="text-dark">
-                                                                                    <!-- <th>Test Type</th> -->
+                                                                                    <th>Test Type</th>
                                                                                     <th>Test Name</th>
                                                                                     <th>Findings/ Results</th>
                                                                                     <th>Range</th>
@@ -360,10 +360,10 @@
                                                                             </thead>
                                                                             <tbody *ngIf="userData.isSupper==1">
                                                                                 <tr *ngFor="let dt of userData.subTests; let b=index">
-                                                                                    <!-- <td>
+                                                                                    <td>
                                                                                         <span *ngIf="dt.testType==1">Pathology</span>
-                                                                                    </td> -->
-                                                                                    <td>{{dt.oldTestName}}</td>
+                                                                                    </td>
+                                                                                    <td>{{dt.testName}}</td>
                                                                                     <td>{{dt.result}}</td>
                                                                                     <td>{{dt.refRange}}</td>
                                                                                 </tr>
@@ -371,9 +371,9 @@
                                                                             </tbody>
                                                                             <tbody *ngIf="userData.isSupper==0">
                                                                                 <tr>
-                                                                                    <!-- <td>
+                                                                                    <td>
                                                                                         <span *ngIf="userData.testType==1">Pathology</span>
-                                                                                    </td> -->
+                                                                                    </td>
                                                                                     <td>{{userData.testName}}</td>
                                                                                     <td>{{userData.result}}</td>
 
@@ -461,7 +461,7 @@
                                                                                 <div class="col-sm-2 mt-3"><label for="inputState">images Uploaded</label></div>
                                                                                 <div class="col-sm-10">
                                                                                     <span *ngFor="let img of imagesArr; let i=index" class="ml-2">
-                                                     <a href="javascript:void(0)" (click)="showImageModal(template1,imageUrl+img.image)">   <img [src]="imageUrl+img.image"  height="60" width="60" class="hover rounded"></a>
+                                                     <a href="javascript:void(0)" (click)="showImageModal(template1,imageUrl+img.image)">   <img [src]="imageUrl+img.image"  height="60" class="hover rounded"></a>
                                                        
                                                         
                                                     </span>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PrintService, UsbDriver, WebPrintDriver } from 'ng-thermal-print';
 import { PrintDriver } from 'ng-thermal-print/lib/drivers/PrintDriver';
-import { AlertComponent } from '../../core/modules/shared-module/alert/alert.component';
 
 @Component({
   selector: 'ncri-new-register',
@@ -58,8 +57,5 @@ export class NewRegisterComponent implements OnInit {
     this.tokenData=  JSON.parse(localStorage.getItem('tokenDetails'));
     
   }
- callAlert(){
-  let objAlert= new AlertComponent();
-  objAlert.alertSuccess('success','new message from token page')
- }
+
 }

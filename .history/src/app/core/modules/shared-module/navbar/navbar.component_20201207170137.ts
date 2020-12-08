@@ -17,7 +17,7 @@ loginName:any;
   ngOnInit(): void {
     this.loginName=JSON.parse(localStorage.getItem('details')) ;
     console.log('this.loginName===',this.loginName);
-   
+   // this.alertSuccess('success','testing message');
   }
   //log out
   logout() {

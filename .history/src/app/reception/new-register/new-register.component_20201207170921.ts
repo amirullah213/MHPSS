@@ -56,10 +56,9 @@ export class NewRegisterComponent implements OnInit {
   ngOnInit(): void {
     this.loginDetails=JSON.parse(localStorage.getItem('details')) ;
     this.tokenData=  JSON.parse(localStorage.getItem('tokenDetails'));
+    let objAlert= new AlertComponent();
+    objAlert.alertDanger('success','new message from token page')
     
   }
- callAlert(){
-  let objAlert= new AlertComponent();
-  objAlert.alertSuccess('success','new message from token page')
- }
+
 }

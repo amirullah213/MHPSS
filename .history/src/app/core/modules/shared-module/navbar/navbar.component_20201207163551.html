@@ -29,5 +29,5 @@
             </div>
         </li>
     </ul>
-    
+    <alert [type]="alerts.type" *ngIf="showAlert" class="alert-fixpos">{{ alerts.msg }}</alert>
 </nav>
