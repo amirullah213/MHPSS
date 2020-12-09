@@ -1194,7 +1194,11 @@ for (let sgn of this.localSign)
       );
   }
   
+  alertFunc(st)
+{
 
+  alert(st + " Added Successfuly")
+}  
 addinvestigation() {   
     if(this.newLocalPath.length>0 ){ 
     this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.patInfo.ptID,'prescriptionID': this.patInfo.prescriptionID,"patientID": this.patientID,"isHB":0,"investigations":this.newLocalPath}
@@ -1239,7 +1243,6 @@ else
   }else{
     this.insTest=true;    
     alert("Test Already Added");
-   // this.alertFunc();
     this.investigationForm.patchValue({
       'selectedValuePath': ''
     })
@@ -1301,38 +1304,22 @@ for(let sb of obj.subTests)
   matchTests(obj:any){  
     
     if(this.localPath.length!=0 ){
-    debugger
+    
       for(let e of this.localPath){ 
         if(this.a==true)
         break;
         this.a=false;
         if(e.testID==obj.testID) 
       if(e.isSupper==0 && (e.result=="" || e.result==undefined)){
-        let cnf =  confirm("Already added! Are u sure you want to add the same test again"); 
-        if(cnf==true){
           this.insTest= false;
           break;
-        }
-        else
-        {
-          this.insTest= true; 
-        }
    } else if(e.isSupper==1 ){
     for(let st of e.subTests){
      if(st.result==undefined || st.result=="")
      {
-      let cnf =  confirm("Already added! Are u sure you want to add the same test again"); 
-      if(cnf==true){
-        this.insTest= false;
-        this.a=true;
-        break ;
-      }
-      else
-      {
-        this.insTest= true; 
-        this.a=false;
-      }
-      
+      this.insTest= false;
+      this.a=true;
+      break ;
      }else{
       this.insTest= true;
      }
@@ -1359,7 +1346,7 @@ for(let sb of obj.subTests)
       for(let e of this.localIndoorData)
         {  
         if(e.id==this.Indid){
-         
+          
         alert("Diagnosis already Exists");
         temp = 1;
         break
