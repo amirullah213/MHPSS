@@ -422,31 +422,14 @@ onSelectSign(event: TypeaheadMatch): void {
    else{
     this.showds=false
    }
-   debugger
+   
  }
 onSelectDiag(event: TypeaheadMatch): void {
 
 this.diagID = event.item.id
- //this.addDiag(event.item.id);
 
 }
-// onChangeDiag(e){
-  
-// if(e!="Choose Diagnosis"){
-//   this.arrylist=[]
-//   this.arrylist = this.diagnosisData
-//   for(let ele of this.arrylist ){
-    
-//     if(ele.name === e){
-//     this.diagID = ele.id;
-//     break;
-//     }
-//     else{
-//       this.diagID=undefined
-//     }
-//   }
-// }
-// }
+
 
   onSelectSymptom(event: TypeaheadMatch): void {
     
@@ -712,7 +695,7 @@ this.diagID = event.item.id
       );
   }
   putValue(pd: any) {
-    debugger
+    
     let disabilities =""
     if(pd.disabilities!="" && pd.disabilities!=undefined && pd.disabilities!=null)
     {
@@ -857,12 +840,23 @@ insertToDiag(obj: any)
 }
   addDiag() {
     debugger
+    let ci = this.clinicalInformation.value;
 let tempdiag = 0;
-if(this.clinicalInformation.value.pname!=undefined && this.clinicalInformation.value.pname!="" && this.diagID!=undefined ){
-
+if(ci.pname!=undefined && ci.pname!="" && this.diagID!=undefined ){
     if(this.localDiagData.length!=0){
       for(let e of this.localDiagData)
-        {  
+        { 
+          let cv = e.name.split(" ");
+          let cp = ci.pname.split(" ");
+         
+          debugger 
+
+          if(cv[0]=="Covid" && cp[0]=="Covid")
+          {
+            alert("Covide is already added");
+            tempdiag = 1;
+            break
+          }
         if(this.diagID!=undefined && e.id==this.diagID){
         alert("Diagnosis already Exists");
         tempdiag = 1;
@@ -870,20 +864,22 @@ if(this.clinicalInformation.value.pname!=undefined && this.clinicalInformation.v
        }
        if(this.diagID==undefined)
        {
-        if(e.name==this.clinicalInformation.value.name){
+        if(e.name==ci.name){
           alert("already Exists");
           tempdiag = 1;
           break
         }
        }
+
+       
     }
     if (tempdiag == 0 )
     {
-      this.localDiagData.push({ 'id': this.diagID, 'name': this.clinicalInformation.value.pname,  description:this.clinicalInformation.value.description})
+      this.localDiagData.push({ 'id': this.diagID, 'name': ci.pname,  description:ci.description})
    
     }
   }else{
-    this.localDiagData.push({ 'id': this.diagID, 'name': this.clinicalInformation.value.pname,  description:this.clinicalInformation.value.description})
+    this.localDiagData.push({ 'id': this.diagID, 'name': ci.pname,  description:ci.description})
   }
 }
 else{
@@ -1108,7 +1104,7 @@ for (let sgn of this.localSign)
     const fhNames = ci.fhArray
       .map((v, i) => v ? this.fhArray[i] : null)
       .filter(v => v !== null).toString();
-      debugger
+      
       let disabilitiesVal=""
      if(ci.txtDisabilities!='' && ci.txtDisabilities!=undefined && ci.txtDisabilities!=null && ci.chkDisabilities==true)
      {
@@ -1118,7 +1114,7 @@ for (let sgn of this.localSign)
      {
       disabilitiesVal = ""
      }
-     debugger
+     
     this.param =
     {
       'hospitalID': localStorage.getItem('hospitalID'),
@@ -1302,26 +1298,28 @@ for(let sb of obj.subTests)
   }
 
   matchTests(obj:any){  
-    
+    debugger
     if(this.localPath.length!=0 ){
     
       for(let e of this.localPath){ 
-        if(this.a==true)
+        if(this.a==true && this.insTest==false){
         break;
-        this.a=false;
+        }
+        this.a=false;        
         if(e.testID==obj.testID) 
       if(e.isSupper==0 && (e.result=="" || e.result==undefined)){
           this.insTest= false;
           break;
    } else if(e.isSupper==1 ){
     for(let st of e.subTests){
-     if(st.result==undefined || st.result=="")
+     if(st.status==0 || st.status==undefined)
      {
       this.insTest= false;
       this.a=true;
-      break ;
+    break
      }else{
       this.insTest= true;
+      break
      }
     
    }
@@ -1338,13 +1336,24 @@ for(let sb of obj.subTests)
   }
   
   addIndoorDiag() {
-    
+    debugger
     let inv = this.investigationForm.value;
     var temp = 0;
     if(inv.selectedValueIndoorDiag!=undefined && inv.selectedValueIndoorDiag!="" && this.Indid!=undefined ){
     if(this.localIndoorData.length!=0){
       for(let e of this.localIndoorData)
         {  
+          let cv = e.name.split(" ");
+          let cp = inv.selectedValueIndoorDiag.split(" ");
+         
+          debugger 
+
+          if(cv[0]=="Covid" && cp[0]=="Covid")
+          {
+            alert("Covide is already added");
+            temp = 1;
+            break
+          }
         if(e.id==this.Indid){
           
         alert("Diagnosis already Exists");
@@ -1515,7 +1524,7 @@ for(let sb of obj.subTests)
  "nextVisitDate":"","followUpInerval":tVal.followUpInterval,"location":this.location,"isPOP":0,
  "treatmentProcedure":""}
     this.userLoader = true;
-    debugger
+    
 if(this.localDiag!=undefined && this.localDiag!=null && this.localDiag.length!=0){
     this.uService.addtreatmentinfo(this.param).subscribe
 
@@ -1576,7 +1585,7 @@ location.reload()
       )
   }
   reffer() {
-    debugger
+    
 
     if(this.show==false)
     {

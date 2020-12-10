@@ -93,6 +93,8 @@ export class AdmittedPatientsComponent implements OnInit {
     treatmentForm:FormGroup;
     dischargeForm:FormGroup;
   pathArrNewNew: any=[];
+  a: boolean=false;
+  insTest: boolean=true;
 
   constructor(
     private modalService: BsModalService, 
@@ -575,12 +577,9 @@ addmoreMedics(){
 }
 
 deleteTest(tId){
-  this.loaderLab= true;
   
-  
+  this.loaderLab= true; 
   this.model12.id=tId;
-  
-  
  console.log('model12 ==', this.model12);
   this.wardService.deletTest(this.model12).subscribe(
     (response: any) => {
@@ -590,8 +589,8 @@ deleteTest(tId){
      // this.pathArrNew=[];
       //this.pathArrNew_added=false;
        // this.getoutDoorData();
-        alert('Done Successfully');
-        this.loaderLab = false;
+
+       this.loaderLab = false;
       }
   if (response.status === 1) {
         this.errormsg = response.error;
@@ -605,12 +604,11 @@ deleteTest(tId){
 }
 removeArr(indx){
   this.medicinesFinal.splice(indx, 1);
-  console.log('$x==',this.medicinesFinal)
 }
 // add new diagnisis
 addnewDiag(dia){
   let diagExist=false;
-  console.log('new diag==',dia);
+  let cov =false;
  debugger
   if(!this.diagObj.id){
     alert('Please select Diagnosis');
@@ -623,10 +621,32 @@ addnewDiag(dia){
        diagExist=true;
       break;
     }
-   
+          let cv = this.diagnosArr[i].name.split(" ");
+          let cp = this.diagObj.name.split(" ");
+          if(cv[0]=="Covid" && cp[0]=="Covid")
+          {
+            diagExist = true;
+            cov=true;
+            break
+          }
   }
-if(diagExist){ alert('Diagnosis already exists')}else{
-  this.diagObj.description=dia;
+if(diagExist==true){ 
+  if(cov==true){
+    alert("Covide is already added");
+    this.outdoorForm.controls.diagnosis.reset();
+    this.outdoorForm.controls.description.reset();
+    this.diagObj={};
+  }else{
+    
+  alert('Diagnosis already exists')
+  this.outdoorForm.controls.diagnosis.reset();
+  this.outdoorForm.controls.description.reset();
+  this.diagObj={};
+  }
+}
+else{
+  
+    this.diagObj.description=dia;
   this.diagnosArr.push(this.diagObj);
   console.log('diagnosArr==',this.diagnosArr);
   this.outdoorForm.controls.diagnosis.reset();
@@ -662,31 +682,30 @@ removeDiag(indx){
 }
 
 // pathology addind data 
-onSelectPathology(path){
+onSelectPathology(path){  
+
   
-  this.pathArrNew_added=true;
-   this.pathArrNew.push({"result":"","patientID":this.detailsData.patientID,"testName":path.item.testName,"testID":path.item.testID,"testType":path.item.testType,"refRange":path.item.refRange,"isSupper":path.item.isSupper,"subTests":path.item.subTests?path.item.subTests:[]})
-   this.pathArrNewNew.push({"result":"","patientID":this.detailsData.patientID,"testName":path.item.testName,"testID":path.item.testID,"testType":path.item.testType,"refRange":path.item.refRange,"isSupper":path.item.isSupper,"subTests":path.item.subTests?path.item.subTests:[]})
-  this.objPath={};
-  console.log("this.pathArrNew===",this.pathArrNew);
-  // this.medicID=medic.item.v.itemID;
-  // this.treatmentForm.patchValue({
-  //   med_unit: medic.item.v.unit,
-  //   med_type: medic.item.v.type, 
-    
-  // });
+  this.matchTests(path)
+   debugger
+   if(this.insTest==true){
+    this.pathArrNew_added=true;
+    this.pathArrNew.push({"result":"","patientID":this.detailsData.patientID,"testName":path.item.testName,"testID":path.item.testID,"testType":path.item.testType,"refRange":path.item.refRange,"isSupper":path.item.isSupper,"subTests":path.item.subTests?path.item.subTests:[]})
+    this.pathArrNewNew.push({"result":"","patientID":this.detailsData.patientID,"testName":path.item.testName,"testID":path.item.testID,"testType":path.item.testType,"refRange":path.item.refRange,"isSupper":path.item.isSupper,"subTests":path.item.subTests?path.item.subTests:[]})
+   this.objPath={};
+     this.a=false
+   
+
+  }else{
+    this.insTest=true;    
+    alert("Test Already Added");
+    this.objPath={};
+    return false;
+  }
   
  
 }
 removeTests(index,obj){
 
-  // this.pathArrNew.splice(indx, 1);
-  // console.log('$x==',this.pathArrNew)
-  // if(iddata!=undefined){
-  //  this.deleteTest(iddata);
-  // }
- 
-  // console.log('$x222==',iddata);
   let idsArr=[]
   if(obj.subTests!=undefined && obj.subTests.length>0){
 for(let sb of obj.subTests)
@@ -707,6 +726,46 @@ else
 
   }
   
+}
+
+
+matchTests(obj:any){  
+    debugger
+  if(this.pathArrNew.length!=0 ){
+  
+    for(let e of this.pathArrNew){ 
+      if(this.a==true && this.insTest==false)
+      break;
+      this.a=false;
+      if(e.testID==obj.item.testID) 
+    if(e.isSupper==0 && (e.result=="" || e.result==undefined)){
+        this.insTest= false;
+        break;
+ } 
+ else if(e.isSupper==1 ){
+  for(let st of e.subTests){
+    if(st.status==0 || st.status==undefined)
+    {
+    this.insTest= false;
+    this.a=true;
+  break
+   }
+   else{
+    this.insTest= true;
+    break;
+   }
+  
+ }
+}
+ else{
+    this.insTest= true;
+ }
+ };
+}
+else{
+  this.insTest= true;
+
+}
 }
 getType(typ){
   console.log("type data===",typ);
