@@ -26,9 +26,11 @@ import {ConnectionServiceModule} from 'ng-connection-service';
 
 
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { CovidReportPatComponent } from './covid-report-pat/covid-report-pat.component';
+import { CovidLabComponent } from './covid-lab/covid-lab.component';
 
 @NgModule({
-  declarations: [AdminHomeComponent, AdminComponentComponent, SideBarAdminComponent, DiagnosticListComponent, PathologyListComponent, RadiologyListComponent, PharmcyComponent, AmbulanceComponent, ComplaintsComponent, SignsComponent, EmrSummaryReportComponent,syncDataComponent],
+  declarations: [AdminHomeComponent, AdminComponentComponent, SideBarAdminComponent, DiagnosticListComponent, PathologyListComponent, RadiologyListComponent, PharmcyComponent, AmbulanceComponent, ComplaintsComponent, SignsComponent, EmrSummaryReportComponent,syncDataComponent, CovidReportPatComponent, CovidLabComponent],
   imports: [
     ConnectionServiceModule,
     CommonModule,

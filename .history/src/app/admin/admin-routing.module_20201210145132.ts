@@ -12,7 +12,6 @@ import { SignsComponent } from './signs/signs.component';
 import { EmrSummaryReportComponent } from './emr-summary-report/emr-summary-report.component';
 import { syncDataComponent } from './syncData/syncData.component';
 import { CovidReportPatComponent } from './covid-report-pat/covid-report-pat.component';
-import { CovidLabComponent } from './covid-lab/covid-lab.component';
 const routes: Routes = [
 
   {
@@ -32,7 +31,6 @@ const routes: Routes = [
       { path: 'emrsummaryreport', component: EmrSummaryReportComponent },
       { path: 'syncData', component: syncDataComponent },
       { path: 'covid-pat', component: CovidReportPatComponent },
-      { path: 'covid-lab', component: CovidLabComponent },
 
       { path: '', redirectTo: 'home', pathMatch: 'full' }
 

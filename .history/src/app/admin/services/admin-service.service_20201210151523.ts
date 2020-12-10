@@ -159,9 +159,5 @@ export class AdminServiceService {
     let url = APP_CONFIG.apiBaseUrl + 'covid19patientsreport  ';
     return this.http.post(url, obj);
   }
-  covidLab(obj: any) {
-    let url = APP_CONFIG.apiBaseUrl + 'covid19labdata  ';
-    return this.http.post(url, obj);
-  }
 
 }
