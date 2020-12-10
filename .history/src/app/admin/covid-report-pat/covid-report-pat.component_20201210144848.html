@@ -1,0 +1,90 @@
+<div class="container-fluid container-wrapper">
+    <div class="row">
+        <div class="content-wrapper">
+            <div class="page-title">
+                <div class="row px-3 px-md-0">
+                    <div class="col-sm-12 pl-0">
+                        <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0)" class="gray-color">
+                                    <i class="ti-layers-alt mr-1"></i> EMR Summary Report
+                                </a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- main body -->
+            <div class="row">
+                <div class="col-md-12 mb-30">
+                    <div class="card card-statistics h-100">
+                        <div class="card-body">
+                            <h5 class="card-title mb-0"> EMR Summary Report</h5>
+                            <!-- <h5 class="page-title text-center">CAT-D Hospital Mamad Gat</h5> -->
+                            <hr class="gray">
+                            <div class="row mx-0">
+                                <div class="col-md-12">
+                                    <form class="form-inline d-print-none" novalidate [formGroup]="form">
+                                        <label class="mr-2">From</label>
+                                        <input type="text" class="form-control col-3 mr-2" placeholder="Start Date" #datepickerYMD="bsDatepicker" bsDatepicker formControlName="dateYMD" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" [(ngModel)]="medOb.startDate">
+                                        <label class="mr-2">To</label>
+                                        <input type="text" class="form-control col-3 mr-2" placeholder="End Date" #datepickerYMD="bsDatepicker" bsDatepicker formControlName="dateYMD" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" [(ngModel)]="medOb.endtDate">
+                                        <button class="button mr-2" (click)="searchReport(medOb)"><i class="ti-search mr-2"></i>Search</button>
+                                        <button class="button-danger" (click)="searchReport(medOb)"><i class="ti-brush-alt mr-2"></i>Clear</button>
+                                    </form>
+                                    <div class="row mx-0">
+                                        <!-- table for report -->
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="table-responsive">
+                                                    <table class="table center-aligned-table">
+                                                        <thead>
+                                                            <tr class="text-dark">
+                                                                <th>CRP NO#</th>
+                                                                <th>Name</th>
+                                                                <th>Date</th>
+                                                                <th>Details</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let pth of reporData; let i=index">
+                                                                <td>{{pth.token}}</td>
+                                                                <td>
+                                                                    <!-- <img class="mr-3" src="../../../assets/images/profile-avatar.png"> -->
+                                                                    <span>{{pth.firstname}}</span>
+                                                                </td>
+                                                                <td>{{pth.DateCreated| date}}</td>
+                                                                <td><a href="javascript:void(0)" class="text-info" >Detail</a></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- table for reporting ended -->
+
+
+                                        <div class="col-lg-12 col-md-12 col-sm-12 mt mt-5 d-print-none">
+                                            <div class="form-group text-center">
+                                                <button type="button" (click)="printPage()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
+                                            <i class="fa fa-print"></i> Print
+                                        </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mt-5">
+                                            <div *ngIf="loader_eqp" class="d-flex justify-content-center">
+                                                <div class="spinner-border theme-color" role="status">
+                                                    <span class="sr-only"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
