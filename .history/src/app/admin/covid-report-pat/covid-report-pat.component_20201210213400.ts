@@ -69,9 +69,8 @@ this.dtOptions = {
   pagingType: 'full_numbers',
   pageLength: 25,
   dom: 'lBfrtip',
- // buttons: ['print', 'excel'],
   
- 
+  buttons: ['print', 'excel'],
 };
     this.searchReport(this.medOb);
    }

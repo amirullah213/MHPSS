@@ -70,8 +70,6 @@ this.dtOptions = {
   pageLength: 25,
   dom: 'lBfrtip',
  // buttons: ['print', 'excel'],
-  
- 
 };
     this.searchReport(this.medOb);
    }
@@ -107,7 +105,7 @@ this.dtOptions = {
         if (response.status === 0) {
           this.reporData = response.data;
           console.log('all reportdata==', this.reporData);
-          this.rerender();
+         
           //setTimeout(this.rerender, 2500);
          // if(this.allMedcis.length>1){this.rerender();}
           
