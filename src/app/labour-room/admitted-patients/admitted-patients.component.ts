@@ -282,7 +282,7 @@ this.opAdmit.patchValue({
 
     this.userLoader=true
     
-    if(this.docType!=undefined && op==1)
+    if(this.id!=undefined && op==1)
 {   
        
       serCall=true;
@@ -322,23 +322,23 @@ else{
 
 changeRefVal(e){
      
-     
+     debugger
   if(e!="Choose Referral"){
- this.arrylist=[]
- this.arrylist = this.refList
- for(let ele of this.arrylist ){
+//  this.arrylist=[]
+//  this.arrylist = this.refList
+//  for(let ele of this.arrylist ){
    
-   let fulName = ele.fname + " " + ele.lname;
-   if(fulName == e){
-   this.docType=ele.docType;
-   this.id = ele.id;
-   break;
+  //  let fulName = ele.fname + " " + ele.lname;
+   if(e){
+   this.docType=1;
+   this.id = e;
+   
    }
    else{
      this.docType=undefined
      this.id=undefined
    }
- }
+ //}
 }
 }
 }

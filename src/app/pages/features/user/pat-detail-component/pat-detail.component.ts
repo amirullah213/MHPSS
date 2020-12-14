@@ -105,7 +105,6 @@ export class PatDetailComponent implements OnInit {
   treatmentForm: any;
   patientID: any;
   ptID: any;
-  fullName: any;
   prescriptionData: any;
   prString: any;
   jsonArray: { ind: number, name: string; matched: any; }[];
@@ -506,21 +505,20 @@ this.diagID = event.item.id
      
      
      if(e!="Choose Referral"){
+       debugger
     this.arrylist=[]
     this.arrylist = this.refList
-    for(let ele of this.arrylist ){
+   
       
-      let fulName = ele.fname + " " + ele.lname;
-      if(fulName == e){
-      this.docType=ele.docType;
-      this.id = ele.id;
-      break;
+      if(e){
+      this.docType=1;
+      this.id = e
       }
-      else{
-        this.docType=undefined
-        this.id=undefined
+      else
+      {
+        this.docType=undefined;
+        this.id = undefined
       }
-    }
   }
   }
 
@@ -1811,7 +1809,7 @@ this.investigationForm.patchValue({
       
         
       }
-      if(this.docType!=undefined && op==0)
+      if(this.id!=undefined && op==0)
 {   
          
         serCall=true;

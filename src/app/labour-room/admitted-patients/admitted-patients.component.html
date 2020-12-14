@@ -183,7 +183,7 @@
                                                             <select formControlName="ref" class="form-control"
                                                                 (change)="changeRefVal($event.target.value)">
                                                                 <option>Choose Referral</option>
-                                                                <option *ngFor="let rl of refList">{{rl.fname}}
+                                                                <option *ngFor="let rl of refList" [value]='rl.id'>{{rl.fname}}
                                                                     {{rl.lname}}</option>
                                                             </select>
                                                         </span>
