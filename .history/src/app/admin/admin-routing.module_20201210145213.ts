@@ -32,7 +32,6 @@ const routes: Routes = [
       { path: 'emrsummaryreport', component: EmrSummaryReportComponent },
       { path: 'syncData', component: syncDataComponent },
       { path: 'covid-pat', component: CovidReportPatComponent },
-      { path: 'covid-lab', component: CovidLabComponent },
 
       { path: '', redirectTo: 'home', pathMatch: 'full' }
 
