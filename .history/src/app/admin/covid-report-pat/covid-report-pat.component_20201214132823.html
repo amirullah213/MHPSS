@@ -93,15 +93,14 @@
                                     <td>{{cov.gender}}</td>
                                     <td>{{cov.address}}</td>
                                     <td>{{cov.covidType}}</td>
-                                    <td>{{cov.diagnosis}}</td>
+                                    <td>{{cov.covidType}}</td>
                                     <td>{{cov.signs}}</td>
                                     <td>{{cov.userName}}</td>
                                     <!-- action -->
                                     <td>
-                                        <span *ngIf="cov.isIndoor!=0">Admitted</span>
-                                        <span *ngIf="cov.isIndoor==0 && (cov.referralType==0 || cov.referralType==null)">Home Treatment</span>
+                                        <span *ngIf="cov.isIndoor==1">Admitted</span>
+                                        <span *ngIf="cov.isIndoor==0 && cov.referralType==0">Home Treatment</span>
                                         <span *ngIf="cov.isIndoor==0 && cov.referralType==1">Reffered</span>
-                                        
                                     </td>
                                     
                                     <td>

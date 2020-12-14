@@ -82,7 +82,7 @@
                             <tbody>
                                 <tr *ngFor="let cov of reporData; let i=index">
                                     <td>{{cov.district}}</td>
-                                    <td>{{cov.enteringDate|date}}</td>
+                                    <td>{{cov.enteringDate|date:"y-dd-MM"}}</td>
                                     <td>{{cov.token}}</td>
                                     <td>{{cov.firstname}}</td>
                                     <td>{{cov.f_hName}}</td>

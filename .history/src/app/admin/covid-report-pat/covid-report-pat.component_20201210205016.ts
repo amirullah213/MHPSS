@@ -64,34 +64,11 @@ var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 console.log('date==',date);
 this.medOb.startDate=date;
 this.medOb.endtDate=date;
-// setTimeout(function(){ alert("Hi"); }, 2000);
-this.dtOptions = {
-  pagingType: 'full_numbers',
-  pageLength: 25,
-  dom: 'lBfrtip',
- // buttons: ['print', 'excel'],
-  
- 
-};
+
+//for datatables
+
     this.searchReport(this.medOb);
    }
-//for datatables
-   ngAfterViewInit(): void {
-    this.dtTrigger.next();
-  }
-  ngOnDestroy(): void {
-    // Do not forget to unsubscribe the event
-    this.dtTrigger.unsubscribe();
-  }
-  rerender(): void {
-    
-    this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-      // Destroy the table first
-      dtInstance.destroy();
-      // Call the dtTrigger to rerender again
-      this.dtTrigger.next();
-    });
-  }
 
    //get all medicine  List
    searchReport(sobj) {
@@ -107,7 +84,7 @@ this.dtOptions = {
         if (response.status === 0) {
           this.reporData = response.data;
           console.log('all reportdata==', this.reporData);
-          this.rerender();
+         
           //setTimeout(this.rerender, 2500);
          // if(this.allMedcis.length>1){this.rerender();}
           

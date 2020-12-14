@@ -70,8 +70,6 @@ this.dtOptions = {
   pageLength: 25,
   dom: 'lBfrtip',
  // buttons: ['print', 'excel'],
-  
- 
 };
     this.searchReport(this.medOb);
    }
