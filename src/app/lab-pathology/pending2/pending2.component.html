@@ -65,14 +65,33 @@
                                                     <p class="mb-1 mt-3"><b>Date Of Birth</b>
                                                         <span class="ml-4">{{pathData1.dob | date}}</span>
                                                     </p>
+                                                    <p class="mb-1 mt-3"><b>Test Date / Time</b>
+                                                        <span class="ml-4">{{userData.DateCreated | date: 'dd-MM-yyyy h:mm a'}}</span>
+                                                    </p>
+                                                    <p class="mb-1 mt-3"><b>Sent From</b>
+                                                        <span class="ml-4">{{pathData1.departmentName}}</span>
+                                                    </p>
+                                                   
                                                 </div>
                                                 <div class="col-md-6 mt-3">
                                                     <p class="mb-1 mt-3"><b>Father/Husband Name</b>
                                                         <span class="ml-4"> {{pathData1.f_hName}}</span>
                                                     </p>
+                                                    
                                                     <p class="mb-1 mt-3"><b>Mobile Number</b>
+                                                        
                                                         <span class="ml-4"> {{pathData1.cellNo}}</span>
                                                     </p>
+                                                    <p *ngIf="userData.status!=0" class="mb-1 mt-3"><b>Result Date /Time</b>
+                                                        <span class="ml-4">{{userData.DateModified | date: 'dd-MM-yyyy h:mm a'}}</span>
+                                                    </p>
+                                                    <p *ngIf="userData.status==0" class="mb-1 mt-3"><b>Result Date /Time</b>
+                                                        <span class="ml-4">Result Pending</span>
+                                                    </p>
+                                                    <p class="mb-1 mt-3" *ngIf="pathData1.bedNo!=null"><b>Bed No</b>
+                                                        <span class="ml-4"> {{pathData1.bedNo}}</span>
+                                                    </p>
+                                                   
                                                 </div>
                                             </div>
                                             <hr class="gray">
@@ -117,8 +136,10 @@
                                                                <!-- <span *ngIf="singlemsgShow">Result is required</span> -->
                                                             </td>
                                                             <td> {{item.value.refRange}}</td>
+                                                            <!-- <input type="hidden" formControlName='userData.id'> -->
                                                         </tr>
-                                                   
+                                                        
+
                                                     </tbody>
                                                 
                                                     <!-- for array data -->
@@ -128,6 +149,7 @@
                                         </div>
                                         
                                         <div class="modal-footer">
+                                            <button  type="button" class="button " (click)="gotoPrintPage()"><i class="fa fa-check-square"></i> Print</button>
                                             <button *ngIf="userData.subTests && userData.subTests.length>0" type="button" class="button" (click)="updateTests()"><i class="fa fa-check-square"></i> Save</button>
                                             <button *ngIf="!userData.subTests" type="button" class="button"  (click)="updateSingleTest(objPath.result,userData)"><i class="fa fa-check-square"></i> Save</button>
                                         </div>

@@ -12,7 +12,7 @@ export class PharmaSideBarComponent implements OnInit {
   userData:any={};
   pharmacyID:any;
   ngOnInit(): void {
-    this.pharmacyID=localStorage.getItem('docId');
+    this.pharmacyID=localStorage.getItem('userType');
     console.log('this.pharmacyID====',this.pharmacyID)
   }
   toggleCollapse(el: any) {

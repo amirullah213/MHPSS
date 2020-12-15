@@ -66,6 +66,7 @@ export class Pending2Component implements OnInit {
     if(this.purchaseOrder){this.purchaseOrder.clear()}
     this.userData = data;
    // this.objPath.result=this.userData.result
+   localStorage.setItem('pathologyPrint', JSON.stringify(data))
     console.log("this.userData===",this.userData);
     let config = {backdrop: false,ignoreBackdropClick: true     }
     this.modalRef = this.modalService.show(
@@ -79,7 +80,8 @@ export class Pending2Component implements OnInit {
     // for dynamic form data form assigment
     if(this.userData.subTests){
     this.userData.subTests.forEach(e => {
-
+      e.tid=this.userData.id;
+      debugger
      (this.purchaseOrder = this.diagnosisForm.get('purchaseOrder') as FormArray).push(this.createItem(e));
       console.log('this.purchaseOrder4444444===',this.purchaseOrder);
    
@@ -98,9 +100,16 @@ export class Pending2Component implements OnInit {
       id : obj.id,
       sample : obj.sample,
       xrayFilms6 : obj.xrayFilms6,
+      tid:obj.tid
 
       
     });
+  }
+  gotoPrintPage(){
+    this.modalRef.hide();
+    //this.router.navigate(['/print/pathology']);
+    window.open('/print/pathology')
+    
   }
   //---------------------get all lab patients---------------------
 getUsersPending() {

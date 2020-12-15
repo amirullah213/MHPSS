@@ -312,7 +312,10 @@ for (let element of response.radiologyTypes){
       // this.pathologyList = response.test;
        response.test.forEach(v => {
         if (v.testType == 1) {
+          if(v.supperTest!=1098 && v.supperTest!=1132)
+          {
           this.pathologyList.push(v);
+          }
          // console.log('path====================',this.pathologyList)
         }
         
