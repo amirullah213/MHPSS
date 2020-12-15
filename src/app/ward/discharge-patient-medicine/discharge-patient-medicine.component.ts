@@ -49,8 +49,10 @@ export class DischargePatientMedicineComponent implements OnInit {
   outFormData:any={};
   showDischargeButton:boolean=false;
 
+  dischargeForm:FormGroup;
 
   treatmentForm:FormGroup;
+  disFormData: any;
 
   constructor(
     private fb: FormBuilder,
@@ -70,14 +72,11 @@ export class DischargePatientMedicineComponent implements OnInit {
    
 
    this.dischargFormData =JSON.parse(localStorage.getItem('disData')) ;
-   console.log('this.dischargedata==========',this.dischargFormData);
 
    this.outFormData =JSON.parse(localStorage.getItem('outData')) ;
-   console.log('this.outFormData==========',this.outFormData);
-  this.prescID=JSON.parse(localStorage.getItem('prescriptionID'));
-  console.log('this.prescID==========',this.prescID);
+
+   this.prescID=JSON.parse(localStorage.getItem('prescriptionID'));
   this.diagnosArr=JSON.parse( localStorage.getItem('diagnosArr'));
-  console.log('this.diagnosArr==========',this.diagnosArr);
     this.getMedicinesData();
 
     //-----------------
@@ -94,11 +93,20 @@ export class DischargePatientMedicineComponent implements OnInit {
       med_remark: ['', Validators.required]
       // acceptTerms: [false, Validators.requiredTrue]
   },
- 
+  
   );
+
+  this.dischargeForm = this.fb.group(
+    {
+    dis_type: ['', Validators.required],
+    dis_date: ['', Validators.required],
+    
+},
+
+);
     //------------
   }
-
+  
   //----------------------------------
   
   /////////////////////----------
@@ -141,7 +149,7 @@ addPresMedicines() {
   this.model99.medicines=this.medicinesFinal;
   this.model99.type=3;
   this.model99.hospitalID=this.hospitalID;
-  
+ this.model99.ptID= this.detailsData.ptID
 
  console.log('modal 99==', this.model99);
   this.wardService.addPresMedics(this.model99).subscribe(
@@ -169,8 +177,9 @@ addPresMedicines() {
 //----------------------------------------
 
 //==============update indoor detail to discharge patient
-updateIndoor() {
+updateIndoor(fv) {
  
+  if(fv.dis_date && fv.dis_type){
   this.loaderUpdate= true;
   this.model8.hospitalID=this.hospitalID;
   this.model8.tokenID=this.detailsData.ptID;
@@ -179,8 +188,8 @@ updateIndoor() {
 
   this.model8.operativeProcedure=this.outFormData.operate_procedure;
   this.model8.dialysis=this.outFormData.dylasis;
-  this.model8.dischargeType=this.dischargFormData.dis_type;
-  this.model8.dischargeDate='';
+  this.model8.dischargeType=fv.dis_type;
+  this.model8.dischargeDate=fv.dis_date;
   this.model8.diagnosis=this.diagnosArr;
   console.log('modal 8==', this.model8);
   
@@ -190,7 +199,7 @@ updateIndoor() {
        // this.outdoorForm.reset();
         //this.getoutDoorData();
 
-        alert('Done Successfully');
+        this.router.navigate(['/ward/home'])
         this.loaderUpdate = false;
       }
   if (response.status === 1) {
@@ -204,6 +213,9 @@ updateIndoor() {
     (error) => {}
   );
 
+}else{
+  alert("Please select discharge type and date")
+}
 }
 //+===================ended
 //---------------------

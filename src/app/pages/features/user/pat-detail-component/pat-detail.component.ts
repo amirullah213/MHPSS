@@ -1513,7 +1513,7 @@ for(let sb of obj.subTests)
     }
    
         
-    this.param = { 'hospitalID': localStorage.getItem('hospitalID'), 'prescriptionID': this.patInfo.prescriptionID,"patientID":this.patInfo.patientID,
+    this.param = { 'hospitalID': localStorage.getItem('hospitalID'), 'prescriptionID': this.patInfo.prescriptionID,'ptID': this.ptID,"patientID":this.patInfo.patientID,
  "isReferral":this.isrefferel,"isImplant":0,"medicines":this.localTreat,"isDMPA":0,"isTubalLigation":0,
  "follow_up":tVal.fol_up,"isFamilyPlanning":0,"isCOC":0,"isCounselling":0,
  "otherTreatmentProcedure":tVal.tComments,"otherMethod":"","contraceptiveMethod":"",

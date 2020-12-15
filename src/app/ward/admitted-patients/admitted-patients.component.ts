@@ -485,7 +485,8 @@ addPresMedicines() {
   this.model99.medicines=this.medicinesFinal;
   this.model99.type=2;
   this.model99.hospitalID=this.hospitalID;
-  
+  this.model99.ptID= this.detailsData.ptID
+
 
  console.log('modal 9==', this.model99);
   this.wardService.addPresMedics(this.model99).subscribe(
@@ -778,8 +779,7 @@ getType(typ){
 }
 //=============================
 gotoDischarge(disform,outForm){
-  console.log("disform===",disform);
-  console.log("outform===",outForm);
+
   localStorage.setItem('disData',JSON.stringify(disform));
   localStorage.setItem('outData',JSON.stringify(outForm));
   localStorage.setItem('diagnosArr',JSON.stringify(this.diagnosArr));

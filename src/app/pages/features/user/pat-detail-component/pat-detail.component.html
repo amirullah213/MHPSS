@@ -645,6 +645,8 @@
                                                             <tr class="text-dark text-center">
                                                                 <th>Type</th>
                                                                 <th>Investigation Type</th>
+                                                                <th>Test Status</th>
+                                                                <th>Test Date</th>
                                                                 <th class="text-center">Report /Action</th>
                                                             </tr>
                                                         </thead>
@@ -652,8 +654,15 @@
                                                             <tr class="text-center" *ngFor="let pth of localPath let i=index">
                                                                 <td><span *ngIf="pth.testType==1">Pathalogy</span>
                                                                     <span *ngIf="pth.testType!=1">Radiology</span></td>
-                                                                <td>{{pth.testName}}</td>
-                                                                <td>
+                                                                    <td>{{pth.testName}}</td>
+                                                                    <td >
+                                                                        <span *ngIf="pth.status==1 && pth.id" class="text-success">Performed</span>
+                                                                        <span *ngIf="pth.status==0 && pth.id" class="text-warning">Pending</span>
+                                                                        <!-- <span  class="text-info" *ngIf="!pth.id">Not Send yet</span> -->
+                                                                    </td>
+                                                                        <td><span *ngIf="pth.DateCreated">{{pth.DateCreated | date: 'dd-MM-y h:mm a'}}</span>
+                                                                           </td>
+                                                                        <td>
                                                                     <div class="form-group">
                                                                       
                                                                         <a href="javascript:void(0)" class="text-info" (click)="viewReport(template,pth,i)">View Report</a> /
@@ -694,6 +703,12 @@
                                                                 <p class="mb-1 mt-2"><b>Patient Name</b>
                                                                     <span class="ml-4">{{patInfo.firstname}}</span>
                                                                 </p>
+                                                                <!-- <p class="mb-1 mt-3"><b>Test Date / Time</b>
+                                                                    <span class="ml-4">{{patInfo.DateCreated | date: 'dd-MM-yyyy h:mm a'}}</span>
+                                                                </p>
+                                                                <p class="mb-1 mt-3"><b>Sent From</b>
+                                                                    <span class="ml-4">{{patInfo.departmentName}}</span>
+                                                                </p> -->
                                                                 <p class="mb-1 mt-3"><b>Date Of Birth</b>
                                                                     <span class="ml-4">{{patInfo.dob | date}}</span>
                                                                 </p>
@@ -702,9 +717,18 @@
                                                                 <p class="mb-1 mt-3"><b>Father/Husband Name</b>
                                                                     <span class="ml-4"> {{patInfo.f_hName}}</span>
                                                                 </p>
+                                                                <!-- <p *ngIf="patInfo.status!=0" class="mb-1 mt-3"><b>Result Date /Time</b>
+                                                                    <span class="ml-4">{{patInfo.DateModified | date: 'dd-MM-yyyy h:mm a'}}</span>
+                                                                </p>
+                                                                <p *ngIf="patInfo.status==0" class="mb-1 mt-3"><b>Result Date /Time</b>
+                                                                    <span class="ml-4">Result Pending</span>
+                                                                </p> -->
                                                                 <p class="mb-1 mt-3"><b>Mobile Number</b>
                                                                     <span class="ml-4"> {{patInfo.cellNo}}</span>
                                                                 </p>
+                                                                <!-- <p class="mb-1 mt-3" *ngIf="patInfo.bedNo!=null"><b>Bed No</b>
+                                                                    <span class="ml-4"> {{patInfo.bedNo}}</span>
+                                                                </p> -->
                                                                 
                                                                 
                                                             </div>
@@ -731,31 +755,7 @@
                                                               </tbody>
                                                                      </table>
                                                                      <hr class="gray">
-                                                                     <!-- <div  *ngIf="sData.testType==1">
-                                                                     <div *ngFor="let ts of subTests let i=index">
-                                                                        <div class="form-group row mx-0">
-                                                                            <div class="col-sm-2 mt-3"><label for="inputState">Test Name</label></div>
-                                                                            <div class="col-sm-10">
-                                                                                <p class="mb-2 mt-3"><b>{{ts.oldTestName}}</b>
-                                                                                   
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group row mx-0">
-                                                                            <div class="col-sm-2 mt-2"><label for="inputState">Report</label></div>
-                                                                            <div class="col-sm-10"> {{ts.result}}</div>
-                                                                              
-                                                                           
-                                                                        </div>
-                                                                        <div class="form-group row mx-0">
-                                                                            <div class="col-sm-2 mt-3"><label for="inputState">Range</label></div>
-                                                                            <div class="col-sm-10">
-                                                                                <p class="mt-3">{{ts.refRange}}</p>
-                                                                            </div>
-                                                                        </div>
-                                                                        
-                                                                    </div>
-                                                                    </div> -->
+                                                                   
                                                             <div class="table center-aligned-table" *ngIf="sData.testType!=1">
                                                                 <div class="form-group row mx-0">
                                                                     <div class="col-sm-2 mt-3"><label for="inputState">Test Name</label></div>

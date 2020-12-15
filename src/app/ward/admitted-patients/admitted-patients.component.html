@@ -283,13 +283,7 @@
                                                 name="radiology" [typeaheadOptionsLimit]='1000' [typeaheadMinLength]="0" [typeaheadScrollable]="true">
                                         </div>
                                     </div>
-                                    <div class="col-sm-12 text-center mt-3">
-                                        <div class="form-group">
-                                            <button type="button" *ngIf="!loaderLab" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" (click)="sendTolab()"><i class="fa fa-send-o" ></i> Send To Lab / Radiology </button>
-                                            <button type="button" *ngIf="loaderLab" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><span class="spinner-border " role="status" aria-hidden="true"></span> Sending </button>
-
-                                        </div>
-                                    </div>
+                                   
                                     <hr class=" hr-gray ">
                                     <div class="col-md-12">
                                         <h5>Selected Investigation</h5>
@@ -299,6 +293,8 @@
                                                     <tr class="text-dark">
                                                         <th> Type</th>
                                                         <th>Investigation Name</th>
+                                                        <th>Test Status</th>
+                                                        <th>Test Date</th>
                                                         <th class="text-center">Action</th>
                                                     </tr>
                                                 </thead>
@@ -309,6 +305,14 @@
                                                             <span *ngIf="ptd.testType==2">Radiology</span>
                                                         </td>
                                                         <td> {{ptd.testName }} </td>
+                                                        <td >
+                                                            <span *ngIf="ptd.status==1 && ptd.id" class="text-success">Performed</span>
+                                                            <span *ngIf="ptd.status==0 && ptd.id" class="text-warning">Pending</span>
+                                                            <!-- <span  class="text-info" *ngIf="!pth.id">Not Send yet</span> -->
+                                                        </td>
+                                                            <td><span *ngIf="ptd.DateCreated">{{ptd.DateCreated | date: 'dd-MM-y h:mm a'}}</span>
+                                                               </td>
+                                                            <td>
                                                         <td>
                                                             <div class="form-group">
                                                                 <a href="javascript:void(0)" class="float-right" (click)="removeTests(z,ptd)"><i class="fa fa-close text-danger"></i></a>
@@ -504,18 +508,25 @@
                                             </table>
                                         </div>
                                     </div>
+                                    <div class="col-sm-12 text-center mt-3">
+                                        <div class="form-group">
+                                            <button type="button" *ngIf="!loaderLab" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" (click)="sendTolab()"><i class="fa fa-send-o" ></i> Send To Lab / Radiology </button>
+                                            <button type="button" *ngIf="loaderLab" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><span class="spinner-border " role="status" aria-hidden="true"></span> Sending </button>
+
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- </form> -->
-                                <hr class=" hr-gray ">
+                                <!-- <hr class=" hr-gray ">
                                 <form [formGroup]="dischargeForm">
                                     <div class="form-group row mx-0 border4">
                                         <div class="col-sm-6">
                                             <label class="mt-3" for="inputState">Discharge Type</label>
                                             <select class="form-control" formControlName="dis_type">
-                                                <option>Discharge / DOR</option>
-                                                <option>LAMA</option>
-                                                <option>Referred</option>
-                                                <option>Death</option>
+                                                <option value='1'>Discharge / DOR</option>
+                                                <option value='2'>LAMA</option>
+                                                <option value='3'>Referred</option>
+                                                <option value='4'>Death</option>
                                             </select>
                                         </div>
                                         <div class="col-sm-6">
@@ -523,10 +534,10 @@
                                             <input type="text" class="form-control" formControlName="dis_date" placeholder="Start Date" #datepickerYMD="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placement="top">
                                         </div>
                                         <div class="col-sm-12 mt-3 text-center">
-                                            <button class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" (click)="gotoDischarge(dischargeForm.value,outdoorForm.value)" type="button"><i class="fa fa-wheelchair"></i> Discharge</button>
+                                            <button class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" (click)="gotoDischarge(dischargeForm.value,outdoorForm.value)" type="button"><i class="fa fa-wheelchair"></i> Go to Discharge Page </button>
                                         </div>
                                     </div>
-                                </form>
+                                </form> -->
                             </div>
                         </div>
                     </div>
