@@ -111,7 +111,6 @@
                                                             <th>CRP NO</th>
                                                             <th>Patient Name</th>
                                                             <th>Date</th>
-                                                            <th>Dept</th>
                                                             <th>Details</th>
                                                         </tr>
                                                     </thead>
@@ -123,7 +122,6 @@
                                                                 <span>{{wrd.firstname}}</span>
                                                             </td>
                                                             <td>{{wrd.DateCreated| date }}</td>
-                                                            <td>{{wrd.departmentName }}</td>
                                                             <td><a href="javascript:void(0)" (click)="gotoSessionPage(wrd)" class="text-info">Detail</a></td>
                                                         </tr>
                                                         <tr *ngIf="pharmacyData.length === 0" style="text-align: center;">
