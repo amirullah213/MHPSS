@@ -778,10 +778,10 @@ getType(typ){
   this.getoutDoorData();
 }
 //=============================
-gotoDischarge(disform,outForm){
+gotoDischarge(){
 
-  localStorage.setItem('disData',JSON.stringify(disform));
-  localStorage.setItem('outData',JSON.stringify(outForm));
+  // localStorage.setItem('disData',JSON.stringify(disform));
+  // localStorage.setItem('outData',JSON.stringify(outForm));
   localStorage.setItem('diagnosArr',JSON.stringify(this.diagnosArr));
 
   
