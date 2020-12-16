@@ -51,12 +51,13 @@ export class OldRegistrationComponent implements OnInit {
       const bdate = new Date(this.patDataLocal.dob);
       const timeDiff = Math.abs(Date.now() - bdate.getTime() );
       this.age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
-      console.log('age ==', this.age);
+      this.getAllDoctros();
     }
   }
   openModAdd(captureuser: TemplateRef<any>) {
     this.objDoc.reff="Self"
-   this.getAllDoctros();
+   // this.objDoc.doctor="Triage Point 1 OPD" 
+    this.objDoc.doctor=2
     this.modalRef = this.modalService.show(captureuser, Object.assign({}, { class: 'gray modal-lg' }));
   }
   openchildMod(childModal: TemplateRef<any>) {
@@ -93,11 +94,12 @@ export class OldRegistrationComponent implements OnInit {
   //-------------------------
  //--------------------get doctor list 
  generateToken(modData) {
+   debugger
    console.log("modal data====",modData);
    this.loaderGen= true;
    this.model2.hospitalID=this.hospitalID;
    this.model2.patientID=this.patDataLocal.patientID;
-   this.model2.departmentID=modData.doctor.id;
+   this.model2.departmentID=modData.doctor;
    this.model2.isIndoor=0;
    this.model2.refferedFrom=modData.reff;
   

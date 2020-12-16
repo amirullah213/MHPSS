@@ -2,7 +2,7 @@
     <div class="scrollbar side-menu-bg">
         <ul class="nav navbar-nav side-menu" id="sidebarnav">
             <!-- menu item Dashboard-->
-            <li *ngIf="pharmacyID== 9">
+            <li *ngIf="pharmacyID==9 || pharmacyID==8 ">
                 <a class="underline-center" href="javascript:void(0)" [routerLink]="['home']" routerLinkActive="active"><i class="ti-home"></i><span class="right-nav-text">Patient Dispense</span> </a>
             </li>
             <li *ngIf="pharmacyID== 8">

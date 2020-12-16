@@ -17,8 +17,13 @@
                     <div class="card card-statistics h-100">
                         <div class="card-body">
                             <div class="card-body">
-                                <h5 class="card-title mb-0"> Admitted Patient</h5>
-                                <form novalidate [formGroup]="outdoorForm">
+                                <div class="row">
+                                    <div class="page-title col-md-3">Patient Name : <b>{{detailsData.firstname}}</b> </div>
+                                    <div class="page-title col-md-3">Father/Husband Name : <b>{{detailsData.f_hName}}</b> </div>
+                                        <div class="page-title col-md-3">CRP No : <b>{{detailsData.token}}</b> </div>
+                                        
+                                    </div><br>
+                                       <form novalidate [formGroup]="outdoorForm">
                                     <div class="row mx-0 border4">
                                         <div class="form-group row mx-0">
                                             <div class="col-sm-12">
@@ -28,22 +33,36 @@
                                                 <option [value]="1">Yes</option>
                                             </select>
                                             </div>
+                                            <br>
                                             <div class="col-sm-12">
-                                                <label for="inputState">Any Operation Procedure Done</label>
+                                                <label for="inputState">Progress Note</label>
                                                 <textarea type="text" formControlName="operate_procedure" class="form-control" placeholder="Any Operation Procedure Done"></textarea>
-                                            </div>
-                                            <div class="col-sm-12">
+                                            </div><br>
+                                            <div class="col-sm-12" *ngIf="hospitalID!=2" >
                                                 <label for="inputState">Dialysis</label>
                                                 <textarea type="text" formControlName="dylasis" class="form-control" placeholder="Dialysis"></textarea>
-                                            </div>
+
+                                            </div><br>
+                                            <div class="col-sm-12" *ngIf="hospitalID==2" >
+                                                <label>Oxygen Therapy</label>
+                                                <select class="form-control" formControlName="dylasis">
+                                                    <option >None</option>
+                                                    <option >Nosel Cannula</option>
+                                                    <option >NRM</option>
+                                                <option >NIV</option>
+                                                <option >IMV</option>
+                                                <option >HFNC</option>
+
+                                            </select>                                        
+                                            </div><br>
                                             <div class="col-sm-4">
                                                 <label for="inputState">Diagnosis</label>
                                                 <input class="text" formControlName="diagnosis" [typeahead]="diagnosisArr" typeaheadOptionField="name" (typeaheadOnSelect)="onSelectDiagnos($event)" class="form-control" name="daignosis" [typeaheadOptionsLimit]='1000' [typeaheadMinLength]="0" [typeaheadScrollable]="true">
-                                            </div>
+                                            </div><br>
                                             <div class="col-sm-6">
                                                 <label for="inputState">Desription</label>
                                                 <input class="text" formControlName="description" class="form-control" name="description">
-                                            </div>
+                                            </div><br>
                                             <div class="col-sm-2 mt-5">
                                                 <button class="button" (click)="addnewDiag(outdoorForm.value.description)">Add</button>
                                             </div>

@@ -73,21 +73,7 @@
                                                 </span>
                                             </div>
                                         </div>
-                                        <!-- <div class="col-md-3">
-                                            <p>Gender</p>
-                                            <div class="custom-radio custom-control-inline mr-md-5 mt-3">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" id="gridRadios21" value="male">
-                                                    <label class="form-check-label">Male</label>
-                                                </div>
-                                            </div>
-                                            <div class="custom-radio custom-control-inline mr-md-5 mt-3">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" id="gridRadios31" value="female">
-                                                    <label class="form-check-label">Female</label>
-                                                </div>
-                                            </div>
-                                        </div> -->
+                                       
                                         <div class="col-md-3">
                                             <div class="form-group" [ngClass]="{'has-error': ((regisForm.get('cnic').touched || regisForm.get('cnic').dirty) && regisForm.get('cnic').errors)}">
                                                 <label for="formGroupExampleInput">CNIC Number</label>
@@ -131,42 +117,71 @@
                                                 <input type="text" formControlName="address" class="form-control" placeholder="Enter Patient Address">
                                             </div>
                                         </div>
-                                        <!-- <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="formGroupExampleInput">Caste</label>
-                                                <input type="text" class="form-control" placeholder="Enter Patient Caste">
-                                            </div>
-                                        </div> -->
+                                      
                                         <div class="col-md-2">
                                             <div class="form-groupp">
                                                 <label for="formGroupExampleInput">Village</label>
                                                 <input type="text" formControlName="village" class="form-control" placeholder="Enter Patient Villege">
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <label>District</label>
-                                            <select class="form-control" formControlName="district" (change)="onselectDist(regisForm.value.district)">
-                                                <option *ngFor="let dis of distResponseArray; let z=index" [ngValue]="dis">{{dis.name}}</option>
-                                                
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <label class="" for="inputState">Tehsil/Taluka</label>
-                                            <span *ngIf="loaderDists" class="spinner-border " role="status" aria-hidden="true"></span>
-                                            <select *ngIf="!loaderDists" class="form-control" formControlName="tehsil_city" (change)="onselectTehsil(regisForm.value.tehsil_city)">
-                                                <option *ngFor="let teh of tehsilsResponseArray; let y=index" [ngValue]="teh">{{teh.name}}</option>
-                                                <option>Baizai</option>
-                                                <option>HaleemZai</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <label class="" for="inputState">UC</label>
-                                            <span *ngIf="loaderUc" class="spinner-border " role="status" aria-hidden="true"></span>
-                                            <select *ngIf="!loaderUc" class="form-control" formControlName="uc" (change)="onselectUC(regisForm.value.uc)">
-                                                <option *ngFor="let ucs of ucResponseArray; let x=index" [value]="ucs.name">{{ucs.name}}</option>
-                                                
-                                            </select>
-                                        </div>
+                                    
+                                            <div class="col-md-3" *ngIf="hospitalID!=2">
+                                                <label>District</label>
+                                                <select class="form-control" formControlName="district" (change)="onselectDist(regisForm.value.district)">
+                                                    <option *ngFor="let dis of distResponseArray; let z=index" [ngValue]="dis">{{dis.name}}</option>
+                                                    
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-2" *ngIf="hospitalID!=2">
+                                                <label class="" for="inputState">Tehsil/Taluka</label>
+                                                <span *ngIf="loaderDists" class="spinner-border " role="status" aria-hidden="true"></span>
+                                                <select *ngIf="!loaderDists" class="form-control" formControlName="tehsil_city" (change)="onselectTehsil(regisForm.value.tehsil_city)">
+                                                    <option *ngFor="let teh of tehsilsResponseArray; let y=index" [ngValue]="teh">{{teh.name}}</option>
+                                                    <option>Baizai</option>
+                                                    <option>HaleemZai</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-2" *ngIf="hospitalID!=2">
+                                                <label class="" for="inputState">UC</label>
+                                                <span *ngIf="loaderUc" class="spinner-border " role="status" aria-hidden="true"></span>
+                                                <select *ngIf="!loaderUc" class="form-control" formControlName="uc" (change)="onselectUC(regisForm.value.uc)">
+                                                    <option *ngFor="let ucs of ucResponseArray; let x=index" [value]="ucs.name">{{ucs.name}}</option>
+                                                    
+                                                </select>
+                                            </div>
+                                        
+                                            <div class="col-md-3" *ngIf="hospitalID==2" >
+                                                    <label>District</label>
+                                                <select class="form-control" formControlName="district" (change)="onselectDist(regisForm.value.district)" required>
+                                                    <option *ngFor="let dis of distResponseArray; let z=index" [ngValue]="dis">{{dis.name}}</option>
+                                                    
+                                                </select>
+                                                <span class="help-block text-danger" *ngIf="((regisForm.get('district').touched || regisForm.get('district').dirty) &&  regisForm.get('district').errors)">
+                                                <span class="text-danger" *ngIf="regisForm.get('district').errors.required">
+                                                    Distric is required
+                                                </span>
+                                                </span>
+                                            
+                                            </div>
+                                            <div class="col-sm-2" *ngIf="hospitalID==2">
+                                                <label class="" for="inputState">Tehsil/Taluka</label>
+                                                <span *ngIf="loaderDists" class="spinner-border " role="status" aria-hidden="true"></span>
+                                                <select *ngIf="!loaderDists" class="form-control" formControlName="tehsil_city" (change)="onselectTehsil(regisForm.value.tehsil_city)" required>
+                                                    <option *ngFor="let teh of tehsilsResponseArray; let y=index" [ngValue]="teh">{{teh.name}}</option>
+                                                    
+                                                </select>
+                                                <span class="help-block text-danger" *ngIf="((regisForm.get('tehsil_city').touched || regisForm.get('tehsil_city').dirty) &&  regisForm.get('tehsil_city').errors)">
+                                                    <span class="text-danger" *ngIf="regisForm.get('tehsil_city').errors.required">
+                                                        Tehsil is required
+                                                    </span>
+                                                    </span>
+                                            </div>
+                                            <div class="col-sm-2" *ngIf="hospitalID==2">
+                                                <label class="" for="inputState">UC</label>
+                                                <span *ngIf="loaderUc" class="spinner-border " role="status" aria-hidden="true"></span>
+                                                <input type="text" formControlName="uc" class="form-control" placeholder="Enter Patient uc">
+                                            </div>
+                                      
                                         <div class="col-md-12 text-center">
                                             <div class="form-group mt-2">
                                                 <button type="submit" [disabled]="!regisForm.valid" class="btn btn-success btn-lg mr-2 mt-4" (click)="registerNewPat(regisForm.value)"><i class="fa fa-check-square"></i> Add Patient</button>

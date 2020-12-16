@@ -15,6 +15,12 @@
             <div class="row">
                 <div class="card card-statistics h-100">
                     <div class="card-body">
+                        <div class="row">
+                            <div class="page-title col-md-3">Patient Name : <b>{{detailsData.firstname}}</b> </div>
+                            <div class="page-title col-md-3">Father/Husband Name : <b>{{detailsData.f_hName}}</b> </div>
+                                <div class="page-title col-md-3">CRP No : <b>{{detailsData.token}}</b> </div>
+                                
+                            </div><br>
                         <form novalidate [formGroup]="treatmentForm">
                             <div class="form-group row mx-0 border4">
                                 <div class="col-md-12">

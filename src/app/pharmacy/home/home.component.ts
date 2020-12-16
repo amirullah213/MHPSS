@@ -35,13 +35,21 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
    
     this.userData.hospitalID=localStorage.getItem('hospitalID');
-    this.userData.status=13; // 13 is for pending patients 14 for seen patients
+    this.userData.userType=localStorage.getItem('userType');
+    
+    // 13 is for pending patients 14 for seen patients
     this.userData.doctorID=localStorage.getItem('docId');
-    if(this.userData.doctorID==16){
-      this.router.navigate(['pharma/medicine-grn'])
-    }
+    // if(this.userData.doctorID==16){
+    //   this.router.navigate(['pharma/medicine-grn'])
+    // }
    // if(this.userData.doctorID==48 || 49 || 50){this.router.navigate(['pharma/grns'])}
-    this.getPharmaPats(this.userData);
+
+   if(this.userData.userType==8){
+    this.userData.status=20;    }
+    else{
+      this.userData.status=13;
+    }
+   this.getPharmaPats(this.userData);
    }
 
   openModalActivate(userActivate: TemplateRef<any>, data) {
@@ -65,7 +73,12 @@ export class HomeComponent implements OnInit {
     if (tab == 'newPats') {
       console.log('tab==', tab);
       this.tab = tab;
-      this.userData.status = 13;
+      
+      if(this.userData.userType==8){
+        this.userData.status=20;    }
+        else{
+          this.userData.status=13;
+        }
       this.getPharmaPats(this.userData)
     };
     // if (tab == 'penPats') {
@@ -77,7 +90,11 @@ export class HomeComponent implements OnInit {
     if (tab == 'seenPats') {
       console.log('tab==', tab);
       this.tab = tab;
-      this.userData.status = 14;
+      if(this.userData.userType==8){
+        this.userData.status=21;    }
+        else{
+          this.userData.status=14;
+        }
       this.getPharmaPats(this.userData)
     };
   }

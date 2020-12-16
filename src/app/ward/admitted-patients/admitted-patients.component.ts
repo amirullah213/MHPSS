@@ -110,7 +110,8 @@ export class AdmittedPatientsComponent implements OnInit {
    this.indoor= localStorage.getItem('indoorID');
    this.detailsData=JSON.parse(localStorage.getItem('wardData')) ;
 
-    this.hospitalID=localStorage.getItem('hospitalID');
+    this.hospitalID=this.detailsData.hospitalID;
+    debugger
     this.doctorID=localStorage.getItem('docId');
     this.getoutDoorData();
     this.getTreatmentData();
@@ -617,14 +618,11 @@ addnewDiag(dia){
   }else{
   for (let i = 0; i < this.diagnosArr.length; i++) {
     if(this.diagObj.id==this.diagnosArr[i].id){
-      console.log ("Block statement execution no." + this.diagnosArr[i].id);
-     
+
        diagExist=true;
       break;
     }
-          let cv = this.diagnosArr[i].name.split(" ");
-          let cp = this.diagObj.name.split(" ");
-          if(cv[0]=="Covid" && cp[0]=="Covid")
+          if(this.diagnosArr[i].id==60 || this.diagnosArr[i].id==61 || this.diagnosArr[i].id==62 || this.diagnosArr[i].id==63 && (this.diagObj.id==60 || this.diagObj.id==61 ||this.diagObj.id==62 || this.diagObj.id==63))
           {
             diagExist = true;
             cov=true;
@@ -633,7 +631,7 @@ addnewDiag(dia){
   }
 if(diagExist==true){ 
   if(cov==true){
-    alert("Covide is already added");
+    alert("Covid Diagnosis is already added");
     this.outdoorForm.controls.diagnosis.reset();
     this.outdoorForm.controls.description.reset();
     this.diagObj={};

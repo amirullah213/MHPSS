@@ -17,12 +17,20 @@
                     <div class="card card-statistics h-100">
                         <div class="card-body">
                             <div class="row">
+                                <div class="page-title col-md-3">Patient Name : <b>{{patInfo.firstname}}</b> </div>
+                                <div class="page-title col-md-3">Father/Husband Name : <b>{{patInfo.f_hName}}</b> </div>
+                                    <div class="page-title col-md-3">CRP No : <b>{{patInfo.token}}</b> </div>
+                                    <div class="col-md-3 pull-right">  <a class="button float-right" href="javascript:void(0)"
+                                        (click)="openModalbedmanag(template,1)"><i class="fa fa-plus"></i> Add Session</a></div>
+                                   
+                                </div>
+                                <hr class="gray">
+                            <!-- <div class="row">
                                 <div class="col-md-12">
                                     <a class="button float-right" href="javascript:void(0)"
-                                        (click)="openModalbedmanag(template,1)"><i class="fa fa-bed"></i>Create New
-                                        Session</a>
+                                        (click)="openModalbedmanag(template,1)"><i class="fa fa-plus"></i> Add Session</a>
                                 </div>
-                            </div>
+                            </div> -->
 
 
                             <ng-template #template>

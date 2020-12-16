@@ -107,13 +107,13 @@ export class PsyHomeComponent implements OnInit {
   //get all diagnostic list
   gotoSessionPage(obpat) {
     console.log("patData===", obpat, "tab data==", this.tab)
-    localStorage.setItem('sessionData', JSON.stringify(obpat));
+    localStorage.setItem('patData', JSON.stringify(obpat));
     localStorage.setItem('tab', this.tab);
     this.router.navigate(['psychology/sessions'])
   }
   gotoDischargeDetails(obpat) {
     console.log("patData===", obpat, "tab data==", this.tab)
-    localStorage.setItem('sessionData', JSON.stringify(obpat));
+    localStorage.setItem('patData', JSON.stringify(obpat));
     localStorage.setItem('tab', this.tab);
     this.router.navigate(['ward/discharged'])
   }

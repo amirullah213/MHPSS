@@ -837,21 +837,17 @@ insertToDiag(obj: any)
 
 }
   addDiag() {
-    debugger
+    
     let ci = this.clinicalInformation.value;
 let tempdiag = 0;
 if(ci.pname!=undefined && ci.pname!="" && this.diagID!=undefined ){
     if(this.localDiagData.length!=0){
       for(let e of this.localDiagData)
         { 
-          let cv = e.name.split(" ");
-          let cp = ci.pname.split(" ");
          
-          debugger 
-
-          if(cv[0]=="Covid" && cp[0]=="Covid")
+          if(e.id==46 || e.id==47 || e.id==48 || e.id==49 && (this.diagID==46 || this.diagID==47 || this.diagID==48 || this.diagID==49))
           {
-            alert("Covide is already added");
+            alert("Covid Diagnosis already added");
             tempdiag = 1;
             break
           }

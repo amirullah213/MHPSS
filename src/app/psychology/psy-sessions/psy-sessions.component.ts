@@ -18,7 +18,7 @@ export class PsySessionsComponent implements OnInit {
   responseText: any = '';
   tab: string = 'newPats';
   pharmacyData1: any = [];
-  patData:any=[];
+  patInfo:any=[];
   modalRef: BsModalRef;
 
   activateLoader: boolean = false;
@@ -44,8 +44,7 @@ export class PsySessionsComponent implements OnInit {
     this.userData.hospitalID = localStorage.getItem('hospitalID');
     
     this.userData.doctorID = localStorage.getItem('docId');
-    this.patData = JSON.parse(localStorage.getItem('sessionData')) ;
-    console.log('ptid===',this.patData.ptID)
+    this.patInfo = JSON.parse(localStorage.getItem('patData')) ;
     
 
     this.getPsyclogicals();
@@ -95,7 +94,7 @@ export class PsySessionsComponent implements OnInit {
   }
   getPsyclogicals() {
     this.loader_eqp2 = true;
-    this.model5.ptID=this.patData.ptID
+    this.model5.ptID=this.patInfo.ptID
    
     //this.model5.search=this.selected;
     this.psyService.getPsychological(this.model5).subscribe(
@@ -124,7 +123,7 @@ export class PsySessionsComponent implements OnInit {
   addSession(dta) {
     console.log('session data==', dta);
     this.loader_eqp2 = true;
-    this.model6.ptID=this.patData.ptID,
+    this.model6.ptID=this.patInfo.ptID,
     this.model6.behavior=dta.behavior || 0,
     this.model6.cognitive=dta.Cognitive || 0,
     this.model6.cognitive_behavioral=dta.cog_beh || 0,

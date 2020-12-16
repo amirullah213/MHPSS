@@ -79,7 +79,7 @@
                                                 <div class="col-sm-9">
                                                     <span class="wrapper-select">
                                                                 <select class="form-control" [(ngModel)]="objDoc.doctor" (ngModelChange)="onselectDoctor(objDoc.doctor)" name="doctor">
-                                                                    <option *ngFor="let docs of docResponseArray; let i=index" [ngValue]="docs">{{docs.NAME}}</option>
+                                                                    <option *ngFor="let docs of docResponseArray; let i=index" [value]="docs.id">{{docs.NAME}}</option>
                                                                     
                                                                 </select>
                                                             </span>
