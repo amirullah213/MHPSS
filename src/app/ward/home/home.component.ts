@@ -40,7 +40,9 @@ export class HomeComponent implements OnInit {
     this.userData.hospitalID = localStorage.getItem('hospitalID');
     this.userData.status = 5; // 13 is for pending patients 14 for seen patients//status gives error thing due to status used in error.status
     this.userData.doctorID = localStorage.getItem('docId');
-    this.getWardPats(this.userData);
+    if(localStorage.getItem("tab"))
+    this.setTab(localStorage.getItem("tab"))
+        this.getWardPats(this.userData);
   }
   openModalbedmanag(template: TemplateRef<any>, data) {
     this.userDataRow = data;
@@ -61,6 +63,7 @@ export class HomeComponent implements OnInit {
   }
   //set tab
   setTab(tab: string) {
+    localStorage.setItem("tab",tab)
     if (tab == 'newPats') {
       console.log('tab==', tab);
       this.tab = tab;
@@ -140,14 +143,14 @@ export class HomeComponent implements OnInit {
     this.model6.token = this.userDataRow.ptID;
     this.model6.patientID = this.userDataRow.patientID;
     this.model6.hospitalID = localStorage.getItem('hospitalID');
-    console.log('modal6======', this.model6)
     this.wardService.admitPat(this.model6).subscribe(
       (response: any) => {
         if (response.status === 0) {
           console.log('this.ward added pats==', response.data)
           this.loader_eqp = false;
           this.modalRef.hide()
-          alert('Done Successfuly');
+          localStorage.setItem('tab','penPats')
+          location.reload();
           this.getWardPats(this.userData)
         }
         if (response.status === 1) {

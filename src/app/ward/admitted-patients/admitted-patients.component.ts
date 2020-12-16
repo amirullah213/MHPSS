@@ -163,13 +163,10 @@ get f() { return this.outdoorForm.controls; }
 onSubmit() {
 
     this.submitted = true;
-
-    // stop here if form is invalid
     if (this.outdoorForm.invalid) {
         return;
     }
 
-    // display form values on success
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.outdoorForm.value, null, 4));
 }
 

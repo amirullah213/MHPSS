@@ -1,7 +1,7 @@
 <div class="container-fluid container-wrapper">
     <div class="row">
         <div class="content-wrapper">
-            <div class="page-title">
+            <!-- <div class="page-title">
                 <div class="row px-3 px-md-0">
                     <div class="col-sm-12 pl-0">
                         <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
@@ -9,74 +9,24 @@
                         </ol>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="row">
                 <div class="col-md-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
                             
                             <!-- <alert [type]="alerts.type" *ngIf="showAlert" class="alert-fixpos">{{ alerts.msg }}</alert> -->
-                             
-                            <form novalidate [formGroup]="searchForm">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <h5 class="card-title mb-0">Search By CNIC</h5>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <div class="form-group" [ngClass]="{'has-error': ((searchForm.get('cnic').touched || searchForm.get('cnic').dirty) && searchForm.get('cnic').errors)}">
-                                            <label for="formGroupExampleInput">CNIC Number</label>
-                                            <input type="text" id="cnic" formControlName="cnic" class="form-control" placeholder="Enter CNIC Number">
-                                            <span class="help-block text-danger" *ngIf="((searchForm.get('cnic').touched || searchForm.get('cnic').dirty) &&  searchForm.get('cnic').errors)">
-                                                <span *ngIf="searchForm.get('cnic').errors.minlength || searchForm.get('cnic').errors.maxlength">
-                                                    CNIC Number must be Equal to 13 characters
-                                                </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <!-- [disabled]="!searchForm.valid" -->
-                                    <div class="col-md-2">
-                                        <div class="form-group mt-2">
-                                            <label for="formGroupExampleInput"></label>
-                                            <button class="btn btn-lg btn-success mt-4" *ngIf="loaderCNIC"> <span class="spinner-border mr-1" role="status" aria-hidden="true"></span>Capturring</button>
-                                            <button type="submit" class="btn btn-lg btn-success mt-4" *ngIf="!loaderCNIC" (click)="serchBycnic(captureuser)"><i class="fa fa-search mr-1"></i>Capture</button>
-                                            <!-- captureuser.show() -->
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <h5 class="card-title mb-0 text-center">OR</h5>
-                                    </div>
-                                    <!-- <hr class="hr-gray mx-3 my-4"> -->
-                                    <!-- //-------------------search by toekn--------- -->
-                                    <div class="col-md-12">
-                                        <h5 class="card-title mb-0">Search By Token</h5>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <div class="form-group">
-                                            <label for="formGroupExampleInput">Token ID</label>
-                                            <input type="text" formControlName="token" class="form-control" placeholder="Enter Token">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group mt-2">
-                                            <label for="formGroupExampleInput"></label>
-                                            <button class="btn btn-lg btn-success mt-4" *ngIf="loaderToken"><span class="spinner-border mr-1" role="status" aria-hidden="true"></span>Capturing</button>
-                                            <button class="btn btn-lg btn-success mt-4" *ngIf="!loaderToken" (click)="serchByToken(captureuser2)"><i class="fa fa-search mr-1"></i>Capture</button>
-                                            <!-- captureuser.show() -->
-                                        </div>
-                                    </div>
-                                    <hr class="hr-gray mx-3 my-4">
-                                    <div class="col-md-12">
-                                        <div class="form-group float-right">
-                                            <button class="btn btn-lg btn-info" (click)="clear()" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
-                                                <i class="fa fa-plus mr-1"></i>New Registration
-                                            </button>
-                                        </div>
-                                        <h4>Add Patient</h4>
-                                    </div>
+                            <div class="col-md-12">
+                                <div class="form-group float-right">
+                                    <!-- <button class="btn btn-lg btn-info" (click)="clear()" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
+                                        <i class="fa fa-plus mr-1"></i>Click here for New Registration
+                                    </button> -->
                                 </div>
-                                <!-- -------------------search by token------------ -->
-                            </form>
-                            <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+                                <h4>Add Patient</h4>
+                            </div>
+                            <hr class="hr-gray mx-3 my-4">
+
+                            <div id="collapseBasic">
                                 <form [formGroup]="regisForm" novalidate>
                                     <div class="row">
                                         <div class="col-md-3">
@@ -144,7 +94,7 @@
                                                 <input type="text" formControlName="cnic" class="form-control" placeholder="Enter CNIC Number">
                                                 <span class="help-block text-danger" *ngIf="((regisForm.get('cnic').touched || regisForm.get('cnic').dirty) &&  regisForm.get('cnic').errors)">
                                                     <span *ngIf="regisForm.get('cnic').errors.minlength || regisForm.get('cnic').errors.maxlength">
-                                                        CNIC Number must be Equal to 13 characters
+                                                        CNIC Number must be of 13 characters
                                                     </span>
                                                 </span>
                                             </div>
@@ -175,7 +125,7 @@
                                                 <input type="number" formControlName="months" class="form-control" placeholder="Months">
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="formGroupExampleInput">Address</label>
                                                 <input type="text" formControlName="address" class="form-control" placeholder="Enter Patient Address">
@@ -187,20 +137,20 @@
                                                 <input type="text" class="form-control" placeholder="Enter Patient Caste">
                                             </div>
                                         </div> -->
-                                        <div class="col-md-4">
+                                        <div class="col-md-2">
                                             <div class="form-groupp">
-                                                <label for="formGroupExampleInput">Villege</label>
+                                                <label for="formGroupExampleInput">Village</label>
                                                 <input type="text" formControlName="village" class="form-control" placeholder="Enter Patient Villege">
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <label>District</label>
                                             <select class="form-control" formControlName="district" (change)="onselectDist(regisForm.value.district)">
                                                 <option *ngFor="let dis of distResponseArray; let z=index" [ngValue]="dis">{{dis.name}}</option>
                                                 
                                             </select>
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-2">
                                             <label class="" for="inputState">Tehsil/Taluka</label>
                                             <span *ngIf="loaderDists" class="spinner-border " role="status" aria-hidden="true"></span>
                                             <select *ngIf="!loaderDists" class="form-control" formControlName="tehsil_city" (change)="onselectTehsil(regisForm.value.tehsil_city)">
@@ -209,7 +159,7 @@
                                                 <option>HaleemZai</option>
                                             </select>
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-2">
                                             <label class="" for="inputState">UC</label>
                                             <span *ngIf="loaderUc" class="spinner-border " role="status" aria-hidden="true"></span>
                                             <select *ngIf="!loaderUc" class="form-control" formControlName="uc" (change)="onselectUC(regisForm.value.uc)">
@@ -217,17 +167,76 @@
                                                 
                                             </select>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-12 text-center">
                                             <div class="form-group mt-2">
-                                                <button class="btn btn-lg btn-danger mr-2 mt-4" (click)="clear()" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
+                                                <button type="submit" [disabled]="!regisForm.valid" class="btn btn-success btn-lg mr-2 mt-4" (click)="registerNewPat(regisForm.value)"><i class="fa fa-check-square"></i> Add Patient</button>
+
+                                                <button class="btn  btn-danger btn-lg  mt-4" (click)="clear()" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
                                                     <i class="fa fa-remove"></i> Cancel 
                                                 </button>
-                                                <button type="submit" [disabled]="!regisForm.valid" class="btn btn-success btn-lg mt-4" (click)="registerNewPat(regisForm.value)"><i class="fa fa-check-square"></i> Add Patient</button>
                                             </div>
                                         </div>
                                     </div>
                                 </form>
                             </div>
+                            <h3>Search</h3>
+                            <hr class="hr-gray mx-3 my-4">
+
+                            <form novalidate [formGroup]="searchForm">
+                                <div class="row">
+                                   
+                                    <!-- <div class="col-md-3">
+                                        <h5 class="card-title mb-0">Search By CNIC</h5>
+                                    </div> -->
+                                    <div class="col-md-3">
+                                        <div class="form-group" [ngClass]="{'has-error': ((searchForm.get('cnic').touched || searchForm.get('cnic').dirty) && searchForm.get('cnic').errors)}">
+                                            <label for="formGroupExampleInput">Search by CNIC Number</label>
+                                            <input type="text" id="cnic" formControlName="cnic" class="form-control" placeholder="Enter CNIC Number">
+                                            <span class="help-block text-danger" *ngIf="((searchForm.get('cnic').touched || searchForm.get('cnic').dirty) &&  searchForm.get('cnic').errors)">
+                                                <span *ngIf="searchForm.get('cnic').errors.minlength || searchForm.get('cnic').errors.maxlength">
+                                                    CNIC Number must be Equal to 13 characters
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!-- [disabled]="!searchForm.valid" -->
+                                    <div class="col-md-2">
+                                        <div class="form-group mt-2">
+                                            <label for="formGroupExampleInput"></label>
+                                            <button class="btn btn-lg btn-success mt-4" *ngIf="loaderCNIC"> <span class="spinner-border mr-1" role="status" aria-hidden="true"></span>Searching</button>
+                                            <button type="submit" class="btn btn-lg btn-success mt-4" *ngIf="!loaderCNIC" (click)="serchBycnic(captureuser)"><i class="fa fa-search mr-1"></i>Search</button>
+                                            <!-- captureuser.show() -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="form-group mt-5 ml-4">
+                                            <label for="formGroupExampleInput"><b>OR</b></label>
+                                        </div>
+                                    </div>
+                                    <!-- <hr class="hr-gray mx-3 my-4"> -->
+                                    <!-- //-------------------search by toekn--------- -->
+                                    <!-- <div class="col-md-12">
+                                        <h5 class="card-title mb-0">Search By Token</h5>
+                                    </div> -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="formGroupExampleInput">Search by Token ID</label>
+                                            <input type="text" formControlName="token" class="form-control" placeholder="Enter Token">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group mt-2">
+                                            <label for="formGroupExampleInput"></label>
+                                            <button class="btn btn-lg btn-success mt-4" *ngIf="loaderToken"><span class="spinner-border mr-1" role="status" aria-hidden="true"></span>Searching</button>
+                                            <button class="btn btn-lg btn-success mt-4" *ngIf="!loaderToken" (click)="serchByToken(captureuser2)"><i class="fa fa-search mr-1"></i>Search</button>
+                                            <!-- captureuser.show() -->
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                                <!-- -------------------search by token------------ -->
+                            </form>
+                            
                             <!-- model for View patient start-->
                             <ng-template #captureuser>
                                 <div class="modal-header">
