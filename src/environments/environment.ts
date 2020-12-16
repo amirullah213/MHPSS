@@ -8,7 +8,7 @@ export const environment = {
  
  //apiBaseUrl: 'http://3.225.249.153:3000/',
  
- apiBaseUrl: 'http://192.168.16.114:3000/',
+ apiBaseUrl: 'http://3.225.249.153:3000/',
 
 
  apiBaseUrlOnline: 'https://yoa6yqfdfg.execute-api.us-east-1.amazonaws.com/merf_dhis/'
