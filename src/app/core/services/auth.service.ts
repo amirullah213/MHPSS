@@ -97,6 +97,7 @@ export class AuthService {
     if(resp.userType==12) { this.router.navigate(['/docsignin'])}
     if (resp.userType == 555) { this.router.navigate(['/vitals']) }
     if (resp.userType == 13) { this.router.navigate(['/fleet']) }
+    if (resp.userType == 14) { this.router.navigate(['/psychology']) }
 
   
     // this.router.navigate(['/dashboard']);

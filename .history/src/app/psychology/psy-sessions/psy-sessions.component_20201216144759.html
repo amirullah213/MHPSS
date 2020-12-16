@@ -1,0 +1,175 @@
+<div class="container-fluid container-wrapper">
+    <div class="row">
+        <div class="content-wrapper">
+            <div class="page-title">
+                <div class="row px-3 px-md-0">
+                    <div class="col-sm-12 pl-0">
+                        <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
+                            <li class="breadcrumb-item active gray-04-color"><a href="javascript:void(0)"><i class="ti-home mr-2"></i>Sessions</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- main body -->
+            <div class="row">
+                <div class="col-md-12 mb-30">
+                    <div class="card card-statistics h-100">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a class="button float-right" href="javascript:void(0)" (click)="openModalbedmanag(template,1)"><i class="fa fa-bed"></i>Create New Session</a>
+                                </div>
+                            </div>
+                            
+                           
+                            <ng-template #template>
+                                <div class="modal-header">
+                                    <h4 class="modal-title pull-left">Add New Session</h4>
+                                    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row mx-0">
+                                        <div class="col-md-12 mt-3">
+                                            <form>
+                                                <div class="form-group row mx-0">
+                                                    <div class="col-sm-4 form-check checkbox">
+                                                        
+                                                       <input type="checkbox" class="form-check-input" id="Behavior1">
+                                                       <label class="form-check-label" for="Behavior1" [(ngModel)]="beds.behavior" name='behavior1'>Behavior therapy</label>
+                                            
+                                                    </div>
+                                                    <div class="col-sm-4 form-check checkbox">
+                                                        
+                                                        <input type="checkbox" class="form-check-input" id="Cognitive">
+                                                        <label class="form-check-label" for="Cognitive" [(ngModel)]="beds.Cognitive" name='Cognitive'>Cognitive therapy</label>
+                                             
+                                                     </div>
+                                                     <div class="col-sm-4 form-check checkbox">
+                                                        
+                                                        <input type="checkbox" class="form-check-input" id="Cognitive-behavioral">
+                                                        <label class="form-check-label" for="Cognitive-behavioral" [(ngModel)]="beds.cog_beh" name='cog_beh'>Cognitive-behavioral therapy   </label>
+                                             
+                                                     </div>
+                                                    
+                                                </div>
+
+                                                <div class="form-group row mx-0">
+                                                    <div class="col-sm-4 form-check checkbox">
+                                                        
+                                                       <input type="checkbox" class="form-check-input" id="Humanistic">
+                                                       <label class="form-check-label" for="Humanistic" [(ngModel)]="beds.Humanistic" name='Humanistic'>Humanistic therapy</label>
+                                            
+                                                    </div>
+                                                    <div class="col-sm-4 form-check checkbox">
+                                                        
+                                                        <input type="checkbox" class="form-check-input" id="Clinician">
+                                                        <label class="form-check-label" for="Clinician" [(ngModel)]="beds.Clinician" name='Clinician'>Referred to Clinician</label>
+                                             
+                                                     </div>
+                                                     <div class="col-sm-4 form-check checkbox">
+                                                        
+                                                        <input type="checkbox" class="form-check-input" id="Feedback">
+                                                        <label class="form-check-label" for="Feedback" [(ngModel)]="beds.Feedback" name='Feedback'>Client Feedback Client consent  </label>
+                                             
+                                                     </div>
+                                                    
+                                                </div>
+                                                
+                                                <div class="form-group row mx-0">
+                                                    <div class="col-sm-12">
+                                                        <label for="inputState">Any Other</label>
+                                                        <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="beds.other" name='other'></angular-editor>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="button-success" (click)="addSession(beds)"><i class="fa fa-plus mr-1"></i> Save</button>
+                                </div>
+                            </ng-template>
+                            
+                            
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="table-responsive">
+                                                <table class="table center-aligned-table">
+                                                    <thead>
+                                                        <tr class="text-dark">
+                                                            <th>S.No</th>
+                                                            <th>Session Name</th>
+                                                            <th>Date</th>
+                                                            <th>Details</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody *ngIf="!loader_eqp2">
+                                                        <tr *ngFor="let wrd of pharmacyData1; let i=index">
+                                                            <td>{{wrd.token}}</td>
+                                                            <td>
+                                                                <!-- <img class="mr-3" src="../../../assets/images/profile-avatar.png"> -->
+                                                                <span>{{wrd.firstname}}</span>
+                                                            </td>
+                                                            <td>{{wrd.DateCreated| date }}</td>
+                                                            <td><a href="javascript:void(0)" class="text-info" (click)="openModalpending(template1,wrd)">Detail</a></td>
+                                                        </tr>
+                                                        <tr *ngIf="pharmacyData1.length === 0" style="text-align: center;">
+                                                            <td colspan="4">No Record Found</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div *ngIf="loader_eqp2" class="d-flex justify-content-center">
+                                                <div class="spinner-border theme-color" role="status">
+                                                    <span class="sr-only"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ng-template #template1>
+                                    <div class="modal-header">
+                                        <h4 class="modal-title pull-left">Bed Managment</h4>
+                                        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row mx-0">
+                                            <div class="col-md-12 mt-3">
+                                                <form>
+                                                    <div class="form-group row mx-0">
+                                                        <div class="col-sm-12">
+                                                            <label for="inputState">Enter Bed No</label>
+                                                            <input type="checkbox" class="form-control input-sm" [(ngModel)]="admit.bedno" name="bedno" id="male" placeholder="Enter Bed No">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row mx-0">
+                                                        <div class="col-sm-12">
+                                                            <label for="inputState">MLC</label>
+                                                            <select class="form-control" [(ngModel)]="admit.mlc" name="mlc">
+                                                                    <option value="1">Yes</option>
+                                                                    <option value="0">No</option>
+                                                                </select>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="button" (click)="modalRef.hide()" ><i class="fa fa-plus"></i> Admit</button>
+                                    </div>
+                                </ng-template>
+                               
+                              
+                              
+                           
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

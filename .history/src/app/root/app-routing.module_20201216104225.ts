@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'fleet', loadChildren: () => import('../fleet/Fleet.module').then(m => m.FleetModule) },
   { path: 'labour-room', loadChildren: () => import('../labour-room/labour-room.module').then(m => m.LabourRoomModule) },
   { path: 'print', loadChildren: () => import('../print-module/print-module.module').then(m => m.PrintModuleModule) },
-  { path: 'psychology', loadChildren: () => import('../psychology/psychology.module').then(m => m.PsychologyModule) },
+  { path: 'print', loadChildren: () => import('../psychology/psychology.module').then(m => m.PsychologyModule) },
   { path: '**', redirectTo: '' }
   
  
