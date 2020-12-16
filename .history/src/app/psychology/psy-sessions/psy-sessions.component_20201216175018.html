@@ -238,7 +238,7 @@
                         
                                                                                 <input type="checkbox" class="form-check-input" id="Behavior1"
                                                                                     (change)="bedsE.behaviorE = $event.target.checked ? 1: 0"
-                                                                                    [(ngModel)]="bedsE.behaviorE" name='behavior1' [checked]="bedsE.behaviorE == 1">
+                                                                                    [(ngModel)]="bedsE.behaviorE" name='behavior1'>
                                                                                 <label class="form-check-label" for="Behavior1">Behavior
                                                                                     therapy</label>
                         
@@ -309,8 +309,8 @@
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="button-success" (click)="updateSession(bedsE)"><i
-                                                                    class="fa fa-plus mr-1"></i> Update</button>
+                                                            <button type="button" class="button-success" (click)="addSession(bedsE)"><i
+                                                                    class="fa fa-plus mr-1"></i> Save</button>
                                                         </div>
                                                     </ng-template>
                         

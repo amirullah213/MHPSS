@@ -32,7 +32,6 @@ export class PsySessionsComponent implements OnInit {
   userID:any;
   model7:any={};
   bedsE:any={};
-  model8:any={};
   constructor(
     private modalService: BsModalService,
     private router: Router,
@@ -192,35 +191,5 @@ export class PsySessionsComponent implements OnInit {
       (error) => { }
     ); 
   }
-  updateSession(updat){
-    this.model8.id = updat.id;
-    this.model8.behavior = updat.behaviorE;
-    this.model8.cognitive = updat.CognitiveE;
-    this.model8.cognitive_behavioral = updat.cog_behE;
-    this.model8.humanistic = updat.HumanisticE;
-    this.model8.referred = updat.ClinicianE;
-    this.model8.consent = updat.FeedbackE;
-    this.model8.other = updat.otherE;
 
-   
-    this.psyService.updatePsychological(this.model8).subscribe(
-      (response: any) => {
-        if (response.status === 0) {
-          console.log('response==', response)
-          // this.pharmacyData1 = response.data;
-          // console.log('this.pharmacy pats==', this.pharmacyData1)
-          this.loader_eqp2 = false;
-          this.modalRef.hide();
-          this.getPsyclogicals()
-        }
-        if (response.status === 1) {
-          this.errormsg = response.errors;
-          this.loader_eqp2 = false;
-          console.log('error=', this.errormsg);
-
-        }
-      },
-      (error) => { }
-    ); 
-  }
 }

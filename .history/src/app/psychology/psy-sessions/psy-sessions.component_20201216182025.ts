@@ -192,16 +192,15 @@ export class PsySessionsComponent implements OnInit {
       (error) => { }
     ); 
   }
-  updateSession(updat){
-    this.model8.id = updat.id;
-    this.model8.behavior = updat.behaviorE;
-    this.model8.cognitive = updat.CognitiveE;
-    this.model8.cognitive_behavioral = updat.cog_behE;
-    this.model8.humanistic = updat.HumanisticE;
-    this.model8.referred = updat.ClinicianE;
-    this.model8.consent = updat.FeedbackE;
-    this.model8.other = updat.otherE;
-
+  updateSession(){
+    this.model8.id = this.bedsE.id;
+    this.model8.behavior = this.bedsE.id;
+    this.model8.cognitive = this.bedsE.id;
+    this.model8.cognitive_behavioral = this.bedsE.id;
+    this.model8.humanistic = this.bedsE.id;
+    this.model8.referred = this.bedsE.id;
+    this.model8.consent = this.bedsE.id;
+    this.model8.other = this.bedsE.id;
    
     this.psyService.updatePsychological(this.model8).subscribe(
       (response: any) => {

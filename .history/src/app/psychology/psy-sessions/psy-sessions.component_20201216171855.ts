@@ -30,9 +30,6 @@ export class PsySessionsComponent implements OnInit {
   admit: any = {};
   loader_eqp2: boolean = false;
   userID:any;
-  model7:any={};
-  bedsE:any={};
-  model8:any={};
   constructor(
     private modalService: BsModalService,
     private router: Router,
@@ -66,26 +63,6 @@ export class PsySessionsComponent implements OnInit {
     this.userDataRow = data;
     this.modalRef = this.modalService.show(deleteUser, this.userDataRow);
     
-  }
-  openModedit(usersEdit: TemplateRef<any>,dataOb) {
-    
-    this.userDataRow = dataOb;
-    this.modalRef = this.modalService.show(usersEdit, Object.assign({}, { class: 'modal-lg' }, this.userData)); //, this.userData  //, data
-    console.log('user data====',this.userDataRow);
-   this.showEditData(this.userDataRow)
-     //this.modalRef.content.userActivate = 'Close';
-  }
-  showEditData(edtObj){
-    this.bedsE.id=edtObj.id;
-    this.bedsE.behaviorE=edtObj.behavior;
-    this.bedsE.CognitiveE=edtObj.cognitive;
-    
-    
-     this.bedsE.cog_behE=edtObj.cognitive_behavioral;
-     this.bedsE.HumanisticE=edtObj.humanistic;
-     this.bedsE.ClinicianE=edtObj.referred;
-     this.bedsE.FeedbackE=edtObj.consent;
-     this.bedsE.otherE=edtObj.other;
   }
   openDeleteModal(userdelete: TemplateRef<any>,dataOb) {
     this.userID = dataOb.id;
@@ -169,58 +146,7 @@ export class PsySessionsComponent implements OnInit {
     this.router.navigate(['ward/discharged'])
   }
   deleteSession(){
-    this.model7.id = this.userID;
-   
     
-    this.psyService.deletePsychological(this.model7).subscribe(
-      (response: any) => {
-        if (response.status === 0) {
-          console.log('response==', response)
-          // this.pharmacyData1 = response.data;
-          // console.log('this.pharmacy pats==', this.pharmacyData1)
-          this.loader_eqp2 = false;
-          this.modalRef.hide();
-          this.getPsyclogicals()
-        }
-        if (response.status === 1) {
-          this.errormsg = response.errors;
-          this.loader_eqp2 = false;
-          console.log('error=', this.errormsg);
-
-        }
-      },
-      (error) => { }
-    ); 
   }
-  updateSession(updat){
-    this.model8.id = updat.id;
-    this.model8.behavior = updat.behaviorE;
-    this.model8.cognitive = updat.CognitiveE;
-    this.model8.cognitive_behavioral = updat.cog_behE;
-    this.model8.humanistic = updat.HumanisticE;
-    this.model8.referred = updat.ClinicianE;
-    this.model8.consent = updat.FeedbackE;
-    this.model8.other = updat.otherE;
 
-   
-    this.psyService.updatePsychological(this.model8).subscribe(
-      (response: any) => {
-        if (response.status === 0) {
-          console.log('response==', response)
-          // this.pharmacyData1 = response.data;
-          // console.log('this.pharmacy pats==', this.pharmacyData1)
-          this.loader_eqp2 = false;
-          this.modalRef.hide();
-          this.getPsyclogicals()
-        }
-        if (response.status === 1) {
-          this.errormsg = response.errors;
-          this.loader_eqp2 = false;
-          console.log('error=', this.errormsg);
-
-        }
-      },
-      (error) => { }
-    ); 
-  }
 }

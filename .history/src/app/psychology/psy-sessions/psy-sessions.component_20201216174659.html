@@ -223,7 +223,7 @@
                                                     <!-- model for update session  -->
                                                     <ng-template #usersEdit>
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title pull-left">Edit Session</h4>
+                                                            <h4 class="modal-title pull-left">Add New Session</h4>
                                                             <button type="button" class="close pull-right" aria-label="Close"
                                                                 (click)="modalRef.hide()">
                                                                 <span aria-hidden="true">&times;</span>
@@ -237,8 +237,8 @@
                                                                             <div class="col-sm-4 form-check checkbox">
                         
                                                                                 <input type="checkbox" class="form-check-input" id="Behavior1"
-                                                                                    (change)="bedsE.behaviorE = $event.target.checked ? 1: 0"
-                                                                                    [(ngModel)]="bedsE.behaviorE" name='behavior1' [checked]="bedsE.behaviorE == 1">
+                                                                                    (change)="beds.behavior = $event.target.checked ? 1: 0"
+                                                                                    [(ngModel)]="beds.behavior" name='behavior1'>
                                                                                 <label class="form-check-label" for="Behavior1">Behavior
                                                                                     therapy</label>
                         
@@ -246,8 +246,8 @@
                                                                             <div class="col-sm-4 form-check checkbox">
                         
                                                                                 <input type="checkbox" class="form-check-input" id="Cognitive"
-                                                                                    (change)="bedsE.CognitiveE = $event.target.checked ? 1: 0"
-                                                                                    [(ngModel)]="bedsE.CognitiveE" name='Cognitive'>
+                                                                                    (change)="beds.Cognitive = $event.target.checked ? 1: 0"
+                                                                                    [(ngModel)]="beds.Cognitive" name='Cognitive'>
                                                                                 <label class="form-check-label" for="Cognitive">Cognitive
                                                                                     therapy</label>
                         
@@ -256,8 +256,8 @@
                         
                                                                                 <input type="checkbox" class="form-check-input"
                                                                                     id="Cognitive-behavioral"
-                                                                                    (change)="bedsE.cog_behE = $event.target.checked ? 1: 0"
-                                                                                    [(ngModel)]="bedsE.cog_behE" name='cog_beh'>
+                                                                                    (change)="beds.cog_beh = $event.target.checked ? 1: 0"
+                                                                                    [(ngModel)]="beds.cog_beh" name='cog_beh'>
                                                                                 <label class="form-check-label"
                                                                                     for="Cognitive-behavioral">Cognitive-behavioral therapy
                                                                                 </label>
@@ -270,8 +270,8 @@
                                                                             <div class="col-sm-4 form-check checkbox">
                         
                                                                                 <input type="checkbox" class="form-check-input" id="Humanistic"
-                                                                                    (change)="bedsE.HumanisticE = $event.target.checked ? 1: 0"
-                                                                                    [(ngModel)]="bedsE.HumanisticE" name='Humanistic'>
+                                                                                    (change)="beds.Humanistic = $event.target.checked ? 1: 0"
+                                                                                    [(ngModel)]="beds.Humanistic" name='Humanistic'>
                                                                                 <label class="form-check-label" for="Humanistic">Humanistic
                                                                                     therapy</label>
                         
@@ -279,8 +279,8 @@
                                                                             <div class="col-sm-4 form-check checkbox">
                         
                                                                                 <input type="checkbox" class="form-check-input" id="Clinician"
-                                                                                    (change)="bedsE.ClinicianE = $event.target.checked ? 1: 0"
-                                                                                    [(ngModel)]="bedsE.ClinicianE" name='Clinician'>
+                                                                                    (change)="beds.Clinician = $event.target.checked ? 1: 0"
+                                                                                    [(ngModel)]="beds.Clinician" name='Clinician'>
                                                                                 <label class="form-check-label" for="Clinician">Referred to
                                                                                     Clinician</label>
                         
@@ -288,8 +288,8 @@
                                                                             <div class="col-sm-4 form-check checkbox">
                         
                                                                                 <input type="checkbox" class="form-check-input" id="Feedback"
-                                                                                    (change)="bedsE.FeedbackE = $event.target.checked ? 1: 0"
-                                                                                    [(ngModel)]="bedsE.FeedbackE" name='Feedback' checked>
+                                                                                    (change)="beds.Feedback = $event.target.checked ? 1: 0"
+                                                                                    [(ngModel)]="beds.Feedback" name='Feedback' checked>
                                                                                 <label class="form-check-label" for="Feedback">Client Feedback
                                                                                     Client consent </label>
                         
@@ -301,7 +301,7 @@
                                                                             <div class="col-sm-12">
                                                                                 <label for="inputState">Any Other</label>
                                                                                 <angular-editor [placeholder]="'Enter text here...'"
-                                                                                    [(ngModel)]="bedsE.otherE" name='other'></angular-editor>
+                                                                                    [(ngModel)]="beds.other" name='other'></angular-editor>
                                                                             </div>
                                                                         </div>
                                                                     </form>
@@ -309,8 +309,8 @@
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="button-success" (click)="updateSession(bedsE)"><i
-                                                                    class="fa fa-plus mr-1"></i> Update</button>
+                                                            <button type="button" class="button-success" (click)="addSession(beds)"><i
+                                                                    class="fa fa-plus mr-1"></i> Save</button>
                                                         </div>
                                                     </ng-template>
                         

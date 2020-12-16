@@ -28,10 +28,7 @@ export class PsyServicesService {
     let url = APP_CONFIG.apiBaseUrl + 'deletepsychological';
     return this.http.post(url, obj);
   }
-  updatePsychological(obj: any) {
-    let url = APP_CONFIG.apiBaseUrl + 'updatepsychological';
-    return this.http.post(url, obj);
-  }
+
   
   
 }
