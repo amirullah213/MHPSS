@@ -114,8 +114,6 @@ export class PsySessionsComponent implements OnInit {
           // this.pharmacyData1 = response.data;
           // console.log('this.pharmacy pats==', this.pharmacyData1)
           this.loader_eqp2 = false;
-          this.modalRef.hide();
-          this.getPsyclogicals()
         }
         if (response.status === 1) {
           this.errormsg = response.errors;
