@@ -181,9 +181,4 @@ export class HomeComponent implements OnInit {
     localStorage.setItem('pharmacyData',JSON.stringify(patdata) );
      window.open('/print/home')
    }
-   gotoPrintRadiology(patdata){
-    localStorage.setItem('pathDetails',JSON.stringify(patdata) );
-   // window.open('/pharma/printRad')
-    this.router.navigate(['ward/print-reports'])
-    }
 }
