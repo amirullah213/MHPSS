@@ -95,6 +95,7 @@ export class AdmittedPatientsComponent implements OnInit {
   pathArrNewNew: any=[];
   a: boolean=false;
   insTest: boolean=true;
+  outForm: any;
 
   constructor(
     private modalService: BsModalService, 
@@ -401,7 +402,8 @@ getDischargeData() {
 //update indoor details
 
 updateIndoor(indoorData) {
-  console.log('indoorData',indoorData)
+  debugger
+  this.outForm=indoorData;
   this.loaderUpdate= true;
   this.model8.hospitalID=this.hospitalID;
   this.model8.tokenID=this.detailsData.ptID;
@@ -776,7 +778,8 @@ getType(typ){
 gotoDischarge(){
 
   // localStorage.setItem('disData',JSON.stringify(disform));
-  // localStorage.setItem('outData',JSON.stringify(outForm));
+  debugger
+   localStorage.setItem('outData',JSON.stringify(this.outForm));
   localStorage.setItem('diagnosArr',JSON.stringify(this.diagnosArr));
 
   

@@ -72,9 +72,10 @@ export class DischargePatientMedicineComponent implements OnInit {
    
 
    this.dischargFormData =JSON.parse(localStorage.getItem('disData')) ;
-
+debugger
+if(localStorage.getItem('outData')!="undefined"){
    this.outFormData =JSON.parse(localStorage.getItem('outData')) ;
-
+}
    this.prescID=JSON.parse(localStorage.getItem('prescriptionID'));
   this.diagnosArr=JSON.parse( localStorage.getItem('diagnosArr'));
     this.getMedicinesData();
@@ -184,10 +185,17 @@ updateIndoor(fv) {
   this.model8.hospitalID=this.hospitalID;
   this.model8.tokenID=this.detailsData.ptID;
   this.model8.indoorStatus=2;
+  debugger
+  if(localStorage.getItem('outData')!="undefined"){
   this.model8.isCriticalIll=this.outFormData.criti_ill;
-
   this.model8.operativeProcedure=this.outFormData.operate_procedure;
   this.model8.dialysis=this.outFormData.dylasis;
+  }
+  else{
+    this.model8.isCriticalIll="0"
+    this.model8.operativeProcedure=""
+    this.model8.dialysis=""
+  }
   this.model8.dischargeType=fv.dis_type;
   this.model8.dischargeDate=fv.dis_date;
   this.model8.diagnosis=this.diagnosArr;
