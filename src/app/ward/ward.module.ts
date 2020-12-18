@@ -20,12 +20,13 @@ import { AdmittedPatientsComponent } from './admitted-patients/admitted-patients
 import { WardListComponent } from './ward-list/ward-list.component';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { IsdirectPipe } from './pipes/isdirect.pipe';
-import {DischargePatientMedicineComponent} from './discharge-patient-medicine/discharge-patient-medicine.component'
+import {DischargePatientMedicineComponent} from './discharge-patient-medicine/discharge-patient-medicine.component';
+import { PrintReportComponent } from './print-report/print-report.component'
 
 
 
 @NgModule({
-  declarations: [WardComponent, HomeComponent, WardSideBarComponent, PendingPatientsComponent, DischargedPatientsComponent, AdmittedPatientsComponent, WardListComponent, IsdirectPipe,DischargePatientMedicineComponent],
+  declarations: [WardComponent, HomeComponent, WardSideBarComponent, PendingPatientsComponent, DischargedPatientsComponent, AdmittedPatientsComponent, WardListComponent, IsdirectPipe,DischargePatientMedicineComponent, PrintReportComponent],
   imports: [
     CommonModule,
     WardRoutingModule, CommonModule, ReactiveFormsModule, NgxPrintModule, SharedModule, DataTablesModule, ModalModule.forRoot(), FormsModule, BsDatepickerModule.forRoot(), CollapseModule.forRoot(),

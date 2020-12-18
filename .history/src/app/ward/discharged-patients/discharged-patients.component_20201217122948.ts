@@ -36,7 +36,6 @@ export class DischargedPatientsComponent implements OnInit {
   userList: any = [];
   diag: any;
   invets:any=[];
-  complantArray:any=[];
 
   constructor(
     private modalService: BsModalService,
@@ -70,8 +69,6 @@ export class DischargedPatientsComponent implements OnInit {
         console.log('userList===', this.userList);
         this.invets=this.userList.investigations
         console.log('investigations===', this.invets);
-        this.complantArray=JSON.parse(this.userList.complaints); 
-        console.log('complaints===', this.complantArray);
         this.userLoader = false;
         
       }

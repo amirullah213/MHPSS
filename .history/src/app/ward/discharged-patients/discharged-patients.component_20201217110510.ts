@@ -35,8 +35,6 @@ export class DischargedPatientsComponent implements OnInit {
   patInfo: any = {};
   userList: any = [];
   diag: any;
-  invets:any=[];
-  complantArray:any=[];
 
   constructor(
     private modalService: BsModalService,
@@ -48,7 +46,7 @@ export class DischargedPatientsComponent implements OnInit {
   ngOnInit(): void {
     this.hospitalID=localStorage.getItem('hospitalID');
     this.patInfo=JSON.parse(localStorage.getItem('wardData')) ;
-    console.log('wardData==', this.patInfo);
+    console.log('wardData==', this.detailsData);
 
     
     //this.userData.doctorID=localStorage.getItem('docId');
@@ -58,22 +56,18 @@ export class DischargedPatientsComponent implements OnInit {
  getWardDischargeCard() {
   this.userLoader = true;
   this.model5.hospitalID=this.hospitalID;
-  this.model5.tokenID=this.patInfo.ptID;
+  this.model5.tokenID=this.detailsData.ptID;
   console.log('modal 5==', this.model5);
   this.wardService.dischargeCard(this.model5).subscribe(
     (response: any) => {
       if (response.status === 0) {
         console.log(response);
         this.userList = response.data;
-        
         // this.diag = JSON.parse(response.data[0].diagnosis)
-        console.log('userList===', this.userList);
-        this.invets=this.userList.investigations
-        console.log('investigations===', this.invets);
-        this.complantArray=JSON.parse(this.userList.complaints); 
-        console.log('complaints===', this.complantArray);
+        console.log('userPresc list===', this.userList);
+       
         this.userLoader = false;
-        
+        this.userLoader = false;
       }
   if (response.status === 1) {
         this.errormsg = response.errors;
