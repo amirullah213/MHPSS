@@ -14,7 +14,7 @@ import { ServiceService } from '../services/service.service';
 })
 export class RadiologyComponent implements OnInit {
 
-  cprintPage() {
+  printPage() {
     window.print();
   }
   
@@ -29,7 +29,7 @@ export class RadiologyComponent implements OnInit {
   userType:any;
   pathData1:any={};
   userData:any={};
-
+  Details:any={};
 
 
   constructor(
@@ -42,7 +42,8 @@ export class RadiologyComponent implements OnInit {
     this.userType=localStorage.getItem('userType');
     this.pathData1=JSON.parse(localStorage.getItem('pathDetails'));
    console.log('pathData1===',this.pathData1);
-
+   this.Details=JSON.parse(localStorage.getItem('details'));
+   console.log('Details===',this.Details.hospitalName);
    this.userData=JSON.parse(localStorage.getItem('pathologyPrint')) ;
    console.log('pathologyPrint===',this.userData);
     //this.getPatPrescrib(this.patInfo);

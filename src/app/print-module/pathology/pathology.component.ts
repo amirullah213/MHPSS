@@ -28,6 +28,7 @@ export class PathologyComponent implements OnInit {
   userType:any;
   pathData1:any={};
   userData:any={};
+  Details:any={};
 
 
 
@@ -40,7 +41,10 @@ export class PathologyComponent implements OnInit {
     this.doctorID=localStorage.getItem('docId');
     this.userType=localStorage.getItem('userType');
     this.pathData1=JSON.parse(localStorage.getItem('pathDetails'));
-   console.log('pathData1===',this.pathData1);
+    console.log('pathData1===',this.pathData1);
+    this.Details=JSON.parse(localStorage.getItem('details'));
+    console.log('Details===',this.Details.hospitalName);
+   
 
    this.userData=JSON.parse(localStorage.getItem('pathologyPrint')) ;
    console.log('pathologyPrint===',this.userData);

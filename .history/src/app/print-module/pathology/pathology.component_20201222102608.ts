@@ -28,6 +28,7 @@ export class PathologyComponent implements OnInit {
   userType:any;
   pathData1:any={};
   userData:any={};
+  Details:any={};
 
 
 
@@ -40,40 +41,16 @@ export class PathologyComponent implements OnInit {
     this.doctorID=localStorage.getItem('docId');
     this.userType=localStorage.getItem('userType');
     this.pathData1=JSON.parse(localStorage.getItem('pathDetails'));
-   console.log('pathData1===',this.pathData1);
+    console.log('pathData1===',this.pathData1);
+    this.Details=JSON.parse(localStorage.getItem('details'));
+    console.log('Details===',this.Details);
+   
 
    this.userData=JSON.parse(localStorage.getItem('pathologyPrint')) ;
    console.log('pathologyPrint===',this.userData);
-    this.getPatPrescrib(this.patInfo);
+    //this.getPatPrescrib(this.patInfo);
   }
 
-  //patient prescription list
-  getPatPrescrib(obj: any) {
-    this.param = { 'crp': obj.token, 'hospitalID': obj.hospitalID };
-
-    this.userLoader = true;
-    this.printService.getprescription(this.param).subscribe
-      ((response: any) => {
-        if (response.status === 0) {
-          console.log(response);
-          this.userList = response.data;
-          console.log('userPresc list===', this.userList);
-          //console.log('userPresc list===', JSON.parse(this.userList[0].test[2].xrayFilms6));
-         // this.diagnosisArr = JSON.parse(this.userList[0].test[2].xrayFilms6)
-          this.diagnosisArr.forEach(function (value) {
-            console.log("diagnosisArr", value);
-            // this.daig.push(value);
-            // console.log("this.daig",this.daig);
-          })
-          this.userLoader = false;
-        } else {
-          this.userLoader = false;
-          alert('Something went wrong try again');
-        }
-      },
-        (error) => { }
-      );
-  }
- // patient prescription list
+  
 
 }
