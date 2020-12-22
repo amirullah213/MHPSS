@@ -6,7 +6,7 @@
                     <div class="col-sm-12 pl-0">
                         <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
                             <li class="breadcrumb-item"><a href="javascript:void(0)" class="gray-color">
-                                  Print Pathology  </a></li>
+                                  Print Reports  </a></li>
                             <!-- <li class="breadcrumb-item active gray-04-color">Commission</li> -->
                         </ol>
                     </div>
@@ -19,10 +19,13 @@
                             <div class="row" >
                                
                                     <div class="row mx-0">
-                                        <div class="col-md-12 mt-3">
-                                            <p class="mb-1 mt-3"><b>Test Name</b>
-                                                <span class="ml-4">{{userData.testName}}</span>
+                                        <div class="col-md-9 mt-3 text-center">
+                                            <p class="mb-1 mt-3"> 
+                                                <span class="ml-4"> <h3> {{userData.testName}}</h3></span>
                                             </p>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-3">
+                                            <img class="" src="../../../../../assets/images/merf.png" width="200" height="100">
                                         </div>
                                         <div class="col-md-12 mt-3">
                                             <p class="mb-1 mt-3"><b>Token Number</b>
@@ -33,6 +36,12 @@
                                             <p class="mb-1 mt-2"><b>Patient Name</b>
                                                 <span class="ml-4">{{pathData1.firstname}}</span>
                                             </p>
+                                            <p class="mb-1 mt-3"><b>Test Date / Time</b>
+                                                <span class="ml-4">{{userData.DateCreated | date: 'dd-MM-yyyy h:mm a'}}</span>
+                                            </p>
+                                            <p class="mb-1 mt-3"><b>Sent From</b>
+                                                <span class="ml-4">{{pathData1.departmentName}}</span>
+                                            </p>
                                             <p class="mb-1 mt-3"><b>Date Of Birth</b>
                                                 <span class="ml-4">{{pathData1.dob | date}}</span>
                                             </p>
@@ -41,8 +50,18 @@
                                             <p class="mb-1 mt-3"><b>Father/Husband Name</b>
                                                 <span class="ml-4"> {{pathData1.f_hName}}</span>
                                             </p>
+                                           
+                                            <p *ngIf="userData.status!=0" class="mb-1 mt-3"><b>Result Date /Time</b>
+                                                <span class="ml-4">{{userData.DateModified | date: 'dd-MM-yyyy h:mm a'}}</span>
+                                            </p>
+                                            <p *ngIf="userData.status==0" class="mb-1 mt-3"><b>Result Date /Time</b>
+                                                <span class="ml-4">Result Pending</span>
+                                            </p>
                                             <p class="mb-1 mt-3"><b>Mobile Number</b>
                                                 <span class="ml-4"> {{pathData1.cellNo}}</span>
+                                            </p>
+                                            <p class="mb-1 mt-3" *ngIf="pathData1.bedNo!=null"><b>Bed No</b>
+                                                <span class="ml-4"> {{pathData1.bedNo}}</span>
                                             </p>
                                         </div>
                                     </div>
@@ -54,8 +73,8 @@
                                             <thead>
                                                 <tr class="text-dark">
                                                     <!-- <th>Test Type</th> -->
-                                                    <th  width="20%">Test Name</th>
-                                                    <th width="30%">Results</th>
+                                                    <th  width="30%">Test Name</th>
+                                                    <th width="40%">Results</th>
                                                     <th>Range</th>
                                                 </tr>
                                             </thead>
@@ -89,7 +108,14 @@
                                             <!-- for array data -->
                                         </table>
                                     </div>
-                                
+                                <hr>
+                                <div class="col-lg-12 col-md-12 col-sm-12 mt mt-5 d-print-none">
+                                    <div class="form-group text-center">
+                                        <button type="button" (click)="printPage()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
+                                         <i class="fa fa-print"></i> Print
+                                       </button>
+                                    </div>
+                                </div>
                             </div>
                             <!-- <div *ngIf="userLoader" class="d-flex justify-content-center">
                                 <div class="spinner-border theme-color" role="status">
