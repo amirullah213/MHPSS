@@ -406,8 +406,8 @@ getDischargeData() {
 
 updateIndoor(indoorData) {
   console.log('outform data',indoorData)
-  
-  this.outForm=this.outdoorData;
+  debugger
+  this.outForm=indoorData;
   this.loaderUpdate= true;
   this.model8.hospitalID=this.hospitalID;
   this.model8.tokenID=this.detailsData.ptID;
@@ -783,7 +783,7 @@ gotoDischarge(){
 
   // localStorage.setItem('disData',JSON.stringify(disform));
   debugger
-   localStorage.setItem('outData',JSON.stringify(this.outdoorData));
+   localStorage.setItem('outData',JSON.stringify(this.outForm));
   localStorage.setItem('diagnosArr',JSON.stringify(this.diagnosArr));
 
   

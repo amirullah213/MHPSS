@@ -53,14 +53,7 @@ export class DischargePatientMedicineComponent implements OnInit {
 
   treatmentForm:FormGroup;
   disFormData: any;
-  showRef:any=2;
-  params:any={};
-  refList:any=[];
-  docType:any;
-  arrylist:any=[];
-  id:any;
-  model9:any={};
-  model119:any={};
+  showRef:boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -69,16 +62,15 @@ export class DischargePatientMedicineComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('showRef',this.showRef)
     this.indoor= localStorage.getItem('indoorID');
     
     this.detailsData=JSON.parse(localStorage.getItem('wardData')) ;
-console.log(' this.detailsData====', this.detailsData)
+
     this.hospitalID=localStorage.getItem('hospitalID');
     this.doctorID=localStorage.getItem('docId');
 
     //previos page data
-    this.getindoorlist();
+   
 
    this.dischargFormData =JSON.parse(localStorage.getItem('disData')) ;
 
@@ -111,7 +103,6 @@ if(localStorage.getItem('outData')!="undefined"){
     dis_type: ['', Validators.required],
     dis_date: ['', Validators.required],
     access_type: ['', Validators.required],
-    ref:['', Validators.required],
     
 },
 
@@ -198,9 +189,9 @@ updateIndoor(fv) {
   this.model8.indoorStatus=2;
   debugger
   if(localStorage.getItem('outData')!="undefined"){
-  this.model8.isCriticalIll=this.outFormData.isCriticalIll;
-  this.model8.operativeProcedure=this.outFormData.operativeProcedure;
-  this.model8.dialysis=this.outFormData.dialysis;
+  this.model8.isCriticalIll=this.outFormData.criti_ill;
+  this.model8.operativeProcedure=this.outFormData.operate_procedure;
+  this.model8.dialysis=this.outFormData.dylasis;
   }
   else{
     this.model8.isCriticalIll="0"
@@ -284,139 +275,11 @@ removeArr(indx){
 changeCheckboxVal(e) {
 
   if (e.target.value == '0') {
-    this.showRef = 0;
+    this.showRef = false;
   } else {
-    this.showRef = 1
+    this.showRef = true
   }
   console.log('radio value==',this.showRef)
 }
-//============================
-getindoorlist()
-   {
-     this.params={"hospitalID": localStorage.getItem('hospitalID')}
-     this.wardService.getindoorlist(this.params).subscribe
-     ((response: any) => {
-       if (response.status === 0) {
-                 
-         
-       this.refList = response.data;
-
-         this.userLoader = false;
-       } else {
-         this.userLoader = false;
-         alert('Something went wrong try again');
-       }
-     },
-       (error) => { }
-     );
-    
-    }
-
-    changeRefVal(e){
-     
-     console.log('eeeeeeeeee',e)
-      if(e!="Choose Referral"){
-        debugger
-     this.arrylist=[]
-     this.arrylist = this.refList
-    
-       
-       if(e){
-       this.docType=1;
-       this.id = e
-       }
-       else
-       {
-         this.docType=undefined;
-         this.id = undefined
-       }
-     }
-   }
-//operate indoor details
-operateIndoor() {
-  
-  this.loaderUpdate= true;
-  this.model119.patientID=this.detailsData.patientID;
-  this.model119.hospitalID=this.hospitalID;
-  this.model119.ptID=this.detailsData.ptID;
-   this.model119.departmentID= this.detailsData.departmentID;
-  this.model119.isIndoor=1;
-  this.model119.refferedFrom=this.detailsData.refferedFrom;
-  this.model119.diagnosis=this.diagnosArr;
- 
-  console.log('modal 9==', this.model119);
-  
-  this.wardService.operateToken(this.model119).subscribe(
-    (response: any) => {
-      if (response.status === 0) {
-       // this.outdoorForm.reset();
-        // this.getoutDoorData();
-        
-         alert('Done Successfully');
-        this.router.navigate(['/ward/home']);
-        this.loaderUpdate = false;
-      }
-  if (response.status === 1) {
-        this.errormsg = response.error;
-        this.loaderUpdate = false;
-        console.log('error=', this.errormsg);
-        alert('Problem in service! try again');
-        
-      }
-    },
-    (error) => {}
-  );
-
-}
-//operate indoor details
-   //==============update indoor detail to discharge patient
-updateIndoor2(fv) {
- 
-  if(fv.ref){
-  this.loaderUpdate= true;
-  this.model9.hospitalID=this.hospitalID;
-  this.model9.tokenID=this.detailsData.ptID;
-  this.model9.indoorStatus=2;
-  debugger
-  if(localStorage.getItem('outData')!="undefined"){
-  this.model9.isCriticalIll=this.outFormData.isCriticalIll;
-  this.model9.operativeProcedure=this.outFormData.operativeProcedure;
-  this.model9.dialysis=this.outFormData.dialysis;
-  }
-  else{
-    this.model9.isCriticalIll="0"
-    this.model9.operativeProcedure=""
-    this.model9.dialysis=""
-  }
-  this.model9.dischargeType=fv.dis_type;
-  this.model9.dischargeDate=fv.dis_date;
-  this.model9.diagnosis=this.diagnosArr;
-  console.log('modal 8==', this.model9);
-  
-  this.wardService.updateIndoorDetail(this.model9).subscribe(
-    (response: any) => {
-      if (response.status === 0) {
-       // this.outdoorForm.reset();
-        //this.getoutDoorData();
-       this.operateIndoor();
-       // this.router.navigate(['/ward/home'])
-        this.loaderUpdate = false;
-      }
-  if (response.status === 1) {
-        this.errormsg = response.error;
-        this.loaderUpdate = false;
-        console.log('error=', this.errormsg);
-        alert('Problem in service! try again');
-        
-      }
-    },
-    (error) => {}
-  );
-
-}else{
-  alert("Please select Refferal")
-}
-}
-//+===================ended
  
 }

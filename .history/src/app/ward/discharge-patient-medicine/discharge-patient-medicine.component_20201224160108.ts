@@ -380,7 +380,7 @@ updateIndoor2(fv) {
   debugger
   if(localStorage.getItem('outData')!="undefined"){
   this.model9.isCriticalIll=this.outFormData.isCriticalIll;
-  this.model9.operativeProcedure=this.outFormData.operativeProcedure;
+  this.model99.operativeProcedure=this.outFormData.operativeProcedure;
   this.model9.dialysis=this.outFormData.dialysis;
   }
   else{

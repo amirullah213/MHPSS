@@ -229,7 +229,7 @@
                                                             <th class="text-center">Action</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody *ngIf="getDischargedata1!='undefined'">
+                                                    <tbody *ngIf="getDischargedata1.hospitalTreatments!='undefined'">
                                                         <tr class="" *ngFor="let dis_treat of getDischargedata1.hospitalTreatments">
                                                             <td>{{dis_treat.medicine}}</td>
                                                             <td>{{dis_treat.unit}}</td>

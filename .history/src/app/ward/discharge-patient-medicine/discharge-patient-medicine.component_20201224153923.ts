@@ -60,7 +60,6 @@ export class DischargePatientMedicineComponent implements OnInit {
   arrylist:any=[];
   id:any;
   model9:any={};
-  model119:any={};
 
   constructor(
     private fb: FormBuilder,
@@ -73,7 +72,7 @@ export class DischargePatientMedicineComponent implements OnInit {
     this.indoor= localStorage.getItem('indoorID');
     
     this.detailsData=JSON.parse(localStorage.getItem('wardData')) ;
-console.log(' this.detailsData====', this.detailsData)
+
     this.hospitalID=localStorage.getItem('hospitalID');
     this.doctorID=localStorage.getItem('docId');
 
@@ -332,43 +331,7 @@ getindoorlist()
        }
      }
    }
-//operate indoor details
-operateIndoor() {
-  
-  this.loaderUpdate= true;
-  this.model119.patientID=this.detailsData.patientID;
-  this.model119.hospitalID=this.hospitalID;
-  this.model119.ptID=this.detailsData.ptID;
-   this.model119.departmentID= this.detailsData.departmentID;
-  this.model119.isIndoor=1;
-  this.model119.refferedFrom=this.detailsData.refferedFrom;
-  this.model119.diagnosis=this.diagnosArr;
- 
-  console.log('modal 9==', this.model119);
-  
-  this.wardService.operateToken(this.model119).subscribe(
-    (response: any) => {
-      if (response.status === 0) {
-       // this.outdoorForm.reset();
-        // this.getoutDoorData();
-        
-         alert('Done Successfully');
-        this.router.navigate(['/ward/home']);
-        this.loaderUpdate = false;
-      }
-  if (response.status === 1) {
-        this.errormsg = response.error;
-        this.loaderUpdate = false;
-        console.log('error=', this.errormsg);
-        alert('Problem in service! try again');
-        
-      }
-    },
-    (error) => {}
-  );
 
-}
-//operate indoor details
    //==============update indoor detail to discharge patient
 updateIndoor2(fv) {
  
@@ -380,7 +343,7 @@ updateIndoor2(fv) {
   debugger
   if(localStorage.getItem('outData')!="undefined"){
   this.model9.isCriticalIll=this.outFormData.isCriticalIll;
-  this.model9.operativeProcedure=this.outFormData.operativeProcedure;
+  this.model99.operativeProcedure=this.outFormData.operativeProcedure;
   this.model9.dialysis=this.outFormData.dialysis;
   }
   else{
@@ -398,7 +361,7 @@ updateIndoor2(fv) {
       if (response.status === 0) {
        // this.outdoorForm.reset();
         //this.getoutDoorData();
-       this.operateIndoor();
+
        // this.router.navigate(['/ward/home'])
         this.loaderUpdate = false;
       }
@@ -414,7 +377,7 @@ updateIndoor2(fv) {
   );
 
 }else{
-  alert("Please select Refferal")
+  alert("Please select discharge type and date")
 }
 }
 //+===================ended

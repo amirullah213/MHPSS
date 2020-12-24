@@ -351,9 +351,8 @@ operateIndoor() {
       if (response.status === 0) {
        // this.outdoorForm.reset();
         // this.getoutDoorData();
-        
-         alert('Done Successfully');
-        this.router.navigate(['/ward/home']);
+
+        // alert('Done Successfully');
         this.loaderUpdate = false;
       }
   if (response.status === 1) {
@@ -380,7 +379,7 @@ updateIndoor2(fv) {
   debugger
   if(localStorage.getItem('outData')!="undefined"){
   this.model9.isCriticalIll=this.outFormData.isCriticalIll;
-  this.model9.operativeProcedure=this.outFormData.operativeProcedure;
+  this.model99.operativeProcedure=this.outFormData.operativeProcedure;
   this.model9.dialysis=this.outFormData.dialysis;
   }
   else{

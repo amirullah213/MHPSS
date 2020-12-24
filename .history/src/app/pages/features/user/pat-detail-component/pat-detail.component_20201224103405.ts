@@ -522,7 +522,7 @@ this.diagID = event.item.id
         this.docType=undefined;
         this.id = undefined
       }
-    }
+  }
   }
 
   changeDepVal(e) {
@@ -598,7 +598,7 @@ this.diagID = event.item.id
           this.prescriptionData = response.prescription;
           this.putValue(this.prescriptionData)
           this.patientID = response.prescription.patientID;
-          // this.prescriptionID = response.prescription.prescriptionID;
+          this.prescriptionID = response.prescription.prescriptionID;
 
           this.ptID = response.prescription.ptID;
           this.diagnosisData = response.diagnosis;          
@@ -1807,7 +1807,7 @@ this.investigationForm.patchValue({
       {
         serCall=true;  
         let operateDate = this.datepipe.transform(new Date(this.investigationForm.value.termination_date))//formatting current ///date here 
-        this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.patInfo.ptID,"patientID": this.patientID,"departmentID":this.patInfo.departmentID,"diagnosis":this.localIndoorData,"isIndoor":3,"refferedFrom":this.detail.fname,'prescriptionID': this.patInfo.prescriptionID,"admitDate":operateDate}
+        this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.patInfo.ptID,"patientID": this.patientID,"departmentID":this.patInfo.departmentID,"diagnosis":this.localIndoorData,"isIndoor":3,"refferedFrom":-1,"admitDate":operateDate}
       
         
       }
@@ -1815,7 +1815,7 @@ this.investigationForm.patchValue({
 {   
          
         serCall=true;
-        this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.patInfo.ptID,"patientID": this.patientID,"departmentID":this.id,"diagnosis":this.localIndoorData,"isIndoor":this.docType,"refferedFrom":this.detail.fname,'prescriptionID': this.patInfo.prescriptionID}
+        this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.patInfo.ptID,"patientID": this.patientID,"departmentID":this.id,"diagnosis":this.localIndoorData,"isIndoor":this.docType,"refferedFrom":-1,}
 
  }
 

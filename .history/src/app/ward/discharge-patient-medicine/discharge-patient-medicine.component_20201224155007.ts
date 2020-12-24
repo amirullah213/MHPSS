@@ -73,7 +73,7 @@ export class DischargePatientMedicineComponent implements OnInit {
     this.indoor= localStorage.getItem('indoorID');
     
     this.detailsData=JSON.parse(localStorage.getItem('wardData')) ;
-console.log(' this.detailsData====', this.detailsData)
+
     this.hospitalID=localStorage.getItem('hospitalID');
     this.doctorID=localStorage.getItem('docId');
 
@@ -339,9 +339,9 @@ operateIndoor() {
   this.model119.patientID=this.detailsData.patientID;
   this.model119.hospitalID=this.hospitalID;
   this.model119.ptID=this.detailsData.ptID;
-   this.model119.departmentID= this.detailsData.departmentID;
-  this.model119.isIndoor=1;
-  this.model119.refferedFrom=this.detailsData.refferedFrom;
+  this.model119.departmentID= this.indoor;
+  this.model119.isIndoor=4;
+  this.model119.refferedFrom=this.outdoorData.bedNo;
   this.model119.diagnosis=this.diagnosArr;
  
   console.log('modal 9==', this.model119);
@@ -351,9 +351,8 @@ operateIndoor() {
       if (response.status === 0) {
        // this.outdoorForm.reset();
         // this.getoutDoorData();
-        
-         alert('Done Successfully');
-        this.router.navigate(['/ward/home']);
+
+        // alert('Done Successfully');
         this.loaderUpdate = false;
       }
   if (response.status === 1) {
@@ -380,7 +379,7 @@ updateIndoor2(fv) {
   debugger
   if(localStorage.getItem('outData')!="undefined"){
   this.model9.isCriticalIll=this.outFormData.isCriticalIll;
-  this.model9.operativeProcedure=this.outFormData.operativeProcedure;
+  this.model99.operativeProcedure=this.outFormData.operativeProcedure;
   this.model9.dialysis=this.outFormData.dialysis;
   }
   else{
@@ -398,7 +397,7 @@ updateIndoor2(fv) {
       if (response.status === 0) {
        // this.outdoorForm.reset();
         //this.getoutDoorData();
-       this.operateIndoor();
+
        // this.router.navigate(['/ward/home'])
         this.loaderUpdate = false;
       }
@@ -414,7 +413,7 @@ updateIndoor2(fv) {
   );
 
 }else{
-  alert("Please select Refferal")
+  alert("Please select discharge type and date")
 }
 }
 //+===================ended

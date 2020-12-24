@@ -522,7 +522,7 @@ this.diagID = event.item.id
         this.docType=undefined;
         this.id = undefined
       }
-    }
+  }
   }
 
   changeDepVal(e) {

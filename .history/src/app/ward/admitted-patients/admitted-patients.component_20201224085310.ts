@@ -264,8 +264,6 @@ getImages(presIDdata) {
         //////// assign value to operative procedure
         this.outdoorForm.patchValue({
           operate_procedure: this.outdoorData.operativeProcedure,
-          criti_ill: this.outdoorData.isCriticalIll,
-          dylasis:this.outdoorData.dialysis
         
         });
        // this.outdoorData.
@@ -386,7 +384,7 @@ getDischargeData() {
     (response: any) => {
       if (response.status === 0) {
         this.getDischargedata1 = response.data;
-        console.log('this.getDischargedata1resonse==',response)
+        console.log('this.getDischargedata1resonse==',this.response)
       console.log('this.getDischargedata1==',this.getDischargedata1);
         this.loader = false;
       }
@@ -405,9 +403,8 @@ getDischargeData() {
 //update indoor details
 
 updateIndoor(indoorData) {
-  console.log('outform data',indoorData)
-  
-  this.outForm=this.outdoorData;
+  debugger
+  this.outForm=indoorData;
   this.loaderUpdate= true;
   this.model8.hospitalID=this.hospitalID;
   this.model8.tokenID=this.detailsData.ptID;
@@ -783,7 +780,7 @@ gotoDischarge(){
 
   // localStorage.setItem('disData',JSON.stringify(disform));
   debugger
-   localStorage.setItem('outData',JSON.stringify(this.outdoorData));
+   localStorage.setItem('outData',JSON.stringify(this.outForm));
   localStorage.setItem('diagnosArr',JSON.stringify(this.diagnosArr));
 
   
