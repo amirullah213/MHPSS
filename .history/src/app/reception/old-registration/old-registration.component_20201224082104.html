@@ -68,7 +68,7 @@
                                     <ng-template #captureuser class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
 
                                         <div class="modal-header">
-                                            <h4 id="dialog-sizes-name1" class="modal-title pull-left">User</h4>
+                                            <h4 id="dialog-sizes-name1" class="modal-title pull-left">Generate Token</h4>
                                             <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
                                                 <span aria-hidden="true"><i class="ti-close"></i></span>
                                             </button>
@@ -79,7 +79,7 @@
                                                 <div class="col-sm-9">
                                                     <span class="wrapper-select">
                                                                 <select class="form-control" [(ngModel)]="objDoc.doctor" (ngModelChange)="onselectDoctor(objDoc.doctor)" name="doctor">
-                                                                    <option *ngFor="let docs of docResponseArray; let i=index" [ngValue]="docs">{{docs.NAME}}</option>
+                                                                    <option *ngFor="let docs of docResponseArray; let i=index" [value]="docs.id">{{docs.NAME}}</option>
                                                                     
                                                                 </select>
                                                             </span>
@@ -90,7 +90,7 @@
                                                 <div class="col-sm-9">
                                                     <span class="wrapper-select">
                                                                 <select class="form-control" [(ngModel)]="objDoc.reff" name='reff'>
-                                                                    <option value='Self'>Self</option>
+                                                                    <option selected value='Self'>Self</option>
                                                                     <option value='RHC'>RHC</option>
                                                                     <option value='BHU'>BHU</option>
                                                                     <option value='GD'>GD</option>
@@ -106,7 +106,7 @@
                                                     <button class="button-info mr-3" *ngIf="age<10" (click)="childVacination(objDoc)">
                                                                 <i class="fa fa-plus"></i> Childe Vaccination
                                                     </button>
-                                                    <button class="button mr-3" *ngIf="age>15 && patDataLocal.gender=='female'" (click)="ttvacination(objDoc)">
+                                                    <button class="button mr-3" *ngIf="age>15 && patDataLocal.gender=='female' || 'Female'" (click)="ttvacination(objDoc)">
                                                                 <i class="fa fa-plus"></i> TT Vaccination
                                                     </button>
                                                     <button class="button-success mr-3" (click)="generateToken(objDoc)">

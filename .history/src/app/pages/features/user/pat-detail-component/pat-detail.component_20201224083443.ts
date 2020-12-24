@@ -167,8 +167,6 @@ export class PatDetailComponent implements OnInit {
   location1: any;
   newLocalPath: any=[];
   showds: boolean;
-  prescriptionID:any;
-
   
   constructor(
     private fb: FormBuilder,
@@ -597,8 +595,6 @@ this.diagID = event.item.id
           this.prescriptionData = response.prescription;
           this.putValue(this.prescriptionData)
           this.patientID = response.prescription.patientID;
-          this.prescriptionID = response.prescription.prescriptionID;
-
           this.ptID = response.prescription.ptID;
           this.diagnosisData = response.diagnosis;          
           this.signsData = response.signs;          
