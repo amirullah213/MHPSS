@@ -101,8 +101,7 @@ if(localStorage.getItem('outData')!="undefined"){
       med_dose: ['', Validators.required],
       med_parandials: ['', Validators.required],
       
-      med_remark: ['', Validators.required],
-      tComments: ['', Validators.required]
+      med_remark: ['', Validators.required]
       // acceptTerms: [false, Validators.requiredTrue]
   },
   

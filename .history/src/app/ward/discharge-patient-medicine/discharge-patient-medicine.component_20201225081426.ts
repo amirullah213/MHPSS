@@ -101,8 +101,7 @@ if(localStorage.getItem('outData')!="undefined"){
       med_dose: ['', Validators.required],
       med_parandials: ['', Validators.required],
       
-      med_remark: ['', Validators.required],
-      tComments: ['', Validators.required]
+      med_remark: ['', Validators.required]
       // acceptTerms: [false, Validators.requiredTrue]
   },
   
@@ -393,7 +392,7 @@ updateIndoor2(fv) {
   this.model9.dischargeType=fv.dis_type;
   this.model9.dischargeDate=fv.dis_date;
   this.model9.diagnosis=this.diagnosArr;
-  console.log('modal 9==', this.model9);
+  console.log('modal 8==', this.model9);
   
   this.wardService.updateIndoorDetail(this.model9).subscribe(
     (response: any) => {
