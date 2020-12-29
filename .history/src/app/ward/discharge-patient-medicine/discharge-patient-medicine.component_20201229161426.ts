@@ -344,14 +344,13 @@ getindoorlist()
      }
    }
 //operate indoor details
-operateIndoor(dpt) {
-  console.log('deptdat-=======',dpt)
+operateIndoor() {
   
   this.loaderUpdate= true;
   this.model119.patientID=this.detailsData.patientID;
   this.model119.hospitalID=this.hospitalID;
   this.model119.ptID=this.detailsData.ptID;
-   this.model119.departmentID= dpt.ref;
+   this.model119.departmentID= this.detailsData.departmentID;
   this.model119.isIndoor=1;
   this.model119.refferedFrom=this.detailsData.refferedFrom;
   this.model119.diagnosis=this.diagnosArr;
@@ -401,29 +400,29 @@ updateIndoor2(fv) {
     this.model9.dialysis=""
   }
   this.model9.dischargeType=3;
-  this.model9.dischargeDate=this.cValue;
+  this.model9.dischargeDate=cValue;
   this.model9.diagnosis=this.diagnosArr;
   console.log('modal 9==', this.model9);
   
-  this.wardService.updateIndoorDetail(this.model9).subscribe(
-    (response: any) => {
-      if (response.status === 0) {
-       // this.outdoorForm.reset();
-        //this.getoutDoorData();
-       this.operateIndoor(fv);
-       // this.router.navigate(['/ward/home'])
-        this.loaderUpdate = false;
-      }
-  if (response.status === 1) {
-        this.errormsg = response.error;
-        this.loaderUpdate = false;
-        console.log('error=', this.errormsg);
-        alert('Problem in service! try again');
+//   this.wardService.updateIndoorDetail(this.model9).subscribe(
+//     (response: any) => {
+//       if (response.status === 0) {
+//        // this.outdoorForm.reset();
+//         //this.getoutDoorData();
+//        this.operateIndoor();
+//        // this.router.navigate(['/ward/home'])
+//         this.loaderUpdate = false;
+//       }
+//   if (response.status === 1) {
+//         this.errormsg = response.error;
+//         this.loaderUpdate = false;
+//         console.log('error=', this.errormsg);
+//         alert('Problem in service! try again');
         
-      }
-    },
-    (error) => {}
-  );
+//       }
+//     },
+//     (error) => {}
+//   );
 
  }else{
    alert("Please select Refferal")

@@ -206,7 +206,7 @@
                                     </div>
                                     <!-- for refferal -->
                                     <div class="col-sm-12 row" *ngIf="showRef==1">
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-6">
                                             <label class="mt-3">Select Referral</label>
                                             <span class="wrapper-select">
                                                 <select formControlName="ref" class="form-control"
@@ -217,10 +217,10 @@
                                             </span>
                                         </div>
                                         
-                                        <!-- <div class="col-sm-6">
+                                        <div class="col-sm-6">
                                             <label class="mt-3" for="inputState">Select Date</label>
-                                            <input type="text" class="form-control" formControlName="dis_date2" placeholder="Start Date" #datepickerYMD="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placement="top">
-                                        </div> -->
+                                            <input type="text" class="form-control" formControlName="dis_date2" placeholder="Discharge Date" #datepickerYMD="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placement="top">
+                                        </div>
                                         <div class="form-group col-sm-12 mt-3 text-center">
                                             <button type="button" *ngIf="loaderUpdate" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
                                                 <span class="spinner-border mr-2 " role="status" aria-hidden="true"></span>Reffer to Ward  

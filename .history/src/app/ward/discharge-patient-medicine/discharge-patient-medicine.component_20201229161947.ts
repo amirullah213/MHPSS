@@ -351,33 +351,33 @@ operateIndoor(dpt) {
   this.model119.patientID=this.detailsData.patientID;
   this.model119.hospitalID=this.hospitalID;
   this.model119.ptID=this.detailsData.ptID;
-   this.model119.departmentID= dpt.ref;
+   this.model119.departmentID= this.detailsData.departmentID;
   this.model119.isIndoor=1;
   this.model119.refferedFrom=this.detailsData.refferedFrom;
   this.model119.diagnosis=this.diagnosArr;
   this.model119.prescriptionID =this.prescID;
   console.log('model119==', this.model119);
   
-  this.wardService.operateToken(this.model119).subscribe(
-    (response: any) => {
-      if (response.status === 0) {
-       // this.outdoorForm.reset();
-        // this.getoutDoorData();
+  // this.wardService.operateToken(this.model119).subscribe(
+  //   (response: any) => {
+  //     if (response.status === 0) {
+  //      // this.outdoorForm.reset();
+  //       // this.getoutDoorData();
         
-         alert('Done Successfully');
-        this.router.navigate(['/ward/home']);
-        this.loaderUpdate = false;
-      }
-  if (response.status === 1) {
-        this.errormsg = response.error;
-        this.loaderUpdate = false;
-        console.log('error=', this.errormsg);
-        alert('Problem in service! try again');
+  //        alert('Done Successfully');
+  //       this.router.navigate(['/ward/home']);
+  //       this.loaderUpdate = false;
+  //     }
+  // if (response.status === 1) {
+  //       this.errormsg = response.error;
+  //       this.loaderUpdate = false;
+  //       console.log('error=', this.errormsg);
+  //       alert('Problem in service! try again');
         
-      }
-    },
-    (error) => {}
-  );
+  //     }
+  //   },
+  //   (error) => {}
+  // );
 
 }
 //operate indoor details
