@@ -15,8 +15,7 @@
                 <div class="col-md-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
-                            <h5 class="card-title mb-0">Patient Dispense</h5>
-                            <hr class="gray">
+                            <h5 class="card-title mb-0"></h5>
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item" (click)="setTab('newPats')">
                                     <a class="nav-link" [ngClass]="{'active show': tab === 'newPats'}" id="tab1" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="home" aria-selected="true">Pending Patients</a>
@@ -38,36 +37,22 @@
                                                     <thead>
                                                         <tr class="text-dark">
                                                             <th>CRP NO#</th>
-                                                            <th>Patient/Father</th>
-                                                            <th>Dated</th>
-                                                            <th>CNIC</th>
-                                                            <th>Gender</th>
+                                                            <th>Name</th>
+                                                            <th>NIC</th>
+                                                            <th>Date</th>
                                                             <th>Details</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody *ngIf="!loader_eqp">
-                                                        <tr *ngFor="let pend of pharmacyData;index as i">
-                                                            <td>{{pend.token}}</td>
-                                                            <td>
-                                                                <!-- <img class="mr-3" src="../../../assets/images/profile-avatar.png"> -->
-                                                                <span>{{pend.firstname}} /  {{pend.f_hName}}</span>
-                                                                
-                                                            </td>
-                                                            <td>{{pend.DateCreated | date}}</td>
-                                                            <td>{{pend.cnic}}</td>
-                                                            <td>{{pend.gender}}</td>
-                                                            <td><a href="javascript:void(0)" class="text-info" (click)="gotoPatDetailsPending(pend)">Detail</a></td>
-                                                        </tr>
-                                                        <tr *ngIf="pharmacyData.length === 0" style="text-align: center;">
-                                                            <td colspan="3">No Record Found</td>
+                                                    <tbody>
+                                                        <tr *ngFor="let pth of PathResponseArray; let i=index">
+                                                            <td>{{pth.token}}</td>
+                                                            <td><span>{{pth.firstname}}</span> </td>
+                                                            <td><span>{{pth.cnic}}</span> </td>
+                                                            <td>{{pth.DateCreated| date}}</td>
+                                                            <td><a href="javascript:void(0)" class="text-info" (click)="gotopathdetail(pth)">Detail</a></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <div *ngIf="loader_eqp" class="d-flex justify-content-center">
-                                                    <div class="spinner-border theme-color" role="status">
-                                                        <span class="sr-only"></span>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -80,45 +65,68 @@
                                                     <thead>
                                                         <tr class="text-dark">
                                                             <th>CRP NO#</th>
-                                                            <th>Patient/Father</th>
-                                                            <th>Dated</th>
-                                                            <th>CNIC</th>
-                                                            <th>Gender</th>
+                                                            <th>Name</th>
+                                                            <th>Date</th>
                                                             <th>Details</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody *ngIf="!loader_eqp">
-                                                        <tr *ngFor="let pend of pharmacyData;index as i">
-                                                            <td>{{pend.token}}</td>
+                                                    <tbody>
+                                                        <tr *ngFor="let pth of PathResponseArray; let i=index">
+                                                            <td>{{pth.token}}</td>
                                                             <td>
                                                                 <!-- <img class="mr-3" src="../../../assets/images/profile-avatar.png"> -->
-                                                                <span>{{pend.firstname}} /  {{pend.f_hName}}</span>
-                                                                
+                                                                <span>{{pth.firstname}}</span>
                                                             </td>
-                                                            <td>{{pend.DateCreated | date}}</td>
-                                                            <td>{{pend.cnic}}</td>
-                                                            <td>{{pend.gender}}</td>
-                                                            <td><a href="javascript:void(0)" class="text-info" (click)="gotoPatDetailsSeen(pend)">Detail</a></td>
-                                                        </tr>
-                                                        <tr *ngIf="pharmacyData.length === 0" style="text-align: center;">
-                                                            <td colspan="3">No Record Found</td>
+                                                            <td>{{pth.DateCreated| date}}</td>
+                                                            <td><a href="javascript:void(0)" class="text-info" (click)="gotopathdetailSeen(pth)">Detail</a></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <div *ngIf="loader_eqp" class="d-flex justify-content-center">
-                                                    <div class="spinner-border theme-color" role="status">
-                                                        <span class="sr-only"></span>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- model for users download start-->
+
+            <!-- user delete confirmation -->
+            <ng-template #deleteUser class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header bb-none">
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                <span aria-hidden="true"><i class="ti-close"></i></span>
+                            </button>
+                        </div>
+                        <div class="modal-body p-4 text-center">
+                            <div class="icon-box danger-bg rounded-circle mx-auto mb-4">
+                                <span class="text-white">
+                                    <i class="fa fa-trash-o highlight-icon" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <p class="mb-4">Are you sure you want to delete <span class="font-weight-bold d-block">{{userData.first_name}}
+                                    {{userData.last_name}}</span></p>
+                            <div class="center-text">
+                                <!-- <button type="button" (click)="deleteUser()" class="button">Delete</button> -->
+                                <button type="button" class="button">
+                                    Delete
+                                    <span *ngIf="loader" class="spinner-border float-right" role="status"
+                                        aria-hidden="true"></span>
+                                </button>
+
+                            </div>
+                            <div class="invalid-feedback" style="display: block;">{{responseText}}</div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+            <!-- end of user delete confirmation -->
         </div>
     </div>
 </div>

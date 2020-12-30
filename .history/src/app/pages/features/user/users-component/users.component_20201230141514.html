@@ -62,7 +62,7 @@
                                                                 </div>
                                                             </td> -->
                                                             <td>{{user.token}}</td>
-                                                            <td>{{user.firstname}} / {{user.f_hName}}</td>
+                                                            <td>{{user.firstname}}</td>
                                                             <td>{{user.cnic}}</td>
                                                             <td>{{user.enteringDate | date : 'd-M-y'}}</td>
                                                             <td>
@@ -101,7 +101,6 @@
                                                             </th> -->
                                                             <th>CRP NO</th>
                                                             <th>Patient Name</th>
-                                                            <th>NIC</th>
                                                             <th>Date</th>
                                                             <th>Details</th>
                                                         </tr>
@@ -116,9 +115,7 @@
                                                                 </div>
                                                             </td> -->
                                                             <td>{{user.token}}</td>
-                                                            
-                                                            <td>{{user.firstname}} / {{user.f_hName}}</td>
-                                                            <td>{{user.cnic}}</td>
+                                                            <td>{{user.firstname}}</td>
                                                             <td>{{user.enteringDate | date:'d-M-y'}}</td>
                                                             <td><a class="text-primary" href="javascript:void(0)" (click)="gotoPatDetails(user)">Detail</a> </td>
                                                         </tr>
@@ -145,7 +142,6 @@
                                                         <tr class="text-dark">
                                                             <th>CRP NO</th>
                                                             <th>Patient Name</th>
-                                                            <th>NIC</th>
                                                             <th>Date</th>
                                                             <th *ngIf="userList[0].deptType!=3 && userList[0].deptType!=2">Prescription</th>
                                                         </tr>
@@ -153,8 +149,7 @@
                                                     <tbody *ngIf="!userLoader">
                                                         <tr *ngFor="let user of userList">
                                                             <td>{{user.token}}</td>
-                                                            <td>{{user.firstname}} / {{user.f_hName}}</td>
-                                                            <td>{{user.cnic}}</td>
+                                                            <td>{{user.firstname}}</td>
                                                             <td>{{user.enteringDate | date:'d-M-y'}}</td>
                                                             <td *ngIf="user.deptType!=3 && user.deptType!=2">
                                                             <a class="text-primary"  (click)="gotoPresDetails(user)" href="javascript:void(0)">View Prescription</a>

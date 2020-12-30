@@ -85,9 +85,14 @@
                                                     <tbody *ngIf="!loader_eqp2">
                                                         <tr *ngFor="let wrd of pharmacyData; let i=index">
                                                             <td>{{wrd.token}}</td>
-                                                            <td><span>{{wrd.firstname}} / {{wrd.f_hName}}</span></td>
-                                                            <td><span>{{wrd.cnic}}</span></td>
-                                                               
+                                                            <td>
+                                                                <!-- <img class="mr-3" src="../../../assets/images/profile-avatar.png"> -->
+                                                                <span>{{wrd.firstname}} / {{wrd.f_hName}}</span>
+                                                            </td>
+                                                            <td>
+                                                                
+                                                                <span>{{wrd.cnic}}</span>
+                                                            </td>
                                                             <td>{{wrd.DateCreated| date }}</td>
                                                             <td><a href="javascript:void(0)" class="text-info" (click)="openModalpending(template1,wrd)">Detail</a></td>
                                                         </tr>
@@ -148,7 +153,6 @@
                                                         <tr class="text-dark">
                                                             <th>CRP NO</th>
                                                             <th>Patient Name</th>
-                                                            <th>NIC</th>
                                                             <th>Date</th>
                                                             <th>Details</th>
                                                         </tr>
@@ -156,8 +160,10 @@
                                                     <tbody *ngIf="!loader_eqp2">
                                                         <tr *ngFor="let wrd of pharmacyData; let i=index">
                                                             <td>{{wrd.token}}</td>
-                                                            <td><span>{{wrd.firstname}} / {{wrd.f_hName}}</span></td>
-                                                            <td><span>{{wrd.cnic}}</span></td>
+                                                            <td>
+
+                                                                <span>{{wrd.firstname}}</span>
+                                                            </td>
                                                             <td>{{wrd.DateCreated| date }}</td>
                                                             <td><a href="javascript:void(0)" (click)="gotoAdmitDetails(wrd)" class="text-info">Detail</a></td>
                                                         </tr>
@@ -184,7 +190,6 @@
                                                         <tr class="text-dark">
                                                             <th>CRP NO</th>
                                                             <th>Patient Name</th>
-                                                            <th>NIC</th>
                                                             <th>Date</th>
                                                             <th>Details</th>
                                                         </tr>
@@ -192,8 +197,10 @@
                                                     <tbody *ngIf="!loader_eqp2">
                                                         <tr *ngFor="let wrd of pharmacyData; let i=index">
                                                             <td>{{wrd.token}}</td>
-                                                            <td><span>{{wrd.firstname}} / {{wrd.f_hName}}</span></td>
-                                                            <td><span>{{wrd.cnic}}</span></td>
+                                                            <td>
+
+                                                                <span>{{wrd.firstname}}</span>
+                                                            </td>
                                                             <td>{{wrd.DateCreated| date }}</td>
                                                             <td>
                                                                 <a href="javascript:void(0)" class="text-info" (click)="gotoDischargeDetails(wrd)">Prescription</a> &nbsp;&nbsp;

@@ -51,18 +51,7 @@
                                                 <label for="formGroupExampleInput">{{patInfo.token}}</label>
                                             </div>
                                         </div>
-                                       
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="formGroupExampleInput">NIC</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="formGroupExampleInput">{{patInfo.cnic}}</label>
-                                                </div>
-                                            </div>
-                                        
+                                        <div class="col-md-6"></div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="formGroupExampleInput">Patient Name</label>
@@ -76,7 +65,13 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="formGroupExampleInput">Father Name</label>
-                                                
+                                                <!-- <input type="text" class="form-control" formControlName="last_name" id="formGroupExampleInput" placeholder="Last name of Employee" required>
+                                                <div class="w-100" *ngIf="f.controls.last_name.status=='INVALID'">
+                                                    <div *ngIf="f.controls.last_name.errors.required && f.controls.last_name.touched" class="invalid-feedback" [style.display]="f.controls.last_name.status=='INVALID' ? 'block' : 'none'">Please provide last name.</div>
+                                                    <div *ngIf="f.controls.last_name.errors.minlength && f.controls.last_name.touched" class="invalid-feedback" [style.display]="f.controls.last_name.status=='INVALID' ? 'block' : 'none'">Last name must be at least 1 character.</div>
+                                                    <div *ngIf="f.controls.last_name.errors.maxlength && f.controls.last_name.touched" class="invalid-feedback" [style.display]="f.controls.last_name.status=='INVALID' ? 'block' : 'none'">Last name must be less than 27 characters.</div>
+                                                    <div *ngIf="f.controls.last_name.errors.pattern && f.controls.last_name.touched" class="invalid-feedback" [style.display]="f.controls.last_name.status=='INVALID' ? 'block' : 'none'">Last name must have a-z & A-Z characters.</div>
+                                                </div> -->
                                             </div>
                                         </div>
                                         <div class="col-md-3">

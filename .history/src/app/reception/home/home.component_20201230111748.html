@@ -62,7 +62,7 @@
                                                 <label>Gender</label>
                                                 <select class="form-control" formControlName="gender">
                                                
-                                                <option selected value="Male">Male</option>
+                                                <option [selected] value="Male">Male</option>
                                                 <option value="Female">Female</option>
                                                 <option value="Transgender">Transgender</option>
                                             </select>
@@ -128,8 +128,7 @@
                                             <div class="col-md-3" *ngIf="hospitalID!=2">
                                                 <label>District</label>
                                                 <select class="form-control" formControlName="district" (change)="onselectDist(regisForm.value.district)">
-                                                    
-                                                    <option *ngFor="let dis of distResponseArray; let z=index" [ngValue]="dis" [selected]="z == 0">{{dis.name}}</option>
+                                                    <option *ngFor="let dis of distResponseArray; let z=index" [ngValue]="dis">{{dis.name}}</option>
                                                     
                                                 </select>
                                             </div>
@@ -154,8 +153,7 @@
                                             <div class="col-md-3" *ngIf="hospitalID==2" >
                                                     <label>District</label>
                                                 <select class="form-control" formControlName="district" (change)="onselectDist(regisForm.value.district)" required>
-                                                    <!-- <option [defaultSelected] value='0'>Select district</option>  -->
-                                                    <option *ngFor="let dis of distResponseArray; let z=index" [ngValue]="dis" [selected]="z == 0">{{dis.name}}</option>
+                                                    <option *ngFor="let dis of distResponseArray; let z=index" [ngValue]="dis">{{dis.name}}</option>
                                                     
                                                 </select>
                                                 <span class="help-block text-danger" *ngIf="((regisForm.get('district').touched || regisForm.get('district').dirty) &&  regisForm.get('district').errors)">

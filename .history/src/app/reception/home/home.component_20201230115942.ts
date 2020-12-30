@@ -106,7 +106,7 @@ export class HomeComponent implements OnInit {
         cnic: ['', [Validators.minLength(13), Validators.maxLength(13)]],
         address: [''],
         village: [''],
-        district: [''],
+        district: [],
         tehsil_city: [''],
         uc: [''],
         year: [''],
