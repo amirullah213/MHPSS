@@ -32,6 +32,7 @@ export class OldRegistrationComponent implements OnInit {
   model2: any = {};
   modalRef: BsModalRef;
   age:any; 
+  
   constructor(
     private modalService: BsModalService,
     private fb: FormBuilder,
@@ -45,45 +46,25 @@ export class OldRegistrationComponent implements OnInit {
     this.hospitalID=localStorage.getItem('hospitalID');
     this.doctorID=localStorage.getItem('docId');
     console.log('patDataLocal ==', this.patDataLocal.dob);
-    // if (this.patDataLocal.dob) {
-    //   //convert date again to type Date
-    //   const bdate = new Date(this.patDataLocal.dob);
-    //   const timeDiff = Math.abs(Date.now() - bdate.getTime() );
-    //   this.age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
-    //   console.log('age ==', this.age);
-    // }
-    if (this.patDataLocal.dob!=undefined) {
-      var  nowDay,dobDay
-      var todayDate=new Date();
-      var ageyear = todayDate.getFullYear() - this.patDataLocal.dob.getFullYear();
-      var agemonth = todayDate.getMonth() - this.patDataLocal.dob.getMonth();
-      var ageday = todayDate.getDate() - this.patDataLocal.dob.getDate();
-    
-      if (agemonth <= 0) {
-        ageyear--;
-        agemonth = (12 + agemonth);
-      }
-      if (nowDay < dobDay) {
-        agemonth--;
-        ageday = 30 + ageday;
-      }  if (agemonth == 12) {
-        ageyear = ageyear + 1;
-        agemonth = 0;
-      }
-    
-      alert("Age in Year:" + ageyear + ',' + 'Month:' + agemonth + ',' + 'Day:' + ageday);
-    
+    if (this.patDataLocal.dob) {
+      //convert date again to type Date
+      const bdate = new Date(this.patDataLocal.dob);
+      const timeDiff = Math.abs(Date.now() - bdate.getTime() );
+      this.age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
+      this.getAllDoctros();
     }
   }
   openModAdd(captureuser: TemplateRef<any>) {
-   this.getAllDoctros();
+    this.objDoc.reff="Self"
+   // this.objDoc.doctor="Triage Point 1 OPD" 
+    this.objDoc.doctor=2
     this.modalRef = this.modalService.show(captureuser, Object.assign({}, { class: 'gray modal-lg' }));
   }
   openchildMod(childModal: TemplateRef<any>) {
     this.modalRef = this.modalService.show(childModal);
   }
   //--------------------get doctor list 
-  getAllDoctros() {
+  getAllDoctros() { 
    
     this.loaderDoc= true;
     this.model.hospitalID=this.hospitalID;
@@ -113,13 +94,15 @@ export class OldRegistrationComponent implements OnInit {
   //-------------------------
  //--------------------get doctor list 
  generateToken(modData) {
+   debugger
    console.log("modal data====",modData);
    this.loaderGen= true;
    this.model2.hospitalID=this.hospitalID;
    this.model2.patientID=this.patDataLocal.patientID;
-   this.model2.departmentID=modData.doctor.id;
+   this.model2.departmentID=modData.doctor;
    this.model2.isIndoor=0;
    this.model2.refferedFrom=modData.reff;
+   
   
    console.log('model2 ==', this.model2);
    this.receptService.generToken(this.model2).subscribe(
@@ -129,7 +112,6 @@ export class OldRegistrationComponent implements OnInit {
          this.genResponseArray=response;
          console.log('hospitl list==',this.genResponseArray);
          this.loaderGen = false;
-         alert('token generated successfuly');
          this.modalRef.hide();
          localStorage.setItem('tokenDetails',JSON.stringify(this.genResponseArray));
          this.router.navigate(['reception/print-token'])

@@ -206,7 +206,7 @@ updateIndoor(fv) {
   this.loaderUpdate= true;
   this.model8.hospitalID=this.hospitalID;
   this.model8.tokenID=this.detailsData.ptID;
-  this.model8.indoorStatus=3;
+  this.model8.indoorStatus=2;
   debugger
   if(localStorage.getItem('outData')!="undefined"){
   this.model8.isCriticalIll=this.outFormData.isCriticalIll;
@@ -388,7 +388,7 @@ updateIndoor2(fv) {
   this.loaderUpdate= true;
   this.model9.hospitalID=this.hospitalID;
   this.model9.tokenID=this.detailsData.ptID;
-  this.model9.indoorStatus=2;
+  this.model9.indoorStatus=3;
   debugger
   if(localStorage.getItem('outData')!="undefined"){
   this.model9.isCriticalIll=this.outFormData.isCriticalIll;

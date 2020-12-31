@@ -43,7 +43,7 @@ export class PendingPatientsComponent implements OnInit {
   modalToken:any={};
   deptID:any;
   selectedValueIndoorDiag: string;
-
+loginDetails:any={};
   constructor(
     private modalService: BsModalService,
      private fb: FormBuilder,
@@ -68,7 +68,9 @@ export class PendingPatientsComponent implements OnInit {
      
   });
     this.otDetails=JSON.parse(localStorage.getItem('otDetails'))
-    console.log("otDetails===",this.otDetails)
+    console.log("otDetails===",this.otDetails);
+    this.loginDetails=JSON.parse(localStorage.getItem('details'))
+    console.log("loginDetails===",this.loginDetails)
     this.hospitalID=localStorage.getItem('hospitalID');
     this.doctorID=localStorage.getItem('docId');
     this.userType=localStorage.getItem('userType');
@@ -265,7 +267,9 @@ generatetoken() {
   this.modalToken.diagnosis=this.diagnosArr2;
   this.modalToken.isIndoor=1;
   this.modalToken.ptID=this.otDetails.ptID;
-  this.modalToken.refferedFrom=-1;
+  this.modalToken.refferedFrom=this.loginDetails.fname;
+  this.modalToken.prescriptionID=this.otDetails.prescriptionID;
+
   console.log('$this.modalToken==',this.modalToken);
  console.log('modalToken ==', this.modalToken);
   this.otServices.generateToken(this.modalToken).subscribe(

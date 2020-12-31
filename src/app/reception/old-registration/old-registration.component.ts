@@ -102,6 +102,7 @@ export class OldRegistrationComponent implements OnInit {
    this.model2.departmentID=modData.doctor;
    this.model2.isIndoor=0;
    this.model2.refferedFrom=modData.reff;
+   
   
    console.log('model2 ==', this.model2);
    this.receptService.generToken(this.model2).subscribe(

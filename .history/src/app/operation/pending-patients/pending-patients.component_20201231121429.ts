@@ -42,7 +42,8 @@ export class PendingPatientsComponent implements OnInit {
   diagObj:any={};
   modalToken:any={};
   deptID:any;
-
+  selectedValueIndoorDiag: string;
+loginDetails:any={};
   constructor(
     private modalService: BsModalService,
      private fb: FormBuilder,
@@ -59,7 +60,7 @@ export class PendingPatientsComponent implements OnInit {
       anethetistName: ['', Validators.required],
       remarks: ['', Validators.required],
 
-      selectedValueIndoorDiag: ['', Validators.required],
+      selectedValueIndoorDiag: [''],
       ref: ['', Validators.required],
       
 
@@ -67,7 +68,9 @@ export class PendingPatientsComponent implements OnInit {
      
   });
     this.otDetails=JSON.parse(localStorage.getItem('otDetails'))
-    console.log("otDetails===",this.otDetails)
+    console.log("otDetails===",this.otDetails);
+    this.loginDetails=JSON.parse(localStorage.getItem('details'))
+    console.log("loginDetails===",this.loginDetails)
     this.hospitalID=localStorage.getItem('hospitalID');
     this.doctorID=localStorage.getItem('docId');
     this.userType=localStorage.getItem('userType');
@@ -94,8 +97,9 @@ getOperationTheatreData() {
         console.log(' response====',response);
         this.PathResponseArray=response.data;
         console.log('this.PathResponseArray==',this.PathResponseArray);
+       this.diagnosArr2=JSON.parse(this.PathResponseArray.diagnosis) ;
         this.userLoader = false;
-        this.dynamicForm.setValue({
+        this.dynamicForm.patchValue({
           anesthesiaType:  this.PathResponseArray.anesthesiaType,
           operationName: this.PathResponseArray.operationName,
           surgeonName: this.PathResponseArray.surgeonName,
@@ -137,7 +141,8 @@ updateOperationData(fromData) {
         this.PathResponseArray=response.data;
         console.log('this.PathResponseArray==',this.PathResponseArray);
         this.userLoader2 = false;
-        this.router.navigate(['ot/home']);
+        // this.router.navigate(['ot/home']);
+        alert('sucessfully done')
         
         
       }
@@ -263,6 +268,7 @@ generatetoken() {
   this.modalToken.isIndoor=1;
   this.modalToken.ptID=this.otDetails.ptID;
   this.modalToken.refferedFrom=-1;
+  this.modalToken.prescriptionID=this.otDetails.prescriptionID;
   console.log('$this.modalToken==',this.modalToken);
  console.log('modalToken ==', this.modalToken);
   this.otServices.generateToken(this.modalToken).subscribe(
@@ -271,6 +277,8 @@ generatetoken() {
         console.log(' response for generatetoken====',response);
        
         this.userLoader = false;
+        alert('Successfully Admitted');
+         this.router.navigate(['ot/home']);
        
       }
   if (response.status === 1) {
