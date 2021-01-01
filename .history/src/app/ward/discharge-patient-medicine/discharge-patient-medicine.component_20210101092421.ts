@@ -173,8 +173,7 @@ addPresMedicines() {
   this.model99.medicines=this.medicinesFinal;
   this.model99.type=3;
   this.model99.hospitalID=this.hospitalID;
- this.model99.ptID= this.detailsData.ptID;
-this.model99.otherMedics= this.otherMedics;
+ this.model99.ptID= this.detailsData.ptID
 
  console.log('modal 99==', this.model99);
   this.wardService.addPresMedics(this.model99).subscribe(
@@ -298,15 +297,9 @@ removeArr(indx){
 //==========================
 addmoreOtherMedics(){
 this.otherMedics.push(this.treatmentForm.value.tComments);
-this.treatmentForm.reset();
 console.log('other medics array-------',this.otherMedics)
 }
-//=============================
-removeArr2(indx){
-  this.otherMedics.splice(indx, 1);
-  console.log('$x2==',this.otherMedics)
-}
-//===============================
+
 //==========================
 changeCheckboxVal(e) {
 

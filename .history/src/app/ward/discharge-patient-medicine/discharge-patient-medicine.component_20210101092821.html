@@ -156,25 +156,36 @@
                         </div>
                         <!-- to show other medics array -->
                         <div class="col-md-12" *ngIf="otherMedics.length>0">
-                            <h6> Other Medics</h6>
+                            <h6> Treatment</h6>
                             <div class="table-responsive cutomtable">
                                 <table class="table center-aligned-table">
                                     <thead>
                                         <tr class="text-dark">
-                                            <th>SNo</th>
-                                            <th>Traetment</th>
-                                            
+                                            <th>Medicine</th>
+                                            <th>Prescribed Quantity</th>
+                                            <th>Dose</th>
+                                            <th>Prandial</th>
+                                            <th>Remarks</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="" *ngFor="let addArr2 of otherMedics;let k=index;">
-                                            <td>{{k+1}}</td>
-                                            <td>{{addArr2}}</td>
-                                            
+                                        <tr class="" *ngFor="let addArr of medicinesFinal;let m=index;">
+                                            <td>{{addArr.medicine}}</td>
+                                            <td>{{addArr.prescribedQuantity}}</td>
+                                            <td>
+                                                <span *ngIf="addArr.dose=='SOS'">When required</span>
+                                                <span *ngIf="addArr.dose=='OD'">Daily</span>
+                                                <span *ngIf="addArr.dose=='STAT'">Take Immediately</span>
+                                                <span *ngIf="addArr.dose=='BiD'">1+0+1</span>
+                                                <span *ngIf="addArr.dose=='TDS'">1+1+1</span>
+                                                <span *ngIf="addArr.dose=='Qid'">1+1+1+1</span>
+                                            </td>
+                                            <td>{{addArr.prandial}}</td>
+                                            <td>{{addArr.remarks}}</td>
                                             <td>
                                                 <div class="form-group">
-                                                    <a href="javascript:void(0)" class="float-right" (click)="removeArr2(k)"><i class="fa fa-close text-danger"></i></a>
+                                                    <a href="javascript:void(0)" class="float-right" (click)="removeArr(m)"><i class="fa fa-close text-danger"></i></a>
                                                 </div>
                                             </td>
                                         </tr>

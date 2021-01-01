@@ -103,7 +103,7 @@
                                             <span class="wrapper-select">
                                                     <select formControlName="ref" class="form-control"
                                                         (change)="changeRefVal(dynamicForm.value.ref)">
-                                                        <option [ngValue]="0" [selected] [disabled]='true'>Choose Referral</option>
+                                                        <option [ngValue]="0" selected>Choose Referral</option>
                                                         <option *ngFor="let wr of wardArr" [ngValue]='wr.id'>{{wr.fname}} {{wr.lname}}</option>
                                                     </select>
                                                 </span>

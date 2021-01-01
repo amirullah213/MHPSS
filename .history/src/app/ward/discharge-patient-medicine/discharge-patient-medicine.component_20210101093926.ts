@@ -174,7 +174,7 @@ addPresMedicines() {
   this.model99.type=3;
   this.model99.hospitalID=this.hospitalID;
  this.model99.ptID= this.detailsData.ptID;
-this.model99.otherMedics= this.otherMedics;
+//  this.model99.otherMedicArray= this.otherMedics;
 
  console.log('modal 99==', this.model99);
   this.wardService.addPresMedics(this.model99).subscribe(

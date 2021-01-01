@@ -143,47 +143,17 @@
                                 <br>
                                 <h4 class="text-center">Or</h4>
                                 <hr class="hr-gray mx-0">
-                        <div class="col-md-12 row">
-                            <div class="form-group col-md-10">
+                        <div class="col-md-12">
+                            <div class="form-group col-md-10 mt-4">
                                 <label>Other Medicine</label>
                                 <textarea class="form-control" formControlName="tComments" name="comments" type=text></textarea>
                             </div>
-                            <div class="col-md-2 mt-5">
+                            <div class="col-md-2 mt-4">
                                 <div class="form-group mt-2 text-center">
-                                    <button type="button" (click)="addmoreOtherMedics()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus mr-2"></i>Add More </button>
+                                    <button type="button" (click)="addmoreMedics()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus mr-2"></i>Add More </button>
                                 </div>
                             </div>
                         </div>
-                        <!-- to show other medics array -->
-                        <div class="col-md-12" *ngIf="otherMedics.length>0">
-                            <h6> Other Medics</h6>
-                            <div class="table-responsive cutomtable">
-                                <table class="table center-aligned-table">
-                                    <thead>
-                                        <tr class="text-dark">
-                                            <th>SNo</th>
-                                            <th>Traetment</th>
-                                            
-                                            <th class="text-center">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="" *ngFor="let addArr2 of otherMedics;let k=index;">
-                                            <td>{{k+1}}</td>
-                                            <td>{{addArr2}}</td>
-                                            
-                                            <td>
-                                                <div class="form-group">
-                                                    <a href="javascript:void(0)" class="float-right" (click)="removeArr2(k)"><i class="fa fa-close text-danger"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                               
-                            </div>
-                        </div>
-                        <!-- to show other medics array -->
                             </div>
                             <hr class="gray">
                             <div class="form-group row mx-0">
