@@ -90,7 +90,7 @@ export class AdmittedPatientsComponent implements OnInit {
     medicArr:any =[];
     otherMedics2:any=[];
     otherMedics:any=[];
-    otherMedicsHome2:any=[];
+    otherMedicsHome2:any;
     treatmentForm:FormGroup;
     dischargeForm:FormGroup;
   pathArrNewNew: any=[];
@@ -392,9 +392,6 @@ getDischargeData() {
       console.log('this.getDischargedata1==',this.getDischargedata1);
       this.otherMedics.push(this.getDischargedata1.otherMedics);
       console.log('this.otherMedics 3333==',this.otherMedics);
-      this.otherMedicsHome2.push(this.getDischargedata1.otherMedicsHome);
-      console.log('this.otherMedicsHome2 3333==',this.otherMedicsHome2);
-      
       this.loader = false;
       }
   if (response.status === 1) {
@@ -490,10 +487,7 @@ operateIndoor() {
 
 //operate indoor details
 addPresMedicines() {
-  if(this.otherMedics2.length>0){
-    this.otherMedics.push(this.otherMedics2);
-
-  }
+  
   this.loaderMedic= true;
   this.model99.prescriptionID=this.outdoorData.prescriptionID;
   this.model99.medicines=this.medicinesFinal;
@@ -813,10 +807,6 @@ gotoDischarge(){
   
   
   localStorage.setItem('prescriptionID',this.outdoorData.prescriptionID);
-  localStorage.setItem('otherMedicsHome',this.getDischargedata1.otherMedicsHome);
-  localStorage.setItem('homeTreatment',JSON.stringify(this.getDischargedata1.homeTreatments));
-  localStorage.setItem('otherMedics',this.getDischargedata1.otherMedics);
-  
   
   this.router.navigate(['/ward/discharged-med'])
 }

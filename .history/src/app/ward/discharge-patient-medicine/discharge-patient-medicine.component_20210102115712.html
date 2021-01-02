@@ -155,7 +155,7 @@
                             </div>
                         </div>
                         <!-- to show other medics array -->
-                        <div class="col-md-12" *ngIf="otherMedicsHome2.length>0">
+                        <div class="col-md-12" *ngIf="otherMedics.length>0">
                             <h6> Other Medics</h6>
                             <div class="table-responsive cutomtable">
                                 <table class="table center-aligned-table">
@@ -168,7 +168,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="" *ngFor="let addArr2 of otherMedicsHome2;let k=index;">
+                                        <tr class="" *ngFor="let addArr2 of otherMedics;let k=index;">
                                             <td>{{k+1}}</td>
                                             <td>{{addArr2}}</td>
                                             
@@ -187,7 +187,7 @@
 
                         <!-- previous treatments start -->
                         <div class="col-md-12">
-                            <h6>Previous Home Treatment</h6>
+                            <h6>Previous Treatment</h6>
                             <div class="table-responsive cutomtable">
                                 <table class="table center-aligned-table">
                                     <thead>
@@ -234,10 +234,10 @@
                         </div>
                         <!-- previos treatment other medics -->
                         <div class="col-md-12">
-                            <h6>Previous Home Treatment other medicines</h6>
+                            <h6>Previous Treatment other medicines</h6>
                             <p>
-                                <span *ngIf="otherMedicsHome!='null' || otherMedicsHome!=''">
-                                    {{otherMedicsHome}}
+                                <span *ngIf="getDischargedata1.otherMedics!='null' || getDischargedata1.otherMedics!=''">
+                                    {{getDischargedata1.otherMedics}}
                                 </span>
                             </p>
                             

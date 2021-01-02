@@ -224,7 +224,7 @@
                                         </div>
 
                                         <!-- other medics new treatment  -->
-                                        <div class="col-md-12" *ngIf="otherMedics2.length>0">
+                                        <div class="col-md-12" *ngIf="otherMedics.length>0">
                                             <h6>New Treatment Other Medicines</h6>
                                             <div class="table-responsive cutomtable">
                                                 <table class="table center-aligned-table">
@@ -237,7 +237,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr class="" *ngFor="let addArr2 of otherMedics2;let v=index;">
+                                                        <tr class="" *ngFor="let addArr2 of otherMedics;let v=index;">
                                                             <td>{{v+1}}</td>
                                                             <td>{{addArr2}}</td>
                                                             

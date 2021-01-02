@@ -89,7 +89,7 @@ export class DischargePatientMedicineComponent implements OnInit {
     this.hospitalID=localStorage.getItem('hospitalID');
     this.doctorID=localStorage.getItem('docId');
 
-  this.otherMedicsHome.push(localStorage.getItem('otherMedicsHome'));
+  this.otherMedicsHome=localStorage.getItem('otherMedicsHome');
   console.log(' this.othermedicHome====',this.otherMedicsHome);
   this.hometreatment=JSON.parse(localStorage.getItem('homeTreatment'));
   console.log(' this.hometreatment====',this.hometreatment);

@@ -88,9 +88,8 @@ export class AdmittedPatientsComponent implements OnInit {
   outdoorForm: FormGroup;
     submitted = false;
     medicArr:any =[];
-    otherMedics2:any=[];
-    otherMedics:any=[];
-    otherMedicsHome2:any=[];
+
+
     treatmentForm:FormGroup;
     dischargeForm:FormGroup;
   pathArrNewNew: any=[];
@@ -387,15 +386,10 @@ getDischargeData() {
   this.wardService.getDischargeData(this.model7).subscribe(
     (response: any) => {
       if (response.status === 0) {
-      this.getDischargedata1 = response.data;
-      console.log('this.getDischargedata1resonse==',response);
+        this.getDischargedata1 = response.data;
+        console.log('this.getDischargedata1resonse==',response)
       console.log('this.getDischargedata1==',this.getDischargedata1);
-      this.otherMedics.push(this.getDischargedata1.otherMedics);
-      console.log('this.otherMedics 3333==',this.otherMedics);
-      this.otherMedicsHome2.push(this.getDischargedata1.otherMedicsHome);
-      console.log('this.otherMedicsHome2 3333==',this.otherMedicsHome2);
-      
-      this.loader = false;
+        this.loader = false;
       }
   if (response.status === 1) {
         this.errormsg = response.error;
@@ -490,18 +484,13 @@ operateIndoor() {
 
 //operate indoor details
 addPresMedicines() {
-  if(this.otherMedics2.length>0){
-    this.otherMedics.push(this.otherMedics2);
-
-  }
+  
   this.loaderMedic= true;
   this.model99.prescriptionID=this.outdoorData.prescriptionID;
   this.model99.medicines=this.medicinesFinal;
   this.model99.type=2;
   this.model99.hospitalID=this.hospitalID;
-  this.model99.ptID= this.detailsData.ptID;
-  this.model99.otherMedics= this.otherMedics;
-  this.model99.otherMedicsHome= this.otherMedicsHome2;
+  this.model99.ptID= this.detailsData.ptID
 
 
  console.log('modal 9==', this.model99);
@@ -595,19 +584,7 @@ addmoreMedics(){
   this.medicinesNewdata={};
   this.treatmentForm.reset();
 }
-//==========================
-addmoreOtherMedics(){
-  this.otherMedics2.push(this.treatmentForm.value.tComments);
-  this.treatmentForm.reset();
-  console.log('other medics array-------',this.otherMedics2)
-  }
-  //=============================
 
-  //================
-  removeArr2(indx){
-    this.otherMedics2.splice(indx, 1);
-  }
-  //==============
 deleteTest(tId){
   
   this.loaderLab= true; 
@@ -813,10 +790,6 @@ gotoDischarge(){
   
   
   localStorage.setItem('prescriptionID',this.outdoorData.prescriptionID);
-  localStorage.setItem('otherMedicsHome',this.getDischargedata1.otherMedicsHome);
-  localStorage.setItem('homeTreatment',JSON.stringify(this.getDischargedata1.homeTreatments));
-  localStorage.setItem('otherMedics',this.getDischargedata1.otherMedics);
-  
   
   this.router.navigate(['/ward/discharged-med'])
 }

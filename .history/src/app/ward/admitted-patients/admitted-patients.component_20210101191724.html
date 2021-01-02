@@ -135,7 +135,7 @@
                                                 </span>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
                                             <div class="form-group">
                                                 <label>Prescribed Quantity</label>
                                                 <input type="text" formControlName="med_quantity" class="form-control" id="formGroupExampleInput" placeholder="Prescribed Quantity">
@@ -170,7 +170,7 @@
                                         <!-- other medics  -->
                                         <br>
                                         <h4 class="text-center">Or</h4>
-                                        <hr class="hr-gray mx-0">
+                                        <!-- <hr class="hr-gray mx-0"> -->
                                 <div class="col-md-12 row">
                                     <div class="form-group col-md-10">
                                         <label>Other Medicine</label>
@@ -222,36 +222,6 @@
                                                 </table>
                                             </div>
                                         </div>
-
-                                        <!-- other medics new treatment  -->
-                                        <div class="col-md-12" *ngIf="otherMedics2.length>0">
-                                            <h6>New Treatment Other Medicines</h6>
-                                            <div class="table-responsive cutomtable">
-                                                <table class="table center-aligned-table">
-                                                    <thead>
-                                                        <tr class="text-dark">
-                                                            <th>SNO</th>
-                                                            <th>Medicine Name</th>
-                                                            
-                                                            <th class="text-center">Action</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr class="" *ngFor="let addArr2 of otherMedics2;let v=index;">
-                                                            <td>{{v+1}}</td>
-                                                            <td>{{addArr2}}</td>
-                                                            
-                                                            <td>
-                                                                <div class="form-group">
-                                                                    <a href="javascript:void(0)" class="float-right" (click)="removeArr2(v)"><i class="fa fa-close text-danger"></i></a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <!-- other medics new treatment ended -->
                                         
                                         <hr class=" hr-gray ">
                                         <div class="col-md-12">
@@ -306,17 +276,6 @@
                                                 </table>
                                             </div>
                                         </div>
-                                        <!-- previos treatment other medics -->
-                                        <div class="col-md-12">
-                                            <h6>Previous Treatment other medicines</h6>
-                                            <p>
-                                                <span *ngIf="getDischargedata1.otherMedics!='null' || getDischargedata1.otherMedics!=''">
-                                                    {{getDischargedata1.otherMedics}}
-                                                </span>
-                                            </p>
-                                            
-                                        </div>
-                                        <!-- previos treatment other medics ended-->
                                     </div>
                                 </form>
                                 <hr class="gray">

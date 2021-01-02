@@ -65,10 +65,7 @@ export class DischargePatientMedicineComponent implements OnInit {
   currentDate:any;
   cValue:any;
   otherMedics:any=[];
-  otherMedicsHome:any=[];
-  otherMedicsHome2:any=[];
-  hometreatment:any=[];
-  othermed:any=[];
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -88,13 +85,6 @@ export class DischargePatientMedicineComponent implements OnInit {
     console.log(' this.detailsData====', this.detailsData)
     this.hospitalID=localStorage.getItem('hospitalID');
     this.doctorID=localStorage.getItem('docId');
-
-  this.otherMedicsHome.push(localStorage.getItem('otherMedicsHome'));
-  console.log(' this.othermedicHome====',this.otherMedicsHome);
-  this.hometreatment=JSON.parse(localStorage.getItem('homeTreatment'));
-  console.log(' this.hometreatment====',this.hometreatment);
-  this.othermed=localStorage.getItem('otherMedics');
-  console.log(' this.othermed====',this.othermed)
 
     //previos page data
     this.getindoorlist();
@@ -177,9 +167,6 @@ getMedicinesData() {
 }
 //---------------------------------------
 addPresMedicines() {
-  if(this.otherMedicsHome2.length>0){
-this.otherMedicsHome.push(this.otherMedicsHome2);
-  }
   this.showDischargeButton=true;
   this.loaderMedic= true;
   this.model99.prescriptionID=this.prescID;
@@ -187,8 +174,7 @@ this.otherMedicsHome.push(this.otherMedicsHome2);
   this.model99.type=3;
   this.model99.hospitalID=this.hospitalID;
  this.model99.ptID= this.detailsData.ptID;
-this.model99.otherMedicsHome= this.otherMedicsHome;
-this.model99.otherMedics= this.othermed;
+this.model99.otherMedicsHome= this.otherMedics;
 
  console.log('modal 99==', this.model99);
   this.wardService.addPresMedics(this.model99).subscribe(
@@ -311,14 +297,14 @@ removeArr(indx){
 
 //==========================
 addmoreOtherMedics(){
-this.otherMedicsHome2.push(this.treatmentForm.value.tComments);
+this.otherMedics.push(this.treatmentForm.value.tComments);
 this.treatmentForm.reset();
-console.log('other medics array-------',this.otherMedicsHome2)
+console.log('other medics array-------',this.otherMedics)
 }
 //=============================
 removeArr2(indx){
-  this.otherMedicsHome2.splice(indx, 1);
-  console.log('$x2==',this.otherMedicsHome2)
+  this.otherMedics.splice(indx, 1);
+  console.log('$x2==',this.otherMedics)
 }
 //===============================
 //==========================

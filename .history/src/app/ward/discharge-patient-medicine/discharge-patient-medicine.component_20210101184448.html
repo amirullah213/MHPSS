@@ -155,7 +155,7 @@
                             </div>
                         </div>
                         <!-- to show other medics array -->
-                        <div class="col-md-12" *ngIf="otherMedicsHome2.length>0">
+                        <div class="col-md-12" *ngIf="otherMedics.length>0">
                             <h6> Other Medics</h6>
                             <div class="table-responsive cutomtable">
                                 <table class="table center-aligned-table">
@@ -168,7 +168,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="" *ngFor="let addArr2 of otherMedicsHome2;let k=index;">
+                                        <tr class="" *ngFor="let addArr2 of otherMedics;let k=index;">
                                             <td>{{k+1}}</td>
                                             <td>{{addArr2}}</td>
                                             
@@ -184,65 +184,6 @@
                             </div>
                         </div>
                         <!-- to show other medics array -->
-
-                        <!-- previous treatments start -->
-                        <div class="col-md-12">
-                            <h6>Previous Home Treatment</h6>
-                            <div class="table-responsive cutomtable">
-                                <table class="table center-aligned-table">
-                                    <thead>
-                                        <tr class="text-dark">
-                                            <th>Medicine</th>
-                                            <th>Unit</th>
-                                            <th>Type</th>
-
-                                            <th>Prescribed Quantity</th>
-                                            <th>Dose</th>
-                                            <th>Prandial</th>
-                                            <th>Remarks</th>
-                                            <th>Dept</th>
-                                            <th class="text-center">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody *ngIf="hometreatment!='undefined' || hometreatment.length!=0 ">
-                                        <tr class="" *ngFor="let dis_treat of hometreatment">
-                                            <td>{{dis_treat.medicine}}</td>
-                                            <td>{{dis_treat.unit}}</td>
-                                            <td>{{dis_treat.type}}</td>
-
-                                            <td>{{dis_treat.prescribedQuantity}}</td>
-                                            <td>
-                                                <span *ngIf="dis_treat.dose=='SOS'">When required</span>
-                                                <span *ngIf="dis_treat.dose=='OD'">Daily</span>
-                                                <span *ngIf="dis_treat.dose=='STAT'">Take Immediately</span>
-                                                <span *ngIf="dis_treat.dose=='BiD'">1+0+1</span>
-                                                <span *ngIf="dis_treat.dose=='TDS'">1+1+1</span>
-                                                <span *ngIf="dis_treat.dose=='Qid'">1+1+1+1</span>
-                                            </td>
-                                            <td>{{dis_treat.prandial}}</td>
-                                            <td>{{dis_treat.remarks}}</td>
-                                            <td>{{dis_treat.departmentName}}</td>
-                                            <td>
-                                                <div class="form-group">
-                                                        <!-- <a href="javascript:void(0)" class="float-right"><i class="fa fa-close text-danger"></i></a> -->
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <!-- previos treatment other medics -->
-                        <div class="col-md-12">
-                            <h6>Previous Home Treatment other medicines</h6>
-                            <p>
-                                <span *ngIf="otherMedicsHome!='null' || otherMedicsHome!=''">
-                                    {{otherMedicsHome}}
-                                </span>
-                            </p>
-                            
-                        </div>
-                        <!-- previous treatment ended -->
                             </div>
                             <hr class="gray">
                             <div class="form-group row mx-0">

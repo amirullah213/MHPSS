@@ -814,8 +814,7 @@ gotoDischarge(){
   
   localStorage.setItem('prescriptionID',this.outdoorData.prescriptionID);
   localStorage.setItem('otherMedicsHome',this.getDischargedata1.otherMedicsHome);
-  localStorage.setItem('homeTreatment',JSON.stringify(this.getDischargedata1.homeTreatments));
-  localStorage.setItem('otherMedics',this.getDischargedata1.otherMedics);
+  localStorage.setItem('homeTreatment',this.getDischargedata1.homeTreatments);
   
   
   this.router.navigate(['/ward/discharged-med'])
