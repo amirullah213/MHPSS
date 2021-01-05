@@ -1398,10 +1398,7 @@ for(let sb of obj.subTests)
          //   this.depN = v.fName + " " + v.lName;
          this.depN=v.NAME;
          debugger
-         if(v.id!=this.detail.id){
-          this.DepartmentD.push(v)
-         }
-           
+            this.DepartmentD.push(v)
           });
           
           if(response.medicinesData.length!=0)
