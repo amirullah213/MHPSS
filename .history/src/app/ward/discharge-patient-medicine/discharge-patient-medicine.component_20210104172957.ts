@@ -338,8 +338,7 @@ getindoorlist()
      this.wardService.getindoorlist(this.params).subscribe
      ((response: any) => {
        if (response.status === 0) {
-               for(let r of response.data){
-                 debugger
+               for(let r in response.data){
                  if(r.id!=this.detailsData.departmentID){
                   this.refList.push(r);
                  }

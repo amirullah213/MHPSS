@@ -339,7 +339,6 @@ getindoorlist()
      ((response: any) => {
        if (response.status === 0) {
                for(let r of response.data){
-                 debugger
                  if(r.id!=this.detailsData.departmentID){
                   this.refList.push(r);
                  }

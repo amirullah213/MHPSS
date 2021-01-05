@@ -113,7 +113,7 @@
                                         <span *ngIf="userList[0].pastHistory!=''">  Past History:<span class="ml-5" >  {{userList[0].pastHistory}} </span></span>
                                     </h6>
                                     <h5 class="mb-1 mt-4"><b><span class="colorback">Diagonosis : </span></b></h5>
-                                    <h6 class="mb-1 ml-4" *ngFor="let dia of diag">{{dia.name}}<span *ngIf="dia.description!='' && dia.description!=undefined"> - {{dia.description}}</span></h6>
+                                    <h6 class="mb-1 ml-4">{{diag[0].name}}<span *ngIf="diag[0].description!='' && diag[0].description!=undefined"> - {{diag[0].description}}</span></h6>
 
                                     <h5 class="mb-1 mt-4"><b><span class="colorback">Treatment : </span></b></h5>
                                     <h6 class="mb-1 ml-4" *ngFor="let med of userList[0].medicines; let i=index">

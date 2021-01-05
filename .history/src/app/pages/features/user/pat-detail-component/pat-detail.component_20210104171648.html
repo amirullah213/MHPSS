@@ -128,7 +128,7 @@
                                                     <tbody *ngIf="!userLoader">
                                                         <tr *ngFor="let user of userList">
                                                             <td>{{user.DateCreated | date:"y/dd/MM"}}</td>
-                                                            <td>{{user.token }}</td>
+                                                            <td>{{user.token | date:"y/dd/MM"}}</td>
                                                             <td>
 
                                                                 <a class="text-primary float-right" (click)="gotoPresDetails(user)" href="javascript:void(0)">View Prescription Slip</a>

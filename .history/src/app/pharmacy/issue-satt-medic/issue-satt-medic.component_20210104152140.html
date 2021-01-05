@@ -1,0 +1,105 @@
+<div class="container-fluid container-wrapper">
+    <div class="row">
+        <div class="content-wrapper">
+            <div class="page-title">
+                <div class="row px-3 px-md-0">
+                    <div class="col-sm-12 pl-0">
+                        <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
+                            <li class="breadcrumb-item active gray-04-color"><a href="javascript:void(0)" [routerLink]="['/pharma/home']" class="gray-color"><i class="ti-home mr-2"></i>Home</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)"> Dispense Patient</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- main body -->
+            <div class="row">
+                <div class="col-md-12 mb-30">
+                    <div class="card card-statistics h-100">
+                        <div class="card-body">
+                            <alert [type]="alerts.type" *ngIf="showAlert" class="alert-fixpos">{{ alerts.msg }}</alert>
+                            <!-- <h5 class="card-title mb-0">Dispense Patient</h5> -->
+                            <form [formGroup]="dynamicForm">
+                               
+                                <div class="form-group row mx-0">
+                                    <div class="table-responsive">
+                                        <table class="table center-aligned-table">
+                                            <thead>
+                                                <tr class="text-dark">
+                                                    <th width='25%'>Medicine </th>
+                                                    <th>Unit</th>
+                                                    <th>Type</th>
+                                                    <th width='15%'>Batch No</th>
+
+                                                    <th>Instock</th>
+                                                    <th>Prescribed</th>
+                                                    <th>Issued </th>
+                                                    <!-- <th>Dose </th>
+                                                    <th>Parendials </th> -->
+
+                                                </tr>
+                                            </thead>
+                                            <tbody formGroupName="purchaseOrder">
+                                                <tr *ngFor="let item of dynamicForm.get('purchaseOrder')['controls']; let i = index;" [formGroupName]="i">
+                                                    <td>
+                                                        <input type="text" formControlName='medicine' class="form-control" [attr.disabled]='true' placeholder="Medicine Name">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" formControlName='unit' class="form-control" [attr.disabled]='true' placeholder="Unit">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" formControlName='type' class="form-control" [attr.disabled]='true' placeholder="Recieved Quantity">
+                                                    </td>
+                                                    <td>
+                                                        <span>
+                                                            <select formControlName='stockVal'  class="form-control" (change)="AssinIssueQuantity(i)" 
+                                                               placeholder="Select Stock" >
+                                                             
+                                                              <option *ngFor="let stc of item.value.stock;let j=index" [value]="stc" >{{stc.batchNo}}</option>
+                                                            </select>
+                                                       </span>
+
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" formControlName='totalQuantity' [attr.disabled]='true' class="form-control" placeholder="Total Quantity instock">
+                                                    </td>
+
+                                                    <td>
+                                                        <input type="text" formControlName='prescribedQuantity' [attr.disabled]='true' class="form-control" placeholder="Prescribed Quantity">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" formControlName='issuedQuantity'  class="form-control" (change)="compareValues(i)" placeholder="Issued Quantity">
+                                                    </td>
+                                                    <!-- <td>
+                                                        <input type="text" formControlName='dose' class="form-control" placeholder="Dose">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" formControlName='prandial' class="form-control" placeholder="Parandials">
+                                                    </td> -->
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </form>
+
+                            <hr class="gray">
+                            <div class="form-group row mx-0">
+                                <div class="col-md-12">
+                                    <div class="form-group text-center">
+                                        <button type="button" *ngIf="!loader_eqp" [disabled]="this.issuedGreater" (click)="saveData(dynamicForm.value)" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save</button>
+                                        <button type="button" *ngIf="loader_eqp" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><span class="spinner-border theme-color" role="status">
+                                                    <span class="sr-only"></span> </span></button>
+                                                    
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

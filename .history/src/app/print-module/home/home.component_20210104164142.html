@@ -26,10 +26,10 @@
                                     <h6><b>Patient Name :</b> <span class="ml-3"> {{userList[0].firstname}} <span *ngIf=userList[0].lastname!='undefined'>userList[0].lastname</span> </span>
                                     </h6>
                                     <h6><b>Father / Husband's Name : </b><span class="ml-3">{{userList[0].f_hName}}</span> </h6>
-                                    <h6><b>CNIC : </b><span class="ml-3">{{userList[0].cnic}}</span> </h6>
+                                    <h6><b>CNIC : </b><span class="ml-3">{{patInfo.cnic}}</span> </h6>
                                     <h6><b>DOB :</b> <span class="ml-3">  {{userList[0].dob | date}} </span>
                                     </h6>
-                                    <h6><b>Gender : </b><span class="ml-3 text-capitalize">{{userList[0].gender}}</span></h6>
+                                    <h6><b>Gender : </b><span class="ml-3 text-capitalize">{{patInfo.gender}}</span></h6>
                                     <h6><b>Consulting Doctor :</b> <span class="ml-3">{{userList[0].docFName}} {{userList[0].docLNmae}}</span><span> ({{userList[0].userName}})</span></h6>
                                     <h6><b>Dated :</b> <span class="ml-3">{{userList[0].DateCreated | date: 'dd-MM-yyyy, h:mm a'}}</span></h6>
                                 </div>
@@ -113,7 +113,7 @@
                                         <span *ngIf="userList[0].pastHistory!=''">  Past History:<span class="ml-5" >  {{userList[0].pastHistory}} </span></span>
                                     </h6>
                                     <h5 class="mb-1 mt-4"><b><span class="colorback">Diagonosis : </span></b></h5>
-                                    <h6 class="mb-1 ml-4" *ngFor="let dia of diag">{{dia.name}}<span *ngIf="dia.description!='' && dia.description!=undefined"> - {{dia.description}}</span></h6>
+                                    <h6 class="mb-1 ml-4">{{diag[0].name}}<span *ngIf="diag[0].description!='' && diag[0].description!=undefined"> - {{diag[0].description}}</span></h6>
 
                                     <h5 class="mb-1 mt-4"><b><span class="colorback">Treatment : </span></b></h5>
                                     <h6 class="mb-1 ml-4" *ngFor="let med of userList[0].medicines; let i=index">

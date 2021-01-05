@@ -152,18 +152,18 @@ createItem(obj:any): FormGroup {
  debugger
   return this.fb.group({
     
-    stockID:obj.stock[0].id || 0,
+    stockID:'' || 0,
     prescribedQuantity: obj.prescribedQuantity,
     issuedQuantity: obj.issuedQuantity,
     medicine: obj.medicine,
     type: obj.type1,
     unit: obj.unit,
-    stock:[obj.stock],
-    totalQuantity:obj.stock[0].totalQuantity,
-    stockVal:obj.stock,
+    stock:[obj.stock[0]],
+    totalQuantity:'',
+    stockVal:'',
     dose:obj.dose,
     prandial:obj.prandial,
-    itemID:obj.stock[0].itemID || 0,
+    itemID:'' || 0,
     id:obj.id
 
   });
@@ -210,7 +210,6 @@ saveData(dat){
   
   }
   AssinIssueQuantity(ind){
-    debugger
 
     console.log('resp from batch quantity==',ind);
     console.log('resp from batch stock==',this.purchaseOrder.value[ind].stockVal.totalQuantity);

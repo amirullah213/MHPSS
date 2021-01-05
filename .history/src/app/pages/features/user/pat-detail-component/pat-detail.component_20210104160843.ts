@@ -1850,11 +1850,9 @@ alert("please Select Refferel For Admition or Select a Date for operate")
   // patient prescription list
   gotoPresDetails(udata) {
     debugger
-    localStorage.setItem('pharmacyData',JSON.stringify(udata) );
-     window.open('/print/home')
-  //   localStorage.setItem('uPresData', JSON.stringify(udata));
-  //  // this.router.navigate(['doctor/user/print-presc']);
-  //   window.open('doctor/user/print-presc')
+    localStorage.setItem('uPresData', JSON.stringify(udata));
+   // this.router.navigate(['doctor/user/print-presc']);
+    window.open('doctor/user/print-presc')
     localStorage.removeItem("tab")
 
   }

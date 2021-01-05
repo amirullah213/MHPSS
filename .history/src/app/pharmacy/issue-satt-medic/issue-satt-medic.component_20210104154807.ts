@@ -163,7 +163,7 @@ createItem(obj:any): FormGroup {
     stockVal:obj.stock,
     dose:obj.dose,
     prandial:obj.prandial,
-    itemID:obj.stock[0].itemID || 0,
+    itemID:'' || 0,
     id:obj.id
 
   });

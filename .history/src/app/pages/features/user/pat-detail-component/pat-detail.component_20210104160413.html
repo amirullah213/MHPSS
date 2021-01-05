@@ -121,14 +121,12 @@
                                                     <thead>
                                                         <tr class="text-dark">
                                                             <th>Date Created</th>
-                                                            <th>Token</th>
                                                             <th class="float-right">View Prescription Slip</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody *ngIf="!userLoader">
                                                         <tr *ngFor="let user of userList">
                                                             <td>{{user.DateCreated | date:"y/dd/MM"}}</td>
-                                                            <td>{{user.token }}</td>
                                                             <td>
 
                                                                 <a class="text-primary float-right" (click)="gotoPresDetails(user)" href="javascript:void(0)">View Prescription Slip</a>
