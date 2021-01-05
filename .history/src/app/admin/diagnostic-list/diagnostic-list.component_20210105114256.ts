@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, TemplateRef,AfterViewInit,  ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { Router } from "@angular/router";
 import { Subject } from 'rxjs';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
@@ -11,8 +11,6 @@ import { AdminServiceService } from '../services/admin-service.service';
   styleUrls: ['./diagnostic-list.component.scss']
 })
 export class DiagnosticListComponent implements OnInit {
-  @ViewChild(DataTableDirective, {static: false})
-  dtElement: DataTableDirective;
   showTable:boolean=false;
   diagnosis: any = [];
   selected: any='';
@@ -29,17 +27,13 @@ export class DiagnosticListComponent implements OnInit {
   errormsg: string;
   userData: any = {};
   userID: number;
-  
- 
+  dtElement: DataTableDirective;
+  dtInstance: DataTables.Api;
   selectedData:any={};
   model9:any={};
   Diagnosticname:any;
   ambID:any;
 
-  dtInstance: DataTables.Api;
-  // We use this trigger because fetching the list of persons can be quite long,
-  // thus we ensure the data is fetched before rendering
-  //dtTrigger: Subject = new Subject();
   dtTrigger: Subject<any> = new Subject();
 
 

@@ -12,7 +12,6 @@ import { AdminServiceService } from '../services/admin-service.service';
 })
 export class DiagnosticListComponent implements OnInit {
   @ViewChild(DataTableDirective, {static: false})
-  dtElement: DataTableDirective;
   showTable:boolean=false;
   diagnosis: any = [];
   selected: any='';
@@ -29,7 +28,7 @@ export class DiagnosticListComponent implements OnInit {
   errormsg: string;
   userData: any = {};
   userID: number;
-  
+  dtElement: DataTableDirective;
  
   selectedData:any={};
   model9:any={};
