@@ -22,7 +22,7 @@
     "@kolkov/angular-editor": "^1.1.4",
     "@types/w3c-web-usb": "^1.0.4",
     "angular-datatables": "^4.4.1",
-    "datatables.net": "^1.10.22",
+    "datatables.net": "^1.10.23",
     "datatables.net-buttons": "^1.6.5",
     "datatables.net-buttons-dt": "^1.6.5",
     "datatables.net-dt": "^1.10.22",
