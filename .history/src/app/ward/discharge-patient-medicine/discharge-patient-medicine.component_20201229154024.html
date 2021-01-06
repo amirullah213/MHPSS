@@ -1,0 +1,244 @@
+<div class="container-fluid container-wrapper">
+    <div class="row">
+        <div class="content-wrapper">
+            <div class="page-title">
+                <div class="row px-3 px-md-0">
+                    <div class="col-sm-12 pl-0">
+                        <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
+                            <li class="breadcrumb-item active gray-04-color"><a href="javascript:void(0)" [routerLink]="['/ward/home']" class="gray-color"><i class="ti-home mr-2"></i>Home</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)"> Discharged Patient</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- main body -->
+            <div class="row">
+                <div class="card card-statistics h-100">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="page-title col-md-3">Patient Name : <b>{{detailsData.firstname}}</b> </div>
+                            <div class="page-title col-md-3">Father/Husband Name : <b>{{detailsData.f_hName}}</b> </div>
+                                <div class="page-title col-md-3">CRP No : <b>{{detailsData.token}}</b> </div>
+                                
+                            </div><br>
+                        <form novalidate [formGroup]="treatmentForm">
+                            <div class="form-group row mx-0 border4">
+                                <div class="col-md-12">
+                                    <h5>Treatment for home if any</h5>
+                                </div>
+                                <hr class="hr-gray">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Medicine Name</label>
+                                        <input type="text" formControlName="med_name" [typeahead]="gettreatmetData" typeaheadOptionField="itemName" (typeaheadOnSelect)="onSelectMedics($event)" name="medicName" class="form-control" id="formGroupExampleInput" placeholder="Enter Medicine Name" [typeaheadOptionsLimit]='1000' [typeaheadMinLength]="0" [typeaheadScrollable]="true" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>Unit</label>
+                                        <input type="text" formControlName="med_unit" class="form-control" id="formGroupExampleInput" placeholder="Unit">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>Type</label>
+                                        <input type="text" formControlName="med_type" class="form-control" id="formGroupExampleInput" placeholder="Medicine Type">
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>In Stock</label>
+                                        <input type="text" formControlName="med_instock" disabled='true' class="form-control" id="formGroupExampleInput" placeholder="In Stock">
+                                    </div>
+                                </div> -->
+                               
+                                <div class="col-md-2">
+                                    <div class="form-group input-group">
+                                        <label>Dose</label>
+                                        <span class="wrapper-select">
+                                            <select class="form-control" formControlName="med_dose" aria-label="Text input with segmented dropdown button" placeholder="Is Follow Up">
+                                                <option>Select Dose</option>
+                                                <option value='SOS'>SOS</option>
+                                                <option value="OD">OD</option>
+                                                <option value="STAT"> STAT</option>
+                                                <option value="BiD">BiD</option>
+                                                <option value="TDS">TDS</option>
+                                                <option value="QiD">QiD</option>
+                                            </select>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Prescribed Quantity</label>
+                                        <input type="text" formControlName="med_quantity" class="form-control" id="formGroupExampleInput" placeholder="Prescribed Quantity">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group input-group">
+                                        <label>Prandial</label>
+                                        <span class="wrapper-select">
+                                            <select class="form-control" formControlName="med_parandials"  aria-label="Text input with segmented dropdown button" placeholder="Is Follow Up">
+                                                <option value="">Select Prandial</option>
+                                                <option value="Before Meal">Before Meal</option>
+                                                <option value="In Between Meal">In Between Meal</option>
+                                                <option value="After Meal">After Meal</option>
+                                                <option value="Others">Others</option>
+                                            </select>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Remarks/Dosing</label>
+                                       
+                                   <textarea formControlName="med_remark" class="form-control" id="formGroupExampleInput" placeholder="Remarks/Dosing"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 mt-4">
+                                    <div class="form-group mt-2 text-center">
+                                        <button type="button" (click)="addmoreMedics()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus mr-2"></i>Add More </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-12" *ngIf="medicShow">
+                                    <h6> Treatment</h6>
+                                    <div class="table-responsive cutomtable">
+                                        <table class="table center-aligned-table">
+                                            <thead>
+                                                <tr class="text-dark">
+                                                    <th>Medicine</th>
+                                                    <th>Prescribed Quantity</th>
+                                                    <th>Dose</th>
+                                                    <th>Prandial</th>
+                                                    <th>Remarks</th>
+                                                    <th class="text-center">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="" *ngFor="let addArr of medicinesFinal;let m=index;">
+                                                    <td>{{addArr.medicine}}</td>
+                                                    <td>{{addArr.prescribedQuantity}}</td>
+                                                    <td>
+                                                        <span *ngIf="addArr.dose=='SOS'">When required</span>
+                                                        <span *ngIf="addArr.dose=='OD'">Daily</span>
+                                                        <span *ngIf="addArr.dose=='STAT'">Take Immediately</span>
+                                                        <span *ngIf="addArr.dose=='BiD'">1+0+1</span>
+                                                        <span *ngIf="addArr.dose=='TDS'">1+1+1</span>
+                                                        <span *ngIf="addArr.dose=='Qid'">1+1+1+1</span>
+                                                    </td>
+                                                    <td>{{addArr.prandial}}</td>
+                                                    <td>{{addArr.remarks}}</td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <a href="javascript:void(0)" class="float-right" (click)="removeArr(m)"><i class="fa fa-close text-danger"></i></a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                       
+                                    </div>
+                                </div>
+                                <br>
+                                <h4 class="text-center">Or</h4>
+                                <hr class="hr-gray mx-0">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Other Medicine</label>
+                                <textarea class="form-control" formControlName="tComments" name="comments" type=text></textarea>
+                            </div>
+                        </div>
+                            </div>
+                            <hr class="gray">
+                            <div class="form-group row mx-0">
+                                <div class="col-md-12 mt-4">
+                                    <div class="form-group text-center">
+                                        <button type="button" *ngIf="loaderMedic" class="button">
+                                            <span class="spinner-border mr-2" role="status" aria-hidden="true"></span>Save Medicines 
+                                        </button>
+                                        <button type="button" *ngIf="!loaderMedic" (click)="addPresMedicines()" class="button">
+                                            <i class="fa fa-check-square mr-2"></i>Save Medicines 
+                                        </button>
+                                    </div>
+                                    <hr class=" hr-gray ">
+                                <form [formGroup]="dischargeForm">
+                                    <div class="form-group row mx-0 border4">
+                                        <!-- radio button for discharge or refferal -->
+                                        <div class="col-sm-12">
+                                            <h5>Discharge Or Reffer</h5>
+                                        <div class="custom-radio custom-control-inline mr-md-5">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" formControlName="access_type" id="gridRadios21" value="0" [checked]='true' (change)="changeCheckboxVal($event)">
+                                                <label class="form-check-label" for="gridRadios21">Discharge</label>
+                                            </div>
+                                        </div>
+                                        <div class="custom-radio custom-control-inline mr-md-5">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" formControlName="access_type" id="gridRadios31" value="1" (change)="changeCheckboxVal($event)">
+                                                <label class="form-check-label" for="gridRadios31">Reffer to other Dept</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <!-- radio button for discharge or refferal -->
+                                        <!-- for discharge -->
+                                        <div class="col-sm-12 row" *ngIf="showRef==0">
+                                        <div class="col-sm-6">
+                                            <label class="mt-3" for="inputState">Discharge Type</label>
+                                            <select class="form-control" formControlName="dis_type">
+                                                <option value='1'>Discharge / DOR</option>
+                                                <option value='2'>LAMA</option>
+                                                <option value='3'>Referred</option>
+                                                <option value='4'>Death</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="mt-3" for="inputState">Select Date</label>
+                                            <input type="text" class="form-control" formControlName="dis_date" placeholder="Start Date" #datepickerYMD="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placement="top">
+                                        </div>
+                                        <div class="form-group col-sm-12 mt-3 text-center">
+                                            <button type="button" *ngIf="loaderUpdate" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
+                                                <span class="spinner-border mr-2 " role="status" aria-hidden="true"></span>Discharge 
+                                            </button>
+                                            <button type="button" *ngIf="!loaderUpdate" (click)="updateIndoor(dischargeForm.value)" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
+                                                <i class="fa fa-wheelchair mr-2"></i>Discharge 
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!-- for refferal -->
+                                    <div class="col-sm-12 row" *ngIf="showRef==1">
+                                        <div class="form-group input-group col-sm-6">
+                                            <label>Select Referral</label>
+                                            <span class="wrapper-select">
+                                                <select formControlName="ref" class="form-control"
+                                                    (change)="changeRefVal($event.target.value)">
+                                                    <option>Choose Referral</option>
+                                                    <option *ngFor="let rl of refList" [value]="rl.id">{{rl.fname}} {{rl.lname}}</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                        <!-- <div class="col-sm-6">
+                                            <label class="mt-3" for="inputState">Select Date</label>
+                                            <input type="text" class="form-control" formControlName="dis_date" placeholder="Start Date" #datepickerYMD="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placement="top">
+                                        </div> -->
+                                        <div class="form-group col-sm-12 mt-3 text-center">
+                                            <button type="button" *ngIf="loaderUpdate" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
+                                                <span class="spinner-border mr-2 " role="status" aria-hidden="true"></span>Reffer to Ward  
+                                            </button>
+                                            <button type="button" *ngIf="!loaderUpdate" (click)="updateIndoor2(dischargeForm.value)" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
+                                                <i class="fa fa-wheelchair mr-2"></i>Reffer to Ward 
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    </div>
+                                </form>
+                                    
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
