@@ -98,6 +98,7 @@ export class AdmittedPatientsComponent implements OnInit {
   insTest: boolean=true;
   outForm: any;
   loginData: any;
+  count: any=0;;
 
   constructor(
     private modalService: BsModalService, 
@@ -454,8 +455,12 @@ updateIndoor(indoorData) {
 //update indoor details
 
 //operate indoor details
+
 operateIndoor() {
-  
+  debugger
+  if(this.count==0)
+  {
+    this.count=1;
   this.loaderOperate= true;
   this.model9.patientID=this.detailsData.patientID;
   this.model9.hospitalID=this.hospitalID;
@@ -489,7 +494,10 @@ debugger
     },
     (error) => {}
   );
-
+  }
+  else{
+    alert("Requeste already sent")
+  }
 }
 //operate indoor details
 
