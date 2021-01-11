@@ -349,7 +349,7 @@ export class HomeComponent implements OnInit {
     this.receptService.insertpatientpms(this.model2).subscribe(
       (response: any) => {
         if (response.status === 0) {
-          console.log(' response2====', response);
+          
 
           this.newResponsearr = response.patientID;
           this.model2.patientID = this.newResponsearr;
@@ -359,8 +359,7 @@ export class HomeComponent implements OnInit {
           // this.alertSuccess(type,msg);
           this.loaderNew = false;
           this.regisForm.reset();
-          debugger
-         
+          
           // localStorage.removeItem('paDetails')
           // localStorage.setItem('paDetails', JSON.stringify(this.model2));
           // this.patDataLocal=JSON.parse(localStorage.getItem('paDetails'));
