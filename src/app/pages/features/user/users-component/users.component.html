@@ -45,6 +45,7 @@
                                                                     <label class="form-check-label" for="exampleCheck1"></label>
                                                                 </div>
                                                             </th> -->
+                                                            <th>Patient ID</th>
                                                             <th>CRP NO</th>
                                                             <th>Patient Name</th>
                                                             <th>NIC</th>
@@ -61,6 +62,7 @@
                                                                     <label class="form-check-label" for="exampleCheck1"></label>
                                                                 </div>
                                                             </td> -->
+                                                            <td>{{user.patientID}}</td>
                                                             <td>{{user.token}}</td>
                                                             <td>{{user.firstname}} / {{user.f_hName}}</td>
                                                             <td>{{user.cnic}}</td>
@@ -99,6 +101,7 @@
                                                                     <label class="form-check-label" for="exampleCheck1"></label>
                                                                 </div>
                                                             </th> -->
+                                                            <th>Patient ID</th>
                                                             <th>CRP NO</th>
                                                             <th>Patient Name</th>
                                                             <th>NIC</th>
@@ -115,6 +118,7 @@
                                                                     <label class="form-check-label" for="exampleCheck1"></label>
                                                                 </div>
                                                             </td> -->
+                                                            <td>{{user.patientID}}</td>
                                                             <td>{{user.token}}</td>
                                                             
                                                             <td>{{user.firstname}} / {{user.f_hName}}</td>
@@ -143,6 +147,7 @@
                                                 <table class="table center-aligned-table">
                                                     <thead>
                                                         <tr class="text-dark">
+                                                            <th>Patient ID</th>
                                                             <th>CRP NO</th>
                                                             <th>Patient Name</th>
                                                             <th>NIC</th>
@@ -152,6 +157,7 @@
                                                     </thead>
                                                     <tbody *ngIf="!userLoader">
                                                         <tr *ngFor="let user of userList">
+                                                            <td>{{user.patientID}}</td>
                                                             <td>{{user.token}}</td>
                                                             <td>{{user.firstname}} / {{user.f_hName}}</td>
                                                             <td>{{user.cnic}}</td>

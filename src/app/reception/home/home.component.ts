@@ -65,6 +65,19 @@ export class HomeComponent implements OnInit {
  showAlert: boolean = false;
  dismissible = true;
  alerts:any={};
+  objDoc3: any={};
+  docResponseArray: any=[];
+  loaderDoc: boolean;
+  patDataLocal: any;
+  age: number;
+  modalRef3: BsModalRef;
+  genResponseArray: any=[];
+  loaderGen: boolean;
+  model21: any={};
+  childResponseArray: any=[];
+  loaderChild: boolean;
+  ttvResponseArray: any=[];
+  loaderttv: boolean;
 
   constructor(
     private modalService: BsModalService,
@@ -78,9 +91,8 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.showSuccess();
-
-    this.GetBirthDate();
+   
+      this.getAllDoctros();
     
     this.hospitalID = localStorage.getItem('hospitalID');
     this.doctorID = localStorage.getItem('docId');
@@ -114,6 +126,7 @@ export class HomeComponent implements OnInit {
       },
     );
   }
+
   GetBirthDate() {
     // this.yr = this.yr.replace(/^\s+|\s+$/g, "");
     // this.mn = this.mn.replace(/^\s+|\s+$/g, "");
@@ -121,6 +134,7 @@ export class HomeComponent implements OnInit {
     console.log(' this.yr', this.yr)
     if (this.mn < 10) { this.mn = '0' + this.mn }
     // alert(new Date(new Date().getFullYear() - this.yr, new Date().getMonth()  - this.mn ));
+  
     this.newDOB = this.datePipe.transform(new Date(new Date().getFullYear() - this.yr, new Date().getMonth() - this.mn), "yyyy-MM-dd");
     console.log('this.newDOB', this.newDOB)
   }
@@ -128,7 +142,81 @@ export class HomeComponent implements OnInit {
     this.modalRef = this.modalService.show(captureuser, Object.assign({}, { class: 'gray modal-lg' }));
 
   }
-
+  //--------------------child vaccnication
+  childVacination(modData) {
+    console.log("modal data====",modData);
+    this.loaderChild= true;
+    this.model4.hospitalID=this.hospitalID;
+    this.model4.patientID=this.patDataLocal.patientID;
+    this.model4.departmentID=45;
+    this.model4.isIndoor=6;
+    this.model4.refferedFrom=modData.reff;
+   
+    console.log('model4 ==', this.model4);
+    this.receptService.generToken(this.model4).subscribe(
+     (response: any) => {
+       if (response.status === 0) {
+        
+          this.childResponseArray=response;
+          console.log('hospitl childResponseArray==',this.childResponseArray);
+          this.loaderChild = false;
+         // alert('TT vacination token generated successfuly');
+          this.modalRef3.hide();
+          localStorage.setItem('tokenDetails',JSON.stringify(this.childResponseArray));
+          this.router.navigate(['reception/print-token'])
+    
+    
+         
+       }
+   if (response.status === 1) {
+         this.errormsg = response.error;
+         this.loaderChild = false;
+         alert('Problem in service! please Try again')
+         console.log('error=', this.errormsg);
+         
+       }
+     },
+     (error) => {}
+   );
+  
+  }
+  //-------------------------
+  ttvacination(modData) {
+    console.log("modal data====",modData);
+    this.loaderttv= true;
+    this.model3.hospitalID=this.hospitalID;
+    this.model3.patientID=this.patDataLocal.patientID;
+    this.model3.departmentID=45;
+    this.model3.isIndoor=5;
+    this.model3.refferedFrom=modData.reff;
+   
+    console.log('model3 ==', this.model3);
+    this.receptService.generToken(this.model3).subscribe(
+     (response: any) => {
+       if (response.status === 0) {
+        
+          this.ttvResponseArray=response;
+          console.log('hospitl ttvResponseArray==',this.ttvResponseArray);
+          this.loaderttv = false;
+         // alert('TT vacination token generated successfuly');
+          this.modalRef3.hide();
+          localStorage.setItem('tokenDetails',JSON.stringify(this.ttvResponseArray));
+          this.router.navigate(['reception/print-token'])
+         
+       }
+   if (response.status === 1) {
+         this.errormsg = response.error;
+         this.loaderttv = false;
+         alert('Problem in service! please Try again')
+         console.log('error=', this.errormsg);
+         
+       }
+     },
+     (error) => {}
+   );
+  
+  }
+  //-------------------------
   //---------------------search by cnic---------------------
   serchBycnic(cc) {
     this.loaderCNIC = true;
@@ -196,12 +284,19 @@ export class HomeComponent implements OnInit {
   clear() {
     this.regisForm.reset();
   }
-
+  openModAdd3(captureuser3: TemplateRef<any>) {
+    
+    this.objDoc3.reff="Self"
+   // this.objDoc.doctor="Triage Point 1 OPD" 
+    this.objDoc3.doctor=2
+    this.modalRef3 = this.modalService.show(captureuser3, Object.assign({}, { class: 'gray modal-lg' }));
+  }
   //---------------------search by token---------------------
-  registerNewPat(formval) {
+  registerNewPat(formval,captureuser3) {
+    
     console.log('month year',formval.year +"   " +formval.months +"   "+formval.tehsil_city)
    this.showaddmsg = false;
-    if (formval.dob == null || 'null' || undefined || '') {
+    if (formval.dob == null || formval.dob=='null' || formval.dob==undefined || formval.dob=='') {
     if(formval.year==null || ''){this.yr=0}else{
       this.yr = formval.year;
     }
@@ -251,9 +346,6 @@ export class HomeComponent implements OnInit {
 
      if (this.showdob==true) {
       
-   
-
-    console.log('model2 ==', this.model2);
     this.receptService.insertpatientpms(this.model2).subscribe(
       (response: any) => {
         if (response.status === 0) {
@@ -267,8 +359,23 @@ export class HomeComponent implements OnInit {
           // this.alertSuccess(type,msg);
           this.loaderNew = false;
           this.regisForm.reset();
-          localStorage.setItem('paDetails', JSON.stringify(this.model2));
-          this.router.navigate(['reception/old-regis'])
+          debugger
+         
+          // localStorage.removeItem('paDetails')
+          // localStorage.setItem('paDetails', JSON.stringify(this.model2));
+          // this.patDataLocal=JSON.parse(localStorage.getItem('paDetails'));
+          this.patDataLocal=this.model2;
+        
+          if (this.patDataLocal.dob) {
+            //convert date again to type Date
+            const bdate = new Date(this.patDataLocal.dob);
+            const timeDiff = Math.abs(Date.now() - bdate.getTime() );
+            
+            this.age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365);
+            this.getAllDoctros();
+          }
+          this.openModAdd3(captureuser3)
+        //  this.router.navigate(['reception/old-regis'])
 
 
         }
@@ -287,6 +394,9 @@ export class HomeComponent implements OnInit {
     
     }
   }
+
+
+  
   //-------------------goto next page
   gotopatdetailsDetails(obpat) {
     console.log("patData===", obpat,)
@@ -298,6 +408,73 @@ export class HomeComponent implements OnInit {
   //-------------------goto next page
 
   //---------------get dists-------
+    //--------------------get doctor list 
+    getAllDoctros() { 
+   
+      this.loaderUc= true;
+      this.model.hospitalID=this.hospitalID;
+      
+      console.log('model ==', this.model);
+      this.receptService.getDoctorsList(this.model).subscribe(
+        (response: any) => {
+          if (response.status === 0) {
+            debugger
+             this.docResponseArray=response.data;
+             console.log('hospitl list==',this.docResponseArray);
+             this.loaderDoc = false;
+            
+          }
+      if (response.status === 1) {
+            this.errormsg = response.error;
+            this.loaderDoc = false;
+            alert('Problem in service! please Try again')
+            console.log('error=', this.errormsg);
+            
+          }
+        },
+        (error) => {}
+      );
+    
+    }
+    //-------------------------
+    generateToken(modData) {
+      debugger
+      console.log("modal data====",modData);
+      this.loaderGen= true;
+      this.model21.hospitalID=this.hospitalID;
+      this.model21.patientID=this.patDataLocal.patientID;
+      this.model21.departmentID=modData.doctor;
+      this.model21.isIndoor=0;
+      this.model21.refferedFrom=modData.reff;
+      
+     
+      
+      this.receptService.generToken(this.model21).subscribe(
+      
+        (response: any) => {
+         if (response.status === 0) {
+          
+            this.genResponseArray=response;
+            console.log('hospitl list==',this.genResponseArray);
+            this.loaderGen = false;
+            this.modalRef3.hide();
+            
+            localStorage.setItem('tokenDetails',JSON.stringify(this.genResponseArray));
+            this.router.navigate(['reception/print-token'])
+           
+         }
+     if (response.status === 1) {
+           this.errormsg = response.error;
+           this.loaderGen = false;
+           alert('Problem in service! please Try again')
+           console.log('error=', this.errormsg);
+           
+         }
+       },
+       (error) => {}
+     );
+   
+   }
   //---------------------search by cnic---------------------
   getAllDists() {
     this.loaderDists = true;

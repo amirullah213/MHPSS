@@ -34,6 +34,7 @@ export class AdmittedPatientsComponent implements OnInit {
   diagID: any;
   IndoorDiagData: any=[];
   selectedValueIndoorDiag: string;
+  details: any;
   
 
   constructor( private fb: FormBuilder,
@@ -67,6 +68,7 @@ export class AdmittedPatientsComponent implements OnInit {
 
   ngOnInit(): void {
     this.patInfo=JSON.parse(localStorage.getItem("patData"))
+    this.details=JSON.parse(localStorage.getItem("details"))
     this.getindoorlist()
     this.getindoordiagnosis();
     this.getobstetric();
@@ -248,26 +250,26 @@ getindoorlist()
 
 
  generatetoken(op){
-   debugger
+  debugger
 
-  let serCall =false;
-  let inv =this.opAdmit.value;
-  
-  if(inv.selectedValueIndoorDiag!=undefined && this.Indid!=undefined)
-  {
-    debugger
-    let temp =0;
-    if(this.localIndoorData.length!=0){
-  for(let e of this.localIndoorData)
-  {  
-  if(e.id==this.Indid){
+ let serCall =false;
+ let inv =this.opAdmit.value;
+ 
+ if(inv.selectedValueIndoorDiag!=undefined && this.Indid!=undefined)
+ {
+   debugger
+   let temp =0;
+   if(this.localIndoorData.length!=0){
+ for(let e of this.localIndoorData)
+ {  
+ if(e.id==this.Indid){
 //  alert("Diagnosis already Exists");
-  temp = 1;
-  break
- }
+ temp = 1;
+ break
 }
-    }
-    
+}
+   }
+   
 if (temp == 0)
 {
 this.localIndoorData.push({ "id": this.Indid, "name": inv.selectedValueIndoorDiag,"description":inv.descriptionIndoor }) 
@@ -277,47 +279,69 @@ this.opAdmit.patchValue({
 'descriptionIndoor':''
 })
 }
-  if(this.localIndoorData.length!=0 && this.localIndoorData!=undefined )
-  {
+ if(this.localIndoorData.length!=0 && this.localIndoorData!=undefined )
+ {
 
-    this.userLoader=true
-    
-    if(this.id!=undefined && op==1)
+   this.userLoader=true
+   
+   if(this.id!=undefined && op==1)
 {   
-       
-      serCall=true;
-      this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.patInfo.ptID,"patientID": this.patInfo.patientID,"departmentID":this.id,"diagnosis":this.localIndoorData,"isIndoor":this.docType,"refferedFrom":-1,}
+      
+     serCall=true;
+     this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'prescriptionID':this.patInfo.prescriptionID,'ptID':this.patInfo.ptID,"patientID": this.patInfo.patientID,"departmentID":this.id,"diagnosis":this.localIndoorData,"isIndoor":this.docType,"refferedFrom":this.details.fname,}
 
 }
 
 if(serCall==true){
 this.labrService.generatetoken(this.param).subscribe
-  ((response: any) => {
-    if (response.status === 0) {
-      
-      this.router.navigate(["labour-room/home"])
+ ((response: any) => {
+   if (response.status === 0) {
+
+    
      
-      this.userLoader = false;
-    } else {
-      this.userLoader = false;
-      alert('Something went wrong try again');
-    }
-  },
-    (error) => { }
-  );
- 
+    
+     this.userLoader = false;
+     this.updateindoorstatus()
+   } else {
+     this.userLoader = false;
+     alert('Something went wrong try again');
+   }
+ },
+   (error) => { }
+ );
+
 }
 else{
 this.userLoader=false
 
 alert("please Select Refferel For Admition")
 }
-  }
+ }
 else{
-  this.userLoader=false
+ this.userLoader=false
 
-  alert("please select diagnoses")
+ alert("please select diagnoses")
 }
+}
+
+updateindoorstatus(){
+  debugger
+
+     this.param= {"ptID":this.patInfo.ptID,"indoorStatus":2}
+     this.labrService.updateindoorstatus(this.param).subscribe
+     ((response: any) => {
+       if (response.status === 0) {
+         
+        localStorage.setItem("tab",'seenPats')
+        this.router.navigate(['/labour-room/home'])
+              this.userLoader = false;
+       } else {
+         this.userLoader = false;
+         alert('Something went wrong try again');
+       }
+     },
+       (error) => { }
+     );
 }
 
 changeRefVal(e){

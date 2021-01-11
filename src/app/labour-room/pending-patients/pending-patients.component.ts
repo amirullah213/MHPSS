@@ -54,7 +54,7 @@ export class PendingPatientsComponent implements OnInit {
     
     this.userLoader = true;
 
-    this.param= {"isPPH": opl.isPPH?1:0,"patientID":this.patInfo.patientID,"parity":opl.parity,"isEclampsia":opl.isEclampsia?1:0,"isPerperal":opl.isPerperal?1:0,"otherDiagnostics":opl.otherDiagnostics,"departmentID":this.patInfo.departmentID,"isRupture":opl.isRupture?1:0,"isEctopic":opl.isEctopic?1:0,"token":this.patInfo.ptID,"isAbortion":opl.isAbortion?1:0,"isAPH":opl.isAPH?1:0,"isDeath":opl.isDeath?1:0,"isProlonged":opl.isProlonged?1:0,"hospitalID":this.patInfo.hospitalID}
+    this.param= {"isPPH": opl.isPPH?1:0,"prescriptionID":this.patInfo.prescriptionID,"patientID":this.patInfo.patientID,"parity":opl.parity,"isEclampsia":opl.isEclampsia?1:0,"isPerperal":opl.isPerperal?1:0,"otherDiagnostics":opl.otherDiagnostics,"departmentID":this.patInfo.departmentID,"isRupture":opl.isRupture?1:0,"isEctopic":opl.isEctopic?1:0,"token":this.patInfo.ptID,"isAbortion":opl.isAbortion?1:0,"isAPH":opl.isAPH?1:0,"isDeath":opl.isDeath?1:0,"isProlonged":opl.isProlonged?1:0,"hospitalID":this.patInfo.hospitalID}
     this.labrService.admitobstetric(this.param).subscribe
 
     ((response: any) => {

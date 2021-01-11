@@ -18,6 +18,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { TodayPatientsComponent } from './today-patients/today-patients.component';
 import { Print2Component } from './print2/print2.component';
 import { ThermalPrintModule } from 'ng-thermal-print';
+import { PrintRadiologyComponent } from './print-radiology/print-radiology.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { ToastrModule } from 'ngx-toastr';
@@ -28,7 +29,7 @@ import { AlertModule } from 'ngx-bootstrap/alert';
 
 
 @NgModule({
-  declarations: [HomeComponent, ReceptionComponent, NewRegisterComponent, OldRegistrationComponent, PatientsComponent, SideBarReceptionComponent, TodayPatientsComponent, Print2Component],
+  declarations: [HomeComponent, ReceptionComponent, NewRegisterComponent, OldRegistrationComponent, PatientsComponent, SideBarReceptionComponent, TodayPatientsComponent, Print2Component,PrintRadiologyComponent],
   imports: [
     CommonModule, ReceptionRoutingModule, FormsModule, Ng2SearchPipeModule,
      ReactiveFormsModule, SharedModule, DataTablesModule, ThermalPrintModule,

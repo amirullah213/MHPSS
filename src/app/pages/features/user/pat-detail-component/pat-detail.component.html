@@ -17,9 +17,10 @@
                     <div class="card card-statistics h-100">
                         <div class="card-body">
                             <div class="row">
-                            <div class="page-title col-md-4">Patient Name : <b>{{patInfo.firstname}}</b> </div>
-                            <div class="page-title col-md-4">Father/Husband Name : <b>{{patInfo.f_hName}}</b> </div>
-                                <div class="page-title col-md-4">CRP No : <b>{{patInfo.token}}</b> </div>
+                            <div class="page-title col-md-3">Patient Name : <b>{{patInfo.firstname}}</b> </div>
+                            <div class="page-title col-md-3">Father/Husband Name : <b>{{patInfo.f_hName}}</b> </div>
+                                <div class="page-title col-md-3">Patient ID : <b>{{patInfo.patientID}}</b> </div>
+                                <div class="page-title col-md-3">CRP No : <b>{{patInfo.token}}</b> </div>
                             </div>
                             <hr class="gray">
                             <ul class="nav nav-tabs" role="tablist">
@@ -41,6 +42,16 @@
                                 <div *ngIf="tab === 'biofh'" class="tab-pane fade" [ngClass]="{'active show': tab === 'biofh'}" id="tab1" role="tabpanel" aria-labelledby="tab1">
 
                                     <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="formGroupExampleInput">Patient ID</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="formGroupExampleInput">{{patInfo.patientID}}</label>
+                                            </div>
+                                        </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="formGroupExampleInput">Token</label>
@@ -121,6 +132,7 @@
                                                     <thead>
                                                         <tr class="text-dark">
                                                             <th>Date Created</th>
+                                                            <th>Patient ID</th>
                                                             <th>Token</th>
                                                             <th class="float-right">View Prescription Slip</th>
                                                         </tr>
@@ -128,6 +140,7 @@
                                                     <tbody *ngIf="!userLoader">
                                                         <tr *ngFor="let user of userList">
                                                             <td>{{user.DateCreated | date:"y/dd/MM"}}</td>
+                                                            <td>{{user.patientID}}</td>
                                                             <td>{{user.token }}</td>
                                                             <td>
 
@@ -705,7 +718,12 @@
                                                         <h5>Test Type : <span *ngIf="sData.testType==1">Pathalogy</span><span *ngIf="sData.testType!=1">Radiology</span></h5>
 
                                                         <div class="row mx-0">
-                                                            <div class="col-md-12">
+                                                            <div class="col-md-6">
+                                                                <p class="mb-1 mt-2"><b>Patient ID</b>
+                                                                    <span class="ml-4">{{patInfo.patientID}}</span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-md-6">
                                                                 <p class="mb-1 mt-2"><b>Token Number</b>
                                                                     <span class="ml-4">{{patInfo.token}}</span>
                                                                 </p>

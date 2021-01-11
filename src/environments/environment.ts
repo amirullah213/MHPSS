@@ -3,16 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
- // apiBaseUrl: 'https://tma4nljbmd.execute-api.us-west-1.amazonaws.com/dev/'
- 
- apiBaseUrl: 'http://3.225.249.153:3000/',
- 
- //apiBaseUrl: 'http://192.168.43.76:3000/',
-
-
- apiBaseUrlOnline: 'https://yoa6yqfdfg.execute-api.us-east-1.amazonaws.com/merf_dhis/'
- 
+	production: false,
+	//apiBaseUrl: 'https://tma4nljbmd.execute-api.us-west-1.amazonaws.com/dev/'
+	
+	//apiBaseUrl: 'http://3.225.249.153:3000/',
+	apiBaseUrl: 'http://192.168.10.211:3000/',
+	
+	apiBaseUrlOnline: 'https://yoa6yqfdfg.execute-api.us-east-1.amazonaws.com/merf_dhis/' 
 };
 
 /*

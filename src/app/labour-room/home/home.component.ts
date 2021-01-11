@@ -37,12 +37,15 @@ export class HomeComponent implements OnInit {
   userList: any;
   userLoader: boolean;
   interval: number;
+  tb: string;
   constructor(
     private modalService: BsModalService,
     private router: Router,
     private labrService : LabourRoomSerivce
   ) {
-    if(this.router.url === '/labour-room/home' && this.tab=='newPats'){
+    debugger  
+    this.tb =localStorage.getItem('tab')
+    if(this.router.url === '/labour-room/home' && this.tb =='newPats'){
           this.interval = setInterval(() => {
         this.getpatients(8)
         // api call
@@ -65,18 +68,21 @@ export class HomeComponent implements OnInit {
   setTab(tab: string) {
    localStorage.setItem("tab",tab)   
    if (tab == 'newPats') {
+    this.tab = tab;
    this.getpatients(8)
-   this.tab = tab;
+   
       // this.getWardPats(this.userData)
     };
     if (tab == 'penPats') {
-      this.getpatients(9)
       this.tab = tab;
+      this.getpatients(9)
+      
       // this.getWardPats(this.userData)
     };
     if (tab == 'seenPats') {
-      this.getpatients(10)
       this.tab = tab;
+      this.getpatients(10)
+     
       // this.getWardPats(this.userData)
     };
   }

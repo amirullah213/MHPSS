@@ -6,7 +6,7 @@
                     <div class="col-sm-12 pl-0">
                         <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
                             <li class="breadcrumb-item"><a href="javascript:void(0)" [routerLink]="['/reception/home']" class="gray-color"><i class="ti-home mr-1"></i> Home</a></li>
-                            <li class="breadcrumb-item active gray-04-color">Today's Patients</li>
+                            <li class="breadcrumb-item active gray-04-color">Patients Prints</li>
                         </ol>
                     </div>
                 </div>
@@ -27,28 +27,38 @@
                                         <table class="table center-aligned-table">
                                             <thead>
                                                 <tr class="text-dark text-center">
-                                                    <th>S.No</th>
+                                                    <!-- <th>S.No</th> -->
+                                                    
+                                                    <th>Patient ID</th>
+                                                    <th>Token</th>
                                                     <th>Name</th>
                                                     <th>Father</th>
                                                     <th>CNIC</th>
                                                     <th>Contact</th>
                                                     <th>Dept</th>
-                                                    <th>Token</th>
+                                                    
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr class="text-center" *ngFor="let pats of docResponseArray | filter:filterTerm let i=index">
-                                                    <td>{{i+1}}</td>
+                                                    <!-- <td>{{i+1}}</td> -->
+                                                    <td>{{pats.patientID}}</td>
+                                                    <td>{{pats.token}}</td>
                                                     <td>{{pats.firstname}}</td>
                                                     <td>{{pats.f_hName}}</td>
                                                     <td>{{pats.cnic}}</td>
                                                     <td>{{pats.cellNo}}</td>
                                                     <td>{{pats.departmentName}}</td>
-                                                    <td>{{pats.token}}</td>
+                                                   
 
 
                                                     <td><a href="javascript:void(0)" class="text-primary" (click)="gotoPrintPage(pats)">Token</a></td>
+                                                    <td>
+                                                        <a href="javascript:void(0)" class="text-primary" (click)="gotoPrintPrescription(pats)">Prescription</a>&nbsp;&nbsp;
+                                                        <a href="javascript:void(0)" class="text-primary" (click)="gotoPrintRadiology(pats)">Tests</a>&nbsp;&nbsp;
+                                                        <!-- <a href="javascript:void(0)" class="text-primary" (click)="gotoPrintPathology(pats)">Pathology</a> -->
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </table>

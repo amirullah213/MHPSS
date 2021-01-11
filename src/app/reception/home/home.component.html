@@ -88,7 +88,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="formGroupExampleInput">Date Of Birth</label>
-                                                <input type="text" formControlName="dob" class="form-control" placeholder="Start Date" #datepickerYMD="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placement="top">
+                                                <input type="text" formControlName="dob" class="form-control" placeholder="Date of Birth" #datepickerYMD="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placement="top">
                                                 <span class="text-danger" *ngIf="!showdob && !showaddmsg">
                                                     Date Of Birth, Year or Month required *
                                                 </span>
@@ -138,18 +138,18 @@
                                                 <span *ngIf="loaderDists" class="spinner-border " role="status" aria-hidden="true"></span>
                                                 <select *ngIf="!loaderDists" class="form-control" formControlName="tehsil_city" (change)="onselectTehsil(regisForm.value.tehsil_city)">
                                                     <option *ngFor="let teh of tehsilsResponseArray; let y=index" [ngValue]="teh">{{teh.name}}</option>
-                                                    <option>Baizai</option>
-                                                    <option>HaleemZai</option>
+                                                    <!-- <option>Baizai</option>
+                                                    <option>HaleemZai</option> -->
                                                 </select>
                                             </div>
-                                            <div class="col-sm-2" *ngIf="hospitalID!=2">
+                                            <!-- <div class="col-sm-2" *ngIf="hospitalID!=2">
                                                 <label class="" for="inputState">UC</label>
                                                 <span *ngIf="loaderUc" class="spinner-border " role="status" aria-hidden="true"></span>
                                                 <select *ngIf="!loaderUc" class="form-control" formControlName="uc" (change)="onselectUC(regisForm.value.uc)">
                                                     <option *ngFor="let ucs of ucResponseArray; let x=index" [value]="ucs.name">{{ucs.name}}</option>
                                                     
                                                 </select>
-                                            </div>
+                                            </div> -->
                                         
                                             <div class="col-md-3" *ngIf="hospitalID==2" >
                                                     <label>District</label>
@@ -178,15 +178,17 @@
                                                     </span>
                                                     </span>
                                             </div>
-                                            <div class="col-sm-2" *ngIf="hospitalID==2">
+                                            <!-- <div class="col-sm-2" *ngIf="hospitalID==2"> -->
+                                            <div class="col-sm-2" >
                                                 <label class="" for="inputState">UC</label>
-                                                <span *ngIf="loaderUc" class="spinner-border " role="status" aria-hidden="true"></span>
+                                                <!-- <span *ngIf="loaderUc" class="spinner-border " role="status" aria-hidden="true"></span> -->
                                                 <input type="text" formControlName="uc" class="form-control" placeholder="Enter Patient uc">
                                             </div>
+                                            <!-- </div> -->
                                       
                                         <div class="col-md-12 text-center">
                                             <div class="form-group mt-2">
-                                                <button type="submit" [disabled]="!regisForm.valid" class="btn btn-success btn-lg mr-2 mt-4" (click)="registerNewPat(regisForm.value)"><i class="fa fa-check-square"></i> Add Patient</button>
+                                                <button type="submit" [disabled]="!regisForm.valid" class="btn btn-success btn-lg mr-2 mt-4" (click)="registerNewPat(regisForm.value,captureuser3)"><i class="fa fa-check-square"></i> Add Patient</button>
 
                                                 <button class="btn  btn-danger btn-lg  mt-4" (click)="clear()" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">
                                                     <i class="fa fa-remove"></i> Cancel 
@@ -324,6 +326,104 @@
                                         </table>
                                     </div>
                                 </div>
+                            </ng-template>
+                            <!-- model for View patient end-->
+                            <!-- model for View patient start-->
+                            <ng-template #captureuser3 class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
+                                        
+                                <div class="modal-header">
+                                    <h4 id="dialog-sizes-name1" class="modal-title pull-left">Generate Token</h4>
+                                    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef3.hide()">
+                                        <span aria-hidden="true"><i class="ti-close"></i></span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <div class="row">
+                                        <div class="col-md-12 mb-30">
+                                           
+                                                    <form novalidate>
+                                                        <div class="row">
+                                                            
+                                                            <div class="col-md-6 mt-2">
+                                                                <p class="mb-1 mt-2"><b>Patient ID</b>
+                                                                    <span class="ml-4">{{patDataLocal.patientID}} </span>
+                                                                </p>                                                                 
+                                                                   
+                                                               
+                                                                <p class="mb-1 mt-3"><b>Father/Husband Name</b>
+                                                                    <span class="ml-4"> {{patDataLocal.f_hName}}</span>
+                                                                </p>
+                                                               
+                                                               
+                                                               
+                                                                
+                                                            </div>
+                                                            <div class="col-md-6 mt-3">
+                                                                <p class="mb-1 mt-3"><b>Patient Name</b>
+                                                                <span class="ml-4">{{patDataLocal.firstname}} </span>
+                                                               </p>
+                                                               <p class="mb-1 mt-3"><b>Gender</b>
+                                                                <span class="ml-4"> {{patDataLocal.gender}}</span>
+                                                            </p>
+                                                            </div>
+                        
+                                                            <!-- model for View patient start-->
+                                                           
+                        
+                                                        </div>
+                                                    </form>
+                                               
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <div class="col-sm-3 mt-3"><label for="inputState">Select Doctor</label></div>
+                                        <div class="col-sm-9">
+                                            <span class="wrapper-select">
+                                                        <select class="form-control" [(ngModel)]="objDoc3.doctor" (ngModelChange)="onselectDoctor(objDoc3.doctor)" name="doctor">
+                                                            <option *ngFor="let docs of docResponseArray; let i=index" [value]="docs.id">{{docs.NAME}}</option>
+                                                            
+                                                        </select>
+                                                    </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <div class="col-sm-3 mt-3"><label for="inputState">Referred From</label></div>
+                                        <div class="col-sm-9">
+                                            <span class="wrapper-select">
+                                                        <select class="form-control" [(ngModel)]="objDoc3.reff" name='reff'>
+                                                            <option selected value='Self'>Self</option>
+                                                            <option value='RHC'>RHC</option>
+                                                            <option value='BHU'>BHU</option>
+                                                            <option value='GD'>GD</option>
+                                                            <option value='MCH Center'>MCH Center</option>
+                                                            <option value='LHW'>LHW</option>
+                                                            <option value='Others'>Others</option>
+                                                        </select>
+                                                    </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <div class="col-sm-12">
+                                            <button class="button-info mr-3" *ngIf="age<10" (click)="childVacination(objDoc3)">
+                                                        <i class="fa fa-plus"></i> Childe Vaccination
+                                            </button>
+                                            <button class="button mr-3" *ngIf="age>15 && (patDataLocal.gender=='female' || patDataLocal.gender=='Female')" (click)="ttvacination(objDoc3)">
+                                                        <i class="fa fa-plus"></i> TT Vaccination
+                                            </button>
+                                            <button class="button-success mr-3" (click)="generateToken(objDoc3)">
+                                                        <i class="fa fa-plus"></i> Generate Token
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="button-danger" (click)="modalRef3.hide()"><i class="fa fa-remove"></i> Close</button>
+                                    </div>
+                                </div>
+
                             </ng-template>
                             <!-- model for View patient end-->
                         </div>

@@ -28,6 +28,7 @@
                                             <thead>
                                                 <tr class="text-dark text-center">
                                                     <th>S.No</th>
+                                                   
                                                     <th>Department</th>
                                                     <th>Patients</th>
                                                 </tr>
@@ -35,6 +36,7 @@
                                             <tbody>
                                                 <tr class="text-center" *ngFor="let pats of docResponseArray | filter:filterTerm let i=index">
                                                     <td>{{i+1}}</td>
+                                                   
                                                     <td>{{pats.dLName}}</td>
                                                     <td>{{pats.total}}</td>
                                                 </tr>

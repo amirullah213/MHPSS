@@ -31,6 +31,20 @@ export class TodayPatientsComponent implements OnInit {
    console.log('date now==',this.todayData) ;
    this.getPatCount();
   }
+  gotoPrintPrescription(patdata){
+    localStorage.setItem('pharmacyData',JSON.stringify(patdata) );
+     window.open('/print/home')
+   }
+  gotoPrintRadiology(patdata){
+    localStorage.setItem('pathDetails',JSON.stringify(patdata) );
+   // window.open('/pharma/printRad')
+    this.router.navigate(['/reception/printRad'])
+    }
+     gotoPrintPathology(patdata){
+      localStorage.setItem('pathDetails',JSON.stringify(patdata) );
+   // window.open('/pharma/printRad')
+    this.router.navigate(['/reception/printRad'])
+       }
    //--------------------get doctor list 
    getPatCount() {
    

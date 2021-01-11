@@ -25,6 +25,9 @@
                                         <p class="mb-1 mt-2"><b>Patient Name</b>
                                             <span class="ml-4">{{patDataLocal.firstname}} </span>
                                         </p>
+                                        <p class="mb-1 mt-2"><b>Patient ID</b>
+                                            <span class="ml-4">{{patDataLocal.patientID}} </span>
+                                        </p>
                                         <p class="mb-1 mt-3"><b>Father/Husband Name</b>
                                             <span class="ml-4"> {{patDataLocal.f_hName}}</span>
                                         </p>
@@ -50,8 +53,12 @@
                                         <p class="mb-1 mt-3"><b>Mobile Number</b>
                                             <span class="ml-4"> {{patDataLocal.cellNo}}</span>
                                         </p>
+                                        <!-- <p class="mb-1 mt-3"><b>Date Of Birth</b>
+                                            <span class="ml-4">{{patDataLocal.dob |date}}</span>
+                                        </p> -->
                                         <p class="mb-1 mt-3"><b>Date Of Birth</b>
                                             <span class="ml-4">{{patDataLocal.dob |date}}</span>
+                                            
                                         </p>
                                         <p class="mb-1 mt-3"><b>Village</b>
                                             <span class="ml-4"> {{patDataLocal.village}}</span>
@@ -66,7 +73,7 @@
 
                                     <!-- model for View patient start-->
                                     <ng-template #captureuser class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
-
+                                        
                                         <div class="modal-header">
                                             <h4 id="dialog-sizes-name1" class="modal-title pull-left">Generate Token</h4>
                                             <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
@@ -74,6 +81,47 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
+
+                                            <div class="row">
+                                                <div class="col-md-12 mb-30">
+                                                   
+                                                            <form novalidate>
+                                                                <div class="row">
+                                                                    
+                                                                    <div class="col-md-6 mt-2">
+                                                                        <p class="mb-1 mt-2"><b>Patient ID</b>
+                                                                            <span class="ml-4">{{patDataLocal.patientID}} </span>
+                                                                        </p>                                                                 
+                                                                           
+                                                                       
+                                                                        <p class="mb-1 mt-3"><b>Father/Husband Name</b>
+                                                                            <span class="ml-4"> {{patDataLocal.f_hName}}</span>
+                                                                        </p>
+                                                                       
+                                                                       
+                                                                       
+                                                                        
+                                                                    </div>
+                                                                    <div class="col-md-6 mt-3">
+                                                                        <p class="mb-1 mt-3"><b>Patient Name</b>
+                                                                        <span class="ml-4">{{patDataLocal.firstname}} </span>
+                                                                       </p>
+                                                                       <p class="mb-1 mt-3"><b>Gender</b>
+                                                                        <span class="ml-4"> {{patDataLocal.gender}}</span>
+                                                                    </p>
+                                                                    </div>
+                                
+                                                                    <!-- model for View patient start-->
+                                                                   
+                                
+                                                                </div>
+                                                            </form>
+                                                       
+                                                   
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                            </div>
                                             <div class="form-group input-group">
                                                 <div class="col-sm-3 mt-3"><label for="inputState">Select Doctor</label></div>
                                                 <div class="col-sm-9">

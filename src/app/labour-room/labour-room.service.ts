@@ -54,6 +54,11 @@ export class LabourRoomSerivce {
     let url = APP_CONFIG.apiBaseUrl + 'getindoordiagnosis';
     return this.http.post(url, obj);
   }
+
+  updateindoorstatus(obj: any):Observable<any> {
+    let url = APP_CONFIG.apiBaseUrl + 'updateindoorstatus';
+    return this.http.post(url, obj);
+  }
   
   
   

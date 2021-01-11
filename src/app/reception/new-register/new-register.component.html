@@ -133,6 +133,11 @@ img {
                         
                         <tbody>
                             <tr>
+                                <td class="quantity">Patient Id</td>
+                                <td class="description">{{tokenData.patient.patientID}}</td>
+                           
+                            </tr>
+                            <tr>
                                 <td class="quantity">Token</td>
                                 <td class="description">{{tokenData.token}}</td>
                            
@@ -163,10 +168,15 @@ img {
                                
                             </tr>
                             <tr>
+                                <td class="quantity">Age</td>
+                                <td class="description"><span *ngIf="tokenData.ageYear!=0"> {{tokenData.ageYear}} year(s)</span> <span *ngIf="tokenData.ageYear!=0 && tokenData.ageMonth!=0">, </span> <span *ngIf="tokenData.ageMonth!=0">{{tokenData.ageMonth}} month(s)</span></td>
+                               
+                            </tr>
+                            <!-- <tr>
                                 <td class="quantity">Date Of Birth</td>
                                 <td class="description">{{tokenData.patient.dob | date}}</td>
                                
-                            </tr>
+                            </tr> -->
                             <tr>
                                 <td class="quantity">Date</td>
                                 <td class="description">{{tokenData.patient.DateCreated | date}}</td>

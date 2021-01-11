@@ -28,30 +28,32 @@
                                         <table class="table center-aligned-table">
                                             <thead>
                                                 <tr class="text-dark text-center">
-                                                    <th>S.No</th>
+                                                    <th>Patient ID</th>
+                                                    <th>Token</th>
                                                     <th>Name</th>
                                                     <th>Father</th>
-                                                    <th>DOB</th>
-                                                    <th>Gender</th>
+                                                    <!-- <th>DOB</th>
+                                                    <th>Gender</th> -->
                                                     <th>CNIC</th>
                                                     <th>Contact</th>
                                                     <th>Dept</th>
-                                                    <th>Token</th>
+                                                    
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <!-- | filter:filterTerm -->
                                                 <tr class="text-center" *ngFor="let pats of docResponseArray | filter:filterTerm1 let i=index">
-                                                    <td>{{i+1}}</td>
+                                                    <td>{{pats.patientID}}</td>
+                                                    <td>{{pats.token}}</td>
                                                     <td>{{pats.firstname}}</td>
                                                     <td>{{pats.f_hName}}</td>
-                                                    <td>{{pats.dob | date}}</td>
-                                                    <td>{{pats.gender}}</td>
+                                                    <!-- <td>{{pats.dob | date}}</td>
+                                                    <td>{{pats.gender}}</td> -->
                                                     <td>{{pats.cnic}}</td>
                                                     <td>{{pats.cellNo}}</td>
                                                     <td>{{pats.departmentName}}</td>
-                                                    <td>{{pats.token}}</td>
+                                                   
 
 
                                                     <td>
