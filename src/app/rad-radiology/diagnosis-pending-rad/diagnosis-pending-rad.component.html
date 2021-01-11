@@ -144,7 +144,7 @@
                                         <div class="modal-body">
                                             <div class="row mx-0">
                                                 <!-- <div class="col-md-6 mt-3">
-                                                    <p class="mb-1 mt-3"><b>Patient ID</b>
+                                                    <p class="mb-1 mt-3"><b>MR#</b>
                                                         <span class="ml-4">{{pathData1.patientID}}</span>
                                                     </p>
                                                 </div>
@@ -190,7 +190,7 @@
                                                     </p>
                                                 </div> -->
                                                 <div class="col-md-4 mt-3">
-                                                    <p class="mb-1 mt-3"><b>Patient ID</b>
+                                                    <p class="mb-1 mt-3"><b>MR#</b>
                                                         <span class="ml-4">{{pathData1.patientID}}</span>
                                                     </p>
                                                 </div>
@@ -219,11 +219,12 @@
                                                    
                                                 </div>
                                                 <div class="col-md-4 mt-3">
-                                                    <p class="mb-1 mt-3"><b>Test Date / Time</b>
-                                                        <span class="ml-4">{{userData.DateCreated | date: 'dd-MM-yyyy h:mm a'}}</span>
-                                                    </p>
                                                     
-                                                </div>
+                                                    <p class="mb-1 mt-3"><b>Mobile Number</b>
+                                                     <span class="ml-4"> {{pathData1.cellNo}}</span>
+                                                 </p>
+                                                    
+                                                 </div>
         
                                                 <div class="col-md-4 mt-3">
                                                     <p class="mb-1 mt-3"><b>Sent From</b>
@@ -245,12 +246,17 @@
                                                     
                                                 </div> -->
                                                
-                                                
+                                                <div class="col-md-4 mt-3" *ngIf="pathData1.bedNo!=null">
+                                                                                            
+                                                    <p class="mb-1 mt-3" ><b>Bed No</b>
+                                                    <span class="ml-4"> {{pathData1.bedNo}}</span>
+                                                </p>
+                                                </div>
                                                
                                                
                                                        
                                                
-                                                <div class="col-md-4 mt-3" *ngIf="userData.status!=0"> 
+                                                <div class="col-md-6 mt-3" *ngIf="userData.status!=0"> 
                                                   
                                                     <p  class="mb-1 mt-3"><b>Result Date /Time</b>
                                                     <span class="ml-4">{{userData.DateModified | date: 'dd-MM-yyyy h:mm a'}}</span>
@@ -259,33 +265,26 @@
                                                 </div>
                                                        
                                                
-                                                <div class="col-md-4 mt-3" *ngIf="userData.status==0">
+                                                <div class="col-md-6 mt-3" *ngIf="userData.status==0">
                                                    
                                                     <p  class="mb-1 mt-3"><b>Result Date /Time</b>
                                                     <span class="ml-4">Result Pending</span>
                                                 </p>
                                                    
                                                 </div>
-               
-                                               
-                                                <div class="col-md-4 mt-3">
+                                                <div class="col-md-6 mt-3">
+                                                    <p class="mb-1 mt-3"><b>Test Date / Time</b>
+                                                        <span class="ml-4">{{userData.DateCreated | date: 'dd-MM-yyyy h:mm a'}}</span>
+                                                    </p>
                                                     
-                                                   <p class="mb-1 mt-3"><b>Mobile Number</b>
-                                                    <span class="ml-4"> {{pathData1.cellNo}}</span>
-                                                </p>
-                                                   
                                                 </div>
+                                               
+                                                
                                                                                              
                                                
-                                                <div class="col-md-4 mt-3" *ngIf="pathData1.bedNo!=null">
-                                                                                            
-                                                    <p class="mb-1 mt-3" ><b>Bed No</b>
-                                                    <span class="ml-4"> {{pathData1.bedNo}}</span>
-                                                </p>
-                                                </div>
+                                               
                                                 
                                             </div>
-
 
                                             <hr class="gray">
                                             <div class="form-group row mx-0">

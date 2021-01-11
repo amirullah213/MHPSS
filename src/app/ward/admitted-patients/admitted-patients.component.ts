@@ -97,6 +97,7 @@ export class AdmittedPatientsComponent implements OnInit {
   a: boolean=false;
   insTest: boolean=true;
   outForm: any;
+  loginData: any;
 
   constructor(
     private modalService: BsModalService, 
@@ -111,6 +112,7 @@ export class AdmittedPatientsComponent implements OnInit {
     console.log('imageUrl===',this.imageUrl)
    this.indoor= localStorage.getItem('indoorID');
    this.detailsData=JSON.parse(localStorage.getItem('wardData')) ;
+   this.loginData=JSON.parse(localStorage.getItem('details')) ;
 
     this.hospitalID=this.detailsData.hospitalID;
     debugger
@@ -460,8 +462,11 @@ operateIndoor() {
   this.model9.ptID=this.detailsData.ptID;
   this.model9.departmentID= this.indoor;
   this.model9.isIndoor=4;
-  this.model9.refferedFrom=this.outdoorData.bedNo;
+ // this.model9.refferedFrom=this.outdoorData.bedNo;
+  this.model9.refferedFrom=this.loginData.fname;
+debugger
   this.model9.diagnosis=this.diagnosArr;
+  this.model9.prescriptionID=this.outdoorData.prescriptionID;
  
   console.log('modal 9==', this.model9);
   

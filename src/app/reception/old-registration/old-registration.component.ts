@@ -57,7 +57,7 @@ export class OldRegistrationComponent implements OnInit {
   openModAdd(captureuser: TemplateRef<any>) {
     this.objDoc.reff="Self"
    // this.objDoc.doctor="Triage Point 1 OPD" 
-    this.objDoc.doctor=2
+    this.objDoc.doctor=0
     this.modalRef = this.modalService.show(captureuser, Object.assign({}, { class: 'gray modal-lg' }));
   }
   openchildMod(childModal: TemplateRef<any>) {
@@ -95,7 +95,10 @@ export class OldRegistrationComponent implements OnInit {
  //--------------------get doctor list 
  generateToken(modData) {
    debugger
-   console.log("modal data====",modData);
+   if(modData.doctor==0)
+   {alert("Please select a clinic first")
+   }
+   else{
    this.loaderGen= true;
    this.model2.hospitalID=this.hospitalID;
    this.model2.patientID=this.patDataLocal.patientID;
@@ -127,7 +130,7 @@ export class OldRegistrationComponent implements OnInit {
     },
     (error) => {}
   );
-
+  }
 }
 //-------------------------
  //--------------------get doctor list 

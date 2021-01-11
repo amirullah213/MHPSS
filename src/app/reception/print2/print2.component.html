@@ -14,17 +14,18 @@ table {
 
 td.description,
 th.description {
-    width: 175px;
+    width: 600px;
     max-width: 175px;
-    font-weight: bolder;
+   /* font-weight: bolder;*/
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 td.quantity,
 th.quantity {
-    width: 80px;
-    max-width: 80px;
-    word-break: break-all;
-    font-weight: bold;
+    width: 170px;
+    max-width: 50px;
+   /*font-weight: bolder;*/
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 td.price,
@@ -42,6 +43,7 @@ th.price {
 .ticket {
     width: 300px;
     max-width: 300px;
+    
 }
 
 
@@ -110,49 +112,49 @@ th.price {
          
                  <div class="ticket">
                    
-                <h1><b><strong>  <span class="description">{{loginDetails.hospitalName}}</span> </strong></b></h1>
+                <h1><b><strong>  <span style="font-weight: bolder;">{{loginDetails.hospitalName}}</span> </strong></b></h1>
                       
                     <table>
                         
                         <tbody>
                             
                             <tr>
-                                <td class="quantity">Patient Id</td>
+                                <td class="quantity">MR#:</td>
                                 <td class="description">{{tokenData.patientID}}</td>
                            
                             </tr>
                             <tr>
-                                <td class="quantity">Token</td>
+                                <td class="quantity">Token:</td>
                                 <td class="description">{{tokenData.token}}</td>
                            
                             </tr>
                             <tr>
-                                <td class="quantity">Patient Name</td>
+                                <td class="quantity">Name:</td>
                                 <td class="description">{{tokenData.firstname}}</td>
                               
                             </tr>
                             <tr>
-                                <td class="quantity">F/H Name</td>
+                                <td class="quantity">F/H Name:</td>
                                 <td class="description">{{tokenData.f_hName}}</td>
                                
                             </tr>
                             <tr>
-                                <td class="quantity">CNIC</td>
+                                <td class="quantity">CNIC:</td>
                                 <td class="description">{{tokenData.cnic}}</td>
                                
                             </tr>
                             <tr>
-                                <td class="quantity">Reffered To </td>
+                                <td class="quantity">Send To:</td>
                                 <td class="description">  {{tokenData.departmentName}}</td>
                                
                             </tr>
                             <tr>
-                                <td class="quantity">Gender</td>
+                                <td class="quantity">Gender:</td>
                                 <td class="description">{{tokenData.gender}}</td>
                                
                             </tr>
                             <tr>
-                                <td class="quantity">Age</td>
+                                <td class="quantity">Age:</td>
                                 <td class="description"><span *ngIf="tokenData.ageYear!=0"> {{tokenData.ageYear}} year(s)</span> <span *ngIf="tokenData.ageYear!=0 && tokenData.ageMonth!=0">, </span> <span *ngIf="tokenData.ageMonth!=0">{{tokenData.ageMonth}} month(s)</span></td>
                                
                             </tr>
@@ -162,7 +164,7 @@ th.price {
                                
                             </tr> -->
                             <tr>
-                                <td class="quantity">Date</td>
+                                <td class="quantity">Date:</td>
                                 <td class="description">{{tokenData.enteringDate | date}}</td>
                                
                             </tr>

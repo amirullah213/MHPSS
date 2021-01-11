@@ -19,9 +19,10 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="page-title col-md-3">Patient Name : <b>{{detailsData.firstname}}</b> </div>
-                                    <div class="page-title col-md-3">Father/Husband Name : <b>{{detailsData.f_hName}}</b> </div>
-                                    <div class="page-title col-md-3">CRP No : <b>{{detailsData.token}}</b> </div>
-                                    <div class="page-title col-md-3">CNIC : <b>{{detailsData.cnic}}</b> </div>
+                                    <div class="page-title col-md-3">F/H Name : <b>{{detailsData.f_hName}}</b> </div>
+                                    <div class="page-title col-md-2">MR# : <b>{{detailsData.patientID}}</b> </div>
+                                    <div class="page-title col-md-2">CRP No : <b>{{detailsData.token}}</b> </div>
+                                    <div *ngIf="detailsData.hospitalID==2" class="page-title col-md-2">CNIC : <b>{{detailsData.cnic}}</b> </div>
                                         
                                     </div><br>
                                        <form novalidate [formGroup]="outdoorForm">
@@ -82,7 +83,7 @@
                                                 <button class="button mr-1" *ngIf="!loaderUpdate" type="button" (click)="updateIndoor(outdoorForm.value)"><i class="ti-save-alt"></i> Save</button>
                                                 <button class="button mr-1" *ngIf="loaderUpdate" type="button"> <span class="spinner-border " role="status" aria-hidden="true"></span>Save</button>
                                                 <button class="button" *ngIf="!loaderOperate" type="button" (click)="operateIndoor()"><i class="fa fa-wheelchair"></i> Operate</button>
-                                                <button class="button" *ngIf="loaderOperate" type="button"> <span class="spinner-border " role="status" aria-hidden="true">Operate</span></button>
+                                                <button class="button" *ngIf="loaderOperate" type="button"> <span class="spinner-border " role="status" aria-hidden="true"></span></button>
                                             </div>
                                         </div>
                                     </div>

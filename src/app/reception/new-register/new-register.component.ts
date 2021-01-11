@@ -54,6 +54,7 @@ export class NewRegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.loginDetails=JSON.parse(localStorage.getItem('details')) ;
     this.tokenData=  JSON.parse(localStorage.getItem('tokenDetails'));
     

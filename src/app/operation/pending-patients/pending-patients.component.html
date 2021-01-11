@@ -59,12 +59,12 @@
                                     <div class="col-md-12">
                                         <div class="form-group text-center">
                                             <button type="button" *ngIf="!userLoader2" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" (click)="updateOperationData(dynamicForm.value)"><i class="ti-save-alt"></i> Save</button>
-                                            <button type="button" *ngIf="userLoader2" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"> <span class="spinner-border " role="status" aria-hidden="true"></span> Saving</button>
+                                            <button type="button" *ngIf="userLoader2" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"> <span class="spinner-border " role="status" aria-hidden="true"></span> </button>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- admission part -->
-                                <div class="row mx-0 border4">
+                                <div class="row mx-0 border4" *ngIf="ref==-1">
                                     <div class="col-md-12">
                                         <h5>Provisional Diagnosis For Admission</h5>
                                     </div>
@@ -97,7 +97,7 @@
                                                 <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus"></i> Add More </button>
                                             </div>
                                         </div> -->
-                                    <div class="col-md-12">
+                                    <div class="col-md-12" >
                                         <div class="form-group input-group">
                                             <label>Select Referral</label>
                                             <span class="wrapper-select">

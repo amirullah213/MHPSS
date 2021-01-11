@@ -75,6 +75,7 @@
                                                 <table class="table center-aligned-table">
                                                     <thead>
                                                         <tr class="text-dark">
+                                                            <th>MR#</th>
                                                             <th>CRP NO</th>
                                                             <th>Patient Name</th>
                                                             <th>NIC</th>
@@ -84,6 +85,7 @@
                                                     </thead>
                                                     <tbody *ngIf="!loader_eqp2">
                                                         <tr *ngFor="let wrd of pharmacyData; let i=index">
+                                                            <td>{{wrd.patientID}}</td>
                                                             <td>{{wrd.token}}</td>
                                                             <td><span>{{wrd.firstname}} / {{wrd.f_hName}}</span></td>
                                                             <td><span>{{wrd.cnic}}</span></td>
@@ -146,6 +148,7 @@
                                                 <table class="table center-aligned-table">
                                                     <thead>
                                                         <tr class="text-dark">
+                                                            <th>MR#</th>
                                                             <th>CRP NO</th>
                                                             <th>Patient Name</th>
                                                             <th>NIC</th>
@@ -155,6 +158,7 @@
                                                     </thead>
                                                     <tbody *ngIf="!loader_eqp2">
                                                         <tr *ngFor="let wrd of pharmacyData; let i=index">
+                                                            <td>{{wrd.patientID}}</td>
                                                             <td>{{wrd.token}}</td>
                                                             <td><span>{{wrd.firstname}} / {{wrd.f_hName}}</span></td>
                                                             <td><span>{{wrd.cnic}}</span></td>
@@ -182,6 +186,7 @@
                                                 <table class="table center-aligned-table">
                                                     <thead>
                                                         <tr class="text-dark">
+                                                            <th>MR#</th>
                                                             <th>CRP NO</th>
                                                             <th>Patient Name</th>
                                                             <th>NIC</th>
@@ -191,6 +196,7 @@
                                                     </thead>
                                                     <tbody *ngIf="!loader_eqp2">
                                                         <tr *ngFor="let wrd of pharmacyData; let i=index">
+                                                            <td>{{wrd.patientID}}</td>
                                                             <td>{{wrd.token}}</td>
                                                             <td><span>{{wrd.firstname}} / {{wrd.f_hName}}</span></td>
                                                             <td><span>{{wrd.cnic}}</span></td>

@@ -36,6 +36,7 @@
                                                 <table class="table center-aligned-table">
                                                     <thead>
                                                         <tr class="text-dark">
+                                                            <th>MR#</th>
                                                             <th>CRP NO</th>
                                                             <th>Patient Name</th>
                                                             <th>NIC</th>
@@ -45,6 +46,7 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr *ngFor="let pth of PathResponseArray; let i=index">
+                                                            <td>{{pth.patientID}}</td>
                                                             <td>{{pth.token}}</td>
                                                             <td><span>{{pth.firstname}}</span> </td>
                                                             <td><span>{{pth.cnic}}</span> </td>
@@ -69,6 +71,7 @@
                                                 <table class="table center-aligned-table">
                                                     <thead>
                                                         <tr class="text-dark">
+                                                            <th>MR#</th>
                                                             <th>CRP NO</th>
                                                             <th>Patient Name</th>
                                                             <th>NIC</th>
@@ -78,6 +81,7 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr *ngFor="let pth of PathResponseArray; let i=index">
+                                                            <td>{{pth.patientID}}</td>
                                                             <td>{{pth.token}}</td>
                                                             <td> <span>{{pth.firstname}}</span></td>
                                                             <td> <span>{{pth.cnic}}</span></td>

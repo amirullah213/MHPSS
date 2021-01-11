@@ -288,14 +288,14 @@ export class HomeComponent implements OnInit {
     
     this.objDoc3.reff="Self"
    // this.objDoc.doctor="Triage Point 1 OPD" 
-    this.objDoc3.doctor=2
+    this.objDoc3.doctor=0
     this.modalRef3 = this.modalService.show(captureuser3, Object.assign({}, { class: 'gray modal-lg' }));
   }
   //---------------------search by token---------------------
   registerNewPat(formval,captureuser3) {
-    
-    console.log('month year',formval.year +"   " +formval.months +"   "+formval.tehsil_city)
-   this.showaddmsg = false;
+    debugger
+
+    this.showaddmsg = false;
     if (formval.dob == null || formval.dob=='null' || formval.dob==undefined || formval.dob=='') {
     if(formval.year==null || ''){this.yr=0}else{
       this.yr = formval.year;
@@ -391,7 +391,8 @@ export class HomeComponent implements OnInit {
     }else{
       alert('Enter DOB or age in year or months')
     
-    }
+    
+  }
   }
 
 
@@ -438,7 +439,10 @@ export class HomeComponent implements OnInit {
     //-------------------------
     generateToken(modData) {
       debugger
-      console.log("modal data====",modData);
+      if(modData.doctor==0)
+      {alert("Please select a clinic first")
+      }
+      else{
       this.loaderGen= true;
       this.model21.hospitalID=this.hospitalID;
       this.model21.patientID=this.patDataLocal.patientID;
@@ -472,7 +476,7 @@ export class HomeComponent implements OnInit {
        },
        (error) => {}
      );
-   
+      }
    }
   //---------------------search by cnic---------------------
   getAllDists() {
@@ -566,7 +570,10 @@ export class HomeComponent implements OnInit {
     this.regisForm.reset();
   }
   //reset form
-
+  onselectDoctor(docdata){
+    console.log("doctor data===",docdata);
+    //this.getUCs(tehId.id);
+    }
   onselectDist(distId) {
 
     console.log("dist data===", distId);

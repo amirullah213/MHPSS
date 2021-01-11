@@ -44,6 +44,7 @@ export class PendingPatientsComponent implements OnInit {
   deptID:any;
   selectedValueIndoorDiag: string;
 loginDetails:any={};
+  ref: any;
   constructor(
     private modalService: BsModalService,
      private fb: FormBuilder,
@@ -98,6 +99,8 @@ getOperationTheatreData() {
         this.PathResponseArray=response.data;
         console.log('this.PathResponseArray==',this.PathResponseArray);
        this.diagnosArr2=JSON.parse(this.PathResponseArray.diagnosis) ;
+       debugger
+     this.ref=  this.PathResponseArray.referredType
         this.userLoader = false;
         this.dynamicForm.patchValue({
           anesthesiaType:  this.PathResponseArray.anesthesiaType,

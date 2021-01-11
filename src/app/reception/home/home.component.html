@@ -346,7 +346,7 @@
                                                         <div class="row">
                                                             
                                                             <div class="col-md-6 mt-2">
-                                                                <p class="mb-1 mt-2"><b>Patient ID</b>
+                                                                <p class="mb-1 mt-2"><b>MR#</b>
                                                                     <span class="ml-4">{{patDataLocal.patientID}} </span>
                                                                 </p>                                                                 
                                                                    
@@ -380,12 +380,12 @@
                                     <div class="modal-footer">
                                     </div>
                                     <div class="form-group input-group">
-                                        <div class="col-sm-3 mt-3"><label for="inputState">Select Doctor</label></div>
+                                        <div class="col-sm-3 mt-3"><label for="inputState">Select Clinic</label></div>
                                         <div class="col-sm-9">
                                             <span class="wrapper-select">
                                                         <select class="form-control" [(ngModel)]="objDoc3.doctor" (ngModelChange)="onselectDoctor(objDoc3.doctor)" name="doctor">
                                                             <option *ngFor="let docs of docResponseArray; let i=index" [value]="docs.id">{{docs.NAME}}</option>
-                                                            
+                                                            <option [value]=0>Select Clinic</option>
                                                         </select>
                                                     </span>
                                         </div>

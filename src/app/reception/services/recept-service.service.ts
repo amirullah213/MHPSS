@@ -55,5 +55,9 @@ export class ReceptServiceService {
     let url = APP_CONFIG.apiBaseUrl + 'getinvestigations';
     return this.http.post(url, obj);
   } 
+  updateclinic(obj: any) {
+    let url = APP_CONFIG.apiBaseUrl + 'updateclinic';
+    return this.http.post(url, obj);
+  } 
   
 }
