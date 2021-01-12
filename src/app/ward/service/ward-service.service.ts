@@ -81,4 +81,9 @@ export class WardServiceService {
     let url = APP_CONFIG.apiBaseUrl + 'getindoorlist';
     return this.http.post(url, obj);
   }
+
+  getoperations(obj: any) {
+    let url = APP_CONFIG.apiBaseUrl + 'getoperations';
+    return this.http.post(url, obj);
+  }
 }

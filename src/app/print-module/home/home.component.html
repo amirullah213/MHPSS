@@ -23,12 +23,15 @@
                                 </div>
                                 <div class="col-lg-8 col-md-8 col-sm-8 mb-4">
                                     <h6><b>MR# :</b> <span class="ml-3"> {{patInfo.patientID}}</span></h6>
-                                    <h6><b>EMR NO :</b> <span class="ml-3"> {{patInfo.token}}</span></h6>
+                                    <h6><b>Token :</b> <span class="ml-3"> {{patInfo.token}}</span></h6>
                                     <h6><b>Patient Name :</b> <span class="ml-3"> {{userList[0].firstname}} <span *ngIf=userList[0].lastname!='undefined'>userList[0].lastname</span> </span>
                                     </h6>
                                     <h6><b>Father / Husband's Name : </b><span class="ml-3">{{userList[0].f_hName}}</span> </h6>
                                     <h6><b>CNIC : </b><span class="ml-3">{{userList[0].cnic}}</span> </h6>
-                                    <h6><b>DOB :</b> <span class="ml-3">  {{userList[0].dob | date}} </span>
+                                    <h6><b>Age :</b> <span class="ml-3">  
+                                       <span *ngIf="userList[0].ageYear!=0"> {{userList[0].ageYear}} year(s)</span> 
+                                       <span *ngIf="userList[0].ageYear!=0 && userList[0].ageMonth!=0">, </span> <span *ngIf="userList[0].ageMonth!=0">{{userList[0].ageMonth}} month(s)</span>
+                                    </span>
                                     </h6>
                                     <h6><b>Gender : </b><span class="ml-3 text-capitalize">{{userList[0].gender}}</span></h6>
                                     <h6><b>Consulting Doctor :</b> <span class="ml-3">{{userList[0].docFName}} {{userList[0].docLNmae}}</span><span> ({{userList[0].userName}})</span></h6>

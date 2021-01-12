@@ -32,7 +32,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group" [ngClass]="{'has-error': ((regisForm.get('firstname').touched || regisForm.get('firstname').dirty) && regisForm.get('firstname').errors)}">
                                                 <label for="formGroupExampleInput">Full Name</label>
-                                                <input type="text" id="firstname" formControlName="firstname" class="form-control" placeholder="Enter Patient Name">
+                                                <input type="text" id="firstname" formControlName="firstname" class="form-control text-capitalize focusedInput" placeholder="Enter Patient Name">
                                                 <span class="help-block text-danger" *ngIf="((regisForm.get('firstname').touched || regisForm.get('firstname').dirty) &&  regisForm.get('firstname').errors)">
                                                     <span class="text-danger" *ngIf="regisForm.get('firstname').errors.required">
                                                         Name is required
@@ -42,22 +42,17 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group" [ngClass]="{'has-error': ((regisForm.get('f_hName').touched || regisForm.get('f_hName').dirty) && regisForm.get('f_hName').errors)}">
-                                                <label for="formGroupExampleInput">Father Name</label>
-                                                <input type="text" formControlName="f_hName" class="form-control" placeholder="Enter Patient Father Name">
+                                                <label for="formGroupExampleInput">Father/Husband Name</label>
+                                                <input type="text" formControlName="f_hName" class="form-control text-capitalize " placeholder="Enter Patient Father/Husband Name">
                                                 <span class="help-block text-danger" *ngIf="((regisForm.get('f_hName').touched || regisForm.get('f_hName').dirty) &&  regisForm.get('f_hName').errors)">
                                                     <span class="text-danger" *ngIf="regisForm.get('f_hName').errors.required">
-                                                        Father Name is required
+                                                        Father/Husband Name is required
                                                     </span>
                                                 </span>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="formGroupExampleInput">Mobile Number</label>
-                                                <input type="text" formControlName="cellNo" class="form-control" placeholder="Enter Mobile Number">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
+                                        
+                                        <div class="col-md-2">
                                             <div class="form-group" [ngClass]="{'has-error': ((regisForm.get('gender').touched || regisForm.get('gender').dirty) && regisForm.get('gender').errors)}">
                                                 <label>Gender</label>
                                                 <select class="form-control" formControlName="gender">
@@ -74,31 +69,8 @@
                                             </div>
                                         </div>
                                        
-                                        <div class="col-md-3">
-                                            <div class="form-group" [ngClass]="{'has-error': ((regisForm.get('cnic').touched || regisForm.get('cnic').dirty) && regisForm.get('cnic').errors)}">
-                                                <label for="formGroupExampleInput">CNIC Number</label>
-                                                <input type="text" formControlName="cnic" class="form-control" placeholder="Enter CNIC Number">
-                                                <span class="help-block text-danger" *ngIf="((regisForm.get('cnic').touched || regisForm.get('cnic').dirty) &&  regisForm.get('cnic').errors)">
-                                                    <span *ngIf="regisForm.get('cnic').errors.minlength || regisForm.get('cnic').errors.maxlength">
-                                                        CNIC Number must be of 13 characters
-                                                    </span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="formGroupExampleInput">Date Of Birth</label>
-                                                <input type="text" formControlName="dob" class="form-control" placeholder="Date of Birth" #datepickerYMD="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placement="top">
-                                                <span class="text-danger" *ngIf="!showdob && !showaddmsg">
-                                                    Date Of Birth, Year or Month required *
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1">
-                                            <div class="form-group mt-5 ml-4">
-                                                <label for="formGroupExampleInput"><b>OR</b></label>
-                                            </div>
-                                        </div>
+                                       
+                                       
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <label for="formGroupExampleInput">Year</label>
@@ -111,17 +83,49 @@
                                                 <input type="number" formControlName="months" class="form-control" placeholder="Months">
                                             </div>
                                         </div>
+                                        <div class="col-md-1">
+                                            <div class="form-group mt-5 ml-4">
+                                                <label for="formGroupExampleInput"><b>OR</b></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="formGroupExampleInput">Date Of Birth</label>
+                                                <input type="text" formControlName="dob" class="form-control" placeholder="Date of Birth" #datepickerYMD="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placement="top">
+                                                <span class="text-danger" *ngIf="!showdob && !showaddmsg">
+                                                    Date Of Birth, Year or Month required *
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group" [ngClass]="{'has-error': ((regisForm.get('cnic').touched || regisForm.get('cnic').dirty) && regisForm.get('cnic').errors)}">
+                                                <label for="formGroupExampleInput">CNIC Number</label>
+                                                <input type="text" formControlName="cnic" class="form-control" placeholder="Enter CNIC Number">
+                                                <span class="help-block text-danger" *ngIf="((regisForm.get('cnic').touched || regisForm.get('cnic').dirty) &&  regisForm.get('cnic').errors)">
+                                                    <span *ngIf="regisForm.get('cnic').errors.minlength || regisForm.get('cnic').errors.maxlength">
+                                                        CNIC Number must be of 13 characters
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="formGroupExampleInput">Mobile Number</label>
+                                                <input type="text" formControlName="cellNo" class="form-control" placeholder="Enter Mobile Number">
+                                            </div>
+                                        </div>
+                                       
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="formGroupExampleInput">Address</label>
-                                                <input type="text" formControlName="address" class="form-control" placeholder="Enter Patient Address">
+                                                <input type="text" formControlName="address text-capitalize" class="form-control" placeholder="Enter Patient Address">
                                             </div>
                                         </div>
                                       
                                         <div class="col-md-2">
                                             <div class="form-groupp">
                                                 <label for="formGroupExampleInput">Village</label>
-                                                <input type="text" formControlName="village" class="form-control" placeholder="Enter Patient Villege">
+                                                <input type="text" formControlName="village" class="form-control text-capitalize " placeholder="Enter Patient Villege">
                                             </div>
                                         </div>
                                     
@@ -408,12 +412,12 @@
                                     </div>
                                     <div class="form-group input-group">
                                         <div class="col-sm-12">
-                                            <button class="button-info mr-3" *ngIf="age<10" (click)="childVacination(objDoc3)">
+                                            <!-- <button class="button-info mr-3" *ngIf="age<10" (click)="childVacination(objDoc3)">
                                                         <i class="fa fa-plus"></i> Childe Vaccination
                                             </button>
                                             <button class="button mr-3" *ngIf="age>15 && (patDataLocal.gender=='female' || patDataLocal.gender=='Female')" (click)="ttvacination(objDoc3)">
                                                         <i class="fa fa-plus"></i> TT Vaccination
-                                            </button>
+                                            </button> -->
                                             <button class="button-success mr-3" (click)="generateToken(objDoc3)">
                                                         <i class="fa fa-plus"></i> Generate Token
                                             </button>

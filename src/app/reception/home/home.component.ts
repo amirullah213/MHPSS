@@ -78,6 +78,7 @@ export class HomeComponent implements OnInit {
   loaderChild: boolean;
   ttvResponseArray: any=[];
   loaderttv: boolean;
+  count: number=0;
 
   constructor(
     private modalService: BsModalService,
@@ -91,7 +92,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   
+    this.count=0;
       this.getAllDoctros();
     
     this.hospitalID = localStorage.getItem('hospitalID');
@@ -439,10 +440,13 @@ export class HomeComponent implements OnInit {
     //-------------------------
     generateToken(modData) {
       debugger
+      
       if(modData.doctor==0)
       {alert("Please select a clinic first")
       }
       else{
+        if(this.count==0){
+          this.count=1;
       this.loaderGen= true;
       this.model21.hospitalID=this.hospitalID;
       this.model21.patientID=this.patDataLocal.patientID;
@@ -477,6 +481,7 @@ export class HomeComponent implements OnInit {
        (error) => {}
      );
       }
+    }
    }
   //---------------------search by cnic---------------------
   getAllDists() {
