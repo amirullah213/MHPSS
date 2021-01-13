@@ -82,10 +82,53 @@
                                             <div class="col-sm-12 text-center">
                                                 <button class="button mr-1" *ngIf="!loaderUpdate" type="button" (click)="updateIndoor(outdoorForm.value)"><i class="ti-save-alt"></i> Save</button>
                                                 <button class="button mr-1" *ngIf="loaderUpdate" type="button"> <span class="spinner-border " role="status" aria-hidden="true"></span>Save</button>
-                                                <button class="button" *ngIf="!loaderOperate" type="button" (click)="operateIndoor()"><i class="fa fa-wheelchair"></i> Operate</button>
-                                                <button class="button" *ngIf="loaderOperate" type="button"> <span class="spinner-border " role="status" aria-hidden="true"></span></button>
                                             </div>
                                         </div>
+                                    </div>
+                                
+                                    <hr class="gray">
+                                    <div class="form-group row mx-0 border4">
+                                    
+                                        <div class="col-sm-12" *ngIf="operateArr.length!=0">
+                                            <!-- <ol> -->
+                                                <h4>Operate</h4> 
+                                               <hr class="grey">
+                                                <div class="row">
+                                             
+                                             
+                                                <div class="col-md-3">  <label> Name</label></div>
+                                                <div class="col-md-2">  <label> Date</label></div>
+                                           
+                                                <div class="col-md-2">  <label>Surgen</label></div>
+                                                <div class="col-md-2">  <label>Anesthesiest</label></div>
+                                                <div class="col-md-3">  <label>Remarks</label></div>
+                                       
+                                            </div>
+                                                <div class="row" *ngFor="let opr of operateArr; let i=index;">
+                                                    <div class="col-md-3"> <span class="col-sm-3" *ngIf="opr.operationName!=null">{{opr.operationName}}</span>
+                                                        <span class="col-sm-3 text-info" *ngIf="opr.operationName==null">Sent to OT</span>
+                                                      </div>
+                                                      <div class="col-md-2"> <span class="col-sm-3">{{opr.DateCreated | date}}</span>
+                                                      </div>                                               
+                                                      <div class="col-md-2"> {{opr.surgeonName}} </div>
+                                                      <div class="col-md-2"> {{opr.anethetistName}} </div>
+                                                    <div class="col-md-3"> {{opr.remarks}} </div>
+                                                     <hr class=" hr-gray ">
+                                                    </div>
+                                            <!-- </ol> -->
+                                        </div>
+                 
+                                        
+                                        <div class="col-md-12">
+                                            <div class="form-group text-center">
+                                                <button class="button" *ngIf="!loaderOperate" type="button" (click)="operateIndoor()"><i class="fa fa-wheelchair"></i> Operate</button>
+                                                <button class="button" *ngIf="loaderOperate" type="button"> <span class="spinner-border " role="status" aria-hidden="true"></span></button>
+                                                </div>
+                                        </div>
+
+                                       
+                                      
+                                        <!-- previos treatment other medics ended-->
                                     </div>
                                 </form>
                                 <form novalidate [formGroup]="treatmentForm">
@@ -320,7 +363,9 @@
                                         <!-- previos treatment other medics ended-->
                                     </div>
                                 </form>
-                                <hr class="gray">
+                               
+                               
+                            
                                 <div class="form-group row mx-0 border4">
                                     <div class="col-md-12">
                                         <div class="custom-control-inline mr-md-5 mb-2">

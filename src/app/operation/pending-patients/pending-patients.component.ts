@@ -19,7 +19,7 @@ export class PendingPatientsComponent implements OnInit {
   responseText: any = '';
   tab: string = 'newPats';
   downloadType: string = 'csv';
-  modalRef: BsModalRef;
+  modalRef3: BsModalRef;
   userLoader: boolean = false;
   activateLoader: boolean = false;
   deactivateLoader: boolean = false;
@@ -83,7 +83,11 @@ loginDetails:any={};
   }
 
   
-  
+  openModAdd(admitUser: TemplateRef<any>, data) {
+    this.userData = data;
+    this.modalRef3 = this.modalService.show(admitUser, this.userData);
+    // this.modalRef.content.userActivate = 'Close';
+  } 
   
 //---------------------get ot form data---------------------
 getOperationTheatreData() {
@@ -125,7 +129,7 @@ getOperationTheatreData() {
 }
 //--------------------------------
 //---------------------get all lab patients---------------------
-updateOperationData(fromData) {
+updateOperationData(fromData,admitUser) {
   console.log("Form data==",fromData)
   this.userLoader2= true;
   this.model3.hospitalID=this.hospitalID;
@@ -144,8 +148,12 @@ updateOperationData(fromData) {
         this.PathResponseArray=response.data;
         console.log('this.PathResponseArray==',this.PathResponseArray);
         this.userLoader2 = false;
-        // this.router.navigate(['ot/home']);
-        alert('sucessfully done')
+        if(this.ref!=-1)
+        { this.router.navigate(['ot/home']);}
+        else{
+this.openModAdd(admitUser,fromData)
+        }
+//        alert('sucessfully done')
         
         
       }
@@ -279,9 +287,9 @@ generatetoken() {
     (response: any) => {
       if (response.status === 0) {
         console.log(' response for generatetoken====',response);
-       
+       this.modalRef3.hide();
         this.userLoader = false;
-        alert('Successfully Admitted');
+//        alert('Successfully Admitted');
          this.router.navigate(['ot/home']);
        
       }

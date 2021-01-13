@@ -98,7 +98,9 @@ export class AdmittedPatientsComponent implements OnInit {
   insTest: boolean=true;
   outForm: any;
   loginData: any;
-  count: any=0;;
+  count: any=0;operateArr: any=[];
+  model91: any={};
+;
 
   constructor(
     private modalService: BsModalService, 
@@ -116,7 +118,7 @@ export class AdmittedPatientsComponent implements OnInit {
    this.loginData=JSON.parse(localStorage.getItem('details')) ;
 
     this.hospitalID=this.detailsData.hospitalID;
-    debugger
+    
     this.doctorID=localStorage.getItem('docId');
     this.getoutDoorData();
     this.getTreatmentData();
@@ -258,6 +260,7 @@ getImages(presIDdata) {
       if (response.status === 0) {
         console.log('outdoorData33333====',response)
         this.outdoorData = response.data;
+        this.getoperations();
 
 //for typehead
         this.diagnosisArr= response.diagnosis;
@@ -458,9 +461,10 @@ updateIndoor(indoorData) {
 
 operateIndoor() {
   debugger
-  if(this.count==0)
+  
+  if(this.operateArr.length==0 || this.operateArr[0].operationName!=null )
   {
-    this.count=1;
+    
   this.loaderOperate= true;
   this.model9.patientID=this.detailsData.patientID;
   this.model9.hospitalID=this.hospitalID;
@@ -469,7 +473,6 @@ operateIndoor() {
   this.model9.isIndoor=4;
  // this.model9.refferedFrom=this.outdoorData.bedNo;
   this.model9.refferedFrom=this.loginData.fname;
-debugger
   this.model9.diagnosis=this.diagnosArr;
   this.model9.prescriptionID=this.outdoorData.prescriptionID;
  
@@ -481,7 +484,6 @@ debugger
        // this.outdoorForm.reset();
         this.getoutDoorData();
 
-        alert('Done Successfully');
         this.loaderOperate = false;
       }
   if (response.status === 1) {
@@ -496,8 +498,36 @@ debugger
   );
   }
   else{
-    alert("Requeste already sent")
+    alert("Request already sent")
   }
+}
+
+getoperations() {
+  
+  
+  
+     this.model91.prescriptionID=this.outdoorData.prescriptionID;
+ 
+ 
+  this.wardService.getoperations(this.model91).subscribe(
+    (response: any) => {
+      if (response.status === 0) {
+        debugger
+
+        this.operateArr=response.data
+        this.loaderOperate = false;
+      }
+  if (response.status === 1) {
+        this.errormsg = response.error;
+        this.loaderOperate = false;
+        console.log('error=', this.errormsg);
+        alert('Problem in service! try again');
+        
+      }
+    },
+    (error) => {}
+  );
+ 
 }
 //operate indoor details
 
@@ -543,7 +573,6 @@ addPresMedicines() {
 
 //operate indoor details
 sendTolab() {
-  debugger
   this.loaderLab= true;
   this.model11.hospitalID=this.hospitalID;
   this.model11.prescriptionID=this.outdoorData.prescriptionID;
@@ -654,7 +683,7 @@ removeArr(indx){
 addnewDiag(dia){
   let diagExist=false;
   let cov =false;
- debugger
+ 
   if(!this.diagObj.id){
     alert('Please select Diagnosis');
    
@@ -728,7 +757,7 @@ onSelectPathology(path){
 
   
   this.matchTests(path)
-   debugger
+ 
    if(this.insTest==true){
     this.pathArrNew_added=true;
     this.pathArrNew.push({"result":"","patientID":this.detailsData.patientID,"testName":path.item.testName,"testID":path.item.testID,"testType":path.item.testType,"refRange":path.item.refRange,"isSupper":path.item.isSupper,"subTests":path.item.subTests?path.item.subTests:[]})
@@ -772,7 +801,7 @@ else
 
 
 matchTests(obj:any){  
-    debugger
+    
   if(this.pathArrNew.length!=0 ){
   
     for(let e of this.pathArrNew){ 
@@ -819,7 +848,7 @@ getType(typ){
 gotoDischarge(){
 
   // localStorage.setItem('disData',JSON.stringify(disform));
-  debugger
+  
    localStorage.setItem('outData',JSON.stringify(this.outdoorData));
   localStorage.setItem('diagnosArr',JSON.stringify(this.diagnosArr));
 

@@ -58,13 +58,86 @@
                                 <div class="form-group row mx-0">
                                     <div class="col-md-12">
                                         <div class="form-group text-center">
-                                            <button type="button" *ngIf="!userLoader2" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" (click)="updateOperationData(dynamicForm.value)"><i class="ti-save-alt"></i> Save</button>
+                                            <button type="button" *ngIf="!userLoader2" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" (click)="updateOperationData(dynamicForm.value,admitUser)"><i class="ti-save-alt"></i> Save</button>
                                             <button type="button" *ngIf="userLoader2" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"> <span class="spinner-border " role="status" aria-hidden="true"></span> </button>
                                         </div>
                                     </div>
                                 </div>
+                                <ng-template #admitUser class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name2">
+                                        
+                                    <div class="modal-header">
+                                        <h4 id="dialog-sizes-name1" class="modal-title pull-left">Admission</h4>
+                                        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef3.hide()">
+                                            <span aria-hidden="true"><i class="ti-close"></i></span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                
+                                        <div class="row">
+                                            <div class="col-md-12 mb-30">
+                                               
+                                                <div class="row mx-0 border4">
+                                                    <div class="col-md-12">
+                                                        <h5>Provisional Diagnosis For Admission</h5>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Diagnosis</label>
+                
+                                                            <input class="text" autocomplete="off" formControlName="selectedValueIndoorDiag" [value]="selectedValueIndoorDiag" [typeahead]="diagnosArr" typeaheadOptionField="name" (typeaheadOnSelect)="onSelectDiagnos($event)" class="form-control" name="daignosis" id="daignosis" placeholder="Select Diagnosis" [typeaheadOptionsLimit]='1000' [typeaheadMinLength]="0" [typeaheadScrollable]="true" >
+                                                        </div>
+                                                    </div>
+                                                    <hr class="hr-gray">
+                                                    <div class="col-md-12">
+                                                        <h5>Selected Diagnosis</h5>
+                                                        <div class="row mx-0" *ngFor="let indD of diagnosArr2 let i=index">
+                                                            <div class="col-md-10">
+                                                                <p><b>{{indD.name}}</b></p>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <div class="form-group mt-1">
+                                                                    <a href="javascript:void(0)" (click)="removeDiag(i)">
+                                                                        <i class="fa fa-close fa-lg text-danger"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <hr class="hr-gray">
+                                                    <!-- <div class="col-md-12">
+                                                            <div class="form-group text-center">
+                                                                <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus"></i> Add More </button>
+                                                            </div>
+                                                        </div> -->
+                                                    <div class="col-md-12" >
+                                                        <div class="form-group">
+                                                            <label>Select Referral</label>
+                                                                    <select formControlName="ref" class="form-control"
+                                                                        (change)="changeRefVal(dynamicForm.value.ref)">
+                                                                        <option [ngValue]="0" [selected] [disabled]='true'>Choose Referral</option>
+                                                                        <option *ngFor="let wr of wardArr" [ngValue]='wr.id'>{{wr.fname}} {{wr.lname}}</option>
+                                                                    </select>
+                                                        </div>
+                                                        <div class="form-group text-center">
+                                                            <button type="button" (click)="generatetoken()" class="button mt-1"><i class="fa fa-plus"></i> Admit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>    
+                                               
+                                            </div>
+                                        </div>
+                                       
+                                      
+                                      
+                                      
+                                        <div class="modal-footer">
+                                            <button type="button" class="button-danger" (click)="modalRef3.hide()"><i class="fa fa-remove"></i> Close</button>
+                                        </div>
+                                    </div>
+                                
+                                </ng-template>
                                 <!-- admission part -->
-                                <div class="row mx-0 border4" *ngIf="ref==-1">
+                                <!-- <div class="row mx-0 border4" *ngIf="ref==-1">
                                     <div class="col-md-12">
                                         <h5>Provisional Diagnosis For Admission</h5>
                                     </div>
@@ -92,11 +165,7 @@
                                         </div>
                                     </div>
                                     <hr class="hr-gray">
-                                    <!-- <div class="col-md-12">
-                                            <div class="form-group text-center">
-                                                <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus"></i> Add More </button>
-                                            </div>
-                                        </div> -->
+                                   
                                     <div class="col-md-12" >
                                         <div class="form-group input-group">
                                             <label>Select Referral</label>
@@ -112,7 +181,7 @@
                                             <button type="button" (click)="generatetoken()" class="button mt-1"><i class="fa fa-plus"></i> Admit</button>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- admission ended -->
                             </form>
                         </div>
