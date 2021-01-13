@@ -3,7 +3,7 @@
         <div class="content-wrapper">
             <div class="page-title">
                 <div class="row px-3 px-md-0">
-                    <div class="col-sm-12 pl-0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0">
                         <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
                             <li class="breadcrumb-item"><a href="javascript:void(0)" class="gray-color">Print
                                     Prescreption</a></li>
@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 mb-30">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
                             <div class="row" *ngIf="!userLoader">
@@ -21,7 +21,7 @@
                                     <h2 class="text-center"><b> {{userList[0].hospitalName}} </b></h2>
                                     <h6 class="text-center mb-2"><b>OUTDOOR PATIENT TICKET</b></h6>
                                 </div>
-                                <div class="col-lg-8 col-md-8 col-sm-8 mb-4">
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 mb-4">
                                     <h6><b>EMR NO :</b> <span class="ml-3"> {{patInfo.token}}</span></h6>
                                     <h6><b>Patient Name :</b> <span class="ml-3"> {{userList[0].firstname}} <span *ngIf=userList[0].lastname!='undefined'>userList[0].lastname</span> </span>
                                     </h6>
@@ -32,12 +32,12 @@
                                     <h6><b>Gender : </b><span class="ml-3 text-capitalize">{{patInfo.gender}}</span></h6>
                                     <h6><b>Consulting Doctor :</b> <span class="ml-3">{{userList[0].docFName}} {{userList[0].docLNmae}}</span> </h6>
                                 </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                     <img class="" src="../../../../../assets/images/merf.png" width="200" height="100">
                                 </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12" style="border-bottom: #000 2px solid;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-bottom: #000 2px solid;">
                                 </div>
-                                <div class="col-lg-5 col-md-5 col-sm-5" style="border-right: #000 2px solid;">
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="border-right: #000 2px solid;">
                                     <h5 class="mb-1 mt-4"><span class="colorback"><b> Vitals : </b></span></h5>
                                     <h6 class="mb-1 ml-4">BP: <span class="ml-5"> {{userList[0].vitals.bps}}</span></h6>
                                     <h6 class="mb-1 ml-4">Pulse (Per Min): <span class="ml-5">{{userList[0].vitals.pulse}}</span></h6>
@@ -63,7 +63,7 @@
                                     </span>
                                 </div>
                                 <!-- <div class="col-lg-1"></div> -->
-                                <div class="col-lg-7 col-md-7 col-sm-7">
+                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
                                     <h5 class="mb-1 mt-4"><b><span class="colorback">Signs And Symptoms : </span> </b></h5>
                                     <h6 class="mb-1 ml-4">Signs: <span class="ml-3"> {{userList[0].signs}}</span></h6>
                                     <h6 class="mb-1 ml-4">Complaints:<span class="ml-3">{{ userList[0].complaints }}</span></h6>
@@ -93,7 +93,7 @@
                                     <h5 class="mb-1 mt-5"><b><span class="colorback">Referral (if applicable) : </span></b></h5>
                                     <h6 class="mb-1 ml-4">{{userList[0].refferel}}</h6>
                                 </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 mt mt-5 d-print-none">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt mt-5 d-print-none">
                                     <div class="form-group text-center">
                                         <button type="button" (click)="printPage()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
                                     <i class="fa fa-print"></i> Print

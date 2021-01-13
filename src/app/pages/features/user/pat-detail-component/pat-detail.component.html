@@ -3,7 +3,7 @@
         <div class="content-wrapper">
             <div class="page-title">
                 <div class="row px-3 px-md-0">
-                    <div class="col-sm-12 pl-0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0">
                         <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
                             <!-- <li class="breadcrumb-item" [routerLink]="['/user']"><a href="javascript:void(0)" class="gray-color">User</a></li> -->
                             <li class="breadcrumb-item active gray-04-color">{{patInfo.departmentName}}</li>
@@ -13,14 +13,14 @@
             </div>
             <!-- main body -->
             <div class="row">
-                <div class="col-md-12 mb-30">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
                             <div class="row">
-                            <div class="page-title col-md-3">Patient Name : <b>{{patInfo.firstname}}</b> </div>
-                            <div class="page-title col-md-3">Father/Husband Name : <b>{{patInfo.f_hName}}</b> </div>
-                                <div class="page-title col-md-3">MR# : <b>{{patInfo.patientID}}</b> </div>
-                                <div class="page-title col-md-3">CRP No : <b>{{patInfo.token}}</b> </div>
+                                <div class="page-title col-lg-3 col-md-3 col-sm-3 col-xs-3">Patient Name : <b>{{patInfo.firstname}}</b> </div>
+                                <div class="page-title col-lg-3 col-md-3 col-sm-3 col-xs-3">Father/Husband Name : <b>{{patInfo.f_hName}}</b> </div>
+                                <div class="page-title col-lg-3 col-md-3 col-sm-3 col-xs-3">MR# : <b>{{patInfo.patientID}}</b> </div>
+                                <div class="page-title col-lg-3 col-md-3 col-sm-3 col-xs-3">CRP No : <b>{{patInfo.token}}</b> </div>
                             </div>
                             <hr class="gray">
                             <ul class="nav nav-tabs" role="tablist">
@@ -42,60 +42,60 @@
                                 <div *ngIf="tab === 'biofh'" class="tab-pane fade" [ngClass]="{'active show': tab === 'biofh'}" id="tab1" role="tabpanel" aria-labelledby="tab1">
 
                                     <div class="row">
-                                        <div class="col-md-3">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
                                                 <label for="formGroupExampleInput">MR#</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
                                                 <label for="formGroupExampleInput">{{patInfo.patientID}}</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
                                                 <label for="formGroupExampleInput">Token</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
                                                 <label for="formGroupExampleInput">{{patInfo.token}}</label>
                                             </div>
                                         </div>
-                                       
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="formGroupExampleInput">NIC</label>
-                                                </div>
+
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                            <div class="form-group">
+                                                <label for="formGroupExampleInput">NIC</label>
                                             </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group">
-                                                    <label for="formGroupExampleInput">{{patInfo.cnic}}</label>
-                                                </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                            <div class="form-group">
+                                                <label for="formGroupExampleInput">{{patInfo.cnic}}</label>
                                             </div>
-                                        
-                                        <div class="col-md-3">
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
                                                 <label for="formGroupExampleInput">Patient Name</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
                                                 <label for="formGroupExampleInput">{{patInfo.firstname}}</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
                                                 <label for="formGroupExampleInput">Father Name</label>
-                                                
+
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
                                                 <label for="formGroupExampleInput">{{patInfo.f_hName}}</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
                                                 <label for="formGroupExampleInput">Date Of Birth</label>
                                                 <!-- <input type="password" class="form-control" formControlName="password" id="formGroupExampleInput" placeholder="Enter Password">
@@ -106,27 +106,27 @@
                                                 </div> -->
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
                                                 <label for="formGroupExampleInput">{{patInfo.dob | date}}</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="input-group form-group">
                                                 <label for="inputState">Mobile Number</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
                                                 <label for="formGroupExampleInput">{{patInfo.cellNo}}</label>
                                             </div>
                                         </div>
                                         <hr class="hr-gray">
-                                        <div class="col-md-12">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <h5>Past History</h5>
                                         </div>
                                         <hr class="hr-gray">
-                                        <div class="col-md-12">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="table-responsive">
                                                 <table class="table center-aligned-table">
                                                     <thead>
@@ -151,7 +151,6 @@
                                                                 </div> -->
                                                             </td>
                                                         </tr>
-
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -162,46 +161,44 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
-
                                 <form [formGroup]="clinicalInformation" novalidate>
                                     <div *ngIf="tab === 'clinicalInfo'" class="tab-pane fade" [ngClass]="{'active show': tab === 'clinicalInfo'}" id="tab2" role="tabpanel" aria-labelledby="tab2">
                                         <div class="row mx-0 border4">
-                                            <div class="col-md-12">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <h5 class="card-title mb-0">Vitals</h5>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Blood Presure</label>
                                                     <input type="text" formControlName="bps" class="form-control" placeholder="Blood Pressure">
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Pulse (Rate Per Minute)</label>
                                                     <input type="text" formControlName="pulse" class="form-control" placeholder="Pulse">
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Weight (Kg)</label>
                                                     <input type="text" formControlName="weight" class="form-control" placeholder="Weight">
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Height (cm)</label>
                                                     <input type="text" formControlName="height" class="form-control" placeholder="Height">
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Temprature (F)</label>
                                                     <input type="text" formControlName="temperature" class="form-control" placeholder="Temprature">
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Oxygen Saturation</label>
                                                     <input type="text" formControlName="oxygen_saturation" class="form-control" placeholder="Oxygen Saturation">
@@ -210,7 +207,7 @@
                                         </div>
                                         <hr class="hr-gray mx-0">
                                         <div class="row mx-0 border4" *ngIf='detail.isSync!=9'>
-                                            <div class="col-md-6">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                 <div class="form-group input-group">
                                                     <label for="formGroupExampleInput">Is Follow Up</label>
                                                     <span class="wrapper-select">
@@ -223,7 +220,7 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                 <div class="form-group input-group">
                                                     <label for="formGroupExampleInput">Malnutrition</label>
                                                     <span class="wrapper-select">
@@ -236,7 +233,7 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6" *ngIf="clinicalInformation.value.isMalnutration==1">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" *ngIf="clinicalInformation.value.isMalnutration==1">
                                                 <div class="form-group input-group">
                                                     <label for="formGroupExampleInput">Low Weight for Age</label>
                                                     <span class="wrapper-select">
@@ -249,8 +246,8 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                            
-                                            <div class="col-md-6" *ngIf="clinicalInformation.value.isMalnutration==1">
+
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" *ngIf="clinicalInformation.value.isMalnutration==1">
                                                 <div class="form-group input-group">
                                                     <label for="formGroupExampleInput">MAUC < 12.5 cm</label>
                                                     <span class="wrapper-select">
@@ -263,7 +260,7 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6" *ngIf="clinicalInformation.value.isMalnutration==1">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" *ngIf="clinicalInformation.value.isMalnutration==1">
                                                 <div class="form-group input-group">
                                                     <label for="formGroupExampleInput">Short Height for Age</label>
                                                     <span class="wrapper-select">
@@ -278,7 +275,7 @@
                                             </div>
                                         </div>
                                         <div class="row mx-0 border4" *ngIf='detail.isSync==9'>
-                                            <div class="col-md-6">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                 <div class="form-group input-group">
                                                     <label for="formGroupExampleInput">ANC/PNC Services</label>
                                                     <span class="wrapper-select">
@@ -299,15 +296,15 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                 <div class="form-group input-group">
                                                     <label for="formGroupExampleInput">Pregnancy Status</label>
                                                     <span class="wrapper-select">
                                                         <textarea formControlName="pregnancyStatus" cols="80" placeholder="Pregnancy Status"></textarea>
                                                     </span>
                                                 </div>
-                                            </div> 
-                                             <!-- <div class="col-md-6">
+                                            </div>
+                                            <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                 <div class="form-group input-group">
                                                     <label for="formGroupExampleInput">Pnc Services</label>
                                                     <span class="wrapper-select">
@@ -323,21 +320,24 @@
                                                     </span>
                                                 </div>
                                             </div> -->
-                                            <div class="col-md-12" ><h6>Nutration Status  (if MAUC < 21 cm)</h6></div>   
-                                            <div class="col-md-6">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <h6>Nutration Status (if MAUC
+                                                    < 21 cm)</h6>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">During Pregnancy</label>
                                                     <input formControlName="durPrg" class="form-control">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">During Lactation</label>
                                                     <input formControlName="durLac" class="form-control">
                                                 </div>
-                                            
+
                                             </div>
-                                            <div class="col-md-12">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="form-group input-group">
                                                     <label for="formGroupExampleInput">TT Vaccination Adivce</label>
                                                     <span class="wrapper-select">
@@ -350,7 +350,7 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                 <div class="form-group input-group">
                                                     <label for="formGroupExampleInput">Is Follow Up</label>
                                                     <span class="wrapper-select">
@@ -363,8 +363,8 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                            
-                                            <div class="col-md-6">
+
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                 <div class="form-group input-group">
                                                     <label for="formGroupExampleInput">Malnutrition</label>
                                                     <span class="wrapper-select">
@@ -377,7 +377,7 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6" *ngIf="clinicalInformation.value.isMalnutration==1">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" *ngIf="clinicalInformation.value.isMalnutration==1">
                                                 <div class="form-group input-group">
                                                     <label for="formGroupExampleInput">Low Weight for Age</label>
                                                     <span class="wrapper-select">
@@ -390,8 +390,7 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                            
-                                            <div class="col-md-6" *ngIf="clinicalInformation.value.isMalnutration==1">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" *ngIf="clinicalInformation.value.isMalnutration==1">
                                                 <div class="form-group input-group">
                                                     <label for="formGroupExampleInput">MAUC < 12.5 cm</label>
                                                     <span class="wrapper-select">
@@ -404,7 +403,7 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6" *ngIf="clinicalInformation.value.isMalnutration==1">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" *ngIf="clinicalInformation.value.isMalnutration==1">
                                                 <div class="form-group input-group">
                                                     <label for="formGroupExampleInput">Short Height for Age</label>
                                                     <span class="wrapper-select">
@@ -418,28 +417,27 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                         <hr class="hr-gray mx-0">
                                         <div class="row mx-0 border4">
-                                            <div class="col-md-12">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <h5 class="card-title mb-0">Presenting Complaints</h5>
                                             </div>
                                             <!-- <div  formArrayName="items"
                                                 *ngFor="let item of clinicalInformation.get('items').controls; let i = index;">
                                                 <div class="row mx-0" [formGroupName]="i"> -->
-                                            <div class="col-md-4">
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Name</label>
                                                     <input formControlName="name" placeholder="Name" [typeahead]="symptomsData" typeaheadOptionField="name" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectSymptom($event)" class="form-control" [typeaheadOptionsLimit]='1000' [typeaheadMinLength]="0">
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Duration</label>
                                                     <input type="text" formControlName="duration" class="form-control" id="duration" placeholder="Duration">
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Duration Type</label>
                                                     <select class="form-control" aria-placeholder="Duration Type" formControlName="durationType" aria-label="Text input with segmented dropdown button" placeholder="Complaint Duration">
@@ -451,7 +449,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                                 <div class="form-group">
                                                     <label for="formGroupExampleInput">Action</label>
                                                     <button type="button" (click)="addSymptom()" class="btn mt-1 themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
@@ -459,19 +457,19 @@
                                                     </button>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="row mx-0" *ngFor="let symp of localSymptoms let i=index">
                                                     <hr class="hr-gray mx-0">
-                                                    <div class="col-md-4">
+                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                         <p><b>{{symp.name}}</b></p>
                                                     </div>
-                                                    <div class="col-md-3">
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                                         <p><b>{{symp.duration}}</b></p>
                                                     </div>
-                                                    <div class="col-md-3">
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                                         <p><b>{{symp.durationType}}</b></p>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                                         <div class="form-group mt-1">
                                                             <a class="float-right" href="javascript:void(0)" (click)="removeSymptom(i)">
                                                                 <i class="fa fa-close fa-lg text-danger"></i>
@@ -485,11 +483,11 @@
                                         <!-- </div>
                                             </div> -->
                                         <div class="row mx-0 border4">
-                                            <div class="col-md-12">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <h5 class="card-title mb-0">History</h5>
                                             </div>
                                             <hr class="hr-gray mx-0">
-                                            <div class="col-md-4">
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                 <h5>Past History</h5>
                                                 <div class="mb-2">
                                                     <label formArrayName="phArray" *ngFor="let order of clinicalInformation.controls.phArray['controls']; let i = index">
@@ -499,7 +497,7 @@
                                                 </div>
                                                 <input type="text" formControlName="otherPh" class="form-control" *ngIf='showPh'>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                 <h5>Family History</h5>
                                                 <div class="mb-2">
                                                     <label class="form-check-label" formArrayName="fhArray" *ngFor="let order of clinicalInformation.controls.fhArray['controls']; let j = index">
@@ -510,9 +508,9 @@
                                                     <input type="text" formControlName="otherFh" class="form-control" *ngIf='showFh'>
 
                                                 </div>
-                                              
+
                                             </div>
-                                             <div class="col-md-4">
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                 <h5>Disabilities</h5>
                                                 <div class="mb-2">
                                                     <label class="form-check-label">
@@ -525,32 +523,32 @@
                                                     <input type="text" formControlName="txtDisabilities" class="form-control" >
                                                     </span>
                                                 </div>
-                                              
+
                                             </div>
                                         </div>
                                         <hr class="hr-gray mx-0">
                                         <div class="row mx-0 border4">
-                                            <div class="col-md-12">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <h5 class="card-title mb-0">Signs</h5>
                                             </div>
-                                            <div class="col-md-10">
+                                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                                                 <div class="form-group">
                                                     <input formControlName="selectedValueSign" placeholder="Signs" [typeahead]="signsData" typeaheadOptionField="name" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectSign($event)" class="form-control" [typeaheadOptionsLimit]='1000' [typeaheadMinLength]="0">
                                                 </div>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                                 <div class="form-group mt-1">
                                                     <button type="button" (click)="addSign($event.item)" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"> <i class="fa fa-plus-square mr-2"></i> Add</button>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <h5>Selected signs</h5>
                                                 <div class="row mx-0" *ngFor="let sig of localSign let i=index">
                                                     <hr class="hr-gray mx-0">
-                                                    <div class="col-md-10">
+                                                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                                                         <p><b>{{sig.name}}</b></p>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                                         <div class="form-group mt-1">
                                                             <a class="float-right" href="javascript:void(0)" (click)="removeSign(i)">
                                                                 <i class="fa fa-close fa-lg text-danger"></i>
@@ -563,40 +561,38 @@
                                         </div>
                                         <hr class="hr-gray mx-0">
                                         <div class="row mx-0 border4">
-                                            <div class="col-md-5">
+                                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                                 <h5 class="card-title mb-0">Diagnosis</h5>
                                             </div>
-                                            <div class="col-md-7">
+                                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
                                                 <h5 class="card-title mb-0">Description</h5>
                                             </div>
-                                            <div class="col-md-5 ">
+                                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                                 <input formControlName="pname" placeholder="Diagnosis" [typeahead]="diagnosisData" typeaheadOptionField="name" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectDiag($event)" class="form-control" [typeaheadOptionsLimit]='1000' [typeaheadMinLength]="0">
                                                 <!-- <select formControlName="pname" class="form-control"
                                                 (change)="changeRefVal($event)">
-                                                <option>Choose Diagnosis</option>
-                                                <option *ngFor="let dg of diagnosisData">
-                                                    {{dg.name}}
-                                                    </option>
-                                            </select> -->
-                                            
+                                                    <option>Choose Diagnosis</option>
+                                                    <option *ngFor="let dg of diagnosisData">
+                                                        {{dg.name}}
+                                                        </option>
+                                                </select> -->
                                             </div>
-                                            
-                                            <div class="col-md-5 ">
+                                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                                 <input formControlName="description" placeholder="Description" class="form-control">
                                             </div>
-                                            <div class="col-md-2 mt-1">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-1">
                                                 <button type="button" (click)="addDiag()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus-square mr-2"></i>Add More</button>
                                             </div>
-                                            <div class="col-md-12">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="row mx-0" *ngFor="let trt of localDiagData let i=index">
                                                     <hr class="hr-gray mx-0">
-                                                    <div class="col-md-5">
+                                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                                         <p><b>{{trt.name}}</b></p>
                                                     </div>
-                                                    <div class="col-md-5">
+                                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                                         <p><b>{{trt.description}}</b></p>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                                         <div class="form-group">
                                                             <a class="float-right" href="javascript:void(0)" (click)="removeDiag(i)">
                                                                 <i class="fa fa-close fa-lg text-danger"></i>
@@ -608,25 +604,22 @@
                                         </div>
                                         <hr class="hr-gray mx-0">
                                         <div class="row mx-0 border4" *ngIf="detail.isSync==9">
-
-                                            <div class="col-md-6">
-                                                    <label for="formGroupExampleInput">LMP</label>
-                                                    <input type="text" formControlName="LMP" (bsValueChange)="eddCalc(clinicalInformation.value.LMP)" placeholder="During Pregnancy" class="form-control" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" bsDatepicker>
-                                                    
-                                                </div>
-                                            <div class="col-md-6">
-                                                    <label for="formGroupExampleInput">EDD</label>
-                                                    <input formControlName="EDD" [attr.readonly]="true" class="form-control">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                <label for="formGroupExampleInput">LMP</label>
+                                                <input type="text" formControlName="LMP" (bsValueChange)="eddCalc(clinicalInformation.value.LMP)" placeholder="During Pregnancy" class="form-control" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" bsDatepicker>
                                             </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                <label for="formGroupExampleInput">EDD</label>
+                                                <input formControlName="EDD" [attr.readonly]="true" class="form-control">
                                             </div>
+                                        </div>
                                         <hr class="hr-gray mx-0">
-                                        <div class="col-md-12 text-center mt-3">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center mt-3">
                                             <button type="button" (click)="addClinicalInfo()" *ngIf="!userLoader" class="button">
                                               <i class="fa fa-check-square mr-2"></i> Save 
                                             </button>
                                             <button type="button" *ngIf="userLoader" class="button">
-                                                <span class="spinner-border" *ngIf="userLoader" role="status" aria-hidden="true"></span> 
-                                                  
+                                                <span class="spinner-border" *ngIf="userLoader" role="status" aria-hidden="true"></span>
                                             </button>
                                         </div>
                                     </div>
@@ -634,8 +627,7 @@
                                 <form [formGroup]="investigationForm" novalidate>
                                     <div *ngIf="tab === 'investigation'" class="tab-pane fade" [ngClass]="{'active show': tab === 'investigation'}" id="tab3" role="tabpanel" aria-labelledby="tab3">
                                         <div class="row mx-0 border4">
-                          
-                                            <div class="col-md-12">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="custom-control-inline mr-md-5 mb-2">
                                                     <label class="form-check-label">Pathalogy</label>
                                                 </div>
@@ -643,8 +635,7 @@
                                                     <input formControlName="selectedValuePath" placeholder="Pathalogy" [typeahead]="pathData" typeaheadOptionField="testName" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectPath($event)" class="form-control" [typeaheadOptionsLimit]='1000' [typeaheadMinLength]="0">
                                                 </div>
                                             </div>
-                                           
-                                            <div class="col-md-4">
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                 <div class="custom-control-inline mr-md-5 mb-2">
                                                     <label class="form-check-label">Radiology</label>
                                                 </div>
@@ -657,10 +648,11 @@
                                                     <label class="form-check-label">Radiology Test Name</label>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input formControlName="selectedValueRadName" placeholder="Radiology Test Name" [typeahead]="radNameData" typeaheadOptionField="testName" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectRadName($event)" class="form-control" [typeaheadOptionsLimit]='1000' [typeaheadMinLength]="0">
+                                                    <input formControlName="selectedValueRadName" placeholder="Radiology Test Name" [typeahead]="radNameData" typeaheadOptionField="testName" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectRadName($event)" class="form-control" [typeaheadOptionsLimit]='1000'
+                                                        [typeaheadMinLength]="0">
                                                 </div>
                                             </div>
-                                            <div class="col-md-12">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <h5>Selected Investigation</h5>
                                                 <hr class="hr-gray">
                                                 <div class="table-responsive">
@@ -678,17 +670,17 @@
                                                             <tr class="text-center" *ngFor="let pth of localPath let i=index">
                                                                 <td><span *ngIf="pth.testType==1">Pathalogy</span>
                                                                     <span *ngIf="pth.testType!=1">Radiology</span></td>
-                                                                    <td>{{pth.testName}}</td>
-                                                                    <td >
-                                                                        <span *ngIf="pth.status==1 && pth.id" class="text-success">Performed</span>
-                                                                        <span *ngIf="pth.status==0 && pth.id" class="text-warning">Pending</span>
-                                                                        <!-- <span  class="text-info" *ngIf="!pth.id">Not Send yet</span> -->
-                                                                    </td>
-                                                                        <td><span *ngIf="pth.DateCreated">{{pth.DateCreated | date: 'dd-MM-y h:mm a'}}</span>
-                                                                           </td>
-                                                                        <td>
+                                                                <td>{{pth.testName}}</td>
+                                                                <td>
+                                                                    <span *ngIf="pth.status==1 && pth.id" class="text-success">Performed</span>
+                                                                    <span *ngIf="pth.status==0 && pth.id" class="text-warning">Pending</span>
+                                                                    <!-- <span  class="text-info" *ngIf="!pth.id">Not Send yet</span> -->
+                                                                </td>
+                                                                <td><span *ngIf="pth.DateCreated">{{pth.DateCreated | date: 'dd-MM-y h:mm a'}}</span>
+                                                                </td>
+                                                                <td>
                                                                     <div class="form-group">
-                                                                      
+
                                                                         <a href="javascript:void(0)" class="text-info" (click)="viewReport(template,pth,i)">View Report</a> /
                                                                         <a href="javascript:void(0)" class="text-center" (click)="removeTest(i,pth)">
                                                                             <i class="fa fa-close fa-lg text-danger mr-1"></i></a>
@@ -701,11 +693,9 @@
                                                 <div class="form-group text-center">
                                                     <button type="button" (click)="addinvestigation()" *ngIf="!userLoader" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i
                                                         class="fa fa-send-o"></i> Send To Lab / Radiology </button>
-                                                        <button type="button" *ngIf="userLoader" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">                                               
-                                                         <span class="spinner-border" *ngIf="userLoader" role="status" aria-hidden="true"></span>  </button>
-
-                                                         
-                                                            
+                                                    <button type="button" *ngIf="userLoader" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">                                               
+                                                        <span class="spinner-border" *ngIf="userLoader" role="status" aria-hidden="true"></span>
+                                                    </button>
                                                 </div>
                                                 <ng-template #template>
                                                     <div class="modal-header ">
@@ -716,19 +706,18 @@
                                                     </div>
                                                     <div class="modal-body ">
                                                         <h5>Test Type : <span *ngIf="sData.testType==1">Pathalogy</span><span *ngIf="sData.testType!=1">Radiology</span></h5>
-
                                                         <div class="row mx-0">
-                                                            <div class="col-md-6">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                                 <p class="mb-1 mt-2"><b>MR#</b>
                                                                     <span class="ml-4">{{patInfo.patientID}}</span>
                                                                 </p>
                                                             </div>
-                                                            <div class="col-md-6">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                                 <p class="mb-1 mt-2"><b>Token Number</b>
                                                                     <span class="ml-4">{{patInfo.token}}</span>
                                                                 </p>
                                                             </div>
-                                                            <div class="col-md-6">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                                 <p class="mb-1 mt-2"><b>Patient Name</b>
                                                                     <span class="ml-4">{{patInfo.firstname}}</span>
                                                                 </p>
@@ -742,7 +731,7 @@
                                                                     <span class="ml-4">{{patInfo.dob | date}}</span>
                                                                 </p>
                                                             </div>
-                                                            <div class="col-md-6">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                                 <p class="mb-1 mt-3"><b>Father/Husband Name</b>
                                                                     <span class="ml-4"> {{patInfo.f_hName}}</span>
                                                                 </p>
@@ -758,12 +747,12 @@
                                                                 <!-- <p class="mb-1 mt-3" *ngIf="patInfo.bedNo!=null"><b>Bed No</b>
                                                                     <span class="ml-4"> {{patInfo.bedNo}}</span>
                                                                 </p> -->
-                                                                
-                                                                
                                                             </div>
-                                                            <div class="col-md-6"><p class="mb-1 mt-3" *ngIf="sData.testName!='' && sData.isSupper==1"><b>Test</b>
-                                                                <span class="ml-4"> {{sData.testName}}</span>
-                                                            </p></div>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                <p class="mb-1 mt-3" *ngIf="sData.testName!='' && sData.isSupper==1"><b>Test</b>
+                                                                    <span class="ml-4"> {{sData.testName}}</span>
+                                                                </p>
+                                                            </div>
                                                             <!-- <p><span *ngIf="sData.oldTestName!='' && sData.isSupper==1"><b>Test Name :</b>  <span class="ml-4">{{sData.oldTestName}} </span> </span></p> -->
                                                         </div>
                                                         <div class="table-responsive">
@@ -771,48 +760,45 @@
                                                                 <thead>
                                                                     <tr class="text-dark">
                                                                         <th>Test Name</th>
-                                                                        <th>Result</th>                                                                      
+                                                                        <th>Result</th>
                                                                         <th>Range</th>
                                                                     </tr>
                                                                 </thead>
-                                                                <tbody >
-                                                    <tr *ngFor="let ts of subTests let i=index">                                                     
-                                                     <td>{{ts.oldTestName}}</td>                                                     
-                                                         <td>{{ts.result}}</td>
-                                                        <td> {{ts.refRange}}</td>
-                                                              </tr>
-                                                              </tbody>
-                                                                     </table>
-                                                                     <hr class="gray">
-                                                                   
+                                                                <tbody>
+                                                                    <tr *ngFor="let ts of subTests let i=index">
+                                                                        <td>{{ts.oldTestName}}</td>
+                                                                        <td>{{ts.result}}</td>
+                                                                        <td> {{ts.refRange}}</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <hr class="gray">
                                                             <div class="table center-aligned-table" *ngIf="sData.testType!=1">
                                                                 <div class="form-group row mx-0">
-                                                                    <div class="col-sm-2 mt-3"><label for="inputState">Test Name</label></div>
-                                                                    <div class="col-sm-10">
+                                                                    <div class="col-lg-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 col-sm-2 col-xs-2 mt-3"><label for="inputState">Test Name</label></div>
+                                                                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                                                                         <p class="mb-2 mt-3"><b>{{testNameF}}</b>
-                                                                           
+
                                                                         </p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row mx-0">
-                                                                    <div class="col-sm-2 mt-2"><label for="inputState">Report</label></div>
-                                                                    <div class="col-sm-10" [innerHTML]="xRayFilms"> </div>
-                                                                      
-                                                                   
+                                                                    <div class="col-lg-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 col-sm-2 col-xs-2 mt-2"><label for="inputState">Report</label></div>
+                                                                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" [innerHTML]="xRayFilms"></div>
                                                                 </div>
                                                                 <div class="form-group row mx-0">
-                                                                    <div class="col-sm-2 mt-3"><label for="inputState">Diagnosis</label></div>
-                                                                    <div class="col-sm-10">
+                                                                    <div class="col-lg-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 col-sm-2 col-xs-2 mt-3"><label for="inputState">Diagnosis</label></div>
+                                                                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                                                                         <p class="mt-3">{{resultF}}</p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row mx-0" *ngIf="imagesArr.length>0">
-                                                                    <div class="col-sm-2 mt-3"><label for="inputState">Test Scans</label></div>
-                                                                    <div class="col-sm-10" >
+                                                                    <div class="col-lg-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 col-sm-2 col-xs-2 mt-3"><label for="inputState">Test Scans</label></div>
+                                                                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                                                                         <span *ngFor="let img of imagesArr; let i=index" class="ml-2">
-                                                                         <a href="javascript:void(0)" (click)="showImageModal(template1,imageUrl+img.image)">   <img [src]="imageUrl+img.image"  height="60" class="hover rounded"></a>
-                                                                           
-                                                                            
+                                                                            <a href="javascript:void(0)" (click)="showImageModal(template1,imageUrl+img.image)">
+                                                                                <img [src]="imageUrl+img.image"  height="60" class="hover rounded">
+                                                                            </a>
                                                                         </span>
                                                                     </div>
                                                                 </div>
@@ -823,7 +809,6 @@
                                                         <button type="button" class="button" (click)="modalRef.hide()"><i class="fa fa-check-square"></i> Ok</button>
                                                     </div>
                                                 </ng-template>
-                                              
                                                 <ng-template #template1>
                                                     <div class="modal-header">
                                                         <h4 class="modal-title pull-left">Image </h4>
@@ -833,11 +818,8 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         <div class="row mx-0">
-                                                           
-                                                            <img [src]="imageInModal"   class="mx-auto d-block w-100 h-100">  
-                                                            
+                                                            <img [src]="imageInModal" class="mx-auto d-block w-100 h-100">
                                                         </div>
-                                                       
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="button-danger" (click)="modalRef1.hide()"><i class="fa fa-check-square"></i> Close</button>
@@ -847,34 +829,35 @@
                                         </div>
                                         <hr class="hr-gray mx-0">
                                         <div class="row mx-0 border4">
-                                            <div class="col-md-12">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <h5>Diagnosis For Admission / OT</h5>
                                             </div>
-                                            <div class="col-md-5">
+                                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                                 <div class="form-group">
                                                     <label>Diagnosis</label>
-                                                    <input formControlName="selectedValueIndoorDiag" placeholder="Diagnosis" [value]="selectedValueIndoorDiag" [typeahead]="IndoorDiagData" typeaheadOptionField="name" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectIndoorDiag($event)" class="form-control" [typeaheadOptionsLimit]='1000' [typeaheadMinLength]="0">
+                                                    <input formControlName="selectedValueIndoorDiag" placeholder="Diagnosis" [value]="selectedValueIndoorDiag" [typeahead]="IndoorDiagData" typeaheadOptionField="name" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectIndoorDiag($event)" class="form-control"
+                                                        [typeaheadOptionsLimit]='1000' [typeaheadMinLength]="0">
                                                 </div>
                                             </div>
-                                            <div class="col-md-5 ">
+                                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                                 <label>Description</label>
                                                 <input formControlName="descriptionIndoor" placeholder="Description" class="form-control">
                                             </div>
-                                            <div class="col-md-2 mt-1">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-1">
                                                 <label>Action</label>
                                                 <button type="button" (click)="addIndoorDiag()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus-square mr-2"></i>Add More</button>
                                             </div>
                                             <hr class="hr-gray">
-                                            <div class="col-md-12">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <h5>Selected Diagnosis</h5>
                                                 <div class="row mx-0" *ngFor="let indD of localIndoorData let i=index">
-                                                    <div class="col-md-5">
+                                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                                         <p><b>{{indD.name}}</b></p>
                                                     </div>
-                                                    <div class="col-md-5">
+                                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                                         <p><b>{{indD.description}}</b></p>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                                         <div class="form-group mt-1">
                                                             <a href="javascript:void(0)" (click)="removeIndoorDiag(i)">
                                                                 <i class="fa fa-close fa-lg text-danger"></i>
@@ -884,12 +867,12 @@
                                                 </div>
                                             </div>
                                             <hr class="hr-gray">
-                                            <!-- <div class="col-md-12">
+                                            <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="form-group text-center">
                                                     <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus"></i> Add More </button>
                                                 </div>
                                             </div> -->
-                                            <div class="col-md-10">
+                                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                                                 <div class="form-group input-group">
                                                     <label>Select Referral</label>
                                                     <span class="wrapper-select">
@@ -901,38 +884,38 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                                 <div class="form-group text-center">
                                                     <label for="formGroupExampleInput">Action</label>
-                                                    <button type="button" (click)="generatetoken(0)" *ngIf="!userLoader" class="button mt-1"><i class="fa fa-plus"></i>
-                                                        Admit  </button>
-                                                        <button type="button" *ngIf="userLoader" class="button mt-1">
-                                                            <span class="spinner-border" *ngIf="userLoader" role="status" aria-hidden="true"></span>  </button>
-
-
-                                                       
-                                                                                                           
+                                                    <button type="button" (click)="generatetoken(0)" *ngIf="!userLoader" class="button mt-1">
+                                                        <i class="fa fa-plus mr-1"></i>Admit  
+                                                    </button>
+                                                    <button type="button" *ngIf="userLoader" class="button mt-1">
+                                                        <span class="spinner-border" *ngIf="userLoader" role="status" aria-hidden="true"></span>
+                                                    </button>
                                                 </div>
                                             </div>
                                             <hr class="hr-gray">
-                                            <div class="col-md-10">
+                                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                                                 <div class="input-group form-group">
                                                     <label for="formGroupExampleInput">Opreation Date</label>
                                                     <input type="text" formControlName="termination_date" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" class="form-control" id="formGroupExampleInput" placement="top" placeholder="Select Date of Operation" bsDatepicker>
                                                     <div class="input-group-append">
-                                                        <span class="input-group-text"><i
-                                                                class="fa fa-calendar-plus-o"></i></span>
+                                                        <span class="input-group-text">
+                                                            <i class="fa fa-calendar-plus-o"></i>
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                                 <div class="form-group text-center">
                                                     <label for="formGroupExampleInput">Action</label>
-                                                    <button type="button" (click)="generatetoken(1)" *ngIf="!userLoader" class="button mt-1"><i
-                                                        class="fa fa-wheelchair"></i>  Operate</button>
-                                                        <button type="button" *ngIf="userLoader" class="button mt-1">                               
-                                                             <span class="spinner-border" *ngIf="userLoader" role="status" aria-hidden="true"></span>  </button>
-
+                                                    <button type="button" (click)="generatetoken(1)" *ngIf="!userLoader" class="button mt-1">
+                                                        <i class="fa fa-wheelchair mr-1"></i> Operate
+                                                    </button>
+                                                    <button type="button" *ngIf="userLoader" class="button mt-1">
+                                                        <span class="spinner-border" *ngIf="userLoader" role="status" aria-hidden="true"></span>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -940,39 +923,38 @@
                                 </form>
                                 <form [formGroup]="treatmentForm" novalidate>
                                     <div *ngIf="tab === 'treatment'" class="tab-pane fade" [ngClass]="{'active show': tab === 'treatment'}" id="tab4" role="tabpanel" aria-labelledby="tab4">
-
                                         <div class="row mx-0 border4">
-                                            <div class="col-md-12">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <h5>Treatment</h5>
                                             </div>
                                             <hr class="hr-gray mx-0">
                                             <!-- <div  formArrayName="treatmentItems"
                                             *ngFor="let item of treatmentForm.get('treatmentItems').controls; let i = index;">
                                             <div class="row mx-0" [formGroupName]="i"> -->
-                                            <!-- <div class="col-md-2">
+                                            <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                                 <label>Remove</label>
                                             </div> -->
-                                            <div class="col-md-6">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                 <div class="form-group">
                                                     <label>Medicine Name</label>
-                                                    <input formControlName="itemName" [typeahead]="treatData" typeaheadOptionField="itemName" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectTreat($event)" class="form-control" [typeaheadOptionsLimit]='1000' [typeaheadMinLength]="0" >
+                                                    <input formControlName="itemName" [typeahead]="treatData" typeaheadOptionField="itemName" [typeaheadScrollable]="true" (typeaheadOnSelect)="onSelectTreat($event)" class="form-control" [typeaheadOptionsLimit]='1000' [typeaheadMinLength]="0">
                                                 </div>
                                                 <input type="hidden" formControlName="itemID">
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                                 <div class="form-group">
                                                     <label>Unit</label>
                                                     <input type="text" formControlName="unit" class="form-control" id="formGroupExampleInput" placeholder="500 ml" [attr.readonly]="true">
                                                 </div>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                                 <div class="form-group">
                                                     <label>Type</label>
                                                     <input type="text" formControlName="type" class="form-control" id="formGroupExampleInput" placeholder="Enter Medicine Type" [attr.readonly]="true">
                                                 </div>
                                             </div>
-                                           
-                                            <div class="col-md-2">
+
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                                 <div class="form-group input-group">
                                                     <label>Dose</label>
                                                     <span class="wrapper-select">
@@ -990,13 +972,13 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                                 <div class="form-group">
                                                     <label>Prescribed Quantity</label>
-                                                    <input type="text" formControlName="prescribedQuantity" class="form-control" id="formGroupExampleInput" placeholder="Prescribed Quantity" >
+                                                    <input type="text" formControlName="prescribedQuantity" class="form-control" id="formGroupExampleInput" placeholder="Prescribed Quantity">
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                                 <div class="form-group input-group">
                                                     <label>Prandial</label>
                                                     <span class="wrapper-select">
@@ -1012,23 +994,21 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                           
-                                            <div class="col-md-4">
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                                 <div class="form-group">
                                                     <label>Remarks/Dosing</label>
                                                     <textarea formControlName="remarks" cols="19" class="form-control" id="formGroupExampleInput" placeholder="Remarks/Dosing"></textarea>
                                                 </div>
                                             </div>
-                                            <div class="col-md-2 mt-4">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-4">
                                                 <div class="form-group text-center">
-                                                    
-                                                    <button type="button" (click)="addTreat()" class="btn mt-2 themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
+                                                    <button class="btn mt-2 themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" (click)="addTreat()">
                                                         <i class="fa fa-plus-square mr-2"></i>Add More
                                                     </button>
                                                 </div>
                                             </div>
                                             <hr class="hr-gray mx-0">
-                                            <div class="col-md-12">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="form-group text-center">
                                                     <table>
                                                         <th width="30%">Medicine Name/Unit Type </th>
@@ -1037,18 +1017,17 @@
                                                         <th width="15%">Prandial </th>
                                                         <th width="30%">Remarks </th>
                                                         <th width="10%">Action </th>
-
                                                         <tr *ngFor="let trt of localTreat let i=index">
                                                             <td width="30%">{{trt.medicine}},{{trt.unit}},{{trt.type1}}</td>
                                                             <td width="15%">{{trt.dose}}</td>
                                                             <td width="15%">{{trt.prescribedQuantity}}</td>
                                                             <td width="15%"><span *ngIf="trt.prandial!='undefined'">{{trt.prandial}}</span></td>
                                                             <td width="30%">{{trt.remarks}}</td>
-
                                                             <td width="10%">
                                                                 <div class="form-group">
-                                                                    <button type="button" class="button float-right" (click)="removeTreat(i)"> <i
-                                                                            class="fa fa-close"></i> </button>
+                                                                    <button type="button" class="button float-right" (click)="removeTreat(i)"> 
+                                                                        <i class="fa fa-close"></i>
+                                                                    </button>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -1056,19 +1035,18 @@
                                                     <br>
                                                     <h4>Or</h4>
                                                     <hr class="hr-gray mx-0">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label>Other Medicine</label>
-                                                    <textarea class="form-control" formControlName="tComments" name="comments" type=text></textarea>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <div class="form-group">
+                                                            <label>Other Medicine</label>
+                                                            <textarea class="form-control" formControlName="tComments" name="comments" type=text></textarea>
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                                <!-- <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"> Add More </button>  -->
                                             </div>
                                         </div>
-
-                                                    <!-- <button type="button" class="btn btn-block themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"> Add More </button>  -->
-                                                </div>
-                                            </div>
-                                            <!-- <hr class="hr-gray mx-0">
-                                            <div class="col-md-12">
+                                        <!-- <hr class="hr-gray mx-0">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="form-group">
                                                     <label>Treatment Comment</label>
                                                     <textarea class="form-control" formControlName="tComments" name="comments" type=text></textarea>
@@ -1077,13 +1055,13 @@
                                         </div> -->
                                         <hr class="hr-gray mx-0">
                                         <div class="row mx-0 border4">
-                                            <div class="col-md-6">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                 <div class="form-group">
                                                     <label>Follow Up</label>
                                                     <input type="number" formControlName="fol_up" name="fun" class="form-control" id="formGroupExampleInput" placeholder="Follow Up">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                 <div class="form-group input-group">
                                                     <label>Intervals</label>
                                                     <span class="wrapper-select">
@@ -1101,7 +1079,7 @@
                                                 </div>
                                             </div>
                                             <hr class="hr-gray mx-0">
-                                            <div class="col-md-12">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="form-group">
                                                     <label>Follow Up Comment</label>
                                                     <textarea class="form-control" formControlName="fComments" name="followupcomments" type=text></textarea>
@@ -1110,7 +1088,7 @@
                                         </div>
                                         <hr class="hr-gray mx-0">
                                         <div class="row mx-0 border4">
-                                            <div class="col-md-12 mb-4">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
                                                 <h5>Referral</h5>
                                                 <div class="custom-radio custom-control-inline mr-md-5">
                                                     <div class="form-check">
@@ -1125,19 +1103,19 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12" *ngIf="showRef">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="showRef">
                                                 <div class="row">
-                                                    <div class="col-md-6">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                         <div class="form-group input-group">
                                                             <label>Location</label>
                                                             <select class="form-control" formControlName="FollowUpExtInt" (change)="changFollowUpVal($event)">
-                                                        <option [value]="">Select Location</option>
-                                                        <option [value]="0">Internal</option>
-                                                        <option [value]="1">External</option>
-                                                    </select>
+                                                                <option [value]="">Select Location</option>
+                                                                <option [value]="0">Internal</option>
+                                                                <option [value]="1">External</option>
+                                                            </select>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6" *ngIf="show ">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" *ngIf="show ">
                                                         <div class="form-group input-group">
                                                             <label>Department</label>
                                                             <span class="wrapper-select">
@@ -1149,15 +1127,15 @@
                                                     </span>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12" *ngIf="!show ">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="!show ">
                                                         <div class="row">
-                                                            <div class="col-md-6">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                                 <div class="form-group input-group">
                                                                     <label>Hospital Name</label>
                                                                     <input type="text" formControlName="Hospital" class="form-control" id="formGroupExampleInput" placeholder="Hospital Name">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-6">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                                 <div class="form-group input-group">
                                                                     <label>Ambulance/conveyance</label>
                                                                     <span class="wrapper-select">
@@ -1170,7 +1148,7 @@
                                                                     </span>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-12">
+                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                                 <div class="form-group">
                                                                     <label>Referral Notes</label>
                                                                     <textarea class="form-control" formControlName="refNotes" name="referralNotes" type=text></textarea>
@@ -1180,7 +1158,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12 mt-2" *ngIf="showRef">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-2" *ngIf="showRef">
                                                 <div class="form-group text-center">
                                                     <button type="button" (click)="reffer()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
                                                         <i class="fa fa-check-square mr-2"></i>Referred Done
@@ -1188,7 +1166,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-12 mt-4">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
                                             <div class="form-group text-center">
                                                 <button type="button" (click)="addtreatmentinfo()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
                                                     <i class="fa fa-send-o mr-2"></i>Send To Pharmacy
@@ -1203,3 +1181,5 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
