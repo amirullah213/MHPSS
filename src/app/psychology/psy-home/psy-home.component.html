@@ -3,7 +3,7 @@
         <div class="content-wrapper">
             <div class="page-title">
                 <div class="row px-3 px-md-0">
-                    <div class="col-sm-12 pl-0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0">
                         <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
                             <li class="breadcrumb-item active gray-04-color"><a href="javascript:void(0)"><i class="ti-home mr-2"></i>Home</a></li>
                         </ol>
@@ -12,11 +12,10 @@
             </div>
             <!-- main body -->
             <div class="row">
-                <div class="col-md-12 mb-30">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
                             <!-- <a class="button float-right" href="javascript:void(0)" (click)="openModalbedmanag(template,1)"><i class="fa fa-bed"></i> Bed Managment</a> -->
-                          
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item" (click)="setTab('newPats')">
                                     <a class="nav-link" [ngClass]="{'active show': tab === 'newPats'}" id="tab1" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="home" aria-selected="true">OPD Patients</a>
@@ -24,13 +23,11 @@
                                 <li class="nav-item" (click)="setTab('penPats')">
                                     <a class="nav-link" [ngClass]="{'active show': tab === 'penPats'}" id="portfolio-tab" href="javascript:void(0)" data-toggle="tab" role="tab" aria-controls="portfolio" aria-selected="false">IPD Patients</a>
                                 </li>
-                               
-                                
                             </ul>
                             <div class="tab-content">
                                 <div *ngIf="tab === 'newPats'" class="tab-pane fade" [ngClass]="{'active show': tab === 'newPats'}" id="tab1" role="tabpanel" aria-labelledby="tab1">
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="table-responsive">
                                                 <table class="table center-aligned-table">
                                                     <thead>
@@ -48,7 +45,7 @@
                                                             <td>{{wrd.token}}</td>
                                                             <td><span>{{wrd.firstname}}</span></td>
                                                             <td><span>{{wrd.cnic}}</span></td>
-                                                               
+
                                                             <td>{{wrd.DateCreated| date }}</td>
                                                             <td>{{wrd.departmentName }}</td>
                                                             <td><a href="javascript:void(0)" class="text-info" (click)="gotoSessionPage(wrd)">Detail</a></td>
@@ -76,7 +73,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="row mx-0">
-                                            <div class="col-md-12 mt-3">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3">
                                                 <form>
                                                     <div class="form-group row mx-0">
                                                         <div class="col-sm-12">
@@ -88,9 +85,9 @@
                                                         <div class="col-sm-12">
                                                             <label for="inputState">MLC</label>
                                                             <select class="form-control" [(ngModel)]="admit.mlc" name="mlc">
-                                                                    <option value="1">Yes</option>
-                                                                    <option value="0">No</option>
-                                                                </select>
+                                                                <option value="1">Yes</option>
+                                                                <option value="0">No</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -98,12 +95,12 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="button" (click)="modalRef.hide()" ><i class="fa fa-plus"></i> Admit</button>
+                                        <button type="button" class="button" (click)="modalRef.hide()"><i class="fa fa-plus"></i> Admit</button>
                                     </div>
                                 </ng-template>
                                 <div *ngIf="tab === 'penPats'" class="tab-pane fade" [ngClass]="{'active show': tab === 'penPats'}" id="tab2" role="tabpanel" aria-labelledby="tab2">
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="table-responsive">
                                                 <table class="table center-aligned-table">
                                                     <thead>
@@ -119,7 +116,6 @@
                                                         <tr *ngFor="let wrd of pharmacyData; let i=index">
                                                             <td>{{wrd.token}}</td>
                                                             <td>
-
                                                                 <span>{{wrd.firstname}}</span>
                                                             </td>
                                                             <td>{{wrd.DateCreated| date }}</td>
@@ -140,7 +136,6 @@
                                         </div>
                                     </div>
                                 </div>
-                              
                                 <ng-template #template2>
                                     <div class="modal-header">
                                         <h4 class="modal-title pull-left">Bed Managment</h4>
@@ -150,7 +145,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="row mx-0">
-                                            <div class="col-md-12 mt-3">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3">
                                                 <form>
                                                     <div class="form-group row mx-0">
                                                         <div class="col-sm-12">
@@ -164,9 +159,9 @@
                                                         </div>
                                                         <div class="col-sm-11">
                                                             <select class="form-control">
-                                                                    <option>Yes</option>
-                                                                    <option>No</option>
-                                                                </select>
+                                                                <option>Yes</option>
+                                                                <option>No</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </form>

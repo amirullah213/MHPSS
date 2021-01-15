@@ -3,117 +3,78 @@
         <div class="content-wrapper">
             <div class="page-title">
                 <div class="row px-3 px-md-0">
-                    <div class="col-sm-12 pl-0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0">
                         <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
-                            <li class="breadcrumb-item active gray-04-color"><a href="javascript:void(0)"><i
-                                        class="ti-home mr-2"></i>Sessions</a></li>
+                            <li class="breadcrumb-item active gray-04-color"><a href="javascript:void(0)"><i class="ti-home mr-2"></i>Sessions</a></li>
                         </ol>
                     </div>
                 </div>
             </div>
             <!-- main body -->
             <div class="row">
-                <div class="col-md-12 mb-30">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
                             <div class="row">
                                 <div class="page-title col-md-3">Patient Name : <b>{{patInfo.firstname}}</b> </div>
                                 <div class="page-title col-md-3">Father/Husband Name : <b>{{patInfo.f_hName}}</b> </div>
-                                    <div class="page-title col-md-3">CRP No : <b>{{patInfo.token}}</b> </div>
-                                    <div class="col-md-3 pull-right">  <a class="button float-right" href="javascript:void(0)"
-                                        (click)="openModalbedmanag(template,1)"><i class="fa fa-plus"></i> Add Session</a></div>
-                                   
+                                <div class="page-title col-md-3">CRP No : <b>{{patInfo.token}}</b> </div>
+                                <div class="col-md-3 pull-right">
+                                    <a class="button float-right" href="javascript:void(0)" (click)="openModalbedmanag(template,1)">
+                                        <i class="fa fa-plus"></i> Add Session
+                                    </a>
                                 </div>
-                                <hr class="gray">
+                            </div>
+                            <hr class="gray">
                             <!-- <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <a class="button float-right" href="javascript:void(0)"
                                         (click)="openModalbedmanag(template,1)"><i class="fa fa-plus"></i> Add Session</a>
                                 </div>
                             </div> -->
-
-
                             <ng-template #template>
                                 <div class="modal-header">
                                     <h4 class="modal-title pull-left">Add New Session</h4>
-                                    <button type="button" class="close pull-right" aria-label="Close"
-                                        (click)="modalRef.hide()">
+                                    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="row mx-0">
-                                        <div class="col-md-12 mt-3">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3">
                                             <form>
                                                 <div class="form-group row mx-0">
                                                     <div class="col-sm-4 form-check checkbox">
-
-                                                        <input type="checkbox" class="form-check-input" id="Behavior1"
-                                                            (change)="beds.behavior = $event.target.checked ? 1: 0"
-                                                            [(ngModel)]="beds.behavior" name='behavior1'>
-                                                        <label class="form-check-label" for="Behavior1">Behavior
-                                                            therapy</label>
-
+                                                        <input type="checkbox" class="form-check-input" id="Behavior1" (change)="beds.behavior = $event.target.checked ? 1: 0" [(ngModel)]="beds.behavior" name='behavior1'>
+                                                        <label class="form-check-label" for="Behavior1">Behavior therapy</label>
                                                     </div>
                                                     <div class="col-sm-4 form-check checkbox">
-
-                                                        <input type="checkbox" class="form-check-input" id="Cognitive"
-                                                            (change)="beds.Cognitive = $event.target.checked ? 1: 0"
-                                                            [(ngModel)]="beds.Cognitive" name='Cognitive'>
-                                                        <label class="form-check-label" for="Cognitive">Cognitive
-                                                            therapy</label>
-
+                                                        <input type="checkbox" class="form-check-input" id="Cognitive" (change)="beds.Cognitive = $event.target.checked ? 1: 0" [(ngModel)]="beds.Cognitive" name='Cognitive'>
+                                                        <label class="form-check-label" for="Cognitive">Cognitive therapy</label>
                                                     </div>
                                                     <div class="col-sm-4 form-check checkbox">
-
-                                                        <input type="checkbox" class="form-check-input"
-                                                            id="Cognitive-behavioral"
-                                                            (change)="beds.cog_beh = $event.target.checked ? 1: 0"
-                                                            [(ngModel)]="beds.cog_beh" name='cog_beh'>
-                                                        <label class="form-check-label"
-                                                            for="Cognitive-behavioral">Cognitive-behavioral therapy
-                                                        </label>
-
+                                                        <input type="checkbox" class="form-check-input" id="Cognitive-behavioral" (change)="beds.cog_beh = $event.target.checked ? 1: 0" [(ngModel)]="beds.cog_beh" name='cog_beh'>
+                                                        <label class="form-check-label" for="Cognitive-behavioral">Cognitive-behavioral therapy </label>
                                                     </div>
-
                                                 </div>
-
                                                 <div class="form-group row mx-0">
                                                     <div class="col-sm-4 form-check checkbox">
-
-                                                        <input type="checkbox" class="form-check-input" id="Humanistic"
-                                                            (change)="beds.Humanistic = $event.target.checked ? 1: 0"
-                                                            [(ngModel)]="beds.Humanistic" name='Humanistic'>
-                                                        <label class="form-check-label" for="Humanistic">Humanistic
-                                                            therapy</label>
-
+                                                        <input type="checkbox" class="form-check-input" id="Humanistic" (change)="beds.Humanistic = $event.target.checked ? 1: 0" [(ngModel)]="beds.Humanistic" name='Humanistic'>
+                                                        <label class="form-check-label" for="Humanistic">Humanistic therapy</label>
                                                     </div>
                                                     <div class="col-sm-4 form-check checkbox">
-
-                                                        <input type="checkbox" class="form-check-input" id="Clinician"
-                                                            (change)="beds.Clinician = $event.target.checked ? 1: 0"
-                                                            [(ngModel)]="beds.Clinician" name='Clinician'>
-                                                        <label class="form-check-label" for="Clinician">Referred to
-                                                            Clinician</label>
-
+                                                        <input type="checkbox" class="form-check-input" id="Clinician" (change)="beds.Clinician = $event.target.checked ? 1: 0" [(ngModel)]="beds.Clinician" name='Clinician'>
+                                                        <label class="form-check-label" for="Clinician">Referred to Clinician</label>
                                                     </div>
                                                     <div class="col-sm-4 form-check checkbox">
-
-                                                        <input type="checkbox" class="form-check-input" id="Feedback"
-                                                            (change)="beds.Feedback = $event.target.checked ? 1: 0"
-                                                            [(ngModel)]="beds.Feedback" name='Feedback' checked>
-                                                        <label class="form-check-label" for="Feedback">Client Feedback
-                                                            Client consent </label>
-
+                                                        <input type="checkbox" class="form-check-input" id="Feedback" (change)="beds.Feedback = $event.target.checked ? 1: 0" [(ngModel)]="beds.Feedback" name='Feedback' checked>
+                                                        <label class="form-check-label" for="Feedback">Client Feedback Client consent </label>
                                                     </div>
-
                                                 </div>
-
                                                 <div class="form-group row mx-0">
                                                     <div class="col-sm-12">
                                                         <label for="inputState">Any Other</label>
-                                                        <angular-editor [placeholder]="'Enter text here...'"
-                                                            [(ngModel)]="beds.other" name='other'></angular-editor>
+                                                        <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="beds.other" name='other'></angular-editor>
                                                     </div>
                                                 </div>
                                             </form>
@@ -121,14 +82,13 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="button-success" (click)="addSession(beds)"><i
-                                            class="fa fa-plus mr-1"></i> Save</button>
+                                    <button type="button" class="button-success" (click)="addSession(beds)">
+                                        <i class="fa fa-plus mr-1"></i> Save
+                                    </button>
                                 </div>
                             </ng-template>
-
-
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="table-responsive">
                                         <table class="table center-aligned-table">
                                             <thead>
@@ -157,7 +117,6 @@
                                                             <span class="text-danger">NO</span>
                                                         </span>
                                                     </td>
-
                                                     <td>
                                                         <span *ngIf="wrd.cognitive==1">
                                                             <span class="text-success">YES</span>
@@ -166,7 +125,6 @@
                                                             <span class="text-danger">NO</span>
                                                         </span>
                                                     </td>
-
                                                     <td>
                                                         <span *ngIf="wrd.cognitive_behavioral==1">
                                                             <span class="text-success">YES</span>
@@ -175,7 +133,6 @@
                                                             <span class="text-danger">NO</span>
                                                         </span>
                                                     </td>
-
                                                     <td>
                                                         <span *ngIf="wrd.humanistic==1">
                                                             <span class="text-success">YES</span>
@@ -184,7 +141,6 @@
                                                             <span class="text-danger">NO</span>
                                                         </span>
                                                     </td>
-
                                                     <td>
                                                         <span *ngIf="wrd.referred==1">
                                                             <span class="text-success">YES</span>
@@ -193,143 +149,119 @@
                                                             <span class="text-danger">NO</span>
                                                         </span>
                                                     </td>
-
                                                     <td>
                                                         <span *ngIf="wrd.consent==1">
                                                             <span class="text-success">YES</span>
                                                         </span>
-                                                         <span *ngIf="wrd.consent!=1">
+                                                        <span *ngIf="wrd.consent!=1">
                                                             <span class="text-danger">NO</span>
                                                         </span>
                                                     </td>
-
-
                                                     <td>
                                                         <span [innerHTML]="wrd.other"></span>
                                                     </td>
                                                     <td>
                                                         <!-- model for users download end-->
+                                                        <button href="" class="btn btn-danger" (click)="openDeleteModal(userdelete,wrd)"><i class="ti-trash"></i></button>
+                                                        <button href="" class="mr-1 btn btn-info" (click)="openModedit(usersEdit,wrd)"><i class="ti-pencil-alt"></i></button>
+                                                        <!-- model for user delete start-->
+                                                        <ng-template #userdelete>
+                                                            <div class="modal-body p-5 text-center">
+                                                                <i class="fa fa-exclamation-circle mb-3 fa-5x text-warning"></i>
+                                                                <p>Do you really want to delete this item!</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" (click)="modalRef.hide()">
+                                                                    <i class="fa fa-remove"></i> Cancel
+                                                                </button>
+                                                                <button type="button" class="btn btn-danger" (click)="deleteSession()">
+                                                                    <i class="ti-trash"></i> Delete
+                                                                </button>
+                                                            </div>
+                                                        </ng-template>
+                                                        <!-- model for User Delete end-->
+                                                        <!-- model for update session  -->
+                                                        <ng-template #usersEdit>
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title pull-left">Edit Session</h4>
+                                                                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="row mx-0">
+                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3">
+                                                                        <form>
+                                                                            <div class="form-group row mx-0">
+                                                                                <div class="col-sm-4 form-check checkbox">
 
-                                                    <button href="" class="btn btn-danger" (click)="openDeleteModal(userdelete,wrd)"><i class="ti-trash"></i></button>
-                                                    <button href="" class="mr-1 btn btn-info" (click)="openModedit(usersEdit,wrd)"><i class="ti-pencil-alt"></i></button>
-                                                    <!-- model for user delete start-->
-                                                    <ng-template #userdelete>
-                                                        <div class="modal-body p-5 text-center">
-                                                            <i class="fa fa-exclamation-circle mb-3 fa-5x text-warning"></i>
-                                                            <p>Do you really want to delete this item!</p>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-default" (click)="modalRef.hide()">
-                                                                <i class="fa fa-remove"></i> Cancel
-                                                            </button>
-                                                            <button type="button" class="btn btn-danger" (click)="deleteSession()">
-                                                                <i class="ti-trash"></i> Delete
-                                                            </button>
-                                                        </div>
-                                                    </ng-template>
-                                                    <!-- model for User Delete end-->
-                                                    <!-- model for update session  -->
-                                                    <ng-template #usersEdit>
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title pull-left">Edit Session</h4>
-                                                            <button type="button" class="close pull-right" aria-label="Close"
-                                                                (click)="modalRef.hide()">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="row mx-0">
-                                                                <div class="col-md-12 mt-3">
-                                                                    <form>
-                                                                        <div class="form-group row mx-0">
-                                                                            <div class="col-sm-4 form-check checkbox">
-                        
-                                                                                <input type="checkbox" class="form-check-input" id="Behavior1"
-                                                                                    (change)="bedsE.behaviorE = $event.target.checked ? 1: 0"
-                                                                                    [(ngModel)]="bedsE.behaviorE" name='behavior1' [checked]="bedsE.behaviorE == 1">
-                                                                                <label class="form-check-label" for="Behavior1">Behavior
-                                                                                    therapy</label>
-                        
+                                                                                    <input type="checkbox" class="form-check-input" id="Behavior1" (change)="bedsE.behaviorE = $event.target.checked ? 1: 0" [(ngModel)]="bedsE.behaviorE" name='behavior1' [checked]="bedsE.behaviorE == 1">
+                                                                                    <label class="form-check-label" for="Behavior1">Behavior
+                                                                                        therapy</label>
+
+                                                                                </div>
+                                                                                <div class="col-sm-4 form-check checkbox">
+
+                                                                                    <input type="checkbox" class="form-check-input" id="Cognitive" (change)="bedsE.CognitiveE = $event.target.checked ? 1: 0" [(ngModel)]="bedsE.CognitiveE" name='Cognitive'>
+                                                                                    <label class="form-check-label" for="Cognitive">Cognitive
+                                                                                        therapy</label>
+
+                                                                                </div>
+                                                                                <div class="col-sm-4 form-check checkbox">
+
+                                                                                    <input type="checkbox" class="form-check-input" id="Cognitive-behavioral" (change)="bedsE.cog_behE = $event.target.checked ? 1: 0" [(ngModel)]="bedsE.cog_behE" name='cog_beh'>
+                                                                                    <label class="form-check-label" for="Cognitive-behavioral">Cognitive-behavioral therapy
+                                                                                    </label>
+
+                                                                                </div>
+
                                                                             </div>
-                                                                            <div class="col-sm-4 form-check checkbox">
-                        
-                                                                                <input type="checkbox" class="form-check-input" id="Cognitive"
-                                                                                    (change)="bedsE.CognitiveE = $event.target.checked ? 1: 0"
-                                                                                    [(ngModel)]="bedsE.CognitiveE" name='Cognitive'>
-                                                                                <label class="form-check-label" for="Cognitive">Cognitive
-                                                                                    therapy</label>
-                        
+
+                                                                            <div class="form-group row mx-0">
+                                                                                <div class="col-sm-4 form-check checkbox">
+
+                                                                                    <input type="checkbox" class="form-check-input" id="Humanistic" (change)="bedsE.HumanisticE = $event.target.checked ? 1: 0" [(ngModel)]="bedsE.HumanisticE" name='Humanistic'>
+                                                                                    <label class="form-check-label" for="Humanistic">Humanistic
+                                                                                        therapy</label>
+
+                                                                                </div>
+                                                                                <div class="col-sm-4 form-check checkbox">
+
+                                                                                    <input type="checkbox" class="form-check-input" id="Clinician" (change)="bedsE.ClinicianE = $event.target.checked ? 1: 0" [(ngModel)]="bedsE.ClinicianE" name='Clinician'>
+                                                                                    <label class="form-check-label" for="Clinician">Referred to
+                                                                                        Clinician</label>
+
+                                                                                </div>
+                                                                                <div class="col-sm-4 form-check checkbox">
+
+                                                                                    <input type="checkbox" class="form-check-input" id="Feedback" (change)="bedsE.FeedbackE = $event.target.checked ? 1: 0" [(ngModel)]="bedsE.FeedbackE" name='Feedback' checked>
+                                                                                    <label class="form-check-label" for="Feedback">Client Feedback
+                                                                                        Client consent </label>
+
+                                                                                </div>
+
                                                                             </div>
-                                                                            <div class="col-sm-4 form-check checkbox">
-                        
-                                                                                <input type="checkbox" class="form-check-input"
-                                                                                    id="Cognitive-behavioral"
-                                                                                    (change)="bedsE.cog_behE = $event.target.checked ? 1: 0"
-                                                                                    [(ngModel)]="bedsE.cog_behE" name='cog_beh'>
-                                                                                <label class="form-check-label"
-                                                                                    for="Cognitive-behavioral">Cognitive-behavioral therapy
-                                                                                </label>
-                        
+
+                                                                            <div class="form-group row mx-0">
+                                                                                <div class="col-sm-12">
+                                                                                    <label for="inputState">Any Other</label>
+                                                                                    <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="bedsE.otherE" name='other'></angular-editor>
+                                                                                </div>
                                                                             </div>
-                        
-                                                                        </div>
-                        
-                                                                        <div class="form-group row mx-0">
-                                                                            <div class="col-sm-4 form-check checkbox">
-                        
-                                                                                <input type="checkbox" class="form-check-input" id="Humanistic"
-                                                                                    (change)="bedsE.HumanisticE = $event.target.checked ? 1: 0"
-                                                                                    [(ngModel)]="bedsE.HumanisticE" name='Humanistic'>
-                                                                                <label class="form-check-label" for="Humanistic">Humanistic
-                                                                                    therapy</label>
-                        
-                                                                            </div>
-                                                                            <div class="col-sm-4 form-check checkbox">
-                        
-                                                                                <input type="checkbox" class="form-check-input" id="Clinician"
-                                                                                    (change)="bedsE.ClinicianE = $event.target.checked ? 1: 0"
-                                                                                    [(ngModel)]="bedsE.ClinicianE" name='Clinician'>
-                                                                                <label class="form-check-label" for="Clinician">Referred to
-                                                                                    Clinician</label>
-                        
-                                                                            </div>
-                                                                            <div class="col-sm-4 form-check checkbox">
-                        
-                                                                                <input type="checkbox" class="form-check-input" id="Feedback"
-                                                                                    (change)="bedsE.FeedbackE = $event.target.checked ? 1: 0"
-                                                                                    [(ngModel)]="bedsE.FeedbackE" name='Feedback' checked>
-                                                                                <label class="form-check-label" for="Feedback">Client Feedback
-                                                                                    Client consent </label>
-                        
-                                                                            </div>
-                        
-                                                                        </div>
-                        
-                                                                        <div class="form-group row mx-0">
-                                                                            <div class="col-sm-12">
-                                                                                <label for="inputState">Any Other</label>
-                                                                                <angular-editor [placeholder]="'Enter text here...'"
-                                                                                    [(ngModel)]="bedsE.otherE" name='other'></angular-editor>
-                                                                            </div>
-                                                                        </div>
-                                                                    </form>
+                                                                        </form>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="button-success" (click)="updateSession(bedsE)"><i
-                                                                    class="fa fa-plus mr-1"></i> Update</button>
-                                                        </div>
-                                                    </ng-template>
-                        
-
-                                                    <!-- model for update session ended -->
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="button-success" (click)="updateSession(bedsE)"><i
+                                                                        class="fa fa-plus mr-1"></i> Update</button>
+                                                            </div>
+                                                        </ng-template>
+                                                        <!-- model for update session ended -->
                                                     </td>
-
-
-                                                <tr *ngIf="pharmacyData1.length === 0" style="text-align: center;">
-                                                    <td colspan="4">No Record Found</td>
-                                                </tr>
+                                                    <tr *ngIf="pharmacyData1.length === 0" style="text-align: center;">
+                                                        <td colspan="4">No Record Found</td>
+                                                    </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -341,8 +273,6 @@
                                 </div>
                             </div>
                         </div>
-                       
-
                     </div>
                 </div>
             </div>

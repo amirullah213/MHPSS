@@ -3,7 +3,7 @@
         <div class="content-wrapper">
             <div class="page-title">
                 <div class="row px-3 px-md-0">
-                    <div class="col-sm-12 pl-0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0">
                         <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
                             <li class="breadcrumb-item"><a href="javascript:void(0)" class="gray-color">
                                   Print Radiology  </a></li>
@@ -13,30 +13,29 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 mb-30">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
-                            <div class="row" >
-                               
+                            <div class="row">
+
                                 <div class="modal-body">
                                     <div class="row mx-0">
-                                        <div class="col-md-9 mt-3 text-center">
-                                           
-                                                <h2 class="text-center"><b> {{Details.hospitalName}} </b></h2>
-                                               <h6 class="text-center mb-2"><b>{{userData.testName}}</b></h6>
-                                                <!-- <span class="ml-4"><h3> {{userData.testName}}</h3></span> -->
-                                           
+                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 mt-3 text-center">
+
+                                            <h2 class="text-center"><b> {{Details.hospitalName}} </b></h2>
+                                            <h6 class="text-center mb-2"><b>{{userData.testName}}</b></h6>
+                                            <!-- <span class="ml-4"><h3> {{userData.testName}}</h3></span> -->
+
                                         </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <img class="" src="../../../../../assets/images/merf.png" width="200" height="100">
                                         </div>
-                                        <!-- <div class="col-md-12 mt-3">
+                                        <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3">
                                             <p class="mt-3"><b>Token Number</b>
                                                 <span class="ml-4">{{pathData1.token}}</span>
                                             </p>
-                                        </div>
-                                        
-                                        <div class="col-md-6 mt-3">
+                                        </div>                                        
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mt-3">
                                             <p class="mb-1 mt-2"><b>Patient Name</b>
                                                 <span class="ml-4">{{pathData1.firstname}}</span>
                                             </p>
@@ -53,7 +52,7 @@
                                                 <span class="ml-4">{{pathData1.cnic}}</span>
                                             </p>
                                         </div>
-                                        <div class="col-md-6 mt-3">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mt-3">
                                             <p class="mb-1 mt-3"><b>Father/Husband Name</b>
                                                 <span class="ml-4"> {{pathData1.f_hName}}</span>
                                             </p>
@@ -70,138 +69,102 @@
                                                 <span class="ml-4"> {{pathData1.bedNo}}</span>
                                             </p>
                                         </div> -->
-
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3">
                                             <p class="mb-1 mt-3"><b>MR#</b>
                                                 <span class="ml-4">{{pathData1.patientID}}</span>
                                             </p>
                                         </div>
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3">
                                             <p class="mb-1 mt-3"><b>Token Number</b>
                                                 <span class="ml-4">{{pathData1.token}}</span>
                                             </p>
                                         </div>
-                                        
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3">
                                             <p class="mb-1 mt-3"><b>CNIC</b>
                                                 <span class="ml-4">{{pathData1.cnic}}</span>
                                             </p>
                                         </div>
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3">
                                             <p class="mb-1 mt-2"><b>Patient Name</b>
                                                 <span class="ml-4">{{pathData1.firstname}}</span>
                                             </p>
-                                            
                                         </div>
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3">
                                             <p class="mb-1 mt-3"><b>Father/Husband Name</b>
                                                 <span class="ml-4"> {{pathData1.f_hName}}</span>
                                             </p>
-                                           
-                                           
                                         </div>
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3">
                                             <p class="mb-1 mt-3"><b>Test Date / Time</b>
                                                 <span class="ml-4">{{userData.DateCreated | date: 'dd-MM-yyyy h:mm a'}}</span>
                                             </p>
-                                            
                                         </div>
-
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3">
                                             <p class="mb-1 mt-3"><b>Sent From</b>
                                                 <span class="ml-4">{{pathData1.departmentName}}</span>
                                             </p>
-                                            
                                         </div>
-                                        <div class="col-md-4 mt-3">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3">
                                             <p class="mb-1 mt-3"><b>Age</b>
                                                 <span class="ml-4" *ngIf="pathData1.ageYear!=0">{{pathData1.ageYear}} year(s)</span>
                                                 <span class="ml-4" *ngIf="pathData1.ageMonth!=0">{{pathData1.ageMonth}} month(s)</span>
                                             </p>
-                                            
                                         </div>
-                                        <!-- <div class="col-md-4 mt-3">
+                                        <!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3">
                                             <p class="mb-1 mt-3"><b>Date Of Birth</b>
                                                 <span class="ml-4">{{pathData1.dob | date}}</span>
                                             </p>
-                                            
                                         </div> -->
-                                       
-                                        
-                                       
-                                       
-                                               
-                                       
-                                        <div class="col-md-4 mt-3" *ngIf="userData.status!=0"> 
-                                          
-                                            <p  class="mb-1 mt-3"><b>Result Date /Time</b>
-                                            <span class="ml-4">{{userData.DateModified | date: 'dd-MM-yyyy h:mm a'}}</span>
-                                        </p>
-                                           
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3" *ngIf="userData.status!=0">
+                                            <p class="mb-1 mt-3"><b>Result Date /Time</b>
+                                                <span class="ml-4">{{userData.DateModified | date: 'dd-MM-yyyy h:mm a'}}</span>
+                                            </p>
                                         </div>
-                                               
-                                       
-                                        <div class="col-md-4 mt-3" *ngIf="userData.status==0">
-                                           
-                                            <p  class="mb-1 mt-3"><b>Result Date /Time</b>
-                                            <span class="ml-4">Result Pending</span>
-                                        </p>
-                                           
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3" *ngIf="userData.status==0">
+                                            <p class="mb-1 mt-3"><b>Result Date /Time</b>
+                                                <span class="ml-4">Result Pending</span>
+                                            </p>
                                         </div>
-       
-                                       
-                                        <div class="col-md-4 mt-3">
-                                            
-                                           <p class="mb-1 mt-3"><b>Mobile Number</b>
-                                            <span class="ml-4"> {{pathData1.cellNo}}</span>
-                                        </p>
-                                           
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3">
+                                            <p class="mb-1 mt-3"><b>Mobile Number</b>
+                                                <span class="ml-4"> {{pathData1.cellNo}}</span>
+                                            </p>
                                         </div>
-                                                                                     
-                                       
-                                        <div class="col-md-4 mt-3" *ngIf="pathData1.bedNo!=null">
-                                                                                    
-                                            <p class="mb-1 mt-3" ><b>Bed No</b>
-                                            <span class="ml-4"> {{pathData1.bedNo}}</span>
-                                        </p>
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3" *ngIf="pathData1.bedNo!=null">
+                                            <p class="mb-1 mt-3"><b>Bed No</b>
+                                                <span class="ml-4"> {{pathData1.bedNo}}</span>
+                                            </p>
                                         </div>
-                                        
                                     </div>
-                                   
-                                   
                                     <hr class="gray">
-                                    
                                     <div class="form-group row mx-0">
-                                        <div class="col-sm-2 mt-2"><label for="inputState">Report</label></div>
-                                        <div class="col-sm-10"  [innerHTML]="userData.xrayFilms6" > </div>
-                                          
-                                       
+                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-2"><label for="inputState">Report</label></div>
+                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" [innerHTML]="userData.xrayFilms6"> </div>
                                     </div>
                                     <div class="form-group row mx-0">
-                                        <div class="col-sm-2 mt-3"><label for="inputState">Diagnosis</label></div>
-                                        <div class="col-sm-10">
+                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-3"><label for="inputState">Diagnosis</label></div>
+                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                                             <p class="mt-3">{{userData.result}}</p>
                                         </div>
                                     </div>
                                     <hr>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 mt mt-5 d-print-none">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt mt-5 d-print-none">
                                         <div class="form-group text-center">
                                             <button type="button" (click)="printPage()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
                                              <i class="fa fa-print"></i> Print
                                            </button>
                                         </div>
                                     </div>
-                            </div>
-                            <!-- <div *ngIf="userLoader" class="d-flex justify-content-center">
+                                </div>
+                                <!-- <div *ngIf="userLoader" class="d-flex justify-content-center">
                                 <div class="spinner-border theme-color" role="status">
                                     <span class="sr-only"></span>
                                 </div>
                             </div> -->
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-

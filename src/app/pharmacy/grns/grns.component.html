@@ -3,7 +3,7 @@
         <div class="content-wrapper">
             <div class="page-title">
                 <div class="row px-3 px-md-0">
-                    <div class="col-sm-12 pl-0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0">
                         <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
                             <li class="breadcrumb-item active gray-04-color"><a href="javascript:void(0)" [routerLink]="['/pharma/home']" class="gray-color"><i class="ti-home mr-2"></i>Home</a></li>
                             <li class="breadcrumb-item"><a href="javascript:void(0)"> GRN</a></li>
@@ -13,7 +13,7 @@
             </div>
             <!-- main body -->
             <div class="row">
-                <div class="col-md-12 mb-30">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
                             <h5 class="card-title mb-0">GRN</h5>
@@ -28,15 +28,13 @@
                                         </select>
                                     </div>
                                 </div>
-
                                 <div class="form-group row mx-0">
-                                    <div class="col-md-12 text-center">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
                                         <h5>Medicines</h5>
                                         <h5>(Note: Quantity & Batch no are required fields)</h5>
                                     </div>
                                 </div>
                                 <hr class="gray">
-
                                 <div class="form-group row mx-0">
                                     <div class="table-responsive">
                                         <table class="table center-aligned-table">
@@ -46,13 +44,11 @@
                                                     <th>Unit</th>
                                                     <th>Type</th>
                                                     <th>Issued Quantity</th>
-
                                                     <th>Recieved Quantity</th>
                                                     <th>Batch No</th>
                                                     <th>Trade Name </th>
                                                     <th>Manufacturing date </th>
                                                     <th width='20%'>Expiry date </th>
-
                                                 </tr>
                                             </thead>
                                             <tbody formGroupName="purchaseOrder">
@@ -84,28 +80,25 @@
                                                     <td>
                                                         <input type="text" formControlName='expireDate' class="form-control" #datepickerYMD="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" placeholder="Expiry Date">
                                                     </td>
-
-
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
-
                                 </div>
                             </form>
-
                             <hr class="gray">
                             <div class="form-group row mx-0">
-                                <div class="col-md-12">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group text-center">
                                         <button type="button" *ngIf="!loader_eqp" (click)="saveData(dynamicForm.value)" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save</button>
-                                        <button type="button" *ngIf="loader_eqp" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><span class="spinner-border theme-color" role="status">
-                                                    <span class="sr-only"></span>
-                                                </span></button>
+                                        <button type="button" *ngIf="loader_eqp" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
+                                            <span class="spinner-border theme-color" role="status">
+                                                <span class="sr-only"></span>
+                                            </span>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
