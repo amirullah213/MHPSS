@@ -21,6 +21,9 @@ import { IssueSattMedicComponent } from './issue-satt-medic/issue-satt-medic.com
 import { DispenseStockComponent } from './dispense-stock/dispense-stock.component';
 import { AllPatsComponent } from './all-pats/all-pats.component';
 import { PrintRadiologyComponent } from './print-radiology/print-radiology.component';
+import { BinCardComponent } from './bin-card/bin-card.component';
+import { DetailsComponent } from './details/details.component';
+import { PrintPrescriptionComponent } from './print-prescription/print-prescription.component';
 
 const routes: Routes = [
   { 
@@ -46,6 +49,9 @@ const routes: Routes = [
       { path: 'dispense', component: DispenseStockComponent },
       { path: 'allpats', component: AllPatsComponent },
       { path: 'printRad', component: PrintRadiologyComponent },
+      { path: 'bincard', component: BinCardComponent },
+      { path: 'pat_details', component: DetailsComponent },
+      { path: 'print_prescription', component: PrintPrescriptionComponent },
 
       { path: '', redirectTo: 'home', pathMatch: 'full' }
 

@@ -36,11 +36,14 @@ import { AllgrnsComponent } from './allgrns/allgrns.component';
 import { AllPatsComponent } from './all-pats/all-pats.component';
 import { PrintRadiologyComponent } from './print-radiology/print-radiology.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
+import { BinCardComponent } from './bin-card/bin-card.component';
+import { DetailsComponent } from './details/details.component';
+import { PrintPrescriptionComponent } from './print-prescription/print-prescription.component';
 
 
 @NgModule({
   
-  declarations: [ PharmaComponent, HomeComponent, PharmaSideBarComponent, PharmaSeenPatientsComponent, PharmaPendingPatientsComponent, PharmaPrescriptionComponent, MedicineGrnComponent, MedicineDiscardComponent, NonMedicineDiscardComponent, NonMedicineGrnComponent, ItemsStatusComponent, IssueGrnComponent, SyncDataComponent, GrnsComponent, StockreqSateliteComponent,  IssueSattMedicComponent, DispenseStockComponent, RecieveGrnSatComponent, AllgrnsComponent, AllPatsComponent, PrintRadiologyComponent],
+  declarations: [ PharmaComponent, HomeComponent, PharmaSideBarComponent, PharmaSeenPatientsComponent, PharmaPendingPatientsComponent, PharmaPrescriptionComponent, MedicineGrnComponent, MedicineDiscardComponent, NonMedicineDiscardComponent, NonMedicineGrnComponent, ItemsStatusComponent, IssueGrnComponent, SyncDataComponent, GrnsComponent, StockreqSateliteComponent,  IssueSattMedicComponent, DispenseStockComponent, RecieveGrnSatComponent, AllgrnsComponent, AllPatsComponent, PrintRadiologyComponent, BinCardComponent, DetailsComponent, PrintPrescriptionComponent],
   imports: [
     CommonModule,
     PharmacyRoutingModule, Ng2SearchPipeModule, ReactiveFormsModule,

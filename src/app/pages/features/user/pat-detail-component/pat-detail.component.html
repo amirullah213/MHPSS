@@ -41,9 +41,16 @@
                             <div class="tab-content">
                                 <div *ngIf="tab === 'biofh'" class="tab-pane fade" [ngClass]="{'active show': tab === 'biofh'}" id="tab1" role="tabpanel" aria-labelledby="tab1">
                                     <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group float-right">
+                                                <button type="button" class="btn mt-1 themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
+                                                    <i class="fa fa-plus-square mr-2"></i> Add New
+                                                </button>
+                                            </div>
+                                        </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
-                                                <label for="formGroupExampleInput">MR#</label>
+                                                <label for="formGroupExampleInput"><strong>MR #</strong></label>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -53,7 +60,7 @@
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
-                                                <label for="formGroupExampleInput">Token</label>
+                                                <label for="formGroupExampleInput"><strong>Token</strong></label>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -64,7 +71,7 @@
 
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
-                                                <label for="formGroupExampleInput">NIC</label>
+                                                <label for="formGroupExampleInput"><strong>NIC</strong></label>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -75,7 +82,7 @@
 
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
-                                                <label for="formGroupExampleInput">Patient Name</label>
+                                                <label for="formGroupExampleInput"><strong>Patient Name</strong></label>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -85,7 +92,7 @@
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
-                                                <label for="formGroupExampleInput">Father Name</label>
+                                                <label for="formGroupExampleInput"><strong>Father Name</strong></label>
 
                                             </div>
                                         </div>
@@ -96,7 +103,7 @@
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
-                                                <label for="formGroupExampleInput">Date Of Birth</label>
+                                                <label for="formGroupExampleInput"><strong>Date Of Birth</strong></label>
                                                 <!-- <input type="password" class="form-control" formControlName="password" id="formGroupExampleInput" placeholder="Enter Password">
                                                 <div class="w-100" *ngIf="f.controls.password.status=='INVALID'">
                                                     <div *ngIf="f.controls.password.errors.required && f.controls.password.touched" class="invalid-feedback" [style.display]="f.controls.password.status=='INVALID' ? 'block' : 'none'">Please provide password.</div>
@@ -112,7 +119,7 @@
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="input-group form-group">
-                                                <label for="inputState">Mobile Number</label>
+                                                <label for="inputState"><strong>Mobile Number</strong></label>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">

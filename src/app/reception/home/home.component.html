@@ -27,7 +27,7 @@
                             <div id="collapseBasic">
                                 <form [formGroup]="regisForm" novalidate>
                                     <div class="row">
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                             <div class="form-group" [ngClass]="{'has-error': ((regisForm.get('firstname').touched || regisForm.get('firstname').dirty) && regisForm.get('firstname').errors)}">
                                                 <label for="formGroupExampleInput">Full Name</label>
                                                 <input type="text" id="firstname" formControlName="firstname" class="form-control text-capitalize focusedInput" placeholder="Enter Patient Name">
@@ -38,7 +38,7 @@
                                                 </span>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                             <div class="form-group" [ngClass]="{'has-error': ((regisForm.get('f_hName').touched || regisForm.get('f_hName').dirty) && regisForm.get('f_hName').errors)}">
                                                 <label for="formGroupExampleInput">Father/Husband Name</label>
                                                 <input type="text" formControlName="f_hName" class="form-control text-capitalize " placeholder="Enter Patient Father/Husband Name">
@@ -49,7 +49,7 @@
                                                 </span>
                                             </div>
                                         </div>
-                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                             <div class="form-group" [ngClass]="{'has-error': ((regisForm.get('gender').touched || regisForm.get('gender').dirty) && regisForm.get('gender').errors)}">
                                                 <label>Gender</label>
                                                 <select class="form-control" formControlName="gender">                                               
@@ -64,13 +64,13 @@
                                                 </span>
                                             </div>
                                         </div>
-                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                             <div class="form-group">
                                                 <label for="formGroupExampleInput">Year</label>
                                                 <input type="number" formControlName="year" class="form-control" placeholder="Enter Year">
                                             </div>
                                         </div>
-                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                             <div class="form-group">
                                                 <label for="formGroupExampleInput">Months</label>
                                                 <input type="number" formControlName="months" class="form-control" placeholder="Months">
