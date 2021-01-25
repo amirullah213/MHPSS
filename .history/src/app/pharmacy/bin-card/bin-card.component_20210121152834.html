@@ -1,0 +1,175 @@
+<div class="container-fluid container-wrapper">
+    <div class="row">
+        <div class="content-wrapper">
+            <div class="page-title">
+                <div class="row px-3 px-md-0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0">
+                        <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
+                            <li class="breadcrumb-item active gray-04-color">
+                                <a href="javascript:void(0)"><i class="ti-home mr-2"></i>Home</a>
+                            </li>
+                            <li class="breadcrumb-item active gray-04-color">Bincard</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- main body -->
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-30">
+                    <div class="card card-statistics h-100">
+                        <div class="card-body">
+                            <h5 class="card-title mb-0">Items</h5>
+                            <!-- <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item" (click)="setTab('newPats')">
+                                    <a class="nav-link" [ngClass]="{'active show': tab === 'newPats'}" id="tab1" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="home" aria-selected="true">Items</a>
+                                </li>
+                                <li class="nav-item" (click)="setTab('penPats')">
+                                    <a class="nav-link" [ngClass]="{'active show': tab === 'penPats'}" id="portfolio-tab" href="javascript:void(0)" data-toggle="tab" role="tab" aria-controls="portfolio" aria-selected="false">Items Bin Card</a>
+                                </li>
+                                <li class="nav-item" (click)="setTab('seenPats')">
+                                    <a class="nav-link" [ngClass]="{'active show': tab === 'seenPats'}" id="contact-tab" href="javascript:void(0)" data-toggle="tab" role="tab" aria-controls="contact" aria-selected="false">SMR</a>
+                                </li>
+                            </ul> -->
+                            <div class="tab-content">... main tab
+                                <!-- items tab start -->
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <form>
+                                                <div class="form-group">
+                                                    <select class="form-control col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                        <option value="1">Select an Option</option>
+                                                        <option value="1">Medicine</option>
+                                                        <option value="2">Consumebale</option>
+                                                        <option value="-1">All</option>
+                                                    </select>
+                                                </div>
+                                            </form>
+                                            <div class="table-responsive">
+                                                <table class="table center-aligned-table">
+                                                    <thead>
+                                                        <tr class="text-dark">
+                                                            <th>Item ID</th>
+                                                            <th>Item Name</th>
+                                                            <th>Unit</th>
+                                                            <th>Type</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>011</td>
+                                                            <td>ARV</td>
+                                                            <td>100 ml</td>
+                                                            <td>Vaccine</td>
+                                                            <td><a href="javascript:void(0)" class="text-info">Bin Card</a></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                   
+                                </div>
+                                 <!-- items tab ended -->
+                                  <!-- bincard items tab start -->
+                                <div *ngIf="tab === 'penPats'" class="tab-pane fade" [ngClass]="{'active show': tab === 'penPats'}" id="tab2" role="tabpanel" aria-labelledby="tab2">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="table-responsive">
+                                                <table class="table center-aligned-table">
+                                                    <thead>
+                                                        <tr class="text-dark">
+                                                            <th>S. No</th>
+                                                            <th>Date</th>
+                                                            <th>In</th>
+                                                            <th>Out</th>
+                                                            <th>Balance</th>
+                                                            <th>Transition Type</th>
+                                                            <th>Comments</th>
+                                                            <th>Action</th>
+                                                            <!-- only for satellite pharmacy -->
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>20-01-2021</td>
+                                                            <td>5622</td>
+                                                            <td>0</td>
+                                                            <td>5622</td>
+                                                            <td>GRN</td>
+                                                            <td>MERF GRN</td>
+                                                            <td><a href="javascript:void(0)" (click)="openNewTab()" class="text-info"><i class="fa fa-eye mr-2"></i>View</a></td>
+                                                            <!-- only for satellite pharmacy (click)="openModalWithClass(template)" -->
+                                                            <!-- <ng-template #template>
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title pull-left">Modal</h4>
+                                                                    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Just a modal with a bunch of words inside, nothing serious.
+                                                                </div>
+                                                            </ng-template> -->
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- bincard items tab ended -->
+                                <!-- smr tab start -->
+                                <div *ngIf="tab === 'seenPats'" class="tab-pane fade" [ngClass]="{'active show': tab === 'seenPats'}" id="tab3" role="tabpanel" aria-labelledby="tab3">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="table-responsive">
+                                                <table class="table center-aligned-table">
+                                                    <thead>
+                                                        <tr class="text-dark">
+                                                            <th>Stock Movement Report</th>
+                                                            <th colspan="9">Main Warehouse</th>
+                                                        </tr>
+                                                        <tr class="text-dark">
+                                                            <th>Item ID</th>
+                                                            <th>Item Name</th>
+                                                            <th>Unit</th>
+                                                            <th>Type</th>
+                                                            <th>In Hand</th>
+                                                            <th>ER Pahar</th>
+                                                            <th>OPD</th>
+                                                            <th>Other</th>
+                                                            <th>Total Issued</th>
+                                                            <th>Total</th>
+                                                            <th>Remaining</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Item ID</td>
+                                                            <td>Item Name</td>
+                                                            <td>Unit</td>
+                                                            <td>Type</td>
+                                                            <td>In Hand</td>
+                                                            <td>ER Pahar</td>
+                                                            <td>OPD</td>
+                                                            <td>Other</td>
+                                                            <td>Total Issued</td>
+                                                            <td>Total</td>
+                                                            <td>Remaining</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- smr tab ended -->
+                            </div>....main tab
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

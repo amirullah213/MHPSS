@@ -7,10 +7,11 @@ import { PrintComponent } from './print/print.component';
 import { PrintSideBarComponent } from './print-side-bar/print-side-bar.component';
 import { RadiologyComponent } from './radiology/radiology.component';
 import { PathologyComponent } from './pathology/pathology.component';
+import { DischargeCardComponent } from './discharge-card/discharge-card.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, PrintComponent, PrintSideBarComponent, RadiologyComponent, PathologyComponent],
+  declarations: [HomeComponent, PrintComponent, PrintSideBarComponent, RadiologyComponent, PathologyComponent, DischargeCardComponent],
   imports: [
     CommonModule,
     PrintModuleRoutingModule

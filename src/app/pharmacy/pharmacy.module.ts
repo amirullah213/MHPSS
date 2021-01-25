@@ -39,11 +39,17 @@ import { AlertModule } from 'ngx-bootstrap/alert';
 import { BinCardComponent } from './bin-card/bin-card.component';
 import { DetailsComponent } from './details/details.component';
 import { PrintPrescriptionComponent } from './print-prescription/print-prescription.component';
+import { BincardItemsComponent } from './bincard-items/bincard-items.component';
+import { BincardSmrComponent } from './bincard-smr/bincard-smr.component';
+import { SmrPatDetailComponent } from './smr-pat-detail/smr-pat-detail.component';
+
 
 
 @NgModule({
   
-  declarations: [ PharmaComponent, HomeComponent, PharmaSideBarComponent, PharmaSeenPatientsComponent, PharmaPendingPatientsComponent, PharmaPrescriptionComponent, MedicineGrnComponent, MedicineDiscardComponent, NonMedicineDiscardComponent, NonMedicineGrnComponent, ItemsStatusComponent, IssueGrnComponent, SyncDataComponent, GrnsComponent, StockreqSateliteComponent,  IssueSattMedicComponent, DispenseStockComponent, RecieveGrnSatComponent, AllgrnsComponent, AllPatsComponent, PrintRadiologyComponent, BinCardComponent, DetailsComponent, PrintPrescriptionComponent],
+  declarations: [ PharmaComponent, HomeComponent, PharmaSideBarComponent, PharmaSeenPatientsComponent, PharmaPendingPatientsComponent, PharmaPrescriptionComponent, MedicineGrnComponent, MedicineDiscardComponent,
+     NonMedicineDiscardComponent, NonMedicineGrnComponent, ItemsStatusComponent, IssueGrnComponent, SyncDataComponent, GrnsComponent, StockreqSateliteComponent,  IssueSattMedicComponent, DispenseStockComponent,
+      RecieveGrnSatComponent, AllgrnsComponent, AllPatsComponent, PrintRadiologyComponent, BinCardComponent, DetailsComponent, PrintPrescriptionComponent, BincardItemsComponent, BincardSmrComponent, SmrPatDetailComponent],
   imports: [
     CommonModule,
     PharmacyRoutingModule, Ng2SearchPipeModule, ReactiveFormsModule,
