@@ -37,7 +37,7 @@
             <li>
                 <a href="javascript:void(0)" [routerLink]="['bincard']" routerLinkActive="active"><i class="fa fa-plus-square"></i><span class="right-nav-text">Bin Card<br></span> </a>
             </li>
-            <li>
+            <li *ngIf="pharmacyID==8">
                 <a href="javascript:void(0)" [routerLink]="['bincard-smr']" routerLinkActive="active"><i class="fa fa-plus-square"></i><span class="right-nav-text">SMR<br></span> </a>
             </li>
             <!-- <li>

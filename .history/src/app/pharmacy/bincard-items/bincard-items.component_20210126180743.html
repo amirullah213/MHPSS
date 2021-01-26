@@ -49,7 +49,7 @@
                                                         </tr>
                                                         <tr *ngFor="let item of itemsList; let i=index">
                                                             <td>{{i+1}}</td>
-                                                            <td>{{item.DateCreated | date:'dd-MM-yyyy, hh:mm'  }}</td>
+                                                            <td>{{item.DateCreated | date:'short'  }}</td>
                                                             <td>{{item.received}}</td>
                                                             <td>{{item.issued}}</td>
                                                             <td>{{item.closingBalance}}</td>
