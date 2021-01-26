@@ -1868,12 +1868,7 @@ alert("please Select Refferel For Admition or Select a Date for operate")
     return d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
   }
 
-  gotoPrintPage(){
-    this.modalRef.hide();
-    //this.router.navigate(['/print/pathology']);
-    window.open('/print/pathology')
-    
-  }
+
 
 
 

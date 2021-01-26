@@ -6,7 +6,7 @@
                     <div class="col-sm-12 pl-0">
                         <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
                             <li class="breadcrumb-item"><a href="javascript:void(0)" [routerLink]="['/pharma/home']" class="gray-color"><i class="ti-home mr-2"></i>Home</a></li>
-                            <li class="breadcrumb-item active gray-04-color">Pending Patients</li>
+                            <li class="breadcrumb-item active gray-04-color">Seen Patients</li>
                         </ol>
                     </div>
                 </div>
@@ -16,12 +16,7 @@
                 <div class="col-md-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
-                            <h5 class="page-title">Issue Medicines to Patients
-                                <span class="mx-5 small">MR#: {{pharmacyData.data.patientID}}</span>
-                                <span class="mx-5 small">Name: {{pharmacyData.data.firstname}}</span> 
-                                <span class="mx-5 small">NIC: {{pharmacyData.data.cnic}}</span>
-                                <span class="mx-5 small">F/H Name: {{pharmacyData.data.f_hName}}</span>
-                            </h5>
+                            <h5 class="page-title"> Seen Patients</h5>
                             <hr class="gray">
                             <div class="row mx-0">
                                 <div class="col-md-12">
@@ -33,14 +28,15 @@
                                                     <th>Medicine Name</th>
                                                     <th>Unit</th>
                                                     <th>Type</th>
-                                                    <th>Batch No</th>
-                                                    <th>In Stock</th>
+                                                    <!-- <th>Batch No</th>
+                                                    <th>In Stock</th> -->
 
-                                                    <th>Prescribed Quantity</th>
-                                                    <th>Issued Quantity</th>
+                                                    <th>Prescribed Qty</th>
+                                                    <th>Issued Qty</th>
                                                     <th>Dose</th>
                                                     <th>Prandial</th>
-                                                    <th>Remarks</th>
+                                                    <th>Req Date</th>
+                                                    <th>Issue Date</th>
                                                 </tr>
                                             </thead>
                                             <tbody *ngIf="!loader_eqp">
@@ -49,27 +45,31 @@
                                                     <td colspan="11">No Record Found</td>
 
                                                 </tr>
-                                                <tr *ngFor="let med of pharmacyData.medicines;let i=index;trackBy:trackByIndex;">
+                                                <tr *ngFor="let med of pharmacyData.medicines;let i=index">
                                                     <td>{{i+1}}</td>
                                                     <td>{{med.medicine}}</td>
                                                     <td>{{med.unit}}</td>
                                                     <td>{{med.type1}}</td>
-                                                    <td>
+                                                    <!-- <td>
                                                         <span>
-                                                            <select [(ngModel)]="med.inStock"  class="form-control" (ngModelChange)="getdata(med.inStock,i)" aria-label="Text input with segmented dropdown button"
+                                                            <select [(ngModel)]="med.inStock" disabled="tabb=='newPats'" class="form-control" (ngModelChange)="getdata(med.inStock)" aria-label="Text input with segmented dropdown button"
                                                                placeholder="Select Stock" >
-                                                              <!-- <option *ngFor="let stc of newArray.stock;let j=index" [value]="j" >{{stc.batchNo}}</option> (ngModelChange)="getdata(stc)"-->
-                                                              <option *ngFor="let stc of med.stock;let j=index" [ngValue]="stc" >{{stc.batchNo}}</option>
+                                                              
+                                                              <option *ngFor="let stc of med.stock;let j=index" [value]="j" >{{stc.batchNo}}</option>
                                                             </select>
                                                        </span>
-                                                        <!-- <span>{{batchNo}}</span> -->
+                                                       
                                                     </td>
-                                                    <td><input [(ngModel)]="objtest.inStoc" [id]="'inStoc'+i" [value]="'inStoc'+i" class="form-control" [disabled]='true'></td>
+                                                    <td ><input [(ngModel)]="med.instoc" name="instock{{i}}" disabled="tabb=='newPats'" class="form-control" value="{{med.inStock}}" [disabled]='true'></td> -->
                                                     <td>{{med.prescribedQuantity}}</td>
-                                                    <td><input [(ngModel)]="med.issuedQuantity" [name]="'issuedQuantity'+i" [value]="'issuedQuantity'+i" (blur)='addMedicArr(med.issuedQuantity,med)' class="form-control" [disabled]='!med.inStock'></td>
+                                                    <td>
+                                                        {{med.issuedQuantity}}
+                                                        <!-- <input [(ngModel)]="med.issuedQuantity" name="issuedQuantity{{i}}" (blur)="addMedicArr(med)" class="form-control" [disabled]='!med.inStock'> -->
+                                                    </td>
                                                     <td>{{med.dose}}</td>
                                                     <td>{{med.prandial}}</td>
-                                                    <td>{{med.remarks}} </td>
+                                                    <td>{{med.DateCreated | date:"dd-MM-yyyy, hh:mm"}} </td>
+                                                    <td>{{med.DateModified | date:"dd-MM-yyyy, hh:mm"}} </td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -79,14 +79,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mx-0">
+                                    <!-- <div class="row mx-0" *ngIf="tabb=='newPats'">
                                         <div class="col-md-12 mt-3 text-center">
-                                            <button type="button" (click)="issueMedicines(med)" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save </button>
+                                            <button type="button" (click)="issueMedicines()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="ti-save-alt"></i> Save </button>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="row mx-0">
                                         <div class="col-md-12 mt-3 text-center">
-                                            <button type="button" href="javascript:void(0)" [routerLink]="['/pharma/prescription']" class="button"><i class="ti-eye"></i> View Priscription </button>
+                                            <button type="button" href="javascript:void(0)"  (click)="gotoPrintPage()" class="button"><i class="ti-eye"></i> View Priscription </button>
+                                            <!-- [routerLink]="['/pharma/prescription']" -->
                                         </div>
                                     </div>
                                 </div>

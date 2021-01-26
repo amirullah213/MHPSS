@@ -101,7 +101,6 @@ getPatMedicItems() {
   this.modal.parmacyID=this.doctorID
   this.modal.token=this.padata.token;
   this.modal.prescriptionID=this.padata.prescriptionID;
-  this.modal.status=0;
   
 
  this.pharmacySer.getPatData(this.modal).subscribe(

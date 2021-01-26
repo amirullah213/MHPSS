@@ -103,7 +103,7 @@
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
-                                                <label for="formGroupExampleInput"><strong>Age</strong></label>
+                                                <label for="formGroupExampleInput"><strong>Date Of Birth</strong></label>
                                                 <!-- <input type="password" class="form-control" formControlName="password" id="formGroupExampleInput" placeholder="Enter Password">
                                                 <div class="w-100" *ngIf="f.controls.password.status=='INVALID'">
                                                     <div *ngIf="f.controls.password.errors.required && f.controls.password.touched" class="invalid-feedback" [style.display]="f.controls.password.status=='INVALID' ? 'block' : 'none'">Please provide password.</div>
@@ -114,7 +114,7 @@
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
-                                                        <label for="formGroupExampleInput"><span *ngIf="patInfo.ageYear!=0">{{patInfo.ageYear}} Years </span> <span  *ngIf="patInfo.ageMonth!=0">{{patInfo.ageYear}} Months</span> </label>
+                                                        <label for="formGroupExampleInput"><span *ngIf="patInfo.ageMonth!=0 && patInfo.ageYear!=0">{{patInfo.ageYear}}</span> {{patInfo.dob | date}}</label>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">

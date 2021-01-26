@@ -41,14 +41,14 @@
                                 </div>
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="border-right: #000 2px solid;">
                                     <div>
-                                     <h5 class="mb-1 mt-4" *ngIf="operateArr.length!=0"><span class="colorback" ><b> Operation Data</b></span></h5>
+                                     <h5 class="mb-1 mt-4"><span class="colorback" ><b> Operation Data</b></span></h5>
                                      <ng-container *ngIf="operateArr.length==0; then thenTemplate; else elseTemplate"></ng-container>
                                      <ng-template #thenTemplate>
-                                         
+                                         No data Added
                                      </ng-template>
                                      <ng-template #elseTemplate>
-                                         <h6 class="mb-1 ml-4 " >  Name: <span class='ml-2' *ngFor="let oAr of operateArr" >{{oAr.operationName}}</span></h6>
-                                         <h6 class="mb-1 ml-4 " >  Diagnosis: <span class='ml-2' *ngFor="let diag of diagArray">{{diag.name}},</span></h6>
+                                         <h6 class="mb-1 ml-4 " *ngFor="let oAr of operateArr">  Name: <span class='ml-2' ></span>{{oAr.operationName}}</h6>
+                                         <h6 class="mb-1 ml-4 " *ngFor="let oAr of operateArr">  diagnosis: <span class='ml-2' ></span>{{oAr.operationName | json}}</h6>
                                      </ng-template>
                                      
                                       <!-- <h6 class="mb-1 ml-4" *ngFor="let opArr of operateArr">
@@ -88,11 +88,11 @@
                                         <h5 class="mb-2"><b><span class="colorback" >Investigations</span></b></h5>
                                         <h5 class="mb-1 ml-2"><b><span class="colorback">Pathology : </span></b> </h5>
                                         <span *ngFor="let tst of invets">
-                                            <h6  class="mb-1 ml-4"><span *ngIf="tst.isDirect==1 && tst.testType==1">{{tst.testName}} <small class='ml-2'>({{tst.departmentName}})</small></span>  </h6>
+                                            <h6  class="mb-1 ml-4"><span *ngIf="tst.isDirect==1 && tst.testType==1">{{tst.testName}}</span> </h6>
                                         </span>
                                         <h5 class="mb-1 ml-2"><b><span class="colorback">Radiology : </span></b> </h5>
                                         <span *ngFor="let tst2 of invets">
-                                            <h6  class="mb-1 ml-4"><span *ngIf="tst2.isDirect==1 && tst2.testType==2">{{tst2.testName}} <small class='ml-2'>({{tst2.departmentName}})</small></span>  </h6>
+                                            <h6  class="mb-1 ml-4"><span *ngIf="tst2.isDirect==1 && tst2.testType==2">{{tst2.testName}}</span> </h6>
                                         </span>
                                     </div>
                                     <h5 class="mb-1 ml-2"><b><span class="colorback" *ngIf="invets.length==0">No Investigations Suggested </span></b> </h5>

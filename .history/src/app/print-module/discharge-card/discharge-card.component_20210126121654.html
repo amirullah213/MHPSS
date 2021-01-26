@@ -41,10 +41,10 @@
                                 </div>
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="border-right: #000 2px solid;">
                                     <div>
-                                     <h5 class="mb-1 mt-4" *ngIf="operateArr.length!=0"><span class="colorback" ><b> Operation Data</b></span></h5>
+                                     <h5 class="mb-1 mt-4"><span class="colorback" ><b> Operation Data</b></span></h5>
                                      <ng-container *ngIf="operateArr.length==0; then thenTemplate; else elseTemplate"></ng-container>
                                      <ng-template #thenTemplate>
-                                         
+                                         No data Added
                                      </ng-template>
                                      <ng-template #elseTemplate>
                                          <h6 class="mb-1 ml-4 " >  Name: <span class='ml-2' *ngFor="let oAr of operateArr" >{{oAr.operationName}}</span></h6>

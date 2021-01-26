@@ -41,7 +41,6 @@ export class DischargeCardComponent implements OnInit {
   loaderOperate:boolean=false;
   model91:any={};
   operateArr:any=[];
-  diagArray:any=[]
   constructor(
     //private modalService: BsModalService,
     private router: Router,
@@ -80,8 +79,6 @@ export class DischargeCardComponent implements OnInit {
         console.log('investigations===', this.invets);
         this.complantArray=JSON.parse(this.userList.complaints); 
         console.log('complaints===', this.complantArray);
-        this.diagArray=JSON.parse(this.userList.diagnosis); 
-        console.log('diagArray===', this.diagArray);
         this.userLoader = false;
         
       }

@@ -54,7 +54,6 @@ newArray3:any =[];
     this.model.parmacyID=localStorage.getItem('docId');
     this.model.token=padata.token;
     this.model.prescriptionID=padata.prescriptionID;
-    this.model.status=1;
     
     this.getPharmaPats(this.model);
   }
