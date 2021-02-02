@@ -72,14 +72,12 @@
                                                         <span class="ml-4" *ngIf="pathData1.ageYear!=0">{{pathData1.ageYear}} year(s)</span>
                                                         <span class="ml-4" *ngIf="pathData1.ageMonth!=0">{{pathData1.ageMonth}} month(s)</span>
                                                     </p>
-                                                    
                                                     <p class="mb-1 mt-3"><b>Test Date / Time</b>
                                                         <span class="ml-4">{{userData.DateCreated | date: 'dd-MM-yyyy h:mm a'}}</span>
                                                     </p>
-                                                    <p class="mb-1 mt-3"><b>Result Date /Time</b>
-                                                        <span class="ml-4">{{userData.DateModified | date: 'dd-MM-yyyy h:mm a'}}</span>
+                                                    <p class="mb-1 mt-3"><b>Sent From</b>
+                                                        <span class="ml-4">{{pathData1.departmentName}}</span>
                                                     </p>
-                                                    
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                     <p class="mb-1 mt-3"><b>Token Number</b>
@@ -91,9 +89,8 @@
                                                     <p class="mb-1 mt-3"><b>Mobile Number</b>
                                                         <span class="ml-4"> {{pathData1.cellNo}}</span>
                                                     </p>
-                                                   
-                                                    <p class="mb-1 mt-3"><b>Sent From</b>
-                                                        <span class="ml-4">{{pathData1.departmentName}}</span>
+                                                    <p class="mb-1 mt-3"><b>Result Date /Time</b>
+                                                        <span class="ml-4">{{userData.DateModified | date: 'dd-MM-yyyy h:mm a'}}</span>
                                                     </p>
                                                     <p class="mb-1 mt-3" *ngIf="pathData1.bedNo!=null"><b>Bed No</b>
                                                         <span class="ml-4"> {{pathData1.bedNo}}</span>
