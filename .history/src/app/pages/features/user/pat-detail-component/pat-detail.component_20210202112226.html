@@ -711,9 +711,7 @@
                                                     </button>
                                                     </div>
                                                     <div class="modal-body ">
-                                                        <h5>Test Type : <span *ngIf="sData.testType==1">Pathalogy</span><span *ngIf="sData.testType!=1">Radiology</span>
-                                                        <span class="ml-5">{{sData.testName}}</span>
-                                                        </h5>
+                                                        <h5>Test Type : <span *ngIf="sData.testType==1">Pathalogy</span><span *ngIf="sData.testType!=1">Radiology</span></h5>
                                                         <!-- <div class="row mx-0">
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                                 <p class="mb-1 mt-2"><b>MR#</b>
@@ -807,12 +805,6 @@
                                                                     <span class="ml-4"> {{patInfo.bedNo}}</span>
                                                                 </p>
                                                             </div>
-                                                            
-                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mt-3">
-                                                                <p class="mb-1 mt-3"><b>Test Date / Time</b>
-                                                                    <span class="ml-4">{{sData.DateCreated | date: 'dd-MM-yyyy h:mm a'}}</span>
-                                                                </p>
-                                                            </div>
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mt-3" *ngIf="patInfo.status!=0">
                                                                 <p class="mb-1 mt-3"><b>Result Date /Time</b>
                                                                     <span class="ml-4">{{sData.DateModified | date: 'dd-MM-yyyy h:mm a'}}</span>
@@ -821,6 +813,11 @@
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mt-3" *ngIf="sData.status==0">
                                                                 <p class="mb-1 mt-3"><b>Result Date /Time</b>
                                                                     <span class="ml-4">Result Pending</span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mt-3">
+                                                                <p class="mb-1 mt-3"><b>Test Date / Time</b>
+                                                                    <span class="ml-4">{{sData.DateCreated | date: 'dd-MM-yyyy h:mm a'}}</span>
                                                                 </p>
                                                             </div>
                                                         </div>

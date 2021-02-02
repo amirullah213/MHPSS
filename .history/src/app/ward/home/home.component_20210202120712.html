@@ -78,8 +78,6 @@
                                                             <th>MR#</th>
                                                             <th>CRP#</th>
                                                             <th>Patient/F/H</th>
-                                                            <th>Age</th>
-                                                            <th>Sex</th>
                                                             <th>NIC</th>
                                                             <th>Dept</th>
                                                             <th>Date</th>
@@ -91,11 +89,6 @@
                                                             <td>{{wrd.patientID}}</td>
                                                             <td>{{wrd.token}}</td>
                                                             <td><span>{{wrd.firstname}} / {{wrd.f_hName}}</span></td>
-                                                            <td>
-                                                                <span *ngIf="wrd.ageYear!=0">{{wrd.ageYear}} Y</span>
-                                                                <span *ngIf="wrd.ageMonth!=0">{{wrd.ageMonth}} M</span>
-                                                            </td>
-                                                            <td><span>{{wrd.gender}}</span></td>
                                                             <td><span>{{wrd.cnic}}</span></td>
                                                             <td><span>{{wrd.refferedFrom}}</span></td>
                                                             <td>{{wrd.DateCreated| date }}</td>
@@ -173,11 +166,13 @@
                                                             <td>{{wrd.token}}</td>
                                                             <td><span>{{wrd.firstname}} / {{wrd.f_hName}}</span></td>
                                                             
+                                                                
+                                                          
                                                             <td>
-                                                                <span *ngIf="wrd.ageYear!=0">{{wrd.ageYear}} Y</span>
-                                                                <span *ngIf="wrd.ageMonth!=0">{{wrd.ageMonth}} M</span>
+                                                                <span class="ml-4" *ngIf="wrd.ageYear!=0">{{wrd.ageYear}} year(s)</span>
+                                                                <span class="ml-4" *ngIf="wrd.ageMonth!=0">{{wrd.ageMonth}} month(s)</span>
                                                             </td>
-                                                            <td><span>{{wrd.gender}}</span></td>
+                                                            <td><span>{{wrd.sex}}</span></td>
 
                                                             <td><span>{{wrd.cnic}}</span></td>
                                                             <td><span>{{wrd.refferedFrom}}</span></td>
@@ -208,8 +203,6 @@
                                                             <th>MR#</th>
                                                             <th>CRP#</th>
                                                             <th>Patient Name</th>
-                                                            <th>Age</th>
-                                                            <th>Sex</th>
                                                             <th>NIC</th>
                                                             <th>Dept</th>
                                                             <th>Date</th>
@@ -221,11 +214,6 @@
                                                             <td>{{wrd.patientID}}</td>
                                                             <td>{{wrd.token}}</td>
                                                             <td><span>{{wrd.firstname}} / {{wrd.f_hName}}</span></td>
-                                                            <td>
-                                                                <span *ngIf="wrd.ageYear!=0">{{wrd.ageYear}} Y</span>
-                                                                <span *ngIf="wrd.ageMonth!=0">{{wrd.ageMonth}} M</span>
-                                                            </td>
-                                                            <td><span>{{wrd.gender}}</span></td>
                                                             <td><span>{{wrd.cnic}}</span></td>
                                                             <td><span>{{wrd.refferedFrom}}</span></td>
                                                             <td>{{wrd.DateCreated| date }}</td>

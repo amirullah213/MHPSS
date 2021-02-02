@@ -104,7 +104,7 @@
                                                     </p>
                                                 </div>
                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                                    <p class="mb-1 mt-3"><b>Token#</b>
+                                                    <p class="mb-1 mt-3"><b>Token Number</b>
                                                         <span class="ml-4">{{pathData1.token}}</span>
                                                     </p>
                                                 </div>
@@ -113,62 +113,58 @@
                                                         <span class="ml-4">{{pathData1.cnic}}</span>
                                                     </p>
                                                 </div>
-                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                                    <p class="mb-1 mt-3"><b>Name</b>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3">
+                                                    <p class="mb-1 mt-2"><b>Name</b>
                                                         <span class="ml-4">{{pathData1.firstname}}</span>
                                                     </p>
                                                 </div>
-                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3">
                                                     <p class="mb-1 mt-3"><b>F/H Name</b>
                                                         <span class="ml-4"> {{pathData1.f_hName}}</span>
                                                     </p>
                                                 </div>
-                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3">
+                                                    <p class="mb-1 mt-3"><b>Test Date / Time</b>
+                                                        <span class="ml-4">{{userData.DateCreated | date: 'dd-MM-yyyy h:mm a'}}</span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3">
                                                     <p class="mb-1 mt-3"><b>Sent From</b>
                                                         <span class="ml-4">{{pathData1.departmentName}}</span>
                                                     </p>
                                                 </div>
-                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-
-                                                    <p class="mb-1 mt-3"><b>Mobile#</b>
-                                                        <span class="ml-4"> {{pathData1.cellNo}}</span>
-                                                    </p>
-                                                </div>
-                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3">
                                                     <p class="mb-1 mt-3"><b>Age</b>
                                                         <span class="ml-4" *ngIf="pathData1.ageYear!=0">{{pathData1.ageYear}} year(s)</span>
                                                         <span class="ml-4" *ngIf="pathData1.ageMonth!=0">{{pathData1.ageMonth}} month(s)</span>
                                                     </p>
                                                 </div>
-                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 " *ngIf="pathData1.bedNo!=null">
-                                                    <p class="mb-1 mt-3"><b>Bed No</b>
-                                                        <span class="ml-4"> {{pathData1.bedNo}}</span>
-                                                    </p>
-                                                </div>
-                                                
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                    <p class="mb-1 mt-3"><b>Test Date / Time</b>
-                                                        <span class="ml-4">{{userData.DateCreated | date: 'dd-MM-yyyy h:mm a'}}</span>
-                                                    </p>
-                                                </div>
-                                                
                                                 <!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3">
                                                     <p class="mb-1 mt-3"><b>Date Of Birth</b>
                                                         <span class="ml-4">{{pathData1.dob | date}}</span>
                                                     </p>                                                    
                                                 </div> -->
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " *ngIf="userData.status!=0">
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3" *ngIf="userData.status!=0">
                                                     <p class="mb-1 mt-3"><b>Result Date /Time</b>
                                                         <span class="ml-4">{{userData.DateModified | date: 'dd-MM-yyyy h:mm a'}}</span>
                                                     </p>
                                                 </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " *ngIf="userData.status==0">
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3" *ngIf="userData.status==0">
                                                     <p class="mb-1 mt-3"><b>Result Date /Time</b>
                                                         <span class="ml-4">Result Pending</span>
                                                     </p>
                                                 </div>
-                                                
-                                               
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3">
+
+                                                    <p class="mb-1 mt-3"><b>Mobile Number</b>
+                                                        <span class="ml-4"> {{pathData1.cellNo}}</span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3" *ngIf="pathData1.bedNo!=null">
+                                                    <p class="mb-1 mt-3"><b>Bed No</b>
+                                                        <span class="ml-4"> {{pathData1.bedNo}}</span>
+                                                    </p>
+                                                </div>
                                             </div>
                                             <hr class="gray">
                                             <div class="form-group row mx-0">

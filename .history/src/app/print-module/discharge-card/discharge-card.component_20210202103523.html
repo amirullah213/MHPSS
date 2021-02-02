@@ -29,12 +29,12 @@
                                     <h6><b>Father / Husband's Name : </b><span class="ml-3">{{patInfo.f_hName}}</span> </h6>
                                     <h6><b>CNIC : </b><span class="ml-3">{{patInfo.cnic}}</span> </h6>
                                     <h6>
-                                        <b>Age :</b>
+                                        <b>DOB :</b>
                                          <!-- <span class="ml-3">  <span *ngIf="patInfo.dob!='0000-00-00 00:00:00'">{{patInfo.dob | date}} </span></span> -->
                                         <span class="ml-4" *ngIf="patInfo.ageYear!=0">{{patInfo.ageYear}} year(s)</span>
                                         <span class="ml-4" *ngIf="patInfo.ageMonth!=0">{{patInfo.ageMonth}} month(s)</span>
                                     </h6>
-                                    <h6><b>Sex : </b><span class="ml-3 text-capitalize">{{patInfo.gender}}</span></h6>
+                                    <h6><b>Gender : </b><span class="ml-3 text-capitalize">{{patInfo.gender}}</span></h6>
                                     <!-- <h6><b>Consulting Doctor :</b> <span class="ml-3">{{userList.docFName}} {{userList.docLNmae}}</span><span> ({{userList.userName}})</span></h6> -->
                                     <h6><b>Discharged : </b><span class="ml-3 text-capitalize">{{userList.dischargeDate | date}}</span></h6>
                                 </div>
