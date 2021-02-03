@@ -297,11 +297,7 @@ export class HomeComponent implements OnInit {
     this.objDoc3.reff="Self"
    // this.objDoc.doctor="Triage Point 1 OPD" 
     this.objDoc3.doctor=0
-<<<<<<< HEAD
     this.modalRef3 = this.modalService.show(captureuser3,this.config);
-=======
-    this.modalRef3 = this.modalService.show(captureuser3, this.config);
->>>>>>> d7323618cdeebf82f0c2a1f604c43f6f3ec714f9
   }
 
   //---------------------search by token---------------------
