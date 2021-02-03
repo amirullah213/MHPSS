@@ -16,12 +16,14 @@
                 <div class="col-md-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
-                            <h5 class="page-title"> Seen Patients 
-                                <span class="mx-5 small">MR#: {{pharmacyData.data.patientID}}</span>
-                                <span class="mx-5 small">Name: {{pharmacyData.data.firstname}}</span> 
-                                <span class="mx-5 small">NIC: {{pharmacyData.data.cnic}}</span>
-                                <span class="mx-5 small">F/H Name: {{pharmacyData.data.f_hName}}</span>
-                            </h5>
+                            <div class="row mx-0 border4">
+                                <h5 class="page-title"> Seen Patients
+                                    <span class="mx-5 small">MR#: {{pharmacyData.data.patientID}}</span>
+                                    <span class="mx-5 small">Name: {{pharmacyData.data.firstname}}</span>
+                                    <span class="mx-5 small">NIC: {{pharmacyData.data.cnic}}</span>
+                                    <span class="mx-5 small">F/H Name: {{pharmacyData.data.f_hName}}</span>
+                                </h5>
+                            </div>
                             <hr class="gray">
                             <div class="row mx-0">
                                 <div class="col-md-12">
@@ -93,7 +95,7 @@
                                     </div> -->
                                     <div class="row mx-0">
                                         <div class="col-md-12 mt-3 text-center">
-                                            <button type="button" href="javascript:void(0)"  (click)="gotoPrintPage()" class="button"><i class="ti-eye"></i> View Priscription </button>
+                                            <button type="button" href="javascript:void(0)" (click)="gotoPrintPage()" class="button"><i class="ti-eye"></i> View Priscription </button>
                                             <!-- [routerLink]="['/pharma/prescription']" -->
                                         </div>
                                     </div>
