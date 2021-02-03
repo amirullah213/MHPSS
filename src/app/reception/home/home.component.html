@@ -124,8 +124,8 @@
 
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" *ngIf="hospitalID!=2">
                                             <label>District</label>
-                                            <select class="form-control" formControlName="district" (change)="onselectDist(regisForm.value.district)">
-                                                <option *ngFor="let dis of distResponseArray; let z=index" [ngValue]="dis" [selected]="z == 0">{{dis.name}}</option>
+                                            <select #dist [class-hasData]="dist.value!=='' || dist.value!==null" class="form-control" formControlName="district" (change)="onselectDist(regisForm.value)">
+                                                <option *ngFor="let dis of distResponseArray; let z=index" [value]="dis?.id">{{dis?.name}}</option>
                                             </select>
                                         </div>
                                         <div class="col-sm-2" *ngIf="hospitalID!=2">

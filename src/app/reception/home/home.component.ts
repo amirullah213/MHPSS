@@ -70,6 +70,7 @@ export class HomeComponent implements OnInit {
   loaderDoc: boolean;
   patDataLocal: any;
   age: number;
+  
   modalRef3: BsModalRef;
   genResponseArray: any=[];
   loaderGen: boolean;
@@ -79,7 +80,13 @@ export class HomeComponent implements OnInit {
   ttvResponseArray: any=[];
   loaderttv: boolean;
   count: number=0;
-
+  config = {
+    animated: true,
+    keyboard: false,
+    backdrop: true,
+    ignoreBackdropClick: true,
+    class: 'gray modal-lg'
+  };
   constructor(
     private modalService: BsModalService,
     private fb: FormBuilder,
@@ -290,8 +297,9 @@ export class HomeComponent implements OnInit {
     this.objDoc3.reff="Self"
    // this.objDoc.doctor="Triage Point 1 OPD" 
     this.objDoc3.doctor=0
-    this.modalRef3 = this.modalService.show(captureuser3, Object.assign({}, { class: 'gray modal-lg' }));
+    this.modalRef3 = this.modalService.show(captureuser3,this.config);
   }
+
   //---------------------search by token---------------------
   registerNewPat(formval,captureuser3) {
     debugger
@@ -580,9 +588,9 @@ export class HomeComponent implements OnInit {
     //this.getUCs(tehId.id);
     }
   onselectDist(distId) {
-
+    debugger
     console.log("dist data===", distId);
-    this.getDistTehsils(distId.id);
+    this.getDistTehsils(distId.district);
   }
 
   onselectTehsil(tehId) {
