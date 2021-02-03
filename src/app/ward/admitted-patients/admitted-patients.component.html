@@ -17,22 +17,34 @@
                     <div class="card card-statistics h-100">
                         <div class="card-body">
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="page-title col-md-3">Patient Name : <b>{{detailsData.firstname}}</b> </div>
-                                    <div class="page-title col-md-3">F/H Name : <b>{{detailsData.f_hName}}</b> </div>
-                                    <div class="page-title col-md-2">MR# : <b>{{detailsData.patientID}}</b> </div>
-                                    <div class="page-title col-md-2">CRP No : <b>{{detailsData.token}}</b> </div>
-                                    <div *ngIf="detailsData.hospitalID==2" class="page-title col-md-2">CNIC : <b>{{detailsData.cnic}}</b> </div>
-                                </div><br>
+                                <div class="row mx-0 border4">
+                                    <div class="page-title col-lg-3 col-md-3 col-sm-3 col-xs-3 mb-2">Name / F / H :</div>
+                                    <div class="page-title col-lg-3 col-md-3 col-sm-3 col-xs-3 mb-2"><b>{{detailsData.firstname}} <span *ngIf="detailsData.f_hName != ''"> / </span>{{detailsData.f_hName}}</b> </div>
+                                    <div class="page-title col-lg-3 col-md-3 col-sm-3 col-xs-3 mb-2">Sex / Age :
+                                    </div>
+                                    <div class="page-title col-lg-3 col-md-3 col-sm-3 col-xs-3 mb-2"><b>
+                                        <span>{{detailsData.gender}}</span> /
+                                        <span *ngIf="detailsData.ageYear!=0">{{detailsData.ageYear}} Year</span>
+                                        <span *ngIf="detailsData.ageMonth!=0">{{detailsData.ageMonth}} Month</span>
+                                        </b>
+                                    </div>
+                                    <div class="page-title col-lg-2 col-md-2 col-sm-2 col-xs-2">MR # :</div>
+                                    <div class="page-title col-lg-2 col-md-2 col-sm-2 col-xs-2"><b>{{detailsData.patientID}}</b> </div>
+                                    <div class="page-title col-lg-2 col-md-2 col-sm-2 col-xs-2">CRP # :</div>
+                                    <div class="page-title col-lg-2 col-md-2 col-sm-2 col-xs-2"><b>{{detailsData.token}}</b> </div>
+                                    <div *ngIf="detailsData.hospitalID==2" class="page-title col-lg-2 col-md-2 col-sm-2 col-xs-2">CNIC :</div>
+                                    <div *ngIf="detailsData.hospitalID==2" class="page-title col-lg-2 col-md-2 col-sm-2 col-xs-2"><b>{{detailsData.cnic}}</b> </div>
+                                </div>
+                                <hr class="hr-gray">
                                 <form novalidate [formGroup]="outdoorForm">
                                     <div class="row mx-0 border4">
                                         <div class="form-group row mx-0">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <label>Critically ill</label>
                                                 <select class="form-control" formControlName="criti_ill">
-                                                <option [value]="0">No</option>
-                                                <option [value]="1">Yes</option>
-                                            </select>
+                                                    <option [value]="0">No</option>
+                                                    <option [value]="1">Yes</option>
+                                                </select>
                                             </div>
                                             <br>
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -63,18 +75,36 @@
                                                 <label for="inputState">Desription</label>
                                                 <input class="text" formControlName="description" class="form-control" name="description">
                                             </div><br>
-                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-5">
-                                                <button class="button" (click)="addnewDiag(outdoorForm.value.description)">Add</button>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-4">
+                                                <div class="form-group mt-2">
+                                                    <button (click)="addnewDiag(outdoorForm.value.description)" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus mr-2"></i>Add</button>
+                                                </div>
                                             </div>
-                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                <!-- <ol> -->
-                                                <hr class="grey">
+                                            <hr class="grey">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4">
                                                 <h4>Diagnosis</h4>
-                                                <h6 *ngFor="let diag of diagnosArr; let i=index;">
-                                                    <a class="float-right" (click)="removeDiag(i)"><i class="fa fa-remove text-danger"></i></a>
-                                                    <span class="col-lg-3 col-md-3 col-sm-3 col-xs-3">{{diag.name}}</span> <span class="col-lg-4 col-md-4 col-sm-4 col-xs-4">{{diag.description}}</span>
-                                                </h6>
-                                                <!-- </ol> -->
+                                                <div class="row mb-2">
+                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                        <label>Diagnosis Name</label>
+                                                    </div>
+                                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                                        <label>Diagnosis Description</label>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                        <label>Remove Diagnosis</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-2" *ngFor="let diag of diagnosArr; let i=index;">
+                                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                                        <p>{{diag.name}}</p>
+                                                    </div>
+                                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                                        <p>{{diag.description}}</p>
+                                                    </div>
+                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                        <a href="javascript:void(0)" (click)="removeDiag(i)"><i class="fa fa-remove text-danger"></i></a>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
                                                 <button class="button mr-1" *ngIf="!loaderUpdate" type="button" (click)="updateIndoor(outdoorForm.value)"><i class="ti-save-alt"></i> Save</button>
@@ -168,7 +198,7 @@
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
                                                 <label>Prescribed Quantity</label>
-                                                <input type="text" formControlName="med_quantity" class="form-control" id="formGroupExampleInput" placeholder="Prescribed Quantity">
+                                                <input type="number" formControlName="med_quantity" class="form-control" id="formGroupExampleInput" placeholder="Prescribed Quantity">
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -192,21 +222,22 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-4">
-                                            <div class="form-group mt-2 text-center">
+                                            <div class="form-group mt-3 text-center">
                                                 <button type="button" (click)="addmoreMedics()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus mr-2"></i>Add More </button>
                                             </div>
                                         </div>
                                         <!-- other medics  -->
-                                        <br>
-                                        <h4 class="text-center">Or</h4>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <h4 class="text-center">OR</h4>
+                                        </div>
                                         <hr class="hr-gray mx-0">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
                                             <div class="form-group col-md-10">
                                                 <label>Other Medicine</label>
                                                 <textarea class="form-control" formControlName="tComments" name="comments" type=text></textarea>
                                             </div>
-                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-5">
-                                                <div class="form-group mt-2 text-center">
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-4">
+                                                <div class="form-group mt-3 text-center">
                                                     <button type="button" (click)="addmoreOtherMedics()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus mr-2"></i>Add More </button>
                                                 </div>
                                             </div>

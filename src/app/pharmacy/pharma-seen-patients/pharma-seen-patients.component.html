@@ -16,7 +16,14 @@
                 <div class="col-md-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
-                            <h5 class="page-title"> Seen Patients</h5>
+                            <div class="row mx-0 border4">
+                                <h5 class="page-title"> Seen Patients
+                                    <span class="mx-5 small">MR#: {{pharmacyData.data.patientID}}</span>
+                                    <span class="mx-5 small">Name: {{pharmacyData.data.firstname}}</span>
+                                    <span class="mx-5 small">NIC: {{pharmacyData.data.cnic}}</span>
+                                    <span class="mx-5 small">F/H Name: {{pharmacyData.data.f_hName}}</span>
+                                </h5>
+                            </div>
                             <hr class="gray">
                             <div class="row mx-0">
                                 <div class="col-md-12">
@@ -31,11 +38,13 @@
                                                     <!-- <th>Batch No</th>
                                                     <th>In Stock</th> -->
 
-                                                    <th>Prescribed Quantity</th>
-                                                    <th>Issued Quantity</th>
+                                                    <th>Prescribed Qty</th>
+                                                    <th>Issued Qty</th>
                                                     <th>Dose</th>
                                                     <th>Prandial</th>
-                                                    <th>Remarks</th>
+                                                    <th>Req Date</th>
+                                                    <th>Issue Date</th>
+                                                    <th>Dept</th>
                                                 </tr>
                                             </thead>
                                             <tbody *ngIf="!loader_eqp">
@@ -61,10 +70,15 @@
                                                     </td>
                                                     <td ><input [(ngModel)]="med.instoc" name="instock{{i}}" disabled="tabb=='newPats'" class="form-control" value="{{med.inStock}}" [disabled]='true'></td> -->
                                                     <td>{{med.prescribedQuantity}}</td>
-                                                    <td><input [(ngModel)]="med.issuedQuantity" name="issuedQuantity{{i}}" (blur)="addMedicArr(med)" class="form-control" [disabled]='!med.inStock'></td>
+                                                    <td>
+                                                        {{med.issuedQuantity}}
+                                                        <!-- <input [(ngModel)]="med.issuedQuantity" name="issuedQuantity{{i}}" (blur)="addMedicArr(med)" class="form-control" [disabled]='!med.inStock'> -->
+                                                    </td>
                                                     <td>{{med.dose}}</td>
                                                     <td>{{med.prandial}}</td>
-                                                    <td>{{med.remarks}} </td>
+                                                    <td>{{med.DateCreated | date:"dd-MM-yyyy, hh:mm"}} </td>
+                                                    <td>{{med.DateModified | date:"dd-MM-yyyy, hh:mm"}} </td>
+                                                    <td>{{med.departmentName }} </td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -81,7 +95,7 @@
                                     </div> -->
                                     <div class="row mx-0">
                                         <div class="col-md-12 mt-3 text-center">
-                                            <button type="button" href="javascript:void(0)"  (click)="gotoPrintPage()" class="button"><i class="ti-eye"></i> View Priscription </button>
+                                            <button type="button" href="javascript:void(0)" (click)="gotoPrintPage()" class="button"><i class="ti-eye"></i> View Priscription </button>
                                             <!-- [routerLink]="['/pharma/prescription']" -->
                                         </div>
                                     </div>

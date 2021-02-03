@@ -16,18 +16,17 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
-                            <div class="row">
-                                <div class="page-title col-lg-3 col-md-3 col-sm-3 col-xs-3">Patient Name : <b>{{patInfo.firstname}}</b> </div>
-                                <div class="page-title col-lg-3 col-md-3 col-sm-3 col-xs-3">Father/Husband Name : <b>{{patInfo.f_hName}}</b> </div>
-                                <div class="page-title col-lg-3 col-md-3 col-sm-3 col-xs-3">MR# : <b>{{patInfo.patientID}}</b> </div>
-                                <div class="page-title col-lg-3 col-md-3 col-sm-3 col-xs-3">CRP No : <b>{{patInfo.token}}</b> </div>
+                            <div class="row mx-0 border4">
+                                <div class="page-title text-capitalize col-lg-4 col-md-4 col-sm-4 col-xs-4"><b>Patient Name :</b> {{patInfo.firstname}} </div>
+                                <div class="page-title text-capitalize col-lg-4 col-md-4 col-sm-4 col-xs-4"><b>F / H Name :</b> {{patInfo.f_hName}} </div>
+                                <div class="page-title text-capitalize col-lg-2 col-md-2 col-sm-2 col-xs-2"><b>MR# : </b>{{patInfo.patientID}} </div>
+                                <div class="page-title text-capitalize col-lg-2 col-md-2 col-sm-2 col-xs-2"><b>CRP No : </b>{{patInfo.token}} </div>
                             </div>
                             <hr class="gray">
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item" (click)="setTab('biofh')">
                                     <a class="nav-link" [ngClass]="{'active show': tab === 'biofh'}" id="tab1" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="home" aria-selected="true">Bio And Past History</a>
                                 </li>
-
                                 <li class="nav-item" (click)="setTab('clinicalInfo')">
                                     <a class="nav-link" [ngClass]="{'active show': tab === 'clinicalInfo'}" id="tab2" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="profile" aria-selected="false">Clinical Information</a>
                                 </li>
@@ -41,9 +40,16 @@
                             <div class="tab-content">
                                 <div *ngIf="tab === 'biofh'" class="tab-pane fade" [ngClass]="{'active show': tab === 'biofh'}" id="tab1" role="tabpanel" aria-labelledby="tab1">
                                     <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <!-- <div class="form-group float-right">
+                                                <button type="button" class="btn mt-1 themeauth-bg text-white btn-lg font-weight-medium auth-form-btn">
+                                                    <i class="fa fa-plus-square mr-2"></i> Add New
+                                                </button>
+                                            </div> -->
+                                        </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
-                                                <label for="formGroupExampleInput">MR#</label>
+                                                <label for="formGroupExampleInput"><strong>MR #</strong></label>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -53,7 +59,7 @@
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
-                                                <label for="formGroupExampleInput">Token</label>
+                                                <label for="formGroupExampleInput"><strong>Token</strong></label>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -64,7 +70,7 @@
 
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
-                                                <label for="formGroupExampleInput">NIC</label>
+                                                <label for="formGroupExampleInput"><strong>NIC</strong></label>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -75,7 +81,7 @@
 
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
-                                                <label for="formGroupExampleInput">Patient Name</label>
+                                                <label for="formGroupExampleInput"><strong>Patient Name</strong></label>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -85,7 +91,7 @@
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
-                                                <label for="formGroupExampleInput">Father Name</label>
+                                                <label for="formGroupExampleInput"><strong>Father Name</strong></label>
 
                                             </div>
                                         </div>
@@ -96,7 +102,7 @@
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
-                                                <label for="formGroupExampleInput">Date Of Birth</label>
+                                                <label for="formGroupExampleInput"><strong>Age</strong></label>
                                                 <!-- <input type="password" class="form-control" formControlName="password" id="formGroupExampleInput" placeholder="Enter Password">
                                                 <div class="w-100" *ngIf="f.controls.password.status=='INVALID'">
                                                     <div *ngIf="f.controls.password.errors.required && f.controls.password.touched" class="invalid-feedback" [style.display]="f.controls.password.status=='INVALID' ? 'block' : 'none'">Please provide password.</div>
@@ -107,12 +113,12 @@
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="form-group">
-                                                <label for="formGroupExampleInput">{{patInfo.dob | date}}</label>
+                                                <label for="formGroupExampleInput"><span *ngIf="patInfo.ageYear!=0">{{patInfo.ageYear}} Years </span> <span  *ngIf="patInfo.ageMonth!=0">{{patInfo.ageYear}} Months</span> </label>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                             <div class="input-group form-group">
-                                                <label for="inputState">Mobile Number</label>
+                                                <label for="inputState"><strong>Mobile Number</strong></label>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -667,8 +673,10 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr class="text-center" *ngFor="let pth of localPath let i=index">
-                                                                <td><span *ngIf="pth.testType==1">Pathalogy</span>
-                                                                    <span *ngIf="pth.testType!=1">Radiology</span></td>
+                                                                <td>
+                                                                    <span *ngIf="pth.testType==1">Pathalogy</span>
+                                                                    <span *ngIf="pth.testType!=1">Radiology</span>
+                                                                </td>
                                                                 <td>{{pth.testName}}</td>
                                                                 <td>
                                                                     <span *ngIf="pth.status==1 && pth.id" class="text-success">Performed</span>
@@ -678,12 +686,10 @@
                                                                 <td><span *ngIf="pth.DateCreated">{{pth.DateCreated | date: 'dd-MM-y h:mm a'}}</span>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="form-group">
-
-                                                                        <a href="javascript:void(0)" class="text-info" (click)="viewReport(template,pth,i)">View Report</a> /
-                                                                        <a href="javascript:void(0)" class="text-center" (click)="removeTest(i,pth)">
-                                                                            <i class="fa fa-close fa-lg text-danger mr-1"></i></a>
-                                                                    </div>
+                                                                    <a href="javascript:void(0)" class="text-info mr-1" (click)="viewReport(template,pth,i)">View Report</a> /
+                                                                    <a href="javascript:void(0)" class="text-center" (click)="removeTest(i,pth)">
+                                                                        <i class="fa fa-close fa-lg text-danger"></i>
+                                                                    </a>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -704,8 +710,10 @@
                                                     </button>
                                                     </div>
                                                     <div class="modal-body ">
-                                                        <h5>Test Type : <span *ngIf="sData.testType==1">Pathalogy</span><span *ngIf="sData.testType!=1">Radiology</span></h5>
-                                                        <div class="row mx-0">
+                                                        <h5>Test Type : <span *ngIf="sData.testType==1">Pathalogy</span><span *ngIf="sData.testType!=1">Radiology</span>
+                                                            <span class="ml-5">{{sData.testName}}</span>
+                                                        </h5>
+                                                        <!-- <div class="row mx-0">
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                                 <p class="mb-1 mt-2"><b>MR#</b>
                                                                     <span class="ml-4">{{patInfo.patientID}}</span>
@@ -720,12 +728,7 @@
                                                                 <p class="mb-1 mt-2"><b>Patient Name</b>
                                                                     <span class="ml-4">{{patInfo.firstname}}</span>
                                                                 </p>
-                                                                <!-- <p class="mb-1 mt-3"><b>Test Date / Time</b>
-                                                                    <span class="ml-4">{{patInfo.DateCreated | date: 'dd-MM-yyyy h:mm a'}}</span>
-                                                                </p>
-                                                                <p class="mb-1 mt-3"><b>Sent From</b>
-                                                                    <span class="ml-4">{{patInfo.departmentName}}</span>
-                                                                </p> -->
+                                                                
                                                                 <p class="mb-1 mt-3"><b>Date Of Birth</b>
                                                                     <span class="ml-4">{{patInfo.dob | date}}</span>
                                                                 </p>
@@ -734,25 +737,67 @@
                                                                 <p class="mb-1 mt-3"><b>Father/Husband Name</b>
                                                                     <span class="ml-4"> {{patInfo.f_hName}}</span>
                                                                 </p>
-                                                                <!-- <p *ngIf="patInfo.status!=0" class="mb-1 mt-3"><b>Result Date /Time</b>
-                                                                    <span class="ml-4">{{patInfo.DateModified | date: 'dd-MM-yyyy h:mm a'}}</span>
-                                                                </p>
-                                                                <p *ngIf="patInfo.status==0" class="mb-1 mt-3"><b>Result Date /Time</b>
-                                                                    <span class="ml-4">Result Pending</span>
-                                                                </p> -->
+                                                                
                                                                 <p class="mb-1 mt-3"><b>Mobile Number</b>
                                                                     <span class="ml-4"> {{patInfo.cellNo}}</span>
                                                                 </p>
-                                                                <!-- <p class="mb-1 mt-3" *ngIf="patInfo.bedNo!=null"><b>Bed No</b>
-                                                                    <span class="ml-4"> {{patInfo.bedNo}}</span>
-                                                                </p> -->
+                                                               
                                                             </div>
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                                 <p class="mb-1 mt-3" *ngIf="sData.testName!='' && sData.isSupper==1"><b>Test</b>
                                                                     <span class="ml-4"> {{sData.testName}}</span>
                                                                 </p>
                                                             </div>
-                                                            <!-- <p><span *ngIf="sData.oldTestName!='' && sData.isSupper==1"><b>Test Name :</b>  <span class="ml-4">{{sData.oldTestName}} </span> </span></p> -->
+                                                            
+                                                        </div> -->
+                                                        <div class="row mx-0">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                <p class="mb-1 mt-2"><b>MR#</b>
+                                                                    <span class="ml-4">{{patInfo.patientID}}</span>
+                                                                </p>
+                                                                <p class="mb-1 mt-2"><b> Name</b>
+                                                                    <span class="ml-4">{{patInfo.firstname}}</span>
+                                                                </p>
+                                                                <p class="mb-1 mt-2"><b>Sent From</b>
+                                                                    <span class="ml-4">{{patInfo.departmentName}}</span>
+                                                                </p>
+                                                                <p class="mb-1 mt-2"><b>CNIC</b>
+                                                                    <span class="ml-4">{{patInfo.cnic}}</span>
+                                                                </p>
+                                                                <p class="mb-1 mt-2"><b>Test Date / Time</b>
+                                                                    <span class="ml-4">{{sData.DateCreated | date: 'dd-MM-yyyy h:mm a'}}</span>
+                                                                </p>
+                                                                <span *ngIf="patInfo.bedNo!=null">
+                                                                    <p class="mb-1 mt-2"><b>Bed No</b>
+                                                                        <span class="ml-4"> {{patInfo.bedNo}}</span>
+                                                                </p>
+                                                                </span>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                <p class="mb-1 mt-2"><b>Token#</b>
+                                                                    <span class="ml-4">{{patInfo.token}}</span>
+                                                                </p>
+                                                                <p class="mb-1 mt-2"><b>F/H Name</b>
+                                                                    <span class="ml-4"> {{patInfo.f_hName}}</span>
+                                                                </p>
+                                                                <p class="mb-1 mt-2"><b>Age</b>
+                                                                    <span class="ml-4" *ngIf="patInfo.ageYear!=0">{{patInfo.ageYear}} year(s)</span>
+                                                                    <span class="ml-4" *ngIf="patInfo.ageMonth!=0">{{patInfo.ageMonth}} month(s)</span>
+                                                                </p>
+                                                                <p class="mb-1 mt-2"><b>Mobile#</b>
+                                                                    <span class="ml-4"> {{patInfo.cellNo}}</span>
+                                                                </p>
+                                                                <span *ngIf="patInfo.status!=0">
+                                                                    <p class="mb-1 mt-2"><b>Result Date /Time</b>
+                                                                        <span class="ml-4">{{sData.DateModified | date: 'dd-MM-yyyy h:mm a'}}</span>
+                                                                </p>
+                                                                </span>
+                                                                <span *ngIf="sData.status==0">
+                                                                    <p class="mb-1 mt-2"><b>Result Date /Time</b>
+                                                                        <span class="ml-4">Result Pending</span>
+                                                                </p>
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                         <div class="table-responsive">
                                                             <table class="table center-aligned-table" *ngIf="sData.testType==1">
@@ -767,14 +812,14 @@
                                                                     <tr *ngFor="let ts of subTests let i=index">
                                                                         <td>{{ts.oldTestName}}</td>
                                                                         <td>{{ts.result}}</td>
-                                                                        <td> {{ts.refRange}}</td>
+                                                                        <td>{{ts.refRange}}</td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
                                                             <hr class="gray">
                                                             <div class="table center-aligned-table" *ngIf="sData.testType!=1">
                                                                 <div class="form-group row mx-0">
-                                                                    <div class="col-lg-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 col-sm-2 col-xs-2 mt-3"><label for="inputState">Test Name</label></div>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-3"><label for="inputState">Test Name</label></div>
                                                                     <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                                                                         <p class="mb-2 mt-3"><b>{{testNameF}}</b>
 
@@ -782,17 +827,17 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row mx-0">
-                                                                    <div class="col-lg-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 col-sm-2 col-xs-2 mt-2"><label for="inputState">Report</label></div>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-2"><label for="inputState">Report</label></div>
                                                                     <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" [innerHTML]="xRayFilms"></div>
                                                                 </div>
                                                                 <div class="form-group row mx-0">
-                                                                    <div class="col-lg-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 col-sm-2 col-xs-2 mt-3"><label for="inputState">Diagnosis</label></div>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-3"><label for="inputState">Diagnosis</label></div>
                                                                     <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                                                                         <p class="mt-3">{{resultF}}</p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row mx-0" *ngIf="imagesArr.length>0">
-                                                                    <div class="col-lg-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 col-sm-2 col-xs-2 mt-3"><label for="inputState">Test Scans</label></div>
+                                                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-3"><label for="inputState">Test Scans</label></div>
                                                                     <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                                                                         <span *ngFor="let img of imagesArr; let i=index" class="ml-2">
                                                                             <a href="javascript:void(0)" (click)="showImageModal(template1,imageUrl+img.image)">
@@ -805,6 +850,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
+                                                        <button type="button" class="button" (click)="gotoPrintPage()"><i class="fa fa-check-square"></i> Print</button>
                                                         <button type="button" class="button" (click)="modalRef.hide()"><i class="fa fa-check-square"></i> Ok</button>
                                                     </div>
                                                 </ng-template>
@@ -971,10 +1017,10 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                                 <div class="form-group">
                                                     <label>Prescribed Quantity</label>
-                                                    <input type="text" formControlName="prescribedQuantity" class="form-control" id="formGroupExampleInput" placeholder="Prescribed Quantity">
+                                                    <input type="number" formControlName="prescribedQuantity" class="form-control" id="formGroupExampleInput" placeholder="Prescribed Quantity">
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -999,9 +1045,9 @@
                                                     <textarea formControlName="remarks" cols="19" class="form-control" id="formGroupExampleInput" placeholder="Remarks/Dosing"></textarea>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-4">
+                                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 mt-4">
                                                 <div class="form-group text-center">
-                                                    <button class="btn mt-2 themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" (click)="addTreat()">
+                                                    <button class="btn mt-4 themeauth-bg text-white btn-lg font-weight-medium auth-form-btn" (click)="addTreat()">
                                                         <i class="fa fa-plus-square mr-2"></i>Add More
                                                     </button>
                                                 </div>

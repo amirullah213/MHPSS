@@ -7,7 +7,11 @@ export const environment = {
 	//apiBaseUrl: 'https://tma4nljbmd.execute-api.us-west-1.amazonaws.com/dev/'
 	
 	apiBaseUrl: 'http://3.225.249.153:3000/',
+<<<<<<< HEAD
 	//apiBaseUrl: 'http://192.168.10.211:3000/',
+=======
+	// apiBaseUrl: 'http://192.168.10.211:3000/',
+>>>>>>> d7323618cdeebf82f0c2a1f604c43f6f3ec714f9
 	
 	apiBaseUrlOnline: 'https://yoa6yqfdfg.execute-api.us-east-1.amazonaws.com/merf_dhis/' 
 };

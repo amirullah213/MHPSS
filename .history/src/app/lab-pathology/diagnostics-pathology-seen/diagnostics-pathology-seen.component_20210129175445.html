@@ -1,0 +1,164 @@
+<div class="container-fluid container-wrapper">
+    <div class="row">
+        <div class="content-wrapper">
+            <div class="page-title">
+                <div class="row px-3 px-md-0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0">
+                        <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
+                            <li class="breadcrumb-item" href="javascript:void(0)" [routerLink]="['/lab-path/home']"><a href="javascript:void(0)" class="gray-color"><i class="ti-home mr-2"></i>Home</a></li>
+                            <li class="breadcrumb-item active gray-04-color">Seen Patients</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- main body -->
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-30">
+                    <div class="card card-statistics h-100">
+                        <div class="card-body">
+                            <!-- <h5 class="page-title">Diagnostics Pathology</h5> -->
+                            <div class="row mx-0">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="table-responsive">
+                                        <table class="table center-aligned-table">
+                                            <thead>
+                                                <tr class="text-dark">
+                                                    <th>S.No</th>
+                                                    <th>Investigation Name</th>
+                                                    <th>Investigation Type</th>
+                                                    <th>Department</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let pat of PathResponseArray; let i=index">
+                                                    <!-- <span *ngIf="pat.isDirect==1"> -->
+                                                    <td *ngIf="pat.isDirect==1">{{i+1}}</td>
+                                                    <td *ngIf="pat.isDirect==1">Pathology</td>
+                                                    <td *ngIf="pat.isDirect==1">{{pat.testName}}</td>
+                                                    <td *ngIf="pat.isDirect==1">{{pathData1.departmentName}}</td>
+                                                    <td *ngIf="pat.isDirect==1">
+                                                        <a href="javascript:void(0)" class="text-info" (click)="openModalWithClass(template,pat)">View Report</a>
+                                                    </td>
+                                                    <!-- </span> -->
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <ng-template #template>
+                                        <div class="modal-header">
+                                            <h4 class="modal-title pull-left">Result Report</h4>
+                                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row mx-0">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                    <p class="mb-1 mt-3"><b>MR#</b>
+                                                        <span class="ml-4">{{pathData1.patientID}}</span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                    <p class="mb-1 mt-3"><b>Token Number</b>
+                                                        <span class="ml-4">{{pathData1.token}}</span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                    <p class="mb-1 mt-3"><b>CNIC</b>
+                                                        <span class="ml-4">{{pathData1.cnic}}</span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mt-3">
+                                                    <p class="mb-1 mt-2"><b>Patient Name</b>
+                                                        <span class="ml-4">{{pathData1.firstname}}</span>
+                                                    </p>
+                                                    <p class="mb-1 mt-3"><b>Date Of Birth</b>
+                                                        <span class="ml-4">{{pathData1.dob | date}}</span>
+                                                    </p>
+                                                    <p class="mb-1 mt-3"><b>Test Date / Time</b>
+                                                        <span class="ml-4">{{userData.DateCreated | date: 'dd-MM-yyyy h:mm a'}}</span>
+                                                    </p>
+                                                    <p class="mb-1 mt-3"><b>Sent From</b>
+                                                        <span class="ml-4">{{pathData1.departmentName}}</span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mt-3">
+                                                    <p class="mb-1 mt-3"><b>Father/Husband Name</b>
+                                                        <span class="ml-4"> {{pathData1.f_hName}}</span>
+                                                    </p>
+                                                    <p class="mb-1 mt-3"><b>Mobile Number</b>
+                                                        <span class="ml-4"> {{pathData1.cellNo}}</span>
+                                                    </p>
+                                                    <p class="mb-1 mt-3"><b>Result Date /Time</b>
+                                                        <span class="ml-4">{{userData.DateModified | date: 'dd-MM-yyyy h:mm a'}}</span>
+                                                    </p>
+                                                    <p class="mb-1 mt-3" *ngIf="pathData1.bedNo!=null"><b>Bed No</b>
+                                                        <span class="ml-4"> {{pathData1.bedNo}}</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <hr class="gray">
+                                            <div class="row mx-0">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <p class="mb-2"><b>Test</b>: <span class="ml-5"><b>{{userData.testName}}</b></span> </p>
+                                                </div>
+                                            </div>
+                                            <div class="table-responsive">
+                                                <table class="table center-aligned-table">
+                                                    <thead>
+                                                        <tr class="text-dark">
+                                                            <!-- <th>Test Type</th> -->
+                                                            <th width="40%">Test Name</th>
+                                                            <th width="30%">Results</th>
+                                                            <th>Range</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody *ngIf="!userData.subTests">
+                                                        <tr>
+                                                            <!-- <td>Pathology</td> -->
+                                                            <td>{{userData.testName}}</td>
+                                                            <td>
+                                                                <!-- <form>
+                                                                    <input type="text" [(ngModel)]="objPath.result" class="form-control"  id="findins" placeholder="Findings/ Results" name='result'>
+                                                                </form> -->
+                                                                <span>{{userData.result}}</span>
+                                                            </td>
+                                                            <td> {{userData.refRange}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <!-- for array daata -->
+                                                    <tbody *ngIf="userData.subTests && userData.subTests.length>0">
+                                                        <tr *ngFor="let tes of userData.subTests; let j=index">
+                                                            <!-- <td>Pathology</td> -->
+                                                            <td>{{tes.oldTestName}}</td>
+                                                            <td>
+                                                                <!-- <form>
+                                                                    <input type="text" [(ngModel)]="tes[j]" (blur)="saveTests(tes[j],tes)" class="form-control" id="findins" placeholder="Findings/ Results" name='result'>
+                                                                </form> -->
+                                                                <span>{{tes.result}}</span>
+                                                            </td>
+                                                            <td> {{tes.refRange}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <!-- for array data -->
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <!-- </div> -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="button " (click)="gotoPrintPage()"><i class="fa fa-check-square"></i> Print</button>
+                                            <button type="button" class="button-danger" (click)="modalRef.hide()"> Close</button>
+                                            <!-- <button *ngIf="userData.subTests && userData.subTests.length>0" type="button" class="button"  (click)="updateTests()"><i class="fa fa-check-square"></i> Save</button> -->
+                                            <!-- <button *ngIf="!userData.subTests" type="button" class="button" (click)="modalRef.hide()" (click)="updateSingleTest(objPath.result,userData)"><i class="fa fa-check-square"></i> Save</button> -->
+                                        </div>
+                                    </ng-template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

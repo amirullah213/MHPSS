@@ -1,0 +1,77 @@
+<div class="container-fluid container-wrapper">
+    <div class="row">
+        <div class="content-wrapper">
+            <div class="page-title">
+                <div class="row px-3 px-md-0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pl-0">
+                        <ol class="breadcrumb pt-0 pr-0 my-2 float-left ">
+                           
+                                <li class="breadcrumb-item"><a href="javascript:void(0)" [routerLink]="['/pharma/home']" class="gray-color"><i class="ti-home mr-1"></i> Home</a></li>
+                            
+                            <li class="breadcrumb-item active gray-04-color">Bincard</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- main body -->
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-30">
+                    <div class="card card-statistics h-100">
+                        <div class="card-body">
+                            <h5 class="card-title mb-0">Items</h5>
+                        
+                            
+                                <!-- items tab start -->
+                                <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <form>
+                                                <div class="form-group">
+                                                <select class="form-control col-lg-3 col-md-3 col-sm-3 col-xs-3" [(ngModel)]="select_opt" name="selct" (change)="selectItemType(select_opt)">
+                                                        <option value="">Select an Option</option>
+                                                        <option value="1">Medicine</option>
+                                                        <option value="3">Consumebale</option>
+                                                        <option value="-1">All</option>
+                                                    </select>
+                                                </div>
+                                            </form>
+                                            <div class="table-responsive">
+                                                <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table center-aligned-table">
+                                                    <thead>
+                                                        <tr class="text-dark">
+                                                            <th >ID</th>
+                                                            <th >Item Name</th>
+                                                            <th >Unit</th>
+                                                            <th >Type</th>
+                                                            <th >Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let itmlst of itemsList; let i=index">
+                                                            <td>{{itmlst.itemID}}</td>
+                                                            <td>{{itmlst.itemName}}</td>
+                                                            <td>{{itmlst.unit}}</td>
+                                                            <td>{{itmlst.type}}</td>
+                                                            <td><a href="javascript:void(0)" class="text-info" (click)="gotoBinItems(itmlst)">Bin Card</a></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-5">
+                                                    <div *ngIf="loader" class="d-flex justify-content-center">
+                                                        <div class="spinner-border theme-color" role="status">
+                                                            <span class="sr-only"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                   
+                                </div>
+                                 <!-- items tab ended -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

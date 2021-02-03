@@ -1,0 +1,51 @@
+<div class="side-menu-fixed leftColfix d-print-none">
+    <div class="scrollbar side-menu-bg">
+        <ul class="nav navbar-nav side-menu" id="sidebarnav">
+            <!-- menu item Dashboard-->
+            <li *ngIf="pharmacyID==9 || pharmacyID==8 ">
+                <a class="underline-center" href="javascript:void(0)" [routerLink]="['home']" routerLinkActive="active"><i class="ti-home"></i><span class="right-nav-text">Patient Dispense</span> </a>
+            </li>
+            <li *ngIf="pharmacyID== 8">
+                <a class="underline-center" href="javascript:void(0)" [routerLink]="['medicine-grn']" routerLinkActive="active"><i class="fa fa-medkit"></i><span class="right-nav-text">Medicine GRN</span> </a>
+            </li>
+            <li *ngIf="pharmacyID== 9">
+                <a class="underline-center" href="javascript:void(0)" [routerLink]="['stockReqSatelite']" routerLinkActive="active"><i class="fa fa-medkit"></i><span class="right-nav-text">Stock Request</span> </a>
+            </li>
+            <li *ngIf="pharmacyID== 9">
+                <a class="underline-center" href="javascript:void(0)" [routerLink]="['recievaeGrnSat']" routerLinkActive="active"><i class="fa fa-medkit"></i><span class="right-nav-text">Stock Recieve</span> </a>
+            </li>
+            <!-- said by affan and ijaz to include dispense for both main and sattelite pharmacies -->
+            <li>
+                <a class="underline-center" href="javascript:void(0)" [routerLink]="['dispense']" routerLinkActive="active"><i class="fa fa-medkit"></i><span class="right-nav-text">Con-Dispense</span> </a>
+            </li>
+
+            <li *ngIf="pharmacyID==8">
+                <a class="underline-center" href="javascript:void(0)" [routerLink]="['grns']" routerLinkActive="active"><i class="fa fa-medkit"></i><span class="right-nav-text"> GRNs</span> </a>
+            </li>
+            <!-- <li>
+                <a href="javascript:void(0)" [routerLink]="['medicine-discard']" routerLinkActive="active"><i class="fa fa-user-md"></i><span class="right-nav-text">Medeicine Discard</span> </a>
+            </li> -->
+            <li *ngIf="pharmacyID==8">
+                <a class="underline-center" href="javascript:void(0)" [routerLink]="['issue-grn']" routerLinkActive="active"><i class="fa fa-heartbeat"></i><span class="right-nav-text">Issue GRN</span> </a>
+            </li>
+            <li *ngIf="pharmacyID==9">
+                <a class="underline-center" href="javascript:void(0)" [routerLink]="['sync']" routerLinkActive="active"><i class="fa fa-heartbeat"></i><span class="right-nav-text">Sync-Data</span> </a>
+            </li>
+            <li *ngIf="pharmacyID== 9">
+                <a class="underline-center" href="javascript:void(0)" [routerLink]="['allpats']" routerLinkActive="active"><i class="fa fa-heartbeat"></i><span class="right-nav-text">Prints</span> </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" [routerLink]="['bincard']" routerLinkActive="active"><i class="fa fa-plus-square"></i><span class="right-nav-text">Bin Card<br></span> </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" [routerLink]="['bincard-smr']" routerLinkActive="active"><i class="fa fa-plus-square"></i><span class="right-nav-text">SMR<br></span> </a>
+            </li>
+            <!-- <li>
+                <a href="javascript:void(0)" [routerLink]="['item-status']" routerLinkActive="active"><i class="fa fa-bar-chart"></i><span class="right-nav-text">Items Status</span> </a>
+            </li> -->
+            <li>
+                <a class="underline-center" href=""><i class="ti-power-off"></i><span class="right-nav-text">Exit</span> </a>
+            </li>
+        </ul>
+    </div>
+</div>
