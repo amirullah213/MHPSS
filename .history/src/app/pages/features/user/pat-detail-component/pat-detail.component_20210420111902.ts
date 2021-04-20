@@ -442,6 +442,8 @@ enableDesc(){
   debugger
   if(this.clinicalInformation.value.pname=="Others" && this.clinicalInformation.value.description!=""){
     this.descriptionAD=false;
+   }else{
+    this.descriptionAD=true;
    }
 }
   onSelectSymptom(event: TypeaheadMatch): void {
@@ -987,14 +989,14 @@ this.clinicalInformation.patchValue({
 
   addClinicalInfo() {
     
-   
+   this.userLoader=true;
+  this.NewSymptoms=[];
   if(this.clinicalInformation.value.pname=="Others" && this.clinicalInformation.value.description==""){
     alert('Please fill Description for diagnosis');
    }else{
 
   
-    this.userLoader=true;
-    this.NewSymptoms=[];
+
 let ci=this.clinicalInformation.value
 let tempsymp = 0;
 

@@ -41,8 +41,7 @@ export class DischargeCardComponent implements OnInit {
   loaderOperate:boolean=false;
   model91:any={};
   operateArr:any=[];
-  diagArray:any=[];
-  operateObstetric:any={};
+  diagArray:any=[]
   constructor(
     //private modalService: BsModalService,
     private router: Router,
@@ -108,12 +107,7 @@ getoperations(presID) {
       
         
         this.operateArr=response.data;
-        
         console.log('operateArr=', response);
-        if(response.obstetric){
-          this.operateObstetric=response.obstetric;
-        }
-       console.log('operateObstetric=', this.operateObstetric);
         this.loaderOperate = false;
       }
   if (response.status === 1) {

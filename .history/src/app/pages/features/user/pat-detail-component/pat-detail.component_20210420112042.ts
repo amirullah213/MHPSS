@@ -442,6 +442,8 @@ enableDesc(){
   debugger
   if(this.clinicalInformation.value.pname=="Others" && this.clinicalInformation.value.description!=""){
     this.descriptionAD=false;
+   }else{
+    this.descriptionAD=true;
    }
 }
   onSelectSymptom(event: TypeaheadMatch): void {

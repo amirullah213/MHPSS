@@ -582,11 +582,11 @@
                                                         </option>
                                                 </select> -->
                                             </div>
-                                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" >
-                                                <input formControlName="description" (ngModelChange)="enableDesc()" placeholder="Description" class="form-control">
+                                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                                <input formControlName="description" placeholder="Description" class="form-control">
                                             </div>
                                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-1">
-                                                <button type="button"  (click)="addDiag()" [disabled]='descriptionAD' class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus-square mr-2"></i>Add More</button>
+                                                <button type="button"  (click)="addDiag()" disabled='' class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus-square mr-2"></i>Add More</button>
                                             </div>
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="row mx-0" *ngFor="let trt of localDiagData let i=index">
@@ -620,7 +620,7 @@
                                         </div>
                                         <hr class="hr-gray mx-0">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center mt-3">
-                                            <button type="button" (click)="addClinicalInfo()" *ngIf="!userLoader"  class="button">
+                                            <button type="button" (click)="addClinicalInfo()" *ngIf="!userLoader" class="button">
                                               <i class="fa fa-check-square mr-2"></i> Save 
                                             </button>
                                             <button type="button" *ngIf="userLoader" class="button">

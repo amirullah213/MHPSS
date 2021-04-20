@@ -41,46 +41,22 @@
                                 </div>
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="border-right: #000 2px solid;">
                                     <div>
-                                        <h5 class="mb-1 mt-4" *ngIf="operateArr.length!=0"><span class="colorback"><b> Operation Data</b></span></h5>
+                                        <h5 class="mb-1 mt-4" ><span class="colorback"><b> Operation Data</b></span></h5>
                                         <ng-container *ngIf="operateArr.length==0; then thenTemplate; else elseTemplate"></ng-container>
                                         <ng-template #thenTemplate>
 
                                         </ng-template>
                                         <ng-template #elseTemplate>
-                                            <h6 class="mb-1 ml-4 ">Operation Name: <span class='ml-2' *ngFor="let oAr of operateArr">{{oAr.operationName}}</span></h6>
-                                            <h6 class="mb-1 ml-4 "> Surgeon Name: <span class='ml-2' *ngFor="let oAr of operateArr">{{oAr.surgeonName}}</span></h6>
-                                           
+                                            <h6 class="mb-1 ml-4 "> Name: <span class='ml-2' *ngFor="let oAr of operateArr">{{oAr.operationName}}</span></h6>
+                                            <h6 class="mb-1 ml-4 "> Diagnosis: <span class='ml-2' *ngFor="let diag of diagArray">{{diag.name}},</span></h6>
                                         </ng-template>
-                                        <h6 class="mb-1 "> <b> Diagnosis:</b> <span class='ml-2' *ngFor="let diag of diagArray">{{diag.name}},</span></h6>
+
                                         <!-- <h6 class="mb-1 ml-4" *ngFor="let opArr of operateArr">
                                         <span></span>
                                         <span >{{opArr.operationName}} </span>
                                         
                                         
                                      </h6> -->
-                                    </div>
-                                    <div *ngIf="operateObstetric">
-                                        <h5 class="mb-2"><b><span class="colorback" >Delivery info</span></b></h5>
-                                        <h5 class="mb-1 ml-3"><b><span class="colorback">Delivery Date : </span></b>
-                                            <span >{{operateObstetric.deliveryDate | date}}</span>
-                                        </h5>
-                                        <h5 class="mb-1 ml-3"><b><span class="colorback">Delivery Nature : </span></b>
-                                            <span >
-                                            
-                                                <span *ngIf="operateObstetric.deliveryNature==1">Normal </span> 
-                                                <span *ngIf="operateObstetric.deliveryNature==2">Assisted </span> 
-                                                <span *ngIf="operateObstetric.deliveryNature==3">Cesarean </span> 
-                                            
-                                        </span>
-                                        </h5>
-                                        <h5 class="mb-1 ml-3"><b><span class="colorback">Conducted BY : </span></b>
-                                            <span >{{operateObstetric.deliveryConductedBy}}</span>
-                                        </h5>
-                                            
-                                        <h5 class="mb-1 ml-2"><b><span class="colorback">Radiology : </span></b> </h5>
-                                        <span *ngFor="let tst2 of invets">
-                                            <h6  class="mb-1 ml-4"><span *ngIf="tst2.isDirect==1 && tst2.testType==2">{{tst2.testName}} <small class='ml-2'>({{tst2.departmentName}})</small></span> </h6>
-                                        </span>
                                     </div>
                                     <!-- <h6 class="mb-1 ml-4">
                                         <span *ngIf="userList[0].vitals.bps==''" > </span> 

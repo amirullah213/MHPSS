@@ -428,22 +428,12 @@ onSelectSign(event: TypeaheadMatch): void {
    
  }
 onSelectDiag(event: TypeaheadMatch): void {
-  debugger
-  this.descriptionAD=false;
-    if(this.clinicalInformation.value.pname=="Others" && this.clinicalInformation.value.description==""){
-     this.descriptionAD=true;
-    }
 
 this.diagID = event.item.id
 
 }
 
-enableDesc(){
-  debugger
-  if(this.clinicalInformation.value.pname=="Others" && this.clinicalInformation.value.description!=""){
-    this.descriptionAD=false;
-   }
-}
+
   onSelectSymptom(event: TypeaheadMatch): void {
     
     this.selectedOptionSymptom = event.item;
@@ -856,7 +846,10 @@ insertToDiag(obj: any)
   addDiag() {
     debugger
     let ci = this.clinicalInformation.value;
-    
+    this.descriptionAD=false;
+    if(this.clinicalInformation.value.pname=="Others"){
+     this.descriptionAD=true;
+    }
 let tempdiag = 0;
 if(ci.pname!=undefined && ci.pname!="" && this.diagID!=undefined ){
     if(this.localDiagData.length!=0){
@@ -987,14 +980,9 @@ this.clinicalInformation.patchValue({
 
   addClinicalInfo() {
     
-   
-  if(this.clinicalInformation.value.pname=="Others" && this.clinicalInformation.value.description==""){
-    alert('Please fill Description for diagnosis');
-   }else{
+   this.userLoader=true;
+  this.NewSymptoms=[]
 
-  
-    this.userLoader=true;
-    this.NewSymptoms=[];
 let ci=this.clinicalInformation.value
 let tempsymp = 0;
 
@@ -1155,7 +1143,7 @@ for (let sgn of this.localSign)
       (error) => { }
     );
   }
-}
+
   ///////////////////////////Clinical info ends//////////////////////////
 
   getInvistigation() {
