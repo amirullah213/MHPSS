@@ -14,7 +14,7 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { ChangePasswordComponent } from './change-password-component/change-password.component';
 import { PrintPrescComponent } from './print-presc/print-presc.component';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';   
-
+import { AngularEditorModule } from '@kolkov/angular-editor';
 @NgModule({
   declarations: [UsersComponent, PatDetailComponent, ChangePasswordComponent, PrintPrescComponent,IsDirectPipe],
   imports: [
@@ -28,7 +28,7 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     PaginationModule.forRoot(),
     ModalModule.forRoot(),
     DataTablesModule,
-    TypeaheadModule.forRoot(), 
+    TypeaheadModule.forRoot(), AngularEditorModule,
   ],
   providers: [],
   exports: [],

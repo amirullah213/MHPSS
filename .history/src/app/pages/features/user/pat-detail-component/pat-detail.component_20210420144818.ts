@@ -210,11 +210,7 @@ export class PatDetailComponent implements OnInit {
   showds: boolean;
   prescriptionID:any;
   descriptionAD:boolean=false;
-  objPath:any={};
-  model3: any={};
-  testsArr: any = [];
-  modal24: any = {};
-  loaderUpdate: boolean;
+
   
   constructor(
     private fb: FormBuilder,
@@ -400,7 +396,6 @@ export class PatDetailComponent implements OnInit {
    debugger
     this.modalRef = this.modalService.show(template,Object.assign({}, { class: 'gray modal-lg ',tData,i })); 
     this.sData = tData;
-    localStorage.setItem('pathologyPrint',JSON.stringify(tData))
     this.gettestImages(this.sData.id);
     for(let e of this.localPath){
      
@@ -439,67 +434,49 @@ export class PatDetailComponent implements OnInit {
     }
   
   }
-  editReport(template: TemplateRef<any>, data) {
-    this.imagesArr=[];
-    this.sData = data;
-     this.objPath.result=this.sData.result;
-     if(this.sData.xrayFilms6=='0'){
-      this.objPath.name='';
+
+  editReport(templateECG: TemplateRef<any>,tData,i) {
+    debugger
+     this.modalRef = this.modalService.show(templateECG,Object.assign({}, { class: 'gray modal-lg ',tData,i })); 
+     this.sData = tData;
+     this.gettestImages(this.sData.id);
+     for(let e of this.localPath){
       
-     }else{
-      this.objPath.name=this.sData.xrayFilms6;
-     }
-     
-     
-    // this.getImages(this.sData.id);
-    console.log('this.sData===', this.sData);
-    this.modalRef = this.modalService.show(
-      template,
-      Object.assign({}, { class: 'gray modal-lg' })
-    );
-  }
-  // editReport(templateECG: TemplateRef<any>,tData,i) {
-  //   debugger
-  //    this.modalRef = this.modalService.show(templateECG,Object.assign({}, { class: 'gray modal-lg ',tData,i })); 
-  //    this.sData = tData;
-  //    this.gettestImages(this.sData.id);
-  //    for(let e of this.localPath){
-      
-  //      this.subTests=[];
-  //       if( i==this.localPath.indexOf(e))
-  //       {
-  //    if(this.sData.testType==1){
-  //        if(e.isSupper==1 ){
-  //        this.subTests=e.subTests
-  //        break;
+       this.subTests=[];
+        if( i==this.localPath.indexOf(e))
+        {
+     if(this.sData.testType==1){
+         if(e.isSupper==1 ){
+         this.subTests=e.subTests
+         break;
        
-  //    }else{
-  //      this.subTests.push(e);
-  //      break;
-  //    }
-  //  }
-  //  else{
-  //    // for radialogy
+     }else{
+       this.subTests.push(e);
+       break;
+     }
+   }
+   else{
+     // for radialogy
      
      
-  //    this.testNameF = e.testName;
-  //    this.resultF=e.result;
-  //    this.refRangeF =e.refRange
-  //    if(e.xrayFilms6 && e.xrayFilms6!=0){
-  //     this.xRayFilms=e.xrayFilms6;
-  //    }else
-  //    {
-  //      this.xRayFilms=""
-  //    }
+     this.testNameF = e.testName;
+     this.resultF=e.result;
+     this.refRangeF =e.refRange
+     if(e.xrayFilms6 && e.xrayFilms6!=0){
+      this.xRayFilms=e.xrayFilms6;
+     }else
+     {
+       this.xRayFilms=""
+     }
          
        
-  //      }
+       }
    
-  //     }
+      }
         
-  //    }
+     }
    
-  //  }
+   }
 
  
   removeSymptom(i) {
@@ -560,13 +537,13 @@ enableDesc(){
 
   }
   onSelectRad(event: TypeaheadMatch): void {
-    debugger
+    
     this.selectedOptionRad=event.item;
     this.addRad(event.item);
 
   }
   onSelectRadName(event: TypeaheadMatch): void {
-debugger
+
     this.addRadName(event.item);
 
   }
@@ -1264,12 +1241,11 @@ for (let sgn of this.localSign)
   ///////////////////////////Clinical info ends//////////////////////////
 
   getInvistigation() {
-    debugger
+    
     this.param = { 'hospitalID': localStorage.getItem('hospitalID'), 'prescriptionID': this.patInfo.prescriptionID };
     this.pathData=[]
     this.radData=[];
     this.radNameData = [];
-    this.localPath=[];
     this.userLoader = true;
     this.uService.getInvistigation(this.param).subscribe
         ((response: any) => {
@@ -1282,9 +1258,6 @@ for (let sgn of this.localSign)
             if(this.isRad==false && obj.isDirect==1 ){             
              this.localPath.push(obj)
              }
-            // if( obj.isDirect==1 ){             
-            //   this.localPath.push(obj)
-            //   }
             
                });
               }
@@ -1321,8 +1294,7 @@ for (let sgn of this.localSign)
 
   alert(st + " Added Successfuly")
 }  
-addinvestigation() { 
-  debugger  
+addinvestigation() {   
     if(this.newLocalPath.length>0 ){ 
     this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.patInfo.ptID,'prescriptionID': this.patInfo.prescriptionID,"patientID": this.patientID,"isHB":0,"investigations":this.newLocalPath}
      this.userLoader = true;
@@ -1360,7 +1332,7 @@ else
 
      this.a=false
     this.investigationForm.patchValue({
-      'selectedValuePath': '',
+      'selectedValuePath': ''
     })
 
   }else{
@@ -1385,17 +1357,17 @@ else
 
 
   addRad(obj: any) {
-   //this.isRad =true;
+   this.isRad =true;
     this.getInvistigation();
 
   }
 
   addRadName(obj: any) {
-debugger
+
    this.addPath(obj)
 
     this.investigationForm.patchValue({
-      'selectedValueRad': '',
+     // 'selectedValueRad': '',
       'selectedValueRadName': ''
     })
   }
@@ -1679,86 +1651,6 @@ if(this.localDiag!=undefined && this.localDiag!=null && this.localDiag.length!=0
 location.reload()
   }
 }
-addtreatmentinfo2() {
-
-  let tVal =this.treatmentForm.value;
-  let medic= tVal.itemName.split(",");
-  var temptreat = 0;
-  if(this.localTreat.length!=0){
-    for(let e of this.localTreat)
-      { 
-        
-      if(e.medicine==medic[0] && e.unit==tVal.unit && e.type==tVal.type1){
-       temptreat= 1;
-      this.treatmentForm.patchValue({
-        "itemID":"", "itemName": "", "unit": "", "type": "", "dose": "", "prandial": "", "remarks": "", "prescribedQuantity": ""
-    
-       })
-      break
-     }
-  }
-}
-if(tVal.itemName!=undefined && tVal.itemName!='' && tVal.itemName!=null && tVal.unit!=undefined && tVal.unit!='' && tVal.unit!=null){
-  if (temptreat == 0)
-  {      
- this.localTreat.push({"prandial":tVal.prandial,"unit":tVal.unit,"type":tVal.type, "remarks":tVal.remarks,"dose":tVal.dose,"medicine":medic[0],"medicineID":this.medId,"prescribedQuantity":tVal.prescribedQuantity,"issuedQuantity":"","duration":""})
- this.treatmentForm.patchValue({
-  "itemID":"", "itemName": "", "unit": "", "type": "", "dose": "", "prandial": "", "remarks": "", "prescribedQuantity": ""
-
- })
-       
-  }
-}
-
-
-  if(tVal.access_type=="0")
-  {
-    this.reff=""
-    this.location=""
-    this.isrefferel=0
-  }
-  else 
-  {
-    this.reff=tVal.Department
-    this.location=tVal.FollowUpExtInt
-    this.isrefferel=1
-  }
- 
-      
-  this.param = { 'hospitalID': localStorage.getItem('hospitalID'), 'prescriptionID': this.patInfo.prescriptionID,'ptID': this.ptID,"patientID":this.patInfo.patientID,
-"isReferral":this.isrefferel,"isImplant":0,"medicines":this.localTreat,"isDMPA":0,"isTubalLigation":0,
-"follow_up":tVal.fol_up,"isFamilyPlanning":0,"isCOC":0,"isCounselling":0,
-"otherTreatmentProcedure":tVal.tComments,"otherMethod":"","contraceptiveMethod":"",
-"TreatmentComments":tVal.tComments,"isPPIUCD":0,"isCuT":0,"isCondom":0,
-"isVasectomy":0,"isNET":0, "refferel":this.reff,"isPPImplant":0,"followUpComments":tVal.fComments,
-"nextVisitDate":"","followUpInerval":tVal.followUpInterval,"location":this.location,"isPOP":0,
-"treatmentProcedure":""}
-  this.userLoader = true;
-  
-if(this.localDiag!=undefined && this.localDiag!=null && this.localDiag.length!=0){
-  this.uService.addtreatmentinfo(this.param).subscribe
-
-    ((response: any) => {
-      if (response.status === 0) {
-        
-      // this.updatepatienttoken()
-
-        this.userLoader = false;
-      } else {
-        this.userLoader = false;
-        alert('Something went wrong try again');
-      }
-    },
-      (error) => { }
-    );
-}
-else{
-  
-  alert("Please insert and Save Diagnosis first");
-  localStorage.setItem('tab','clinicalInfo');
-location.reload()
-}
-}
   updatepatienttoken() {
     
     this.deptType=0;
@@ -1795,8 +1687,8 @@ location.reload()
       )
   }
   reffer() {
-    //by arsalan 
-    this.addtreatmentinfo2();
+    
+
     if(this.show==false)
     {
      this.hospt = this.treatmentForm.value.Hospital
@@ -2075,60 +1967,14 @@ alert("please Select Refferel For Admition or Select a Date for operate")
     return d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
   }
 
-  gotoPrintPage(tType){
+  gotoPrintPage(){
     this.modalRef.hide();
-    if(tType==1){
-      window.open('/print/pathology')
-    }else{
-      window.open('/print/radiology')
-    }
     //this.router.navigate(['/print/pathology']);
-    
+    window.open('/print/pathology')
     
   }
 
-//---------------------update getests---------------------
-updateSingleTest(diagnos) {
-  debugger
-  console.log('diagnos==', diagnos);
 
-  this.model3.id = this.sData.id;
-  this.model3.xrayFilms6 = diagnos.name;
-  this.model3.result = diagnos.result;
-  this.model3.sample = '';
-  this.model3.images = this.imagesArr;
-
-  this.testsArr.push(this.model3);
-  
-  this.modal24.tests = this.testsArr;
-  this.modal24.hospitalID = localStorage.getItem('hospitalID')
-
-  console.log('testsArr ==', this.testsArr);
-  console.log('modal24 ==', this.modal24);
-  this.uService.updateTests(this.modal24).subscribe(
-    (response: any) => {
-      if (response.status === 0) {
-        console.log(' response====', response);
-
-        this.loaderUpdate = false;
-        this.modalRef.hide();
-        this.objPath = {};
-        this.model3 = {};
-        this.modal24 = {};
-        this.testsArr = [];
-        this.getInvistigation();
-      }
-      if (response.status === 1) {
-        this.errormsg = response.error;
-        this.loaderUpdate = false;
-        alert('Problem in service! please Try again');
-        console.log('error=', this.errormsg);
-      }
-    },
-    (error) => {}
-  );
-}
-//--------------------------------
 
 }
 function minSelectedCheckboxes(min = 1) {

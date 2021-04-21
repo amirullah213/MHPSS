@@ -566,7 +566,7 @@ enableDesc(){
 
   }
   onSelectRadName(event: TypeaheadMatch): void {
-debugger
+
     this.addRadName(event.item);
 
   }
@@ -1264,12 +1264,12 @@ for (let sgn of this.localSign)
   ///////////////////////////Clinical info ends//////////////////////////
 
   getInvistigation() {
-    debugger
+    
     this.param = { 'hospitalID': localStorage.getItem('hospitalID'), 'prescriptionID': this.patInfo.prescriptionID };
     this.pathData=[]
     this.radData=[];
     this.radNameData = [];
-    this.localPath=[];
+    //this.localPath=[]
     this.userLoader = true;
     this.uService.getInvistigation(this.param).subscribe
         ((response: any) => {
@@ -1282,9 +1282,6 @@ for (let sgn of this.localSign)
             if(this.isRad==false && obj.isDirect==1 ){             
              this.localPath.push(obj)
              }
-            // if( obj.isDirect==1 ){             
-            //   this.localPath.push(obj)
-            //   }
             
                });
               }
@@ -1321,8 +1318,7 @@ for (let sgn of this.localSign)
 
   alert(st + " Added Successfuly")
 }  
-addinvestigation() { 
-  debugger  
+addinvestigation() {   
     if(this.newLocalPath.length>0 ){ 
     this.param = {'hospitalID': localStorage.getItem('hospitalID'), 'ptID':this.patInfo.ptID,'prescriptionID': this.patInfo.prescriptionID,"patientID": this.patientID,"isHB":0,"investigations":this.newLocalPath}
      this.userLoader = true;
@@ -1360,7 +1356,7 @@ else
 
      this.a=false
     this.investigationForm.patchValue({
-      'selectedValuePath': '',
+      'selectedValuePath': ''
     })
 
   }else{
@@ -1385,17 +1381,17 @@ else
 
 
   addRad(obj: any) {
-   //this.isRad =true;
+   this.isRad =true;
     this.getInvistigation();
 
   }
 
   addRadName(obj: any) {
-debugger
+
    this.addPath(obj)
 
     this.investigationForm.patchValue({
-      'selectedValueRad': '',
+     // 'selectedValueRad': '',
       'selectedValueRadName': ''
     })
   }

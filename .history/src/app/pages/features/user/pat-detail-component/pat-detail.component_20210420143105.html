@@ -686,8 +686,7 @@
                                                                 <td><span *ngIf="pth.DateCreated">{{pth.DateCreated | date: 'dd-MM-y h:mm a'}}</span>
                                                                 </td>
                                                                 <td>
-                                                                    <a *ngIf="pth.status==1 && pth.id" href="javascript:void(0)" class="text-info mr-1" (click)="viewReport(template,pth,i)">View Report</a> <span *ngIf="pth.status==1 && pth.id"> /</span>
-                                                                    <a *ngIf="pth.testName=='ECG' && pth.departmentName!=undefined" href="javascript:void(0)" class="text-info mr-1" (click)="editReport(templateECG,pth,i)">edit Report</a> <span *ngIf="pth.testName=='ECG'  && pth.departmentName!=undefined"> /</span>
+                                                                    <a href="javascript:void(0)" class="text-info mr-1" (click)="viewReport(template,pth,i)">View Report</a> /
                                                                     <a href="javascript:void(0)" class="text-center" (click)="removeTest(i,pth)">
                                                                         <i class="fa fa-close fa-lg text-danger"></i>
                                                                     </a>
@@ -714,7 +713,43 @@
                                                         <h5>Test Type : <span *ngIf="sData.testType==1">Pathalogy</span><span *ngIf="sData.testType!=1">Radiology</span>
                                                             <span class="ml-5">{{sData.testName}}</span>
                                                         </h5>
-                                                        
+                                                        <!-- <div class="row mx-0">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                <p class="mb-1 mt-2"><b>MR#</b>
+                                                                    <span class="ml-4">{{patInfo.patientID}}</span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                <p class="mb-1 mt-2"><b>Token Number</b>
+                                                                    <span class="ml-4">{{patInfo.token}}</span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                <p class="mb-1 mt-2"><b>Patient Name</b>
+                                                                    <span class="ml-4">{{patInfo.firstname}}</span>
+                                                                </p>
+                                                                
+                                                                <p class="mb-1 mt-3"><b>Date Of Birth</b>
+                                                                    <span class="ml-4">{{patInfo.dob | date}}</span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                <p class="mb-1 mt-3"><b>Father/Husband Name</b>
+                                                                    <span class="ml-4"> {{patInfo.f_hName}}</span>
+                                                                </p>
+                                                                
+                                                                <p class="mb-1 mt-3"><b>Mobile Number</b>
+                                                                    <span class="ml-4"> {{patInfo.cellNo}}</span>
+                                                                </p>
+                                                               
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                                <p class="mb-1 mt-3" *ngIf="sData.testName!='' && sData.isSupper==1"><b>Test</b>
+                                                                    <span class="ml-4"> {{sData.testName}}</span>
+                                                                </p>
+                                                            </div>
+                                                            
+                                                        </div> -->
                                                         <div class="row mx-0">
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                                 <p class="mb-1 mt-2"><b>MR#</b>
@@ -737,8 +772,8 @@
                                                                         <span class="ml-4"> {{patInfo.bedNo}}</span>
                                                                 </p>
                                                                 </span>
-                                                             </div>
-                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                                                 <p class="mb-1 mt-2"><b>Token#</b>
                                                                     <span class="ml-4">{{patInfo.token}}</span>
                                                                 </p>
@@ -763,8 +798,8 @@
                                                                 </p>
                                                                 </span>
                                                             </div>
-                                                         </div>
-                                                         <div class="table-responsive">
+                                                        </div>
+                                                        <div class="table-responsive">
                                                             <table class="table center-aligned-table" *ngIf="sData.testType==1">
                                                                 <thead>
                                                                     <tr class="text-dark">
@@ -815,7 +850,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="button" (click)="gotoPrintPage(sData.testType)"><i class="fa fa-check-square"></i> Print</button>
+                                                        <button type="button" class="button" (click)="gotoPrintPage()"><i class="fa fa-check-square"></i> Print</button>
                                                         <button type="button" class="button" (click)="modalRef.hide()"><i class="fa fa-check-square"></i> Ok</button>
                                                     </div>
                                                 </ng-template>
@@ -836,7 +871,197 @@
                                                     </div>
                                                 </ng-template>
 
+                                                 <!-- new modal -->
+                                    <ng-template #templateECG>
+                                        <div class="modal-header">
+                                            <h4 class="modal-title pull-left">Result Report</h4>
+                                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                                 <span aria-hidden="true">&times;</span>
+                                             </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row mx-0">
+                                                <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mt-3">
+                                                    <p class="mb-1 mt-3"><b>MR#</b>
+                                                        <span class="ml-4">{{pathData1.patientID}}</span>
+                                                    </p>
+                                                </div>
+                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mt-3">
+                                                    <p class="mb-1 mt-3"><b>Token Number</b>
+                                                        <span class="ml-4">{{pathData1.token}}</span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mt-3">
+                                                    <p class="mb-1 mt-3"><b>NIC</b>
+                                                        <span class="ml-4">{{pathData1.cnic}}</span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mt-3">
+                                                    <p class="mb-1 mt-2"><b>Patient Name</b>
+                                                        <span class="ml-4">{{pathData1.firstname}}</span>
+                                                    </p>
+                                                    <p class="mb-1 mt-3"><b>Date Of Birth</b>
+                                                        <span class="ml-4">{{pathData1.dob | date}}</span>
+                                                    </p>
+                                                    <p class="mb-1 mt-3"><b>Test Date / Time</b>
+                                                        <span class="ml-4">{{userData.DateCreated | date: 'dd-MM-yyyy h:mm a'}}</span>
+                                                    </p>
+                                                    <p class="mb-1 mt-3"><b>Sent From</b>
+                                                        <span class="ml-4">{{pathData1.departmentName}}</span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mt-3">
+                                                    <p class="mb-1 mt-3"><b>Father/Husband Name</b>
+                                                        <span class="ml-4"> {{pathData1.f_hName}}</span>
+                                                    </p>
+                                                    <p class="mb-1 mt-3"><b>Mobile Number</b>
+                                                        <span class="ml-4"> {{pathData1.cellNo}}</span>
+                                                    </p>
+                                                    <p *ngIf="userData.status!=0" class="mb-1 mt-3"><b>Result Date /Time</b>
+                                                        <span class="ml-4">{{userData.DateModified | date: 'dd-MM-yyyy h:mm a'}}</span>
+                                                    </p>
+                                                    <p *ngIf="userData.status==0" class="mb-1 mt-3"><b>Result Date /Time</b>
+                                                        <span class="ml-4">Result Pending</span>
+                                                    </p>
+                                                    <p class="mb-1 mt-3" *ngIf="pathData1.bedNo!=null"><b>Bed No</b>
+                                                        <span class="ml-4"> {{pathData1.bedNo}}</span>
+                                                    </p>
+                                                </div> -->
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
+                                                    <p class="mb-1 mt-3"><b>MR#</b>
+                                                        <span class="ml-4">{{pathData1.patientID}}</span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
+                                                    <p class="mb-1 mt-3"><b>Token Number</b>
+                                                        <span class="ml-4">{{pathData1.token}}</span>
+                                                    </p>
+                                                </div>
+
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
+                                                    <p class="mb-1 mt-3"><b>CNIC</b>
+                                                        <span class="ml-4">{{pathData1.cnic}}</span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
+                                                    <p class="mb-1 mt-3"><b>Patient Name</b>
+                                                        <span class="ml-4">{{pathData1.firstname}}</span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
+                                                    <p class="mb-1 mt-3"><b>F/H Name</b>
+                                                        <span class="ml-4"> {{pathData1.f_hName}}</span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                    <p class="mb-1 mt-3"><b>Mobile#</b>
+                                                        <span class="ml-4"> {{pathData1.cellNo}}</span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                    <p class="mb-1 mt-3"><b>Sent From</b>
+                                                        <span class="ml-4">{{pathData1.departmentName}}</span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
+                                                    <p class="mb-1 mt-3"><b>Age</b>
+                                                        <span class="ml-4" *ngIf="pathData1.ageYear!=0">{{pathData1.ageYear}} year(s)</span>
+                                                        <span class="ml-4" *ngIf="pathData1.ageMonth!=0">{{pathData1.ageMonth}} month(s)</span>
+                                                    </p>
+                                                </div>
+                                                <!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3">
+                                                    <p class="mb-1 mt-3"><b>Date Of Birth</b>
+                                                        <span class="ml-4">{{pathData1.dob | date}}</span>
+                                                    </p>                                                    
+                                                </div> -->
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 " *ngIf="pathData1.bedNo!=null">
+                                                    <p class="mb-1 mt-3"><b>Bed No</b>
+                                                        <span class="ml-4"> {{pathData1.bedNo}}</span>
+                                                    </p>
+                                                </div>
                                                 
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
+                                                    <p class="mb-1 mt-3"><b>Test Date / Time</b>
+                                                        <span class="ml-4">{{userData.DateCreated | date: 'dd-MM-yyyy h:mm a'}}</span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " *ngIf="userData.status!=0">
+                                                    <p class="mb-1 mt-3"><b>Result Date /Time</b>
+                                                        <span class="ml-4">{{userData.DateModified | date: 'dd-MM-yyyy h:mm a'}}</span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " *ngIf="userData.status==0">
+                                                    <p class="mb-1 mt-3"><b>Result Date /Time</b>
+                                                        <span class="ml-4">Result Pending</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <hr class="gray">
+                                            <div class="form-group row mx-0">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-3"><label for="inputState">Radiology</label></div>
+                                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-3">
+                                                    <span>{{userData.testName}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mx-0">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-3"><label for="inputState">Report</label></div>
+                                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                                    <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="objPath.name"></angular-editor>
+                                                    <!-- <input type="text" [(ngModel)]="objPath.name" class="form-control input-sm" id="ARN" placeholder="Findings" name="findings"> -->
+                                                </div>
+                                                <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-3" (click)="addtoArr(objPath,userData)"><i class="fa fa-plus text-success"></i></div> -->
+                                            </div>
+                                            <!-- <div class="form-group row mx-0">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-3"></div>
+                                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-3">
+                                                    <p class="mb-2 mt-2" *ngFor="let fa of finalAddArray; let s=index"><b>Finding {{s+1}} :  <span class="mb-2 ml-4">{{fa.name}}</span></b>
+                                                        <span class="pull-right" (click)="removeArr(s)"><i class="fa fa-remove text-danger"></i></span>
+                                                    </p>
+                                                </div>
+
+                                            </div> -->
+                                            <div class="form-group row mx-0">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-3"><label for="inputState">Result</label></div>
+                                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                                    <input type="text" [(ngModel)]="objPath.result" class="form-control" id="DN" placeholder="Result" name="diagnosis">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mx-0">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-3"><label for="inputState">Image</label></div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                    <input type='file' (change)="onSelectFile($event)" class="form-control" id="inputTo" [(ngModel)]="objPath.uplImage" placeholder="Image to Upload">
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                                    <span class="mt-3" *ngIf="responseImage!=null"> <img [src]="responseImage"  height="60" width="60" class="pull-right hover rounded"></span>
+                                                    <button type="button" *ngIf='loaderUpdate' class="btn btn-outline-primary pull-right"><i
+                                                        class="fa fa-pulse fa-spinner fa-1x fa-fw"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mx-0" *ngIf="imagesArr.length>0">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-3"><label for="inputState">Images Uploaded</label></div>
+                                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                                    <span *ngFor="let img of imagesArr; let i=index" class="ml-2">
+                                                       <a href="javascript:void(0)" (click)="showImageModal(template1,imageUrl+img)">
+                                                            <img [src]="imageUrl+img"  height="60" width="60" class="hover rounded">
+                                                        </a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mx-0" *ngIf="imagesArr2.length>0">
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-3"><label for="inputState">Old Images</label></div>
+                                                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                                    <span *ngFor="let img of imagesArr2; let i=index" class="ml-2">
+                                                        <a href="javascript:void(0)" (click)="showImageModal(template1,imageUrl+img.image)">   <img [src]="imageUrl+img.image"  height="60" width="60" class="hover rounded"></a>                                                        
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="button" (click)="updateSingleTest(objPath)"><i class="fa fa-check-square"></i> Save</button>
+                                        </div>
+                                    </ng-template>
+                                    <!-- ne wodal -->
                                             </div>
                                         </div>
                                         <hr class="hr-gray mx-0">
@@ -1193,151 +1418,5 @@
                 </div>
             </div>
         </div>
-         <!-- new modal -->
-         <ng-template #templateECG>
-            <div class="modal-header">
-                <h4 class="modal-title pull-left">Result Report</h4>
-                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                     <span aria-hidden="true">&times;</span>
-                 </button>
-            </div>
-            <div class="modal-body">
-                <div class="row mx-0">
-                    
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
-                        <p class="mb-1 mt-3"><b>MR#</b>
-                            <span class="ml-4">{{patInfo.patientID}}</span>
-                        </p>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
-                        <p class="mb-1 mt-3"><b>Token Number</b>
-                            <span class="ml-4">{{patInfo.token}}</span>
-                        </p>
-                    </div>
-
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
-                        <p class="mb-1 mt-3"><b>CNIC</b>
-                            <span class="ml-4">{{patInfo.cnic}}</span>
-                        </p>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
-                        <p class="mb-1 mt-3"><b>Patient Name</b>
-                            <span class="ml-4">{{patInfo.firstname}}</span>
-                        </p>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
-                        <p class="mb-1 mt-3"><b>F/H Name</b>
-                            <span class="ml-4"> {{patInfo.f_hName}}</span>
-                        </p>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                        <p class="mb-1 mt-3"><b>Mobile#</b>
-                            <span class="ml-4"> {{patInfo.cellNo}}</span>
-                        </p>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                        <p class="mb-1 mt-3"><b>Sent From</b>
-                            <span class="ml-4">{{patInfo.departmentName}}</span>
-                        </p>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
-                        <p class="mb-1 mt-3"><b>Age</b>
-                            <span class="ml-4" *ngIf="patInfo.ageYear!=0">{{patInfo.ageYear}} year(s)</span>
-                            <span class="ml-4" *ngIf="patInfo.ageMonth!=0">{{patInfo.ageMonth}} month(s)</span>
-                        </p>
-                    </div>
-                    <!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3">
-                        <p class="mb-1 mt-3"><b>Date Of Birth</b>
-                            <span class="ml-4">{{pathData1.dob | date}}</span>
-                        </p>                                                    
-                    </div> -->
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 " *ngIf="patInfo.bedNo!=null">
-                        <p class="mb-1 mt-3"><b>Bed No</b>
-                            <span class="ml-4"> {{patInfo.bedNo}}</span>
-                        </p>
-                    </div>
-                    
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
-                        <p class="mb-1 mt-3"><b>Test Date / Time</b>
-                            <span class="ml-4">{{sData.DateCreated | date: 'dd-MM-yyyy h:mm a'}}</span>
-                        </p>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " *ngIf="sData.status!=0">
-                        <p class="mb-1 mt-3"><b>Result Date /Time</b>
-                            <span class="ml-4">{{sData.DateModified | date: 'dd-MM-yyyy h:mm a'}}</span>
-                        </p>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 " *ngIf="sData.status==0">
-                        <p class="mb-1 mt-3"><b>Result Date /Time</b>
-                            <span class="ml-4">Result Pending</span>
-                        </p>
-                    </div>
-                </div>
-                <hr class="gray">
-                <div class="form-group row mx-0">
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-3"><label for="inputState">Radiology</label></div>
-                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-3">
-                        <span>{{sData.testName}}</span>
-                    </div>
-                </div>
-                <div class="form-group row mx-0">
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-3"><label for="inputState">Report</label></div>
-                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                        <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="objPath.name"></angular-editor>
-                        <!-- <input type="text" [(ngModel)]="objPath.name" class="form-control input-sm" id="ARN" placeholder="Findings" name="findings"> -->
-                    </div>
-                    <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-3" (click)="addtoArr(objPath,userData)"><i class="fa fa-plus text-success"></i></div> -->
-                </div>
-                <!-- <div class="form-group row mx-0">
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-3"></div>
-                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 mt-3">
-                        <p class="mb-2 mt-2" *ngFor="let fa of finalAddArray; let s=index"><b>Finding {{s+1}} :  <span class="mb-2 ml-4">{{fa.name}}</span></b>
-                            <span class="pull-right" (click)="removeArr(s)"><i class="fa fa-remove text-danger"></i></span>
-                        </p>
-                    </div>
-
-                </div> -->
-                <div class="form-group row mx-0">
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-3"><label for="inputState">Result</label></div>
-                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                        <input type="text" [(ngModel)]="objPath.result" class="form-control" id="DN" placeholder="Result" name="diagnosis">
-                    </div>
-                </div>
-                <!-- <div class="form-group row mx-0">
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-3"><label for="inputState">Image</label></div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <input type='file' (change)="onSelectFile($event)" class="form-control" id="inputTo" [(ngModel)]="objPath.uplImage" placeholder="Image to Upload">
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                        <span class="mt-3" *ngIf="responseImage!=null"> <img [src]="responseImage"  height="60" width="60" class="pull-right hover rounded"></span>
-                        <button type="button" *ngIf='loaderUpdate' class="btn btn-outline-primary pull-right"><i
-                            class="fa fa-pulse fa-spinner fa-1x fa-fw"></i>
-                        </button>
-                    </div>
-                </div> -->
-                <!-- <div class="form-group row mx-0" *ngIf="imagesArr.length>0">
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-3"><label for="inputState">Images Uploaded</label></div>
-                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                        <span *ngFor="let img of imagesArr; let i=index" class="ml-2">
-                           <a href="javascript:void(0)" (click)="showImageModal(template1,imageUrl+img)">
-                                <img [src]="imageUrl+img"  height="60" width="60" class="hover rounded">
-                            </a>
-                        </span>
-                    </div>
-                </div> -->
-                <!-- <div class="form-group row mx-0" *ngIf="imagesArr2.length>0">
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-3"><label for="inputState">Old Images</label></div>
-                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                        <span *ngFor="let img of imagesArr2; let i=index" class="ml-2">
-                            <a href="javascript:void(0)" (click)="showImageModal(template1,imageUrl+img.image)">   <img [src]="imageUrl+img.image"  height="60" width="60" class="hover rounded"></a>                                                        
-                        </span>
-                    </div>
-                </div> -->
-            </div>
-            <div class="modal-footer">
-                <button type="button" (click)="updateSingleTest(objPath)" class="button" ><i class="fa fa-check-square"></i> Save</button>
-            </div>
-        </ng-template>
-        <!-- ne wodal -->
     </div>
 </div>
