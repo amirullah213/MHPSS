@@ -1400,7 +1400,6 @@ else
 
   addRad(obj: any) {
     debugger
-    this.radNameData=[];
     this.allTestData.forEach(v => {
      
      if (v.testType == 2) {

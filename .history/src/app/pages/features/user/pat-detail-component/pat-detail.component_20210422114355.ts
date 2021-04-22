@@ -215,7 +215,6 @@ export class PatDetailComponent implements OnInit {
   testsArr: any = [];
   modal24: any = {};
   loaderUpdate: boolean;
-  allTestData:any=[];
   
   constructor(
     private fb: FormBuilder,
@@ -1297,13 +1296,14 @@ for (let sgn of this.localSign)
             if(this.isRad==false && obj.isDirect==1 ){             
              this.localPath.push(obj)
              }
-            
+            // if( obj.isDirect==1 ){             
+            //   this.localPath.push(obj)
+            //   }
             
                });
               }
               
           this.IndoorDiagData = response.IndoorDiagnosis;
-          this.allTestData=response.test;
           response.test.forEach(v => {
             if (v.testType == 1) { 
                if(v.supperTest!=1098 && v.supperTest!=1132)
@@ -1399,20 +1399,8 @@ else
 
 
   addRad(obj: any) {
-    debugger
-    this.radNameData=[];
-    this.allTestData.forEach(v => {
-     
-     if (v.testType == 2) {
-       if (this.selectedOptionRad)
-          if (v.radiologyType == this.selectedOptionRad.id) {                  
-            this.radNameData.push(v);
-          }
-      }
-      
-    });
    //this.isRad =true;
-   // this.getInvistigation();
+    this.getInvistigation();
 
   }
 

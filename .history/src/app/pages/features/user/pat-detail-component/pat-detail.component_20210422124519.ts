@@ -1399,10 +1399,8 @@ else
 
 
   addRad(obj: any) {
-    debugger
-    this.radNameData=[];
     this.allTestData.forEach(v => {
-     
+     debugger
      if (v.testType == 2) {
        if (this.selectedOptionRad)
           if (v.radiologyType == this.selectedOptionRad.id) {                  
