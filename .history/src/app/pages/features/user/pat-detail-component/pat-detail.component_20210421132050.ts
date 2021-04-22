@@ -2074,7 +2074,6 @@ alert("please Select Refferel For Admition or Select a Date for operate")
     alert("please select diagnoses")
   }
 }
-}
   // patient prescription list
   gotoPresDetails(udata) {
     debugger
@@ -2146,7 +2145,7 @@ updateSingleTest(diagnos) {
     (error) => {}
   );
 }
-  
+  }
 //--------------------------------
 
 }

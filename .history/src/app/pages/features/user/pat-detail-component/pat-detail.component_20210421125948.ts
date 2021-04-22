@@ -577,7 +577,7 @@ debugger
    // this.addIndoorDiag(event.item);
    debugger
    this.descriptionAD=false;
-     if(this.investigationForm.value.selectedValueIndoorDiag=="Any Other" && this.investigationForm.value.descriptionIndoor==""){
+     if(this.investigationForm.value.selectedValueIndoorDiag=="Any Other" && this.investigationForm.value.investigationForm==""){
       this.descriptionAD=true;
      }
  
@@ -587,7 +587,7 @@ debugger
   }
   enableDesc2(){
     debugger
-    if(this.investigationForm.value.selectedValueIndoorDiag=="Any Other" && this.investigationForm.value.descriptionIndoor!=""){
+    if(this.investigationForm.value.selectedValueIndoorDiag=="Any Other" && this.investigationForm.value.investigationForm!=""){
       this.descriptionAD=false;
      }
   }
@@ -1997,10 +1997,6 @@ location.reload()
     }
    
   generatetoken(op){
-    
-    if(this.investigationForm.value.selectedValueIndoorDiag=="Any Other" && this.investigationForm.value.descriptionIndoor==""){
-      alert('Please fill Description for diagnosis');
-     }else{
     let serCall =false;
     let inv =this.investigationForm.value;
     if(inv.selectedValueIndoorDiag!=undefined && this.Indid!=undefined)
@@ -2074,7 +2070,6 @@ alert("please Select Refferel For Admition or Select a Date for operate")
     alert("please select diagnoses")
   }
 }
-}
   // patient prescription list
   gotoPresDetails(udata) {
     debugger
@@ -2146,7 +2141,6 @@ updateSingleTest(diagnos) {
     (error) => {}
   );
 }
-  
 //--------------------------------
 
 }

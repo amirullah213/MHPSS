@@ -853,11 +853,11 @@
                                             </div>
                                             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                                 <label>Description</label>
-                                                <input formControlName="descriptionIndoor" (ngModelChange)="enableDesc2()"  placeholder="Description" class="form-control">
+                                                <input formControlName="descriptionIndoor" (ngModelChange)="enableDesc()"  placeholder="Description" class="form-control">
                                             </div>
                                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 mt-1">
                                                 <label>Action</label>
-                                                <button type="button" [disabled]='descriptionAD' (click)="addIndoorDiag()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus-square mr-2"></i>Add More</button>
+                                                <button type="button" (click)="addIndoorDiag()" class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-plus-square mr-2"></i>Add More</button>
                                             </div>
                                             <hr class="hr-gray">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
