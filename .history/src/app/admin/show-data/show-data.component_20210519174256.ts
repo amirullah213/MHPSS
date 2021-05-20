@@ -7,17 +7,14 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { AdminServiceService } from '../services/admin-service.service';
 import {formatDate} from '@angular/common';
-import {AgmMap,MouseEvent,MapsAPILoader  } from '@agm/core'; 
+
 @Component({
-  selector: 'ncri-add-new-data',
-  templateUrl: './add-new-data.component.html',
-  styleUrls: ['./add-new-data.component.scss']
+  selector: 'ncri-show-data',
+  templateUrl: './show-data.component.html',
+  styleUrls: ['./show-data.component.scss']
 })
-export class AddNewDataComponent implements OnInit {
-  //@ViewChild(AgmMap,{static: true}) public agmMap: AgmMap; 
-  lat:any;
-  lng:any;
-  getAddress:any;
+export class ShowDataComponent implements OnInit {
+  imageShow:any='';
   loader_s3:boolean=false;
   userData: any = {};
   paramData: any = {};
@@ -78,18 +75,22 @@ export class AddNewDataComponent implements OnInit {
   imageUrl:string;
   imageArr:any=[];
   sheetUrl:any='';
-  imageUrlSheet:any=''
+  imageUrlSheet:any='';
+  showDataDetails:any={};
+  loaderSession:boolean=false;
+  allUsersImages:any=[];
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private adminService: AdminServiceService,
-    private apiloader: MapsAPILoader
+    private modalService: BsModalService,
   ) { }
 
   ngOnInit(): void {
-    this.get() ;
+   
     this.currentDate = new Date();
-
+    
     this.cValue = formatDate(this.currentDate, 'yyyy-MM-dd', 'en-US');
     console.log('date-======',this.cValue)
     console.log('showRef',this.showRef)
@@ -105,7 +106,10 @@ export class AddNewDataComponent implements OnInit {
   this.hometreatment=JSON.parse(localStorage.getItem('homeTreatment'));
   console.log(' this.hometreatment====',this.hometreatment);
   this.othermed=localStorage.getItem('otherMedics');
-  console.log(' this.othermed====',this.othermed)
+  console.log(' this.othermed====',this.othermed);
+  //to populate the from
+  this.showDataDetails =JSON.parse(localStorage.getItem('showData'))  ;
+  console.log('showData=====',this.showDataDetails);
 
     //previos page data
    
@@ -192,48 +196,24 @@ if(localStorage.getItem('outData')!="undefined"){
 },
 
 );
+this.getSessionImages();
     //------------
-  }
-  get() {  
-    if (navigator.geolocation) {  
-        navigator.geolocation.getCurrentPosition((position: Position) => {  
-            if (position) {  
-                this.lat = position.coords.latitude;  
-                this.lng = position.coords.longitude;  
-                this.getAddress = (this.lat, this.lng)  
-                console.log('posiiiiiiiiiiiiiiiiin',position)
-                console.log('laaaat',this.lat)
 
-                this.apiloader.load().then(() => {  
-                    let geocoder = new google.maps.Geocoder;  
-                    let latlng = {  
-                        lat: this.lat,  
-                        lng: this.lng  
-                    };  
-                    geocoder.geocode({  
-                        'location': latlng  
-                    }, function(results) {  
-                        if (results[0]) {  
-                            this.currentLocation = results[0].formatted_address;  
-                            console.log(this.assgin);  
-                        } else {  
-                            console.log('Not found');  
-                        }  
-                    });  
-                });  
-            }  
-        })  
-    }  
-}   
-  //----------------------------------
+  //   this.treatmentForm.setValue({
+  //     firstName: 'abc',
+  //     lastName: 'def'
+  //  });
+  }
   
+  //----------------------------------
+ 
   /////////////////////----------
 
 //get all diagnostic list
 mhpss_villages() {
   this.loader= true;
-  this.model.hospitalID=this.hospitalID;
-  this.model.prescriptionID=-1
+  // this.model.hospitalID=this.hospitalID;
+  // this.model.prescriptionID=-1
   console.log('modal ==', this.model);
   this.adminService.mhpss_villages(this.model).subscribe(
     (response: any) => {
@@ -271,10 +251,7 @@ add_mhpss_session() {
   AllFormsObj.user_id=this.detailsData.id;
   AllFormsObj.photos=this.imageArr;
   AllFormsObj.photo_of_attd_sheet=this.imageUrlSheet;
-  AllFormsObj.latitude=this.lat;
-  AllFormsObj.longitude=this.lng;
-
- 
+  
  console.log('modal 99==', AllFormsObj);
   this.adminService.add_mhpss_session(AllFormsObj).subscribe(
     (response: any) => {
@@ -508,5 +485,42 @@ debugger
        }, error => {
       
        });
+      }
+      getSessionImages() {
+        this.loaderSession = true;
+    
+        //  console.log('local storage==',localStorage.getItem('auth_token'));
+        //  this.model.auth_token =  localStorage.getItem('auth_token');
+        //  console.log('test==',this.model)
+        this.model.session_id  =  this.showDataDetails.id;
+    
+        this.adminService.get_mhpss_session_photos(this.model).subscribe(
+          (response: any) => {
+            if (response.status === 0) {
+              this.allUsersImages = response.data;
+             //this.allData=response;
+              console.log('allHospitals==', this.allUsersImages);
+             
+            //  this.rerender();
+              //this.dtTrigger.next();
+              this.loaderSession = false;
+            }
+    
+            if (response.status === 1) {
+              this.errormsg = response.errors;
+              this.loaderSession = false;
+              console.log('error=', this.errormsg);
+              //this._loginserviceService.logout();
+            }
+          },
+          (error) => {}
+        );
+      }
+     
+      showImage(Ambdelete: TemplateRef<any>,image) {
+        console.log('med id====',image);
+        this.imageShow=image.photo_url;
+        this.modalRef = this.modalService.show(Ambdelete, Object.assign({}, { class: 'modal-lg' }));
+        
       }
 }

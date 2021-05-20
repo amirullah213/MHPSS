@@ -78,12 +78,12 @@
                                 <div class="page-title col-md-6 my-3">Comments  : <b>{{showDataDetails.comments}}</b> </div>
                                 <div class="page-title col-md-6 my-3"> Photos ( 2-3 photos ) : 
                                     <span class="col-sm-2 " *ngFor="let img of allUsersImages">
-                                      <a (click)="showImage(Ambdelete,img.photo_url)"> <img src="{{img.photo_url}}" width="60" height="40" alt=""></a>
+                                      <a (click)="showImage(img.photo_url)"> <img src="{{img.photo_url}}" width="60" height="40" alt="img"></a>
                                     </span> 
                                     <ng-template #Ambdelete>
                                         <div class="modal-body p-5 text-center">
                                             <i class="fa fa-exclamation-circle mb-3 fa-5x text-warning"></i>
-                                            <p><img src="{{imageShow}}" width="500" height="500" alt="img"></p>
+                                            <p><img src="{{img.photo_url}}" width="400" height="400" alt="img"></p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" (click)="modalRef.hide()"><i class="fa fa-remove"></i> Cancel</button>
@@ -93,7 +93,7 @@
                                 </div>
                                 <div class="page-title col-md-6 my-3">Photo of Attd. Sheet  :
                                       <span class="ml-5 ">
-                                      <a (click)="showImage(Ambdelete,showDataDetails.photo_of_attd_sheet)">   <img src="{{showDataDetails.photo_of_attd_sheet}}" width="60" height="40" alt=""></a>
+                                         <img src="{{showDataDetails.photo_of_attd_sheet}}" width="60" height="40" alt="img">
                                 </span> </div>
                                 <div class="page-title col-md-6 my-3">  Remarks : <b>{{showDataDetails.remarks }}</b> </div>
                             </div>

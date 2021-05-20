@@ -271,10 +271,7 @@ add_mhpss_session() {
   AllFormsObj.user_id=this.detailsData.id;
   AllFormsObj.photos=this.imageArr;
   AllFormsObj.photo_of_attd_sheet=this.imageUrlSheet;
-  AllFormsObj.latitude=this.lat;
-  AllFormsObj.longitude=this.lng;
-
- 
+  
  console.log('modal 99==', AllFormsObj);
   this.adminService.add_mhpss_session(AllFormsObj).subscribe(
     (response: any) => {

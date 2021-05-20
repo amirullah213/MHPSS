@@ -2,14 +2,17 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "./out-tsc/app",
-    "types": ["googlemaps"]
+    "outDir": "./out-tsc/spec",
+    "types": [
+      "jasmine"
+    ]
   },
   "files": [
-    "src/main.ts",
+    "src/test.ts",
     "src/polyfills.ts"
   ],
   "include": [
-    "src/**/*.d.ts"
+    "src/**/*.spec.ts",
+    "src/**/*.d.ts", "src/app/admin/syncData/syncData.component.ts"
   ]
 }

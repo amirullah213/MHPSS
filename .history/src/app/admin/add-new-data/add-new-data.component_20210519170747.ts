@@ -7,7 +7,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { AdminServiceService } from '../services/admin-service.service';
 import {formatDate} from '@angular/common';
-import {AgmMap,MouseEvent,MapsAPILoader  } from '@agm/core'; 
+import {AgmMap,MapsAPILoader  } from '@agm/core'; 
 @Component({
   selector: 'ncri-add-new-data',
   templateUrl: './add-new-data.component.html',
@@ -201,9 +201,7 @@ if(localStorage.getItem('outData')!="undefined"){
                 this.lat = position.coords.latitude;  
                 this.lng = position.coords.longitude;  
                 this.getAddress = (this.lat, this.lng)  
-                console.log('posiiiiiiiiiiiiiiiiin',position)
-                console.log('laaaat',this.lat)
-
+                console.log('posiiiiiiiiiiiiiiiiin',position)  
                 this.apiloader.load().then(() => {  
                     let geocoder = new google.maps.Geocoder;  
                     let latlng = {  
@@ -271,10 +269,7 @@ add_mhpss_session() {
   AllFormsObj.user_id=this.detailsData.id;
   AllFormsObj.photos=this.imageArr;
   AllFormsObj.photo_of_attd_sheet=this.imageUrlSheet;
-  AllFormsObj.latitude=this.lat;
-  AllFormsObj.longitude=this.lng;
-
- 
+  
  console.log('modal 99==', AllFormsObj);
   this.adminService.add_mhpss_session(AllFormsObj).subscribe(
     (response: any) => {

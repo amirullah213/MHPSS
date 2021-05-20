@@ -30,7 +30,7 @@ import { CovidReportPatComponent } from './covid-report-pat/covid-report-pat.com
 import { CovidLabComponent } from './covid-lab/covid-lab.component';
 import { AddNewDataComponent } from './add-new-data/add-new-data.component';
 import { ShowDataComponent } from './show-data/show-data.component';
-import {AgmMap,MouseEvent,MapsAPILoader  } from '@agm/core';
+import {AgmMap,MapsAPILoader  } from '@agm/core';
 // MouseEvent
 import { AgmCoreModule } from '@agm/core';
 

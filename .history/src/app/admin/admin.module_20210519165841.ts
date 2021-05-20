@@ -30,8 +30,7 @@ import { CovidReportPatComponent } from './covid-report-pat/covid-report-pat.com
 import { CovidLabComponent } from './covid-lab/covid-lab.component';
 import { AddNewDataComponent } from './add-new-data/add-new-data.component';
 import { ShowDataComponent } from './show-data/show-data.component';
-import {AgmMap,MouseEvent,MapsAPILoader  } from '@agm/core';
-// MouseEvent
+import {AgmMap, MouseEvent,MapsAPILoader  } from '@agm/core';
 import { AgmCoreModule } from '@agm/core';
 
 
@@ -43,7 +42,7 @@ import { AgmCoreModule } from '@agm/core';
     AdminRoutingModule, FormsModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), BsDatepickerModule.forRoot(), CollapseModule.forRoot(),
     TypeaheadModule.forRoot(),
     AgmCoreModule.forRoot({  
-      apiKey: 'AIzaSyAzQQS7-MUyG5TOa5Loyp132wFmlCyAJrI'  
+      apiKey: 'Paste Your Api Key'  
     }),
   ]
 })
