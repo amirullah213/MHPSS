@@ -293,22 +293,13 @@ add_mhpss_session() {
   if (AllFormsObj.date !== '') {
     AllFormsObj.date = this.datePipe.transform(
       AllFormsObj.date,
-      'yyyy-MM-dd'
+      'YYYY-MM-dd'
     );
     // this.global.dateFormat(AllFormsObj.date_incurred)
   } else {
     AllFormsObj.date = null;
   }
 
-  if (AllFormsObj.time !== '') {
-    AllFormsObj.time = this.datePipe.transform(
-      AllFormsObj.time,
-      'HH:mm:ss'
-    );
-    // this.global.dateFormat(AllFormsObj.date_incurred)
-  } else {
-    AllFormsObj.time = null;
-  }
  
  console.log('modal 99==', AllFormsObj);
   this.adminService.add_mhpss_session(AllFormsObj).subscribe(

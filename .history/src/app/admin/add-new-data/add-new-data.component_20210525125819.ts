@@ -300,15 +300,6 @@ add_mhpss_session() {
     AllFormsObj.date = null;
   }
 
-  if (AllFormsObj.time !== '') {
-    AllFormsObj.time = this.datePipe.transform(
-      AllFormsObj.time,
-      'HH:mm:ss'
-    );
-    // this.global.dateFormat(AllFormsObj.date_incurred)
-  } else {
-    AllFormsObj.time = null;
-  }
  
  console.log('modal 99==', AllFormsObj);
   this.adminService.add_mhpss_session(AllFormsObj).subscribe(

@@ -108,11 +108,11 @@
                                         <thead>
                                             <tr>
                                                 <th>Date</th>
-                                                
+                                                <th>Time</th>
                                                 <th>Village</th>
-                                                <th>Memeber </th>
-                                                <th>Female </th>
-                                                <th>Male </th>
+                                                <th>Name of team memeber </th>
+                                                <th>Female participants </th>
+                                                <th>Male participants </th>
                                                 
 
                                                
@@ -122,8 +122,8 @@
                                         </thead>
                                         <tbody>
                                             <tr *ngFor="let usr of allUsers;index as i">
-                                                <td>{{usr.date | date:"yyyy-MM-dd"}} {{usr.time}}</td>
-                                                
+                                                <td>{{usr.date | date:"yyyy-MM-dd"}}</td>
+                                                <td>{{usr.time}}</td>
                                                 <td>{{usr.village}}</td>
                                                 <td>{{usr.team_member}}</td>
                                                 <td>{{usr.female_participants}}</td>

@@ -303,7 +303,7 @@ add_mhpss_session() {
   if (AllFormsObj.time !== '') {
     AllFormsObj.time = this.datePipe.transform(
       AllFormsObj.time,
-      'HH:mm:ss'
+      'HH:mm'
     );
     // this.global.dateFormat(AllFormsObj.date_incurred)
   } else {

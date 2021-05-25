@@ -108,12 +108,13 @@
                                         <thead>
                                             <tr>
                                                 <th>Date</th>
-                                                
+                                                <th>Dist</th>
+                                                <th>Taluka </th>
+                                                <th>Latitude </th>
+                                                <th>Longitude </th>
+                                                <th>Union Council</th>
                                                 <th>Village</th>
-                                                <th>Memeber </th>
-                                                <th>Female </th>
-                                                <th>Male </th>
-                                                
+                                                <th>Village ID</th>
 
                                                
                                                 <th>Action</th>
@@ -122,13 +123,14 @@
                                         </thead>
                                         <tbody>
                                             <tr *ngFor="let usr of allUsers;index as i">
-                                                <td>{{usr.date | date:"yyyy-MM-dd"}} {{usr.time}}</td>
-                                                
+                                                <td>{{usr.date | date:"short"}}</td>
+                                                <td>{{usr.district}}</td>
+                                                <td>{{usr.taluka}}</td>
+                                                <td>{{usr.latitude}}</td>
+                                                <td>{{usr.longitude}}</td>
+                                                <td>{{usr.union_council }}</td>
                                                 <td>{{usr.village}}</td>
-                                                <td>{{usr.team_member}}</td>
-                                                <td>{{usr.female_participants}}</td>
-                                                <td>{{usr.male_participants}}</td>
-                                                
+                                                <td>{{usr.village_id}}</td>
 
                                                 
                                                 <td>

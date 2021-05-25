@@ -1,28 +1,24 @@
-import { Component, OnDestroy, OnInit, TemplateRef,ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { Router } from "@angular/router";
 import { Subject } from 'rxjs';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { AdminServiceService } from '../services/admin-service.service';
 import {formatDate} from '@angular/common';
-import {AgmMap,MapsAPILoader  } from '@agm/core'; 
-import { DatePipe } from '@angular/common';
+ 
 @Component({
   selector: 'ncri-add-new-data',
   templateUrl: './add-new-data.component.html',
   styleUrls: ['./add-new-data.component.scss']
 })
 export class AddNewDataComponent implements OnInit {
-  @ViewChild(AgmMap,{static: true}) public agmMap: AgmMap; 
+  //@ViewChild(AgmMap,{static: true}) public agmMap: AgmMap; 
   lat:any;
   lng:any;
   getAddress:any;
   loader_s3:boolean=false;
-  loader_s3_S:boolean=false;
-
   userData: any = {};
   paramData: any = {};
   loader: boolean = false;
@@ -82,25 +78,21 @@ export class AddNewDataComponent implements OnInit {
   imageUrl:string;
   imageArr:any=[];
   sheetUrl:any='';
-  imageUrlSheet:any='';
- // mytime:Date=new Date();
+  imageUrlSheet:any=''
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private adminService: AdminServiceService,
-    private datePipe: DatePipe
-   
-   // private apiloader: MapsAPILoader
+    // private apiloader: MapsAPILoader
   ) { }
 
   ngOnInit(): void {
-   
     if (navigator)
     {
     navigator.geolocation.getCurrentPosition( pos => {
         this.lng = +pos.coords.longitude;
         this.lat = +pos.coords.latitude;
-        console.log('laaaaaaaaaaaaaaat===',this.lng )
+        console.log('laaaaaaaaaaaaaaat===',this.lng)
       });
     }
     //this.get() ;
@@ -146,7 +138,7 @@ if(localStorage.getItem('outData')!="undefined"){
         latitude: [''],
         longitude: [''],
         date: [''],
-        time: [new Date()],
+        time: [''],
         team_member: ['', Validators.required],
         lhw: ['', Validators.required],
         lhs: ['', Validators.required],
@@ -277,7 +269,6 @@ mhpss_villages() {
 }
 //---------------------------------------
 add_mhpss_session() {
-  debugger
   this.loaderMedic = true;
   let AllFormsObj = Object.assign(
     {},
@@ -290,25 +281,7 @@ add_mhpss_session() {
   AllFormsObj.photo_of_attd_sheet=this.imageUrlSheet;
   AllFormsObj.latitude=this.lat;
   AllFormsObj.longitude=this.lng;
-  if (AllFormsObj.date !== '') {
-    AllFormsObj.date = this.datePipe.transform(
-      AllFormsObj.date,
-      'yyyy-MM-dd'
-    );
-    // this.global.dateFormat(AllFormsObj.date_incurred)
-  } else {
-    AllFormsObj.date = null;
-  }
 
-  if (AllFormsObj.time !== '') {
-    AllFormsObj.time = this.datePipe.transform(
-      AllFormsObj.time,
-      'HH:mm:ss'
-    );
-    // this.global.dateFormat(AllFormsObj.date_incurred)
-  } else {
-    AllFormsObj.time = null;
-  }
  
  console.log('modal 99==', AllFormsObj);
   this.adminService.add_mhpss_session(AllFormsObj).subscribe(
@@ -322,7 +295,6 @@ add_mhpss_session() {
         alert('Data added successfuly');
 
         this.loaderMedic = false;
-        this.router.navigate(['/admin/home']);
       }
   if (response.status === 1) {
         this.errormsg = response.error;
@@ -517,7 +489,7 @@ debugger
        
 
 
-        this.loader_s3_S=true;
+        this.loader_s3=true;
       
       // this.params.auth_token =  localStorage.getItem('auth_token');
        this.params.image =  baseImgSheetFinal;
@@ -534,11 +506,11 @@ debugger
             console.log('allListurl==',this.imageUrl);
            // this.imageArrSheet=
             console.log('imageArr==',this.imageUrlSheet);
-             this.loader_s3_S=false;
+             this.loader_s3=false;
           }
        if (response.status === 1) {
            this.errormsg = response.errors;
-            this.loader_s3_S=false;
+            this.loader_s3=false;
             console.log('error=',this.errormsg);
                }
        }, error => {

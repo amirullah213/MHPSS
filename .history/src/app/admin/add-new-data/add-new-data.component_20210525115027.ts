@@ -9,7 +9,6 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { AdminServiceService } from '../services/admin-service.service';
 import {formatDate} from '@angular/common';
 import {AgmMap,MapsAPILoader  } from '@agm/core'; 
-import { DatePipe } from '@angular/common';
 @Component({
   selector: 'ncri-add-new-data',
   templateUrl: './add-new-data.component.html',
@@ -82,19 +81,16 @@ export class AddNewDataComponent implements OnInit {
   imageUrl:string;
   imageArr:any=[];
   sheetUrl:any='';
-  imageUrlSheet:any='';
- // mytime:Date=new Date();
+  imageUrlSheet:any=''
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private adminService: AdminServiceService,
-    private datePipe: DatePipe
-   
    // private apiloader: MapsAPILoader
   ) { }
 
   ngOnInit(): void {
-   
+    mytime:Date = new Date();
     if (navigator)
     {
     navigator.geolocation.getCurrentPosition( pos => {
@@ -146,7 +142,7 @@ if(localStorage.getItem('outData')!="undefined"){
         latitude: [''],
         longitude: [''],
         date: [''],
-        time: [new Date()],
+        time: [''],
         team_member: ['', Validators.required],
         lhw: ['', Validators.required],
         lhs: ['', Validators.required],
@@ -277,7 +273,6 @@ mhpss_villages() {
 }
 //---------------------------------------
 add_mhpss_session() {
-  debugger
   this.loaderMedic = true;
   let AllFormsObj = Object.assign(
     {},
@@ -290,25 +285,7 @@ add_mhpss_session() {
   AllFormsObj.photo_of_attd_sheet=this.imageUrlSheet;
   AllFormsObj.latitude=this.lat;
   AllFormsObj.longitude=this.lng;
-  if (AllFormsObj.date !== '') {
-    AllFormsObj.date = this.datePipe.transform(
-      AllFormsObj.date,
-      'yyyy-MM-dd'
-    );
-    // this.global.dateFormat(AllFormsObj.date_incurred)
-  } else {
-    AllFormsObj.date = null;
-  }
 
-  if (AllFormsObj.time !== '') {
-    AllFormsObj.time = this.datePipe.transform(
-      AllFormsObj.time,
-      'HH:mm:ss'
-    );
-    // this.global.dateFormat(AllFormsObj.date_incurred)
-  } else {
-    AllFormsObj.time = null;
-  }
  
  console.log('modal 99==', AllFormsObj);
   this.adminService.add_mhpss_session(AllFormsObj).subscribe(

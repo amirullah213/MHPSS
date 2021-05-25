@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule,DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { AdminRoutingModule } from './admin-routing.module';
@@ -45,7 +45,6 @@ import { AgmCoreModule } from '@agm/core';
     AgmCoreModule.forRoot({  
       apiKey: 'AIzaSyAzQQS7-MUyG5TOa5Loyp132wFmlCyAJrI'  
     }),
-  ],
-  providers:[DatePipe]
+  ]
 })
 export class AdminModule { }

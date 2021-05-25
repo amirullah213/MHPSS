@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule,DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { AdminRoutingModule } from './admin-routing.module';
@@ -23,7 +23,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { EmrSummaryReportComponent } from './emr-summary-report/emr-summary-report.component';
 import { syncDataComponent } from './syncData/syncData.component';
 import {ConnectionServiceModule} from 'ng-connection-service';   
-import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+
 
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { CovidReportPatComponent } from './covid-report-pat/covid-report-pat.component';
@@ -40,12 +40,11 @@ import { AgmCoreModule } from '@agm/core';
   imports: [
     ConnectionServiceModule,
     CommonModule,
-    AdminRoutingModule, FormsModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), BsDatepickerModule.forRoot(), CollapseModule.forRoot(),TimepickerModule.forRoot(),
+    AdminRoutingModule, FormsModule, ReactiveFormsModule, SharedModule, DataTablesModule, ModalModule.forRoot(), BsDatepickerModule.forRoot(), CollapseModule.forRoot(),
     TypeaheadModule.forRoot(),
     AgmCoreModule.forRoot({  
       apiKey: 'AIzaSyAzQQS7-MUyG5TOa5Loyp132wFmlCyAJrI'  
     }),
-  ],
-  providers:[DatePipe]
+  ]
 })
 export class AdminModule { }

@@ -48,7 +48,7 @@
     "@angular/cli": "~10.0.6",
     "@angular/compiler-cli": "~10.0.9",
     "@types/datatables.net": "^1.10.19",
-    "@types/googlemaps": "^3.43.3",
+    "@types/googlemaps": "^3.39.13",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/jquery": "^3.5.1",
