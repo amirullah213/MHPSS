@@ -213,7 +213,7 @@ if(localStorage.getItem('outData')!="undefined"){
   }
  
   get() {  
-  debugger
+  
     if (navigator.geolocation) {  
         navigator.geolocation.getCurrentPosition((position: Position) => {  
             if (position) {  
@@ -243,12 +243,10 @@ if(localStorage.getItem('outData')!="undefined"){
                 // });  
             } else {
               // hideLoadingDiv()
-              alert('Geolocation is not supported by this device')
+              console.log('Geolocation is not supported by this device')
           }
         })  
-    } 
-      alert('Geolocation is not supported by this device. Allow current location from your browser settings ')
-    
+    }  
 }   
  
   //----------------------------------

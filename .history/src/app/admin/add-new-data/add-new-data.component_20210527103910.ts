@@ -83,7 +83,6 @@ export class AddNewDataComponent implements OnInit {
   imageArr:any=[];
   sheetUrl:any='';
   imageUrlSheet:any='';
-  allowGeoRecall:boolean = true
  // mytime:Date=new Date();
   constructor(
     private fb: FormBuilder,
@@ -96,15 +95,15 @@ export class AddNewDataComponent implements OnInit {
 
   ngOnInit(): void {
    
-    // if (navigator)
-    // {
-    // navigator.geolocation.getCurrentPosition( pos => {
-    //     this.lng = +pos.coords.longitude;
-    //     this.lat = +pos.coords.latitude;
-    //     console.log('laaaaaaaaaaaaaaat===',this.lng )
-    //   });
-    // }
-    this.get() ;
+    if (navigator)
+    {
+    navigator.geolocation.getCurrentPosition( pos => {
+        this.lng = +pos.coords.longitude;
+        this.lat = +pos.coords.latitude;
+        console.log('laaaaaaaaaaaaaaat===',this.lng )
+      });
+    }
+    //this.get() ;
     this.currentDate = new Date();
 
     this.cValue = formatDate(this.currentDate, 'yyyy-MM-dd', 'en-US');
@@ -211,46 +210,37 @@ if(localStorage.getItem('outData')!="undefined"){
 );
     //------------
   }
- 
-  get() {  
-  debugger
-    if (navigator.geolocation) {  
-        navigator.geolocation.getCurrentPosition((position: Position) => {  
-            if (position) {  
-                this.lat = position.coords.latitude;  
-                this.lng = position.coords.longitude;  
-                this.getAddress = (this.lat, this.lng)  
-                console.log('posiiiiiiiiiiiiiiiiin',position)
-                console.log('laaaat',this.lat);
-                
+//   get() {  
+//     if (navigator.geolocation) {  
+//         navigator.geolocation.getCurrentPosition((position: Position) => {  
+//             if (position) {  
+//                 this.lat = position.coords.latitude;  
+//                 this.lng = position.coords.longitude;  
+//                 this.getAddress = (this.lat, this.lng)  
+//                 console.log('posiiiiiiiiiiiiiiiiin',position)
+//                 console.log('laaaat',this.lat)
 
-                // this.apiloader.load().then(() => {  
-                //     let geocoder = new google.maps.Geocoder;  
-                //     let latlng = {  
-                //         lat: this.lat,  
-                //         lng: this.lng  
-                //     };  
-                //     geocoder.geocode({  
-                //         'location': latlng  
-                //     }, function(results) {  
-                //         if (results[0]) {  
-                //             this.currentLocation = results[0].formatted_address;  
-                //             console.log(this.assgin);  
-                //         } else {  
-                //             console.log('Not found');  
-                //         }  
-                //     });  
-                // });  
-            } else {
-              // hideLoadingDiv()
-              alert('Geolocation is not supported by this device')
-          }
-        })  
-    } 
-      alert('Geolocation is not supported by this device. Allow current location from your browser settings ')
-    
-}   
- 
+//                 this.apiloader.load().then(() => {  
+//                     let geocoder = new google.maps.Geocoder;  
+//                     let latlng = {  
+//                         lat: this.lat,  
+//                         lng: this.lng  
+//                     };  
+//                     geocoder.geocode({  
+//                         'location': latlng  
+//                     }, function(results) {  
+//                         if (results[0]) {  
+//                             this.currentLocation = results[0].formatted_address;  
+//                             console.log(this.assgin);  
+//                         } else {  
+//                             console.log('Not found');  
+//                         }  
+//                     });  
+//                 });  
+//             }  
+//         })  
+//     }  
+// }   
   //----------------------------------
   
   /////////////////////----------

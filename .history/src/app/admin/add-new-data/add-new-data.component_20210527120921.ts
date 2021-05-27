@@ -213,7 +213,7 @@ if(localStorage.getItem('outData')!="undefined"){
   }
  
   get() {  
-  debugger
+  
     if (navigator.geolocation) {  
         navigator.geolocation.getCurrentPosition((position: Position) => {  
             if (position) {  
@@ -221,8 +221,7 @@ if(localStorage.getItem('outData')!="undefined"){
                 this.lng = position.coords.longitude;  
                 this.getAddress = (this.lat, this.lng)  
                 console.log('posiiiiiiiiiiiiiiiiin',position)
-                console.log('laaaat',this.lat);
-                
+                console.log('laaaat',this.lat)
 
                 // this.apiloader.load().then(() => {  
                 //     let geocoder = new google.maps.Geocoder;  
@@ -243,14 +242,21 @@ if(localStorage.getItem('outData')!="undefined"){
                 // });  
             } else {
               // hideLoadingDiv()
-              alert('Geolocation is not supported by this device')
+              console.log('Geolocation is not supported by this device')
           }
         })  
-    } 
-      alert('Geolocation is not supported by this device. Allow current location from your browser settings ')
-    
+    }  
 }   
- 
+ positionError() {    
+  console.log('Geolocation is not enabled. Please enable to use this feature')
+debugger
+  if(this.allowGeoRecall) this.get();
+}
+
+ showPosition(){
+  console.log('posiiton accepted')
+  this.allowGeoRecall = false
+}
   //----------------------------------
   
   /////////////////////----------

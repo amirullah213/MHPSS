@@ -42,7 +42,7 @@
                                 <hr class="hr-gray">
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label>Village*</label>
+                                        <label>Village</label>
                                         <span class="wrapper-select">
                                             <select class="form-control" formControlName="village_id" [ngClass]="{'has-error': ((treatmentForm.get('village_id').touched || treatmentForm.get('village_id').dirty) && treatmentForm.get('village_id').errors)}"  aria-label="Text input with segmented dropdown button" placeholder="Village" required>
                                                 <option disabled>Select Village</option>
@@ -65,8 +65,8 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label>Date of session*</label>
-                                        <input type="text" formControlName="date" [ngClass]="{'has-error': ((treatmentForm.get('date').touched || treatmentForm.get('date').dirty) && treatmentForm.get('date').errors)}" class="form-control" id="formGroupExampleInput" autocomplete="off" placeholder="Date of session" bsDatepicker required>
+                                        <label>Date of session</label>
+                                        <input type="text" formControlName="date" [ngClass]="{'has-error': ((treatmentForm.get('date').touched || treatmentForm.get('date').dirty) && treatmentForm.get('date').errors)}" class="form-control" id="formGroupExampleInput" placeholder="Date of session" bsDatepicker required>
                                         <span class="help-block text-danger" *ngIf="((treatmentForm.get('date').touched || treatmentForm.get('date').dirty) &&  treatmentForm.get('date').errors)">
                                             <span class="text-danger" *ngIf="treatmentForm.get('date').errors.required">
                                                  Required field
@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label>Name of team member*</label>
+                                        <label>Name of team member</label>
                                         <input type="text" formControlName="team_member" class="form-control" id="formGroupExampleInput" placeholder="Name of team member" required>
                                         <span class="help-block text-danger" *ngIf="((treatmentForm.get('team_member').touched || treatmentForm.get('team_member').dirty) &&  treatmentForm.get('team_member').errors)">
                                             <span class="text-danger" *ngIf="treatmentForm.get('team_member').errors.required">
@@ -122,7 +122,7 @@
                                 <!-- ------------------------------------------------------------------------ -->
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label>Male Participants*</label>
+                                        <label>Male Participants</label>
                                         <input type="number" formControlName="male_participants" class="form-control" id="formGroupExampleInput" placeholder="Male Participants" required>
                                         <span class="help-block text-danger" *ngIf="((treatmentForm.get('male_participants').touched || treatmentForm.get('male_participants').dirty) &&  treatmentForm.get('male_participants').errors)" >
                                             <span class="text-danger" *ngIf="treatmentForm.get('male_participants').errors.required">
@@ -133,7 +133,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label>Female Participants*</label>
+                                        <label>Female Participants</label>
                                         <input type="number" formControlName="female_participants" class="form-control" id="formGroupExampleInput" placeholder="Female Participants" required>
                                         <span class="help-block text-danger" *ngIf="((treatmentForm.get('female_participants').touched || treatmentForm.get('female_participants').dirty) &&  treatmentForm.get('female_participants').errors)" >
                                             <span class="text-danger" *ngIf="treatmentForm.get('female_participants').errors.required">
@@ -305,7 +305,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label>Take photos* ( 2-3 photos ) </label>
+                                        <label>Take photos ( 2-3 photos ) </label>
                                         <div class="text-info" *ngIf="loader_s3">Uploading Image.....</div>
                                         <span *ngIf="!loader_s3"><input type="file" formControlName="photos" (change)="onSelectFile($event)" class="form-control" id="formGroupExampleInput" placeholder="Photos"></span>
                                         

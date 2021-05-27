@@ -213,7 +213,7 @@ if(localStorage.getItem('outData')!="undefined"){
   }
  
   get() {  
-  debugger
+  
     if (navigator.geolocation) {  
         navigator.geolocation.getCurrentPosition((position: Position) => {  
             if (position) {  
@@ -246,9 +246,9 @@ if(localStorage.getItem('outData')!="undefined"){
               alert('Geolocation is not supported by this device')
           }
         })  
+    } else{
+      alert('Geolocation is not supported by this device')
     } 
-      alert('Geolocation is not supported by this device. Allow current location from your browser settings ')
-    
 }   
  
   //----------------------------------

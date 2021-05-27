@@ -246,9 +246,9 @@ if(localStorage.getItem('outData')!="undefined"){
               alert('Geolocation is not supported by this device')
           }
         })  
+    } else{
+      console.log('Geolocation is not supported by this device')
     } 
-      alert('Geolocation is not supported by this device. Allow current location from your browser settings ')
-    
 }   
  
   //----------------------------------

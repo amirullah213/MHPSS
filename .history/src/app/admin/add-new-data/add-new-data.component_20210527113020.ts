@@ -83,7 +83,6 @@ export class AddNewDataComponent implements OnInit {
   imageArr:any=[];
   sheetUrl:any='';
   imageUrlSheet:any='';
-  allowGeoRecall:boolean = true
  // mytime:Date=new Date();
   constructor(
     private fb: FormBuilder,
@@ -211,9 +210,7 @@ if(localStorage.getItem('outData')!="undefined"){
 );
     //------------
   }
- 
   get() {  
-  debugger
     if (navigator.geolocation) {  
         navigator.geolocation.getCurrentPosition((position: Position) => {  
             if (position) {  
@@ -221,8 +218,7 @@ if(localStorage.getItem('outData')!="undefined"){
                 this.lng = position.coords.longitude;  
                 this.getAddress = (this.lat, this.lng)  
                 console.log('posiiiiiiiiiiiiiiiiin',position)
-                console.log('laaaat',this.lat);
-                
+                console.log('laaaat',this.lat)
 
                 // this.apiloader.load().then(() => {  
                 //     let geocoder = new google.maps.Geocoder;  
@@ -241,16 +237,10 @@ if(localStorage.getItem('outData')!="undefined"){
                 //         }  
                 //     });  
                 // });  
-            } else {
-              // hideLoadingDiv()
-              alert('Geolocation is not supported by this device')
-          }
+            }  
         })  
-    } 
-      alert('Geolocation is not supported by this device. Allow current location from your browser settings ')
-    
+    }  
 }   
- 
   //----------------------------------
   
   /////////////////////----------

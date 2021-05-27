@@ -83,7 +83,6 @@ export class AddNewDataComponent implements OnInit {
   imageArr:any=[];
   sheetUrl:any='';
   imageUrlSheet:any='';
-  allowGeoRecall:boolean = true
  // mytime:Date=new Date();
   constructor(
     private fb: FormBuilder,
@@ -96,15 +95,15 @@ export class AddNewDataComponent implements OnInit {
 
   ngOnInit(): void {
    
-    // if (navigator)
-    // {
-    // navigator.geolocation.getCurrentPosition( pos => {
-    //     this.lng = +pos.coords.longitude;
-    //     this.lat = +pos.coords.latitude;
-    //     console.log('laaaaaaaaaaaaaaat===',this.lng )
-    //   });
-    // }
-    this.get() ;
+    if (navigator)
+    {
+    navigator.geolocation.getCurrentPosition( pos => {
+        this.lng = +pos.coords.longitude;
+        this.lat = +pos.coords.latitude;
+        console.log('laaaaaaaaaaaaaaat===',this.lng )
+      });
+    }
+    //this.get() ;
     this.currentDate = new Date();
 
     this.cValue = formatDate(this.currentDate, 'yyyy-MM-dd', 'en-US');
@@ -140,7 +139,7 @@ if(localStorage.getItem('outData')!="undefined"){
     //-----------------
     this.treatmentForm = this.fb.group(
       {
-        user_id: [''],
+        user_id: ['', Validators.required],
         //assign user id by local storage
         // villageData: [],
         village_id: ['',Validators.required],
@@ -149,49 +148,49 @@ if(localStorage.getItem('outData')!="undefined"){
         date: ['',Validators.required],
         time: [new Date(),Validators.required],
         team_member: ['', Validators.required],
-        lhw: [''],
-        lhs: [''],
-        cap: [''],
+        lhw: ['', Validators.required],
+        lhs: ['', Validators.required],
+        cap: ['', Validators.required],
        
         male_participants: ['', Validators.required],
        
         female_participants: ['', Validators.required],
        
-        iecc_received: [''],
+        iecc_received: ['', Validators.required],
         
-        ppes_received: [''],
+        ppes_received: ['', Validators.required],
        
-        active_positive_cases: [''],
+        active_positive_cases: ['', Validators.required],
        
-        linkage_with_dist: [''],
+        linkage_with_dist: ['', Validators.required],
        
-        linkages_for_community: [''],
+        linkages_for_community: ['', Validators.required],
         
-        sharing_with_tele: [''],
+        sharing_with_tele: ['', Validators.required],
        
-        mobilized_for_vaccination: [''],
+        mobilized_for_vaccination: ['', Validators.required],
        
-        visiting_nearby_govt_health_facility: [''],
+        visiting_nearby_govt_health_facility: ['', Validators.required],
         
-        female_mobilized: [''],
+        female_mobilized: ['', Validators.required],
        
-        mobilized_for_routine_vaccination: [''],
+        mobilized_for_routine_vaccination: ['', Validators.required],
        
-        social_media_mode: [''],
+        social_media_mode: ['', Validators.required],
         
-        listeners_of_fm: [''],
+        listeners_of_fm: ['', Validators.required],
        
-        contact_details: [''],
+        contact_details: ['', Validators.required],
        
-        cases_reported_to_child_protection: [''],
+        cases_reported_to_child_protection: ['', Validators.required],
        
-        comments: [''],
+        comments: ['', Validators.required],
       
-        photo_of_attd_sheet: [''],
+        photo_of_attd_sheet: ['', Validators.required],
        
-        remarks: [''],
+        remarks: ['', Validators.required],
        
-        photos: [''],
+        photos: ['', Validators.required],
 
      
   },
@@ -211,46 +210,37 @@ if(localStorage.getItem('outData')!="undefined"){
 );
     //------------
   }
- 
-  get() {  
-  debugger
-    if (navigator.geolocation) {  
-        navigator.geolocation.getCurrentPosition((position: Position) => {  
-            if (position) {  
-                this.lat = position.coords.latitude;  
-                this.lng = position.coords.longitude;  
-                this.getAddress = (this.lat, this.lng)  
-                console.log('posiiiiiiiiiiiiiiiiin',position)
-                console.log('laaaat',this.lat);
-                
+//   get() {  
+//     if (navigator.geolocation) {  
+//         navigator.geolocation.getCurrentPosition((position: Position) => {  
+//             if (position) {  
+//                 this.lat = position.coords.latitude;  
+//                 this.lng = position.coords.longitude;  
+//                 this.getAddress = (this.lat, this.lng)  
+//                 console.log('posiiiiiiiiiiiiiiiiin',position)
+//                 console.log('laaaat',this.lat)
 
-                // this.apiloader.load().then(() => {  
-                //     let geocoder = new google.maps.Geocoder;  
-                //     let latlng = {  
-                //         lat: this.lat,  
-                //         lng: this.lng  
-                //     };  
-                //     geocoder.geocode({  
-                //         'location': latlng  
-                //     }, function(results) {  
-                //         if (results[0]) {  
-                //             this.currentLocation = results[0].formatted_address;  
-                //             console.log(this.assgin);  
-                //         } else {  
-                //             console.log('Not found');  
-                //         }  
-                //     });  
-                // });  
-            } else {
-              // hideLoadingDiv()
-              alert('Geolocation is not supported by this device')
-          }
-        })  
-    } 
-      alert('Geolocation is not supported by this device. Allow current location from your browser settings ')
-    
-}   
- 
+//                 this.apiloader.load().then(() => {  
+//                     let geocoder = new google.maps.Geocoder;  
+//                     let latlng = {  
+//                         lat: this.lat,  
+//                         lng: this.lng  
+//                     };  
+//                     geocoder.geocode({  
+//                         'location': latlng  
+//                     }, function(results) {  
+//                         if (results[0]) {  
+//                             this.currentLocation = results[0].formatted_address;  
+//                             console.log(this.assgin);  
+//                         } else {  
+//                             console.log('Not found');  
+//                         }  
+//                     });  
+//                 });  
+//             }  
+//         })  
+//     }  
+// }   
   //----------------------------------
   
   /////////////////////----------
@@ -319,10 +309,6 @@ add_mhpss_session() {
   } else {
     AllFormsObj.time = null;
   }
- if(AllFormsObj.photos.length==0){
-   alert("Please upload at least one photo for 'Take photos' field!");
- }else{
-
  
  console.log('modal 99==', AllFormsObj);
   this.adminService.add_mhpss_session(AllFormsObj).subscribe(
@@ -348,7 +334,6 @@ add_mhpss_session() {
     },
     (error) => {}
   );
-}
 }
 
 //----------------------------------------

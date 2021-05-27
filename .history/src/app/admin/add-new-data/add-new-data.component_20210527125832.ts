@@ -247,7 +247,7 @@ if(localStorage.getItem('outData')!="undefined"){
           }
         })  
     } 
-      alert('Geolocation is not supported by this device. Allow current location from your browser settings ')
+      alert('Geolocation is not supported by this device. Allow current location from your browser setting ')
     
 }   
  
