@@ -96,16 +96,14 @@ export class AddNewDataComponent implements OnInit {
 
   ngOnInit(): void {
    
-    // window.onload = function() {
-    //   var startPos;
-    //   var geoSuccess = function(position) {
-    //     startPos = position;
-    //     console.log('lat------------------', startPos.coords.latitude);
-    //     console.log('long------------------', startPos.coords.longitude);
-       
-    //   };
-    //   navigator.geolocation.getCurrentPosition(geoSuccess);
-    // };
+    // if (navigator)
+    // {
+    // navigator.geolocation.getCurrentPosition( pos => {
+    //     this.lng = +pos.coords.longitude;
+    //     this.lat = +pos.coords.latitude;
+    //     console.log('laaaaaaaaaaaaaaat===',this.lng )
+    //   });
+    // }
     this.get() ;
     this.currentDate = new Date();
 

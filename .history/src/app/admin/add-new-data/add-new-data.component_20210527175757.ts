@@ -96,16 +96,14 @@ export class AddNewDataComponent implements OnInit {
 
   ngOnInit(): void {
    
-    // window.onload = function() {
-    //   var startPos;
-    //   var geoSuccess = function(position) {
-    //     startPos = position;
-    //     console.log('lat------------------', startPos.coords.latitude);
-    //     console.log('long------------------', startPos.coords.longitude);
-       
-    //   };
-    //   navigator.geolocation.getCurrentPosition(geoSuccess);
-    // };
+    // if (navigator)
+    // {
+    // navigator.geolocation.getCurrentPosition( pos => {
+    //     this.lng = +pos.coords.longitude;
+    //     this.lat = +pos.coords.latitude;
+    //     console.log('laaaaaaaaaaaaaaat===',this.lng )
+    //   });
+    // }
     this.get() ;
     this.currentDate = new Date();
 
@@ -322,13 +320,11 @@ add_mhpss_session() {
     AllFormsObj.time = null;
   }
   //latitude,longitude
-  if(AllFormsObj.latitude=='' || AllFormsObj.latitude==undefined || AllFormsObj.latitude=='undefined' || AllFormsObj.longitude=='' || AllFormsObj.longitude==undefined ||AllFormsObj.longitude=='undefined'){
-    alert('Can,t proceed without allowing geolocation');
-    this.loaderMedic = false;
-  }else{
+  if(AllFormsObj.latitude=='' || AllFormsObj.longitude==''){
+    alert('Can,t proceed without allowing geolocation')
+  }
  if(AllFormsObj.photos.length==0){
    alert("Please upload at least one photo for 'Take photos' field!");
-   this.loaderMedic = false;
  }else{
 
  
@@ -356,7 +352,6 @@ add_mhpss_session() {
     },
     (error) => {}
   );
-}
 }
 }
 
