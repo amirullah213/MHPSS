@@ -112,6 +112,10 @@ export class ShowDataComponent implements OnInit {
   this.showDataDetails =JSON.parse(localStorage.getItem('showData'));
   console.log('showData=====',this.showDataDetails);
  
+
+    //previos page data
+   
+
    this.dischargFormData =JSON.parse(localStorage.getItem('disData')) ;
 
 if(localStorage.getItem('outData')!="undefined"){

@@ -111,7 +111,12 @@ export class ShowDataComponent implements OnInit {
   //to populate the from
   this.showDataDetails =JSON.parse(localStorage.getItem('showData'));
   console.log('showData=====',this.showDataDetails);
- 
+  debugger
+  // this.attendanceSheetImages=this.showDataDetails.photo_of_attd_sheet.split(',');
+
+    //previos page data
+   
+
    this.dischargFormData =JSON.parse(localStorage.getItem('disData')) ;
 
 if(localStorage.getItem('outData')!="undefined"){
@@ -498,7 +503,6 @@ debugger
             if (response.status === 0) {
               this.allUsersImages = response.data;
              //this.allData=response;
-             this.attendanceSheetImages= response.data1
               console.log('allHospitals==', this.allUsersImages);
              
             //  this.rerender();
