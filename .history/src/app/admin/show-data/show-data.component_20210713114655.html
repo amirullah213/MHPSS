@@ -79,13 +79,7 @@
                             
                                 <div class="page-title col-md-6 my-3">Most preferred / localized Social media mode ( youtube/ facebook etc.) : <b>{{showDataDetails.social_media_mode}}</b> </div>
                                 <div class="page-title col-md-6 my-3"> Listeners of FM radio in local community : <b>{{showDataDetails.listeners_of_fm }}</b> </div>
-
-                                <div class="page-title col-md-6 my-3">Person 1 Name: <b>{{showDataDetails.person1_name }}</b> </div>
-                                <div class="page-title col-md-6 my-3">Person 1 Detail : <b>{{showDataDetails.person1_detail }}</b> </div>
-
-                                <div class="page-title col-md-6 my-3">Person 2 Name: <b>{{showDataDetails.person2_name }}</b> </div>
-                                <div class="page-title col-md-6 my-3">Person 2 Detail : <b>{{showDataDetails.person2_detail }}</b> </div>
-
+                                <div class="page-title col-md-6 my-3">Contact details of community notable for further coordination,if required  : <b>{{showDataDetails.contact_details }}</b> </div>
                                 <div class="page-title col-md-6 my-3">  No. of Cases reported to District Child protection unit  : <b>{{showDataDetails.cases_reported_to_child_protection }}</b> </div>
                             
                                 <div class="page-title col-md-6 my-3">Comments  : <b>{{showDataDetails.comments}}</b> </div>
@@ -106,8 +100,8 @@
                                     </ng-template>
                                 </div>
                                 <div class="page-title col-md-6 my-3">Photo of Attd. Sheet  :
-                                      <span class="col-sm-2 " *ngFor="let img2 of attendanceSheetImages">
-                                      <a (click)="showImage(Ambdelete,img2)">   <img src="{{img2}}" width="60" height="40" alt=""></a>
+                                      <span class="ml-5 ">
+                                      <a (click)="showImage(Ambdelete,showDataDetails.photo_of_attd_sheet)">   <img src="{{showDataDetails.photo_of_attd_sheet}}" width="60" height="40" alt=""></a>
                                 </span> </div>
                                 <div class="page-title col-md-6 my-3">  Remarks : <b>{{showDataDetails.remarks }}</b> </div>
                             </div>

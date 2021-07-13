@@ -61,56 +61,6 @@
                                     </div>
                                     
                                 </div>
-                                <div class="col-sm-8"></div>
-                                <div formGroupName="child" class="col-sm-12" *ngIf="villageEntryFileds">
-                                    <div class="row">
-                                <div class="col-sm-3" >
-                                    <div class="form-group">
-                                        <label>Village Name</label>
-                                        <input type="text" formControlName="village" [ngClass]="{'has-error': ((treatmentForm.get('child.village').touched || treatmentForm.get('child.village').dirty) && treatmentForm.get('child.village').errors)}" class="form-control"  autocomplete="off" placeholder="Village Name"  >
-                                        <!-- <span class="help-block text-danger" *ngIf="((treatmentForm.get('child.village').touched || treatmentForm.get('child.village').dirty) &&  treatmentForm.get('child.village').errors)">
-                                            <span class="text-danger" *ngIf="treatmentForm.get('child.village').errors.required">
-                                                 Required field
-                                            </span>
-                                        </span>  -->
-                                    </div>
-                                    
-                                </div>
-                                <div class="col-sm-3" >
-                                    <div class="form-group">
-                                        <label>Taluka Name</label>
-                                        <input type="text" formControlName="taluka" [ngClass]="{'has-error': ((treatmentForm.get('child.taluka').touched || treatmentForm.get('child.taluka').dirty) && treatmentForm.get('child.taluka').errors)}" class="form-control"  autocomplete="off" placeholder="Taluka Name"  >
-                                        <!-- <span class="help-block text-danger" *ngIf="((treatmentForm.get('child.taluka').touched || treatmentForm.get('child.taluka').dirty) &&  treatmentForm.get('child.taluka').errors)">
-                                            <span class="text-danger" *ngIf="treatmentForm.get('child.taluka').errors.required">
-                                                 Required field
-                                            </span>
-                                        </span>  -->
-                                    </div>
-                                </div>
-                                <div class="col-sm-3" >
-                                    <div class="form-group">
-                                        <label>Union Council</label>
-                                        <input type="text" formControlName="union_council" [ngClass]="{'has-error': ((treatmentForm.get('child.union_council').touched || treatmentForm.get('child.union_council').dirty) && treatmentForm.get('child.union_council').errors)}" class="form-control"  autocomplete="off" placeholder="Union Council"  >
-                                        <!-- <span class="help-block text-danger" *ngIf="((treatmentForm.get('child.union_council').touched || treatmentForm.get('child.union_council').dirty) &&  treatmentForm.get('child.union_council').errors)">
-                                            <span class="text-danger" *ngIf="treatmentForm.get('child.union_council').errors.required">
-                                                 Required field
-                                            </span>
-                                        </span>  -->
-                                    </div>
-                                </div>
-                                <div class="col-sm-3" >
-                                    <div class="form-group">
-                                        <label>Dist Name</label>
-                                        <input type="text" formControlName="district" [ngClass]="{'has-error': ((treatmentForm.get('child.district').touched || treatmentForm.get('child.district').dirty) && treatmentForm.get('child.district').errors)}" class="form-control"  autocomplete="off" placeholder="Dist Name"  >
-                                        <!-- <span class="help-block text-danger" *ngIf="((treatmentForm.get('child.district').touched || treatmentForm.get('child.district').dirty) &&  treatmentForm.get('child.district').errors)">
-                                            <span class="text-danger" *ngIf="treatmentForm.get('child.district').errors.required">
-                                                 Required field
-                                            </span>
-                                        </span>  -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                                 <div class="col-lg-12 my-3">
                                     <hr class="hr-gray my-2">
                                 </div>
@@ -125,7 +75,6 @@
                                         </span> 
                                     </div>
                                 </div>
-                                
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <!-- <label>Time</label> -->
@@ -149,56 +98,23 @@
                                         </span> 
                                     </div>
                                 </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <label>Name of LHW</label>
-                                        <span class="wrapper-select">
-                                            <select class="form-control" formControlName="lhw" (change)="selectLHW($event)"   aria-label="Text input with segmented dropdown button" placeholder="Name of LHW" >
-                                                <option disabled>Select LHW</option>
-                                                <option *ngFor="let lh of lhwDropDownList"  [value]="lh.name"> {{lh.name}}   </option>
-                                            </select>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <label>Name of LHS</label>
-                                        <span class="wrapper-select">
-                                            <select class="form-control" formControlName="lhs" (change)="selectLHS($event)"   aria-label="Text input with segmented dropdown button" placeholder="Name of LHS" >
-                                                <option disabled>Select LHS</option>
-                                                <option *ngFor="let ls of lhsDropDownList"  [value]="ls.name"> {{ls.name}}   </option>
-                                            </select>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <label>CAP of HF (Name)</label>
-                                        <span class="wrapper-select">
-                                            <select class="form-control" formControlName="cap" (change)="selectCAP($event)"   aria-label="Text input with segmented dropdown button" placeholder="CAP of HF" >
-                                                <option disabled>Select CAP</option>
-                                                <option *ngFor="let cp of capDropDownList"  [value]="cp.name"> {{cp.name}}   </option>
-                                            </select>
-                                        </span>
-                                    </div>
-                                </div>
                                 <div class="col-lg-4">
-                                    <div class="form-group" *ngIf="lhwEntryFileds">
+                                    <div class="form-group">
                                         <label>Name of LHW</label>
-                                        <input type="text" formControlName="lhwOther" class="form-control" id="formGroupExampleInput" placeholder="Name of LHW">
+                                        <input type="text" formControlName="lhw" class="form-control" id="formGroupExampleInput" placeholder="Name of LHW">
                                     </div>
                                 </div>
 
                                 <div class="col-lg-4">
-                                    <div class="form-group" *ngIf="lhsEntryFileds">
+                                    <div class="form-group">
                                         <label>Name of LHS</label>
-                                        <input type="text" formControlName="lhsOther" class="form-control" id="formGroupExampleInput" placeholder="Name of LHS">
+                                        <input type="text" formControlName="lhs" class="form-control" id="formGroupExampleInput" placeholder="Name of LHS">
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
-                                    <div class="form-group" *ngIf="capEntryFileds">
+                                    <div class="form-group">
                                         <label>CAP of HF (Name)</label>
-                                        <input type="text" formControlName="capOther" class="form-control" id="formGroupExampleInput" placeholder="CAP of HF (Name)">
+                                        <input type="text" formControlName="cap" class="form-control" id="formGroupExampleInput" placeholder="CAP of HF (Name)">
                                     </div>
                                 </div>
                                 <div class="col-lg-12 my-3">
@@ -218,17 +134,6 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label>Boys Participants</label>
-                                        <input type="number" formControlName="boys" class="form-control" id="formGroupExampleInput" placeholder="Boys Participants" >
-                                        <!-- <span class="help-block text-danger" *ngIf="((treatmentForm.get('male_participants').touched || treatmentForm.get('male_participants').dirty) &&  treatmentForm.get('male_participants').errors)" >
-                                            <span class="text-danger" *ngIf="treatmentForm.get('male_participants').errors.required">
-                                                 Required field
-                                            </span>
-                                        </span>  -->
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
                                         <label>Female Participants*</label>
                                         <input type="number" formControlName="female_participants" class="form-control" id="formGroupExampleInput" placeholder="Female Participants" required>
                                         <span class="help-block text-danger" *ngIf="((treatmentForm.get('female_participants').touched || treatmentForm.get('female_participants').dirty) &&  treatmentForm.get('female_participants').errors)" >
@@ -236,17 +141,6 @@
                                                  Required field
                                             </span>
                                         </span> 
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label>Girls Participants</label>
-                                        <input type="number" formControlName="girls" class="form-control" id="formGroupExampleInput" placeholder="Girls Participants" >
-                                        <!-- <span class="help-block text-danger" *ngIf="((treatmentForm.get('female_participants').touched || treatmentForm.get('female_participants').dirty) &&  treatmentForm.get('female_participants').errors)" >
-                                            <span class="text-danger" *ngIf="treatmentForm.get('female_participants').errors.required">
-                                                 Required field
-                                            </span>
-                                        </span>  -->
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -467,36 +361,13 @@
                                         <input type="number" formControlName="listeners_of_fm" class="form-control" id="formGroupExampleInput" placeholder="Listeners  of FM radio  in local community ">
                                     </div>
                                 </div>
-                                <!-- <div class="col-lg-4">
+                                <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label>Contact details of community notable for further coordination </label>
+                                        <label>Contact details of community  notable for further coordination </label>
                                         <input type="text" formControlName="contact_details" class="form-control" id="formGroupExampleInput" placeholder="Contact details of community  notable for further coordination">
                                     </div>
-                                </div> -->
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label> Person 1 </label>
-                                        <input type="text" formControlName="person1_name" class="form-control"  placeholder="Contact Person 1">
-                                    </div>
                                 </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label> Person 1 Detail</label>
-                                        <input type="text" formControlName="person1_detail" class="form-control"  placeholder="Person 1 Detail">
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label> Person 2</label>
-                                        <input type="text" formControlName="person2_name" class="form-control"  placeholder="Contact Person 2">
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label>Person 2 Detail</label>
-                                        <input type="text" formControlName="person2_detail" class="form-control"  placeholder="Person 2 Detail">
-                                    </div>
-                                </div>
+                               
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label>No. of Cases reported to District Child protection unit </label>
@@ -524,10 +395,10 @@
                                        <span *ngIf="!loader_s3_S"> <input type="file" formControlName="photo_of_attd_sheet" (change)="onSelectFileSheet($event)" class="form-control" id="formGroupExampleInput" placeholder="Photo of Attd. Sheet" ></span>
                                     </div>
                                 </div>
-                                <div class="col-sm-4 mt-5" *ngIf="imageUrlSheetArr.length>0">
+                                <div class="col-sm-4 mt-5" *ngIf="imageUrlSheet!=''">
                                     
-                                    <span class="col-sm-1 ml-5" *ngFor="let img2 of imageUrlSheetArr">
-                                        <img src="{{img2}}" width="60" height="40" alt="img">
+                                    <span class="ml-5 ">
+                                        <img src="{{imageUrlSheet}}" width="60" height="40" alt="img">
                                     </span>
                                 
                                 </div>
@@ -685,7 +556,7 @@
                                             <i class="fa fa-check-square mr-2"></i>Save Data
                                         </button> -->
                                         <button type="button" *ngIf="loaderMedic"  class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-check-square mr-2"></i>Saving Data ...... </button>
-                                        <button type="button" *ngIf="!loaderMedic"  (click)="add_mhpss_session()" [disabled]='treatmentForm.invalid ' class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-check-square mr-2"></i>Save Data </button>
+                                        <button type="button" *ngIf="!loaderMedic"  (click)="add_mhpss_session()" [disabled]='treatmentForm.invalid' class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-check-square mr-2"></i>Save Data </button>
                                         <!--  -->
                                     </div>
                                     

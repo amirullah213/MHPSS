@@ -66,47 +66,46 @@
                                     <div class="row">
                                 <div class="col-sm-3" >
                                     <div class="form-group">
-                                        <label>Village Name</label>
-                                        <input type="text" formControlName="village" [ngClass]="{'has-error': ((treatmentForm.get('child.village').touched || treatmentForm.get('child.village').dirty) && treatmentForm.get('child.village').errors)}" class="form-control"  autocomplete="off" placeholder="Village Name"  >
-                                        <!-- <span class="help-block text-danger" *ngIf="((treatmentForm.get('child.village').touched || treatmentForm.get('child.village').dirty) &&  treatmentForm.get('child.village').errors)">
-                                            <span class="text-danger" *ngIf="treatmentForm.get('child.village').errors.required">
-                                                 Required field
-                                            </span>
-                                        </span>  -->
-                                    </div>
-                                    
-                                </div>
-                                <div class="col-sm-3" >
-                                    <div class="form-group">
-                                        <label>Taluka Name</label>
-                                        <input type="text" formControlName="taluka" [ngClass]="{'has-error': ((treatmentForm.get('child.taluka').touched || treatmentForm.get('child.taluka').dirty) && treatmentForm.get('child.taluka').errors)}" class="form-control"  autocomplete="off" placeholder="Taluka Name"  >
-                                        <!-- <span class="help-block text-danger" *ngIf="((treatmentForm.get('child.taluka').touched || treatmentForm.get('child.taluka').dirty) &&  treatmentForm.get('child.taluka').errors)">
-                                            <span class="text-danger" *ngIf="treatmentForm.get('child.taluka').errors.required">
-                                                 Required field
-                                            </span>
-                                        </span>  -->
-                                    </div>
-                                </div>
-                                <div class="col-sm-3" >
-                                    <div class="form-group">
-                                        <label>Union Council</label>
-                                        <input type="text" formControlName="union_council" [ngClass]="{'has-error': ((treatmentForm.get('child.union_council').touched || treatmentForm.get('child.union_council').dirty) && treatmentForm.get('child.union_council').errors)}" class="form-control"  autocomplete="off" placeholder="Union Council"  >
-                                        <!-- <span class="help-block text-danger" *ngIf="((treatmentForm.get('child.union_council').touched || treatmentForm.get('child.union_council').dirty) &&  treatmentForm.get('child.union_council').errors)">
-                                            <span class="text-danger" *ngIf="treatmentForm.get('child.union_council').errors.required">
-                                                 Required field
-                                            </span>
-                                        </span>  -->
-                                    </div>
-                                </div>
-                                <div class="col-sm-3" >
-                                    <div class="form-group">
-                                        <label>Dist Name</label>
-                                        <input type="text" formControlName="district" [ngClass]="{'has-error': ((treatmentForm.get('child.district').touched || treatmentForm.get('child.district').dirty) && treatmentForm.get('child.district').errors)}" class="form-control"  autocomplete="off" placeholder="Dist Name"  >
-                                        <!-- <span class="help-block text-danger" *ngIf="((treatmentForm.get('child.district').touched || treatmentForm.get('child.district').dirty) &&  treatmentForm.get('child.district').errors)">
+                                        <label>Dist Name*</label>
+                                        <input type="text" formControlName="district" [ngClass]="{'has-error': ((treatmentForm.get('child.district').touched || treatmentForm.get('child.district').dirty) && treatmentForm.get('child.district').errors)}" class="form-control"  autocomplete="off" placeholder="Dist Name*"  required>
+                                        <span class="help-block text-danger" *ngIf="((treatmentForm.get('child.district').touched || treatmentForm.get('child.district').dirty) &&  treatmentForm.get('child.district').errors)">
                                             <span class="text-danger" *ngIf="treatmentForm.get('child.district').errors.required">
                                                  Required field
                                             </span>
-                                        </span>  -->
+                                        </span> 
+                                    </div>
+                                </div>
+                                <div class="col-sm-3" >
+                                    <div class="form-group">
+                                        <label>Taluka Name*</label>
+                                        <input type="text" formControlName="taluka" [ngClass]="{'has-error': ((treatmentForm.get('child.taluka').touched || treatmentForm.get('child.taluka').dirty) && treatmentForm.get('child.taluka').errors)}" class="form-control"  autocomplete="off" placeholder="Taluka Name*"  required>
+                                        <span class="help-block text-danger" *ngIf="((treatmentForm.get('child.taluka').touched || treatmentForm.get('child.taluka').dirty) &&  treatmentForm.get('child.taluka').errors)">
+                                            <span class="text-danger" *ngIf="treatmentForm.get('child.taluka').errors.required">
+                                                 Required field
+                                            </span>
+                                        </span> 
+                                    </div>
+                                </div>
+                                <div class="col-sm-3" >
+                                    <div class="form-group">
+                                        <label>Union Council*</label>
+                                        <input type="text" formControlName="union_council" [ngClass]="{'has-error': ((treatmentForm.get('child.union_council').touched || treatmentForm.get('child.union_council').dirty) && treatmentForm.get('child.union_council').errors)}" class="form-control"  autocomplete="off" placeholder="Union Council*"  required>
+                                        <span class="help-block text-danger" *ngIf="((treatmentForm.get('child.union_council').touched || treatmentForm.get('child.union_council').dirty) &&  treatmentForm.get('child.union_council').errors)">
+                                            <span class="text-danger" *ngIf="treatmentForm.get('child.union_council').errors.required">
+                                                 Required field
+                                            </span>
+                                        </span> 
+                                    </div>
+                                </div>
+                                <div class="col-sm-3" >
+                                    <div class="form-group">
+                                        <label>Village Name*</label>
+                                        <input type="text" formControlName="village" [ngClass]="{'has-error': ((treatmentForm.get('child.village').touched || treatmentForm.get('child.village').dirty) && treatmentForm.get('child.village').errors)}" class="form-control"  autocomplete="off" placeholder="Village Name*"  required>
+                                        <span class="help-block text-danger" *ngIf="((treatmentForm.get('child.village').touched || treatmentForm.get('child.village').dirty) &&  treatmentForm.get('child.village').errors)">
+                                            <span class="text-danger" *ngIf="treatmentForm.get('child.village').errors.required">
+                                                 Required field
+                                            </span>
+                                        </span> 
                                     </div>
                                 </div>
                             </div>
@@ -524,10 +523,10 @@
                                        <span *ngIf="!loader_s3_S"> <input type="file" formControlName="photo_of_attd_sheet" (change)="onSelectFileSheet($event)" class="form-control" id="formGroupExampleInput" placeholder="Photo of Attd. Sheet" ></span>
                                     </div>
                                 </div>
-                                <div class="col-sm-4 mt-5" *ngIf="imageUrlSheetArr.length>0">
+                                <div class="col-sm-4 mt-5" *ngIf="imageUrlSheet!=''">
                                     
-                                    <span class="col-sm-1 ml-5" *ngFor="let img2 of imageUrlSheetArr">
-                                        <img src="{{img2}}" width="60" height="40" alt="img">
+                                    <span class="ml-5 ">
+                                        <img src="{{imageUrlSheet}}" width="60" height="40" alt="img">
                                     </span>
                                 
                                 </div>
@@ -685,7 +684,7 @@
                                             <i class="fa fa-check-square mr-2"></i>Save Data
                                         </button> -->
                                         <button type="button" *ngIf="loaderMedic"  class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-check-square mr-2"></i>Saving Data ...... </button>
-                                        <button type="button" *ngIf="!loaderMedic"  (click)="add_mhpss_session()" [disabled]='treatmentForm.invalid ' class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-check-square mr-2"></i>Save Data </button>
+                                        <button type="button" *ngIf="!loaderMedic"  (click)="add_mhpss_session()" [disabled]='treatmentForm.invalid' class="btn themeauth-bg text-white btn-lg font-weight-medium auth-form-btn"><i class="fa fa-check-square mr-2"></i>Save Data </button>
                                         <!--  -->
                                     </div>
                                     

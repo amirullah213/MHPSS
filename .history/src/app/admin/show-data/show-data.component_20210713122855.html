@@ -106,8 +106,8 @@
                                     </ng-template>
                                 </div>
                                 <div class="page-title col-md-6 my-3">Photo of Attd. Sheet  :
-                                      <span class="col-sm-2 " *ngFor="let img2 of attendanceSheetImages">
-                                      <a (click)="showImage(Ambdelete,img2)">   <img src="{{img2}}" width="60" height="40" alt=""></a>
+                                      <span class="col-sm-2 ">
+                                      <a (click)="showImage(Ambdelete,showDataDetails.photo_of_attd_sheet)">   <img src="{{showDataDetails.photo_of_attd_sheet}}" width="60" height="40" alt=""></a>
                                 </span> </div>
                                 <div class="page-title col-md-6 my-3">  Remarks : <b>{{showDataDetails.remarks }}</b> </div>
                             </div>
